@@ -12,6 +12,9 @@ jobs:
     docker:
       - image: circleci/node:10
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - 'ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0'
       - checkout
       - run: yarn install --frozen-lockfile
       - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
@@ -22,11 +25,13 @@ workflows:
   do_build:
     jobs:
       - test:
+          context: public_package_publish
           filters:
             branches:
               ignore:
                 - master
       - release:
+          context: public_package_publish
           filters:
             branches:
               only:
