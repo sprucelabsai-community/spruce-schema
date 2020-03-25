@@ -1,0 +1,64 @@
+{
+	"name": "@sprucelabs/schema",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"build"
+	],
+	"version": "10.0.0",
+	"main": "./build/index.js",
+	"types": "./build/index.d.ts",
+	"description": "Spruce Experience Platform Schemas",
+	"keywords": [
+		"node",
+		"components",
+		"sprucebot",
+		"sprucelabs"
+	],
+	"homepage": "https://github.com/sprucelabsai/spruce-schema",
+	"bugs": {
+		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
+	},
+	"scripts": {
+		"#build": "npm run clean && npm run build:node && npm run build:umd",
+		"build": "npm run clean && concurrently \"npm run build:node\" \"npm run build:umd\"",
+		"build:node": "tsc | true",
+		"build:browser": "tsc --project tsconfig.browser.json",
+		"build:umd": "rollup -c rollup.config.js",
+		"watch": "chokidar 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
+		"clean": "rm -rf build/",
+		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
+		"lint:fix": "eslint --fix '**/*.ts'",
+		"release": "semantic-release"
+	},
+	"dependencies": {
+		"google-libphonenumber": "^3.2.8",
+		"libphonenumber-js": "^1.7.48"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^11.0.0",
+		"@rollup/plugin-json": "^4.0.1",
+		"@rollup/plugin-node-resolve": "^6.0.0",
+		"@rollup/plugin-typescript": "^2.0.1",
+		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
+		"@sprucelabs/semantic-release": "^2.0.8",
+		"@types/google-libphonenumber": "^7.4.17",
+		"@types/socket.io-client": "^1.4.32",
+		"chokidar-cli": "^2.1.0",
+		"concurrently": "^5.0.2",
+		"eslint": "^5",
+		"eslint-config-spruce": "^9.0.0",
+		"prettier": "^1.19",
+		"rollup-plugin-node-builtins": "^2.1.2",
+		"rollup-plugin-node-globals": "^1.4.0",
+		"rollup-plugin-replace": "^2.2.0",
+		"semantic-release": "^17.0.4",
+		"yarn": "^1.2.1"
+	},
+	"peerDependencies": {
+		"graphql": "^14.5.4",
+		"typescript": "^3.8"
+	}
+}

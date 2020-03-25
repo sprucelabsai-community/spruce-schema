@@ -1,0 +1,56 @@
+{{! the definition partial, pass a schema and get back object that is the values and types }}
+
+{{#* inline "schemaValues"}}
+	{{#if dynamicKeySignature }}
+		/** {{dynamicKeySignature.label}}.{{#if dynamicKeySignature.hint}} {{dynamicKeySignature.hint}}{{/if}} **/
+		[{{dynamicKeySignature.key}}:string]{{#unless isRequired}}?{{/unless}}: {{dynamicKeySignature.type}}
+	{{/if}}{{#if dynamicKeySignature.isArray}}[]{{/if}}
+	{{#each fields}}
+		/** {{label}}.{{#if hint}} {{hint}}{{/if}} **/
+		{{@key}}{{#unless isRequired}}?{{/unless}}: {{fieldValueType this }}
+	{{/each}}
+	{{/inline}}
+
+	{{#* inline "schemaDefinition"}}
+		id: '{{{escape id}}}',
+		name: '{{{escape name}}}',
+		description: '{{{escape description}}}',
+		{{#if fields}}
+			fields: {
+			{{#each fields}}
+				{{@key}}: {
+				label: '{{id}}'
+				type: {{fieldTypeEnum this}}
+				}
+			{{/each}}
+			}
+		{{/if}}
+		{{/inline}}
+
+
+		{{#each namespaces}}
+			{{#each schemas}}
+
+				/** {{this.definition.description}} **/
+				interface {{this.interfaceName}} {
+				{{> schemaValues this.definition }}
+				}
+
+				/** the interface for the schema definition for a {{@key}} **/
+				interface {{this.definitionName}} extends ISpruceSchemaDefinition {
+				{{> schemaDefinition this.definition }}
+				}
+
+				/** the schema definition for a {{@key}} **/
+				const {{@key}}Definition: {{this.definitionName}} = {
+				{{> schemaDefinition this.definition }}
+				}
+
+				export namespace SpruceSchemas.{{../this.name}}.{{this.namespaceAccessorName}} {
+				export const definition: {{@key}}Definition
+				export interface {{this.definitionName}}
+				}
+
+
+			{{/each}}
+		{{/each}}
