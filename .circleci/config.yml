@@ -44,9 +44,9 @@ workflows:
                 - master
       - release:
           context: public_package_publish
+          requires:
+            - test
           filters:
-            requires:
-                - test
             branches:
               only:
                 - /prerelease\/.*/
