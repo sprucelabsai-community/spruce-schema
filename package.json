@@ -45,7 +45,6 @@
 		"@semantic-release/git": "^9.0.0",
 		"@sprucelabs/semantic-release": "^2.0.8",
 		"@types/google-libphonenumber": "^7.4.17",
-		"@types/socket.io-client": "^1.4.32",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.0.2",
 		"eslint": "^5",
@@ -55,10 +54,7 @@
 		"rollup-plugin-node-globals": "^1.4.0",
 		"rollup-plugin-replace": "^2.2.0",
 		"semantic-release": "^17.0.4",
+		"typescript": "^3.8",
 		"yarn": "^1.2.1"
-	},
-	"peerDependencies": {
-		"graphql": "^14.5.4",
-		"typescript": "^3.8"
 	}
 }
