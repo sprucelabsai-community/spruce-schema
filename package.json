@@ -47,6 +47,7 @@
 		"@types/google-libphonenumber": "^7.4.17",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.0.2",
+		"conventional-changelog-sprucelabs": "^1.1.0",
 		"eslint": "^5",
 		"eslint-config-spruce": "^9.0.0",
 		"prettier": "^1.19",

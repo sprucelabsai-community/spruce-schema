@@ -1356,6 +1356,14 @@ conventional-changelog-angular@^5.0.0:
     compare-func "^1.3.1"
     q "^1.5.1"
 
+conventional-changelog-sprucelabs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-sprucelabs/-/conventional-changelog-sprucelabs-1.1.0.tgz#3c4b207f8cd44094ef5b518f4f90b98313e946f5"
+  integrity sha512-zN+o4uWRGDdytz6OQQ3O+ChIXIdk/pR+1P1zUMcnYcmOdcc+rC/Hi5vC10bbH6uRPaMLqBTIwIRgVMTyJwZlDQ==
+  dependencies:
+    compare-func "^1.3.1"
+    q "^1.5.1"
+
 conventional-changelog-writer@^4.0.0:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/conventional-changelog-writer/-/conventional-changelog-writer-4.0.11.tgz#9f56d2122d20c96eb48baae0bf1deffaed1edba4"
