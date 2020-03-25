@@ -2,42 +2,21 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - 'ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0'
       - checkout
-      - run: yarn install
-      - run: yarn test
-  dev_release:
+      - run: yarn install --frozen-lockfile
+      - run: yarn run lint
+      - run: yarn run test
+  release:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:10
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - 'ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0'
       - checkout
-      - run: yarn install --ignore-scripts
-      - run: yarn run build
+      - run: yarn install --frozen-lockfile
       - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
       - run: git config --global user.name "$GIT_AUTHOR_NAME"
       - run: yarn run release
-  prod_release:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - 'ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0'
-      - checkout
-      - run: yarn install
-      - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
-      - run: git config --global user.name "$GIT_AUTHOR_NAME"
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-      - run: npm dist-tag add @sprucelabs/log@$(npm v . dist-tags.beta) latest
 workflows:
   version: 2
   do_build:
@@ -46,15 +25,13 @@ workflows:
           filters:
             branches:
               ignore:
-                - dev
                 - master
-      - dev_release:
+      - release:
           filters:
             branches:
               only:
+                - /prerelease\/.*/
                 - dev
-      - prod_release:
-          filters:
-            branches:
-              only:
+                - qa
+                - alpha
                 - master
