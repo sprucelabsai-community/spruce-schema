@@ -1,37 +1,17 @@
-version: 2
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
 jobs:
-  test:
-    docker:
-      - image: circleci/node:10
+  build-and-test:
+    executor:
+      name: node/default
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile
-      - run: yarn run lint
-      - run: yarn run test
-  release:
-    docker:
-      - image: circleci/node:10
-    steps:
-      - checkout
-      - run: yarn install --frozen-lockfile
-      - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
-      - run: git config --global user.name "$GIT_AUTHOR_NAME"
-      - run: yarn run release
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm test
 workflows:
-  version: 2
-  do_build:
-    jobs:
-      - test:
-          filters:
-            branches:
-              ignore:
-                - master
-      - release:
-          filters:
-            branches:
-              only:
-                - /prerelease\/.*/
-                - dev
-                - qa
-                - alpha
-                - master
+    build-and-test:
+      jobs:
+        - build-and-test
