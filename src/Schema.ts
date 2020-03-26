@@ -5,7 +5,7 @@ import {
 	FieldClassMap,
 	Field,
 	FieldBase
-} from './fieldTypes'
+} from './fields'
 import FieldValidationError from './FieldValidationError'
 
 /** the structure of schema.fields. key is field name, value is field definition */

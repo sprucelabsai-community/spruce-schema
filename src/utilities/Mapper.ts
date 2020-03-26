@@ -1,5 +1,5 @@
 import { ISchemaDefinition } from '..'
-import { FieldType } from '../fieldTypes'
+import { FieldType } from '../fields'
 import { ISchemaFieldsDefinition } from '../Schema'
 
 export interface IGeneratorInterfaceTypeNames {
@@ -128,6 +128,4 @@ export default class Generator {
 
 		return newMap
 	}
-
-	generateTypesFile = (definitions: ISchemaDefinition[])
 }

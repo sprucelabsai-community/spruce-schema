@@ -21,7 +21,6 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
-		"#build": "npm run clean && npm run build:node && npm run build:umd",
 		"build": "npm run clean && concurrently \"npm run build:node\" \"npm run build:umd\"",
 		"build:node": "tsc | true",
 		"build:browser": "tsc --project tsconfig.browser.json",
@@ -49,8 +48,9 @@
 		"concurrently": "^5.0.2",
 		"conventional-changelog-sprucelabs": "^1.1.0",
 		"eslint": "^5",
-		"eslint-config-spruce": "^9.0.0",
+		"eslint-config-spruce": "^10.0.0",
 		"prettier": "^1.19",
+		"rollup": "^1.27.14",
 		"rollup-plugin-node-builtins": "^2.1.2",
 		"rollup-plugin-node-globals": "^1.4.0",
 		"rollup-plugin-replace": "^2.2.0",
