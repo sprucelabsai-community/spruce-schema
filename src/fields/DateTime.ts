@@ -16,6 +16,11 @@ export interface IFieldDateTimeDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldDateTime extends FieldBase<IFieldDateTimeDefinition> {
-	public definitionInterfaceString = 'IFieldDateTimeDefinition'
-	public typeEnumString = 'FieldType.DateTime'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldDateTimeDefinition',
+			typeEnum: 'FieldType.DateTime',
+			valueType: 'IFieldDateTimeValue'
+		}
+	}
 }

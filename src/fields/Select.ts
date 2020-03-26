@@ -19,15 +19,20 @@ export interface IFieldSelectDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldSelect extends FieldText<IFieldSelectDefinition> {
-	public definitionInterfaceString = 'IFieldSelectDefinition'
-	public typeEnumString = 'FieldType.Select'
-
 	public constructor(definition: IFieldSelectDefinition) {
 		super(definition)
 		if (!definition.options || !definition.options.choices) {
 			throw new Error('Select field is missing choices.')
 		}
 	}
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldSelectDefinition',
+			typeEnum: 'FieldType.Select',
+			valueType: 'string'
+		}
+	}
+
 	public getChoices(): IFieldSelectDefinitionChoice[] {
 		return this.definition.options.choices
 	}

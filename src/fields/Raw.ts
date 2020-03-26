@@ -11,6 +11,11 @@ export interface IFieldRawDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldRaw extends FieldBase<IFieldRawDefinition> {
-	public definitionInterfaceString = 'IFieldRawDefinition'
-	public typeEnumString = 'FieldType.Raw'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldRawDefinition',
+			typeEnum: 'FieldType.Raw',
+			valueType: 'any'
+		}
+	}
 }

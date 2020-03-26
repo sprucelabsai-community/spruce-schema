@@ -10,6 +10,11 @@ export interface IFieldNumberDefinition extends IFieldBaseDefinition {
 export default class FieldNumber<
 	T extends IFieldNumberDefinition = IFieldNumberDefinition
 > extends FieldBase<T> {
-	public definitionInterfaceString = 'IFieldNumberDefinition'
-	public typeEnumString = 'FieldType.Number'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldNumberDefinition',
+			typeEnum: 'FieldType.Number',
+			valueType: 'number'
+		}
+	}
 }

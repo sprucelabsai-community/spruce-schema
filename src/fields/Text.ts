@@ -16,8 +16,13 @@ export interface IFieldTextDefinition extends IFieldBaseDefinition {
 export default class FieldText<
 	T extends IFieldDefinition = IFieldDefinition
 > extends FieldBase<T> {
-	public definitionInterfaceString = 'IFieldTextDefinition'
-	public typeEnumString = 'FieldType.Text'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldTextDefinition',
+			typeEnum: 'FieldType.Text',
+			valueType: 'string'
+		}
+	}
 
 	/** tranform to match the value type of string */
 	public toValueType = (value: any): string => {

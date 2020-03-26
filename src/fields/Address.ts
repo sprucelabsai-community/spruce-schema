@@ -18,6 +18,11 @@ export interface IFieldAddressDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldAddress extends FieldBase<IFieldAddressDefinition> {
-	public definitionInterfaceString = 'IFieldAddressDefinition'
-	public typeEnumString = 'FieldType.Address'
+	public static templateDetails() {
+		return {
+			typeEnum: 'FieldType.Address',
+			definitionInterface: 'IFieldAddressDefinition',
+			valueType: 'IFieldAddressValue'
+		}
+	}
 }

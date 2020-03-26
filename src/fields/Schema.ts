@@ -15,6 +15,11 @@ export interface IFieldSchemaDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldSchema extends FieldBase<IFieldSchemaDefinition> {
-	public definitionInterfaceString = 'IFieldSchemaDefinition'
-	public typeEnumString = 'FieldType.Schema'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldSchemaDefinition',
+			typeEnum: 'FieldType.Schema',
+			valueType: 'ISchemaDefinition'
+		}
+	}
 }

@@ -14,8 +14,13 @@ export interface IFieldPhoneDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
-	public definitionInterfaceString = 'IFieldPhoneDefinition'
-	public typeEnumString = 'FieldType.Phone'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldPhoneDefinition',
+			typeEnum: 'FieldType.Phone',
+			valueType: 'string'
+		}
+	}
 
 	public toValueType = (value: any): string => {
 		// TODO format as phone number

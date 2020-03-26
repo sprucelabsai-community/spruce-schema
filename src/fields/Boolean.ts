@@ -9,6 +9,11 @@ export interface IFieldBooleanDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldBoolean extends FieldBase<IFieldBooleanDefinition> {
-	public definitionInterfaceString = 'IFieldBooleanDefinition'
-	public typeEnumString = 'FieldType.Boolean'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldBooleanDefinition',
+			typeEnum: 'FieldType.Boolean',
+			valueType: 'boolean'
+		}
+	}
 }

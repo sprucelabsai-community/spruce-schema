@@ -9,6 +9,11 @@ export interface IFieldIdDefinition extends IFieldBaseDefinition {
 }
 
 export default class FieldId extends FieldBase<IFieldIdDefinition> {
-	public definitionInterfaceString = 'IFieldIdDefinition'
-	public typeEnumString = 'FieldType.Id'
+	public static templateDetails() {
+		return {
+			definitionInterface: 'IFieldIdDefinition',
+			typeEnum: 'FieldType.Id',
+			valueType: 'string'
+		}
+	}
 }

@@ -37,20 +37,30 @@ export interface IFieldBaseDefinition {
 	options?: Record<string, any>
 }
 
+export interface IFieldTemplateDetails {
+	/** the enum for this type of field, ie FieldType.Text */
+	typeEnum: string
+
+	/** the interface name as a string literal 'IFieldBooleanDefinition' */
+	definitionInterface: string
+
+	/** the type of value (string, number) */
+	valueType: string
+}
+
 export default abstract class FieldBase<
 	T extends IFieldDefinition = IFieldDefinition
 > {
 	/** the definition for this field */
 	public definition: T
 
-	/** the enum for this type of field, ie FieldType.Text */
-	abstract typeEnumString: string
-
-	/** the interface name as a string literal 'IFieldBooleanDefinition' */
-	abstract definitionInterfaceString: string
-
 	public constructor(definition: T) {
 		this.definition = definition
+	}
+
+	/** details needed for generating templates */
+	public static templateDetails(): IFieldTemplateDetails {
+		throw new Error('field types must implement public static templateDetails')
 	}
 
 	/** factory for creating a new field from a definition */

@@ -23,9 +23,7 @@ function capitalizeFirstLetter(string: string): string {
 
 export default class Mapper {
 	/** generate interface and type names based off schema name */
-	public static generateNames(
-		schemaName: string
-	): ISchemaInterfaceTypeNames {
+	public static generateNames(schemaName: string): ISchemaInterfaceTypeNames {
 		return {
 			interfaceName: `I${capitalizeFirstLetter(schemaName)}`,
 			typeName: `${capitalizeFirstLetter(schemaName)}`
@@ -40,9 +38,7 @@ export default class Mapper {
 		let newMap = { ...map }
 
 		definitions.forEach(definition => {
-			const { typeName, interfaceName } = Mapper.generateNames(
-				definition.name
-			)
+			const { typeName, interfaceName } = Mapper.generateNames(definition.name)
 
 			// we've already mapped this type
 			if (definition.id in newMap) {
