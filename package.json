@@ -48,7 +48,7 @@
 		"concurrently": "^5.0.2",
 		"conventional-changelog-sprucelabs": "^1.1.0",
 		"eslint": "^5",
-		"eslint-config-spruce": "^10.0.0",
+		"eslint-config-spruce": "^10.0.3",
 		"prettier": "^1.19",
 		"rollup": "^1.27.14",
 		"rollup-plugin-node-builtins": "^2.1.2",

@@ -2,7 +2,7 @@ import { ISchemaDefinition } from '..'
 import { FieldType } from '../fields'
 import { ISchemaFieldsDefinition } from '../Schema'
 
-export interface IGeneratorInterfaceTypeNames {
+export interface ISchemaInterfaceTypeNames {
 	interfaceName: string
 	typeName: string
 }
@@ -21,11 +21,11 @@ function capitalizeFirstLetter(string: string): string {
 	return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export default class Generator {
+export default class Mapper {
 	/** generate interface and type names based off schema name */
 	public static generateNames(
 		schemaName: string
-	): IGeneratorInterfaceTypeNames {
+	): ISchemaInterfaceTypeNames {
 		return {
 			interfaceName: `I${capitalizeFirstLetter(schemaName)}`,
 			typeName: `${capitalizeFirstLetter(schemaName)}`
@@ -40,7 +40,7 @@ export default class Generator {
 		let newMap = { ...map }
 
 		definitions.forEach(definition => {
-			const { typeName, interfaceName } = Generator.generateNames(
+			const { typeName, interfaceName } = Mapper.generateNames(
 				definition.name
 			)
 
@@ -63,7 +63,7 @@ export default class Generator {
 				if (field.type === FieldType.Schema) {
 					const schemaDefinition = field.options.schema
 					if (schemaDefinition) {
-						newMap = Generator.generateSchemaMap([schemaDefinition], newMap)
+						newMap = Mapper.generateSchemaMap([schemaDefinition], newMap)
 					}
 				}
 			})

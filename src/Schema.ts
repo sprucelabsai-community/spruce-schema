@@ -151,7 +151,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		}
 
 		// if there is a value, transform it to it's expected value
-		if (value !== null && typeof value !== undefined) {
+		if (value !== null && typeof value !== 'undefined') {
 			value = field.toValueType(value)
 		}
 
@@ -171,7 +171,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		const field = this.fields[fieldName]
 
 		// if there is a value, transform it to it's expected value
-		if (localValue !== null && typeof localValue !== undefined) {
+		if (localValue !== null && typeof localValue !== 'undefined') {
 			localValue = field.toValueType(localValue)
 		}
 

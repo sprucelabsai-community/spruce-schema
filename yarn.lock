@@ -1911,7 +1911,7 @@ eslint-config-prettier@^6.7.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.0.0:
+eslint-config-spruce@^10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.0.3.tgz#db28cb6f37eae1037c60165f34e18bdc9c4ab295"
   integrity sha512-nySDh+8nP9rN4+Z1DYDPSfeADNEClp2hdZ7gIZU9keIBelbJz425POuSfFqAf8lw7IVDVFaIKYMc5ybyFNR+Sw==
