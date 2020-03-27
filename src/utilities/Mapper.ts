@@ -38,7 +38,7 @@ export default class Mapper {
 		let newMap = { ...map }
 
 		definitions.forEach(definition => {
-			const { typeName, interfaceName } = Mapper.generateNames(definition.name)
+			const { typeName, interfaceName } = Mapper.generateNames(definition.id)
 
 			// we've already mapped this type
 			if (definition.id in newMap) {
