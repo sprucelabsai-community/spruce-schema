@@ -48,21 +48,29 @@ export default class Mapper {
 				return
 			}
 
-			newMap[definition.id] = {
-				interfaceName,
-				typeName,
-				definition
-			}
+			let subMap :ISchemaDefinitionMap = {}
 
 			// check children
 			Object.values(definition.fields ?? {}).forEach(field => {
 				if (field.type === FieldType.Schema) {
 					const schemaDefinition = field.options.schema
 					if (schemaDefinition) {
-						newMap = Mapper.generateSchemaMap([schemaDefinition], newMap)
+						subMap = Mapper.generateSchemaMap([schemaDefinition], subMap)
 					}
 				}
 			})
+
+			newMap[definition.id] = {
+				interfaceName,
+				typeName,
+				definition
+			}
+
+			// drop sub map ahead of current map
+			newMap = {
+				...subMap,
+				...newMap
+			}
 		})
 
 		// now that everything is mapped, lets change schema fields to id's (vs sub schemas)

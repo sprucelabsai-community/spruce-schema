@@ -4,7 +4,8 @@ import {
 	FieldDefinitionMap,
 	FieldClassMap,
 	Field,
-	FieldBase
+	FieldBase,
+	IFieldSchemaDefinition
 } from './fields'
 import FieldValidationError from './FieldValidationError'
 
@@ -33,14 +34,24 @@ export interface ISchemaDefinition {
 	fields?: ISchemaFieldsDefinition
 }
 
-/** to map a schema to an object with values that match the value */
+/** to map a schema to an object with values whose types match */
 export type SchemaDefinitionValues<T extends ISchemaDefinition> = {
-	[K in keyof T['fields']]: T['fields'][K] extends IFieldDefinition
-		? T['fields'][K]['isRequired'] extends true
-			? Required<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-			: Partial<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-		: never
+	[K in keyof T['fields']]: SchemaFieldDefinitionValueType<T, K>
 }
+
+/** get the type of the value of a schema's field */
+export type SchemaFieldDefinitionValueType<
+	T extends ISchemaDefinition,
+	K extends keyof T['fields']
+> = T['fields'][K] extends IFieldSchemaDefinition 
+		? T['fields'][K]['options']['schema'] extends ISchemaDefinition 
+			? SchemaDefinitionValues<T['fields'][K]['options']['schema']> 
+			: any
+		: T['fields'][K] extends IFieldDefinition
+			? T['fields'][K]['isRequired'] extends true
+				? Required<FieldDefinitionMap[T['fields'][K]['type']]>['value']
+				: Partial<FieldDefinitionMap[T['fields'][K]['type']]>['value']
+		: never
 
 /** a union of all field names */
 export type SchemaDefinitionFieldNames<
@@ -61,15 +72,7 @@ export type SchemaDefinitionFieldType<
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
 
-/** get the type of the value of a schema's field */
-export type SchemaFieldDefinitionValueType<
-	T extends ISchemaDefinition,
-	K extends keyof T['fields']
-> = T['fields'][K] extends IFieldDefinition
-	? T['fields'][K]['isRequired'] extends true
-		? Required<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-		: Partial<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-	: never
+
 
 /** response to getNamedFields */
 export interface ISchemaNamedField<T extends ISchemaDefinition> {

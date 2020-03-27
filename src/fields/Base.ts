@@ -113,7 +113,7 @@ export default abstract class FieldBase<
 	}
 
 	/** transform any value to the value type of this field */
-	public toValueType = (value: any): any => {
+	public toValueType (value: any): any {
 		return value
 	}
 }

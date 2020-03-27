@@ -24,7 +24,7 @@ export default class FieldText<
 	}
 
 	/** tranform to match the value type of string */
-	public toValueType = (value: any): string => {
+	public toValueType(value: any): string {
 		const transformed =
 			typeof value === 'string' ? value : value && value.toString()
 
