@@ -48,7 +48,7 @@ export default class Mapper {
 				return
 			}
 
-			let subMap :ISchemaDefinitionMap = {}
+			let subMap: ISchemaDefinitionMap = {}
 
 			// check children
 			Object.values(definition.fields ?? {}).forEach(field => {

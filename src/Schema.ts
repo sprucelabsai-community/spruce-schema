@@ -46,13 +46,19 @@ type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
-> = T['fields'][K] extends IFieldSchemaDefinition 
-		? T['fields'][K]['options']['schema'] extends ISchemaDefinition 
-			? IsRequired<SchemaDefinitionValues<T['fields'][K]['options']['schema']>, T['fields'][K]['isRequired']>
-			: IsRequired<any, T['fields'][K]['isRequired']>
-		: T['fields'][K] extends IFieldDefinition
-			? IsRequired<FieldDefinitionMap[T['fields'][K]['type']]['value'], T['fields'][K]['isRequired']>
-			: never
+> = T['fields'][K] extends IFieldSchemaDefinition
+	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
+		? IsRequired<
+				SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
+				T['fields'][K]['isRequired']
+		  >
+		: IsRequired<any, T['fields'][K]['isRequired']>
+	: T['fields'][K] extends IFieldDefinition
+	? IsRequired<
+			FieldDefinitionMap[T['fields'][K]['type']]['value'],
+			T['fields'][K]['isRequired']
+	  >
+	: never
 
 /** a union of all field names */
 export type SchemaDefinitionFieldNames<
@@ -72,8 +78,6 @@ export type SchemaDefinitionFieldType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
-
-
 
 /** response to getNamedFields */
 export interface ISchemaNamedField<T extends ISchemaDefinition> {

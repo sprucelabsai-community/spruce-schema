@@ -38,7 +38,6 @@ export interface IFieldBaseDefinition {
 }
 
 export interface IFieldTemplateDetails {
-
 	/** the interface name as a string literal 'IFieldBooleanDefinition' */
 	definitionInterface: string
 
@@ -113,7 +112,7 @@ export default abstract class FieldBase<
 	}
 
 	/** transform any value to the value type of this field */
-	public toValueType (value: any): any {
+	public toValueType(value: any): any {
 		return value
 	}
 }

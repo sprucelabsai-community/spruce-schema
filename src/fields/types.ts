@@ -76,17 +76,17 @@ export enum FieldType {
 
 /** useful for type lookups for generics */
 export type FieldDefinitionMap = {
-	boolean: IFieldBooleanDefinition
-	select: IFieldSelectDefinition
-	duration: IFieldDurationDefinition
-	id: IFieldIdDefinition
-	text: IFieldTextDefinition
-	address: IFieldAddressDefinition
-	phone: IFieldPhoneDefinition
-	schema: IFieldSchemaDefinition
-	raw: IFieldRawDefinition
-	number: IFieldNumberDefinition
-	dateTime: IFieldDateTimeDefinition
+	[FieldType.Boolean]: IFieldBooleanDefinition
+	[FieldType.Select]: IFieldSelectDefinition
+	[FieldType.Duration]: IFieldDurationDefinition
+	[FieldType.Id]: IFieldIdDefinition
+	[FieldType.Text]: IFieldTextDefinition
+	[FieldType.Address]: IFieldAddressDefinition
+	[FieldType.Phone]: IFieldPhoneDefinition
+	[FieldType.Schema]: IFieldSchemaDefinition
+	[FieldType.Raw]: IFieldRawDefinition
+	[FieldType.Number]: IFieldNumberDefinition
+	[FieldType.DateTime]: IFieldDateTimeDefinition
 }
 
 /** a global place to reference all field type classes */
