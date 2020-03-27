@@ -39,19 +39,20 @@ export type SchemaDefinitionValues<T extends ISchemaDefinition> = {
 	[K in keyof T['fields']]: SchemaFieldDefinitionValueType<T, K>
 }
 
+/** easy isRequired helper */
+type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
+
 /** get the type of the value of a schema's field */
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldSchemaDefinition 
 		? T['fields'][K]['options']['schema'] extends ISchemaDefinition 
-			? SchemaDefinitionValues<T['fields'][K]['options']['schema']> 
-			: any
+			? IsRequired<SchemaDefinitionValues<T['fields'][K]['options']['schema']>, T['fields'][K]['isRequired']>
+			: IsRequired<any, T['fields'][K]['isRequired']>
 		: T['fields'][K] extends IFieldDefinition
-			? T['fields'][K]['isRequired'] extends true
-				? Required<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-				: Partial<FieldDefinitionMap[T['fields'][K]['type']]>['value']
-		: never
+			? IsRequired<FieldDefinitionMap[T['fields'][K]['type']]['value'], T['fields'][K]['isRequired']>
+			: never
 
 /** a union of all field names */
 export type SchemaDefinitionFieldNames<
