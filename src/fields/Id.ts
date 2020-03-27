@@ -12,7 +12,6 @@ export default class FieldId extends FieldBase<IFieldIdDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldIdDefinition',
-			typeEnum: 'FieldType.Id',
 			valueType: 'string'
 		}
 	}

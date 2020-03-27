@@ -13,7 +13,6 @@ export default class FieldNumber<
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldNumberDefinition',
-			typeEnum: 'FieldType.Number',
 			valueType: 'number'
 		}
 	}

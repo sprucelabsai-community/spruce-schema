@@ -28,7 +28,6 @@ export default class FieldSelect extends FieldText<IFieldSelectDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldSelectDefinition',
-			typeEnum: 'FieldType.Select',
 			valueType: 'string'
 		}
 	}

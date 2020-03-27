@@ -38,8 +38,6 @@ export interface IFieldBaseDefinition {
 }
 
 export interface IFieldTemplateDetails {
-	/** the enum for this type of field, ie FieldType.Text */
-	typeEnum: string
 
 	/** the interface name as a string literal 'IFieldBooleanDefinition' */
 	definitionInterface: string

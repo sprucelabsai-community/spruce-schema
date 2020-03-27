@@ -27,7 +27,6 @@ export default class FieldDuration extends FieldBase<IFieldDurationDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldDurationDefinition',
-			typeEnum: 'FieldType.Duration',
 			valueType: 'IFieldDurationValue'
 		}
 	}

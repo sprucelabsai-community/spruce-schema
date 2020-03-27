@@ -18,7 +18,6 @@ export default class FieldSchema extends FieldBase<IFieldSchemaDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldSchemaDefinition',
-			typeEnum: 'FieldType.Schema',
 			valueType: 'ISchemaDefinition'
 		}
 	}

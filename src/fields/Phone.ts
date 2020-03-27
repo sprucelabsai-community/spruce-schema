@@ -17,7 +17,6 @@ export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldPhoneDefinition',
-			typeEnum: 'FieldType.Phone',
 			valueType: 'string'
 		}
 	}

@@ -14,7 +14,6 @@ export default class FieldRaw extends FieldBase<IFieldRawDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldRawDefinition',
-			typeEnum: 'FieldType.Raw',
 			valueType: 'any'
 		}
 	}

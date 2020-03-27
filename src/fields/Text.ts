@@ -19,7 +19,6 @@ export default class FieldText<
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldTextDefinition',
-			typeEnum: 'FieldType.Text',
 			valueType: 'string'
 		}
 	}

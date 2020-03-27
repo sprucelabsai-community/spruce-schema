@@ -12,7 +12,6 @@ export default class FieldBoolean extends FieldBase<IFieldBooleanDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldBooleanDefinition',
-			typeEnum: 'FieldType.Boolean',
 			valueType: 'boolean'
 		}
 	}

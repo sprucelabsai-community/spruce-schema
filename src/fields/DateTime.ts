@@ -19,7 +19,6 @@ export default class FieldDateTime extends FieldBase<IFieldDateTimeDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IFieldDateTimeDefinition',
-			typeEnum: 'FieldType.DateTime',
 			valueType: 'IFieldDateTimeValue'
 		}
 	}
