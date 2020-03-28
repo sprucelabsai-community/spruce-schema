@@ -1,6 +1,8 @@
 import { ISchemaDefinition } from '..'
 import { FieldType } from '../fields'
 import { ISchemaFieldsDefinition } from '../Schema'
+import SchemaError from '../errors/SchemaError'
+import { SchemaErrorCode } from '../errors/types'
 
 export interface ISchemaInterfaceTypeNames {
 	interfaceName: string
@@ -8,7 +10,7 @@ export interface ISchemaInterfaceTypeNames {
 }
 
 export interface ISchemaTemplateItem {
-	id: string,
+	id: string
 	definition: ISchemaDefinition
 	typeName: string
 	interfaceName: string
@@ -27,103 +29,133 @@ export default class Template {
 		}
 	}
 
-
 	/** a map of names keyed by interface name */
 	public static generateTemplateItems(
+		/** array of schema definitions */
 		definitions: ISchemaDefinition[],
-		items: ISchemaTemplateItem[] = []
+		/** the items built recursively returned an the end */
+		items: ISchemaTemplateItem[] = [],
+		/** for tracking recursively to keep from infinite depth */
+		definitionsById: { [id: string]: ISchemaDefinition } = {}
 	): ISchemaTemplateItem[] {
-		let newItems = [ ...items ]
+		let newItems = [...items]
+
+		// keep track of all definitions
+		definitions.forEach(def => {
+			definitionsById[def.id] = def
+		})
 
 		definitions.forEach(definition => {
 			const { typeName, interfaceName } = Template.generateNames(definition.id)
 
-			debugger
 			// we've already mapped this type
-			const matchIdx = items.findIndex(item => item.definition === definition) 
+			const matchIdx = items.findIndex(item => item.definition === definition)
+
 			if (matchIdx > -1) {
 				if (definition !== items[matchIdx].definition) {
-					throw new Error(`Schema with id ${definition.id} already exists!`)
+					throw new SchemaError({
+						code: SchemaErrorCode.Duplicate,
+						schemaId: definition.id,
+						notes: 'Found while generating template items'
+					})
 				}
 				return
 			}
 
-
 			// check children
 			Object.values(definition.fields ?? {}).forEach(field => {
 				if (field.type === FieldType.Schema) {
-					const schemaDefinition = field.options.schema
-					if (schemaDefinition) {
-						newItems = Template.generateTemplateItems([schemaDefinition], newItems)
+					// find schema reference based on sub schema or looping through all definitions
+					const schemaDefinition =
+						field.options.schema ||
+						definitionsById[field.options.schemaId || 'missing']
+
+					if (!schemaDefinition) {
+						throw new SchemaError({
+							code: SchemaErrorCode.NotFound,
+							schemaId:
+								field.options.schemaId ||
+								field.options.schema?.id ||
+								'**MISSING ID**',
+							notes: 'Error while resolving schema fields'
+						})
 					}
+					newItems = Template.generateTemplateItems(
+						[schemaDefinition],
+						newItems,
+						definitionsById
+					)
 				}
 			})
 
-			newItems.push({
-				id: definition.id,
-				interfaceName,typeName,definition
-			})
-
+			// was this already added?
+			if (newItems.findIndex(item => item.id === definition.id) === -1) {
+				newItems.push({
+					id: definition.id,
+					interfaceName,
+					typeName,
+					definition
+				})
+			}
 		})
 
 		// now that everything is mapped, lets change schema fields to id's (vs sub schemas)
-		newItems = newItems.map(
-			(map, idx) => {
-				const { definition } = map
+		newItems = newItems.map(templateItem => {
+			const { definition } = templateItem
 
-				let newFields: ISchemaFieldsDefinition | undefined
+			let newFields: ISchemaFieldsDefinition | undefined
 
-				Object.keys(definition.fields ?? {}).forEach(name => {
-					const field = definition.fields?.[name]
+			Object.keys(definition.fields ?? {}).forEach(name => {
+				const field = definition.fields?.[name]
 
-					// if this is a schema field, lets make sure schema id is set correctly
-					if (field && field.type === FieldType.Schema) {
-						if (!newFields) {
-							newFields = {}
-						}
+				// if this is a schema field, lets make sure schema id is set correctly
+				if (
+					field &&
+					field.type === FieldType.Schema &&
+					!field.options.schemaId
+				) {
+					if (!newFields) {
+						newFields = {}
+					}
 
-						// get the one true id
-						const schemaId = field.options.schema
-							? field.options.schema.id
-							: field.options.schemaId
+					// get the one true id
+					const schemaId = field.options.schema
+						? field.options.schema.id
+						: field.options.schemaId
 
-						// build new options
-						const newOptions = { ...field.options }
+					// build new options
+					const newOptions = { ...field.options }
 
-						// no schema or schema id options (set again below)
-						delete newOptions.schema
+					// no schema or schema id options (set again below)
+					delete newOptions.schema
 
-						// setup new field
-						newFields[name] = {
-							...field,
-							options: {
-								...newOptions,
-								schemaId
-							}
+					// setup new field
+					newFields[name] = {
+						...field,
+						options: {
+							...newOptions,
+							schemaId
 						}
 					}
-				})
-
-				if (newFields) {
-					debugger
-					const updatedMap = { 
-						...map,
-						definition: {
-							...map.definition,
-							fields: {
-								...map.definition.fields,
-								...newFields
-							}
-						}
-					}
-					return updatedMap
 				}
+			})
 
-				return map
+			if (newFields) {
+				const updatedItem = {
+					...templateItem,
+					definition: {
+						...templateItem.definition,
+						fields: {
+							...templateItem.definition.fields,
+							...newFields
+						}
+					}
+				}
+				return updatedItem
 			}
-			
-		)
 
+			return templateItem
+		})
 
 		return newItems
 	}
