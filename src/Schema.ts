@@ -47,23 +47,22 @@ export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldSchemaDefinition
-	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
-		? IsRequired<
-				SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
-				T['fields'][K]['isRequired']
-		  >
-		: IsRequired<any, T['fields'][K]['isRequired']>
-	: T['fields'][K] extends IFieldDefinition
-	? IsRequired<
-			FieldDefinitionMap[T['fields'][K]['type']]['value'],
-			T['fields'][K]['isRequired']
-	  >
-	: never
+		? T['fields'][K]['options']['schema'] extends ISchemaDefinition
+			? IsRequired<
+					SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
+					T['fields'][K]['isRequired']
+			>
+			: IsRequired<any, T['fields'][K]['isRequired']>
+		: T['fields'][K] extends IFieldDefinition
+			? IsRequired<
+					Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
+					T['fields'][K]['isRequired']
+			> : never
 
 /** a union of all field names */
 export type SchemaDefinitionFieldNames<
 	T extends ISchemaDefinition
-> = keyof T['fields']
+>   = keyof T['fields']
 
 /** pluck out the field definition from the schema */
 export type SchemaFieldDefinition<
@@ -135,6 +134,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		})
 	}
 
+	/** get any field by name */
 	public get<F extends SchemaDefinitionFieldNames<T>>(
 		fieldName: F,
 		options: ISchemaGetSetOptions = {}
