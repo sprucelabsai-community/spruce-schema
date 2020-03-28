@@ -7,11 +7,8 @@ export interface ISchemaInterfaceTypeNames {
 	typeName: string
 }
 
-export interface ISchemaDefinitionMap {
-	[id: string]: ISchemaDefinitionMapValue
-}
-
-export interface ISchemaDefinitionMapValue {
+export interface ISchemaTemplateItem {
+	id: string,
 	definition: ISchemaDefinition
 	typeName: string
 	interfaceName: string
@@ -21,7 +18,7 @@ function capitalizeFirstLetter(string: string): string {
 	return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export default class Mapper {
+export default class Template {
 	/** generate interface and type names based off schema name */
 	public static generateNames(schemaName: string): ISchemaInterfaceTypeNames {
 		return {
@@ -30,53 +27,49 @@ export default class Mapper {
 		}
 	}
 
+
 	/** a map of names keyed by interface name */
-	public static generateSchemaMap(
+	public static generateTemplateItems(
 		definitions: ISchemaDefinition[],
-		map: ISchemaDefinitionMap = {}
-	): ISchemaDefinitionMap {
-		let newMap = { ...map }
+		items: ISchemaTemplateItem[] = []
+	): ISchemaTemplateItem[] {
+		let newItems = [ ...items ]
 
 		definitions.forEach(definition => {
-			const { typeName, interfaceName } = Mapper.generateNames(definition.id)
+			const { typeName, interfaceName } = Template.generateNames(definition.id)
 
+			debugger
 			// we've already mapped this type
-			if (definition.id in newMap) {
-				if (definition !== newMap[definition.id].definition) {
+			const matchIdx = items.findIndex(item => item.definition === definition) 
+			if (matchIdx > -1) {
+				if (definition !== items[matchIdx].definition) {
 					throw new Error(`Schema with id ${definition.id} already exists!`)
 				}
 				return
 			}
 
-			let subMap: ISchemaDefinitionMap = {}
 
 			// check children
 			Object.values(definition.fields ?? {}).forEach(field => {
 				if (field.type === FieldType.Schema) {
 					const schemaDefinition = field.options.schema
 					if (schemaDefinition) {
-						subMap = Mapper.generateSchemaMap([schemaDefinition], subMap)
+						newItems = Template.generateTemplateItems([schemaDefinition], newItems)
 					}
 				}
 			})
 
-			newMap[definition.id] = {
-				interfaceName,
-				typeName,
-				definition
-			}
+			newItems.push({
+				id: definition.id,
+				interfaceName,typeName,definition
+			})
 
-			// drop sub map ahead of current map
-			newMap = {
-				...subMap,
-				...newMap
-			}
 		})
 
 		// now that everything is mapped, lets change schema fields to id's (vs sub schemas)
-		newMap = Object.keys(newMap).reduce<ISchemaDefinitionMap>(
-			(map, schemaId) => {
-				const { definition } = map[schemaId]
+		newItems = newItems.map(
+			(map, idx) => {
+				const { definition } = map
 
 				let newFields: ISchemaFieldsDefinition | undefined
 
@@ -112,24 +105,26 @@ export default class Mapper {
 				})
 
 				if (newFields) {
-					// copy back fields with schemaId's
-					map[schemaId] = {
-						...map[schemaId],
+					debugger
+					const updatedMap = { 
+						...map,
 						definition: {
-							...map[schemaId].definition,
+							...map.definition,
 							fields: {
-								...map[schemaId].definition.fields,
+								...map.definition.fields,
 								...newFields
 							}
 						}
 					}
+					return updatedMap
 				}
 
 				return map
-			},
-			newMap
+			}
+			
 		)
 
-		return newMap
+
+		return newItems
 	}
 }
