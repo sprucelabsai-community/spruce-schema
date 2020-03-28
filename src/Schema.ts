@@ -7,7 +7,11 @@ import {
 	FieldBase,
 	IFieldSchemaDefinition
 } from './fields'
-import FieldValidationError from './FieldValidationError'
+import SchemaError from './errors/SchemaError'
+import {
+	SchemaErrorCode,
+	ISchemaErrorOptionsInvalidField
+} from './errors/types'
 
 /** the structure of schema.fields. key is field name, value is field definition */
 export interface ISchemaFieldsDefinition {
@@ -47,22 +51,24 @@ export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldSchemaDefinition
-		? T['fields'][K]['options']['schema'] extends ISchemaDefinition
-			? IsRequired<
-					SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
-					T['fields'][K]['isRequired']
-			>
-			: IsRequired<any, T['fields'][K]['isRequired']>
-		: T['fields'][K] extends IFieldDefinition
-			? IsRequired<
-					Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
-					T['fields'][K]['isRequired']
-			> : never
+	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
+		? IsRequired<
+				SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
+				T['fields'][K]['isRequired']
+		  >
+		: IsRequired<any, T['fields'][K]['isRequired']>
+	: T['fields'][K] extends IFieldDefinition
+	? IsRequired<
+			Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
+			T['fields'][K]['isRequired']
+	  >
+	: never
 
 /** a union of all field names */
-export type SchemaDefinitionFieldNames<
-	T extends ISchemaDefinition
->   = keyof T['fields']
+export type SchemaDefinitionFieldNames<T extends ISchemaDefinition> = Extract<
+	keyof T['fields'],
+	string
+>
 
 /** pluck out the field definition from the schema */
 export type SchemaFieldDefinition<
@@ -87,12 +93,6 @@ export interface ISchemaNamedField<T extends ISchemaDefinition> {
 /** options you can pass to schema.get() */
 export interface ISchemaGetSetOptions {
 	validate?: boolean
-}
-
-/** response when calling validate() */
-export interface ISchemaValidationError<T extends ISchemaDefinition> {
-	fieldName: SchemaDefinitionFieldNames<T>
-	errors: string[]
 }
 
 /** universal schema class  */
@@ -155,7 +155,11 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		// if there are any errors, bail
 		if (errors.length > 0) {
-			throw new FieldValidationError(fieldName as string, errors)
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidField,
+				schemaId: this.definition.id,
+				errors: [{ fieldName: fieldName as string, errors }]
+			})
 		}
 
 		// if there is a value, transform it to it's expected value
@@ -187,7 +191,11 @@ export default class Schema<T extends ISchemaDefinition> {
 		const errors = validate ? field.validate(localValue) : []
 
 		if (errors.length > 0) {
-			throw new FieldValidationError(fieldName as string, errors)
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidField,
+				schemaId: this.definition.id,
+				errors: [{ fieldName: fieldName as string, errors }]
+			})
 		}
 
 		this.values[fieldName] = localValue
@@ -197,12 +205,17 @@ export default class Schema<T extends ISchemaDefinition> {
 
 	/** is this schema valid? */
 	public isValid() {
-		return this.validate().length > 0
+		try {
+			this.validate()
+			return true
+		} catch {
+			return false
+		}
 	}
 
 	/** returns an array of schema validation errors */
-	public validate(): ISchemaValidationError<T>[] {
-		const errors: ISchemaValidationError<T>[] = []
+	public validate() {
+		const errors: ISchemaErrorOptionsInvalidField['errors'] = []
 
 		this.getNamedFields().forEach(item => {
 			const { name, field } = item
@@ -217,7 +230,13 @@ export default class Schema<T extends ISchemaDefinition> {
 			}
 		})
 
-		return errors
+		if (errors.length > 0) {
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidField,
+				schemaId: this.definition.id,
+				errors
+			})
+		}
 	}
 
 	/** get all values valued */

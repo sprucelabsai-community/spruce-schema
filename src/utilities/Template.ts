@@ -56,7 +56,7 @@ export default class Template {
 					throw new SchemaError({
 						code: SchemaErrorCode.Duplicate,
 						schemaId: definition.id,
-						notes: 'Found while generating template items'
+						additionalDetails: 'Found while generating template items'
 					})
 				}
 				return
@@ -77,7 +77,7 @@ export default class Template {
 								field.options.schemaId ||
 								field.options.schema?.id ||
 								'**MISSING ID**',
-							notes: 'Error while resolving schema fields'
+							additionalDetails: 'Error while resolving schema fields'
 						})
 					}
 					newItems = Template.generateTemplateItems(

@@ -11,7 +11,7 @@ export default class SchemaError extends SpruceError<SchemaErrorOptions> {
 			case SchemaErrorCode.Duplicate:
 			case SchemaErrorCode.NotFound:
 				message = `${this.message}: :${options.schemaId}${
-					options.notes ? ` ${options.notes}` : ''
+					options.additionalDetails ? ` ${options.additionalDetails}` : ''
 				}`
 				break
 			default:
