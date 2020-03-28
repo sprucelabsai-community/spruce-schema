@@ -40,13 +40,10 @@
 		"@rollup/plugin-json": "^4.0.1",
 		"@rollup/plugin-node-resolve": "^6.0.0",
 		"@rollup/plugin-typescript": "^2.0.1",
-		"@semantic-release/changelog": "^5.0.0",
-		"@semantic-release/git": "^9.0.0",
-		"@sprucelabs/semantic-release": "^2.0.8",
+		"@sprucelabs/semantic-release": "^3.0.4",
 		"@types/google-libphonenumber": "^7.4.17",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.0.2",
-		"conventional-changelog-sprucelabs": "^1.1.0",
 		"eslint": "^5",
 		"eslint-config-spruce": "^10.0.3",
 		"prettier": "^1.19",
@@ -54,7 +51,6 @@
 		"rollup-plugin-node-builtins": "^2.1.2",
 		"rollup-plugin-node-globals": "^1.4.0",
 		"rollup-plugin-replace": "^2.2.0",
-		"semantic-release": "^17.0.4",
 		"typescript": "^3.8",
 		"yarn": "^1.2.1"
 	}

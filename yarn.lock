@@ -379,10 +379,15 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@sprucelabs/semantic-release@^2.0.8":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/semantic-release/-/semantic-release-2.0.8.tgz#37fdc05bd447e69f60d5c26c0d51c629eef139d9"
-  integrity sha512-E+l04vYuyeTKvNjY76jYdcj4gcTe1hVI/jIL332sPavZWaxa9K29i4yYTe7r0cSb8LiqmWarK9Tq6YZ6O3HPfw==
+"@sprucelabs/semantic-release@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/semantic-release/-/semantic-release-3.0.4.tgz#7c9983990fe7a707909ba87a5797f75911c24d0c"
+  integrity sha512-a8q3s8vH7uGLE47fyqaAboVbRhQ3YPAU4eO0vzp2ZBuvf++8tD5Ye/OvFce7e6mt8qBoU8HNoJIuzsK7DbvLGQ==
+  dependencies:
+    "@semantic-release/changelog" "^5.0.0"
+    "@semantic-release/git" "^9.0.0"
+    conventional-changelog-sprucelabs "^1.1.0"
+    semantic-release "^17.0.4"
 
 "@tootallnate/once@1":
   version "1.0.0"
