@@ -9,3 +9,10 @@ export { default as SchemaError } from './errors/SchemaError'
 
 import Schema from './Schema'
 export default Schema
+
+import { ISchemaDefinition } from './Schema'
+
+/** build a schema type for use in your skill */
+export function buildDefinition<T extends ISchemaDefinition>(schema: T):T {
+    return schema
+}

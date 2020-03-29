@@ -32,13 +32,9 @@ export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
 		// debugger
 		const errors = super.validate(value)
 
-		// don't validate if somethin already happened
-		if (errors.length > 0) {
-			return errors
-		}
-
 		try {
-			PhoneNumber.format(value, false)
+			// only check if it's defined
+			typeof value !== 'undefined' && PhoneNumber.format(value, false)
 		} catch (err) {
 			errors.push('invalid_phone_number')
 		}
