@@ -7,7 +7,7 @@ export default class SchemaError extends SpruceError<SchemaErrorOptions> {
 	public friendlyMessage(): string {
 		const { options } = this
 
-		let message
+		let message: string | undefined
 
 		switch (options?.code) {
 			case SchemaErrorCode.Duplicate:
@@ -17,8 +17,12 @@ export default class SchemaError extends SpruceError<SchemaErrorOptions> {
 				}`
 				break
 			case SchemaErrorCode.InvalidField:
-				breakpoint
-				console.log('what ?')
+				message = `Invalid fields on ${options.schemaId}: `
+				options.errors.forEach(fieldErrors => {
+					message += `(${fieldErrors.fieldName}: [`
+					message += fieldErrors.errors.join(', ')
+					message += `])`
+				})
 				break
 			default:
 				message = this.message
