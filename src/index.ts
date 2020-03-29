@@ -11,8 +11,14 @@ import Schema from './Schema'
 export default Schema
 
 import { ISchemaDefinition } from './Schema'
+import { IFieldDefinition } from './fields'
 
 /** build a schema type for use in your skill */
-export function buildDefinition<T extends ISchemaDefinition>(schema: T): T {
+export function buildSchemaDefinition<T extends ISchemaDefinition>(schema: T): T {
 	return schema
+}
+
+/** build a field type for use in your skill */
+export function buildFieldDefinition<T extends IFieldDefinition(field: T): T{
+    return field
 }
