@@ -19,6 +19,6 @@ export function buildSchemaDefinition<T extends ISchemaDefinition>(schema: T): T
 }
 
 /** build a field type for use in your skill */
-export function buildFieldDefinition<T extends IFieldDefinition(field: T): T{
+export function buildFieldDefinition<T extends IFieldDefinition>(field: T): T{
     return field
 }
