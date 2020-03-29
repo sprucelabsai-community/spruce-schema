@@ -5,7 +5,7 @@ import {
 	FieldClassMap,
 	Field,
 	FieldBase,
-	IFieldSchemaDefinition
+	IFieldSchemaDefinition,
 } from './fields'
 import SchemaError from './errors/SchemaError'
 import {
@@ -18,12 +18,12 @@ export interface ISchemaFieldsDefinition {
 	[fieldName: string]: IFieldDefinition
 }
 
+// TODO make this actually pull the field types from the class map and fix all corresponding lint errors
 /** the form of schema.fields based on an actual definition  */
 export type SchemaDefinitionFields<T extends ISchemaDefinition> = Record<
 	SchemaDefinitionFieldNames<T>,
 	Field
 >
-
 /** A schema defines the data structure of something */
 export interface ISchemaDefinition {
 	/** give this schema a machine friendly id */
@@ -75,7 +75,7 @@ export type SchemaFieldDefinition<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
 > = T['fields'][K] extends IFieldDefinition
-	? FieldDefinitionMap[T['fields'][K]['type']] & T['fields'][K]
+	? T['fields'][K]['type']
 	: never
 
 /** get the field type for a field from a schema */
