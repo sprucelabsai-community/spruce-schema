@@ -2,7 +2,6 @@ import SpruceError from '@sprucelabs/error'
 import { SchemaErrorOptions, SchemaErrorCode } from './types'
 
 export default class SchemaError extends SpruceError<SchemaErrorOptions> {
-
 	/** a readable message */
 	public friendlyMessage(): string {
 		const { options } = this
