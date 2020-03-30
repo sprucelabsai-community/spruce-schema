@@ -21,7 +21,7 @@ function capitalizeFirstLetter(string: string): string {
 }
 
 export default class Template {
-	/** generate interface and type names based off schema name */
+	/** Generate interface and type names based off schema name */
 	public static generateNames(schemaName: string): ISchemaInterfaceTypeNames {
 		return {
 			interfaceName: `I${capitalizeFirstLetter(schemaName)}`,
@@ -29,18 +29,18 @@ export default class Template {
 		}
 	}
 
-	/** a map of names keyed by interface name */
+	/** A map of names keyed by interface name */
 	public static generateTemplateItems(
-		/** array of schema definitions */
+		/** Array of schema definitions */
 		definitions: ISchemaDefinition[],
-		/** the items built recursively returned an the end */
+		/** The items built recursively returned an the end */
 		items: ISchemaTemplateItem[] = [],
-		/** for tracking recursively to keep from infinite depth */
+		/** For tracking recursively to keep from infinite depth */
 		definitionsById: { [id: string]: ISchemaDefinition } = {}
 	): ISchemaTemplateItem[] {
 		let newItems = [...items]
 
-		// keep track of all definitions
+		// Keep track of all definitions
 		definitions.forEach(def => {
 			definitionsById[def.id] = def
 		})
@@ -48,7 +48,7 @@ export default class Template {
 		definitions.forEach(definition => {
 			const { typeName, interfaceName } = Template.generateNames(definition.id)
 
-			// we've already mapped this type
+			// We've already mapped this type
 			const matchIdx = items.findIndex(item => item.definition === definition)
 
 			if (matchIdx > -1) {
@@ -62,10 +62,10 @@ export default class Template {
 				return
 			}
 
-			// check children
+			// Check children
 			Object.values(definition.fields ?? {}).forEach(field => {
 				if (field.type === FieldType.Schema) {
-					// find schema reference based on sub schema or looping through all definitions
+					// Find schema reference based on sub schema or looping through all definitions
 					const schemaDefinition =
 						field.options.schema ||
 						definitionsById[field.options.schemaId || 'missing']
@@ -88,7 +88,7 @@ export default class Template {
 				}
 			})
 
-			// was this already added?
+			// Was this already added?
 			if (newItems.findIndex(item => item.id === definition.id) === -1) {
 				newItems.push({
 					id: definition.id,
@@ -99,7 +99,7 @@ export default class Template {
 			}
 		})
 
-		// now that everything is mapped, lets change schema fields to id's (vs sub schemas)
+		// Now that everything is mapped, lets change schema fields to id's (vs sub schemas)
 		newItems = newItems.map(templateItem => {
 			const { definition } = templateItem
 
@@ -108,7 +108,7 @@ export default class Template {
 			Object.keys(definition.fields ?? {}).forEach(name => {
 				const field = definition.fields?.[name]
 
-				// if this is a schema field, lets make sure schema id is set correctly
+				// If this is a schema field, lets make sure schema id is set correctly
 				if (
 					field &&
 					field.type === FieldType.Schema &&
@@ -118,18 +118,18 @@ export default class Template {
 						newFields = {}
 					}
 
-					// get the one true id
+					// Get the one true id
 					const schemaId = field.options.schema
 						? field.options.schema.id
 						: field.options.schemaId
 
-					// build new options
+					// Build new options
 					const newOptions = { ...field.options }
 
-					// no schema or schema id options (set again below)
+					// No schema or schema id options (set again below)
 					delete newOptions.schema
 
-					// setup new field
+					// Setup new field
 					newFields[name] = {
 						...field,
 						options: {

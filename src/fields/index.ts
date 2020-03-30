@@ -1,4 +1,4 @@
-/** export everything */
+/** Export everything */
 export * from './types'
 export * from './Base'
 export { default as FieldBase } from './Base'

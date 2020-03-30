@@ -1,7 +1,7 @@
 import { FieldType } from '.'
 import FieldBase, { IFieldBaseDefinition } from './Base'
 
-/** a duration value object */
+/** A duration value object */
 export interface IFieldDurationValue {
 	hours: number
 	minutes: number
@@ -14,11 +14,11 @@ export interface IFieldDurationDefinition extends IFieldBaseDefinition {
 	value?: IFieldDurationValue
 	defaultValue?: IFieldDurationValue
 	options?: {
-		/** how it should be rendered, defaults to {{h}}h{{m}}min */
+		/** How it should be rendered, defaults to {{h}}h{{m}}min */
 		durationFormat?: string
-		/** the minimum duration we'll allow of this field */
+		/** The minimum duration we'll allow of this field */
 		minDuration?: IFieldDurationValue
-		/** the max duration possible with this field */
+		/** The max duration possible with this field */
 		maxDuration?: IFieldDurationValue
 	}
 }

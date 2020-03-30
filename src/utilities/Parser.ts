@@ -1,8 +1,8 @@
-// import Debug from 'debug'
+// Import Debug from 'debug'
 import Schema, { ISchemaDefinition } from '../Schema'
 import { FieldType } from '../fields'
 
-// const debug = Debug('@sprucelabs/spruce-types')
+// Const debug = Debug('@sprucelabs/spruce-types')
 
 export default class Parser {
 	public static parseSchema<T extends ISchemaDefinition>(schema: T) {
@@ -47,7 +47,7 @@ export default class Parser {
 			let itemType: string | undefined
 
 			switch (item.type) {
-				// case SpruceDataTypes.Raw:
+				// Case SpruceDataTypes.Raw:
 				// 	if (allowRaw) {
 				// 		type = item.raw
 				// 	} else {
