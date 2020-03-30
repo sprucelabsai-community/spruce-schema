@@ -1,4 +1,4 @@
-// import logger from '@sprucelabs/log'
+// Import logger from '@sprucelabs/log'
 
 import { isValidNumber } from 'libphonenumber-js'
 import libPhoneNumber from 'google-libphonenumber'
@@ -22,7 +22,7 @@ export default class PhoneNumber {
 				// @ts-ignore: Upgrade to google-libphonenumber@^3
 				num = phoneUtil.parse(val, 'US')
 			} catch (err) {
-				// log.debug('Unable to parse number as international or US number')
+				// Log.debug('Unable to parse number as international or US number')
 			}
 		}
 		let formattedNumber = num
@@ -30,7 +30,7 @@ export default class PhoneNumber {
 			// @ts-ignore: Upgrade to google-libphonenumber@^3
 			formattedNumber = phoneUtil.format(num, PNF.INTERNATIONAL)
 		} catch (e) {
-			// log.debug('Unable to format phone number')
+			// Log.debug('Unable to format phone number')
 			if (!failSilently) {
 				throw new Error('INVALID_PHONENUMBER')
 			}
@@ -38,7 +38,7 @@ export default class PhoneNumber {
 
 		if (!failSilently) {
 			let isValid
-			const cleanedValue = val.replace(/\D/g, '') // strip all non-numeric
+			const cleanedValue = val.replace(/\D/g, '') // Strip all non-numeric
 			if (cleanedValue.startsWith('1555')) {
 				// TODO: need solution for international
 				isValid = cleanedValue.length === 11

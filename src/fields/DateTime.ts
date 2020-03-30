@@ -10,7 +10,7 @@ export interface IFieldDateTimeDefinition extends IFieldBaseDefinition {
 	value?: IFieldDateTimeValue
 	defaultValue?: IFieldDateTimeValue
 	options?: {
-		/** how should this dateTime render using moment.js format */
+		/** How should this dateTime render using moment.js format */
 		dateTimeFormat?: string
 	}
 }

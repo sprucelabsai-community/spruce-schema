@@ -14,14 +14,14 @@ export default Schema
 import { ISchemaDefinition } from './Schema'
 import { IFieldDefinition } from './fields'
 
-/** build a schema type for use in your skill */
+/** Build a schema type for use in your skill */
 export function buildSchemaDefinition<T extends ISchemaDefinition>(
 	schema: T
 ): T {
 	return schema
 }
 
-/** build a field type for use in your skill */
+/** Build a field type for use in your skill */
 export function buildFieldDefinition<T extends IFieldDefinition>(field: T): T {
 	return field
 }
