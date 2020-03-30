@@ -89,6 +89,20 @@ export type FieldDefinitionMap = {
 	[FieldType.DateTime]: IFieldDateTimeDefinition
 }
 
+export interface IFieldMap {
+	[FieldType.Boolean]: FieldBoolean
+	[FieldType.Select]: FieldSelect
+	[FieldType.Duration]: FieldDuration
+	[FieldType.Id]: FieldId
+	[FieldType.Address]: FieldAddress
+	[FieldType.Phone]: FieldPhone
+	[FieldType.Schema]: FieldSchema
+	[FieldType.Raw]: FieldRaw
+	[FieldType.Number]: FieldNumber
+	[FieldType.DateTime]: FieldDateTime
+	[FieldType.Text]: FieldText
+}
+
 /** a global place to reference all field type classes */
 export const FieldClassMap: Record<FieldType, FieldClass> = {
 	[FieldType.Boolean]: FieldBoolean,

@@ -1,5 +1,5 @@
 import { FieldType, IFieldDefinition } from '.'
-import { FieldClassMap, Field } from './types'
+import { FieldClassMap, IFieldMap } from './types'
 
 export interface IFieldBaseDefinition {
 	/** the type of field this is, will strongly type props for us */
@@ -61,10 +61,10 @@ export default abstract class FieldBase<
 	}
 
 	/** factory for creating a new field from a definition */
-	public static field(
-		definition: IFieldDefinition,
+	public static field<F extends IFieldDefinition>(
+		definition: F,
 		fieldClassMap = FieldClassMap
-	): Field {
+	): IFieldMap[F['type']] {
 		const fieldClass = fieldClassMap[definition.type]
 		// @ts-ignore understand how to instantiate a field class correctly
 		const field = new fieldClass(definition)

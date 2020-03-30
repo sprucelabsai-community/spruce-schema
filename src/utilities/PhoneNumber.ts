@@ -6,7 +6,6 @@ import libPhoneNumber from 'google-libphonenumber'
 // @ts-ignore
 // const log = logger.log
 
-// TODO scrap this when we move to Schema centralized formatting and validating
 export default class PhoneNumber {
 	public static format(val: string, failSilently = true): string {
 		const PNF = libPhoneNumber.PhoneNumberFormat

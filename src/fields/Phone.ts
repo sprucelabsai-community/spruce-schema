@@ -22,7 +22,6 @@ export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
 	}
 
 	public toValueType(value: any): string {
-		// TODO format as phone number
 		const stringValue = super.toValueType(value)
 		const phoneNumber = PhoneNumber.format(stringValue)
 		return phoneNumber

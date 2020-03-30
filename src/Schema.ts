@@ -5,7 +5,7 @@ import {
 	FieldClassMap,
 	Field,
 	FieldBase,
-	IFieldSchemaDefinition,
+	IFieldSchemaDefinition
 } from './fields'
 import SchemaError from './errors/SchemaError'
 import {
@@ -74,9 +74,7 @@ export type SchemaDefinitionFieldNames<T extends ISchemaDefinition> = Extract<
 export type SchemaFieldDefinition<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
-> = T['fields'][K] extends IFieldDefinition
-	? T['fields'][K]['type']
-	: never
+> = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
 
 /** get the field type for a field from a schema */
 export type SchemaDefinitionFieldType<
@@ -258,7 +256,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		this.getNamedFields().forEach(namedField => {
 			const { name } = namedField
 			const value = values[name]
-			if (typeof value !== undefined) {
+			if (typeof value !== 'undefined') {
 				// TODO why cast? types should map by here
 				this.set(name, value as any)
 			}
