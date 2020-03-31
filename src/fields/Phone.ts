@@ -8,7 +8,7 @@ export interface IFieldPhoneDefinition extends IFieldBaseDefinition {
 	value?: string
 	defaultValue?: string
 	options?: {
-		/** the format we should use, defaults to +1 (555)-555-5555 */
+		/** The format we should use, defaults to +1 (555)-555-5555 */
 		phoneNumberFormat?: string
 	}
 }
@@ -28,11 +28,11 @@ export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
 	}
 
 	public validate(value: any) {
-		// debugger
+		// Debugger
 		const errors = super.validate(value)
 
 		try {
-			// only check if it's defined
+			// Only check if it's defined
 			typeof value !== 'undefined' && PhoneNumber.format(value, false)
 		} catch (err) {
 			errors.push('invalid_phone_number')

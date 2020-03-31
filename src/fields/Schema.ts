@@ -7,9 +7,9 @@ export interface IFieldSchemaDefinition extends IFieldBaseDefinition {
 	value?: ISchemaDefinition
 	defaultValue?: ISchemaDefinition
 	options: {
-		/** the id of the schema you are relating to */
+		/** The id of the schema you are relating to */
 		schemaId?: string
-		/** the actual schema */
+		/** The actual schema */
 		schema?: ISchemaDefinition
 	}
 }

@@ -6,9 +6,9 @@ export interface IFieldTextDefinition extends IFieldBaseDefinition {
 	value?: string
 	defaultValue?: string
 	options?: {
-		/** the minimum length we'll allow of this field */
+		/** The minimum length we'll allow of this field */
 		minLength?: number
-		/** the max length possible with this string */
+		/** The max length possible with this string */
 		maxLength?: number
 	}
 }
@@ -23,7 +23,7 @@ export default class FieldText<
 		}
 	}
 
-	/** tranform to match the value type of string */
+	/** Tranform to match the value type of string */
 	public toValueType(value: any): string {
 		const transformed =
 			typeof value === 'string' ? value : value && value.toString()
