@@ -125,7 +125,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public fields: SchemaDefinitionFields<T>
 
 	/** for caching getNamedFields() */
-	private namedFieldCache: ISchemaNamedField<T>[] | undefined
+	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
 	public constructor(
 		definition: T,
