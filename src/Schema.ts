@@ -46,7 +46,7 @@ export type SchemaDefinitionValues<T extends ISchemaDefinition> = {
 /** easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 
-/** get the type of the value of a schema's field */
+/** get the type of the value of a schemas field */
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends keyof T['fields']
@@ -89,10 +89,22 @@ export interface ISchemaNamedField<T extends ISchemaDefinition> {
 }
 
 /** options you can pass to schema.get() */
-export interface ISchemaGetSetOptions {
-	validate?: boolean
+export interface ISchemaGetSetOptions{
+	validate?: boolean,
+	
 }
 
+/** options for schema.getValues */
+export interface ISchemaGetValuesOptions<T extends ISchemaDefinition, F extends SchemaDefinitionFieldNames<T>>  extends ISchemaGetSetOptions {
+	fields?:F[]
+}
+
+/** options for schema.getNamedFields */
+export interface ISchemaNamedFieldsOptions<T extends ISchemaDefinition, F extends SchemaDefinitionFieldNames<T>> {
+	fields?:F[]
+}
+/** options for schema.validate */
+export interface ISchemaValidateOptions<T extends ISchemaDefinition, F extends SchemaDefinitionFieldNames<T> = SchemaDefinitionFieldNames<T>> extends ISchemaNamedFieldsOptions<T, F> {}
 /** universal schema class  */
 export default class Schema<T extends ISchemaDefinition> {
 	/** the schema definition */
@@ -212,10 +224,10 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** returns an array of schema validation errors */
-	public validate() {
+	public validate(options: ISchemaValidateOptions<T> = {}) {
 		const errors: ISchemaErrorOptionsInvalidField['errors'] = []
 
-		this.getNamedFields().forEach(item => {
+		this.getNamedFields(options).forEach(item => {
 			const { name, field } = item
 			const value = this.get(name, { validate: false })
 			const fieldErrors = field.validate(value)
@@ -238,17 +250,21 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** get all values valued */
-	public getValues(options?: ISchemaGetSetOptions): SchemaDefinitionValues<T> {
+	public getValues<F extends SchemaDefinitionFieldNames<T> = SchemaDefinitionFieldNames<T>>(options: ISchemaGetValuesOptions<T, F> = {}): Pick<SchemaDefinitionValues<T>, F> {
 		const values: Partial<SchemaDefinitionValues<T>> = { ...this.values }
+
+		const { fields = Object.keys(this.fields) } = options
 
 		this.getNamedFields().forEach(namedField => {
 			const { name } = namedField
-			const value = this.get(name, options)
-			values[name] = value
+			if (fields.indexOf(name) > -1) {
+				const value = this.get(name, options)
+				values[name] = value
+			}
 		})
 
 		// we know this conforms after the loop above, nothing to do here
-		return values as SchemaDefinitionValues<T>
+		return values as Pick<SchemaDefinitionValues<T>, F>
 	}
 
 	/** set a bunch of values at once */
@@ -265,20 +281,20 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** get all fields as an array for easy looping and mapping */
-	public getNamedFields(): ISchemaNamedField<T>[] {
-		if (this.namedFieldCache) {
-			return this.namedFieldCache
-		}
+	public getNamedFields<F extends SchemaDefinitionFieldNames<T>>(options: ISchemaNamedFieldsOptions<T, F> = {}): ISchemaNamedField<T>[] {
+		// if (this.namedFieldCache) {
+		// 	return this.namedFieldCache
+		// }
 		const namedFields: ISchemaNamedField<T>[] = []
+		const {fields =  Object.keys(this.fields) as F[]} = options
 
-		const names = Object.keys(this.fields) as SchemaDefinitionFieldNames<T>[]
 
-		names.forEach(name => {
+		fields.forEach(name => {
 			const field = this.fields[name]
 			namedFields.push({ name, field })
 		})
 
-		this.namedFieldCache = namedFields
+		// this.namedFieldCache = namedFields
 
 		return namedFields
 	}
