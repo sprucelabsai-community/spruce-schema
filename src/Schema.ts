@@ -161,15 +161,6 @@ export default class Schema<T extends ISchemaDefinition> {
 	/** all the field objects keyed by field name, use getField rather than accessing this directly */
 	public fields: SchemaDefinitionFields<T>
 
-	/** tells you if a schema definition is valid */
-	public static isDefinitionValid(definition: ISchemaDefinition): boolean {
-		return (
-			typeof definition.id === 'string' &&
-			typeof definition.name === 'string' &&
-			(definition.fields || definition.dynamicKeySignature)
-		)
-	}
-
 	/** for caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
@@ -196,6 +187,15 @@ export default class Schema<T extends ISchemaDefinition> {
 			const field = FieldBase.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
 		})
+	}
+
+	/** tells you if a schema definition is valid */
+	public static isDefinitionValid(definition: ISchemaDefinition): boolean {
+		return !!(
+			typeof definition.id === 'string' &&
+			typeof definition.name === 'string' &&
+			(definition.fields || definition.dynamicKeySignature)
+		)
 	}
 
 	/** get any field by name */
