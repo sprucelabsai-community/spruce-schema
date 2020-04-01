@@ -43,6 +43,11 @@ export type SchemaDefinitionAllValues<T extends ISchemaDefinition> = {
 	[K in SchemaFieldNames<T>]: SchemaFieldDefinitionValueType<T, K>
 }
 
+/** to map a schema to an object where all keys are optional */
+export type SchemaDefinitionPartialValues<T extends ISchemaDefinition> = {
+	[K in SchemaFieldNames<T>]?: SchemaFieldDefinitionValueType<T, K> | undefined
+}
+
 /** helper to make your schema thinner */
 export type SchemaDefinitionValues<
 	T extends ISchemaDefinition,
@@ -156,7 +161,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public definition: T
 
 	/** the values of this schema */
-	public values: Partial<SchemaDefinitionAllValues<T>>
+	public values: SchemaDefinitionPartialValues<T>
 
 	/** all the field objects keyed by field name, use getField rather than accessing this directly */
 	public fields: SchemaDefinitionFields<T>
@@ -166,7 +171,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 	public constructor(
 		definition: T,
-		values?: Partial<SchemaDefinitionAllValues<T>>,
+		values?: SchemaDefinitionPartialValues<T>,
 		fieldClassMap: Record<FieldType, any> = FieldClassMap
 	) {
 		// set definition and values
@@ -307,7 +312,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public getValues<F extends SchemaFieldNames<T> = SchemaFieldNames<T>>(
 		options: ISchemaGetValuesOptions<T, F> = {}
 	): Pick<SchemaDefinitionAllValues<T>, F> {
-		const values: Partial<SchemaDefinitionAllValues<T>> = { ...this.values }
+		const values: SchemaDefinitionPartialValues<T> = { ...this.values }
 
 		const { fields = Object.keys(this.fields) } = options
 
@@ -324,7 +329,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** set a bunch of values at once */
-	public setValues(values: Partial<SchemaDefinitionAllValues<T>>): this {
+	public setValues(values: SchemaDefinitionPartialValues<T>): this {
 		this.getNamedFields().forEach(namedField => {
 			const { name } = namedField
 			const value = values[name]
