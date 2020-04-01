@@ -21,7 +21,7 @@ export interface ISchemaFieldsDefinition {
 // TODO make this actually pull the field types from the class map and fix all corresponding lint errors
 /** the form of schema.fields based on an actual definition  */
 export type SchemaDefinitionFields<T extends ISchemaDefinition> = Record<
-	SchemaDefinitionFieldNames<T>,
+	SchemaFieldNames<T>,
 	Field
 >
 /** A schema defines the data structure of something */
@@ -39,9 +39,34 @@ export interface ISchemaDefinition {
 }
 
 /** to map a schema to an object with values whose types match */
-export type SchemaDefinitionValues<T extends ISchemaDefinition> = {
-	[K in keyof T['fields']]: SchemaFieldDefinitionValueType<T, K>
+export type SchemaDefinitionAllValues<T extends ISchemaDefinition> = {
+	[K in SchemaFieldNames<T>]: SchemaFieldDefinitionValueType<T, K>
 }
+
+/** helper to make your schema thinner */
+export type SchemaDefinitionValues<
+	T extends ISchemaDefinition,
+	K extends OptionalFieldNames<T> = OptionalFieldNames<T>,
+	V extends SchemaDefinitionAllValues<T> = SchemaDefinitionAllValues<T>
+> = Omit<V, K> & Partial<Pick<V, K>>
+
+/** all fields that are optional on the schema */
+export type OptionalFieldNames<T extends ISchemaDefinition> = {
+	[K in SchemaFieldNames<T>]: T['fields'][K] extends IFieldDefinition
+		? T['fields'][K]['isRequired'] extends true
+			? never
+			: K
+		: never
+}[SchemaFieldNames<T>]
+
+/** all fields that are required on the schema */
+export type RequiredFieldNames<T extends ISchemaDefinition> = {
+	[K in SchemaFieldNames<T>]: T['fields'][K] extends IFieldDefinition
+		? T['fields'][K]['isRequired'] extends true
+			? K
+			: never
+		: never
+}[SchemaFieldNames<T>]
 
 /** easy array helper */
 type IsArray<T, isArray> = isArray extends true ? T[] : T
@@ -52,12 +77,12 @@ type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 /** get the type of the value of a schemas field */
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
-	K extends keyof T['fields']
+	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends IFieldSchemaDefinition
 	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
 		? IsArray<
 				IsRequired<
-					SchemaDefinitionValues<T['fields'][K]['options']['schema']>,
+					SchemaDefinitionAllValues<T['fields'][K]['options']['schema']>,
 					T['fields'][K]['isRequired']
 				>,
 				T['fields'][K]['isArray']
@@ -77,7 +102,7 @@ export type SchemaFieldDefinitionValueType<
 	: never
 
 /** a union of all field names */
-export type SchemaDefinitionFieldNames<T extends ISchemaDefinition> = Extract<
+export type SchemaFieldNames<T extends ISchemaDefinition> = Extract<
 	keyof T['fields'],
 	string
 >
@@ -85,18 +110,18 @@ export type SchemaDefinitionFieldNames<T extends ISchemaDefinition> = Extract<
 /** pluck out the field definition from the schema */
 export type SchemaFieldDefinition<
 	T extends ISchemaDefinition,
-	K extends keyof T['fields']
+	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
 
 /** get the field type for a field from a schema */
 export type SchemaDefinitionFieldType<
 	T extends ISchemaDefinition,
-	K extends keyof T['fields']
+	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
 
 /** response to getNamedFields */
 export interface ISchemaNamedField<T extends ISchemaDefinition> {
-	name: SchemaDefinitionFieldNames<T>
+	name: SchemaFieldNames<T>
 	field: Field
 }
 
@@ -108,7 +133,7 @@ export interface ISchemaGetSetOptions {
 /** options for schema.getValues */
 export interface ISchemaGetValuesOptions<
 	T extends ISchemaDefinition,
-	F extends SchemaDefinitionFieldNames<T>
+	F extends SchemaFieldNames<T>
 > extends ISchemaGetSetOptions {
 	fields?: F[]
 }
@@ -116,14 +141,14 @@ export interface ISchemaGetValuesOptions<
 /** options for schema.getNamedFields */
 export interface ISchemaNamedFieldsOptions<
 	T extends ISchemaDefinition,
-	F extends SchemaDefinitionFieldNames<T>
+	F extends SchemaFieldNames<T>
 > {
 	fields?: F[]
 }
 /** options for schema.validate */
 export interface ISchemaValidateOptions<
 	T extends ISchemaDefinition,
-	F extends SchemaDefinitionFieldNames<T> = SchemaDefinitionFieldNames<T>
+	F extends SchemaFieldNames<T> = SchemaFieldNames<T>
 > extends ISchemaNamedFieldsOptions<T, F> {}
 /** universal schema class  */
 export default class Schema<T extends ISchemaDefinition> {
@@ -131,7 +156,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public definition: T
 
 	/** the values of this schema */
-	public values: Partial<SchemaDefinitionValues<T>>
+	public values: Partial<SchemaDefinitionAllValues<T>>
 
 	/** all the field objects keyed by field name, use getField rather than accessing this directly */
 	public fields: SchemaDefinitionFields<T>
@@ -141,7 +166,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 	public constructor(
 		definition: T,
-		values?: Partial<SchemaDefinitionValues<T>>,
+		values?: Partial<SchemaDefinitionAllValues<T>>,
 		fieldClassMap: Record<FieldType, any> = FieldClassMap
 	) {
 		// set definition and values
@@ -160,18 +185,18 @@ export default class Schema<T extends ISchemaDefinition> {
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
 			const field = FieldBase.field(definition, fieldClassMap)
-			this.fields[name as SchemaDefinitionFieldNames<T>] = field
+			this.fields[name as SchemaFieldNames<T>] = field
 		})
 	}
 
 	/** get any field by name */
-	public get<F extends SchemaDefinitionFieldNames<T>>(
+	public get<F extends Extract<keyof T['fields'], string>>(
 		fieldName: F,
 		options: ISchemaGetSetOptions = {}
 	): SchemaFieldDefinitionValueType<T, F> {
 		// get value off self
 		let value: SchemaFieldDefinitionValueType<T, F> | undefined =
-			typeof this.values[fieldName] !== undefined
+			this.values[fieldName as SchemaFieldNames<T>] !== undefined
 				? this.values[fieldName]
 				: undefined
 
@@ -201,7 +226,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** set a value and ensure its type */
-	public set<F extends SchemaDefinitionFieldNames<T>>(
+	public set<F extends SchemaFieldNames<T>>(
 		fieldName: F,
 		value: SchemaFieldDefinitionValueType<T, F>,
 		options: ISchemaGetSetOptions = {}
@@ -270,12 +295,10 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** get all values valued */
-	public getValues<
-		F extends SchemaDefinitionFieldNames<T> = SchemaDefinitionFieldNames<T>
-	>(
+	public getValues<F extends SchemaFieldNames<T> = SchemaFieldNames<T>>(
 		options: ISchemaGetValuesOptions<T, F> = {}
-	): Pick<SchemaDefinitionValues<T>, F> {
-		const values: Partial<SchemaDefinitionValues<T>> = { ...this.values }
+	): Pick<SchemaDefinitionAllValues<T>, F> {
+		const values: Partial<SchemaDefinitionAllValues<T>> = { ...this.values }
 
 		const { fields = Object.keys(this.fields) } = options
 
@@ -288,11 +311,11 @@ export default class Schema<T extends ISchemaDefinition> {
 		})
 
 		// we know this conforms after the loop above, nothing to do here
-		return values as Pick<SchemaDefinitionValues<T>, F>
+		return values as Pick<SchemaDefinitionAllValues<T>, F>
 	}
 
 	/** set a bunch of values at once */
-	public setValues(values: Partial<SchemaDefinitionValues<T>>): this {
+	public setValues(values: Partial<SchemaDefinitionAllValues<T>>): this {
 		this.getNamedFields().forEach(namedField => {
 			const { name } = namedField
 			const value = values[name]
@@ -305,7 +328,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** get all fields as an array for easy looping and mapping */
-	public getNamedFields<F extends SchemaDefinitionFieldNames<T>>(
+	public getNamedFields<F extends SchemaFieldNames<T>>(
 		options: ISchemaNamedFieldsOptions<T, F> = {}
 	): ISchemaNamedField<T>[] {
 		// if (this.namedFieldCache) {
