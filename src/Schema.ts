@@ -80,24 +80,24 @@ export type SchemaFieldDefinitionValueType<
 	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends IFieldSchemaDefinition
 	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
-		? IsArray<
-				IsRequired<
+		? IsRequired<
+				IsArray<
 					SchemaDefinitionAllValues<T['fields'][K]['options']['schema']>,
-					T['fields'][K]['isRequired']
+					T['fields'][K]['isArray']
 				>,
-				T['fields'][K]['isArray']
+				T['fields'][K]['isRequired']
 		  >
-		: IsArray<
-				IsRequired<any, T['fields'][K]['isRequired']>,
-				T['fields'][K]['isArray']
+		: IsRequired<
+				IsArray<any, T['fields'][K]['isArray']>,
+				T['fields'][K]['isRequired']
 		  >
 	: T['fields'][K] extends IFieldDefinition
-	? IsArray<
-			IsRequired<
+	? IsRequired<
+			IsArray<
 				Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
-				T['fields'][K]['isRequired']
+				T['fields'][K]['isArray']
 			>,
-			T['fields'][K]['isArray']
+			T['fields'][K]['isRequired']
 	  >
 	: never
 
@@ -160,6 +160,15 @@ export default class Schema<T extends ISchemaDefinition> {
 
 	/** all the field objects keyed by field name, use getField rather than accessing this directly */
 	public fields: SchemaDefinitionFields<T>
+
+	/** tells you if a schema definition is valid */
+	public static isDefinitionValid(definition: ISchemaDefinition): boolean {
+		return (
+			typeof definition.id === 'string' &&
+			typeof definition.name === 'string' &&
+			(definition.fields || definition.dynamicKeySignature)
+		)
+	}
 
 	/** for caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
