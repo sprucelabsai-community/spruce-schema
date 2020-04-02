@@ -14,13 +14,13 @@ import {
 } from './errors/types'
 
 /** the structure of schema.fields. key is field name, value is field definition */
-export interface ISchemaFieldsDefinition {
+export interface ISchemaDefinitionFields {
 	[fieldName: string]: IFieldDefinition
 }
 
 // TODO make this actually pull the field types from the class map and fix all corresponding lint errors
 /** the form of schema.fields based on an actual definition  */
-export type SchemaDefinitionFields<T extends ISchemaDefinition> = Record<
+export type SchemaFields<T extends ISchemaDefinition> = Record<
 	SchemaFieldNames<T>,
 	Field
 >
@@ -35,7 +35,7 @@ export interface ISchemaDefinition {
 	/** how we type dynamic keys on this schema, if defined you cannot define fields */
 	dynamicKeySignature?: IFieldDefinition & { key: string }
 	/** all the fields, keyed by name, required if no dynamicKeySignature is set */
-	fields?: ISchemaFieldsDefinition
+	fields?: ISchemaDefinitionFields
 }
 
 /** to map a schema to an object with values whose types match */
@@ -164,7 +164,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public values: SchemaDefinitionPartialValues<T>
 
 	/** all the field objects keyed by field name, use getField rather than accessing this directly */
-	public fields: SchemaDefinitionFields<T>
+	public fields: SchemaFields<T>
 
 	/** for caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
@@ -185,7 +185,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		}
 
 		// empty fields to start
-		this.fields = {} as SchemaDefinitionFields<T>
+		this.fields = {} as SchemaFields<T>
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]

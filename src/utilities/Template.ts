@@ -1,6 +1,6 @@
 import { ISchemaDefinition } from '..'
 import { FieldType } from '../fields'
-import { ISchemaFieldsDefinition } from '../Schema'
+import { ISchemaDefinitionFields } from '../Schema'
 import SchemaError from '../errors/SchemaError'
 import { SchemaErrorCode } from '../errors/types'
 
@@ -103,7 +103,7 @@ export default class Template {
 		newItems = newItems.map(templateItem => {
 			const { definition } = templateItem
 
-			let newFields: ISchemaFieldsDefinition | undefined
+			let newFields: ISchemaDefinitionFields | undefined
 
 			Object.keys(definition.fields ?? {}).forEach(name => {
 				const field = definition.fields?.[name]
