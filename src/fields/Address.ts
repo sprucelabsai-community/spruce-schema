@@ -11,6 +11,7 @@ export interface IFieldAddressValue {
 }
 
 export interface IFieldAddressDefinition extends IFieldBaseDefinition {
+	/** * .Address - An address field */
 	type: FieldType.Address
 	value?: IFieldAddressValue
 	defaultValue?: IFieldAddressValue

@@ -2,6 +2,7 @@ import { FieldType } from '.'
 import FieldBase, { IFieldBaseDefinition } from './Base'
 
 export interface IFieldIdDefinition extends IFieldBaseDefinition {
+	/** * .Id - Any string based uniq id */
 	type: FieldType.Id
 	value?: string
 	defaultValue?: string

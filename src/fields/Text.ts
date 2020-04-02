@@ -2,6 +2,7 @@ import FieldBase, { IFieldBaseDefinition } from './Base'
 import { IFieldDefinition, FieldType } from './types'
 
 export interface IFieldTextDefinition extends IFieldBaseDefinition {
+	/** * .Text - plain text */
 	type: FieldType.Text
 	value?: string
 	defaultValue?: string

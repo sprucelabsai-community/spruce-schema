@@ -6,6 +6,7 @@ export interface IFieldDateTimeValue {
 }
 
 export interface IFieldDateTimeDefinition extends IFieldBaseDefinition {
+	/** * .DateTime - Date and time */
 	type: FieldType.DateTime
 	value?: IFieldDateTimeValue
 	defaultValue?: IFieldDateTimeValue

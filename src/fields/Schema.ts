@@ -3,6 +3,7 @@ import { ISchemaDefinition } from '../Schema'
 import { FieldType } from './types'
 
 export interface IFieldSchemaDefinition extends IFieldBaseDefinition {
+	/** * .Schema - A relationship to another schema */
 	type: FieldType.Schema
 	value?: ISchemaDefinition
 	defaultValue?: ISchemaDefinition

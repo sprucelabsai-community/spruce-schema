@@ -4,6 +4,7 @@ import FieldText from './Text'
 import PhoneNumber from '../utilities/PhoneNumber'
 
 export interface IFieldPhoneDefinition extends IFieldBaseDefinition {
+	/** * .Phone - a phone number */
 	type: FieldType.Phone
 	value?: string
 	defaultValue?: string

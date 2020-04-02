@@ -2,6 +2,7 @@ import { FieldType } from '.'
 import FieldBase, { IFieldBaseDefinition } from './Base'
 
 export interface IFieldNumberDefinition extends IFieldBaseDefinition {
+	/** * .Number - Any number */
 	type: FieldType.Number
 	value?: number
 	defaultValue?: number

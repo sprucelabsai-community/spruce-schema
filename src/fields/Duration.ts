@@ -10,6 +10,7 @@ export interface IFieldDurationValue {
 }
 
 export interface IFieldDurationDefinition extends IFieldBaseDefinition {
+	/** * .Duration - a span of time down to the ms */
 	type: FieldType.Duration
 	value?: IFieldDurationValue
 	defaultValue?: IFieldDurationValue

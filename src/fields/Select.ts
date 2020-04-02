@@ -10,6 +10,7 @@ export interface IFieldSelectDefinitionChoice {
 }
 
 export interface IFieldSelectDefinition extends IFieldBaseDefinition {
+	/** * .Select - a select field with many choices */
 	type: FieldType.Select
 	value?: string
 	defaultValue?: string
