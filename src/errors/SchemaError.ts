@@ -11,8 +11,8 @@ export default class SchemaError extends AbstractSpruceError<
 		let message: string | undefined
 
 		switch (options?.code) {
-			case SchemaErrorCode.Duplicate:
-			case SchemaErrorCode.NotFound:
+			case SchemaErrorCode.DuplicateSchemaId:
+			case SchemaErrorCode.SchemaNotFound:
 				message = `${this.message}: :${options.schemaId}${
 					options.additionalDetails ? ` ${options.additionalDetails}` : ''
 				}`

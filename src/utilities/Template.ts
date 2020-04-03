@@ -54,7 +54,7 @@ export default class Template {
 			if (matchIdx > -1) {
 				if (definition !== items[matchIdx].definition) {
 					throw new SchemaError({
-						code: SchemaErrorCode.Duplicate,
+						code: SchemaErrorCode.DuplicateSchemaId,
 						schemaId: definition.id,
 						additionalDetails: 'Found while generating template items'
 					})
@@ -72,7 +72,7 @@ export default class Template {
 
 					if (!schemaDefinition) {
 						throw new SchemaError({
-							code: SchemaErrorCode.NotFound,
+							code: SchemaErrorCode.SchemaNotFound,
 							schemaId:
 								field.options.schemaId ||
 								field.options.schema?.id ||
