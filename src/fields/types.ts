@@ -1,53 +1,53 @@
-import FieldBoolean, { IFieldBooleanDefinition } from './Boolean'
-import FieldSelect, { IFieldSelectDefinition } from './Select'
-import FieldDuration, { IFieldDurationDefinition } from './Duration'
-import FieldId, { IFieldIdDefinition } from './Id'
-import FieldAddress, { IFieldAddressDefinition } from './Address'
-import FieldPhone, { IFieldPhoneDefinition } from './Phone'
-import FieldSchema, { IFieldSchemaDefinition } from './Schema'
-import FieldRaw, { IFieldRawDefinition } from './Raw'
-import FieldNumber, { IFieldNumberDefinition } from './Number'
-import FieldDateTime, { IFieldDateTimeDefinition } from './DateTime'
-import FieldText, { IFieldTextDefinition } from './Text'
+import BooleanField, { IBooleanFieldDefinition } from './BooleanField'
+import SelectField, { ISelectFieldDefinition } from './SelectField'
+import DurationField, { IDurationFieldDefinition } from './DurationField'
+import IdField, { IIdFieldDefinition } from './IdField'
+import AddressField, { IAddressFieldDefinition } from './AddressField'
+import PhoneField, { IPhoneFieldDefinition } from './PhoneField'
+import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
+import RawField, { IRawFieldDefinition } from './RawField'
+import NumberField, { INumberFieldDefinition } from './NumberField'
+import DateTimeField, { IDateTimeFieldDefinition } from './DateTimeField'
+import FieldText, { IFieldTextDefinition } from './TextField'
 
 export type IFieldDefinition =
-	| IFieldBooleanDefinition
-	| IFieldSelectDefinition
-	| IFieldDurationDefinition
-	| IFieldIdDefinition
+	| IBooleanFieldDefinition
+	| ISelectFieldDefinition
+	| IDurationFieldDefinition
+	| IIdFieldDefinition
 	| IFieldTextDefinition
-	| IFieldAddressDefinition
-	| IFieldPhoneDefinition
-	| IFieldSchemaDefinition
-	| IFieldRawDefinition
-	| IFieldNumberDefinition
-	| IFieldDateTimeDefinition
+	| IAddressFieldDefinition
+	| IPhoneFieldDefinition
+	| ISchemaFieldDefinition
+	| IRawFieldDefinition
+	| INumberFieldDefinition
+	| IDateTimeFieldDefinition
 
 export type FieldClass =
-	| typeof FieldBoolean
-	| typeof FieldSelect
-	| typeof FieldDuration
-	| typeof FieldId
+	| typeof BooleanField
+	| typeof SelectField
+	| typeof DurationField
+	| typeof IdField
 	| typeof FieldText
-	| typeof FieldAddress
-	| typeof FieldPhone
-	| typeof FieldSchema
-	| typeof FieldRaw
-	| typeof FieldNumber
-	| typeof FieldDateTime
+	| typeof AddressField
+	| typeof PhoneField
+	| typeof SchemaField
+	| typeof RawField
+	| typeof NumberField
+	| typeof DateTimeField
 
 export type Field =
-	| FieldBoolean
-	| FieldSelect
-	| FieldDuration
-	| FieldId
+	| BooleanField
+	| SelectField
+	| DurationField
+	| IdField
 	| FieldText
-	| FieldAddress
-	| FieldPhone
-	| FieldSchema
-	| FieldRaw
-	| FieldNumber
-	| FieldDateTime
+	| AddressField
+	| PhoneField
+	| SchemaField
+	| RawField
+	| NumberField
+	| DateTimeField
 
 export enum FieldType {
 	/** A string, something like varchar(255), configure size using options to impact rendering and storage length */
@@ -76,44 +76,44 @@ export enum FieldType {
 
 /** Useful for type lookups for generics */
 export type FieldDefinitionMap = {
-	[FieldType.Boolean]: IFieldBooleanDefinition
-	[FieldType.Select]: IFieldSelectDefinition
-	[FieldType.Duration]: IFieldDurationDefinition
-	[FieldType.Id]: IFieldIdDefinition
+	[FieldType.Boolean]: IBooleanFieldDefinition
+	[FieldType.Select]: ISelectFieldDefinition
+	[FieldType.Duration]: IDurationFieldDefinition
+	[FieldType.Id]: IIdFieldDefinition
 	[FieldType.Text]: IFieldTextDefinition
-	[FieldType.Address]: IFieldAddressDefinition
-	[FieldType.Phone]: IFieldPhoneDefinition
-	[FieldType.Schema]: IFieldSchemaDefinition
-	[FieldType.Raw]: IFieldRawDefinition
-	[FieldType.Number]: IFieldNumberDefinition
-	[FieldType.DateTime]: IFieldDateTimeDefinition
+	[FieldType.Address]: IAddressFieldDefinition
+	[FieldType.Phone]: IPhoneFieldDefinition
+	[FieldType.Schema]: ISchemaFieldDefinition
+	[FieldType.Raw]: IRawFieldDefinition
+	[FieldType.Number]: INumberFieldDefinition
+	[FieldType.DateTime]: IDateTimeFieldDefinition
 }
 
 export interface IFieldMap {
-	[FieldType.Boolean]: FieldBoolean
-	[FieldType.Select]: FieldSelect
-	[FieldType.Duration]: FieldDuration
-	[FieldType.Id]: FieldId
-	[FieldType.Address]: FieldAddress
-	[FieldType.Phone]: FieldPhone
-	[FieldType.Schema]: FieldSchema
-	[FieldType.Raw]: FieldRaw
-	[FieldType.Number]: FieldNumber
-	[FieldType.DateTime]: FieldDateTime
+	[FieldType.Boolean]: BooleanField
+	[FieldType.Select]: SelectField
+	[FieldType.Duration]: DurationField
+	[FieldType.Id]: IdField
+	[FieldType.Address]: AddressField
+	[FieldType.Phone]: PhoneField
+	[FieldType.Schema]: SchemaField
+	[FieldType.Raw]: RawField
+	[FieldType.Number]: NumberField
+	[FieldType.DateTime]: DateTimeField
 	[FieldType.Text]: FieldText
 }
 
 /** A global place to reference all field type classes */
 export const FieldClassMap: Record<FieldType, FieldClass> = {
-	[FieldType.Boolean]: FieldBoolean,
-	[FieldType.Select]: FieldSelect,
-	[FieldType.Duration]: FieldDuration,
-	[FieldType.Id]: FieldId,
-	[FieldType.Address]: FieldAddress,
-	[FieldType.Phone]: FieldPhone,
-	[FieldType.Schema]: FieldSchema,
-	[FieldType.Raw]: FieldRaw,
-	[FieldType.Number]: FieldNumber,
-	[FieldType.DateTime]: FieldDateTime,
+	[FieldType.Boolean]: BooleanField,
+	[FieldType.Select]: SelectField,
+	[FieldType.Duration]: DurationField,
+	[FieldType.Id]: IdField,
+	[FieldType.Address]: AddressField,
+	[FieldType.Phone]: PhoneField,
+	[FieldType.Schema]: SchemaField,
+	[FieldType.Raw]: RawField,
+	[FieldType.Number]: NumberField,
+	[FieldType.DateTime]: DateTimeField,
 	[FieldType.Text]: FieldText
 }

@@ -1,8 +1,8 @@
-import FieldBase, { IFieldBaseDefinition } from './Base'
+import BaseField, { IBaseFieldDefinition } from './BaseField'
 import { ISchemaDefinition } from '../Schema'
 import { FieldType } from './types'
 
-export interface IFieldSchemaDefinition extends IFieldBaseDefinition {
+export interface ISchemaFieldDefinition extends IBaseFieldDefinition {
 	/** * .Schema - A relationship to another schema */
 	type: FieldType.Schema
 	value?: ISchemaDefinition
@@ -15,10 +15,10 @@ export interface IFieldSchemaDefinition extends IFieldBaseDefinition {
 	}
 }
 
-export default class FieldSchema extends FieldBase<IFieldSchemaDefinition> {
+export default class SchemaField extends BaseField<ISchemaFieldDefinition> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IFieldSchemaDefinition',
+			definitionInterface: 'ISchemaFieldDefinition',
 			valueType: 'ISchemaDefinition'
 		}
 	}

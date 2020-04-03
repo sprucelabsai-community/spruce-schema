@@ -20,7 +20,7 @@ function capitalizeFirstLetter(string: string): string {
 	return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export default class Template {
+export default class TemplateUtility {
 	/** Generate interface and type names based off schema name */
 	public static generateNames(schemaName: string): ISchemaInterfaceTypeNames {
 		return {
@@ -46,7 +46,9 @@ export default class Template {
 		})
 
 		definitions.forEach(definition => {
-			const { typeName, interfaceName } = Template.generateNames(definition.id)
+			const { typeName, interfaceName } = TemplateUtility.generateNames(
+				definition.id
+			)
 
 			// We've already mapped this type
 			const matchIdx = items.findIndex(item => item.definition === definition)
@@ -80,7 +82,7 @@ export default class Template {
 							additionalDetails: 'Error while resolving schema fields'
 						})
 					}
-					newItems = Template.generateTemplateItems(
+					newItems = TemplateUtility.generateTemplateItems(
 						[schemaDefinition],
 						newItems,
 						definitionsById

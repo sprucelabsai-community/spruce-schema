@@ -1,9 +1,7 @@
-import AbstractSpruceError from '@sprucelabs/error'
+import BaseSpruceError from '@sprucelabs/error'
 import { SchemaErrorOptions, SchemaErrorCode } from './types'
 
-export default class SchemaError extends AbstractSpruceError<
-	SchemaErrorOptions
-> {
+export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 	/** A readable message */
 	public friendlyMessage(): string {
 		const { options } = this

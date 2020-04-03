@@ -4,7 +4,7 @@ import { FieldType } from '../fields'
 
 // Const debug = Debug('@sprucelabs/spruce-types')
 
-export default class Parser {
+export default class ParserUtility {
 	public static parseSchema<T extends ISchemaDefinition>(schema: T) {
 		if (!this.isValidSchema(schema)) {
 			throw new Error('INVALID_SCHEMA')

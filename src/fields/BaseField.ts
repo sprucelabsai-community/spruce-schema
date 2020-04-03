@@ -1,7 +1,7 @@
 import { FieldType, IFieldDefinition } from '.'
 import { FieldClassMap, IFieldMap } from './types'
 
-export interface IFieldBaseDefinition {
+export interface IBaseFieldDefinition {
 	/** The type of field this is, will strongly type props for us */
 	type: FieldType
 	/** Generates in only for local interface and does not share with other skills */
@@ -29,23 +29,23 @@ export interface IFieldBaseDefinition {
 	hint?: string
 	/** The default for for this if no value is set */
 	defaultValue?: any
-	/** The curret value for this field */
+	/** The current value for this field */
 	value?: any
 	/** Is this field required */
 	isRequired?: boolean
-	/** Unique options overriden by the fields that extend it */
+	/** Unique options overridden by the fields that extend it */
 	options?: Record<string, any>
 }
 
 export interface IFieldTemplateDetails {
-	/** The interface name as a string literal 'IFieldBooleanDefinition' */
+	/** The interface name as a string literal 'IBooleanFieldDefinition' */
 	definitionInterface: string
 
 	/** The type of value (string, number) */
 	valueType: string
 }
 
-export default abstract class FieldBase<
+export default abstract class BaseField<
 	T extends IFieldDefinition = IFieldDefinition
 > {
 	/** The definition for this field */

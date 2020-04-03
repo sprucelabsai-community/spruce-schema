@@ -33,7 +33,7 @@
     "release": "semantic-release"
   },
   "dependencies": {
-    "@sprucelabs/error": "^1.0.4",
+    "@sprucelabs/error": "^1.0.7",
     "google-libphonenumber": "^3.2.8",
     "libphonenumber-js": "^1.7.48"
   },

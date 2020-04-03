@@ -379,10 +379,10 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@sprucelabs/error@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.0.4.tgz#d1b67521717bf0258397def1f92e7a0b2f4782d5"
-  integrity sha512-2/jPO9wFZo6FIkvPbH3P20ujQ3wboAtN3fnxBN+EPAeLl/I8XQJ+FFUqGHFDRkD3UGeXy2w7fu1YpVzS6vEzKw==
+"@sprucelabs/error@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.0.7.tgz#f22c60b64111006dcf2ed4c5cf1d603cf4051294"
+  integrity sha512-GpTywvR0DmVu+oazlU1W/DBXwFWyc+v2MnBMf299tMFKlKocU2aPFEgDvTMat85lb/VWEzxrXyQyf6/hcY+vNA==
 
 "@sprucelabs/semantic-release@^3.0.4":
   version "3.0.4"

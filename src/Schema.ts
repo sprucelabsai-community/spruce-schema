@@ -4,8 +4,8 @@ import {
 	FieldDefinitionMap,
 	FieldClassMap,
 	Field,
-	FieldBase,
-	IFieldSchemaDefinition
+	BaseField,
+	ISchemaFieldDefinition
 } from './fields'
 import SchemaError from './errors/SchemaError'
 import {
@@ -83,7 +83,7 @@ type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends SchemaFieldNames<T>
-> = T['fields'][K] extends IFieldSchemaDefinition
+> = T['fields'][K] extends ISchemaFieldDefinition
 	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
 		? IsRequired<
 				IsArray<
@@ -189,7 +189,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
-			const field = FieldBase.field(definition, fieldClassMap)
+			const field = BaseField.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
 		})
 	}

@@ -1,9 +1,9 @@
-import { IFieldBaseDefinition } from './Base'
+import { IBaseFieldDefinition } from './BaseField'
 import { FieldType } from './types'
-import FieldText from './Text'
-import PhoneNumber from '../utilities/PhoneNumber'
+import FieldText from './TextField'
+import PhoneNumber from '../utilities/PhoneNumberUtility'
 
-export interface IFieldPhoneDefinition extends IFieldBaseDefinition {
+export interface IPhoneFieldDefinition extends IBaseFieldDefinition {
 	/** * .Phone - a phone number */
 	type: FieldType.Phone
 	value?: string
@@ -14,10 +14,10 @@ export interface IFieldPhoneDefinition extends IFieldBaseDefinition {
 	}
 }
 
-export default class FieldPhone extends FieldText<IFieldPhoneDefinition> {
+export default class PhoneField extends FieldText<IPhoneFieldDefinition> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IFieldPhoneDefinition',
+			definitionInterface: 'IPhoneFieldDefinition',
 			valueType: 'string'
 		}
 	}

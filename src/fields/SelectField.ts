@@ -1,26 +1,26 @@
 import { FieldType } from './types'
-import FieldText from './Text'
-import { IFieldBaseDefinition } from './Base'
+import FieldText from './TextField'
+import { IBaseFieldDefinition } from './BaseField'
 
-export interface IFieldSelectDefinitionChoice {
+export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
 	value: string
 	/** Human readable label for when selecting a choice */
 	label: string
 }
 
-export interface IFieldSelectDefinition extends IFieldBaseDefinition {
+export interface ISelectFieldDefinition extends IBaseFieldDefinition {
 	/** * .Select - a select field with many choices */
 	type: FieldType.Select
 	value?: string
 	defaultValue?: string
 	options: {
-		choices: IFieldSelectDefinitionChoice[]
+		choices: ISelectFieldDefinitionChoice[]
 	}
 }
 
-export default class FieldSelect extends FieldText<IFieldSelectDefinition> {
-	public constructor(definition: IFieldSelectDefinition) {
+export default class SelectField extends FieldText<ISelectFieldDefinition> {
+	public constructor(definition: ISelectFieldDefinition) {
 		super(definition)
 		if (!definition.options || !definition.options.choices) {
 			throw new Error('Select field is missing choices.')
@@ -28,12 +28,12 @@ export default class FieldSelect extends FieldText<IFieldSelectDefinition> {
 	}
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IFieldSelectDefinition',
+			definitionInterface: 'ISelectFieldDefinition',
 			valueType: 'string'
 		}
 	}
 
-	public getChoices(): IFieldSelectDefinitionChoice[] {
+	public getChoices(): ISelectFieldDefinitionChoice[] {
 		return this.definition.options.choices
 	}
 }
