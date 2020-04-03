@@ -25,3 +25,10 @@ export function buildSchemaDefinition<T extends ISchemaDefinition>(
 export function buildFieldDefinition<T extends IFieldDefinition>(field: T): T {
 	return field
 }
+
+/** build error definition */
+export function buildErrorDefinition<T extends ISchemaDefinition>(
+	definition: T
+): T {
+	return definition
+}
