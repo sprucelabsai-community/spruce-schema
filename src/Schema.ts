@@ -150,11 +150,13 @@ export interface ISchemaNamedFieldsOptions<
 > {
 	fields?: F[]
 }
+
 /** Options for schema.validate */
 export interface ISchemaValidateOptions<
 	T extends ISchemaDefinition,
 	F extends SchemaFieldNames<T> = SchemaFieldNames<T>
 > extends ISchemaNamedFieldsOptions<T, F> {}
+
 /** Universal schema class  */
 export default class Schema<T extends ISchemaDefinition> {
 	/** The schema definition */
