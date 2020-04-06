@@ -1,6 +1,6 @@
 import { IBaseFieldDefinition } from './BaseField'
 import { FieldType } from './types'
-import FieldText from './TextField'
+import TextField from './TextField'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 
 export interface IPhoneFieldDefinition extends IBaseFieldDefinition {
@@ -14,7 +14,7 @@ export interface IPhoneFieldDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class PhoneField extends FieldText<IPhoneFieldDefinition> {
+export default class PhoneField extends TextField<IPhoneFieldDefinition> {
 	public static templateDetails() {
 		return {
 			definitionInterface: 'IPhoneFieldDefinition',

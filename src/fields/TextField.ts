@@ -1,7 +1,7 @@
 import BaseField, { IBaseFieldDefinition } from './BaseField'
 import { IFieldDefinition, FieldType } from './types'
 
-export interface IFieldTextDefinition extends IBaseFieldDefinition {
+export interface ITextFieldDefinition extends IBaseFieldDefinition {
 	/** * .Text - plain text */
 	type: FieldType.Text
 	value?: string
@@ -14,20 +14,22 @@ export interface IFieldTextDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class FieldText<
+export default class TextField<
 	T extends IFieldDefinition = IFieldDefinition
 > extends BaseField<T> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IFieldTextDefinition',
+			definitionInterface: 'ITextFieldDefinition',
 			valueType: 'string'
 		}
 	}
 
-	/** Transform to match the value type of string */
+	/** * Transform to match the value type of string */
 	public toValueType(value: any): string {
 		const transformed =
-			typeof value === 'string' ? value : value && value.toString()
+			typeof value === 'string'
+				? value
+				: value && value.toString && value.toString()
 
 		if (typeof transformed === 'string') {
 			return transformed

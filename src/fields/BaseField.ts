@@ -61,14 +61,15 @@ export default abstract class BaseField<
 	}
 
 	/** Factory for creating a new field from a definition */
-	public static field<F extends IFieldDefinition>(
-		definition: F,
-		fieldClassMap = FieldClassMap
-	): IFieldMap[F['type']] {
+	public static field<
+		F extends IFieldDefinition,
+		R extends IFieldMap[F['type']]
+	>(definition: F, fieldClassMap = FieldClassMap): R {
+		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
 		const fieldClass = fieldClassMap[definition.type]
-		// @ts-ignore understand how to instantiate a field class correctly
+		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
 		const field = new fieldClass(definition)
-		return field
+		return field as R
 	}
 
 	/** Get the type off the definition */

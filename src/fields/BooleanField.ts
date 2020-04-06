@@ -16,4 +16,8 @@ export default class BooleanField extends BaseField<IBooleanFieldDefinition> {
 			valueType: 'boolean'
 		}
 	}
+	/** * Turn everything into a string */
+	public toValueType(value: any): boolean {
+		return !!value
+	}
 }

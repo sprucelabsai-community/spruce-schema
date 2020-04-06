@@ -8,46 +8,50 @@ import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 import RawField, { IRawFieldDefinition } from './RawField'
 import NumberField, { INumberFieldDefinition } from './NumberField'
 import DateTimeField, { IDateTimeFieldDefinition } from './DateTimeField'
-import FieldText, { IFieldTextDefinition } from './TextField'
+import TextField, { ITextFieldDefinition } from './TextField'
+import FileField, { IFileFieldDefinition } from './FileField'
 
 export type IFieldDefinition =
 	| IBooleanFieldDefinition
 	| ISelectFieldDefinition
 	| IDurationFieldDefinition
 	| IIdFieldDefinition
-	| IFieldTextDefinition
+	| ITextFieldDefinition
 	| IAddressFieldDefinition
 	| IPhoneFieldDefinition
 	| ISchemaFieldDefinition
 	| IRawFieldDefinition
 	| INumberFieldDefinition
 	| IDateTimeFieldDefinition
+	| IFileFieldDefinition
 
 export type FieldClass =
 	| typeof BooleanField
 	| typeof SelectField
 	| typeof DurationField
 	| typeof IdField
-	| typeof FieldText
+	| typeof TextField
 	| typeof AddressField
 	| typeof PhoneField
 	| typeof SchemaField
 	| typeof RawField
 	| typeof NumberField
 	| typeof DateTimeField
+	| typeof FileField
 
 export type Field =
 	| BooleanField
 	| SelectField
 	| DurationField
 	| IdField
-	| FieldText
+	| TextField
 	| AddressField
 	| PhoneField
 	| SchemaField
 	| RawField
 	| NumberField
 	| DateTimeField
+	| FileField
 
 export enum FieldType {
 	/** A string, something like varchar(255), configure size using options to impact rendering and storage length */
@@ -71,7 +75,9 @@ export enum FieldType {
 	/** Unique id */
 	Id = 'id',
 	/** 🛑 Core API only */
-	Raw = 'raw'
+	Raw = 'raw',
+	/** File select */
+	File = 'File'
 }
 
 /** Useful for type lookups for generics */
@@ -80,13 +86,14 @@ export type FieldDefinitionMap = {
 	[FieldType.Select]: ISelectFieldDefinition
 	[FieldType.Duration]: IDurationFieldDefinition
 	[FieldType.Id]: IIdFieldDefinition
-	[FieldType.Text]: IFieldTextDefinition
+	[FieldType.Text]: ITextFieldDefinition
 	[FieldType.Address]: IAddressFieldDefinition
 	[FieldType.Phone]: IPhoneFieldDefinition
 	[FieldType.Schema]: ISchemaFieldDefinition
 	[FieldType.Raw]: IRawFieldDefinition
 	[FieldType.Number]: INumberFieldDefinition
 	[FieldType.DateTime]: IDateTimeFieldDefinition
+	[FieldType.File]: IFileFieldDefinition
 }
 
 export interface IFieldMap {
@@ -100,7 +107,8 @@ export interface IFieldMap {
 	[FieldType.Raw]: RawField
 	[FieldType.Number]: NumberField
 	[FieldType.DateTime]: DateTimeField
-	[FieldType.Text]: FieldText
+	[FieldType.Text]: TextField
+	[FieldType.File]: FileField
 }
 
 /** A global place to reference all field type classes */
@@ -115,5 +123,6 @@ export const FieldClassMap: Record<FieldType, FieldClass> = {
 	[FieldType.Raw]: RawField,
 	[FieldType.Number]: NumberField,
 	[FieldType.DateTime]: DateTimeField,
-	[FieldType.Text]: FieldText
+	[FieldType.Text]: TextField,
+	[FieldType.File]: FileField
 }

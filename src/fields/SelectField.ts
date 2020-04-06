@@ -1,5 +1,5 @@
 import { FieldType } from './types'
-import FieldText from './TextField'
+import TextField from './TextField'
 import { IBaseFieldDefinition } from './BaseField'
 
 export interface ISelectFieldDefinitionChoice {
@@ -19,7 +19,7 @@ export interface ISelectFieldDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class SelectField extends FieldText<ISelectFieldDefinition> {
+export default class SelectField extends TextField<ISelectFieldDefinition> {
 	public constructor(definition: ISelectFieldDefinition) {
 		super(definition)
 		if (!definition.options || !definition.options.choices) {
