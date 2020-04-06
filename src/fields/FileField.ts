@@ -1,6 +1,5 @@
-import { IBaseFieldDefinition } from './BaseField'
+import BaseField, { IBaseFieldDefinition } from './BaseField'
 import { FieldType } from './types'
-import { BaseField } from '.'
 
 export interface IFileFieldValue {
 	lastModified?: number
