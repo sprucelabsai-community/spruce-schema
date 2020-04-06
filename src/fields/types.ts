@@ -77,7 +77,7 @@ export enum FieldType {
 	/** 🛑 Core API only */
 	Raw = 'raw',
 	/** File select */
-	File = 'File'
+	File = 'file'
 }
 
 /** Useful for type lookups for generics */
