@@ -1,7 +1,7 @@
 /** Export everything */
 export * from './types'
-export * from './BaseField'
-export { default as BaseField } from './BaseField'
+export * from './AbstractField'
+export { default as AbstractField } from './AbstractField'
 export * from './BooleanField'
 export { default as BooleanField } from './BooleanField'
 export * from './TextField'

@@ -1,7 +1,7 @@
 import { FieldType } from '.'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface INumberFieldDefinition extends IBaseFieldDefinition {
+export interface INumberFieldDefinition extends IFieldDefinition {
 	/** * .Number - Any number */
 	type: FieldType.Number
 	value?: number
@@ -10,10 +10,9 @@ export interface INumberFieldDefinition extends IBaseFieldDefinition {
 
 export default class NumberField<
 	T extends INumberFieldDefinition = INumberFieldDefinition
-> extends BaseField<T> {
+> extends AbstractField<T> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'INumberFieldDefinition',
 			valueType: 'number'
 		}
 	}

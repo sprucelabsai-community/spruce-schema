@@ -1,6 +1,6 @@
 import { FieldType } from './types'
 import TextField from './TextField'
-import { IBaseFieldDefinition } from './BaseField'
+import { IFieldDefinition } from './AbstractField'
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
@@ -9,7 +9,7 @@ export interface ISelectFieldDefinitionChoice {
 	label: string
 }
 
-export interface ISelectFieldDefinition extends IBaseFieldDefinition {
+export interface ISelectFieldDefinition extends IFieldDefinition {
 	/** * .Select - a select field with many choices */
 	type: FieldType.Select
 	value?: string
@@ -28,7 +28,6 @@ export default class SelectField extends TextField<ISelectFieldDefinition> {
 	}
 	public static templateDetails() {
 		return {
-			definitionInterface: 'ISelectFieldDefinition',
 			valueType: 'string'
 		}
 	}

@@ -1,7 +1,7 @@
-import { FieldType, IFieldDefinition } from '.'
-import { FieldClassMap, IFieldMap } from './types'
+import { FieldType, FieldDefinition } from '.'
+import { FieldClassMap, IFieldClassMap } from './types'
 
-export interface IBaseFieldDefinition {
+export interface IFieldDefinition {
 	/** The type of field this is, will strongly type props for us */
 	type: FieldType
 	/** Generates in only for local interface and does not share with other skills */
@@ -38,15 +38,12 @@ export interface IBaseFieldDefinition {
 }
 
 export interface IFieldTemplateDetails {
-	/** The interface name as a string literal 'IBooleanFieldDefinition' */
-	definitionInterface: string
-
 	/** The type of value (string, number) */
 	valueType: string
 }
 
-export default abstract class BaseField<
-	T extends IFieldDefinition = IFieldDefinition
+export default abstract class AbstractField<
+	T extends FieldDefinition = FieldDefinition
 > {
 	/** The definition for this field */
 	public definition: T
@@ -62,10 +59,9 @@ export default abstract class BaseField<
 
 	/** Factory for creating a new field from a definition */
 	public static field<
-		F extends IFieldDefinition,
-		R extends IFieldMap[F['type']]
+		F extends FieldDefinition,
+		R extends IFieldClassMap[F['type']]
 	>(definition: F, fieldClassMap = FieldClassMap): R {
-		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
 		const fieldClass = fieldClassMap[definition.type]
 		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
 		const field = new fieldClass(definition)

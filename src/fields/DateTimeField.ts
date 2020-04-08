@@ -1,11 +1,11 @@
 import { FieldType } from '.'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface IDateTimeFieldValue {
 	gmt: string
 }
 
-export interface IDateTimeFieldDefinition extends IBaseFieldDefinition {
+export interface IDateTimeFieldDefinition extends IFieldDefinition {
 	/** * .DateTime - Date and time */
 	type: FieldType.DateTime
 	value?: IDateTimeFieldValue
@@ -16,10 +16,11 @@ export interface IDateTimeFieldDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class DateTimeField extends BaseField<IDateTimeFieldDefinition> {
+export default class DateTimeField extends AbstractField<
+	IDateTimeFieldDefinition
+> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IDateTimeFieldDefinition',
 			valueType: 'IDateTimeFieldValue'
 		}
 	}

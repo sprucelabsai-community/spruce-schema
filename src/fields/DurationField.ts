@@ -1,5 +1,5 @@
 import { FieldType } from '.'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
 /** A duration value object */
 export interface IDurationFieldValue {
@@ -9,7 +9,7 @@ export interface IDurationFieldValue {
 	ms: number
 }
 
-export interface IDurationFieldDefinition extends IBaseFieldDefinition {
+export interface IDurationFieldDefinition extends IFieldDefinition {
 	/** * .Duration - a span of time down to the ms */
 	type: FieldType.Duration
 	value?: IDurationFieldValue
@@ -24,10 +24,11 @@ export interface IDurationFieldDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class DurationField extends BaseField<IDurationFieldDefinition> {
+export default class DurationField extends AbstractField<
+	IDurationFieldDefinition
+> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IDurationFieldDefinition',
 			valueType: 'IDurationFieldValue'
 		}
 	}

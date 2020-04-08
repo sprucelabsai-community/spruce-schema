@@ -1,5 +1,5 @@
 import { FieldType } from './index'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface IAddressFieldValue {
 	street1: string
@@ -10,7 +10,7 @@ export interface IAddressFieldValue {
 	zip: string
 }
 
-export interface IAddressFieldDefinition extends IBaseFieldDefinition {
+export interface IAddressFieldDefinition extends IFieldDefinition {
 	/** * .Address - An address field */
 	type: FieldType.Address
 	value?: IAddressFieldValue
@@ -18,10 +18,11 @@ export interface IAddressFieldDefinition extends IBaseFieldDefinition {
 	options?: {}
 }
 
-export default class AddressField extends BaseField<IAddressFieldDefinition> {
+export default class AddressField extends AbstractField<
+	IAddressFieldDefinition
+> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IAddressFieldDefinition',
 			valueType: 'IAddressFieldValue'
 		}
 	}

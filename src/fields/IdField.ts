@@ -1,7 +1,7 @@
 import { FieldType } from '.'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface IIdFieldDefinition extends IBaseFieldDefinition {
+export interface IIdFieldDefinition extends IFieldDefinition {
 	/** * .Id - Any string based uniq id */
 	type: FieldType.Id
 	value?: string
@@ -9,10 +9,9 @@ export interface IIdFieldDefinition extends IBaseFieldDefinition {
 	options?: {}
 }
 
-export default class IdField extends BaseField<IIdFieldDefinition> {
+export default class IdField extends AbstractField<IIdFieldDefinition> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IIdFieldDefinition',
 			valueType: 'string'
 		}
 	}

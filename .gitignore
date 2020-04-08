@@ -5,6 +5,9 @@ node_modules/
 coverage/
 __TEST__/
 
+# Mac
+.DS_Store
+
 # Logs
 *.log
 npm-debug.log*

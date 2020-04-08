@@ -1,10 +1,10 @@
 import {
 	FieldType,
-	IFieldDefinition,
+	FieldDefinition,
 	FieldDefinitionMap,
 	FieldClassMap,
 	Field,
-	BaseField,
+	AbstractField,
 	ISchemaFieldDefinition
 } from './fields'
 import SchemaError from './errors/SchemaError'
@@ -15,7 +15,7 @@ import {
 
 /** The structure of schema.fields. key is field name, value is field definition */
 export interface ISchemaDefinitionFields {
-	[fieldName: string]: IFieldDefinition
+	[fieldName: string]: FieldDefinition
 }
 
 // TODO make this actually pull the field types from the class map and fix all corresponding lint errors
@@ -33,7 +33,7 @@ export interface ISchemaDefinition {
 	/** A brief human readable explanation of this schema */
 	description?: string
 	/** How we type dynamic keys on this schema, if defined you cannot define fields */
-	dynamicKeySignature?: IFieldDefinition & { key: string }
+	dynamicKeySignature?: FieldDefinition & { key: string }
 	/** All the fields, keyed by name, required if no dynamicKeySignature is set */
 	fields?: ISchemaDefinitionFields
 }
@@ -57,7 +57,7 @@ export type SchemaDefinitionValues<
 
 /** All fields that are optional on the schema */
 export type OptionalFieldNames<T extends ISchemaDefinition> = {
-	[K in SchemaFieldNames<T>]: T['fields'][K] extends IFieldDefinition
+	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? never
 			: K
@@ -66,7 +66,7 @@ export type OptionalFieldNames<T extends ISchemaDefinition> = {
 
 /** All fields that are required on the schema */
 export type RequiredFieldNames<T extends ISchemaDefinition> = {
-	[K in SchemaFieldNames<T>]: T['fields'][K] extends IFieldDefinition
+	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? K
 			: never
@@ -96,7 +96,7 @@ export type SchemaFieldDefinitionValueType<
 				IsArray<any, T['fields'][K]['isArray']>,
 				T['fields'][K]['isRequired']
 		  >
-	: T['fields'][K] extends IFieldDefinition
+	: T['fields'][K] extends FieldDefinition
 	? IsRequired<
 			IsArray<
 				Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
@@ -116,13 +116,13 @@ export type SchemaFieldNames<T extends ISchemaDefinition> = Extract<
 export type SchemaFieldDefinition<
 	T extends ISchemaDefinition,
 	K extends SchemaFieldNames<T>
-> = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
+> = T['fields'][K] extends FieldDefinition ? T['fields'][K]['type'] : never
 
 /** Get the field type for a field from a schema */
 export type SchemaDefinitionFieldType<
 	T extends ISchemaDefinition,
 	K extends SchemaFieldNames<T>
-> = T['fields'][K] extends IFieldDefinition ? T['fields'][K]['type'] : never
+> = T['fields'][K] extends FieldDefinition ? T['fields'][K]['type'] : never
 
 /** Response to getNamedFields */
 export interface ISchemaNamedField<T extends ISchemaDefinition> {
@@ -191,7 +191,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
-			const field = BaseField.field(definition, fieldClassMap)
+			const field = AbstractField.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
 		})
 	}

@@ -1,4 +1,4 @@
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from './types'
 
 export interface IFileFieldValue {
@@ -8,15 +8,14 @@ export interface IFileFieldValue {
 	type: string
 }
 
-export interface IFileFieldDefinition extends IBaseFieldDefinition {
+export interface IFileFieldDefinition extends IFieldDefinition {
 	/** * .File - select a file or directory */
 	type: FieldType.File
 }
 
-export default class FileField extends BaseField<IFileFieldDefinition> {
+export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IFileDefinition',
 			valueType: 'IFileFieldValue'
 		}
 	}

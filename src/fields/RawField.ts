@@ -1,7 +1,7 @@
 import { FieldType } from '.'
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface IRawFieldDefinition extends IBaseFieldDefinition {
+export interface IRawFieldDefinition extends IFieldDefinition {
 	type: FieldType.Raw
 	value?: any
 	defaultValue?: any
@@ -10,10 +10,9 @@ export interface IRawFieldDefinition extends IBaseFieldDefinition {
 	}
 }
 
-export default class RawField extends BaseField<IRawFieldDefinition> {
+export default class RawField extends AbstractField<IRawFieldDefinition> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IRawFieldDefinition',
 			valueType: 'any'
 		}
 	}

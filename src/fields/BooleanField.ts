@@ -1,7 +1,7 @@
-import BaseField, { IBaseFieldDefinition } from './BaseField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from './types'
 
-export interface IBooleanFieldDefinition extends IBaseFieldDefinition {
+export interface IBooleanFieldDefinition extends IFieldDefinition {
 	/** * .Boolean - true/false */
 	type: FieldType.Boolean
 	value?: boolean
@@ -9,10 +9,11 @@ export interface IBooleanFieldDefinition extends IBaseFieldDefinition {
 	options?: {}
 }
 
-export default class BooleanField extends BaseField<IBooleanFieldDefinition> {
+export default class BooleanField extends AbstractField<
+	IBooleanFieldDefinition
+> {
 	public static templateDetails() {
 		return {
-			definitionInterface: 'IBooleanFieldDefinition',
 			valueType: 'boolean'
 		}
 	}
