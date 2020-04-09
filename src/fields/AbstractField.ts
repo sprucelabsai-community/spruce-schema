@@ -1,5 +1,9 @@
-import { FieldType, FieldDefinition } from '.'
-import { FieldClassMap, IFieldClassMap } from './types'
+import {
+	FieldClassMap,
+	IFieldClassMap,
+	FieldType,
+	FieldDefinition
+} from './types'
 
 export interface IFieldDefinition {
 	/** The type of field this is, will strongly type props for us */
@@ -42,9 +46,12 @@ export interface IFieldTemplateDetails {
 	valueType: string
 }
 
-export default abstract class AbstractField<
-	T extends FieldDefinition = FieldDefinition
-> {
+/** A type that matches a subclass of the abstract field */
+export type FieldSubclass = new (...args: any[]) => AbstractField<
+	IFieldDefinition
+>
+
+export default abstract class AbstractField<T extends IFieldDefinition> {
 	/** The definition for this field */
 	public definition: T
 

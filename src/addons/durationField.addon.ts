@@ -1,8 +1,8 @@
 import registerFieldType from '../utilities/registerFieldType'
-import { TextField } from '../fields'
+import { DurationField } from '../fields'
 
 export default registerFieldType({
-	type: 'Text',
-	class: TextField,
+	type: 'Duration',
+	class: DurationField,
 	package: '@sprucelabs/schema'
 })

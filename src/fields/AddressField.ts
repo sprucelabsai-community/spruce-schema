@@ -1,4 +1,4 @@
-import { FieldType } from './index'
+import { FieldType } from './types'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface IAddressFieldValue {

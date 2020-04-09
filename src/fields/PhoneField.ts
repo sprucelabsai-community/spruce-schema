@@ -1,6 +1,5 @@
-import { IFieldDefinition } from './AbstractField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from './types'
-import TextField from './TextField'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 
 export interface IPhoneFieldDefinition extends IFieldDefinition {
@@ -14,7 +13,7 @@ export interface IPhoneFieldDefinition extends IFieldDefinition {
 	}
 }
 
-export default class PhoneField extends TextField<IPhoneFieldDefinition> {
+export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 	public static templateDetails() {
 		return {
 			valueType: 'string'

@@ -1,8 +1,8 @@
 import registerFieldType from '../utilities/registerFieldType'
-import { TextField } from '../fields'
+import { AddressField } from '../fields'
 
 export default registerFieldType({
-	type: 'Text',
-	class: TextField,
+	type: 'Address',
+	class: AddressField,
 	package: '@sprucelabs/schema'
 })

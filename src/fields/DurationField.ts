@@ -1,4 +1,4 @@
-import { FieldType } from '.'
+import { FieldType } from './types'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
 /** A duration value object */

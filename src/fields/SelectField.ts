@@ -1,6 +1,5 @@
 import { FieldType } from './types'
-import TextField from './TextField'
-import { IFieldDefinition } from './AbstractField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
@@ -19,8 +18,10 @@ export interface ISelectFieldDefinition extends IFieldDefinition {
 	}
 }
 
-export default class SelectField extends TextField<ISelectFieldDefinition> {
-	public constructor(definition: ISelectFieldDefinition) {
+export default class SelectField<
+	T extends ISelectFieldDefinition = ISelectFieldDefinition
+> extends AbstractField<T> {
+	public constructor(definition: T) {
 		super(definition)
 		if (!definition.options || !definition.options.choices) {
 			throw new Error('Select field is missing choices.')

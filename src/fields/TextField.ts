@@ -1,5 +1,5 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
-import { FieldDefinition, FieldType } from './types'
+import { FieldType } from './types'
 
 export interface ITextFieldDefinition extends IFieldDefinition {
 	/** * .Text - plain text */
@@ -14,9 +14,7 @@ export interface ITextFieldDefinition extends IFieldDefinition {
 	}
 }
 
-export default class TextField<
-	T extends FieldDefinition = ITextFieldDefinition
-> extends AbstractField<T> {
+export default class TextField extends AbstractField<ITextFieldDefinition> {
 	public static templateDetails() {
 		return {
 			valueType: 'string'

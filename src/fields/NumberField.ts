@@ -1,4 +1,4 @@
-import { FieldType } from '.'
+import { FieldType } from './types'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface INumberFieldDefinition extends IFieldDefinition {
@@ -8,9 +8,7 @@ export interface INumberFieldDefinition extends IFieldDefinition {
 	defaultValue?: number
 }
 
-export default class NumberField<
-	T extends INumberFieldDefinition = INumberFieldDefinition
-> extends AbstractField<T> {
+export default class NumberField extends AbstractField<INumberFieldDefinition> {
 	public static templateDetails() {
 		return {
 			valueType: 'number'

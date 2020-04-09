@@ -206,7 +206,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** Get any field by name */
-	public get<F extends Extract<keyof T['fields'], string>>(
+	public get<F extends SchemaFieldNames<T>>(
 		fieldName: F,
 		options: ISchemaGetSetOptions = {}
 	): SchemaFieldDefinitionValueType<T, F> {
