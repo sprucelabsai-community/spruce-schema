@@ -1,6 +1,6 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
 import { ISchemaDefinition } from '../Schema'
-import { FieldType } from './types'
+import { FieldType } from '#spruce:fieldTypes'
 
 export interface ISchemaFieldDefinition extends IFieldDefinition {
 	/** * .Schema - A relationship to another schema */

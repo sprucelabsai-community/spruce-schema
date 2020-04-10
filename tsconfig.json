@@ -16,7 +16,7 @@
 		"outDir": "build",
 		"baseUrl": ".",
 		"paths": {
-			"*": ["node_modules/*"]
+			"#spruce:fieldTypes": ["src/fields/types"]
 		}
 	},
 	"include": ["./*.ts", "./**/*.ts"],

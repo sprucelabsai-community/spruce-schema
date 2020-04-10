@@ -1,12 +1,12 @@
+import { ISchemaFieldDefinition, AbstractField } from './fields'
+
 import {
 	FieldType,
 	FieldDefinition,
 	FieldDefinitionMap,
 	FieldClassMap,
-	Field,
-	AbstractField,
-	ISchemaFieldDefinition
-} from './fields'
+	Field
+} from '#spruce:fieldTypes'
 import SchemaError from './errors/SchemaError'
 import {
 	SchemaErrorCode,

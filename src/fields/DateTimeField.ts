@@ -1,4 +1,4 @@
-import { FieldType } from './types'
+import { FieldType } from '#spruce:fieldTypes'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface IDateTimeFieldValue {

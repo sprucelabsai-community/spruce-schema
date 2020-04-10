@@ -1,5 +1,5 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
-import { FieldType } from './types'
+import { FieldType } from '#spruce:fieldTypes'
 
 export interface ITextFieldDefinition extends IFieldDefinition {
 	/** * .Text - plain text */

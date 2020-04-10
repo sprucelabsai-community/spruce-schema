@@ -1,5 +1,5 @@
 /** Export everything */
-export * from './types'
+export * from '#spruce:fieldTypes'
 export * from './AbstractField'
 export { default as AbstractField } from './AbstractField'
 export * from './BooleanField'

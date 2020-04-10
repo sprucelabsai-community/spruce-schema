@@ -3,7 +3,7 @@ import {
 	IFieldClassMap,
 	FieldType,
 	FieldDefinition
-} from './types'
+} from '#spruce:fieldTypes'
 
 export interface IFieldDefinition {
 	/** The type of field this is, will strongly type props for us */
