@@ -1,4 +1,4 @@
-import { FieldDefinition } from '../fields'
+import { FieldDefinition } from '#spruce:schema/types'
 
 /** Build a field type for use in your skill */
 export default function buildFieldDefinition<T extends FieldDefinition>(

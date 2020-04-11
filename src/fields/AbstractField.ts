@@ -1,9 +1,4 @@
-import {
-	FieldClassMap,
-	IFieldClassMap,
-	FieldType,
-	FieldDefinition
-} from '#spruce:fieldTypes'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export interface IFieldDefinition {
 	/** The type of field this is, will strongly type props for us */
@@ -62,17 +57,6 @@ export default abstract class AbstractField<T extends IFieldDefinition> {
 	/** Details needed for generating templates */
 	public static templateDetails(): IFieldTemplateDetails {
 		throw new Error('field types must implement public static templateDetails')
-	}
-
-	/** Factory for creating a new field from a definition */
-	public static field<
-		F extends FieldDefinition,
-		R extends IFieldClassMap[F['type']]
-	>(definition: F, fieldClassMap = FieldClassMap): R {
-		const fieldClass = fieldClassMap[definition.type]
-		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
-		const field = new fieldClass(definition)
-		return field as R
 	}
 
 	/** Get the type off the definition */

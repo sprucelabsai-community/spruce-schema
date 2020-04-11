@@ -9,10 +9,10 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 		let message: string | undefined
 
 		switch (options?.code) {
-			case SchemaErrorCode.DuplicateSchemaId:
+			case SchemaErrorCode.DuplicateSchema:
 			case SchemaErrorCode.SchemaNotFound:
 				message = `${this.message}: :${options.schemaId}${
-					options.additionalDetails ? ` ${options.additionalDetails}` : ''
+					options.friendlyMessage ? ` ${options.friendlyMessage}` : ''
 				}`
 				break
 			case SchemaErrorCode.InvalidField:
@@ -22,6 +22,9 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 					message += fieldErrors.errors.join(', ')
 					message += `])`
 				})
+				break
+			case SchemaErrorCode.TransformationFailed:
+				message = `The FileType.${options.fieldType} field could not transform a ${options.incomingTypeof} to the desired valueType. The incoming value was ${options.incomingValue}.`
 				break
 			default:
 				message = this.message

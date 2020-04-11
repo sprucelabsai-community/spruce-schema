@@ -1,5 +1,5 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
-import { FieldType } from '#spruce:fieldTypes'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 
 export interface IPhoneFieldDefinition extends IFieldDefinition {

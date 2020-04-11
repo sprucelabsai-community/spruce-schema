@@ -1,17 +1,14 @@
-import { ISchemaFieldDefinition, AbstractField } from './fields'
-
+import { ISchemaFieldDefinition } from './fields'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 import {
-	FieldType,
 	FieldDefinition,
 	FieldDefinitionMap,
 	FieldClassMap,
 	Field
-} from '#spruce:fieldTypes'
+} from '#spruce:schema/types'
 import SchemaError from './errors/SchemaError'
-import {
-	SchemaErrorCode,
-	ISchemaErrorOptionsInvalidField
-} from './errors/types'
+import { SchemaErrorCode, IInvalidFieldErrorOptions } from './errors/types'
+import FieldFactory from './factories/FieldFactory'
 
 /** The structure of schema.fields. key is field name, value is field definition */
 export interface ISchemaDefinitionFields {
@@ -191,7 +188,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
-			const field = AbstractField.field(definition, fieldClassMap)
+			const field = FieldFactory.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
 		})
 	}
@@ -286,7 +283,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 	/** Returns an array of schema validation errors */
 	public validate(options: ISchemaValidateOptions<T> = {}) {
-		const errors: ISchemaErrorOptionsInvalidField['errors'] = []
+		const errors: IInvalidFieldErrorOptions['errors'] = []
 
 		this.getNamedFields(options).forEach(item => {
 			const { name, field } = item

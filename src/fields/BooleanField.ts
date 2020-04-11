@@ -1,5 +1,5 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
-import { FieldType } from '#spruce:fieldTypes'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export interface IBooleanFieldDefinition extends IFieldDefinition {
 	/** * .Boolean - true/false */
@@ -19,6 +19,12 @@ export default class BooleanField extends AbstractField<
 	}
 	/** * Turn everything into a string */
 	public toValueType(value: any): boolean {
+		switch (value) {
+			case 'true':
+				return true
+			case 'false':
+				return false
+		}
 		return !!value
 	}
 }

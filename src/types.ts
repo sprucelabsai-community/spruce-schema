@@ -1,15 +1,16 @@
-import BooleanField, { IBooleanFieldDefinition } from './BooleanField'
-import SelectField, { ISelectFieldDefinition } from './SelectField'
-import DurationField, { IDurationFieldDefinition } from './DurationField'
-import IdField, { IIdFieldDefinition } from './IdField'
-import AddressField, { IAddressFieldDefinition } from './AddressField'
-import PhoneField, { IPhoneFieldDefinition } from './PhoneField'
-import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
-import RawField, { IRawFieldDefinition } from './RawField'
-import NumberField, { INumberFieldDefinition } from './NumberField'
-import DateTimeField, { IDateTimeFieldDefinition } from './DateTimeField'
-import TextField, { ITextFieldDefinition } from './TextField'
-import FileField, { IFileFieldDefinition } from './FileField'
+import { FieldType } from '#spruce:schema/fields/fieldType'
+import BooleanField, { IBooleanFieldDefinition } from './fields/BooleanField'
+import SelectField, { ISelectFieldDefinition } from './fields/SelectField'
+import DurationField, { IDurationFieldDefinition } from './fields/DurationField'
+import IdField, { IIdFieldDefinition } from './fields/IdField'
+import AddressField, { IAddressFieldDefinition } from './fields/AddressField'
+import PhoneField, { IPhoneFieldDefinition } from './fields/PhoneField'
+import SchemaField, { ISchemaFieldDefinition } from './fields/SchemaField'
+import RawField, { IRawFieldDefinition } from './fields/RawField'
+import NumberField, { INumberFieldDefinition } from './fields/NumberField'
+import DateTimeField, { IDateTimeFieldDefinition } from './fields/DateTimeField'
+import TextField, { ITextFieldDefinition } from './fields/TextField'
+import FileField, { IFileFieldDefinition } from './fields/FileField'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition
@@ -52,33 +53,6 @@ export type Field =
 	| NumberField
 	| DateTimeField
 	| FileField
-
-export enum FieldType {
-	/** A string, something like varchar(255), configure size using options to impact rendering and storage length */
-	Text = 'text',
-	/** A true/false, renders as a toggle or checkbox, or a Y/N if used in cli */
-	Boolean = 'boolean',
-	/** A multiple choice option, setting isArray to true will allow multiple selection */
-	Select = 'select',
-	/** A span of time, using in the form 1h or 30min */
-	Duration = 'duration',
-	/** A number, integer, float, etc */
-	Number = 'number',
-	/** An address input, anything google can resolve */
-	Address = 'address',
-	/** A phone number, international */
-	Phone = 'phone',
-	/** For storing a date, a time, or both */
-	DateTime = 'dateTime',
-	/** Points to another schema */
-	Schema = 'schema',
-	/** Unique id */
-	Id = 'id',
-	/** 🛑 Core API only */
-	Raw = 'raw',
-	/** File select/upload */
-	File = 'file'
-}
 
 /** Useful for type lookups for generics */
 export type FieldDefinitionMap = {

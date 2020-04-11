@@ -1,4 +1,4 @@
-import { FieldType } from '#spruce:fieldTypes'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
 export interface INumberFieldDefinition extends IFieldDefinition {

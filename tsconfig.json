@@ -15,8 +15,9 @@
 		"sourceMap": true,
 		"outDir": "build",
 		"baseUrl": ".",
+		"experimentalDecorators": true,
 		"paths": {
-			"#spruce:fieldTypes": ["src/fields/types"]
+			"#spruce:schema/*": ["src/*"]
 		}
 	},
 	"include": ["./*.ts", "./**/*.ts"],

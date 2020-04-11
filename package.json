@@ -1,57 +1,67 @@
 {
-	"name": "@sprucelabs/schema",
-	"publishConfig": {
-		"access": "public"
-	},
-	"files": [
-		"build"
-	],
-	"version": "1.0.6",
-	"main": "./build/index.js",
-	"types": "./build/index.d.ts",
-	"description": "Spruce Experience Platform Schemas",
-	"keywords": [
-		"node",
-		"components",
-		"sprucebot",
-		"sprucelabs"
-	],
-	"homepage": "https://github.com/sprucelabsai/spruce-schema",
-	"bugs": {
-		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
-	},
-	"scripts": {
-		"build": "npm run clean && concurrently \"npm run build:node\"",
-		"build:node": "tsc | true",
-		"build:browser": "tsc --project tsconfig.browser.json",
-		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
-		"clean": "rm -rf build/",
-		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
-		"lint:fix": "eslint --fix '**/*.ts'",
-		"test": "mocha -r ts-node/register/transpile-only --exit '**/*.test.ts*'",
-		"release": "semantic-release"
-	},
-	"dependencies": {
-		"@sprucelabs/error": "^1.0.7",
-		"google-libphonenumber": "^3.2.8",
-		"libphonenumber-js": "^1.7.48"
-	},
-	"devDependencies": {
-		"@sprucelabs/semantic-release": "^3.0.4",
-		"@types/google-libphonenumber": "^7.4.17",
-		"chokidar-cli": "^2.1.0",
-		"concurrently": "^5.0.2",
-		"eslint": "^5",
-		"eslint-config-spruce": "^10.1.0",
-		"prettier": "^1.19",
-		"@types/chai": "^4.2.3",
-		"@types/faker": "^4.1.11",
-		"@types/mocha": "^5.2.7",
-		"chai": "^4.2.0",
-		"faker": "^4.1.0",
-		"mocha": "^5.2.0",
-		"ts-node": "^8.8.1",
-		"typescript": "^3.8",
-		"yarn": "^1.2.1"
-	}
+  "name": "@sprucelabs/schema",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build"
+  ],
+  "version": "1.0.6",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "description": "Spruce experience schemas",
+  "keywords": [
+    "node",
+    "components",
+    "sprucebot",
+    "sprucelabs"
+  ],
+  "homepage": "https://github.com/sprucelabsai/spruce-schema",
+  "bugs": {
+    "url": "https://github.com/sprucelabsai/spruce-schema/issues"
+  },
+  "scripts": {
+    "build": "npm run clean && concurrently \"npm run build:node\"",
+    "build:node": "tsc | true",
+    "build:browser": "tsc --project tsconfig.browser.json",
+    "watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
+    "clean": "rm -rf build/",
+    "lint": "eslint '**/*.ts' && tsc -p . --noEmit",
+    "lint:fix": "eslint --fix '**/*.ts'",
+    "test": "ava **/*.test.ts",
+    "release": "semantic-release",
+    "test:watch": "ava  **/*.test.ts --watch"
+  },
+  "dependencies": {
+    "@sprucelabs/error": "^1.0.7",
+    "google-libphonenumber": "^3.2.8",
+    "libphonenumber-js": "^1.7.48",
+    "mime-db": "^1.43.0",
+    "mime-type": "^3.0.7"
+  },
+  "devDependencies": {
+    "@sprucelabs/semantic-release": "^3.0.4",
+    "@sprucelabs/test": "^1.0.3",
+    "@types/faker": "^4.1.11",
+    "@types/google-libphonenumber": "^7.4.17",
+    "@types/mime-db": "^1.27.1",
+    "ava": "^3.6.0",
+    "chokidar-cli": "^2.1.0",
+    "concurrently": "^5.0.2",
+    "eslint": "^5",
+    "eslint-config-spruce": "^10.1.0",
+    "faker": "^4.1.0",
+    "prettier": "^1.19",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8",
+    "yarn": "^1.2.1"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
 }
