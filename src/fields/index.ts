@@ -25,3 +25,6 @@ export * from './DateTimeField'
 export { default as DateTimeField } from './DateTimeField'
 export * from './FileField'
 export { default as FileField } from './FileField'
+
+export * from '#spruce:schema/fields/fields.types'
+export { FieldType } from '#spruce:schema/fields/fieldType'

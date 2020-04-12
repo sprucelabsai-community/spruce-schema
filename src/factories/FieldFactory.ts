@@ -2,7 +2,7 @@ import {
 	FieldDefinition,
 	FieldClassMap,
 	IFieldClassMap
-} from '#spruce:schema/types'
+} from '#spruce:schema/fields/fields.types'
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */

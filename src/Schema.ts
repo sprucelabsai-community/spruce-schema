@@ -5,7 +5,7 @@ import {
 	FieldDefinitionMap,
 	FieldClassMap,
 	Field
-} from '#spruce:schema/types'
+} from '#spruce:schema/fields/fields.types'
 import SchemaError from './errors/SchemaError'
 import { SchemaErrorCode, IInvalidFieldErrorOptions } from './errors/types'
 import FieldFactory from './factories/FieldFactory'

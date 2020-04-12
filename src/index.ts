@@ -1,5 +1,7 @@
 export * from './Schema'
-export { default as Schema } from './Schema'
+
+import Schema from './Schema'
+export default Schema
 
 // Fields
 export * from './fields'
@@ -17,4 +19,5 @@ export { default as buildFieldDefinition } from './utilities/buildFieldDefinitio
 export * from './utilities/registerFieldType'
 export { default as registerFieldType } from './utilities/registerFieldType'
 
+// Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
