@@ -29,7 +29,9 @@ export default class SelectField<
 	}
 	public static templateDetails() {
 		return {
-			valueType: 'string'
+			valueType: 'string',
+			description:
+				'Stored as string, lets user select between available options.'
 		}
 	}
 

@@ -21,7 +21,8 @@ export default class DateTimeField extends AbstractField<
 > {
 	public static templateDetails() {
 		return {
-			valueType: 'IDateTimeFieldValue'
+			valueType: 'IDateTimeFieldValue',
+			description: 'Date and time support.'
 		}
 	}
 }

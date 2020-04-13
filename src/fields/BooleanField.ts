@@ -14,7 +14,9 @@ export default class BooleanField extends AbstractField<
 > {
 	public static templateDetails() {
 		return {
-			valueType: 'boolean'
+			valueType: 'boolean',
+			description:
+				'A true/false. Converts false string to false, all other strings to true.'
 		}
 	}
 	/** * Turn everything into a string */

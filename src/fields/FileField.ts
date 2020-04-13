@@ -6,7 +6,6 @@ import mimeDb from 'mime-db'
 import { SchemaError } from '..'
 import { SchemaErrorCode } from '../errors/types'
 
-// TODO better mime checking
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
 mime.define('application/typescript', { extensions: ['ts', 'tsx'] })
@@ -40,7 +39,8 @@ export interface IFileFieldDefinition extends IFieldDefinition {
 export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'IFileFieldValue'
+			valueType: 'IFileFieldValue',
+			description: 'A way to handle files. Supports mime-type lookups.'
 		}
 	}
 
@@ -48,6 +48,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		const { options = {} } = this.definition
 		try {
 			const file = this.toValueType(value)
+
+			debugger
 			console.log(file, options)
 			return []
 		} catch (err) {

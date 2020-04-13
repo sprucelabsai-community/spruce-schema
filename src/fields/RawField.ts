@@ -13,7 +13,9 @@ export interface IRawFieldDefinition extends IFieldDefinition {
 export default class RawField extends AbstractField<IRawFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'any'
+			valueType: 'any',
+			description:
+				'Deprecated. For internal purposes only (will be deleted soon)'
 		}
 	}
 }

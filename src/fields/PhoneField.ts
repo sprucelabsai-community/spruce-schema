@@ -16,12 +16,14 @@ export interface IPhoneFieldDefinition extends IFieldDefinition {
 export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'string'
+			valueType: 'string',
+			description:
+				'Takes anything close to a phone number and formats it. Also great at validating numbers.'
 		}
 	}
 
 	public toValueType(value: any): string {
-		const stringValue = super.toValueType(value)
+		const stringValue = `${value}`
 		const phoneNumber = PhoneNumber.format(stringValue)
 		return phoneNumber
 	}

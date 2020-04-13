@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "test:file",
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-			"runtimeArgs": ["debug", "${file}"],
+			"runtimeArgs": ["debug", "${file}", "--break"],
 			"console": "integratedTerminal",
 			"port": 9229,
 			"skipFiles": ["<node_internals>/**/*.js"]
@@ -19,7 +19,7 @@
 			"request": "launch",
 			"name": "test:all",
 			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-			"runtimeArgs": ["debug"],
+			"runtimeArgs": ["debug", "**/*.test.ts"],
 			"console": "integratedTerminal",
 			"port": 9229,
 			"skipFiles": ["<node_internals>/**/*.js"]

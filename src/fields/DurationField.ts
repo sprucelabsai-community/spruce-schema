@@ -29,7 +29,33 @@ export default class DurationField extends AbstractField<
 > {
 	public static templateDetails() {
 		return {
-			valueType: 'IDurationFieldValue'
+			valueType: 'IDurationFieldValue',
+			description:
+				'A span of time represented in { hours, minutes, seconds, ms }'
 		}
+	}
+
+	public toValueType(value: any): IDurationFieldValue {
+		let totalMs = 0
+
+		if (typeof value === 'number') {
+			totalMs = value
+		} else if (typeof value === 'object') {
+			totalMs += typeof value.ms === 'number' ? value.ms : 0
+			totalMs += typeof value.seconds === 'number' ? value.seconds * 1000 : 0
+			totalMs +=
+				typeof value.minutes === 'number' ? value.minutes * 1000 * 60 : 0
+			totalMs +=
+				typeof value.hours === 'number' ? value.hours * 1000 * 60 * 60 : 0
+		}
+
+		const ms =  totalMs % 1000
+		totalMs = (totalMs - ms) / 1000
+		const seconds = totalMs % 60
+		totalMs = (totalMs - seconds) / 60
+		const minutes = totalMs % 60
+		const hours = (totalMs - minutes) / 60
+
+		return { hours, minutes, seconds, ms }
 	}
 }

@@ -12,7 +12,8 @@ export interface IIdFieldDefinition extends IFieldDefinition {
 export default class IdField extends AbstractField<IIdFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'string'
+			valueType: 'string',
+			description: "A unique identifier field, UUID's in our case."
 		}
 	}
 }

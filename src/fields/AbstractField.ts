@@ -39,6 +39,9 @@ export interface IFieldDefinition {
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
 	valueType: string
+
+	/** A description of the field */
+	description: string
 }
 
 /** A type that matches a subclass of the abstract field */

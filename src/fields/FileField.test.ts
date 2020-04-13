@@ -82,7 +82,7 @@ export default class FileFieldTest extends BaseTest {
 			path: '/path/to/a/non/existent/file/isOk'
 		}
 	)
-	public staticTestCompletingFileObject(
+	public static testCompletingFileObject(
 		t: ExecutionContext<IContext>,
 		spruce: ISpruce,
 		partial: Partial<IFileFieldValue>,

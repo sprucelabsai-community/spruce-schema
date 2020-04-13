@@ -18,7 +18,9 @@ export interface ISchemaFieldDefinition extends IFieldDefinition {
 export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'ISchemaDefinition'
+			valueType: 'ISchemaDefinition',
+			description:
+				'A way to map relationships. You only need to map relationships one way, two way is currently not supported.'
 		}
 	}
 }

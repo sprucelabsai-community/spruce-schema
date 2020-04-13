@@ -11,7 +11,11 @@ export interface INumberFieldDefinition extends IFieldDefinition {
 export default class NumberField extends AbstractField<INumberFieldDefinition> {
 	public static templateDetails() {
 		return {
-			valueType: 'number'
+			valueType: 'number',
+			description: 'Casts things to numbers. String numbers are supported.'
 		}
+	}
+	public toValueType(value: any): number {
+		return +value
 	}
 }

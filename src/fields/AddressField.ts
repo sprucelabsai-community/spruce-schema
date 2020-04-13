@@ -23,7 +23,8 @@ export default class AddressField extends AbstractField<
 > {
 	public static templateDetails() {
 		return {
-			valueType: 'IAddressFieldValue'
+			valueType: 'IAddressFieldValue',
+			description: 'An address with geocoding ability'
 		}
 	}
 }
