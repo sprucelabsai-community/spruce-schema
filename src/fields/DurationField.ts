@@ -49,7 +49,7 @@ export default class DurationField extends AbstractField<
 				typeof value.hours === 'number' ? value.hours * 1000 * 60 * 60 : 0
 		}
 
-		const ms =  totalMs % 1000
+		const ms = totalMs % 1000
 		totalMs = (totalMs - ms) / 1000
 		const seconds = totalMs % 60
 		totalMs = (totalMs - seconds) / 60

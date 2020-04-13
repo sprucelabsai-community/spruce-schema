@@ -45,12 +45,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	}
 
 	public validate(value: any): string[] {
-		const { options = {} } = this.definition
 		try {
-			const file = this.toValueType(value)
-
-			debugger
-			console.log(file, options)
+			this.toValueType(value)
 			return []
 		} catch (err) {
 			return ['invalid_file']
