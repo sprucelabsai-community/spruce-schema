@@ -3,6 +3,10 @@ export * from './Schema'
 import Schema from './Schema'
 export default Schema
 
+// Field types
+export * from '#spruce:schema/fields/fields.types'
+export { FieldType } from '#spruce:schema/fields/fieldType'
+
 // Fields
 export * from './fields'
 
