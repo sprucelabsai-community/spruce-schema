@@ -1,4 +1,5 @@
-import '../addons/paths.addon'
+import { register } from '@sprucelabs/path-resolver'
+register()
 import BaseTest, { ISpruce, test } from '@sprucelabs/test'
 import { ExecutionContext } from 'ava'
 import { FieldFactory } from '..'

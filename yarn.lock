@@ -352,6 +352,18 @@
   resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.0.7.tgz#f22c60b64111006dcf2ed4c5cf1d603cf4051294"
   integrity sha512-GpTywvR0DmVu+oazlU1W/DBXwFWyc+v2MnBMf299tMFKlKocU2aPFEgDvTMat85lb/VWEzxrXyQyf6/hcY+vNA==
 
+"@sprucelabs/log@^10.2.1":
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.1.tgz#acd368915e5d763ec4588165e8ccc69db6ed8c42"
+  integrity sha512-hJA7RfEudH+jpMCeR/MYjS3/YVK0ZYa6CmkJIxlYalM2DtWl5M//4uuE+JqYDa1q84QE/gwiZlDR1DvSBx12xA==
+
+"@sprucelabs/path-resolver@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/path-resolver/-/path-resolver-1.0.9.tgz#d706424edb50f0e9062ecf907ac9e2939f182410"
+  integrity sha512-DMrblyvanmTgJ7+SzfmYYx/7N2j+kzeKF2CsmgNBGeZjWyIioVcRx2HIvP5dZy7JatFCYUNHkRKZijmzilqgfA==
+  dependencies:
+    "@sprucelabs/log" "^10.2.1"
+
 "@sprucelabs/semantic-release@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@sprucelabs/semantic-release/-/semantic-release-3.0.4.tgz#7c9983990fe7a707909ba87a5797f75911c24d0c"
