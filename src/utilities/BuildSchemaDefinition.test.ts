@@ -1,5 +1,5 @@
 import '@sprucelabs/path-resolver/register'
-import BaseTest, { ISpruce, test } from '@sprucelabs/test'
+import BaseTest, { test } from '@sprucelabs/test'
 import { ExecutionContext } from 'ava'
 import { buildSchemaDefinition } from '..'
 import { FieldType } from '../fields/fieldType'
