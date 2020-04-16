@@ -9,11 +9,9 @@ export interface IDurationFieldValue {
 	ms: number
 }
 
-export interface IDurationFieldDefinition extends IFieldDefinition {
-	/** * .Duration - a span of time down to the ms */
+export type IDurationFieldDefinition = IFieldDefinition<IDurationFieldValue> & {
+	/** * .Duration - a span of time  */
 	type: FieldType.Duration
-	value?: IDurationFieldValue
-	defaultValue?: IDurationFieldValue
 	options?: {
 		/** How it should be rendered, defaults to {{h}}h{{m}}min */
 		durationFormat?: string

@@ -1,11 +1,9 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface INumberFieldDefinition extends IFieldDefinition {
-	/** * .Number - Any number */
+export type INumberFieldDefinition = IFieldDefinition<number> & {
+	/** * .Number - a number, silly */
 	type: FieldType.Number
-	value?: number
-	defaultValue?: number
 }
 
 export default class NumberField extends AbstractField<INumberFieldDefinition> {

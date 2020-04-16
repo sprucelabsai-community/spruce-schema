@@ -1,11 +1,9 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface IIdFieldDefinition extends IFieldDefinition {
-	/** * .Id - Any string based uniq id */
+export type IIdFieldDefinition = IFieldDefinition<string> & {
+	/** * .Id a field to hold a unique id (UUID4 in Spruce) */
 	type: FieldType.Id
-	value?: string
-	defaultValue?: string
 	options?: {}
 }
 

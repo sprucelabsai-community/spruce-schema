@@ -25,11 +25,9 @@ export interface IFileFieldValue {
 	ext?: string
 }
 
-export interface IFileFieldDefinition extends IFieldDefinition {
-	/** * .File - select a file or directory */
+export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
+	/** * .File a great way to deal with file management */
 	type: FieldType.File
-	value?: IFileFieldValue
-	defaultValue?: Partial<IFileFieldValue>
 	options?: {
 		acceptableTypes?: string[]
 		maxSize?: string
