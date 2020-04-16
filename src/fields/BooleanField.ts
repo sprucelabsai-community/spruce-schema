@@ -1,12 +1,9 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
-export interface IBooleanFieldDefinition extends IFieldDefinition {
-	/** * .Boolean - true/false */
+export type IBooleanFieldDefinition = IFieldDefinition<boolean> & {
+	/** * A true/false field */
 	type: FieldType.Boolean
-	value?: boolean
-	defaultValue?: boolean
-	options?: {}
 }
 
 export default class BooleanField extends AbstractField<

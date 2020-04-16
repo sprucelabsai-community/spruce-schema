@@ -10,11 +10,9 @@ export interface IAddressFieldValue {
 	zip: string
 }
 
-export interface IAddressFieldDefinition extends IFieldDefinition {
-	/** * .Address - An address field */
+export type IAddressFieldDefinition = IFieldDefinition<IAddressFieldValue> & {
+	/** * An address with street, city, province, country, and zip details */
 	type: FieldType.Address
-	value?: IAddressFieldValue
-	defaultValue?: IAddressFieldValue
 	options?: {}
 }
 
@@ -24,7 +22,7 @@ export default class AddressField extends AbstractField<
 	public static templateDetails() {
 		return {
 			valueType: 'IAddressFieldValue',
-			description: 'An address with geocoding ability'
+			description: 'An address with geocoding ability *coming soon*'
 		}
 	}
 }

@@ -2,11 +2,9 @@ import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 
-export interface IPhoneFieldDefinition extends IFieldDefinition {
-	/** * .Phone - a phone number */
+export type IPhoneFieldDefinition = IFieldDefinition<string> & {
+	/** * .Phone a great way to validate and format values */
 	type: FieldType.Phone
-	value?: string
-	defaultValue?: string
 	options?: {
 		/** The format we should use, defaults to +1 (555)-555-5555 */
 		phoneNumberFormat?: string

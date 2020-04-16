@@ -357,10 +357,10 @@
   resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.1.tgz#acd368915e5d763ec4588165e8ccc69db6ed8c42"
   integrity sha512-hJA7RfEudH+jpMCeR/MYjS3/YVK0ZYa6CmkJIxlYalM2DtWl5M//4uuE+JqYDa1q84QE/gwiZlDR1DvSBx12xA==
 
-"@sprucelabs/path-resolver@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/path-resolver/-/path-resolver-1.0.10.tgz#d1616931a15c40d9853806e301408dd92ea4f9ae"
-  integrity sha512-JmywsehbT5ZHric7c8ibrWvmWb3yNchxSMXuopEzEcMH7YqRUc0KQk+BNJkBA+Ktst62xUNnbyHIS4NGV63fMQ==
+"@sprucelabs/path-resolver@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/path-resolver/-/path-resolver-1.0.13.tgz#3e18cf080be42de2b29deb2b215d5a5c4a69c2c8"
+  integrity sha512-lIpFuW1R0r8WufV0a0ZwZCn70N0EVKMOPs4geF07i/GaGwlIaOJumwFqgmRBZiAm8wkJBZgC4MhsW3ks1V1YPw==
   dependencies:
     "@sprucelabs/log" "^10.2.1"
 
@@ -429,6 +429,11 @@
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.4.tgz#38fd73ddfd9b55abb1e1b2ed578cb55bd7b7d339"
   integrity sha512-8+KAKzEvSUdeo+kmqnKrqgeE+LcA0tjYWFY7RPProVYwnqDjukzO+3b6dLD56rYX5TdWejnEOLJYOIeh4CXKuA==
+
+"@types/lodash@^4.14.149":
+  version "4.14.149"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
+  integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
 "@types/mime-db@^1.27.1":
   version "1.27.1"

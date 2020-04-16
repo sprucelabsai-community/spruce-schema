@@ -9,7 +9,9 @@ export enum SchemaErrorCode {
 	/** * Field failed validation */
 	InvalidField = 'INVALID_FIELD',
 	/** * When transforming a value fails */
-	TransformationFailed = 'TRANSFORMATION_ERROR'
+	TransformationFailed = 'TRANSFORMATION_ERROR',
+	/** * When a definition is not value */
+	InvalidSchemaDefinition = 'INVALID_SCHEMA_DEFINITION'
 }
 
 export type SchemaErrorOptions =
@@ -17,6 +19,7 @@ export type SchemaErrorOptions =
 	| ISchemaErrorOptionsNotFound
 	| IInvalidFieldErrorOptions
 	| ITransformationFailedErrorOptions
+	| IInvalidSchemaDefinitionErrorOptions
 	| SpruceErrorOptions
 
 export interface ISchemaErrorOptionsNotFound
@@ -51,4 +54,14 @@ export interface ITransformationFailedErrorOptions
 	incomingTypeof: string
 	/** The actual value */
 	incomingValue: string
+}
+
+export interface IInvalidSchemaDefinitionErrorOptions
+	extends ISpruceErrorOptions<SchemaErrorCode> {
+	/** * The field could not transform the value */
+	code: SchemaErrorCode.InvalidSchemaDefinition
+	/** The id of the schema */
+	schemaId: string
+	/** All the errors in the definition */
+	errors: string[]
 }

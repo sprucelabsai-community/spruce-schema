@@ -70,8 +70,11 @@ export type RequiredFieldNames<T extends ISchemaDefinition> = {
 		: never
 }[SchemaFieldNames<T>]
 
+/** Make a thing that was an array not an array so isArray can control it */
+type Unpack<A> = A extends Array<infer E> ? E : A
+
 /** Easy array helper */
-type IsArray<T, isArray> = isArray extends true ? T[] : T
+type IsArray<T, isArray> = isArray extends true ? Unpack<T>[] : Unpack<T>
 
 /** Easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
@@ -190,16 +193,49 @@ export default class Schema<T extends ISchemaDefinition> {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
+			if (definition.value) {
+				this.set(name as SchemaFieldNames<T>, definition.value)
+			}
 		})
 	}
 
 	/** Tells you if a schema definition is valid */
 	public static isDefinitionValid(definition: ISchemaDefinition): boolean {
-		return !!(
-			typeof definition.id === 'string' &&
-			typeof definition.name === 'string' &&
-			(definition.fields || definition.dynamicKeySignature)
-		)
+		try {
+			Schema.validateDefinition(definition)
+			return true
+		} catch {
+			return false
+		}
+	}
+
+	/** Throws a field validation error */
+	public static validateDefinition(definition: ISchemaDefinition) {
+		const errors: string[] = []
+
+		if (!definition.id) {
+			errors.push('id_missing')
+		} else if (!(typeof definition.id === 'string')) {
+			errors.push('id_not_string')
+		}
+
+		if (!definition.name) {
+			errors.push('name_missing')
+		} else if (!(typeof definition.name === 'string')) {
+			errors.push('name_not_string')
+		}
+
+		if (!definition.fields && !definition.dynamicKeySignature) {
+			errors.push('needs_fields_or_dynamic_key_signature')
+		}
+
+		if (errors.length > 0) {
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidSchemaDefinition,
+				schemaId: definition.id,
+				errors
+			})
+		}
 	}
 
 	/** Get any field by name */
@@ -208,10 +244,26 @@ export default class Schema<T extends ISchemaDefinition> {
 		options: ISchemaGetSetOptions = {}
 	): SchemaFieldDefinitionValueType<T, F> {
 		// Get value off self
-		let value: SchemaFieldDefinitionValueType<T, F> | undefined =
+		const value: SchemaFieldDefinitionValueType<T, F> | undefined =
 			this.values[fieldName as SchemaFieldNames<T>] !== undefined
 				? this.values[fieldName]
 				: undefined
+
+		// If the value is not null or undefined, coerce it into an array
+		let localValue =
+			value === null || typeof value === 'undefined'
+				? ([] as SchemaFieldDefinitionValueType<T, F>)
+				: Array.isArray(value)
+				? value
+				: [value]
+
+		if (!Array.isArray(localValue)) {
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidField,
+				schemaId: this.definition.id,
+				errors: [{ fieldName, errors: ['value_not_array'] }]
+			})
+		}
 
 		const { validate = true } = options
 
@@ -219,7 +271,12 @@ export default class Schema<T extends ISchemaDefinition> {
 		const field = this.fields[fieldName]
 
 		// Validate if we're supposed to
-		const errors = validate ? field.validate(value) : []
+		let errors: string[] = []
+		if (validate) {
+			localValue.forEach(value => {
+				errors = [...errors, ...field.validate(value)]
+			})
+		}
 
 		// If there are any errors, bail
 		if (errors.length > 0) {
@@ -231,11 +288,14 @@ export default class Schema<T extends ISchemaDefinition> {
 		}
 
 		// If there is a value, transform it to it's expected value
-		if (value !== null && typeof value !== 'undefined') {
-			value = field.toValueType(value)
+		// Is array will always pass here
+		if (localValue.length > 0) {
+			localValue = localValue.map(value => field.toValueType(value))
 		}
 
-		return value as SchemaFieldDefinitionValueType<T, F>
+		return field.isArray()
+			? (localValue as SchemaFieldDefinitionValueType<T, F>)
+			: (localValue[0] as SchemaFieldDefinitionValueType<T, F>)
 	}
 
 	/** Set a value and ensure its type */
@@ -244,19 +304,40 @@ export default class Schema<T extends ISchemaDefinition> {
 		value: SchemaFieldDefinitionValueType<T, F>,
 		options: ISchemaGetSetOptions = {}
 	): this {
-		let localValue = value
+		// If the value is not null or undefined, coerce it into an array
+		let localValue =
+			value === null || typeof value === 'undefined'
+				? ([] as SchemaFieldDefinitionValueType<T, F>)
+				: Array.isArray(value)
+				? value
+				: [value]
+
+		if (!Array.isArray(localValue)) {
+			throw new SchemaError({
+				code: SchemaErrorCode.InvalidField,
+				schemaId: this.definition.id,
+				errors: [{ fieldName, errors: ['value_not_array'] }]
+			})
+		}
+
 		const { validate = true } = options
 
 		// Get the field
 		const field = this.fields[fieldName]
 
 		// If there is a value, transform it to it's expected value
-		if (localValue !== null && typeof localValue !== 'undefined') {
-			localValue = field.toValueType(localValue)
+		// Is array will always pass here
+		if (localValue.length > 0) {
+			localValue = localValue.map(value => field.toValueType(value))
 		}
 
 		// Validate if we're supposed to
-		const errors = validate ? field.validate(localValue) : []
+		let errors: string[] = []
+		if (validate) {
+			localValue.forEach(value => {
+				errors = [...errors, ...field.validate(value)]
+			})
+		}
 
 		if (errors.length > 0) {
 			throw new SchemaError({
@@ -266,7 +347,9 @@ export default class Schema<T extends ISchemaDefinition> {
 			})
 		}
 
-		this.values[fieldName] = localValue
+		// TODO see if there is a way to cast this
+		// @ts-ignore
+		this.values[fieldName] = field.isArray() ? localValue : localValue[0]
 
 		return this
 	}
@@ -311,7 +394,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public getValues<F extends SchemaFieldNames<T> = SchemaFieldNames<T>>(
 		options: ISchemaGetValuesOptions<T, F> = {}
 	): Pick<SchemaDefinitionAllValues<T>, F> {
-		const values: SchemaDefinitionPartialValues<T> = { ...this.values }
+		const values: SchemaDefinitionPartialValues<T> = {}
 
 		const { fields = Object.keys(this.fields) } = options
 
