@@ -70,8 +70,11 @@ export type RequiredFieldNames<T extends ISchemaDefinition> = {
 		: never
 }[SchemaFieldNames<T>]
 
+/** Make a thing that was an array not an array so isArray can control it */
+type Unpack<A> = A extends Array<infer E> ? E : A
+
 /** Easy array helper */
-type IsArray<T, isArray> = isArray extends true ? T[] : T
+type IsArray<T, isArray> = isArray extends true ? Unpack<T>[] : Unpack<T>
 
 /** Easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
@@ -83,13 +86,22 @@ export type SchemaFieldDefinitionValueType<
 > = T['fields'][K] extends ISchemaFieldDefinition
 	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
 		? IsRequired<
-				SchemaDefinitionAllValues<T['fields'][K]['options']['schema']>,
+				IsArray<
+					SchemaDefinitionAllValues<T['fields'][K]['options']['schema']>,
+					T['fields'][K]['isArray']
+				>,
 				T['fields'][K]['isRequired']
 		  >
-		: never
+		: IsRequired<
+				IsArray<any, T['fields'][K]['isArray']>,
+				T['fields'][K]['isRequired']
+		  >
 	: T['fields'][K] extends FieldDefinition
 	? IsRequired<
-			FieldDefinitionMap[T['fields'][K]['type']]['value'],
+			IsArray<
+				Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
+				T['fields'][K]['isArray']
+			>,
 			T['fields'][K]['isRequired']
 	  >
 	: never
@@ -181,6 +193,9 @@ export default class Schema<T extends ISchemaDefinition> {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.field(definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
+			if (definition.value) {
+				this.set(name as SchemaFieldNames<T>, definition.value)
+			}
 		})
 	}
 
@@ -237,7 +252,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
-				? value
+				? ([] as SchemaFieldDefinitionValueType<T, F>)
 				: Array.isArray(value)
 				? value
 				: [value]
@@ -274,7 +289,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		// If there is a value, transform it to it's expected value
 		// Is array will always pass here
-		if (localValue && localValue.length > 0) {
+		if (localValue.length > 0) {
 			localValue = localValue.map(value => field.toValueType(value))
 		}
 
@@ -292,7 +307,7 @@ export default class Schema<T extends ISchemaDefinition> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
-				? value
+				? ([] as SchemaFieldDefinitionValueType<T, F>)
 				: Array.isArray(value)
 				? value
 				: [value]
@@ -312,7 +327,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		// If there is a value, transform it to it's expected value
 		// Is array will always pass here
-		if (localValue && localValue.length > 0) {
+		if (localValue.length > 0) {
 			localValue = localValue.map(value => field.toValueType(value))
 		}
 
@@ -379,7 +394,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	public getValues<F extends SchemaFieldNames<T> = SchemaFieldNames<T>>(
 		options: ISchemaGetValuesOptions<T, F> = {}
 	): Pick<SchemaDefinitionAllValues<T>, F> {
-		const values: SchemaDefinitionPartialValues<T> = { ...this.values }
+		const values: SchemaDefinitionPartialValues<T> = {}
 
 		const { fields = Object.keys(this.fields) } = options
 

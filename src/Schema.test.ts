@@ -70,7 +70,9 @@ export default class SchemaTest extends BaseTest {
 		}
 	}
 
-	@test('Can make is array out of value')
+	@test(
+		'Does isArray make value an array (test always passes, linting should fail if broken)'
+	)
 	protected static async canIsArrayValue(t: ExecutionContext<IContext>) {
 		const definition = buildSchemaDefinition({
 			id: 'is-array-test',
@@ -99,7 +101,7 @@ export default class SchemaTest extends BaseTest {
 		t.true(Schema.isDefinitionValid(definition))
 	}
 
-	@test('Make sure array field get/set works')
+	@test('isArray get/set work and transform to/from array')
 	protected static testGetSet(t: ExecutionContext<IContext>) {
 		const schema = new Schema({
 			id: 'missing-fields',
@@ -113,12 +115,15 @@ export default class SchemaTest extends BaseTest {
 				favoriteColors: {
 					type: FieldType.Text,
 					isArray: true,
-					value: ['tay']
+					value: ['black']
 				}
 			}
 		})
-		const values = schema.getValues({ fields: ['favoriteColors'] })
-		values.favoriteColors
+
+		const values = schema.getValues({ fields: ['name'] })
+		t.is(values.name, 'tay')
+		//@ts-ignore
+		t.is(values.favoriteColors, undefined, 'getValues did not filter by fields')
 
 		// Try setting favorite colors
 		schema.set('favoriteColors', ['test'])
@@ -129,6 +134,7 @@ export default class SchemaTest extends BaseTest {
 		)
 
 		// Try setting favorite color wrong, but should be coerced back to an array
+		// @ts-ignore
 		schema.set('favoriteColors', 'test2')
 		t.deepEqual(
 			schema.values.favoriteColors,
@@ -143,7 +149,46 @@ export default class SchemaTest extends BaseTest {
 		// Make sure getters work
 		// @ts-ignore
 		schema.values = { name: ['becca'], favoriteColors: 'blue' }
+		const name = schema.get('name')
+		t.is(name, 'becca')
+
 		const colors = schema.get('favoriteColors')
-		const first = colors[0]
+		t.true(Array.isArray(colors), 'Getter did not transform colors into array')
+	}
+
+	@test('Can transform isArray values')
+	protected static testTransformingValues(t: ExecutionContext<IContext>) {
+		const schema = new Schema({
+			id: 'is-array-transform',
+			name: 'transform tests',
+			fields: {
+				name: {
+					type: FieldType.Text,
+					isArray: false,
+					value: 'tay'
+				},
+				favoriteColors: {
+					type: FieldType.Text,
+					isArray: true,
+					value: ['blue']
+				},
+				favoriteNumber: {
+					type: FieldType.Number
+				}
+			}
+		})
+
+		// Set favorite color to a bunch of numbers and make sure it comes back a bunch of strings
+		// @ts-ignore
+		schema.values.favoriteColors = [1, 2, 3]
+
+		const favColor = schema.get('favoriteColors')
+		t.deepEqual(favColor, ['1', '2', '3'])
+
+		// Opposite test
+		// @ts-ignore
+		schema.values.favoriteNumber = ['7', '8', '100']
+		const favNumber = schema.get('favoriteNumber')
+		t.is(favNumber, 7)
 	}
 }
