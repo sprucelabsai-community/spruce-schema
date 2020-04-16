@@ -8,7 +8,6 @@ import { FieldType } from '#spruce:schema/fields/fieldType'
 
 /** Context just for this test */
 interface IContext {}
-
 export default class DurationFieldTest extends BaseTest {
 	@test(
 		'can get seconds from ms',

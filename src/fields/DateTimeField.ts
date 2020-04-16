@@ -5,15 +5,10 @@ export interface IDateTimeFieldValue {
 	gmt: string
 }
 
-export interface IDateTimeFieldDefinition extends IFieldDefinition {
-	/** * .DateTime - Date and time */
+export type IDateTimeFieldDefinition = IFieldDefinition<IDateTimeFieldValue> & {
+	/** * A date/time field that stores everything in GMT and handles all the timezone */
 	type: FieldType.DateTime
-	value?: IDateTimeFieldValue
-	defaultValue?: IDateTimeFieldValue
-	options?: {
-		/** How should this dateTime render using moment.js format */
-		dateTimeFormat?: string
-	}
+	options?: { dateTimeFormat?: string }
 }
 
 export default class DateTimeField extends AbstractField<

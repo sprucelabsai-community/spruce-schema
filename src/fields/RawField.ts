@@ -1,10 +1,9 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
-export interface IRawFieldDefinition extends IFieldDefinition {
+export type IRawFieldDefinition = IFieldDefinition<any> & {
+	/** * .Raw - Deprecated, don't use */
 	type: FieldType.Raw
-	value?: any
-	defaultValue?: any
 	options: {
 		interfaceName: string
 	}

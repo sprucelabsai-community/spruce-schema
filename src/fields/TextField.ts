@@ -4,11 +4,10 @@ import AbstractField, {
 } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
-export interface ITextFieldDefinition extends IFieldDefinition {
-	/** * .Text - plain text */
+export type ITextFieldDefinition = IFieldDefinition<string> & {
+	/** * Text field */
 	type: FieldType.Text
-	value?: string
-	defaultValue?: string
+	/** Options */
 	options?: {
 		/** The minimum length we'll allow of this field */
 		minLength?: number

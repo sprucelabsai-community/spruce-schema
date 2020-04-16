@@ -1,8 +1,10 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
-export interface IFieldDefinition {
-	/** The type of field this is, will strongly type props for us */
+export type IFieldDefinition<Value> = {
+	/** The filed type */
 	type: FieldType
+	/** Default options are empty */
+	options?: {}
 	/** Generates in only for local interface and does not share with other skills */
 	isPrivate?: boolean
 	/** The permissions used in different contexts */
@@ -20,21 +22,30 @@ export interface IFieldDefinition {
 			[slug: string]: string[]
 		}
 	}
-	/** Does this value store more than one item? */
-	isArray?: boolean
 	/** How this field is represented to the end-user as an html label or when collecting input from cli */
 	label?: string
 	/** Give an example of how someone should think about this field or give an example of what it may be */
 	hint?: string
-	/** The default for for this if no value is set */
-	defaultValue?: any
-	/** The current value for this field */
-	value?: any
 	/** Is this field required */
 	isRequired?: boolean
-	/** Unique options overridden by the fields that extend it */
-	options?: Record<string, any>
-}
+} & (
+	| {
+			/** * If this element is an array */
+			isArray: true
+			/** The default for for this if no value is set */
+			defaultValue?: Value[]
+			/** The current value for this field */
+			value?: Value[]
+	  }
+	| {
+			/** * If this value is NOT an array */
+			isArray?: false | undefined
+			/** The default value for this if no value is set */
+			defaultValue?: Value
+			/** The current value for this field */
+			value?: Value
+	  }
+)
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -46,10 +57,12 @@ export interface IFieldTemplateDetails {
 
 /** A type that matches a subclass of the abstract field */
 export type FieldSubclass = new (...args: any[]) => AbstractField<
-	IFieldDefinition
+	IFieldDefinition<unknown>
 >
 
-export default abstract class AbstractField<T extends IFieldDefinition> {
+export default abstract class AbstractField<
+	T extends IFieldDefinition<unknown>
+> {
 	/** The definition for this field */
 	public definition: T
 

@@ -8,11 +8,9 @@ export interface ISelectFieldDefinitionChoice {
 	label: string
 }
 
-export interface ISelectFieldDefinition extends IFieldDefinition {
-	/** * .Select - a select field with many choices */
+export type ISelectFieldDefinition = IFieldDefinition<string> & {
+	/** * .Select - A way to chose between a choices */
 	type: FieldType.Select
-	value?: string
-	defaultValue?: string
 	options: {
 		choices: ISelectFieldDefinitionChoice[]
 	}
