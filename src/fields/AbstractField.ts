@@ -33,7 +33,7 @@ export type IFieldDefinition<Value> = {
 			/** * If this element is an array */
 			isArray: true
 			/** The default for for this if no value is set */
-			defaultValue?: Value[]
+			defaultValue?: Partial<Value>[]
 			/** The current value for this field */
 			value?: Value[]
 	  }
@@ -41,7 +41,7 @@ export type IFieldDefinition<Value> = {
 			/** * If this value is NOT an array */
 			isArray?: false | undefined
 			/** The default value for this if no value is set */
-			defaultValue?: Value
+			defaultValue?: Partial<Value>
 			/** The current value for this field */
 			value?: Value
 	  }

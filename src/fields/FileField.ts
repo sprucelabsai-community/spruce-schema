@@ -14,7 +14,7 @@ export interface IFileFieldValue {
 	/** Date last modified */
 	lastModified?: Date
 	/** The name of the file */
-	name?: string
+	name: string
 	/** The size of the file if we are able to load it locally */
 	size?: number
 	/** The mime type of the file */
