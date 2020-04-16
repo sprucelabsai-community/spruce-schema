@@ -79,31 +79,31 @@ type IsArray<T, isArray> = isArray extends true ? Unpack<T>[] : Unpack<T>
 /** Easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 
+export type FieldDefinitionValueType<
+	F extends FieldDefinition
+> = F extends ISchemaFieldDefinition
+	? F['options']['schema'] extends ISchemaDefinition
+		? IsRequired<
+				IsArray<
+					SchemaDefinitionAllValues<F['options']['schema']>,
+					F['isArray']
+				>,
+				F['isRequired']
+		  >
+		: IsRequired<IsArray<any, F['isArray']>, F['isRequired']>
+	: F extends FieldDefinition
+	? IsRequired<
+			IsArray<Required<FieldDefinitionMap[F['type']]>['value'], F['isArray']>,
+			F['isRequired']
+	  >
+	: never
+
 /** Get the type of the value of a schemas field */
 export type SchemaFieldDefinitionValueType<
 	T extends ISchemaDefinition,
 	K extends SchemaFieldNames<T>
-> = T['fields'][K] extends ISchemaFieldDefinition
-	? T['fields'][K]['options']['schema'] extends ISchemaDefinition
-		? IsRequired<
-				IsArray<
-					SchemaDefinitionAllValues<T['fields'][K]['options']['schema']>,
-					T['fields'][K]['isArray']
-				>,
-				T['fields'][K]['isRequired']
-		  >
-		: IsRequired<
-				IsArray<any, T['fields'][K]['isArray']>,
-				T['fields'][K]['isRequired']
-		  >
-	: T['fields'][K] extends FieldDefinition
-	? IsRequired<
-			IsArray<
-				Required<FieldDefinitionMap[T['fields'][K]['type']]>['value'],
-				T['fields'][K]['isArray']
-			>,
-			T['fields'][K]['isRequired']
-	  >
+> = T['fields'][K] extends FieldDefinition
+	? FieldDefinitionValueType<T['fields'][K]>
 	: never
 
 /** A union of all field names */
