@@ -182,8 +182,8 @@ export default class SchemaTest extends BaseTest {
 		// @ts-ignore
 		schema.values.favoriteColors = [1, 2, 3]
 
-		const favColor = schema.get('favoriteColors')
-		t.deepEqual(favColor, ['1', '2', '3'])
+		const favColors = schema.get('favoriteColors')
+		t.deepEqual(favColors, ['1', '2', '3'])
 
 		// Opposite test
 		// @ts-ignore
