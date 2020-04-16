@@ -189,6 +189,10 @@ export default class SchemaTest extends BaseTest {
 		// @ts-ignore
 		schema.values.favoriteNumber = ['7', '8', '100']
 		const favNumber = schema.get('favoriteNumber')
-		t.is(favNumber, 7)
+		t.is(
+			favNumber,
+			7,
+			'Schema did not transform array of strings to single number'
+		)
 	}
 }
