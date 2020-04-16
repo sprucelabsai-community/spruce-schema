@@ -1,4 +1,4 @@
-import { ISchemaFieldDefinition } from './fields'
+import { ISchemaFieldDefinition, ISelectFieldDefinition } from './fields'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import {
 	FieldDefinition,
@@ -91,6 +91,8 @@ export type FieldDefinitionValueType<
 				F['isRequired']
 		  >
 		: IsRequired<IsArray<any, F['isArray']>, F['isRequired']>
+	: F extends ISelectFieldDefinition
+	? F['options']['choices'][number]['value']
 	: F extends FieldDefinition
 	? IsRequired<
 			IsArray<Required<FieldDefinitionMap[F['type']]>['value'], F['isArray']>,

@@ -1,9 +1,29 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
 
+type Narrowable =
+	| string
+	| number
+	| boolean
+	| symbol
+	| object
+	| null
+	| undefined
+	| void
+	| ((...args: any[]) => any)
+	| {}
+
+/** Build select options so they can generate a union based on values */
+export function buildSelectChoices<
+	T extends { [k: string]: V | T } | Array<{ [k: string]: V | T }>,
+	V extends Narrowable
+>(t: T): T {
+	return t
+}
+
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
-	value: string
+	value: Narrowable
 	/** Human readable label for when selecting a choice */
 	label: string
 }
