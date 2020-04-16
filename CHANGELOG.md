@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.0.21...v1.1.0) (2020-04-16)
+
+
+### Features
+
+* buildSelectOptions for union generation ([8ba0e90](https://github.com/sprucelabsai/spruce-schema/commit/8ba0e90))
+
 ## [1.0.21](https://github.com/sprucelabsai/spruce-schema/compare/v1.0.20...v1.0.21) (2020-04-16)
 
 ## [1.0.20](https://github.com/sprucelabsai/spruce-schema/compare/v1.0.19...v1.0.20) (2020-04-16)
