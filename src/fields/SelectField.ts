@@ -24,7 +24,7 @@ export function buildSelectChoices<
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
-	value: Narrowable
+	value: string
 	/** Human readable label for when selecting a choice */
 	label: string
 }
