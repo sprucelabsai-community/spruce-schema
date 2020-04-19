@@ -1,33 +1,32 @@
 // TODO figure out how to get schema field mixins working from buildSchemaDefinition (SchemaDefinitionValues fails)
 
 import '@sprucelabs/path-resolver/register'
-// Import BaseTest, { test } from '@sprucelabs/test'
-import BaseTest from '@sprucelabs/test'
-// Import { ExecutionContext } from 'ava'
-// import { buildSchemaDefinition } from '..'
-// import { FieldType } from '../fields/fieldType'
-// import { SchemaDefinitionValues } from '../Schema'
+import BaseTest, { test } from '@sprucelabs/test'
+import { ExecutionContext } from 'ava'
+import { buildSchemaDefinition } from '..'
+import { FieldType } from '../fields/fieldType'
+// Import { SchemaDefinitionValues } from '../Schema'
 
 /** Context just for this test */
-// interface IContext {}
+interface IContext {}
 
 export default class BuildSchemaDefinitionTest extends BaseTest {
-	// @test('Can build schema (will always pass, but fail lint)')
-	// protected static async testBasicSchemaBuilding(
-	// 	t: ExecutionContext<IContext>
-	// ) {
-	// 	const schema = buildSchemaDefinition({
-	// 		id: 'test-1',
-	// 		name: 'test 1',
-	// 		fields: {
-	// 			firstName: {
-	// 				type: FieldType.Text
-	// 			}
-	// 		}
-	// 	})
-	// 	t.assert(schema)
-	// 	t.assert(schema.fields.firstName)
-	// }
+	@test('Can build schema (will always pass, but fail lint)')
+	protected static async testBasicSchemaBuilding(
+		t: ExecutionContext<IContext>
+	) {
+		const schema = buildSchemaDefinition({
+			id: 'test-1',
+			name: 'test 1',
+			fields: {
+				firstName: {
+					type: FieldType.Text
+				}
+			}
+		})
+		t.assert(schema)
+		t.assert(schema.fields.firstName)
+	}
 	// @test('Test mixing in field to the schema with object literal')
 	// protected static testMixingInFieldsWithObjectLiteral(
 	// 	t: ExecutionContext<IContext>

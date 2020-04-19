@@ -14,8 +14,7 @@ type Narrowable =
 	| ((...args: any[]) => any)
 	| {}
 
-//TODO figure out how to stop widening in the schema so types are saved
-/** Build select options so they can generate a union based on values */
+/** Define a schema type from a value with no widening */
 export default function buildSchemaDefinition<
 	S extends ISchemaDefinition,
 	T extends { [K in keyof S]: V | T },
@@ -23,13 +22,6 @@ export default function buildSchemaDefinition<
 >(t: T): T {
 	return t
 }
-
-/** Build a schema type for use in your skill */
-// export default function buildSchemaDefinition<T extends ISchemaDefinition>(
-// 	definition: T
-// ) {
-// 	return narrow(definition)
-// }
 
 // Export default function buildSchemaDefinition<
 // 	T extends ISchemaDefinition,
