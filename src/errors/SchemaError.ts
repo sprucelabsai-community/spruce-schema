@@ -1,5 +1,5 @@
 import BaseSpruceError from '@sprucelabs/error'
-import { SchemaErrorOptions, SchemaErrorCode } from './types'
+import { SchemaErrorOptions, SchemaErrorCode } from './error.types'
 
 export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 	/** A readable message */

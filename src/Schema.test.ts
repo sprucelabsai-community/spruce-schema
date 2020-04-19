@@ -5,7 +5,7 @@ import buildSchemaDefinition from './utilities/buildSchemaDefinition'
 import Schema, { SchemaError } from '.'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { unset } from 'lodash'
-import { SchemaErrorCode } from './errors/types'
+import { SchemaErrorCode } from './errors/error.types'
 
 /** Context just for this test */
 interface IContext {}

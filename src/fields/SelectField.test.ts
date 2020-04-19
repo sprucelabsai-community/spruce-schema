@@ -3,7 +3,6 @@ import BaseTest, { test } from '@sprucelabs/test'
 import { ExecutionContext } from 'ava'
 import Schema, { buildSchemaDefinition } from '..'
 import { FieldType } from './fieldType'
-import { buildSelectChoices } from './SelectField'
 
 /** Context just for this test */
 interface IContext {}
@@ -22,7 +21,7 @@ export default class SelectFieldTest extends BaseTest {
 				favoriteColor: {
 					type: FieldType.Select,
 					options: {
-						choices: buildSelectChoices([
+						choices: [
 							{
 								value: 'blue',
 								label: 'Blue'
@@ -31,7 +30,7 @@ export default class SelectFieldTest extends BaseTest {
 								value: 'red',
 								label: 'Red'
 							}
-						])
+						]
 					}
 				}
 			}

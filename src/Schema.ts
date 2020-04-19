@@ -7,7 +7,10 @@ import {
 	Field
 } from '#spruce:schema/fields/fields.types'
 import SchemaError from './errors/SchemaError'
-import { SchemaErrorCode, IInvalidFieldErrorOptions } from './errors/types'
+import {
+	SchemaErrorCode,
+	IInvalidFieldErrorOptions
+} from './errors/error.types'
 import FieldFactory from './factories/FieldFactory'
 
 /** The structure of schema.fields. key is field name, value is field definition */

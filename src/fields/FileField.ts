@@ -4,7 +4,7 @@ import pathUtil from 'path'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'
-import { SchemaErrorCode } from '../errors/types'
+import { SchemaErrorCode } from '../errors/error.types'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)

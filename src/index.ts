@@ -11,7 +11,7 @@ export { FieldType } from '#spruce:schema/fields/fieldType'
 export * from './fields'
 
 // Errors
-export * from './errors/types'
+export * from './errors/error.types'
 export { default as SchemaError } from './errors/SchemaError'
 
 // Builders
