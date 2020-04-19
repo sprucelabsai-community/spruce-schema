@@ -87,7 +87,7 @@ type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 
 type WrapSchemaField<S extends Array<ISchemaDefinition>> = {
 	[K in keyof S]: S[K] extends ISchemaDefinition
-		? SchemaDefinitionValues<S[K]>
+		? { schemaId: S[K]['id']; values: SchemaDefinitionValues<S[K]> }
 		: any
 }
 
