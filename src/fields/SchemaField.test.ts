@@ -13,7 +13,9 @@ export default class SchemaFieldTest extends BaseTest {
 	@test(
 		'schema definition schema field types work with (test will always pass, but lint will fail)'
 	)
-	protected static async canAccessSpruce(t: ExecutionContext<IContext>) {
+	protected static async canDefineBasicRelationships(
+		t: ExecutionContext<IContext>
+	) {
 		const carDefinition = buildSchemaDefinition({
 			id: 'car',
 			name: 'car',
