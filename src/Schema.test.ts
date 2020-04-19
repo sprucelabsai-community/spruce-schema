@@ -12,7 +12,7 @@ interface IContext {}
 
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')
-	protected static async canAccessSpruce(t: ExecutionContext<IContext>) {
+	protected static async testBasicValidation(t: ExecutionContext<IContext>) {
 		const definition = buildSchemaDefinition({
 			id: 'simple-test',
 			name: 'Simple Test Schema'
