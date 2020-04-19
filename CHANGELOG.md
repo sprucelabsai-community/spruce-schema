@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.1.1...v1.2.0) (2020-04-19)
+
+
+### Features
+
+* build schema now narrows ([a4ca4e7](https://github.com/sprucelabsai/spruce-schema/commit/a4ca4e7))
+
 ## [1.1.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.1.0...v1.1.1) (2020-04-17)
 
 # [1.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.0.21...v1.1.0) (2020-04-16)
