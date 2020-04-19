@@ -23,7 +23,7 @@ export default function buildSchemaDefinition<
 	return t
 }
 
-// TODO proposal, schema field inherence, second arg is fields mixed into schema and maintain narrow typing
+// TODO proposal, schema field inheritance, second arg is fields mixed into schema and maintain narrow typing
 // Export default function buildSchemaDefinition<
 // 	T extends ISchemaDefinition,
 // 	F extends { [name: string]: FieldDefinition }
