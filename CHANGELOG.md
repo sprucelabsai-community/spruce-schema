@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.3...v1.2.4) (2020-04-19)
+
+
+### Bug Fixes
+
+* test renamed from default ([33dfbb0](https://github.com/sprucelabsai/spruce-schema/commit/33dfbb0))
+
 ## [1.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.2...v1.2.3) (2020-04-19)
 
 
