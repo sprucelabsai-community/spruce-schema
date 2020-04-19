@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.4...v1.3.0) (2020-04-19)
+
+
+### Features
+
+* schema unions have schemaId and values to help resolve ([3942b01](https://github.com/sprucelabsai/spruce-schema/commit/3942b01))
+
 ## [1.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.3...v1.2.4) (2020-04-19)
 
 
