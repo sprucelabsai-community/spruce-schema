@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.1...v1.2.2) (2020-04-19)
+
+
+### Bug Fixes
+
+* comment spelling fixes ([56d0dc6](https://github.com/sprucelabsai/spruce-schema/commit/56d0dc6))
+
 ## [1.2.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.0...v1.2.1) (2020-04-19)
 
 # [1.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.1.1...v1.2.0) (2020-04-19)
