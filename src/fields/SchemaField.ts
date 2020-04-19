@@ -10,6 +10,10 @@ export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 		schemaId?: string
 		/** The actual schema */
 		schema?: ISchemaDefinition
+		/** If this needs to be a union of ids */
+		schemaIds?: string[]
+		/** Actual schemas if more that one, this will make a union */
+		schemas?: ISchemaDefinition[]
 	}
 }
 

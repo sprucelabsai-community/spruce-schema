@@ -48,7 +48,7 @@ export type SchemaDefinitionPartialValues<T extends ISchemaDefinition> = {
 	[K in SchemaFieldNames<T>]?: SchemaFieldDefinitionValueType<T, K> | undefined
 }
 
-/** Helper to make your schema thinner */
+/** Turn a schema until it's "values" type */
 export type SchemaDefinitionValues<
 	T extends ISchemaDefinition,
 	K extends OptionalFieldNames<T> = OptionalFieldNames<T>,
@@ -79,24 +79,36 @@ type Unpack<A> = A extends Array<infer E> ? E : A
 /** Easy array helper */
 type IsArray<T, isArray> = isArray extends true ? Unpack<T>[] : Unpack<T>
 
+/** Array help that does not unpack (you could get array of arrays with this) */
+type IsArrayNoUnpack<T, isArray> = isArray extends true ? T[] : T
+
 /** Easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 
+type WrapSchemaField<S extends Array<ISchemaDefinition>> = {
+	[K in keyof S]: S[K] extends ISchemaDefinition
+		? SchemaDefinitionValues<S[K]>
+		: any
+}
+
+export type SchemaFieldValueType<
+	F extends ISchemaFieldDefinition
+> = F['options']['schemas'] extends Array<ISchemaDefinition>
+	? IsArrayNoUnpack<
+			WrapSchemaField<F['options']['schemas']>[number],
+			F['isArray']
+	  >
+	: F['options']['schema'] extends ISchemaDefinition
+	? IsArray<SchemaDefinitionValues<F['options']['schema']>, F['isArray']>
+	: any
+
 export type FieldDefinitionValueType<
 	F extends FieldDefinition
-> = F extends ISchemaFieldDefinition
-	? F['options']['schema'] extends ISchemaDefinition
-		? IsRequired<
-				IsArray<
-					SchemaDefinitionAllValues<F['options']['schema']>,
-					F['isArray']
-				>,
-				F['isRequired']
-		  >
-		: IsRequired<IsArray<any, F['isArray']>, F['isRequired']>
-	: F extends ISelectFieldDefinition
+> = F extends ISchemaFieldDefinition // Schema field
+	? SchemaFieldValueType<F>
+	: F extends ISelectFieldDefinition // Select field
 	? F['options']['choices'][number]['value']
-	: F extends FieldDefinition
+	: F extends FieldDefinition // All fields
 	? IsRequired<
 			IsArray<Required<FieldDefinitionMap[F['type']]>['value'], F['isArray']>,
 			F['isRequired']
