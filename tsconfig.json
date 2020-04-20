@@ -17,7 +17,7 @@
 		"baseUrl": ".",
 		"experimentalDecorators": true,
 		"paths": {
-			"#spruce:schema/*": ["src/*"]
+			"#spruce:schema/*": ["*", "src/*"]
 		}
 	},
 	"include": ["./*.ts", "./**/*.ts"],
