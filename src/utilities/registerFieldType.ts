@@ -1,4 +1,4 @@
-import { FieldSubclass } from '../fields'
+import { FieldSubclass } from '../fields/AbstractField'
 
 export interface IFieldRegistration {
 	/** The type that is used as the key to the enum */

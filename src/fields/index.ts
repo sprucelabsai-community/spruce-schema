@@ -1,6 +1,4 @@
-/** Export everything */
-export * from './AbstractField'
-export { default as AbstractField } from './AbstractField'
+/** Export everything EXCEPT abstract fields. It needs to be imported directly to avoid circular dependencies*/
 export * from './BooleanField'
 export { default as BooleanField } from './BooleanField'
 export * from './TextField'
