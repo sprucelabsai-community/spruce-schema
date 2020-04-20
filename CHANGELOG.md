@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.0...v1.3.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* path alias updated to support build directory ([2d3f21b](https://github.com/sprucelabsai/spruce-schema/commit/2d3f21b))
+
 # [1.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.2.4...v1.3.0) (2020-04-19)
 
 
