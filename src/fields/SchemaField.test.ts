@@ -203,6 +203,7 @@ export default class SchemaFieldTest extends BaseTest {
 
 		testArraySchemaField.forEach(tool => {
 			if (tool.schemaId === 'wrench') {
+				// @ts-ignore // TODO better typing this deep
 				t.is(tool.values.wrenchSize, 250)
 			}
 		})

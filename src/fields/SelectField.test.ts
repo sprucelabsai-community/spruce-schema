@@ -37,6 +37,7 @@ export default class SelectFieldTest extends BaseTest {
 		})
 
 		const user = new Schema(userDefinition, { favoriteColor: 'blue' })
+		// @ts-ignore // TODO better typing
 		const favColor: SelectUnion = user.get('favoriteColor')
 		t.assert(favColor)
 	}
