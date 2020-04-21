@@ -217,7 +217,7 @@ export default class SchemaFieldTest extends BaseTest {
 			}
 		})
 		const favTool = person.get('favoriteTool')
-		const tools = person.get('tools')
+		// Const tools = person.get('tools')
 
 		if (favTool?.schemaId === 'screwdriver') {
 			const screwDriver: SchemaDefinitionValues<typeof screwdriverDefinition> =
@@ -227,6 +227,5 @@ export default class SchemaFieldTest extends BaseTest {
 			// t.is(favTool.values.screwdriverLength, 40)
 			t.is(screwDriver.screwdriverLength, 40)
 		}
-		console.log(favTool, tools)
 	}
 }
