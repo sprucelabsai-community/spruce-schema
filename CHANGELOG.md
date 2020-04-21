@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.2...v1.3.3) (2020-04-21)
+
+
+### Bug Fixes
+
+* moved FieldtemlateDetails to seperate file to break circular dependency ([1ae2923](https://github.com/sprucelabsai/spruce-schema/commit/1ae2923))
+
 ## [1.3.2](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.1...v1.3.2) (2020-04-20)
 
 
