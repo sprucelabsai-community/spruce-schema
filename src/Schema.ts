@@ -217,7 +217,7 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** Tells you if a schema definition is valid */
-	public static isDefinitionValid(definition: ISchemaDefinition): boolean {
+	public static isDefinitionValid(definition: unknown): boolean {
 		try {
 			Schema.validateDefinition(definition)
 			return true
@@ -227,7 +227,9 @@ export default class Schema<T extends ISchemaDefinition> {
 	}
 
 	/** Throws a field validation error */
-	public static validateDefinition(definition: ISchemaDefinition) {
+	public static validateDefinition(
+		definition: any
+	): asserts definition is ISchemaDefinition {
 		const errors: string[] = []
 
 		if (!definition.id) {

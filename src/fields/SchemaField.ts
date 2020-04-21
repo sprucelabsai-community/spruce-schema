@@ -1,6 +1,8 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
 import { ISchemaDefinition } from '../Schema'
 import { FieldType } from '#spruce:schema/fields/fieldType'
+import Schema, { SchemaError } from '..'
+import { SchemaErrorCode } from '../errors/error.types'
 
 export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 	/** * .Schema go team! */
@@ -18,6 +20,44 @@ export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 }
 
 export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
+	public static normalizeOptionsToSchemasOrIds(
+		field: ISchemaFieldDefinition
+	): (string | ISchemaDefinition)[] {
+		const { options } = field
+		return [
+			...(options.schemaIds || []),
+			...(options.schemas || []),
+			...(options.schemaId ? [options.schemaId] : []),
+			...(options.schema ? [options.schema] : [])
+		]
+	}
+	public static normalizeOptionsToSchemaIds(
+		field: ISchemaFieldDefinition
+	): string[] {
+		const { options } = field
+		const schemasOrIds: (string | ISchemaDefinition)[] = [
+			...(options.schemaIds || []),
+			...(options.schemas || []),
+			...(options.schemaId ? [options.schemaId] : []),
+			...(options.schema ? [options.schema] : [])
+		]
+
+		const ids: string[] = schemasOrIds.map(schemaOrId => {
+			if (typeof schemaOrId === 'string') {
+				return schemaOrId
+			} else if (Schema.isDefinitionValid(schemaOrId)) {
+				return schemaOrId.id
+			} else {
+				throw new SchemaError({
+					code: SchemaErrorCode.InvalidSchemaDefinition,
+					schemaId: JSON.stringify(options),
+					errors: ['invalid_schema_field_options']
+				})
+			}
+		})
+
+		return ids
+	}
 	public static templateDetails() {
 		return {
 			valueType: 'ISchemaDefinition',

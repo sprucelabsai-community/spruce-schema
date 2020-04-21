@@ -1,4 +1,5 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
+import IFieldTemplateDetails from './fieldTemplateDetails'
 
 export type IFieldDefinition<Value> = {
 	/** The filed type */
@@ -46,14 +47,6 @@ export type IFieldDefinition<Value> = {
 			value?: Value
 	  }
 )
-
-export interface IFieldTemplateDetails {
-	/** The type of value (string, number) */
-	valueType: string
-
-	/** A description of the field */
-	description: string
-}
 
 /** A type that matches a subclass of the abstract field */
 export type FieldSubclass = new (...args: any[]) => AbstractField<

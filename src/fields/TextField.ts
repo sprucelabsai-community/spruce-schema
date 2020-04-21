@@ -1,8 +1,6 @@
-import AbstractField, {
-	IFieldDefinition,
-	IFieldTemplateDetails
-} from './AbstractField'
+import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
+import IFieldTemplateDetails from './fieldTemplateDetails'
 
 export type ITextFieldDefinition = IFieldDefinition<string> & {
 	/** * Text field */
