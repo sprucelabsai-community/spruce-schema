@@ -25,3 +25,6 @@ export { default as registerFieldType } from './utilities/registerFieldType'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
+
+// Template types
+export * from './template.types'

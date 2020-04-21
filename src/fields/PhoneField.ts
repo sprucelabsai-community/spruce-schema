@@ -1,6 +1,7 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export type IPhoneFieldDefinition = IFieldDefinition<string> & {
 	/** * .Phone a great way to validate and format values */
@@ -12,11 +13,14 @@ export type IPhoneFieldDefinition = IFieldDefinition<string> & {
 }
 
 export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
-	public static templateDetails() {
+	public static get description() {
+		return 'Takes anything close to a phone number and formats it. Also great at validating numbers.'
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IPhoneFieldDefinition>
+	) {
 		return {
-			valueType: 'string',
-			description:
-				'Takes anything close to a phone number and formats it. Also great at validating numbers.'
+			valueType: `string${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 

@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export type IRawFieldDefinition = IFieldDefinition<any> & {
 	/** * .Raw - Deprecated, don't use */
@@ -10,11 +11,14 @@ export type IRawFieldDefinition = IFieldDefinition<any> & {
 }
 
 export default class RawField extends AbstractField<IRawFieldDefinition> {
-	public static templateDetails() {
+	public static get description() {
+		return 'Deprecated. For internal purposes only (will be deleted soon)'
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
+	) {
 		return {
-			valueType: 'any',
-			description:
-				'Deprecated. For internal purposes only (will be deleted soon)'
+			valueType: `any${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 }

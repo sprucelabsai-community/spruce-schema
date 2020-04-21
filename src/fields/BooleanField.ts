@@ -1,5 +1,6 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export type IBooleanFieldDefinition = IFieldDefinition<boolean> & {
 	/** * A true/false field */
@@ -9,11 +10,15 @@ export type IBooleanFieldDefinition = IFieldDefinition<boolean> & {
 export default class BooleanField extends AbstractField<
 	IBooleanFieldDefinition
 > {
-	public static templateDetails() {
+	public static get description() {
+		return 'A true/false. Converts false string to false, all other strings to true.'
+	}
+
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IBooleanFieldDefinition>
+	) {
 		return {
-			valueType: 'boolean',
-			description:
-				'A true/false. Converts false string to false, all other strings to true.'
+			valueType: `boolean${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 	/** * Turn everything into a string */

@@ -4,5 +4,6 @@ import { NumberField } from '../fields'
 export default registerFieldType({
 	type: 'Number',
 	class: NumberField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

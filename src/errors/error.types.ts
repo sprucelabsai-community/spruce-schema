@@ -1,5 +1,5 @@
 import { SpruceErrorOptions, ISpruceErrorOptions } from '@sprucelabs/error'
-import { FieldType } from '../fields/fieldType'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export enum SchemaErrorCode {
 	/** * Schema was not found */
@@ -11,7 +11,9 @@ export enum SchemaErrorCode {
 	/** * When transforming a value fails */
 	TransformationFailed = 'TRANSFORMATION_ERROR',
 	/** * When a definition is not value */
-	InvalidSchemaDefinition = 'INVALID_SCHEMA_DEFINITION'
+	InvalidSchemaDefinition = 'INVALID_SCHEMA_DEFINITION',
+	/** * When something is not implemented */
+	NotImplemented = 'NOT_IMPLEMENTED'
 }
 
 export type SchemaErrorOptions =
@@ -20,6 +22,7 @@ export type SchemaErrorOptions =
 	| IInvalidFieldErrorOptions
 	| ITransformationFailedErrorOptions
 	| IInvalidSchemaDefinitionErrorOptions
+	| INotImplementedErrorOptions
 	| SpruceErrorOptions
 
 export interface ISchemaErrorOptionsNotFound
@@ -64,4 +67,12 @@ export interface IInvalidSchemaDefinitionErrorOptions
 	schemaId: string
 	/** All the errors in the definition */
 	errors: string[]
+}
+
+export interface INotImplementedErrorOptions
+	extends ISpruceErrorOptions<SchemaErrorCode> {
+	/** * The field could not transform the value */
+	code: SchemaErrorCode.NotImplemented
+	/** What someone is to do based on something to being implemented */
+	instructions: string
 }

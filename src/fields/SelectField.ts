@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
@@ -19,17 +20,28 @@ export type ISelectFieldDefinition = IFieldDefinition<string> & {
 export default class SelectField<
 	T extends ISelectFieldDefinition = ISelectFieldDefinition
 > extends AbstractField<T> {
+	public static get description() {
+		return 'Stored as string, lets user select between available options.'
+	}
+
 	public constructor(definition: T) {
 		super(definition)
 		if (!definition.options || !definition.options.choices) {
 			throw new Error('Select field is missing choices.')
 		}
 	}
-	public static templateDetails() {
+
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<ISelectFieldDefinition>
+	) {
+		// Build union of select options
+		const { definition } = options
+		const {
+			options: { choices }
+		} = definition
+
 		return {
-			valueType: 'string',
-			description:
-				'Stored as string, lets user select between available options.'
+			valueType: `(${choices.map(choice => `"${choice.value}"`).join(' | ')})`
 		}
 	}
 

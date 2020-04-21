@@ -24,7 +24,10 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 				})
 				break
 			case SchemaErrorCode.TransformationFailed:
-				message = `The FileType.${options.fieldType} field could not transform a ${options.incomingTypeof} to the desired valueType. The incoming value was ${options.incomingValue}.`
+				message = `${options.code}: The FileType.${options.fieldType} field could not transform a ${options.incomingTypeof} to the desired valueType. The incoming value was ${options.incomingValue}.`
+				break
+			case SchemaErrorCode.NotImplemented:
+				message = `${options.code}: ${options.instructions}`
 				break
 			default:
 				message = this.message

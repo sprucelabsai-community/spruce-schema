@@ -4,5 +4,6 @@ import { SelectField } from '../fields'
 export default registerFieldType({
 	type: 'Select',
 	class: SelectField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

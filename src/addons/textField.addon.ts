@@ -4,5 +4,6 @@ import { TextField } from '../fields'
 export default registerFieldType({
 	type: 'Text',
 	class: TextField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

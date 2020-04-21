@@ -4,5 +4,6 @@ import { RawField } from '../fields'
 export default registerFieldType({
 	type: 'Raw',
 	class: RawField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

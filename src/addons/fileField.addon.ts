@@ -4,5 +4,6 @@ import { FileField } from '../fields'
 export default registerFieldType({
 	type: 'File',
 	class: FileField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

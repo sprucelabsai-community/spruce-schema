@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export interface IAddressFieldValue {
 	street1: string
@@ -19,10 +20,16 @@ export type IAddressFieldDefinition = IFieldDefinition<IAddressFieldValue> & {
 export default class AddressField extends AbstractField<
 	IAddressFieldDefinition
 > {
-	public static templateDetails() {
+	public static get description() {
+		return 'An address with geocoding ability *coming soon*'
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IAddressFieldDefinition>
+	) {
 		return {
-			valueType: 'IAddressFieldValue',
-			description: 'An address with geocoding ability *coming soon*'
+			valueType: `${options.importAs}.IAddressFieldValue${
+				options.definition.isArray ? '[]' : ''
+			}`
 		}
 	}
 }

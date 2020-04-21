@@ -4,5 +4,6 @@ import { IdField } from '../fields'
 export default registerFieldType({
 	type: 'Id',
 	class: IdField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

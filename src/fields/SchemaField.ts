@@ -3,6 +3,11 @@ import { ISchemaDefinition } from '../Schema'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import Schema, { SchemaError } from '..'
 import { SchemaErrorCode } from '../errors/error.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+	TemplateRenderAs
+} from '../template.types'
 
 export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 	/** * .Schema go team! */
@@ -19,7 +24,16 @@ export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 	}
 }
 
+export interface ISchemaFieldDefinitionValueUnion {
+	schemaId: string
+	values: Record<string, any>
+}
+
 export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
+	public static get description() {
+		return 'A way to map relationships.'
+	}
+	/** Take field options and get you an array of schema definitions or ids */
 	public static normalizeOptionsToSchemasOrIds(
 		field: ISchemaFieldDefinition
 	): (string | ISchemaDefinition)[] {
@@ -31,6 +45,8 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 			...(options.schema ? [options.schema] : [])
 		]
 	}
+
+	/** Take field options and turn it into an array of schema id's */
 	public static normalizeOptionsToSchemaIds(
 		field: ISchemaFieldDefinition
 	): string[] {
@@ -58,11 +74,55 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 
 		return ids
 	}
-	public static templateDetails() {
+
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
+	): IFieldTemplateDetails {
+		const { templateItems, renderAs, definition, globalNamespace } = options
+		const schemaIds = SchemaField.normalizeOptionsToSchemaIds(definition)
+		const unions: { schemaId: string; valueType: string }[] = []
+
+		schemaIds.forEach(schemaId => {
+			const matchedTemplateItem = templateItems.find(
+				item => item.id === schemaId
+			)
+
+			if (matchedTemplateItem) {
+				unions.push({
+					schemaId: matchedTemplateItem.id,
+					valueType: `${globalNamespace}.${matchedTemplateItem.namespace}.${
+						renderAs === 'type'
+							? `I${matchedTemplateItem.pascalName}`
+							: matchedTemplateItem.pascalName
+					}${
+						renderAs === 'type'
+							? ``
+							: renderAs === 'definitionType'
+							? `.IDefinition`
+							: `.definition`
+					}`
+				})
+			} else {
+				throw new SchemaError({
+					code: SchemaErrorCode.SchemaNotFound,
+					schemaId,
+					friendlyMessage:
+						'Failed during generation of value type on the Schema field. This can happen if schema id "${schemaId}" is not in "templateItems" (which should hold every schema in your skill).'
+				})
+			}
+		})
+
+		let valueType
+		if (renderAs === TemplateRenderAs.Type) {
+			valueType = unions
+				.map(item => (schemaIds.length > 1 ? item : item.valueType))
+				.join(' | ')
+		} else {
+			valueType = '[' + unions.map(item => item.valueType).join(', ') + ']'
+		}
+
 		return {
-			valueType: 'ISchemaDefinition',
-			description:
-				'A way to map relationships. You only need to map relationships one way, two way is currently not supported.'
+			valueType: `(${valueType})${definition.isArray ? '[]' : ''}`
 		}
 	}
 }

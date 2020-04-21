@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export type IIdFieldDefinition = IFieldDefinition<string> & {
 	/** * .Id a field to hold a unique id (UUID4 in Spruce) */
@@ -8,10 +9,14 @@ export type IIdFieldDefinition = IFieldDefinition<string> & {
 }
 
 export default class IdField extends AbstractField<IIdFieldDefinition> {
-	public static templateDetails() {
+	public static get description() {
+		return "A unique identifier field, UUID's in our case."
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IIdFieldDefinition>
+	) {
 		return {
-			valueType: 'string',
-			description: "A unique identifier field, UUID's in our case."
+			valueType: `string${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 }

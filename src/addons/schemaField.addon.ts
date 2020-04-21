@@ -4,5 +4,6 @@ import { SchemaField } from '../fields'
 export default registerFieldType({
 	type: 'Schema',
 	class: SchemaField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

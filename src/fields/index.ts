@@ -1,5 +1,4 @@
 /** Export everything EXCEPT abstract fields. It needs to be imported directly to avoid circular dependencies*/
-export { default as IFieldTemplateDetails } from './fieldTemplateDetails'
 export * from './BooleanField'
 export { default as BooleanField } from './BooleanField'
 export * from './TextField'

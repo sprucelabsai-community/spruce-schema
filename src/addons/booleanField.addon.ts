@@ -4,5 +4,6 @@ import { BooleanField } from '../fields'
 export default registerFieldType({
 	type: 'Boolean',
 	class: BooleanField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

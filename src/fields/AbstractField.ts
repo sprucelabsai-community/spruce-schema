@@ -1,5 +1,19 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import IFieldTemplateDetails from './fieldTemplateDetails'
+import SchemaError from '../errors/SchemaError'
+import { SchemaErrorCode } from '../errors/error.types'
+import log from '../lib/log'
+
+// DO NOT INCLUDE ANY OF THE FOLLOWING OR CIRCULAR DEPENDENCIES HIT
+// Import {
+// 	IFieldTemplateDetails,
+// 	IFieldTemplateDetailOptions
+// } from '../template.types'
+
+// this needs to be here to avoid circular dependencies
+interface IFieldTemplateDetails {
+	/** The type of value (string, number) */
+	valueType: string
+}
 
 export type IFieldDefinition<Value> = {
 	/** The filed type */
@@ -59,13 +73,41 @@ export default abstract class AbstractField<
 	/** The definition for this field */
 	public definition: T
 
+	/** Construct a new field based on the definition */
 	public constructor(definition: T) {
 		this.definition = definition
 	}
 
+	/** A description of this field for others */
+	public static get description(): string {
+		throw new SchemaError({
+			code: SchemaErrorCode.NotImplemented,
+			instructions: `Copy and paste this into ${this.name}:
+
+public static get description() {
+	return '*** describe your field here ***'
+}
+
+`
+		})
+	}
+
 	/** Details needed for generating templates */
-	public static templateDetails(): IFieldTemplateDetails {
-		throw new Error('field types must implement public static templateDetails')
+	public static templateDetails(options: any): IFieldTemplateDetails {
+		log.info(options)
+		throw new SchemaError({
+			code: SchemaErrorCode.NotImplemented,
+			instructions: `Copy and paste this into ${this.name}:
+			
+public static templateDetails(
+	options: IFieldTemplateDetailOptions<ITextFieldDefinition>
+): IFieldTemplateDetails {
+	const { definition } = options
+	return {
+		valueType: \`string\${definition.isArray ? '[]' : ''}\`
+	}
+}`
+		})
 	}
 
 	/** Get the type off the definition */

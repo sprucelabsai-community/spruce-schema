@@ -4,5 +4,6 @@ import { AddressField } from '../fields'
 export default registerFieldType({
 	type: 'Address',
 	class: AddressField,
-	package: '@sprucelabs/schema'
+	package: '@sprucelabs/schema',
+	importAs: 'SpruceSchema'
 })

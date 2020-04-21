@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 /** A duration value object */
 export interface IDurationFieldValue {
@@ -25,11 +26,15 @@ export type IDurationFieldDefinition = IFieldDefinition<IDurationFieldValue> & {
 export default class DurationField extends AbstractField<
 	IDurationFieldDefinition
 > {
-	public static templateDetails() {
+	public static get description() {
+		return 'A span of time represented in { hours, minutes, seconds, ms }'
+	}
+
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IDurationFieldDefinition>
+	) {
 		return {
-			valueType: 'IDurationFieldValue',
-			description:
-				'A span of time represented in { hours, minutes, seconds, ms }'
+			valueType: `IDurationFieldValue${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 

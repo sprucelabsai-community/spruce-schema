@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField, { IFieldDefinition } from './AbstractField'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 export interface IDateTimeFieldValue {
 	gmt: string
@@ -14,10 +15,16 @@ export type IDateTimeFieldDefinition = IFieldDefinition<IDateTimeFieldValue> & {
 export default class DateTimeField extends AbstractField<
 	IDateTimeFieldDefinition
 > {
-	public static templateDetails() {
+	public static get description() {
+		return 'Date and time support.'
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IDateTimeFieldDefinition>
+	) {
 		return {
-			valueType: 'IDateTimeFieldValue',
-			description: 'Date and time support.'
+			valueType: `${options.importAs}.IDateTimeFieldValue${
+				options.definition.isArray ? '[]' : ''
+			}`
 		}
 	}
 }

@@ -5,6 +5,7 @@ import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'
 import { SchemaErrorCode } from '../errors/error.types'
+import { IFieldTemplateDetailOptions } from '../template.types'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
@@ -35,10 +36,14 @@ export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
 }
 
 export default class FileField extends AbstractField<IFileFieldDefinition> {
-	public static templateDetails() {
+	public static get description() {
+		return 'A way to handle files. Supports mime-type lookups.'
+	}
+	public static templateDetails(
+		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
+	) {
 		return {
-			valueType: 'IFileFieldValue',
-			description: 'A way to handle files. Supports mime-type lookups.'
+			valueType: `IFileFieldValue${options.definition.isArray ? '[]' : ''}`
 		}
 	}
 
