@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.3...v1.3.4) (2020-04-21)
+
+
+### Bug Fixes
+
+* non-narrowing buildSchemaDefinition for better typeing in input ([9b40c37](https://github.com/sprucelabsai/spruce-schema/commit/9b40c37))
+
 ## [1.3.3](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.2...v1.3.3) (2020-04-21)
 
 
