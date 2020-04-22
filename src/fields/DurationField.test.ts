@@ -1,13 +1,8 @@
-import { register } from '@sprucelabs/path-resolver'
-register()
-import BaseTest, { ISpruce, test } from '@sprucelabs/test'
-import { ExecutionContext } from 'ava'
+import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
 import { IDurationFieldValue } from './DurationField'
 import { FieldFactory } from '..'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
-/** Context just for this test */
-interface IContext {}
 export default class DurationFieldTest extends BaseTest {
 	@test(
 		'can get seconds from ms',
@@ -25,14 +20,13 @@ export default class DurationFieldTest extends BaseTest {
 		{ ms: 0, seconds: 12, minutes: 31, hours: 2 }
 	)
 	protected static async testCompletingDurationObject(
-		t: ExecutionContext<IContext>,
 		spruce: ISpruce,
 		partial: Partial<IDurationFieldValue>,
 		expected: IDurationFieldValue
 	) {
 		const field = FieldFactory.field({ type: FieldType.Duration })
 		const value = field.toValueType(partial)
-		t.deepEqual(
+		assert.deepEqual(
 			value,
 			expected,
 			`Duration field did not map ${JSON.stringify(

@@ -1,21 +1,14 @@
-import '@sprucelabs/path-resolver/register'
-import BaseTest, { test } from '@sprucelabs/test'
-import { ExecutionContext } from 'ava'
+import BaseTest, { test, assert } from '@sprucelabs/test'
 import Schema from '../Schema'
 import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { SchemaDefinitionValues, SchemaFieldValueType } from '../Schema'
 
-/** Context just for this test */
-interface IContext {}
-
 export default class SchemaFieldTest extends BaseTest {
 	@test(
 		'schema definition schema field types work with (test will always pass, but lint will fail)'
 	)
-	protected static async canDefineBasicRelationships(
-		t: ExecutionContext<IContext>
-	) {
+	protected static async canDefineBasicRelationships() {
 		const carDefinition = buildSchemaDefinition({
 			id: 'car',
 			name: 'car',
@@ -63,15 +56,15 @@ export default class SchemaFieldTest extends BaseTest {
 			requiredCar: { name: 'go cart' }
 		}
 
-		t.assert(user.name)
-		t.assert(user.requiredCar)
-		t.is(user.requiredCar.name, 'go cart')
-		t.is(user.optionalCar, undefined)
-		t.is(user.familyCars, undefined)
+		assert.isOk(user.name)
+		assert.isOk(user.requiredCar)
+		assert.equal(user.requiredCar.name, 'go cart')
+		assert.equal(user.optionalCar, undefined)
+		assert.equal(user.familyCars, undefined)
 	}
 
 	@test('Testing schema field type as schema instance')
-	protected static testIsArray(t: ExecutionContext<IContext>) {
+	protected static testIsArray() {
 		const carDefinition = buildSchemaDefinition({
 			id: 'car',
 			name: 'car',
@@ -120,16 +113,16 @@ export default class SchemaFieldTest extends BaseTest {
 			familyCars: [{ name: 'go cart' }]
 		})
 
-		t.deepEqual(user.get('familyCars'), [{ name: 'go cart' }])
+		assert.deepEqual(user.get('familyCars'), [{ name: 'go cart' }])
 
 		// Test transforming to array works
 		// @ts-ignore
 		user.values.familyCars = { name: 'scooter' }
-		t.deepEqual(user.get('familyCars'), [{ name: 'scooter' }])
+		assert.deepEqual(user.get('familyCars'), [{ name: 'scooter' }])
 	}
 
 	@test('Can union many schemas')
-	protected static testingUnionOfSchemas(t: ExecutionContext<IContext>) {
+	protected static testingUnionOfSchemas() {
 		const wrenchDefinition = buildSchemaDefinition({
 			id: 'wrench',
 			name: 'Wrench',
@@ -186,7 +179,7 @@ export default class SchemaFieldTest extends BaseTest {
 		}
 
 		if (testSingleSchemaField.schemaId === 'screwdriver') {
-			t.is(testSingleSchemaField.values.screwdriverLength, 10)
+			assert.equal(testSingleSchemaField.values.screwdriverLength, 10)
 		}
 
 		type ManyType = SchemaFieldValueType<{
@@ -204,7 +197,7 @@ export default class SchemaFieldTest extends BaseTest {
 		testArraySchemaField.forEach(tool => {
 			if (tool.schemaId === 'wrench') {
 				// @ts-ignore // TODO better typing this deep
-				t.is(tool.values.wrenchSize, 250)
+				assert.equal(tool.values.wrenchSize, 250)
 			}
 		})
 
@@ -224,8 +217,8 @@ export default class SchemaFieldTest extends BaseTest {
 				favTool.values
 			// TODO why do we have to cast this (because values in schema are not being narrowed?)?
 			// uncomment to test
-			// t.is(favTool.values.screwdriverLength, 40)
-			t.is(screwDriver.screwdriverLength, 40)
+			// assert.equal(favTool.values.screwdriverLength, 40)
+			assert.equal(screwDriver.screwdriverLength, 40)
 		}
 	}
 }

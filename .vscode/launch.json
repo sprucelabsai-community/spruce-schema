@@ -8,21 +8,34 @@
 			"type": "node",
 			"request": "launch",
 			"name": "test:file",
-			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-			"runtimeArgs": ["debug", "${file}", "--break"],
-			"console": "integratedTerminal",
+			"runtimeExecutable": "${env:NVM_BIN}/node",
+			"runtimeArgs": [
+				"-r",
+				"@sprucelabs/path-resolver/register",
+				"--inspect-brk",
+				"${workspaceFolder}/node_modules/.bin/jest",
+				"${relativeFile}"
+			],
 			"port": 9229,
-			"skipFiles": ["<node_internals>/**/*.js"]
+			"cwd": "${fileDirname}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
 		},
 		{
 			"type": "node",
 			"request": "launch",
 			"name": "test:all",
-			"runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-			"runtimeArgs": ["debug", "**/*.test.ts"],
-			"console": "integratedTerminal",
+			"runtimeExecutable": "${env:NVM_BIN}/node",
+			"runtimeArgs": [
+				"-r",
+				"@sprucelabs/path-resolver/register",
+				"--inspect-brk",
+				"${workspaceFolder}/node_modules/.bin/jest"
+			],
 			"port": 9229,
-			"skipFiles": ["<node_internals>/**/*.js"]
+			"cwd": "${fileDirname}",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen"
 		}
 	]
 }
