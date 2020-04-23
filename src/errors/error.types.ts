@@ -13,7 +13,11 @@ export enum SchemaErrorCode {
 	/** * When a definition is not value */
 	InvalidSchemaDefinition = 'INVALID_SCHEMA_DEFINITION',
 	/** * When something is not implemented */
-	NotImplemented = 'NOT_IMPLEMENTED'
+	NotImplemented = 'NOT_IMPLEMENTED',
+	/** * Invalid field options */
+	InvalidFieldOptions = 'INVALID_FIELD_OPTIONS',
+	/** * A field was registered that was not valid */
+	InvalidFieldRegistration = 'INVALID_FIELD_REGISTRATION'
 }
 
 export type SchemaErrorOptions =
@@ -23,6 +27,8 @@ export type SchemaErrorOptions =
 	| ITransformationFailedErrorOptions
 	| IInvalidSchemaDefinitionErrorOptions
 	| INotImplementedErrorOptions
+	| IInvalidFieldOptionsErrorOptions
+	| IInvalidFieldRegistrationErrorOptions
 	| SpruceErrorOptions
 
 export interface ISchemaErrorOptionsNotFound
@@ -75,4 +81,32 @@ export interface INotImplementedErrorOptions
 	code: SchemaErrorCode.NotImplemented
 	/** What someone is to do based on something to being implemented */
 	instructions: string
+}
+
+export interface IInvalidFieldOptionsErrorOptions
+	extends ISpruceErrorOptions<SchemaErrorCode> {
+	/** * The field could not transform the value */
+	code: SchemaErrorCode.InvalidFieldOptions
+	/** The schema with the bad options */
+	schemaId?: string
+	/** The field with the bad options */
+	fieldName?: string
+	/** The bad options  */
+	options: Record<string, any>
+}
+
+export interface IInvalidFieldRegistrationErrorOptions
+	extends ISpruceErrorOptions<SchemaErrorCode> {
+	/** * The field could not transform the value */
+	code: SchemaErrorCode.InvalidFieldRegistration
+	/** Package that includes the field (used for import) */
+	package: string
+	/** The name of the class  field  */
+	className: string
+	/** The type of the field (added to FieldType) */
+	type: string
+	/** How the fields will be imported to the types file */
+	importAs: string
+	/** The description of the field */
+	description: string
 }

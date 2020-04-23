@@ -216,6 +216,27 @@ export default class Schema<T extends ISchemaDefinition> {
 		})
 	}
 
+	/** Compares 2 definitions and tells you if they are the same */
+	public static areDefinitionsTheSame(
+		left: ISchemaDefinition,
+		right: ISchemaDefinition
+	): boolean {
+		if (left.id !== right.id) {
+			return false
+		}
+
+		const fields1 = Object.keys(left.fields ?? {}).sort()
+		const fields2 = Object.keys(right.fields ?? {}).sort()
+
+		if (fields1.join('|') !== fields2.join('|')) {
+			return false
+		}
+
+		// TODO let fields compare their definitions
+
+		return true
+	}
+
 	/** Tells you if a schema definition is valid */
 	public static isDefinitionValid(definition: unknown): boolean {
 		try {
@@ -232,26 +253,30 @@ export default class Schema<T extends ISchemaDefinition> {
 	): asserts definition is ISchemaDefinition {
 		const errors: string[] = []
 
-		if (!definition.id) {
-			errors.push('id_missing')
-		} else if (!(typeof definition.id === 'string')) {
-			errors.push('id_not_string')
-		}
+		if (!definition) {
+			errors.push('definition_empty')
+		} else {
+			if (!definition.id) {
+				errors.push('id_missing')
+			} else if (!(typeof definition.id === 'string')) {
+				errors.push('id_not_string')
+			}
 
-		if (!definition.name) {
-			errors.push('name_missing')
-		} else if (!(typeof definition.name === 'string')) {
-			errors.push('name_not_string')
-		}
+			if (!definition.name) {
+				errors.push('name_missing')
+			} else if (!(typeof definition.name === 'string')) {
+				errors.push('name_not_string')
+			}
 
-		if (!definition.fields && !definition.dynamicKeySignature) {
-			errors.push('needs_fields_or_dynamic_key_signature')
+			if (!definition.fields && !definition.dynamicKeySignature) {
+				errors.push('needs_fields_or_dynamic_key_signature')
+			}
 		}
 
 		if (errors.length > 0) {
 			throw new SchemaError({
 				code: SchemaErrorCode.InvalidSchemaDefinition,
-				schemaId: definition.id,
+				schemaId: definition?.id ?? 'ID MISSING',
 				errors
 			})
 		}

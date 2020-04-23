@@ -1,4 +1,5 @@
 import { ISchemaDefinition } from './Schema'
+import { FieldDefinition } from '#spruce:schema/fields/fields.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -54,6 +55,8 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 
 /** How a field is represented in the template */
 export interface IFieldTemplateItem extends ISchemaTemplateNames {
+	/** The name of the field class */
+	className: string
 	/** There package where the field definition lives */
 	package: string
 	/** How this field is being imported into schemas.types.ts */
@@ -66,4 +69,6 @@ export interface IFieldTemplateItem extends ISchemaTemplateNames {
 	isLocal: boolean
 	/** The description associated with the field */
 	description: string
+	/** The definition this item was generated from */
+	definition: FieldDefinition
 }
