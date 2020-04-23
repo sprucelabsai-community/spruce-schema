@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.4.0...v1.5.0) (2020-04-23)
+
+
+### Features
+
+* field registeration improvements ([fb26b00](https://github.com/sprucelabsai/spruce-schema/commit/fb26b00))
+
 # [1.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.5...v1.4.0) (2020-04-23)
 
 
