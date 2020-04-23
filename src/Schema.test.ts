@@ -8,10 +8,10 @@ import { SchemaErrorCode } from './errors/error.types'
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')
 	protected static async testBasicValidation() {
-		const definition = buildSchemaDefinition({
+		const definition = {
 			id: 'simple-test',
 			name: 'Simple Test Schema'
-		})
+		}
 
 		assert.isFalse(
 			Schema.isDefinitionValid(definition),
