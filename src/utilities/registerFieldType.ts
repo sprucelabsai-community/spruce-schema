@@ -1,4 +1,6 @@
 import { FieldSubclass } from '../fields/AbstractField'
+import { SchemaError } from '..'
+import { SchemaErrorCode } from '../errors/error.types'
 
 export interface IFieldRegistration {
 	/** The type that is used as the key to the enum */
@@ -31,11 +33,45 @@ export interface IFieldRegistrationOptions {
 	importAs: string
 }
 
+/** Validator to see if registrations are good */
+export function validateFieldRegistration(
+	registration: any
+): asserts registration is IFieldRegistration {
+	const errors: string[] = []
+
+	const builtRegistration: IFieldRegistration = {
+		package: '***missing***',
+		className: '***missing***',
+		type: '***missing***',
+		importAs: '***missing***',
+		description: '***missing***'
+	}
+
+	if (typeof registration !== 'object') {
+		errors.push('field_registration_must_be_object')
+	} else {
+		Object.keys(builtRegistration).forEach(key => {
+			if (typeof registration[key] !== 'string') {
+				errors.push(`${key}_must_be_string`)
+			} else {
+				builtRegistration[key as keyof IFieldRegistration] = registration[key]
+			}
+		})
+	}
+
+	if (errors.length > 0) {
+		throw new SchemaError({
+			code: SchemaErrorCode.InvalidFieldRegistration,
+			...builtRegistration
+		})
+	}
+}
+
 /** Register a new type of field */
 export default function registerFieldType(
 	options: IFieldRegistrationOptions
 ): IFieldRegistration {
-	return {
+	const registration = {
 		package: options.package,
 		className: options.class.name,
 		type: options.type,
@@ -44,4 +80,7 @@ export default function registerFieldType(
 		// @ts-ignore
 		description: options.class.description
 	}
+
+	validateFieldRegistration(registration)
+	return registration
 }

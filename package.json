@@ -33,7 +33,7 @@
 		"test:watch": "ava  **/*.test.ts --watch"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^1.0.12",
+		"@sprucelabs/error": "^1.2.0",
 		"@sprucelabs/log": "^10.2.1",
 		"@sprucelabs/path-resolver": "^1.0.13",
 		"google-libphonenumber": "^3.2.8",

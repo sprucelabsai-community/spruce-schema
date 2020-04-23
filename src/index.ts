@@ -22,6 +22,7 @@ export { default as buildFieldDefinition } from './utilities/buildFieldDefinitio
 // Field registration
 export * from './utilities/registerFieldType'
 export { default as registerFieldType } from './utilities/registerFieldType'
+export * from './utilities/registerFieldType'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'

@@ -38,12 +38,30 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		field: ISchemaFieldDefinition
 	): (string | ISchemaDefinition)[] {
 		const { options } = field
-		return [
+		const items: any[] = [
 			...(options.schemaIds || []),
 			...(options.schemas || []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schema ? [options.schema] : [])
 		]
+
+		return items.map(item => {
+			if (typeof item === 'string') {
+				return item
+			}
+
+			try {
+				Schema.validateDefinition(item)
+				return item
+			} catch (err) {
+				throw new SchemaError({
+					code: SchemaErrorCode.InvalidSchemaDefinition,
+					schemaId: JSON.stringify(options),
+					originalError: err,
+					errors: ['invalid_schema_field_options']
+				})
+			}
+		})
 	}
 
 	/** Take field options and turn it into an array of schema id's */
@@ -61,12 +79,15 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		const ids: string[] = schemasOrIds.map(schemaOrId => {
 			if (typeof schemaOrId === 'string') {
 				return schemaOrId
-			} else if (Schema.isDefinitionValid(schemaOrId)) {
+			}
+			try {
+				Schema.isDefinitionValid(schemaOrId)
 				return schemaOrId.id
-			} else {
+			} catch (err) {
 				throw new SchemaError({
 					code: SchemaErrorCode.InvalidSchemaDefinition,
 					schemaId: JSON.stringify(options),
+					originalError: err,
 					errors: ['invalid_schema_field_options']
 				})
 			}
@@ -84,7 +105,7 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 
 		schemaIds.forEach(schemaId => {
 			const matchedTemplateItem = templateItems.find(
-				item => item.id === schemaId
+				item => item.id.toLowerCase() === schemaId.toLowerCase()
 			)
 
 			if (matchedTemplateItem) {
