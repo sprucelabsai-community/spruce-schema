@@ -1,24 +1,19 @@
-import '@sprucelabs/path-resolver/register'
-import BaseTest, { test, ISpruce } from '@sprucelabs/test'
-import { ExecutionContext } from 'ava'
+import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import buildSchemaDefinition from './utilities/buildSchemaDefinition'
 import Schema, { SchemaError } from '.'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { unset } from 'lodash'
 import { SchemaErrorCode } from './errors/error.types'
 
-/** Context just for this test */
-interface IContext {}
-
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')
-	protected static async testBasicValidation(t: ExecutionContext<IContext>) {
+	protected static async testBasicValidation() {
 		const definition = buildSchemaDefinition({
 			id: 'simple-test',
 			name: 'Simple Test Schema'
 		})
 
-		t.false(
+		assert.isFalse(
 			Schema.isDefinitionValid(definition),
 			'Bad definition incorrectly passed valid check'
 		)
@@ -30,7 +25,6 @@ export default class SchemaTest extends BaseTest {
 		'needs_fields_or_dynamic_key_signature'
 	])
 	protected static async testMissingKeys(
-		t: ExecutionContext<IContext>,
 		spruce: ISpruce,
 		fieldToDelete: string,
 		expectedErrors: string[]
@@ -50,7 +44,9 @@ export default class SchemaTest extends BaseTest {
 
 		unset(definition, fieldToDelete)
 
-		const error = t.throws(() => Schema.validateDefinition(definition))
+		const error: any = assert.throws(() =>
+			Schema.validateDefinition(definition)
+		)
 
 		if (
 			error instanceof SchemaError &&
@@ -60,20 +56,20 @@ export default class SchemaTest extends BaseTest {
 				options: { errors }
 			} = error
 
-			t.deepEqual(
+			assert.deepEqual(
 				errors,
 				expectedErrors,
 				'Did not get back the error I expected'
 			)
 		} else {
-			t.fail('Schema.validateDefinition should return a SchemaError')
+			throw new Error('Schema.validateDefinition should return a SchemaError')
 		}
 	}
 
 	@test(
 		'Does isArray make value an array (test always passes, linting should fail if broken)'
 	)
-	protected static async canIsArrayValue(t: ExecutionContext<IContext>) {
+	protected static async canIsArrayValue() {
 		const definition = buildSchemaDefinition({
 			id: 'is-array-test',
 			name: 'is array',
@@ -98,11 +94,11 @@ export default class SchemaTest extends BaseTest {
 			}
 		})
 
-		t.true(Schema.isDefinitionValid(definition))
+		assert.isTrue(Schema.isDefinitionValid(definition))
 	}
 
 	@test('isArray get/set work and transform to/from array')
-	protected static testGetSet(t: ExecutionContext<IContext>) {
+	protected static testGetSet() {
 		const schema = new Schema({
 			id: 'missing-fields',
 			name: 'missing name',
@@ -121,13 +117,16 @@ export default class SchemaTest extends BaseTest {
 		})
 
 		const values = schema.getValues({ fields: ['name'] })
-		t.is(values.name, 'tay')
-		//@ts-ignore
-		t.is(values.favoriteColors, undefined, 'getValues did not filter by fields')
+		assert.equal(values.name, 'tay')
+		assert.isUndefined(
+			//@ts-ignore
+			values.favoriteColors,
+			'getValues did not filter by fields'
+		)
 
 		// Try setting favorite colors
 		schema.set('favoriteColors', ['test'])
-		t.deepEqual(
+		assert.deepEqual(
 			schema.values.favoriteColors,
 			['test'],
 			'Did not set value correctly'
@@ -136,7 +135,7 @@ export default class SchemaTest extends BaseTest {
 		// Try setting favorite color wrong, but should be coerced back to an array
 		// @ts-ignore
 		schema.set('favoriteColors', 'test2')
-		t.deepEqual(
+		assert.deepEqual(
 			schema.values.favoriteColors,
 			['test2'],
 			'Did not set value correctly'
@@ -144,20 +143,26 @@ export default class SchemaTest extends BaseTest {
 
 		// Check non array values too
 		schema.set('name', 'Taylor')
-		t.deepEqual(schema.values, { name: 'Taylor', favoriteColors: ['test2'] })
+		assert.deepEqual(schema.values, {
+			name: 'Taylor',
+			favoriteColors: ['test2']
+		})
 
 		// Make sure getters work
 		// @ts-ignore
 		schema.values = { name: ['becca'], favoriteColors: 'blue' }
 		const name = schema.get('name')
-		t.is(name, 'becca')
+		assert.equal(name, 'becca')
 
 		const colors = schema.get('favoriteColors')
-		t.true(Array.isArray(colors), 'Getter did not transform colors into array')
+		assert.isTrue(
+			Array.isArray(colors),
+			'Getter did not transform colors into array'
+		)
 	}
 
 	@test('Can transform isArray values')
-	protected static testTransformingValues(t: ExecutionContext<IContext>) {
+	protected static testTransformingValues() {
 		const schema = new Schema({
 			id: 'is-array-transform',
 			name: 'transform tests',
@@ -183,13 +188,13 @@ export default class SchemaTest extends BaseTest {
 		schema.values.favoriteColors = [1, 2, 3]
 
 		const favColors = schema.get('favoriteColors')
-		t.deepEqual(favColors, ['1', '2', '3'])
+		assert.deepEqual(favColors, ['1', '2', '3'])
 
 		// Opposite test
 		// @ts-ignore
 		schema.values.favoriteNumber = ['7', '8', '100']
 		const favNumber = schema.get('favoriteNumber')
-		t.is(
+		assert.equal(
 			favNumber,
 			7,
 			'Schema did not transform array of strings to single number'

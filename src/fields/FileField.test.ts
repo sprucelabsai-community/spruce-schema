@@ -1,13 +1,7 @@
-import { register } from '@sprucelabs/path-resolver'
-register()
-import BaseTest, { test, ISpruce } from '@sprucelabs/test'
-import { ExecutionContext } from 'ava'
+import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { IFileFieldValue } from './FileField'
 import FieldFactory from '../factories/FieldFactory'
-
-/** Context just for this test */
-interface IContext {}
 
 interface IFileDetailExpectations {
 	expectedName: string
@@ -32,7 +26,6 @@ export default class FileFieldTest extends BaseTest {
 		expectedExtension: '.png'
 	})
 	public static testGettingFileDetails(
-		t: ExecutionContext<IContext>,
 		spruce: ISpruce,
 		filePath: string,
 		expectations: IFileDetailExpectations
@@ -42,21 +35,21 @@ export default class FileFieldTest extends BaseTest {
 
 		// Assert our expectations
 		// expected name
-		t.is(
+		assert.equal(
 			file.name,
 			expectations.expectedName,
 			'File name did not parse as expected'
 		)
 
 		// Expected type
-		t.is(
+		assert.equal(
 			file.type,
 			expectations.expectedType,
 			'File type did not lookup as expected'
 		)
 
 		// Expected extension
-		t.is(
+		assert.equal(
 			file.ext,
 			expectations.expectedExtension,
 			'File type did not lookup as expected'
@@ -84,13 +77,12 @@ export default class FileFieldTest extends BaseTest {
 		}
 	)
 	public static testCompletingFileObject(
-		t: ExecutionContext<IContext>,
 		spruce: ISpruce,
 		partial: Partial<IFileFieldValue>,
 		complete: IFileFieldValue
 	) {
 		const file = FieldFactory.field({ type: FieldType.File })
 		const augmented = file.toValueType(partial)
-		t.deepEqual(augmented, complete)
+		assert.deepEqual(augmented, complete)
 	}
 }

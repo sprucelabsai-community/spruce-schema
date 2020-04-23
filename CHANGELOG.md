@@ -1,3 +1,17 @@
+# [1.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.5...v1.4.0) (2020-04-23)
+
+
+### Features
+
+* swap out test library and use jest ([b314329](https://github.com/sprucelabsai/spruce-schema/commit/b314329))
+
+## [1.3.5](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.4...v1.3.5) (2020-04-21)
+
+
+### Refactoring
+
+* newer, better templating ([d930550](https://github.com/sprucelabsai/spruce-schema/commit/d930550))
+
 ## [1.3.4](https://github.com/sprucelabsai/spruce-schema/compare/v1.3.3...v1.3.4) (2020-04-21)
 
 
