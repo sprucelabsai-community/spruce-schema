@@ -1,9 +1,10 @@
 import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import buildSchemaDefinition from './utilities/buildSchemaDefinition'
-import Schema, { SchemaError } from '.'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { unset } from 'lodash'
 import { SchemaErrorCode } from './errors/error.types'
+import Schema from './Schema'
+import SchemaError from './errors/SchemaError'
 
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')

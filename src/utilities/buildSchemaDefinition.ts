@@ -1,5 +1,5 @@
 import { ISchemaDefinition } from '../Schema'
-import Schema from '..'
+import Schema from '../Schema'
 
 /** Builds a schema definition */
 export default function buildSchemaDefinition<T extends ISchemaDefinition>(
