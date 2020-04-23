@@ -1,5 +1,4 @@
 import { ISchemaDefinition } from './Schema'
-import { FieldDefinition } from '#spruce:schema/fields/fields.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -69,6 +68,4 @@ export interface IFieldTemplateItem extends ISchemaTemplateNames {
 	isLocal: boolean
 	/** The description associated with the field */
 	description: string
-	/** The definition this item was generated from */
-	definition: FieldDefinition
 }
