@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.5.0...v1.5.1) (2020-04-23)
+
+
+### Bug Fixes
+
+* fix imports on tests ([cdcef63](https://github.com/sprucelabsai/spruce-schema/commit/cdcef63))
+* remvoed unneeded buildSchemaDefinition ([fc7d193](https://github.com/sprucelabsai/spruce-schema/commit/fc7d193))
+* schema validate ([743cc68](https://github.com/sprucelabsai/spruce-schema/commit/743cc68))
+
 # [1.5.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.4.0...v1.5.0) (2020-04-23)
 
 
