@@ -1,13 +1,13 @@
 import AbstractField, { IFieldDefinition } from './AbstractField'
-import { ISchemaDefinition } from '../Schema'
+import Schema, { ISchemaDefinition } from '../Schema'
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import Schema, { SchemaError } from '..'
 import { SchemaErrorCode } from '../errors/error.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 	TemplateRenderAs
 } from '../template.types'
+import SchemaError from '../errors/SchemaError'
 
 export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 	/** * .Schema go team! */
@@ -38,14 +38,14 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		field: ISchemaFieldDefinition
 	): (string | ISchemaDefinition)[] {
 		const { options } = field
-		const items: any[] = [
-			...(options.schemaIds || []),
-			...(options.schemas || []),
+		const schemasOrIds: (string | ISchemaDefinition)[] = [
+			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
-			...(options.schema ? [options.schema] : [])
+			...(options.schemas || []),
+			...(options.schemaIds || [])
 		]
 
-		return items.map(item => {
+		return schemasOrIds.map(item => {
 			if (typeof item === 'string') {
 				return item
 			}
@@ -70,10 +70,10 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 	): string[] {
 		const { options } = field
 		const schemasOrIds: (string | ISchemaDefinition)[] = [
-			...(options.schemaIds || []),
-			...(options.schemas || []),
+			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
-			...(options.schema ? [options.schema] : [])
+			...(options.schemas || []),
+			...(options.schemaIds || [])
 		]
 
 		const ids: string[] = schemasOrIds.map(schemaOrId => {
@@ -112,15 +112,15 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 				unions.push({
 					schemaId: matchedTemplateItem.id,
 					valueType: `${globalNamespace}.${matchedTemplateItem.namespace}.${
-						renderAs === 'type'
+						renderAs === TemplateRenderAs.Type
 							? `I${matchedTemplateItem.pascalName}`
 							: matchedTemplateItem.pascalName
 					}${
-						renderAs === 'type'
-							? ``
-							: renderAs === 'definitionType'
+						renderAs === TemplateRenderAs.Value
+							? `.definition`
+							: renderAs === TemplateRenderAs.DefinitionType
 							? `.IDefinition`
-							: `.definition`
+							: ``
 					}`
 				})
 			} else {
@@ -134,16 +134,24 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		})
 
 		let valueType
-		if (renderAs === TemplateRenderAs.Type) {
-			valueType = unions
-				.map(item => (schemaIds.length > 1 ? item : item.valueType))
-				.join(' | ')
-		} else {
+		if (renderAs === TemplateRenderAs.Value) {
 			valueType = '[' + unions.map(item => item.valueType).join(', ') + ']'
+		} else {
+			valueType = unions.map(item => item.valueType).join(' | ')
+			valueType = `${
+				(definition.isArray || renderAs === TemplateRenderAs.DefinitionType) &&
+				unions.length > 1
+					? `(${valueType})`
+					: `${valueType}`
+			}${
+				definition.isArray || renderAs === TemplateRenderAs.DefinitionType
+					? '[]'
+					: ''
+			}`
 		}
 
 		return {
-			valueType: `(${valueType})${definition.isArray ? '[]' : ''}`
+			valueType
 		}
 	}
 }
