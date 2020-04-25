@@ -1,5 +1,5 @@
-import AbstractField, { IFieldDefinition } from './AbstractField'
-import Schema, { ISchemaDefinition } from '../Schema'
+import AbstractField from './AbstractField'
+import Schema from '../Schema'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { SchemaErrorCode } from '../errors/error.types'
 import {
@@ -8,8 +8,24 @@ import {
 	TemplateRenderAs
 } from '../template.types'
 import SchemaError from '../errors/SchemaError'
+import {
+	ISchemaDefinition,
+	IFieldDefinition,
+	IToValueTypeOptions,
+	FieldDefinitionValueType
+} from '../schema.types'
 
-export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
+export interface ISchemaFieldDefinitionValueUnion {
+	schemaId: string
+	values: Record<string, any>
+}
+
+export type ISchemaFieldDefinition = IFieldDefinition<
+	Record<string, any>,
+	Record<string, any>,
+	ISchemaFieldDefinitionValueUnion[],
+	ISchemaFieldDefinitionValueUnion[]
+> & {
 	/** * .Schema go team! */
 	type: FieldType.Schema
 	options: {
@@ -24,17 +40,14 @@ export type ISchemaFieldDefinition = IFieldDefinition<ISchemaDefinition> & {
 	}
 }
 
-export interface ISchemaFieldDefinitionValueUnion {
-	schemaId: string
-	values: Record<string, any>
-}
-
-export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
+export default class SchemaField<
+	F extends ISchemaFieldDefinition = ISchemaFieldDefinition
+> extends AbstractField<F> {
 	public static get description() {
 		return 'A way to map relationships.'
 	}
 	/** Take field options and get you an array of schema definitions or ids */
-	public static normalizeOptionsToSchemasOrIds(
+	public static fieldDefinitionToSchemasOrIds(
 		field: ISchemaFieldDefinition
 	): (string | ISchemaDefinition)[] {
 		const { options } = field
@@ -65,7 +78,7 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 	}
 
 	/** Take field options and turn it into an array of schema id's */
-	public static normalizeOptionsToSchemaIds(
+	public static fieldDefinitionToSchemaIds(
 		field: ISchemaFieldDefinition
 	): string[] {
 		const { options } = field
@@ -100,7 +113,7 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
 	): IFieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
-		const schemaIds = SchemaField.normalizeOptionsToSchemaIds(definition)
+		const schemaIds = SchemaField.fieldDefinitionToSchemaIds(definition)
 		const unions: { schemaId: string; valueType: string }[] = []
 
 		schemaIds.forEach(schemaId => {
@@ -153,5 +166,21 @@ export default class SchemaField extends AbstractField<ISchemaFieldDefinition> {
 		return {
 			valueType
 		}
+	}
+	/** To a value type */
+	public toValueType<CreateSchemaInstances extends boolean>(
+		value: any,
+		options?: IToValueTypeOptions<CreateSchemaInstances>
+	): FieldDefinitionValueType<F, CreateSchemaInstances> {
+		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds(
+			this.definition
+		)
+
+		const { createSchemaInstances } = options || {}
+
+		console.log(value, options, schemasOrIds, createSchemaInstances)
+
+		// @ts-ignore
+		return {}
 	}
 }

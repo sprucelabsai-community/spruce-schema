@@ -141,7 +141,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			expectedRenderAsDefinitionTypeValueType
 		}
 
-		const rendersAs = Object.keys(TemplateRenderAs)
+		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
 		rendersAs.forEach(renderAs => {
 			const options = {
 				...templateOptions,

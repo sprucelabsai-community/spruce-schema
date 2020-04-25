@@ -1,4 +1,5 @@
-import AbstractField, { IFieldDefinition } from './AbstractField'
+import AbstractField from './AbstractField'
+import { IFieldDefinition } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import {
 	IFieldTemplateDetails,
@@ -22,6 +23,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 		return 'A text field. Converts non-strings into strings by calling toString(). Size set by options.'
 	}
 
+	/** Generate template details */
 	public static templateDetails(
 		options: IFieldTemplateDetailOptions<ITextFieldDefinition>
 	): IFieldTemplateDetails {

@@ -1,4 +1,5 @@
-import { ISchemaDefinition } from './Schema'
+import { ISchemaDefinition } from './schema.types'
+import { FieldDefinition } from '#spruce:schema/fields/fields.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -16,8 +17,8 @@ export enum TemplateRenderAs {
 }
 
 /** The shape of options passed to AbstractField.templateDetails(options) */
-export interface IFieldTemplateDetailOptions<T extends any = any> {
-	/** The language we're generating too, only TS for now */
+export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
+	/** The language we're generating to, only TS for now */
 	language: 'ts'
 	/** All other schemas schemas being rendered */
 	templateItems: ISchemaTemplateItem[]

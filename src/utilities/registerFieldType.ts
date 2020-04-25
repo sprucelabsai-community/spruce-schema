@@ -1,6 +1,6 @@
-import { FieldSubclass } from '../fields/AbstractField'
-import { SchemaError } from '..'
+import SchemaError from '../errors/SchemaError'
 import { SchemaErrorCode } from '../errors/error.types'
+import { FieldSubclass } from '../schema.types'
 
 export interface IFieldRegistration {
 	/** The type that is used as the key to the enum */
@@ -76,7 +76,7 @@ export default function registerFieldType(
 		className: options.class.name,
 		type: options.type,
 		importAs: options.importAs,
-		// TODO change this up when typescript supports static methods on a class
+		// TODO change this up when typescript supports typing static methods on a class
 		// @ts-ignore
 		description: options.class.description
 	}

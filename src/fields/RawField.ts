@@ -1,5 +1,6 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import AbstractField, { IFieldDefinition } from './AbstractField'
+import AbstractField from './AbstractField'
+import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 
 export type IRawFieldDefinition = IFieldDefinition<any> & {

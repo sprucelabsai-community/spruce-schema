@@ -1271,10 +1271,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@1.2.0-prerelease-jest.3":
-  version "1.2.0-prerelease-jest.3"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-1.2.0-prerelease-jest.3.tgz#813092daae03f7b8abbf3fd5aab6867213a91986"
-  integrity sha512-jTho7Ngue2srxY5IuvWLWyiB7dXp92XFdqyKHp6GhZBZhHN8XDAY85x3J3T0Of56rUxZRxHN124sSrLVmAOdNw==
+"@sprucelabs/test@2.1.0-prerelease-assert-type.1":
+  version "2.1.0-prerelease-assert-type.1"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-2.1.0-prerelease-assert-type.1.tgz#e32d7503a38210d585693c9528a94aac73a81cab"
+  integrity sha512-hKuwehGHfPCWi8zULdneOo6J2ja/W3W5O1HgwAg1XQW4gY3WYaWDBXFT0QkuoCaMKfUQRVUNGyo7YhtbndGQ3Q==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/preset-env" "^7.9.5"
@@ -1285,6 +1285,7 @@
     chai "^4.2.0"
     faker "^4.1.0"
     jest "^25.4.0"
+    ts-expect "^1.1.0"
     ts-jest "^25.4.0"
 
 "@tootallnate/once@1":
@@ -8275,6 +8276,11 @@ trim-off-newlines@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
   integrity sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
+
+ts-expect@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ts-expect/-/ts-expect-1.1.0.tgz#52a280a149e1943ff7473d3dcb2fe17f85f63853"
+  integrity sha512-cKoBZ47X85x/Qh7taf30m3BhOJOhtNbb7KFHz9CCuWeRSAh0wzprnmiN9TSOQ0FWp3+qDWS5f2FDnxkY93Kdfw==
 
 ts-jest@^25.4.0:
   version "25.4.0"

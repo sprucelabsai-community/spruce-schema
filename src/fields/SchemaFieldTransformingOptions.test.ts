@@ -142,13 +142,13 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		toSchemaIdExpected: string[],
 		toSchemaOrIdExpected?: string[]
 	) {
-		const ids = SchemaField.normalizeOptionsToSchemaIds({
+		const ids = SchemaField.fieldDefinitionToSchemaIds({
 			type: FieldType.Schema,
 			options
 		})
 		assert.deepEqual(ids, toSchemaIdExpected)
 
-		const schemasOrIds = SchemaField.normalizeOptionsToSchemasOrIds({
+		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds({
 			type: FieldType.Schema,
 			options
 		})

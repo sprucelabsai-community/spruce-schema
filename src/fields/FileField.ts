@@ -1,4 +1,5 @@
-import AbstractField, { IFieldDefinition } from './AbstractField'
+import AbstractField from './AbstractField'
+import { IFieldDefinition } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import pathUtil from 'path'
 import Mime from 'mime-type'

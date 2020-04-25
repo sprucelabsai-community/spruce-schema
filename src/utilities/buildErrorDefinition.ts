@@ -1,4 +1,4 @@
-import { ISchemaDefinition } from '../Schema'
+import { ISchemaDefinition } from '../schema.types'
 
 /** Build error definition */
 export default function buildErrorDefinition<T extends ISchemaDefinition>(
