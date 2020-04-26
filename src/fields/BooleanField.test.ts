@@ -11,7 +11,9 @@ export default class TextFieldTest extends BaseTest {
 		value: any,
 		expected: boolean
 	) {
-		const field = FieldFactory.field({ type: FieldType.Boolean })
+		const field = FieldFactory.field('transformTest', {
+			type: FieldType.Boolean
+		})
 		const result = field.toValueType(value)
 		assert.equal(result, expected)
 	}

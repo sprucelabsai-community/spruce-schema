@@ -25,8 +25,8 @@ export default class SelectField<
 		return 'Stored as string, lets user select between available options.'
 	}
 
-	public constructor(definition: T) {
-		super(definition)
+	public constructor(name: string, definition: T) {
+		super(name, definition)
 		if (!definition.options || !definition.options.choices) {
 			throw new Error('Select field is missing choices.')
 		}

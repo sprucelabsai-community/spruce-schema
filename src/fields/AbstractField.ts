@@ -1,30 +1,37 @@
 import SchemaError from '../errors/SchemaError'
 import log from '../lib/log'
-import { SchemaErrorCode } from '../errors/error.types'
-import {
-	IValidateOptions,
-	IToValueTypeOptions,
-	FieldDefinitionValueType
-} from '../schema.types'
+import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
+import { IValidateOptions, IField } from '../schema.types'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
 } from '../template.types'
 import { FieldDefinition } from '#spruce:schema/fields/fields.types'
+import { FieldType } from './fieldType'
 
-export default abstract class AbstractField<F extends FieldDefinition> {
+export default abstract class AbstractField<F extends FieldDefinition>
+	implements IField<F> {
 	/** The definition for this field */
 	public definition: F
 
+	/** Shortcut to this field */
+	public type: FieldType
+
+	/** The name of this field (camel case) */
+	public name: string
+
 	/** Construct a new field based on the definition */
-	public constructor(definition: F) {
+	public constructor(name: string, definition: F) {
 		this.definition = definition
+		this.name = name
+		this.type = definition.type
+		return this
 	}
 
 	/** A description of this field for others */
 	public static get description(): string {
 		throw new SchemaError({
-			code: SchemaErrorCode.NotImplemented,
+			code: ErrorCode.NotImplemented,
 			instructions: `Copy and paste this into ${this.name}:
 
 public static get description() {
@@ -41,7 +48,7 @@ public static get description() {
 	): IFieldTemplateDetails {
 		log.info(options)
 		throw new SchemaError({
-			code: SchemaErrorCode.NotImplemented,
+			code: ErrorCode.NotImplemented,
 			instructions: `Copy and paste this into ${this.name}:
 			
 public static templateDetails(
@@ -55,51 +62,47 @@ public static templateDetails(
 		})
 	}
 
-	/** Get the type off the definition */
-	public getType() {
-		return this.definition.type
-	}
-
 	/** Get options defined for this field */
-	public getOptions() {
+	public get options() {
 		return this.definition.options
 	}
 
 	/** Is this field required */
-	public isRequired() {
+	public get isRequired() {
 		return !!this.definition.isRequired
 	}
 
 	/** Is this field an array? */
-	public isArray() {
+	public get isArray() {
 		return !!this.definition.isArray
 	}
 
 	/** The label for this field */
-	public getLabel() {
+	public get label() {
 		return this.definition.label
 	}
 
 	/** The hint for this field */
-	public getHint() {
+	public get hint() {
 		return this.definition.hint
 	}
 
 	/** Validate a value against this field */
-	public validate(value: any, _?: IValidateOptions): string[] {
-		const errors = []
-		if ((typeof value === 'undefined' || value === null) && this.isRequired()) {
-			errors.push('missing_required')
+	public validate(value: any, _?: IValidateOptions): IInvalidFieldError[] {
+		const errors: IInvalidFieldError[] = []
+		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
+			errors.push({
+				code: 'missing_required',
+				friendlyMessage: `${this.label} is required!`,
+				name: this.name
+			})
 		}
 
 		return errors
 	}
 
 	/** Transform any value to the value type of this field */
-	public toValueType<CreateSchemaInstances extends boolean>(
-		value: any,
-		_?: IToValueTypeOptions<CreateSchemaInstances>
-	): FieldDefinitionValueType<F, CreateSchemaInstances> {
+	public toValueType(value: any) {
 		return value
 	}
 }

@@ -1,5 +1,5 @@
 import BaseSpruceError from '@sprucelabs/error'
-import { SchemaErrorOptions, SchemaErrorCode } from './error.types'
+import { SchemaErrorOptions, ErrorCode } from './error.types'
 
 export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 	/** A readable message */
@@ -9,19 +9,18 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 		let message: string | undefined
 
 		switch (options?.code) {
-			case SchemaErrorCode.DuplicateSchema:
-			case SchemaErrorCode.SchemaNotFound:
+			case ErrorCode.DuplicateSchema:
+			case ErrorCode.SchemaNotFound:
 				message = `Duplicate schema id "${options.schemaId}"`
 				break
-			case SchemaErrorCode.InvalidField:
+			case ErrorCode.InvalidField:
 				message = `Invalid fields on ${options.schemaId}: `
-				options.errors.forEach(fieldErrors => {
-					message += `(${fieldErrors.fieldName}: [`
-					message += fieldErrors.errors.join(', ')
-					message += `])`
+				options.errors.forEach(fieldError => {
+					message += `${fieldError.friendlyMessage ??
+						`${fieldError.name}: ${fieldError.code}`}\n`
 				})
 				break
-			case SchemaErrorCode.TransformationFailed:
+			case ErrorCode.TransformationFailed:
 				message = `${options.code}: The FileType.${
 					options.fieldType
 				} field could not transform a ${
@@ -32,10 +31,10 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 				null,
 				2)}.`
 				break
-			case SchemaErrorCode.NotImplemented:
+			case ErrorCode.NotImplemented:
 				message = `${options.code}: ${options.instructions}`
 				break
-			case SchemaErrorCode.InvalidSchemaDefinition:
+			case ErrorCode.InvalidSchemaDefinition:
 				message = `Invalid definition. ${
 					options.errors.length > 0
 						? `Errors are: \n\n${options.errors.join('\n')}\n\n`
@@ -43,7 +42,7 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 				}`
 
 				break
-			case SchemaErrorCode.InvalidFieldOptions:
+			case ErrorCode.InvalidFieldOptions:
 				message = `Invalid field options for schemaId: "${options.schemaId}", fieldName: "${options.fieldName}"`
 				message += !options.options
 					? ' - **missing options**'
@@ -53,14 +52,20 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 				message = this.message
 		}
 
-		if (!message) {
-			message = this.message
-		}
+		// Drop on code and friendly message
+		message = `${options.code}: ${message}`
+		const fullMessage = `${message}${
+			options.friendlyMessage ? `\n\n${options.friendlyMessage}` : ''
+		}`
 
-		if (options.friendlyMessage) {
-			message += `\n\n${options.friendlyMessage}`
-		}
-
-		return message
+		// Handle repeating text from original message by remove it
+		return `${fullMessage}${
+			this.originalError && this.originalError.message !== fullMessage
+				? `\n\nOriginal error: ${this.originalError.message.replace(
+						message,
+						''
+				  )}`
+				: ''
+		}`
 	}
 }

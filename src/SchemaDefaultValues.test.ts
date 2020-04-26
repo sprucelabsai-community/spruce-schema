@@ -7,8 +7,87 @@ import {
 	ISchemaDefinition
 } from './schema.types'
 
+Schema.enableDuplicateCheckWhenTracking = false
+
+interface IWrenchDefinition {
+	id: 'wrench'
+	name: 'Wrench'
+	fields: {
+		wrenchSize: {
+			type: FieldType.Number
+			label: 'Size'
+			defaultValue: 10
+		}
+		tags: {
+			type: FieldType.Text
+			label: 'Tags'
+			isArray: true
+			defaultValue: ['low', 'tough', 'tool']
+		}
+		color: {
+			type: FieldType.Text
+			label: 'Color (w/ no default)'
+		}
+	}
+}
+
+interface IScrewdriverDefinition {
+	id: 'screwdriver'
+	name: 'Screwdriver'
+	fields: {
+		type: {
+			type: FieldType.Select
+			defaultValue: 'flathead'
+			options: {
+				choices: [
+					{ value: 'flathead'; label: 'Flathead' },
+					{ value: 'screwdriver'; label: 'Screwdriver' }
+				]
+			}
+		}
+		screwdriverLength: {
+			type: FieldType.Number
+			label: 'Length'
+		}
+	}
+}
+
+interface IUnionPersonDefinition {
+	id: 'union-person'
+	name: 'Union Person'
+	fields: {
+		favoriteTool: {
+			type: FieldType.Schema
+			options: {
+				schemas: [IWrenchDefinition, IScrewdriverDefinition]
+			}
+			defaultValue: { schemaId: 'wrench'; values: { wrenchSize: 100 } }
+		}
+		leastFavoriteTool: {
+			type: FieldType.Schema
+			options: {
+				schemas: [IWrenchDefinition, IScrewdriverDefinition]
+			}
+			defaultValue: { schemaId: 'screwdriver'; values: { type: 'flathead' } }
+		}
+		tools: {
+			type: FieldType.Schema
+			isArray: true
+			defaultValue: [
+				{
+					schemaId: 'screwdriver'
+					values: { screwdriverLength: 22 }
+				}
+			]
+			options: {
+				schemas: [IWrenchDefinition, IScrewdriverDefinition]
+			}
+		}
+	}
+}
+
 export default class SchemaDefaultValuesTest extends BaseTest {
-	private static wrenchDefinition = buildSchemaDefinition({
+	private static wrenchDefinition = buildSchemaDefinition<IWrenchDefinition>({
 		id: 'wrench',
 		name: 'Wrench',
 		fields: {
@@ -30,7 +109,9 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		}
 	})
 
-	private static screwdriverDefinition = buildSchemaDefinition({
+	private static screwdriverDefinition = buildSchemaDefinition<
+		IScrewdriverDefinition
+	>({
 		id: 'screwdriver',
 		name: 'Screwdriver',
 		fields: {
@@ -51,7 +132,9 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		}
 	})
 
-	private static personDefinition = buildSchemaDefinition({
+	private static personDefinition = buildSchemaDefinition<
+		IUnionPersonDefinition
+	>({
 		id: 'union-person',
 		name: 'Union Person',
 		fields: {
@@ -63,7 +146,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 						SchemaDefaultValuesTest.screwdriverDefinition
 					]
 				},
-				defaultValue: { wrenchSize: 100 }
+				defaultValue: { schemaId: 'wrench', values: { wrenchSize: 100 } }
 			},
 			leastFavoriteTool: {
 				type: FieldType.Schema,
@@ -73,7 +156,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 						SchemaDefaultValuesTest.screwdriverDefinition
 					]
 				},
-				defaultValue: SchemaDefaultValuesTest.wrenchDefinition
+				defaultValue: { schemaId: 'screwdriver', values: { type: 'flathead' } }
 			},
 			tools: {
 				type: FieldType.Schema,
@@ -81,7 +164,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 				defaultValue: [
 					{
 						schemaId: 'screwdriver',
-						values: { screwDriverLength: 22 }
+						values: { screwdriverLength: 22 }
 					}
 				],
 				options: {
@@ -129,7 +212,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		SchemaDefaultValuesTest.wrenchDefinition,
 		{
 			wrenchSize: 10,
-			tags: []
+			tags: ['low', 'tough', 'tool']
 		}
 	)
 	@test(
@@ -137,15 +220,6 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		SchemaDefaultValuesTest.screwdriverDefinition,
 		{
 			type: 'flathead'
-		}
-	)
-	@test(
-		'Can get default values for schema fields',
-		SchemaDefaultValuesTest.personDefinition,
-		{
-			favoriteTool: 10,
-			leastFavoriteTool: false,
-			tools: [{ schemaId: 'screwDriver' }]
 		}
 	)
 	protected static defaultValueTests(
@@ -156,5 +230,29 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		const schema = new Schema(definition)
 		const defaultValues = schema.getDefaultValues()
 		assert.deepEqual(defaultValues, expectedDefaultValues)
+	}
+
+	@test('Cna get default values for union fields')
+	protected static defaultSchemaValueTests() {
+		const schema = new Schema(SchemaDefaultValuesTest.personDefinition)
+		const { favoriteTool, leastFavoriteTool, tools } = schema.getDefaultValues()
+
+		assert.isFunction(favoriteTool.get)
+		assert.isFunction(leastFavoriteTool.get)
+		assert.equal(tools.length, 1)
+
+		assert.equal(
+			favoriteTool.schemaId === 'wrench' && favoriteTool.get('wrenchSize'),
+			100
+		)
+
+		assert.equal(
+			tools[0] &&
+				tools[0].schemaId === 'screwdriver' &&
+				tools[0].get('screwdriverLength'),
+			22
+		)
+
+		// assert.deepEqual(defaultValues, {})
 	}
 }

@@ -1,9 +1,10 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import { FieldClassMap } from '#spruce:schema/fields/fields.types'
+import { FieldClassMap } from '#spruce:schema/fields/fieldClassMap'
 import SchemaError from './errors/SchemaError'
 import {
-	SchemaErrorCode,
-	IInvalidFieldErrorOptions
+	ErrorCode,
+	IInvalidFieldErrorOptions,
+	IInvalidFieldError
 } from './errors/error.types'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -20,13 +21,22 @@ import {
 	ISchemaNamedFieldsOptions,
 	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
-	FieldNamesWithDefaultValueSet
+	FieldNamesWithDefaultValueSet,
+	ISchema
 } from './schema.types'
 
 /** Universal schema class  */
-export default class Schema<T extends ISchemaDefinition> {
-	/** Global definition hash to help with mapping */
-	public static definitionsByKey: { [key: string]: ISchemaDefinition }
+export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
+	/** Should i do a duplicate check on schemas when tracking globally? */
+	public static enableDuplicateCheckWhenTracking = true
+
+	/** Global definition hash for lookups by id */
+	private static definitionsById: { [key: string]: ISchemaDefinition } = {}
+
+	/** Our unique id */
+	public get schemaId() {
+		return this.definition.id
+	}
 
 	/** The schema definition */
 	public definition: T
@@ -60,12 +70,35 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
-			const field = FieldFactory.field(definition, fieldClassMap)
+			const field = FieldFactory.field(name, definition, fieldClassMap)
 			this.fields[name as SchemaFieldNames<T>] = field
 			if (definition.value) {
 				this.set(name as SchemaFieldNames<T>, definition.value)
 			}
 		})
+	}
+
+	/** Track a definition for lookup later */
+	public static trackDefinition(definition: ISchemaDefinition) {
+		Schema.validateDefinition(definition)
+		const existing = Schema.definitionsById[definition.id]
+		if (existing && Schema.enableDuplicateCheckWhenTracking) {
+			throw new SchemaError({
+				code: ErrorCode.DuplicateSchema,
+				schemaId: definition.id
+			})
+		}
+		Schema.definitionsById[definition.id] = definition
+	}
+
+	/** Forget the definition. You can no longer look it up by id */
+	public static forgetDefinition(id: string) {
+		delete Schema.definitionsById[id]
+	}
+
+	/** Get a tracked definition by id */
+	public static getDefinition(id: string): ISchemaDefinition | undefined {
+		return this.definitionsById[id]
 	}
 
 	/** Compares 2 definitions and tells you if they are the same */
@@ -127,7 +160,7 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		if (errors.length > 0) {
 			throw new SchemaError({
-				code: SchemaErrorCode.InvalidSchemaDefinition,
+				code: ErrorCode.InvalidSchemaDefinition,
 				schemaId: definition?.id ?? 'ID MISSING',
 				errors
 			})
@@ -153,9 +186,9 @@ export default class Schema<T extends ISchemaDefinition> {
 
 		if (!Array.isArray(localValue)) {
 			throw new SchemaError({
-				code: SchemaErrorCode.InvalidField,
+				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
-				errors: [{ fieldName: forField, errors: ['value_not_array'] }]
+				errors: [{ name: forField, code: 'value_not_array' }]
 			})
 		}
 
@@ -165,12 +198,12 @@ export default class Schema<T extends ISchemaDefinition> {
 		const field = this.fields[forField]
 
 		// Validate if we're supposed to
-		let errors: string[] = []
+		let errors: IInvalidFieldError[] = []
 		if (validate) {
 			localValue.forEach(value => {
 				errors = [
 					...errors,
-					...field.validate(value, { definitionsById: Schema.definitionsByKey })
+					...field.validate(value, { definitionsById: Schema.definitionsById })
 				]
 			})
 		}
@@ -178,9 +211,9 @@ export default class Schema<T extends ISchemaDefinition> {
 		// If there are any errors, bail
 		if (errors.length > 0) {
 			throw new SchemaError({
-				code: SchemaErrorCode.InvalidField,
+				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
-				errors: [{ fieldName: forField as string, errors }]
+				errors
 			})
 		}
 
@@ -188,16 +221,16 @@ export default class Schema<T extends ISchemaDefinition> {
 		// Is array will always pass here
 		if (localValue.length > 0) {
 			localValue = localValue.map(value =>
-				// TODO find out how to define toValueType to make this pass
-				// @ts-ignore
-				field.toValueType(value, {
-					definitionsById: Schema.definitionsByKey,
-					createSchemaInstances
-				})
+				typeof value === 'undefined'
+					? undefined
+					: field.toValueType(value, {
+							definitionsById: Schema.definitionsById,
+							createSchemaInstances
+					  })
 			)
 		}
 
-		return (field.isArray()
+		return (field.isArray
 			? localValue
 			: localValue[0]) as SchemaFieldDefinitionValueType<
 			T,
@@ -253,20 +286,17 @@ export default class Schema<T extends ISchemaDefinition> {
 			const { name, field } = item
 			const value = this.get(name, { validate: false })
 			const fieldErrors = field.validate(value, {
-				definitionsById: Schema.definitionsByKey
+				definitionsById: Schema.definitionsById
 			})
 
 			if (fieldErrors.length > 0) {
-				errors.push({
-					fieldName: name,
-					errors: fieldErrors
-				})
+				errors.push(...fieldErrors)
 			}
 		})
 
 		if (errors.length > 0) {
 			throw new SchemaError({
-				code: SchemaErrorCode.InvalidField,
+				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
 				errors
 			})
@@ -355,8 +385,6 @@ export default class Schema<T extends ISchemaDefinition> {
 			const field = this.fields[name]
 			namedFields.push({ name, field })
 		})
-
-		// This.namedFieldCache = namedFields
 
 		return namedFields
 	}

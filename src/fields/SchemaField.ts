@@ -1,7 +1,7 @@
 import AbstractField from './AbstractField'
 import Schema from '../Schema'
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import { SchemaErrorCode } from '../errors/error.types'
+import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
@@ -12,13 +12,11 @@ import {
 	ISchemaDefinition,
 	IFieldDefinition,
 	IToValueTypeOptions,
-	FieldDefinitionValueType
+	FieldDefinitionValueType,
+	IValidateOptions,
+	ISchemaFieldDefinitionValueUnion,
+	IFieldDefinitionToSchemaDefinitionOptions
 } from '../schema.types'
-
-export interface ISchemaFieldDefinitionValueUnion {
-	schemaId: string
-	values: Record<string, any>
-}
 
 export type ISchemaFieldDefinition = IFieldDefinition<
 	Record<string, any>,
@@ -68,7 +66,7 @@ export default class SchemaField<
 				return item
 			} catch (err) {
 				throw new SchemaError({
-					code: SchemaErrorCode.InvalidSchemaDefinition,
+					code: ErrorCode.InvalidSchemaDefinition,
 					schemaId: JSON.stringify(options),
 					originalError: err,
 					errors: ['invalid_schema_field_options']
@@ -98,7 +96,7 @@ export default class SchemaField<
 				return schemaOrId.id
 			} catch (err) {
 				throw new SchemaError({
-					code: SchemaErrorCode.InvalidSchemaDefinition,
+					code: ErrorCode.InvalidSchemaDefinition,
 					schemaId: JSON.stringify(options),
 					originalError: err,
 					errors: ['invalid_schema_field_options']
@@ -138,7 +136,7 @@ export default class SchemaField<
 				})
 			} else {
 				throw new SchemaError({
-					code: SchemaErrorCode.SchemaNotFound,
+					code: ErrorCode.SchemaNotFound,
 					schemaId,
 					friendlyMessage:
 						'Failed during generation of value type on the Schema field. This can happen if schema id "${schemaId}" is not in "templateItems" (which should hold every schema in your skill).'
@@ -167,20 +165,183 @@ export default class SchemaField<
 			valueType
 		}
 	}
+
+	/** Turn a field definition into it's related schemas, but requires the schemas be registered */
+	private static fieldDefinitionToSchemaDefinitions(
+		definition: ISchemaFieldDefinition,
+		options?: IFieldDefinitionToSchemaDefinitionOptions
+	): ISchemaDefinition[] {
+		const { definitionsById = {} } = options || {}
+		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds(definition)
+
+		const definitions = schemasOrIds.map(schemaOrId => {
+			const definition =
+				typeof schemaOrId === 'string'
+					? definitionsById[schemaOrId] || Schema.getDefinition(schemaOrId)
+					: schemaOrId
+
+			Schema.validateDefinition(definition)
+			return definition
+		})
+
+		return definitions
+	}
+
+	/** Make sure value is a legit value */
+	public validate(
+		value: any,
+		options?: IValidateOptions
+	): IInvalidFieldError[] {
+		const errors = super.validate(value, options)
+
+		// do not validate schemas by default, very heavy and only needed when explicitly asked to
+		if (value instanceof Schema) {
+			try {
+				Schema.validateDefinition(value)
+			} catch (err) {
+				errors.push({
+					error: err,
+					code: 'schema_field_invalid',
+					name: this.name
+				})
+			}
+		}
+
+		if (errors.length === 0 && value) {
+			if (typeof value !== 'object') {
+				errors.push({
+					code: 'value_must_be_object',
+					name: this.name,
+					friendlyMessage: `${this.label ?? this.name} must be an object`
+				})
+			} else {
+				let definitions: ISchemaDefinition[] | undefined
+
+				try {
+					// pull schemas out of our own definition
+					definitions = SchemaField.fieldDefinitionToSchemaDefinitions(
+						this.definition,
+						options
+					)
+				} catch (err) {
+					errors.push({
+						code: 'related_schema_id_not_valid',
+						name: this.name,
+						error: err
+					})
+				}
+
+				if (definitions && definitions.length === 0) {
+					errors.push({ code: 'related_schemas_missing', name: this.name })
+				}
+
+				// if we are validating schemas, we look them all up by id
+				let instance: Schema<ISchemaDefinition> | undefined
+				if (definitions && definitions.length === 1) {
+					instance = new Schema(definitions[0], value)
+				} else if (definitions && definitions.length > 0) {
+					const { schemaId, values } = value || {}
+
+					if (!values) {
+						errors.push({
+							name: this.name,
+							code: 'schema_union_missing_values',
+							friendlyMessage:
+								'You need to add `values` to the value of ' + this.name
+						})
+					} else if (!schemaId) {
+						errors.push({
+							name: this.name,
+							code: 'schema_union_missing_schema_id',
+							friendlyMessage:
+								'You need to add `schemaId` to the value of ' + this.name
+						})
+					} else {
+						const matchDefinition = definitions.find(def => def.id === schemaId)
+						if (!matchDefinition) {
+							errors.push({
+								name: this.name,
+								code: 'related_schema_not_found',
+								friendlyMessage: `Could not find a schema by id ${schemaId}`
+							})
+						} else {
+							instance = new Schema(matchDefinition, values)
+						}
+					}
+				}
+
+				if (instance) {
+					try {
+						instance.validate()
+					} catch (err) {
+						errors.push({
+							code: 'invalid_related_schema_values',
+							error: err,
+							name: this.name
+						})
+					}
+				}
+			}
+		}
+		return errors
+	}
+
 	/** To a value type */
 	public toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
 		options?: IToValueTypeOptions<CreateSchemaInstances>
 	): FieldDefinitionValueType<F, CreateSchemaInstances> {
-		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds(
-			this.definition
+		//  first lets validate it's a good form
+		const errors = this.validate(value, options)
+
+		if (errors.length > 0) {
+			throw new SchemaError({
+				code: ErrorCode.TransformationFailed,
+				fieldType: FieldType.Schema,
+				incomingTypeof: typeof value,
+				incomingValue: value,
+				errors,
+				name: this.name
+			})
+		}
+
+		const { createSchemaInstances, definitionsById = {} } = options || {}
+
+		// try and pull the schema definition from the options and by id
+		const destinationDefinitions: ISchemaDefinition[] = SchemaField.fieldDefinitionToSchemaDefinitions(
+			this.definition,
+			{ definitionsById }
 		)
 
-		const { createSchemaInstances } = options || {}
+		let instance: Schema<ISchemaDefinition> | undefined
 
-		console.log(value, options, schemasOrIds, createSchemaInstances)
+		// if we are only pointing 1 one possible definition, then mapping is pretty easy
+		if (destinationDefinitions.length === 1) {
+			instance = new Schema(destinationDefinitions[0], value)
+		} else {
+			// this could be one of a few types, lets check the "schemaId" prop
+			const { schemaId, values } = value
+			const matchedDefinition = destinationDefinitions.find(
+				def => def.id === schemaId
+			)
+			if (!matchedDefinition) {
+				throw new SchemaError({
+					code: ErrorCode.TransformationFailed,
+					fieldType: FieldType.Schema,
+					name: this.name,
+					incomingValue: value,
+					incomingTypeof: typeof value
+				})
+			}
+			instance = new Schema(matchedDefinition, values)
+		}
 
-		// @ts-ignore
-		return {}
+		// return the instance if they wanted it, if not, get the raw values back (with no validation)
+		return (createSchemaInstances
+			? instance
+			: instance.getValues({ validate: false })) as FieldDefinitionValueType<
+			F,
+			CreateSchemaInstances
+		>
 	}
 }

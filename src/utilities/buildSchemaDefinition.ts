@@ -5,6 +5,7 @@ import { ISchemaDefinition } from '../schema.types'
 export default function buildSchemaDefinition<T extends ISchemaDefinition>(
 	definition: T
 ): T {
-	Schema.validateDefinition(definition)
+	Schema.trackDefinition(definition)
+
 	return definition
 }

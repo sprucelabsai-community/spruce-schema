@@ -69,34 +69,3 @@ export type FieldDefinitionMap = {
 	[FieldType.DateTime]: IDateTimeFieldDefinition
 	[FieldType.File]: IFileFieldDefinition
 }
-
-/** A global place to reference all field type classes */
-export const FieldClassMap: Record<FieldType, FieldClass> = {
-	[FieldType.Boolean]: BooleanField,
-	[FieldType.Select]: SelectField,
-	[FieldType.Duration]: DurationField,
-	[FieldType.Id]: IdField,
-	[FieldType.Address]: AddressField,
-	[FieldType.Phone]: PhoneField,
-	[FieldType.Schema]: SchemaField,
-	[FieldType.Raw]: RawField,
-	[FieldType.Number]: NumberField,
-	[FieldType.DateTime]: DateTimeField,
-	[FieldType.Text]: TextField,
-	[FieldType.File]: FileField
-}
-
-export interface IFieldClassMap {
-	[FieldType.Boolean]: BooleanField
-	[FieldType.Select]: SelectField
-	[FieldType.Duration]: DurationField
-	[FieldType.Id]: IdField
-	[FieldType.Address]: AddressField
-	[FieldType.Phone]: PhoneField
-	[FieldType.Schema]: SchemaField
-	[FieldType.Raw]: RawField
-	[FieldType.Number]: NumberField
-	[FieldType.DateTime]: DateTimeField
-	[FieldType.Text]: TextField
-	[FieldType.File]: FileField
-}

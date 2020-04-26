@@ -30,7 +30,9 @@ export default class FileFieldTest extends BaseTest {
 		filePath: string,
 		expectations: IFileDetailExpectations
 	) {
-		const field = FieldFactory.field({ type: FieldType.File })
+		const field = FieldFactory.field('test', {
+			type: FieldType.File
+		})
 		const file = field.toValueType(filePath)
 
 		// Assert our expectations
@@ -81,7 +83,7 @@ export default class FileFieldTest extends BaseTest {
 		partial: Partial<IFileFieldValue>,
 		complete: IFileFieldValue
 	) {
-		const file = FieldFactory.field({ type: FieldType.File })
+		const file = FieldFactory.field('test', { type: FieldType.File })
 		const augmented = file.toValueType(partial)
 		assert.deepEqual(augmented, complete)
 	}

@@ -1,5 +1,5 @@
 import SchemaError from '../errors/SchemaError'
-import { SchemaErrorCode } from '../errors/error.types'
+import { ErrorCode } from '../errors/error.types'
 import { FieldSubclass } from '../schema.types'
 
 export interface IFieldRegistration {
@@ -27,7 +27,7 @@ export interface IFieldRegistrationOptions {
 	type: string
 
 	/** The class */
-	class: FieldSubclass
+	class: FieldSubclass<any>
 
 	/** How should this field be imported (SpruceSchema) */
 	importAs: string
@@ -61,7 +61,7 @@ export function validateFieldRegistration(
 
 	if (errors.length > 0) {
 		throw new SchemaError({
-			code: SchemaErrorCode.InvalidFieldRegistration,
+			code: ErrorCode.InvalidFieldRegistration,
 			...builtRegistration
 		})
 	}

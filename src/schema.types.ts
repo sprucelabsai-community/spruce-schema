@@ -6,8 +6,32 @@ import {
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { ISchemaFieldDefinition } from './fields/SchemaField'
 import { ISelectFieldDefinition } from './fields/SelectField'
-import AbstractField from './fields/AbstractField'
-import Schema from './Schema'
+import { IInvalidFieldError } from './errors/error.types'
+
+export interface ISchema<T extends ISchemaDefinition> {
+	/** The id of the schema (for union resolution) */
+	schemaId: T['id']
+	/** The definition associated with this schema */
+	definition: T
+	/** The values of this schema */
+	values: SchemaDefinitionPartialValues<T>
+	/** Get a value for particular field  */
+	get<
+		F extends SchemaFieldNames<T>,
+		CreateSchemaInstances extends boolean = true
+	>(
+		fieldName: F,
+		options?: ISchemaNormalizeOptions<CreateSchemaInstances>
+	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances>
+
+	/** Get all values for all fields */
+	getValues<
+		F extends SchemaFieldNames<T> = SchemaFieldNames<T>,
+		CreateSchemaInstances extends boolean = true
+	>(
+		options?: ISchemaGetValuesOptions<T, F, CreateSchemaInstances>
+	): Pick<SchemaDefinitionAllValues<T, CreateSchemaInstances>, F>
+}
 
 /** The structure of schema.fields. key is field name, value is field definition */
 export interface ISchemaDefinitionFields {
@@ -29,7 +53,7 @@ export interface ISchemaDefinition {
 }
 
 export type IFieldDefinition<
-	Value,
+	Value = any,
 	DefaultValue = Partial<Value>,
 	ArrayValue = Value[],
 	DefaultArrayValue = Partial<Value>[]
@@ -81,12 +105,53 @@ export type IFieldDefinition<
 )
 
 /** A type that matches a subclass of the abstract field */
-export type FieldSubclass = new (...args: any[]) => AbstractField<
-	FieldDefinition
->
+export type FieldSubclass<F extends FieldDefinition> = new (
+	name: string,
+	definition: F
+) => IField<F>
+
+/** A field that comprises a schema */
+export interface IField<F extends FieldDefinition> {
+	/** The definition for this field */
+	readonly definition: F
+	/** The type of field */
+	readonly type: F['type']
+	/** The fields options */
+	readonly options: F['options']
+	/** If this field is required */
+	readonly isRequired: F['isRequired']
+	/** If this field is an array */
+	readonly isArray: F['isArray']
+	/** The field's label */
+	readonly label: F['label']
+	/** The field's hint */
+	readonly hint: F['hint']
+	/** The name of this field (camel case) */
+	readonly name: string
+	/** Validate a value */
+	validate(value: any, options?: IValidateOptions): IInvalidFieldError[]
+	/** Transform any value to the value type of this field. should take anything and return a valid value or blow up. Will never receive undefined */
+	toValueType<CreateSchemaInstances extends boolean>(
+		value: any,
+		options?: IToValueTypeOptions<CreateSchemaInstances>
+	): Exclude<FieldDefinitionValueType<F, CreateSchemaInstances>, undefined>
+}
 
 /** Options passed to validate() */
-export interface IValidateOptions {}
+export interface IValidateOptions {
+	/** All definitions we're validating against */
+	definitionsById?: { [id: string]: ISchemaDefinition }
+}
+
+export interface IFieldDefinitionToSchemaDefinitionOptions {
+	/** All definitions we're validating against */
+	definitionsById?: { [id: string]: ISchemaDefinition }
+}
+
+export interface ISchemaFieldDefinitionValueUnion {
+	schemaId: string
+	values: Record<string, any>
+}
 
 /** Options passed to toValueType */
 export interface IToValueTypeOptions<
@@ -102,7 +167,7 @@ export interface IToValueTypeOptions<
 /** the form of schema.fields based on an actual definition  */
 export type SchemaFields<T extends ISchemaDefinition> = Record<
 	SchemaFieldNames<T>,
-	Field
+	IField<any>
 >
 
 /** To map a schema to an object with values whose types match */
@@ -190,13 +255,13 @@ type IsArrayNoUnpack<T, isArray> = isArray extends true ? T[] : T
 /** Easy isRequired helper */
 type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
 
-type WrapSchemaField<
+type SchemaFieldUnion<
 	S extends Array<ISchemaDefinition>,
 	CreateSchemaInstances extends boolean = false
 > = {
 	[K in keyof S]: S[K] extends ISchemaDefinition
 		? CreateSchemaInstances extends true
-			? Schema<S[K]>
+			? ISchema<S[K]>
 			: {
 					schemaId: S[K]['id']
 					values: SchemaDefinitionValues<S[K]>
@@ -209,14 +274,18 @@ export type SchemaFieldValueType<
 	CreateSchemaInstances extends boolean = false
 > = F['options']['schemas'] extends Array<ISchemaDefinition>
 	? IsArrayNoUnpack<
-			WrapSchemaField<F['options']['schemas'], CreateSchemaInstances>[number],
+			SchemaFieldUnion<F['options']['schemas'], CreateSchemaInstances>[number],
 			F['isArray']
 	  >
 	: F['options']['schema'] extends ISchemaDefinition
 	? CreateSchemaInstances extends true
-		? IsArray<Schema<F['options']['schema']>, F['isArray']>
+		? IsArray<ISchema<F['options']['schema']>, F['isArray']>
 		: IsArray<SchemaDefinitionValues<F['options']['schema']>, F['isArray']>
 	: any
+
+export type FieldValidationAssertion<F extends FieldDefinition> =
+	| FieldDefinitionValueType<F, false>
+	| FieldDefinitionValueType<F, true>
 
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,

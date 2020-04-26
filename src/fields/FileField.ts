@@ -5,7 +5,7 @@ import pathUtil from 'path'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'
-import { SchemaErrorCode } from '../errors/error.types'
+import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 
 // @ts-ignore
@@ -48,12 +48,12 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		}
 	}
 
-	public validate(value: any): string[] {
+	public validate(value: any): IInvalidFieldError[] {
 		try {
 			this.toValueType(value)
 			return []
 		} catch (err) {
-			return ['invalid_file']
+			return [{ code: 'invalid_file', name: this.name }]
 		}
 	}
 
@@ -86,10 +86,11 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 
 		if (!name) {
 			throw new SchemaError({
-				code: SchemaErrorCode.TransformationFailed,
+				code: ErrorCode.TransformationFailed,
 				fieldType: FieldType.File,
 				incomingTypeof: typeof value,
-				incomingValue: value
+				incomingValue: value,
+				name: this.name
 			})
 		}
 		return {

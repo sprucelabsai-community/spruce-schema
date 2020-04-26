@@ -1,18 +1,19 @@
-import {
-	FieldDefinition,
-	FieldClassMap,
-	IFieldClassMap
-} from '#spruce:schema/fields/fields.types'
+import { FieldDefinition } from '#spruce:schema/fields/fields.types'
+import { FieldClassMap } from '#spruce:schema/fields/fieldClassMap'
+import { IField } from '../schema.types'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */
-	public static field<
-		F extends FieldDefinition,
-		R extends IFieldClassMap[F['type']]
-	>(definition: F, fieldClassMap = FieldClassMap): R {
+	public static field<F extends FieldDefinition>(
+		name: string,
+		definition: F,
+		fieldClassMap: Record<FieldType, any> = FieldClassMap
+	): IField<F> {
 		const fieldClass = fieldClassMap[definition.type]
-		// @ts-ignore - TODO figure out how to properly instantiate based on the class map
-		const field = new fieldClass(definition)
-		return field as R
+		// TODO determine once and for-all how we type for strategy pattern
+		// @ts-ignore
+		const field = new fieldClass(name, definition)
+		return field
 	}
 }
