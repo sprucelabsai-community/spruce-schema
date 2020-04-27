@@ -58,7 +58,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		if (!fieldClassMap) {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			const resolver = require('@sprucelabs/path-resolver')
-			const instance = resolver.default.getInstance({ enable: false })
+			const instance = resolver.default.getInstance()
 			const path = instance.resolvePath('#spruce:schema/fields/fieldClassMap')
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			fieldClassMap = require(path).FieldClassMap

@@ -4,7 +4,8 @@ import { FieldType } from '#spruce:schema/fields/fieldType'
 import { default as Schema } from './Schema'
 import {
 	FieldNamesWithDefaultValueSet,
-	ISchemaDefinition
+	ISchemaDefinition,
+	SchemaDefinitionDefaultValues
 } from './schema.types'
 
 Schema.enableDuplicateCheckWhenTracking = false
@@ -232,7 +233,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		assert.deepEqual(defaultValues, expectedDefaultValues)
 	}
 
-	@test('Cna get default values for union fields')
+	@test('Can get default values for union fields')
 	protected static defaultSchemaValueTests() {
 		const schema = new Schema(SchemaDefaultValuesTest.personDefinition)
 		const { favoriteTool, leastFavoriteTool, tools } = schema.getDefaultValues()
@@ -254,5 +255,17 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		)
 
 		// assert.deepEqual(defaultValues, {})
+	}
+
+	@test('Creates types that work as expected')
+	protected static defaultTypesTests() {
+		const expected = {
+			wrenchSize: 12,
+			tags: ['low', 'tough', 'tool']
+		}
+
+		assert.expectType<SchemaDefinitionDefaultValues<IWrenchDefinition>>(
+			expected
+		)
 	}
 }

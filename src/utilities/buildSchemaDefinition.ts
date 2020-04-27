@@ -6,6 +6,5 @@ export default function buildSchemaDefinition<T extends ISchemaDefinition>(
 	definition: T
 ): T {
 	Schema.trackDefinition(definition)
-
 	return definition
 }
