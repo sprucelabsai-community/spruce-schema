@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.7.0...v1.8.0) (2020-04-27)
+
+
+### Features
+
+* field map lazy loading to remove circular dependencies ([8d13325](https://github.com/sprucelabsai/spruce-schema/commit/8d13325))
+
 # [1.7.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.6.0...v1.7.0) (2020-04-26)
 
 
