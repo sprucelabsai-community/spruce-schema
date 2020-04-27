@@ -7,7 +7,7 @@ export type IRawFieldDefinition = IFieldDefinition<any> & {
 	/** * .Raw - Deprecated, don't use */
 	type: FieldType.Raw
 	options: {
-		interfaceName: string
+		valueType: string
 	}
 }
 
@@ -19,7 +19,9 @@ export default class RawField extends AbstractField<IRawFieldDefinition> {
 		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
 	) {
 		return {
-			valueType: `any${options.definition.isArray ? '[]' : ''}`
+			valueType: `${options.definition.options.valueType}${
+				options.definition.isArray ? '[]' : ''
+			}`
 		}
 	}
 }
