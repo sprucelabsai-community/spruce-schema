@@ -1,5 +1,3 @@
-import { FieldType } from '#spruce:schema/fields/fieldType'
-import { FieldClassMap } from '#spruce:schema/fields/fieldClassMap'
 import SchemaError from './errors/SchemaError'
 import {
 	ErrorCode,
@@ -24,6 +22,8 @@ import {
 	FieldNamesWithDefaultValueSet,
 	ISchema
 } from './schema.types'
+
+let fieldClassMap: any | undefined
 
 /** Universal schema class  */
 export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
@@ -52,9 +52,18 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 	public constructor(
 		definition: T,
-		values?: SchemaDefinitionPartialValues<T>,
-		fieldClassMap: Record<FieldType, any> = FieldClassMap
+		values?: SchemaDefinitionPartialValues<T>
+		// fieldClassMap: Record<FieldType, any> = FieldClassMap
 	) {
+		if (!fieldClassMap) {
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
+			const resolver = require('@sprucelabs/path-resolver')
+			const instance = resolver.default.getInstance({ enable: false })
+			const path = instance.resolvePath('#spruce:schema/fields/fieldClassMap')
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
+			fieldClassMap = require(path).FieldClassMap
+		}
+
 		// Set definition and values
 		this.definition = definition
 		this.values = values ? values : {}
