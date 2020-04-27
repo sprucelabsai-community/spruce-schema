@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.6.0...v1.7.0) (2020-04-26)
+
+
+### Features
+
+* moved types out of class files ([a7b86b3](https://github.com/sprucelabsai/spruce-schema/commit/a7b86b3))
+* schema types moved to new file to stop circular dependencies ([230f40d](https://github.com/sprucelabsai/spruce-schema/commit/230f40d))
+
 # [1.6.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.5.2...v1.6.0) (2020-04-24)
 
 
