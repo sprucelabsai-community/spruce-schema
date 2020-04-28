@@ -120,19 +120,25 @@ export default class SchemaField<
 			)
 
 			if (matchedTemplateItem) {
+				let valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
+					renderAs === TemplateRenderAs.Type
+						? `I${matchedTemplateItem.pascalName}`
+						: matchedTemplateItem.pascalName
+				}${
+					renderAs === TemplateRenderAs.Value
+						? `.definition`
+						: renderAs === TemplateRenderAs.DefinitionType
+						? `.IDefinition`
+						: ``
+				}`
+
+				if (schemaIds.length > 1) {
+					valueType = `{ schemaId: '${schemaId}', values: ${valueType} }`
+				}
+
 				unions.push({
 					schemaId: matchedTemplateItem.id,
-					valueType: `${globalNamespace}.${matchedTemplateItem.namespace}.${
-						renderAs === TemplateRenderAs.Type
-							? `I${matchedTemplateItem.pascalName}`
-							: matchedTemplateItem.pascalName
-					}${
-						renderAs === TemplateRenderAs.Value
-							? `.definition`
-							: renderAs === TemplateRenderAs.DefinitionType
-							? `.IDefinition`
-							: ``
-					}`
+					valueType
 				})
 			} else {
 				throw new SchemaError({
