@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.9.0...v1.10.0) (2020-04-28)
+
+
+### Features
+
+* wrap raw field value type in parens ([f39d57d](https://github.com/sprucelabsai/spruce-schema/commit/f39d57d))
+
 # [1.9.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.8.1...v1.9.0) (2020-04-27)
 
 
