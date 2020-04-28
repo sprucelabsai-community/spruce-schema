@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.10.0...v1.11.0) (2020-04-28)
+
+
+### Features
+
+* date (without time) field ([5a0ae46](https://github.com/sprucelabsai/spruce-schema/commit/5a0ae46))
+
 # [1.10.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.9.0...v1.10.0) (2020-04-28)
 
 
