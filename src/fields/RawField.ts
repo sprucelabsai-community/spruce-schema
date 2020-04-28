@@ -19,7 +19,7 @@ export default class RawField extends AbstractField<IRawFieldDefinition> {
 		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
 	) {
 		return {
-			valueType: `${options.definition.options.valueType}${
+			valueType: `(${options.definition.options.valueType})${
 				options.definition.isArray ? '[]' : ''
 			}`
 		}
