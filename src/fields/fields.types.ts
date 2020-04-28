@@ -11,6 +11,7 @@ import NumberField, { INumberFieldDefinition } from './NumberField'
 import DateTimeField, { IDateTimeFieldDefinition } from './DateTimeField'
 import TextField, { ITextFieldDefinition } from './TextField'
 import FileField, { IFileFieldDefinition } from './FileField'
+import DateField, { IDateFieldDefinition } from './DateField'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition
@@ -25,6 +26,7 @@ export type FieldDefinition =
 	| INumberFieldDefinition
 	| IDateTimeFieldDefinition
 	| IFileFieldDefinition
+	| IDateFieldDefinition
 
 export type FieldClass =
 	| typeof BooleanField
@@ -39,6 +41,7 @@ export type FieldClass =
 	| typeof NumberField
 	| typeof DateTimeField
 	| typeof FileField
+	| typeof DateField
 
 export type Field =
 	| BooleanField
@@ -53,6 +56,7 @@ export type Field =
 	| NumberField
 	| DateTimeField
 	| FileField
+	| DateField
 
 /** Useful for type lookups for generics */
 export type FieldDefinitionMap = {
@@ -68,4 +72,5 @@ export type FieldDefinitionMap = {
 	[FieldType.Number]: INumberFieldDefinition
 	[FieldType.DateTime]: IDateTimeFieldDefinition
 	[FieldType.File]: IFileFieldDefinition
+	[FieldType.Date]: IDateFieldDefinition
 }

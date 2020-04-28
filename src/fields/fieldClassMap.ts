@@ -11,6 +11,7 @@ import NumberField from './NumberField'
 import DateTimeField from './DateTimeField'
 import TextField from './TextField'
 import FileField from './FileField'
+import DateField from './DateField'
 
 /** A global place to reference all field type classes */
 export const FieldClassMap = {
@@ -25,7 +26,8 @@ export const FieldClassMap = {
 	[FieldType.Number]: NumberField,
 	[FieldType.DateTime]: DateTimeField,
 	[FieldType.Text]: TextField,
-	[FieldType.File]: FileField
+	[FieldType.File]: FileField,
+	[FieldType.Date]: DateField
 }
 
 // export interface IFieldClassMap {

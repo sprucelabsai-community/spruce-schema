@@ -22,5 +22,7 @@ export enum FieldType {
 	/** 🛑 Core API only */
 	Raw = 'raw',
 	/** File select/upload */
-	File = 'file'
+	File = 'file',
+	/** A date object with time being ignored*/
+	Date = 'date'
 }
