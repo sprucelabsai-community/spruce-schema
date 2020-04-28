@@ -175,7 +175,7 @@ export type SchemaDefinitionAllValues<
 	T extends ISchemaDefinition,
 	CreateSchemaInstances extends boolean = false
 > = {
-	[K in SchemaFieldNames<T>]: SchemaFieldDefinitionValueType<
+	[K in SchemaFieldNames<T>]-?: SchemaFieldDefinitionValueType<
 		T,
 		K,
 		CreateSchemaInstances
@@ -296,7 +296,10 @@ export type FieldDefinitionValueType<
 	? F['options']['choices'][number]['value']
 	: F extends FieldDefinition // All fields
 	? IsRequired<
-			IsArray<Required<FieldDefinitionMap[F['type']]>['value'], F['isArray']>,
+			IsArray<
+				NonNullable<FieldDefinitionMap[F['type']]['value']>,
+				F['isArray']
+			>,
 			F['isRequired']
 	  >
 	: never
