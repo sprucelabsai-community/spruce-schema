@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.8.1...v1.9.0) (2020-04-27)
+
+
+### Features
+
+* raw field now passes through value type from options ([a4b13ec](https://github.com/sprucelabsai/spruce-schema/commit/a4b13ec))
+
 ## [1.8.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.8.0...v1.8.1) (2020-04-27)
 
 # [1.8.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.7.0...v1.8.0) (2020-04-27)
