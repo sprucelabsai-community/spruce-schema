@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.11.0...v1.12.0) (2020-04-28)
+
+
+### Features
+
+* nonnoullable ([d1312d8](https://github.com/sprucelabsai/spruce-schema/commit/d1312d8))
+
 # [1.11.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.10.0...v1.11.0) (2020-04-28)
 
 
