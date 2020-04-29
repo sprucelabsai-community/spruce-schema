@@ -148,9 +148,11 @@ export interface IFieldDefinitionToSchemaDefinitionOptions {
 	definitionsById?: { [id: string]: ISchemaDefinition }
 }
 
-export interface ISchemaFieldDefinitionValueUnion {
+export interface ISchemaFieldDefinitionValueUnion<
+	V extends Record<string, any> = Record<string, any>
+> {
 	schemaId: string
-	values: Record<string, any>
+	values: V
 }
 
 /** Options passed to toValueType */

@@ -150,10 +150,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			}
 			const { valueType } = SchemaField.templateDetails(options)
 
-			const exp =
-				expected[
-					`expectedRenderAs${renderAs}ValueType` as keyof typeof expected
-				]
+			const exp = expected[`renderAs${renderAs}` as keyof typeof expected]
 
 			assert.equal(valueType, exp)
 		})
