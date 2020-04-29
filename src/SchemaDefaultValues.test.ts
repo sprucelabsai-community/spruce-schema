@@ -53,6 +53,14 @@ interface IScrewdriverDefinition {
 	}
 }
 
+type IScrewdriverDefinitionDefaultValues = SchemaDefinitionDefaultValues<
+	IScrewdriverDefinition
+>
+
+interface IScrewdriverDefinitionExpectedDefaultValues {
+	type: string
+}
+
 interface IUnionPersonDefinition {
 	id: 'union-person'
 	name: 'Union Person'
@@ -258,7 +266,9 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 	}
 
 	@test('Creates types that work as expected')
-	protected static defaultTypesTests() {
+	protected static defaultTypesTests(
+		dummy: IScrewdriverDefinitionDefaultValues
+	) {
 		const expected = {
 			wrenchSize: 12,
 			tags: ['low', 'tough', 'tool']
@@ -267,5 +277,9 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		assert.expectType<SchemaDefinitionDefaultValues<IWrenchDefinition>>(
 			expected
 		)
+
+		dummy.type
+
+		assert.expectType<IScrewdriverDefinitionExpectedDefaultValues>(dummy)
 	}
 }
