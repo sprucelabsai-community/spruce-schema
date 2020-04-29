@@ -1,3 +1,13 @@
+# [1.13.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.12.0...v1.13.0) (2020-04-29)
+
+
+### Features
+
+* schema field maps many schemas to discriminating union ([9f3629a](https://github.com/sprucelabsai/spruce-schema/commit/9f3629a))
+* schema union field now a generic ([c751299](https://github.com/sprucelabsai/spruce-schema/commit/c751299))
+* template generation tests passing ([e7842ee](https://github.com/sprucelabsai/spruce-schema/commit/e7842ee))
+* value type fix and additional default values type test ([b6e3873](https://github.com/sprucelabsai/spruce-schema/commit/b6e3873))
+
 # [1.12.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.11.0...v1.12.0) (2020-04-28)
 
 
