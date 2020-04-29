@@ -105,23 +105,23 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 	@test(
 		'schemaIds',
 		{ isArray: false, options: { schemaIds: ['union-person', 'wrench'] } },
-		'[SpruceSchemas.core.UnionPerson.definition, SpruceSchemas.core.Wrench.definition]',
-		'SpruceSchemas.core.IUnionPerson | SpruceSchemas.core.IWrench',
+		"[{ schemaId: 'union-person', values: SpruceSchemas.core.UnionPerson.definition }, { schemaId: 'wrench', values: SpruceSchemas.core.Wrench.definition }]",
+		"{ schemaId: 'union-person', values: SpruceSchemas.core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.core.IWrench }",
 		'(SpruceSchemas.core.UnionPerson.IDefinition | SpruceSchemas.core.Wrench.IDefinition)[]'
 	)
 	@test(
 		'schemaIds isArray',
 		{ isArray: true, options: { schemaIds: ['union-person', 'wrench'] } },
-		'[SpruceSchemas.core.UnionPerson.definition, SpruceSchemas.core.Wrench.definition]',
-		'(SpruceSchemas.core.IUnionPerson | SpruceSchemas.core.IWrench)[]',
+		"[{ schemaId: 'union-person', values: SpruceSchemas.core.UnionPerson.definition }, { schemaId: 'wrench', values: SpruceSchemas.core.Wrench.definition }]",
+		"({ schemaId: 'union-person', values: SpruceSchemas.core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.core.IWrench })[]",
 		'(SpruceSchemas.core.UnionPerson.IDefinition | SpruceSchemas.core.Wrench.IDefinition)[]'
 	)
 	protected static async testTemplateDetails(
 		_: ISpruce,
 		definition: ISchemaFieldDefinition,
-		expectedRenderAsValueValueType: string,
-		expectedRenderAsTypeValueType: string,
-		expectedRenderAsDefinitionTypeValueType: string
+		renderAsValue: string,
+		renderAsType: string,
+		renderAsDefinitionType: string
 	) {
 		const templateOptions: IFieldTemplateDetailOptions<ISchemaFieldDefinition> = {
 			language: 'ts',
@@ -136,9 +136,9 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		}
 
 		const expected = {
-			expectedRenderAsValueValueType,
-			expectedRenderAsTypeValueType,
-			expectedRenderAsDefinitionTypeValueType
+			renderAsValue,
+			renderAsType,
+			renderAsDefinitionType
 		}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
