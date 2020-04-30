@@ -105,14 +105,14 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 	@test(
 		'schemaIds',
 		{ isArray: false, options: { schemaIds: ['union-person', 'wrench'] } },
-		"[{ schemaId: 'union-person', values: SpruceSchemas.core.UnionPerson.definition }, { schemaId: 'wrench', values: SpruceSchemas.core.Wrench.definition }]",
+		'[SpruceSchemas.core.UnionPerson.definition, SpruceSchemas.core.Wrench.definition]',
 		"{ schemaId: 'union-person', values: SpruceSchemas.core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.core.IWrench }",
 		'(SpruceSchemas.core.UnionPerson.IDefinition | SpruceSchemas.core.Wrench.IDefinition)[]'
 	)
 	@test(
 		'schemaIds isArray',
 		{ isArray: true, options: { schemaIds: ['union-person', 'wrench'] } },
-		"[{ schemaId: 'union-person', values: SpruceSchemas.core.UnionPerson.definition }, { schemaId: 'wrench', values: SpruceSchemas.core.Wrench.definition }]",
+		'[SpruceSchemas.core.UnionPerson.definition, SpruceSchemas.core.Wrench.definition]',
 		"({ schemaId: 'union-person', values: SpruceSchemas.core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.core.IWrench })[]",
 		'(SpruceSchemas.core.UnionPerson.IDefinition | SpruceSchemas.core.Wrench.IDefinition)[]'
 	)
@@ -149,7 +149,6 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				renderAs: TemplateRenderAs[renderAs]
 			}
 			const { valueType } = SchemaField.templateDetails(options)
-
 			const exp = expected[`renderAs${renderAs}` as keyof typeof expected]
 
 			assert.equal(valueType, exp)

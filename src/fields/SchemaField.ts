@@ -132,10 +132,7 @@ export default class SchemaField<
 						: ``
 				}`
 
-				if (
-					renderAs !== TemplateRenderAs.DefinitionType &&
-					schemaIds.length > 1
-				) {
+				if (renderAs === TemplateRenderAs.Type && schemaIds.length > 1) {
 					valueType = `{ schemaId: '${schemaId}', values: ${valueType} }`
 				}
 

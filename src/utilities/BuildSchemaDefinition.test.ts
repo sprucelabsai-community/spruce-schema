@@ -2,6 +2,7 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import { buildSchemaDefinition } from '..'
 import { FieldType } from '../fields/fieldType'
+import { ISchemaDefinition } from '../schema.types'
 
 export default class BuildSchemaDefinitionTest extends BaseTest {
 	@test('Can build schema (will always pass, but fail lint)')
@@ -17,6 +18,34 @@ export default class BuildSchemaDefinitionTest extends BaseTest {
 		})
 		assert.isOk(schema)
 		assert.isOk(schema.fields.firstName)
+	}
+
+	@test('test built schema type')
+	protected static async testBuiltSchemaType() {
+		const schema = buildSchemaDefinition({
+			id: 'test-2',
+			name: 'test two',
+			fields: {
+				skillName: {
+					type: FieldType.Text,
+					label: 'Name',
+					isRequired: true,
+					hint: "What's the name of your skill?"
+				},
+				description: {
+					type: FieldType.Text,
+					label: 'Description',
+					isRequired: true,
+					hint: 'How would you describe your skill?'
+				}
+			}
+		})
+
+		type TestType = typeof schema
+		const test = <T extends ISchemaDefinition>(def: T): T => def
+
+		test<typeof schema>(schema)
+		test<TestType>(schema)
 	}
 	// @test('Test mixing in field to the schema with object literal')
 	// protected static testMixingInFieldsWithObjectLiteral(
