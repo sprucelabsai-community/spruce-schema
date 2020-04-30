@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.14.1...v1.15.0) (2020-04-30)
+
+
+### Features
+
+* optional utility type (like partial with null) ([987a381](https://github.com/sprucelabsai/spruce-schema/commit/987a381))
+
 ## [1.14.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.14.0...v1.14.1) (2020-04-30)
 
 
