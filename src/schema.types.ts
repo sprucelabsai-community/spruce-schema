@@ -255,7 +255,9 @@ type IsArray<T, isArray> = isArray extends true ? Unpack<T>[] : Unpack<T>
 type IsArrayNoUnpack<T, isArray> = isArray extends true ? T[] : T
 
 /** Easy isRequired helper */
-type IsRequired<T, isRequired> = isRequired extends true ? T : T | undefined
+type IsRequired<T, isRequired> = isRequired extends true
+	? T
+	: T | undefined | null
 
 type SchemaFieldUnion<
 	S extends Array<ISchemaDefinition>,
