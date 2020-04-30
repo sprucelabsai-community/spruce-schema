@@ -1,3 +1,12 @@
+## [1.14.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.14.0...v1.14.1) (2020-04-30)
+
+
+### Bug Fixes
+
+* is not required is null also ([73edb0e](https://github.com/sprucelabsai/spruce-schema/commit/73edb0e))
+* null fix ([27f4de2](https://github.com/sprucelabsai/spruce-schema/commit/27f4de2))
+* null fixes ([998764c](https://github.com/sprucelabsai/spruce-schema/commit/998764c))
+
 # [1.14.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.13.0...v1.14.0) (2020-04-30)
 
 
