@@ -5,6 +5,8 @@ import { unset } from 'lodash'
 import { ErrorCode } from './errors/error.types'
 import Schema from './Schema'
 import SchemaError from './errors/SchemaError'
+import { truckDefinition } from './fields/__mocks__/personWithCars'
+import { SchemaDefinitionValues } from './schema.types'
 
 Schema.enableDuplicateCheckWhenTracking = false
 
@@ -202,5 +204,17 @@ export default class SchemaTest extends BaseTest {
 			7,
 			'Schema did not transform array of strings to single number'
 		)
+	}
+
+	@test('test definition values against interface')
+	protected static testValueTypes() {
+		const values: {
+			name: string
+			onlyOnCar: string | undefined | null
+		} = {
+			name: 'test',
+			onlyOnCar: null
+		}
+		assert.expectType<SchemaDefinitionValues<typeof truckDefinition>>(values)
 	}
 }

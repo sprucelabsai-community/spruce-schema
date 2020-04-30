@@ -22,6 +22,9 @@ export { default as buildErrorDefinition } from './utilities/buildErrorDefinitio
 export { default as buildSchemaDefinition } from './utilities/buildSchemaDefinition'
 export { default as buildFieldDefinition } from './utilities/buildFieldDefinition'
 
+// Util types
+export * from './utilities/optional.types'
+
 // Field registration
 export * from './utilities/registerFieldType'
 export { default as registerFieldType } from './utilities/registerFieldType'
