@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.13.0...v1.14.0) (2020-04-30)
+
+
+### Features
+
+* fixed definition type value generation ([9ed8aa3](https://github.com/sprucelabsai/spruce-schema/commit/9ed8aa3))
+
 # [1.13.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.12.0...v1.13.0) (2020-04-29)
 
 
