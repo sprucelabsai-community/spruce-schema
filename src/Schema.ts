@@ -258,7 +258,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		options: ISchemaNormalizeOptions<CreateSchemaInstances> = {}
 	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances> {
 		// Get value off self
-		const value: SchemaFieldDefinitionValueType<T, F> | undefined =
+		const value: SchemaFieldDefinitionValueType<T, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
 		return this.normalizeValue(fieldName, value, options)
