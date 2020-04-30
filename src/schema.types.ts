@@ -134,7 +134,10 @@ export interface IField<F extends FieldDefinition> {
 	toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
 		options?: IToValueTypeOptions<CreateSchemaInstances>
-	): Exclude<FieldDefinitionValueType<F, CreateSchemaInstances>, undefined>
+	): Exclude<
+		FieldDefinitionValueType<F, CreateSchemaInstances>,
+		undefined | null
+	>
 }
 
 /** Options passed to validate() */
@@ -192,6 +195,7 @@ export type SchemaDefinitionPartialValues<
 	[K in SchemaFieldNames<T>]?:
 		| SchemaFieldDefinitionValueType<T, K, CreateSchemaInstances>
 		| undefined
+		| null
 }
 
 /** Turn a schema until it's "values" type */
