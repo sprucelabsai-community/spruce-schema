@@ -3,10 +3,11 @@ import BaseTest, { test, assert } from '@sprucelabs/test'
 import Schema, { buildSchemaDefinition } from '..'
 import { FieldType } from './fieldType'
 import {
-	ISelectFieldDefinitionChoice,
 	SelectOptionsToHash,
-	selectOptionsToHash
-} from './SelectField'
+	selectOptionsToHash,
+	SelectOptionsToHash2
+} from '../utilities/selectOptionsToHash'
+import { personDefinition } from './__mocks__/personWithCars'
 
 interface IUserDefinition {
 	id: 'select-union-test'
@@ -62,20 +63,12 @@ export default class SelectFieldTest extends BaseTest {
 	}
 
 	protected static async testCreatingOptionHashes() {
-		const options: ISelectFieldDefinitionChoice[] = [
-			{
-				value: 'foo',
-				label: 'Foo'
-			},
-			{
-				value: 'bar',
-				label: 'Bar'
-			}
-		]
+		const options = personDefinition.fields.optionalSelect.options.choices
 
-		type Test = SelectOptionsToHash<typeof options, string>
+		type Test = SelectOptionsToHash<typeof options>
 		const optionsHash = selectOptionsToHash(options)
 
 		assert.expectType<Test>(optionsHash)
+		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash)
 	}
 }

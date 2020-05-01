@@ -92,6 +92,15 @@ export interface IPersonDefinition extends ISchemaDefinition {
 				schemas: [ICarDefinition, ITruckDefinition]
 			}
 		}
+		optionalSelect: {
+			type: FieldType.Select
+			options: {
+				choices: [
+					{ value: 'foo'; label: 'Foo' },
+					{ value: 'bar'; label: 'Bar' }
+				]
+			}
+		}
 	}
 }
 
@@ -179,6 +188,15 @@ export const personDefinition = buildSchemaDefinition<IPersonDefinition>({
 			isRequired: true,
 			options: {
 				schemas: [carDefinition, truckDefinition]
+			}
+		},
+		optionalSelect: {
+			type: FieldType.Select,
+			options: {
+				choices: [
+					{ value: 'foo', label: 'Foo' },
+					{ value: 'bar', label: 'Bar' }
+				]
 			}
 		}
 	}

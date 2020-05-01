@@ -17,25 +17,6 @@ export type ISelectFieldDefinition = IFieldDefinition<string> & {
 		choices: ISelectFieldDefinitionChoice[]
 	}
 }
-
-export type SelectOptionsToHash<
-	Options extends ISelectFieldDefinitionChoice[],
-	Value = string
-> = Record<Options[number]['value'], Value>
-
-export function selectOptionsToHash<
-	Options extends ISelectFieldDefinitionChoice[] = ISelectFieldDefinitionChoice[]
->(options: Options): SelectOptionsToHash<Options, string> {
-	const partial: Partial<SelectOptionsToHash<Options, string>> = {}
-
-	Object.keys(options).forEach(key => {
-		// @ts-ignore
-		partial[key] = options[key]
-	})
-
-	return partial as SelectOptionsToHash<Options, string>
-}
-
 export default class SelectField<
 	T extends ISelectFieldDefinition = ISelectFieldDefinition
 > extends AbstractField<T> {
