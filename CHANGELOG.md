@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.16.0...v1.17.0) (2020-05-01)
+
+
+### Features
+
+* select options to hash ([3fba090](https://github.com/sprucelabsai/spruce-schema/commit/3fba090))
+
 # [1.16.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.15.0...v1.16.0) (2020-05-01)
 
 
