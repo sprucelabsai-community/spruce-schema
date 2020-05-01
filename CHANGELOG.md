@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.15.0...v1.16.0) (2020-05-01)
+
+
+### Features
+
+* isDefinitionValid now types ([e7951fd](https://github.com/sprucelabsai/spruce-schema/commit/e7951fd))
+
 # [1.15.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.14.1...v1.15.0) (2020-04-30)
 
 
