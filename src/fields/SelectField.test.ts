@@ -2,6 +2,11 @@ import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import Schema, { buildSchemaDefinition } from '..'
 import { FieldType } from './fieldType'
+import {
+	ISelectFieldDefinitionChoice,
+	SelectOptionsToHash,
+	selectOptionsToHash
+} from './SelectField'
 
 interface IUserDefinition {
 	id: 'select-union-test'
@@ -54,5 +59,23 @@ export default class SelectFieldTest extends BaseTest {
 		})
 		const favColor = user.get('favoriteColor')
 		assert.expectType<'blue' | 'red'>(favColor)
+	}
+
+	protected static async testCreatingOptionHashes() {
+		const options: ISelectFieldDefinitionChoice[] = [
+			{
+				value: 'foo',
+				label: 'Foo'
+			},
+			{
+				value: 'bar',
+				label: 'Bar'
+			}
+		]
+
+		type Test = SelectOptionsToHash<typeof options, boolean>
+		const optionsHash = selectOptionsToHash<boolean>(options)
+
+		assert.expectType<Test>(optionsHash)
 	}
 }
