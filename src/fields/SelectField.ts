@@ -24,17 +24,16 @@ export type SelectOptionsToHash<
 > = Record<Options[number]['value'], Value>
 
 export function selectOptionsToHash<
-	Value,
 	Options extends ISelectFieldDefinitionChoice[] = ISelectFieldDefinitionChoice[]
->(options: Options): SelectOptionsToHash<Options, Value> {
-	const partial: Partial<SelectOptionsToHash<Options, Value>> = {}
+>(options: Options): SelectOptionsToHash<Options, string> {
+	const partial: Partial<SelectOptionsToHash<Options, string>> = {}
 
 	Object.keys(options).forEach(key => {
 		// @ts-ignore
 		partial[key] = options[key]
 	})
 
-	return partial as SelectOptionsToHash<Options, Value>
+	return partial as SelectOptionsToHash<Options, string>
 }
 
 export default class SelectField<

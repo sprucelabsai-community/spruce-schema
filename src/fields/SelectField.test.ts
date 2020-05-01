@@ -73,8 +73,8 @@ export default class SelectFieldTest extends BaseTest {
 			}
 		]
 
-		type Test = SelectOptionsToHash<typeof options, boolean>
-		const optionsHash = selectOptionsToHash<boolean>(options)
+		type Test = SelectOptionsToHash<typeof options, string>
+		const optionsHash = selectOptionsToHash(options)
 
 		assert.expectType<Test>(optionsHash)
 	}
