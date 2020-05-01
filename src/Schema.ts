@@ -23,6 +23,7 @@ import {
 	FieldNamesWithDefaultValueSet,
 	ISchema
 } from './schema.types'
+import { ISchemaFieldDefinition } from './fields'
 
 let fieldClassMap: any | undefined
 
@@ -133,7 +134,9 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	}
 
 	/** Tells you if a schema definition is valid */
-	public static isDefinitionValid(definition: unknown): boolean {
+	public static isDefinitionValid(
+		definition: unknown
+	): definition is ISchemaFieldDefinition {
 		try {
 			Schema.validateDefinition(definition)
 			return true
