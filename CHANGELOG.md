@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.17.0...v1.18.0) (2020-05-01)
+
+
+### Features
+
+* hash fix ([6769271](https://github.com/sprucelabsai/spruce-schema/commit/6769271))
+
 # [1.17.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.16.0...v1.17.0) (2020-05-01)
 
 
