@@ -5,7 +5,8 @@ import { FieldType } from './fieldType'
 import {
 	SelectOptionsToHash,
 	selectOptionsToHash,
-	SelectOptionsToHash2
+	definitionOptionsToHash,
+	SelectFieldNames
 } from '../utilities/selectOptionsToHash'
 import { personDefinition } from './__mocks__/personWithCars'
 
@@ -62,6 +63,7 @@ export default class SelectFieldTest extends BaseTest {
 		assert.expectType<'blue' | 'red'>(favColor)
 	}
 
+	@test('Option hashing')
 	protected static async testCreatingOptionHashes() {
 		const options = personDefinition.fields.optionalSelect.options.choices
 
@@ -70,5 +72,15 @@ export default class SelectFieldTest extends BaseTest {
 
 		assert.expectType<Test>(optionsHash)
 		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash)
+
+		type SelectFields = SelectFieldNames<typeof personDefinition>
+		const optionsHash2 = definitionOptionsToHash(
+			personDefinition,
+			'optionalSelect'
+		)
+
+		const fieldName: SelectFields = 'optionalSelect'
+		assert.expectType<'optionalSelect' | 'anotherOptionalSelect'>(fieldName)
+		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash2)
 	}
 }
