@@ -101,6 +101,15 @@ export interface IPersonDefinition extends ISchemaDefinition {
 				]
 			}
 		}
+		anotherOptionalSelect: {
+			type: FieldType.Select
+			options: {
+				choices: [
+					{ value: 'hello'; label: 'world' },
+					{ value: 'goodbye'; label: 'darling' }
+				]
+			}
+		}
 	}
 }
 
@@ -196,6 +205,15 @@ export const personDefinition = buildSchemaDefinition<IPersonDefinition>({
 				choices: [
 					{ value: 'foo', label: 'Foo' },
 					{ value: 'bar', label: 'Bar' }
+				]
+			}
+		},
+		anotherOptionalSelect: {
+			type: FieldType.Select,
+			options: {
+				choices: [
+					{ value: 'hello', label: 'world' },
+					{ value: 'goodbye', label: 'darling' }
 				]
 			}
 		}

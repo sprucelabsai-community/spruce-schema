@@ -1,10 +1,13 @@
-import { ISelectFieldDefinitionChoice, ISelectFieldDefinition } from '../fields'
+import {
+	ISelectFieldDefinitionChoice,
+	ISelectFieldDefinition
+} from '../fields/SelectField'
 import {
 	ISchemaDefinition,
-	IFieldDefinition,
-	ISchemaDefinitionFields
+	ISchemaDefinitionFields,
+	PickFieldNames
 } from '../schema.types'
-import { FieldType } from '../fields/fieldType'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 /** Turn select options into a key/value pair */
 export type SelectOptionsToHash<
@@ -15,22 +18,6 @@ export type SelectOptionsToHash<
 		{ value: P }
 	>['label']
 }
-
-export type SelectFields<S extends ISchemaDefinition> = {
-	[F in keyof S['fields']]: S['fields'][F] extends IFieldDefinition
-		? S['fields'][F]['type'] extends FieldType.Select
-			? S['fields'][F]
-			: never
-		: never
-}
-
-export type SelectFieldNames<S extends ISchemaDefinition> = {
-	[F in keyof S['fields']]: S['fields'][F] extends IFieldDefinition
-		? S['fields'][F]['type'] extends FieldType.Select
-			? F
-			: never
-		: never
-}[Extract<keyof S['fields'], string>]
 
 export function selectOptionsToHash<
 	Options extends ISelectFieldDefinitionChoice[]
@@ -47,7 +34,7 @@ export function selectOptionsToHash<
 
 export function definitionOptionsToHash<
 	S extends ISchemaDefinition,
-	F extends SelectFieldNames<S>
+	F extends PickFieldNames<S, FieldType.Select>
 >(
 	definition: S,
 	fieldName: F

@@ -1,14 +1,15 @@
 import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
-import Schema, { buildSchemaDefinition } from '..'
-import { FieldType } from './fieldType'
+import Schema from '../Schema'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 import {
 	SelectOptionsToHash,
 	selectOptionsToHash,
-	definitionOptionsToHash,
-	SelectFieldNames
+	definitionOptionsToHash
 } from '../utilities/selectOptionsToHash'
 import { personDefinition } from './__mocks__/personWithCars'
+import { PickFieldNames } from '../schema.types'
+import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
 
 interface IUserDefinition {
 	id: 'select-union-test'
@@ -73,14 +74,22 @@ export default class SelectFieldTest extends BaseTest {
 		assert.expectType<Test>(optionsHash)
 		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash)
 
-		type SelectFields = SelectFieldNames<typeof personDefinition>
+		type SelectFields = PickFieldNames<
+			typeof personDefinition,
+			FieldType.Select
+		>
+
 		const optionsHash2 = definitionOptionsToHash(
 			personDefinition,
 			'optionalSelect'
 		)
 
-		const fieldName: SelectFields = 'optionalSelect'
+		const fieldName: SelectFields = 'anotherOptionalSelect'
+		const fieldName2: SelectFields = 'optionalSelect'
+
 		assert.expectType<'optionalSelect' | 'anotherOptionalSelect'>(fieldName)
+		assert.expectType<'optionalSelect' | 'anotherOptionalSelect'>(fieldName2)
+
 		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash2)
 	}
 }

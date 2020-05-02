@@ -277,6 +277,7 @@ type SchemaFieldUnion<
 		: any
 }
 
+/** Schema field to value type (another schema usually) */
 export type SchemaFieldValueType<
 	F extends ISchemaFieldDefinition,
 	CreateSchemaInstances extends boolean = false
@@ -291,10 +292,12 @@ export type SchemaFieldValueType<
 		: IsArray<SchemaDefinitionValues<F['options']['schema']>, F['isArray']>
 	: any
 
+/** Asserting field value type */
 export type FieldValidationAssertion<F extends FieldDefinition> =
 	| FieldDefinitionValueType<F, false>
 	| FieldDefinitionValueType<F, true>
 
+/** Value type for field definition */
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,
 	CreateSchemaInstances extends boolean = false
@@ -385,3 +388,12 @@ export interface ISchemaValidateOptions<
 	T extends ISchemaDefinition,
 	F extends SchemaFieldNames<T> = SchemaFieldNames<T>
 > extends ISchemaNamedFieldsOptions<T, F> {}
+
+/** Field names for all matching type */
+export type PickFieldNames<S extends ISchemaDefinition, T extends FieldType> = {
+	[F in keyof S['fields']]: S['fields'][F] extends IFieldDefinition
+		? S['fields'][F]['type'] extends T
+			? F
+			: never
+		: never
+}[Extract<keyof S['fields'], string>]
