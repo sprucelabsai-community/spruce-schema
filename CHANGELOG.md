@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.18.0...v1.19.0) (2020-05-02)
+
+
+### Features
+
+* enhanced select hash mapping ([230f89c](https://github.com/sprucelabsai/spruce-schema/commit/230f89c))
+
 # [1.18.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.17.0...v1.18.0) (2020-05-01)
 
 
