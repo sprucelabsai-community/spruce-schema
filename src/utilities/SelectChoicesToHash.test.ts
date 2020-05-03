@@ -3,7 +3,7 @@ import {
 	SelectChoicesToHash,
 	selectChoicesToHash,
 	definitionChoicesToHash
-} from './selectOptionsToHash'
+} from './selectChoicesToHash'
 import { personDefinition } from '../fields/__mocks__/personWithCars'
 import { PickFieldNames } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'

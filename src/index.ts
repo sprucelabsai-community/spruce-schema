@@ -24,7 +24,7 @@ export { default as buildFieldDefinition } from './utilities/buildFieldDefinitio
 
 // Util types
 export * from './utilities/optional.types'
-export * from './utilities/selectOptionsToHash'
+export * from './utilities/selectChoicesToHash'
 
 // Field registration
 export * from './utilities/registerFieldType'
