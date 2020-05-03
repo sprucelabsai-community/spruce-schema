@@ -10,7 +10,7 @@ import {
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
 /** Turn select options into a key/value pair */
-export type SelectOptionsToHash<
+export type SelectChoicesToHash<
 	Options extends ISelectFieldDefinitionChoice[]
 > = {
 	[P in Options[number]['value']]: Extract<
@@ -19,20 +19,20 @@ export type SelectOptionsToHash<
 	>['label']
 }
 
-export function selectOptionsToHash<
+export function selectChoicesToHash<
 	Options extends ISelectFieldDefinitionChoice[]
->(options: Options): SelectOptionsToHash<Options> {
-	const partial: Partial<SelectOptionsToHash<Options>> = {}
+>(options: Options): SelectChoicesToHash<Options> {
+	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
 	Object.keys(options).forEach(key => {
 		// @ts-ignore
 		partial[key] = options[key]
 	})
 
-	return partial as SelectOptionsToHash<Options>
+	return partial as SelectChoicesToHash<Options>
 }
 
-export function definitionOptionsToHash<
+export function definitionChoicesToHash<
 	S extends ISchemaDefinition,
 	F extends PickFieldNames<S, FieldType.Select>
 >(
@@ -41,12 +41,12 @@ export function definitionOptionsToHash<
 ): S['fields'] extends ISchemaDefinitionFields
 	? S['fields'][F] extends ISelectFieldDefinition
 		? S['fields'][F]['options'] extends ISelectFieldDefinition['options']
-			? SelectOptionsToHash<S['fields'][F]['options']['choices']>
+			? SelectChoicesToHash<S['fields'][F]['options']['choices']>
 			: never
 		: never
 	: never {
 	//@ts-ignore
-	return selectOptionsToHash(
+	return selectChoicesToHash(
 		//@ts-ignore
 		definition.fields?.[fieldName].options.choices || []
 	)

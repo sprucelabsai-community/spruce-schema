@@ -1,7 +1,7 @@
 // TODO figure out how to get schema field mixins working from buildSchemaDefinition (SchemaDefinitionValues fails)
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import { buildSchemaDefinition } from '..'
-import { FieldType } from '../fields/fieldType'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 import { ISchemaDefinition } from '../schema.types'
 
 export default class BuildSchemaDefinitionTest extends BaseTest {

@@ -7,7 +7,7 @@ import {
 	IFieldTemplateDetailOptions
 } from '../template.types'
 import { FieldDefinition } from '#spruce:schema/fields/fields.types'
-import { FieldType } from './fieldType'
+import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export default abstract class AbstractField<F extends FieldDefinition>
 	implements IField<F> {
