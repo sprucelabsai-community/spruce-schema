@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.19.0...v1.20.0) (2020-05-02)
+
+
+### Features
+
+* path fixes and select test additions ([620d941](https://github.com/sprucelabsai/spruce-schema/commit/620d941))
+
 # [1.19.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.18.0...v1.19.0) (2020-05-02)
 
 
