@@ -90,7 +90,7 @@ export default class FileFieldTest extends BaseTest {
 		assert.deepEqual(augmented, complete)
 	}
 
-	@test('Can set in schema')
+	@test('Can create schema and properly parse path of target')
 	public static testInSchema() {
 		const expectedPath = process.cwd()
 
