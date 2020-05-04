@@ -76,15 +76,18 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 			stringValue = name || path
 		}
 
-		const finalPath =
-			path ??
-			(stringValue.search(pathUtil.sep) > -1
-				? pathUtil.dirname(stringValue)
-				: undefined)
-		name = name ?? stringValue.replace(path, '').replace(pathUtil.sep, '')
-		ext = ext ?? pathUtil.extname(stringValue)
-		type = type ?? (mime.lookup(stringValue) || undefined)
+		// Check if path is the full file path
+		if (path && /\/[^/]+\.[^/]+$/.test(path)) {
+			// If it is then we should just get the directory name and set it to path
+			path = pathUtil.dirname(path)
+		} else {
+			path =
+				stringValue.search(pathUtil.sep) > -1
+					? pathUtil.dirname(stringValue)
+					: undefined
+		}
 
+		name = name ?? stringValue.replace(path, '').replace(pathUtil.sep, '')
 		if (!name) {
 			throw new SchemaError({
 				code: ErrorCode.TransformationFailed,
@@ -94,9 +97,12 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 				name: this.name
 			})
 		}
+		ext = ext ?? pathUtil.extname(name)
+		type = type ?? (mime.lookup(name) || undefined)
+
 		return {
 			name,
-			path: finalPath,
+			path,
 			type,
 			ext
 		}
