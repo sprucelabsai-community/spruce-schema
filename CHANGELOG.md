@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.23.0...v1.24.0) (2020-05-04)
+
+
+### Features
+
+* pick field names by type uses union which wors vs IFieldDefinition (which everything extends so wtf?) ([41035a2](https://github.com/sprucelabsai/spruce-schema/commit/41035a2))
+
 # [1.23.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.22.0...v1.23.0) (2020-05-04)
 
 
