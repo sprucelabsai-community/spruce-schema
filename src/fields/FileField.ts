@@ -76,10 +76,11 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 			stringValue = name || path
 		}
 
-		path =
-			path ?? stringValue.search(pathUtil.sep) > -1
+		const finalPath =
+			path ??
+			(stringValue.search(pathUtil.sep) > -1
 				? pathUtil.dirname(stringValue)
-				: undefined
+				: undefined)
 		name = name ?? stringValue.replace(path, '').replace(pathUtil.sep, '')
 		ext = ext ?? pathUtil.extname(stringValue)
 		type = type ?? (mime.lookup(stringValue) || undefined)
@@ -95,7 +96,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		}
 		return {
 			name,
-			path,
+			path: finalPath,
 			type,
 			ext
 		}

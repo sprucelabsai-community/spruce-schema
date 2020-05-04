@@ -2,6 +2,8 @@ import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { IFileFieldValue } from './FileField'
 import FieldFactory from '../factories/FieldFactory'
+import Schema from '../Schema'
+import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
 
 interface IFileDetailExpectations {
 	expectedName: string
@@ -86,5 +88,37 @@ export default class FileFieldTest extends BaseTest {
 		const file = FieldFactory.field('test', { type: FieldType.File })
 		const augmented = file.toValueType(partial)
 		assert.deepEqual(augmented, complete)
+	}
+
+	@test('Can set in schema')
+	public static testInSchema() {
+		const expectedPath = process.cwd()
+
+		const fileDefinition = buildSchemaDefinition({
+			id: 'testFeature',
+			name: 'Test Feature',
+			fields: {
+				target: {
+					type: FieldType.File,
+					isRequired: true,
+					label: 'What file would you like to test?'
+				}
+			}
+		})
+
+		const schema = new Schema(fileDefinition)
+
+		schema.set('target', {
+			path: expectedPath,
+			ext: '.ts',
+			type: 'application/typescript',
+			name: 'test.ts'
+		})
+
+		const values = schema.getValues({
+			fields: ['target']
+		})
+		assert.isOk(values.target)
+		assert.equal(values.target.path, expectedPath)
 	}
 }
