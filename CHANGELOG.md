@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.22.0...v1.23.0) (2020-05-04)
+
+
+### Features
+
+* definition choices to hash update ([b4ab9fa](https://github.com/sprucelabsai/spruce-schema/commit/b4ab9fa))
+
 # [1.22.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.21.0...v1.22.0) (2020-05-03)
 
 
