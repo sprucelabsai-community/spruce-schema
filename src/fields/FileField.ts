@@ -80,7 +80,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		if (path && /\/[^/]+\.[^/]+$/.test(path)) {
 			// If it is then we should just get the directory name and set it to path
 			path = pathUtil.dirname(path)
-		} else {
+		} else if (!path) {
+			// Try to pull the path off the value
 			path =
 				stringValue.search(pathUtil.sep) > -1
 					? pathUtil.dirname(stringValue)

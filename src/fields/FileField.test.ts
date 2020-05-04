@@ -118,6 +118,7 @@ export default class FileFieldTest extends BaseTest {
 		const values = schema.getValues({
 			fields: ['target']
 		})
+
 		assert.isOk(values.target)
 		assert.equal(values.target.path, expectedPath)
 	}
