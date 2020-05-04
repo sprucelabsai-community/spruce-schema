@@ -19,6 +19,7 @@ export type SelectChoicesToHash<
 	>['label']
 }
 
+/** Pass the select options directly to create a value/label hash */
 export function selectChoicesToHash<
 	Options extends ISelectFieldDefinitionChoice[]
 >(options: Options): SelectChoicesToHash<Options> {
@@ -32,6 +33,7 @@ export function selectChoicesToHash<
 	return partial as SelectChoicesToHash<Options>
 }
 
+/** Take a definition and a field name and returns a value/label hash */
 export function definitionChoicesToHash<
 	S extends ISchemaDefinition,
 	F extends PickFieldNames<S, FieldType.Select>
@@ -45,9 +47,9 @@ export function definitionChoicesToHash<
 			: never
 		: never
 	: never {
-	//@ts-ignore
+	// @ts-ignore
 	return selectChoicesToHash(
-		//@ts-ignore
-		definition.fields?.[fieldName].options.choices || []
+		// @ts-ignore
+		definition.fields?.[fieldName]?.options?.choices ?? []
 	)
 }
