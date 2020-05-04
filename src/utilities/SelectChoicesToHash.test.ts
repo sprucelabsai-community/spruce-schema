@@ -29,12 +29,22 @@ export default class SelectOptionsToHashTest extends BaseTest {
 			'optionalSelect'
 		)
 
-		const fieldName: SelectFields = 'anotherOptionalSelect'
+		const optionsHash3 = definitionChoicesToHash(
+			personDefinition,
+			'optionalSelectWithDefaultValue'
+		)
+
+		const fieldName: SelectFields = 'optionalSelectWithDefaultValue'
 		const fieldName2: SelectFields = 'optionalSelect'
 
-		assert.expectType<'optionalSelect' | 'anotherOptionalSelect'>(fieldName)
-		assert.expectType<'optionalSelect' | 'anotherOptionalSelect'>(fieldName2)
+		assert.expectType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
+			fieldName
+		)
+		assert.expectType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
+			fieldName2
+		)
 
 		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash2)
+		assert.expectType<{ hello: 'world'; goodbye: 'darling' }>(optionsHash3)
 	}
 }

@@ -101,8 +101,9 @@ export interface IPersonDefinition extends ISchemaDefinition {
 				]
 			}
 		}
-		anotherOptionalSelect: {
+		optionalSelectWithDefaultValue: {
 			type: FieldType.Select
+			defaultValue: 'hello'
 			options: {
 				choices: [
 					{ value: 'hello'; label: 'world' },
@@ -208,8 +209,9 @@ export const personDefinition = buildSchemaDefinition<IPersonDefinition>({
 				]
 			}
 		},
-		anotherOptionalSelect: {
+		optionalSelectWithDefaultValue: {
 			type: FieldType.Select,
+			defaultValue: 'hello',
 			options: {
 				choices: [
 					{ value: 'hello', label: 'world' },

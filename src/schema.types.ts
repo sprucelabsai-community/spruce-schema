@@ -391,7 +391,7 @@ export interface ISchemaValidateOptions<
 
 /** Field names for all matching type */
 export type PickFieldNames<S extends ISchemaDefinition, T extends FieldType> = {
-	[F in keyof S['fields']]: S['fields'][F] extends IFieldDefinition
+	[F in keyof S['fields']]: S['fields'][F] extends FieldDefinition
 		? S['fields'][F]['type'] extends T
 			? F
 			: never
