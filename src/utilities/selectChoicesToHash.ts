@@ -13,10 +13,10 @@ import { FieldType } from '#spruce:schema/fields/fieldType'
 export type SelectChoicesToHash<
 	Options extends ISelectFieldDefinitionChoice[]
 > = {
-	[P in Options[number]['value']]: Extract<
+	[P in Options[number]['label']]: Extract<
 		Options[number],
 		{ value: P }
-	>['label']
+	>['value']
 }
 
 /** Pass the select options directly to create a value/label hash */
@@ -27,7 +27,7 @@ export function selectChoicesToHash<
 
 	Object.keys(options).forEach(key => {
 		// @ts-ignore
-		partial[key] = options[key]
+		partial[options[key]] = key
 	})
 
 	return partial as SelectChoicesToHash<Options>

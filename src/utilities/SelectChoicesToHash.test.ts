@@ -17,7 +17,7 @@ export default class SelectOptionsToHashTest extends BaseTest {
 		const optionsHash = selectChoicesToHash(options)
 
 		assert.expectType<Test>(optionsHash)
-		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash)
+		assert.expectType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
 
 		type SelectFields = PickFieldNames<
 			typeof personDefinition,
@@ -44,7 +44,7 @@ export default class SelectOptionsToHashTest extends BaseTest {
 			fieldName2
 		)
 
-		assert.expectType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash2)
-		assert.expectType<{ hello: 'world'; goodbye: 'darling' }>(optionsHash3)
+		assert.expectType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash2)
+		assert.expectType<{ world: 'hello'; darling: 'goodbye' }>(optionsHash3)
 	}
 }
