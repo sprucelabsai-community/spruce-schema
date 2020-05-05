@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.24.0...v1.25.0) (2020-05-05)
+
+
+### Features
+
+* hash label/value swap so the label is the key and the value is the value ([7a0fe8c](https://github.com/sprucelabsai/spruce-schema/commit/7a0fe8c))
+
 # [1.24.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.23.0...v1.24.0) (2020-05-04)
 
 
