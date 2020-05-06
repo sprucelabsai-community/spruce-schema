@@ -1,6 +1,6 @@
 import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
-import { IDurationFieldValue } from './DurationField'
-import { FieldFactory } from '..'
+import { IDurationFieldValue, buildDuration } from './DurationField'
+import FieldFactory from '../factories/FieldFactory'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 
 export default class DurationFieldTest extends BaseTest {
@@ -28,6 +28,15 @@ export default class DurationFieldTest extends BaseTest {
 		const value = field.toValueType(partial)
 		assert.deepEqual(
 			value,
+			expected,
+			`Duration field did not map ${JSON.stringify(
+				partial
+			)} to ${JSON.stringify(expected)}`
+		)
+
+		// test build directly
+		assert.deepEqual(
+			buildDuration(partial),
 			expected,
 			`Duration field did not map ${JSON.stringify(
 				partial
