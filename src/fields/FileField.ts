@@ -44,7 +44,9 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
 	) {
 		return {
-			valueType: `IFileFieldValue${options.definition.isArray ? '[]' : ''}`
+			valueType: `${options.importAs}.IFileFieldValue${
+				options.definition.isArray ? '[]' : ''
+			}`
 		}
 	}
 
