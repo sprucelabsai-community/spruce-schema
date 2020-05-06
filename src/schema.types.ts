@@ -218,7 +218,9 @@ export type SchemaDefinitionDefaultValues<
 		T,
 		CreateSchemaInstances
 	> = SchemaDefinitionAllValues<T, CreateSchemaInstances>
-> = Pick<V, K>
+> = {
+	[F in K]: NonNullable<V[F]>
+}
 
 /** All fields that are optional on the schema */
 export type OptionalFieldNames<T extends ISchemaDefinition> = {
@@ -304,7 +306,10 @@ export type FieldDefinitionValueType<
 > = F extends ISchemaFieldDefinition // Schema field
 	? SchemaFieldValueType<F, CreateSchemaInstances>
 	: F extends ISelectFieldDefinition // Select field
-	? F['options']['choices'][number]['value']
+	? IsRequired<
+			IsArray<F['options']['choices'][number]['value'], F['isArray']>,
+			F['isRequired']
+	  >
 	: F extends FieldDefinition // All fields
 	? IsRequired<
 			IsArray<
