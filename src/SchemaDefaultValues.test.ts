@@ -242,17 +242,12 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 	}
 
 	@test('Can get default typed correctly (test will pass, lint will fail)')
-	protected static defaultValueTypeTests(
-		s: ISpruce,
-		definition: ISchemaDefinition,
-		expectedDefaultValues: Record<string, any>
-	) {
+	protected static defaultValueTypeTests() {
 		const schema = new Schema(SchemaDefaultValuesTest.screwdriverDefinition)
 		const defaultValues: { type: string } = schema.getDefaultValues()
 		const values = schema.getValues()
 		const type = undefined
 		assert.expectType<typeof values['type']>(type)
-		assert.deepEqual(defaultValues, expectedDefaultValues)
 		assert.expectType<{ type: string }>(defaultValues)
 	}
 
