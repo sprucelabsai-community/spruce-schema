@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.25.0...v1.26.0) (2020-05-06)
+
+
+### Features
+
+* buildDuration utility function ([545b864](https://github.com/sprucelabsai/spruce-schema/commit/545b864))
+
 # [1.25.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.24.0...v1.25.0) (2020-05-05)
 
 
