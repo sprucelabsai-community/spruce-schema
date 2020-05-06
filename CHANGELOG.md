@@ -1,3 +1,12 @@
+# [1.27.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.26.0...v1.27.0) (2020-05-06)
+
+
+### Features
+
+* defalt value typing "working" ([2321a3d](https://github.com/sprucelabsai/spruce-schema/commit/2321a3d))
+* no cache on tests to keep from tests false positives locally ([54659d5](https://github.com/sprucelabsai/spruce-schema/commit/54659d5))
+* schema defaults fix ([f4fbf42](https://github.com/sprucelabsai/spruce-schema/commit/f4fbf42))
+
 # [1.26.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.25.0...v1.26.0) (2020-05-06)
 
 
