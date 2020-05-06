@@ -54,6 +54,6 @@ export default class SelectFieldTest extends BaseTest {
 			favoriteColor: 'blue'
 		})
 		const favColor = user.get('favoriteColor')
-		assert.expectType<'blue' | 'red'>(favColor)
+		assert.expectType<'blue' | 'red' | undefined | null>(favColor)
 	}
 }

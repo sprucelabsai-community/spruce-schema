@@ -28,7 +28,7 @@
 		"clean": "rm -rf build/",
 		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
 		"lint:fix": "eslint --fix '**/*.ts'",
-		"test": "jest",
+		"test": "jest --no-cache",
 		"release": "semantic-release",
 		"test:watch": "jest --watch"
 	},
