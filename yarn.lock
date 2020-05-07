@@ -1271,10 +1271,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@2.1.0-prerelease-assert-type.1":
-  version "2.1.0-prerelease-assert-type.1"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-2.1.0-prerelease-assert-type.1.tgz#e32d7503a38210d585693c9528a94aac73a81cab"
-  integrity sha512-hKuwehGHfPCWi8zULdneOo6J2ja/W3W5O1HgwAg1XQW4gY3WYaWDBXFT0QkuoCaMKfUQRVUNGyo7YhtbndGQ3Q==
+"@sprucelabs/test@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-2.2.1.tgz#6d7d2a3742f91f9936f68cfe59a19e33672a9935"
+  integrity sha512-jwmEV74e+L0OAynthKKvMQq0bREG4mwJTg8KuHUN+DwwC61w9vH2SBDGswwx1zsJBqjV/HwiHQ2aVncsmk2bnQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/preset-env" "^7.9.5"

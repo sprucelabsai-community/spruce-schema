@@ -78,15 +78,21 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 			stringValue = name || path
 		}
 
+		const dirname =
+			pathUtil.sep === '/' ? pathUtil.dirname : pathUtil.win32.dirname
+
 		// Check if path is the full file path
-		if (path && /\/[^/]+\.[^/]+$/.test(path)) {
+		if (path) {
+			const parts = pathUtil.parse(path)
 			// If it is then we should just get the directory name and set it to path
-			path = pathUtil.dirname(path)
+			if (parts.ext.length > 0) {
+				path = dirname(path)
+			}
 		} else if (!path) {
 			// Try to pull the path off the value
 			path =
-				stringValue.search(pathUtil.sep) > -1
-					? pathUtil.dirname(stringValue)
+				stringValue.indexOf(pathUtil.sep) > -1
+					? dirname(stringValue)
 					: undefined
 		}
 

@@ -1,9 +1,11 @@
 import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
+import path from 'path'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { IFileFieldValue } from './FileField'
 import FieldFactory from '../factories/FieldFactory'
 import Schema from '../Schema'
 import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
+import Spruce from '@sprucelabs/test/build/src/Spruce'
 
 interface IFileDetailExpectations {
 	expectedName: string
@@ -11,7 +13,27 @@ interface IFileDetailExpectations {
 	expectedExtension: string
 }
 
+enum EnvKind {
+	Linux = 'linux',
+	Windows = 'windows'
+}
+
+const linuxTestPath = '/some/directory/path'
+const windowsTestPath = 'C:\\some\\directory\\path'
+
 export default class FileFieldTest extends BaseTest {
+	private static fileDefinition = buildSchemaDefinition({
+		id: 'testFeature',
+		name: 'Test Feature',
+		fields: {
+			target: {
+				type: FieldType.File,
+				isRequired: true,
+				label: 'What file would you like to test?'
+			}
+		}
+	})
+
 	@test('Can get .ts details', '/does/not/need/to/exist/TestFile.ts', {
 		expectedName: 'TestFile.ts',
 		expectedType: 'application/typescript',
@@ -90,30 +112,72 @@ export default class FileFieldTest extends BaseTest {
 		assert.deepEqual(augmented, complete)
 	}
 
-	@test('Can create schema and properly parse path of target')
-	public static testInSchema() {
-		const expectedPath = process.cwd()
-
-		const fileDefinition = buildSchemaDefinition({
-			id: 'testFeature',
-			name: 'Test Feature',
-			fields: {
-				target: {
-					type: FieldType.File,
-					isRequired: true,
-					label: 'What file would you like to test?'
-				}
-			}
-		})
-
-		const schema = new Schema(fileDefinition)
-
-		schema.set('target', {
-			path: expectedPath,
+	@test(
+		'Can create schema and properly parse path set path',
+		EnvKind.Linux,
+		linuxTestPath,
+		{
+			path: linuxTestPath,
 			ext: '.ts',
 			type: 'application/typescript',
 			name: 'test.ts'
-		})
+		}
+	)
+	@test(
+		'Can create schema and properly parse path set path by name',
+		EnvKind.Linux,
+		linuxTestPath,
+		{
+			name: `${linuxTestPath}/test.ts`
+		}
+	)
+	@test(
+		'Can create schema and properly parse path set as string',
+		EnvKind.Linux,
+		linuxTestPath,
+		`${linuxTestPath}/test.ts`
+	)
+	@test(
+		'Can create schema and properly parse path set path in windows',
+		EnvKind.Windows,
+		windowsTestPath,
+		{
+			path: windowsTestPath,
+			ext: '.ts',
+			type: 'application/typescript',
+			name: 'test.ts'
+		}
+	)
+	@test(
+		'Can create schema and properly parse path set path by name in windows',
+		EnvKind.Windows,
+		windowsTestPath,
+		{
+			name: `${windowsTestPath}\\test.ts`
+		}
+	)
+	@test(
+		'Can create schema and properly parse path set as string in windows',
+		EnvKind.Windows,
+		windowsTestPath,
+		`${windowsTestPath}/test.ts`
+	)
+	public static testInSchema(
+		_spruce: Spruce,
+		env: EnvKind,
+		expectedPath: string,
+		setTarget: IFileFieldValue
+	) {
+		if (env === EnvKind.Linux) {
+			// @ts-ignore
+			path.sep = '/'
+		} else if (env === EnvKind.Windows) {
+			// @ts-ignore
+			path.sep = '\\'
+		}
+		const schema = new Schema(this.fileDefinition)
+
+		schema.set('target', setTarget)
 
 		const values = schema.getValues({
 			fields: ['target']
