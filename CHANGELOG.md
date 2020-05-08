@@ -1,3 +1,16 @@
+# [1.28.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.27.0...v1.28.0) (2020-05-08)
+
+
+### Bug Fixes
+
+* bad IFileFieldValue reference ([a95e6d0](https://github.com/sprucelabsai/spruce-schema/commit/a95e6d0))
+* path not getting properly parsed in FileField ([428088d](https://github.com/sprucelabsai/spruce-schema/commit/428088d))
+
+
+### Features
+
+* FileField windows path support ([3722796](https://github.com/sprucelabsai/spruce-schema/commit/3722796))
+
 # [1.27.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.26.0...v1.27.0) (2020-05-06)
 
 
