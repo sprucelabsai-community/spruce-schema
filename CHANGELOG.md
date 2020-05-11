@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.28.0...v1.29.0) (2020-05-11)
+
+
+### Features
+
+* name standard changes ([d7ef143](https://github.com/sprucelabsai/spruce-schema/commit/d7ef143))
+
 # [1.28.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.27.0...v1.28.0) (2020-05-08)
 
 
