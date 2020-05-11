@@ -6,7 +6,7 @@
 	"files": [
 		"build"
 	],
-	"version": "1.26.0",
+	"version": "1.28.0",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"description": "Spruce experience schemas",
@@ -43,7 +43,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^3.0.4",
-		"@sprucelabs/test": "2.1.0-prerelease-assert-type.1",
+		"@sprucelabs/test": "^2.2.1",
 		"@types/google-libphonenumber": "^7.4.17",
 		"@types/lodash": "^4.14.149",
 		"@types/mime-db": "^1.27.1",
