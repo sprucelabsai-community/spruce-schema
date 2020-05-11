@@ -36,11 +36,11 @@ export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
 /** The different names that a schema needs to generate all it's templates */
 export interface ISchemaTemplateNames {
 	/** A name in the form of FullName */
-	pascalName: string
+	namePascal: string
 	/** A name in the form of fullName */
-	camelName: string
+	nameCamel: string
 	/** A name in the form of Full name */
-	readableName: string
+	nameReadable: string
 }
 
 /** A schema about to be rendered into a template  (all schemas are in this shape before rendering) */

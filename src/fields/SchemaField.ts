@@ -122,8 +122,8 @@ export default class SchemaField<
 			if (matchedTemplateItem) {
 				let valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
 					renderAs === TemplateRenderAs.Type
-						? `I${matchedTemplateItem.pascalName}`
-						: matchedTemplateItem.pascalName
+						? `I${matchedTemplateItem.namePascal}`
+						: matchedTemplateItem.namePascal
 				}${
 					renderAs === TemplateRenderAs.Value
 						? `.definition`

@@ -63,25 +63,25 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 	// the global template items[]
 	private static templateItems: ISchemaTemplateItem[] = [
 		{
-			pascalName: 'UnionPerson',
-			camelName: 'unionPerson',
-			readableName: 'Union person',
+			namePascal: 'UnionPerson',
+			nameCamel: 'unionPerson',
+			nameReadable: 'Union person',
 			namespace: 'core',
 			id: SchemaFieldTemplateTest.personDefinition.id,
 			definition: SchemaFieldTemplateTest.personDefinition
 		},
 		{
-			pascalName: 'Wrench',
-			camelName: 'wrench',
-			readableName: 'Wrench',
+			namePascal: 'Wrench',
+			nameCamel: 'wrench',
+			nameReadable: 'Wrench',
 			namespace: 'core',
 			id: SchemaFieldTemplateTest.wrenchDefinition.id,
 			definition: SchemaFieldTemplateTest.wrenchDefinition
 		},
 		{
-			pascalName: 'screwdriver',
-			camelName: 'screwdriver',
-			readableName: 'Screwdriver',
+			namePascal: 'screwdriver',
+			nameCamel: 'screwdriver',
+			nameReadable: 'Screwdriver',
 			namespace: 'core',
 			id: SchemaFieldTemplateTest.screwdriverDefinition.id,
 			definition: SchemaFieldTemplateTest.screwdriverDefinition
