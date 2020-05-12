@@ -1,4 +1,4 @@
-<img src="/docs/images/hero.jpg" max-width="100%">
+<img src="/docs/images/hero.jpg">
 
 <h1 align="center">
 Spruce XP Documentation
@@ -7,9 +7,9 @@ Spruce XP Documentation
 </h2>
 <br />
 <p align="center">
-<img align="center" width="90%" src="docs/images/sprucebot-message.png">
+<img align="center" width="80%" src="docs/images/sprucebot-message.png">
 </p>
 <br />
 <p align="center">
-<a href="https://developer.spruce.ai/#/schemas/index"><img src="docs/images/read-full-docs.png" /></a>
+<a href="https://developer.spruce.ai/#/schemas/index"><img width="150" src="docs/images/read-full-docs.png" /></a>
 </p>
