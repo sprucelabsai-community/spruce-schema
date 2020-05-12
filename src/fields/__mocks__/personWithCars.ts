@@ -1,4 +1,4 @@
-import { buildSchemaDefinition } from '../..'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { ISchemaDefinition } from '../../schema.types'
 import Schema from '../../Schema'

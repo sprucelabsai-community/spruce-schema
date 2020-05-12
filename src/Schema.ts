@@ -82,7 +82,9 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.field(name, definition, fieldClassMap)
-			this.fields[name as SchemaFieldNames<T>] = field
+			// TODO why do i have to cast to any?
+			this.fields[name as SchemaFieldNames<T>] = field as any
+
 			if (definition.value) {
 				this.set(name as SchemaFieldNames<T>, definition.value)
 			}
