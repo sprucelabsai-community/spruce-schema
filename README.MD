@@ -11,5 +11,5 @@ Spruce XP Documentation
 </p>
 <br />
 <p align="center">
-<a href="docs/images/sprucebot-message.png"><img src="docs/images/read-full-docs.png" /></a>
+<a href="https://developer.spruce.ai/#/schemas/index"><img src="docs/images/read-full-docs.png" /></a>
 </p>
