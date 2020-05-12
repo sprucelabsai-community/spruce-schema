@@ -1,4 +1,3 @@
-![hero](/docs/images/hero.jpg)
 <img src="/docs/images/hero.jpg" max-width="100%">
 
 <h1 align="center">
