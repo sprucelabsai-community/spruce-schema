@@ -1,3 +1,21 @@
+# [1.31.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.30.0...v1.31.0) (2020-05-12)
+
+
+### Features
+
+* another tweak ([741f9c5](https://github.com/sprucelabsai/spruce-schema/commit/741f9c5))
+* cta fix ([4d2160d](https://github.com/sprucelabsai/spruce-schema/commit/4d2160d))
+* cta test ([fe942a1](https://github.com/sprucelabsai/spruce-schema/commit/fe942a1))
+* font size ([0c56b6e](https://github.com/sprucelabsai/spruce-schema/commit/0c56b6e))
+* hero fix ([ea54a26](https://github.com/sprucelabsai/spruce-schema/commit/ea54a26))
+* hreaf fix ([7a833cb](https://github.com/sprucelabsai/spruce-schema/commit/7a833cb))
+* no hr ([7e61e6c](https://github.com/sprucelabsai/spruce-schema/commit/7e61e6c))
+* progress ([302d8f1](https://github.com/sprucelabsai/spruce-schema/commit/302d8f1))
+* quick update ([d017630](https://github.com/sprucelabsai/spruce-schema/commit/d017630))
+* readme spacing ([e0fcc43](https://github.com/sprucelabsai/spruce-schema/commit/e0fcc43))
+* remove space above hr ([9b11043](https://github.com/sprucelabsai/spruce-schema/commit/9b11043))
+* tests ([d5c6d89](https://github.com/sprucelabsai/spruce-schema/commit/d5c6d89))
+
 # [1.30.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.29.0...v1.30.0) (2020-05-12)
 
 
