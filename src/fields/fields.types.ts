@@ -59,7 +59,7 @@ export type Field =
 	| DateField
 
 /** Useful for type lookups for generics */
-export type FieldDefinitionMap = {
+export interface IFieldDefinitionMap {
 	[FieldType.Boolean]: IBooleanFieldDefinition
 	[FieldType.Select]: ISelectFieldDefinition
 	[FieldType.Duration]: IDurationFieldDefinition
@@ -73,4 +73,21 @@ export type FieldDefinitionMap = {
 	[FieldType.DateTime]: IDateTimeFieldDefinition
 	[FieldType.File]: IFileFieldDefinition
 	[FieldType.Date]: IDateFieldDefinition
+}
+
+/** Used to lookup field classes by type */
+export interface IFieldMap {
+	[FieldType.Boolean]: BooleanField
+	[FieldType.Select]: SelectField
+	[FieldType.Duration]: DurationField
+	[FieldType.Id]: IdField
+	[FieldType.Text]: TextField
+	[FieldType.Address]: AddressField
+	[FieldType.Phone]: PhoneField
+	[FieldType.Schema]: SchemaField
+	[FieldType.Raw]: RawField
+	[FieldType.Number]: NumberField
+	[FieldType.DateTime]: DateTimeField
+	[FieldType.File]: FileField
+	[FieldType.Date]: DateField
 }

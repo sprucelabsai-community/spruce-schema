@@ -1,7 +1,8 @@
 import {
 	FieldDefinition,
 	Field,
-	FieldDefinitionMap
+	IFieldDefinitionMap,
+	IFieldMap
 } from '#spruce:schema/fields/fields.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import { ISchemaFieldDefinition } from './fields/SchemaField'
@@ -90,17 +91,17 @@ export type IFieldDefinition<
 			/** * If this element is an array */
 			isArray: true
 			/** The default for for this if no value is set */
-			defaultValue?: DefaultArrayValue
+			defaultValue?: DefaultArrayValue | null
 			/** The current value for this field */
-			value?: ArrayValue
+			value?: ArrayValue | null
 	  }
 	| {
 			/** * If this value is NOT an array */
 			isArray?: false | undefined
 			/** The default value for this if no value is set */
-			defaultValue?: DefaultValue
+			defaultValue?: DefaultValue | null
 			/** The current value for this field */
-			value?: Value
+			value?: Value | null
 	  }
 )
 
@@ -168,12 +169,11 @@ export interface IToValueTypeOptions<
 	createSchemaInstances?: CreateSchemaInstances
 }
 
-// TODO make this actually pull the field types from the class map and fix all corresponding lint errors
-/** the form of schema.fields based on an actual definition  */
-export type SchemaFields<T extends ISchemaDefinition> = Record<
-	SchemaFieldNames<T>,
-	IField<any>
->
+export type SchemaFields<T extends ISchemaDefinition> = {
+	[F in SchemaFieldNames<T>]: T['fields'][F] extends IFieldDefinition
+		? IFieldMap[T['fields'][F]['type']]
+		: never
+}
 
 /** To map a schema to an object with values whose types match */
 export type SchemaDefinitionAllValues<
@@ -313,7 +313,7 @@ export type FieldDefinitionValueType<
 	: F extends FieldDefinition // All fields
 	? IsRequired<
 			IsArray<
-				NonNullable<FieldDefinitionMap[F['type']]['value']>,
+				NonNullable<IFieldDefinitionMap[F['type']]['value']>,
 				F['isArray']
 			>,
 			F['isRequired']

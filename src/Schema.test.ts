@@ -5,8 +5,12 @@ import { unset } from 'lodash'
 import { ErrorCode } from './errors/error.types'
 import Schema from './Schema'
 import SchemaError from './errors/SchemaError'
-import { truckDefinition } from './fields/__mocks__/personWithCars'
+import {
+	truckDefinition,
+	personDefinition
+} from './fields/__mocks__/personWithCars'
 import { SchemaDefinitionValues } from './schema.types'
+import { TextField, SchemaField } from './fields'
 
 Schema.enableDuplicateCheckWhenTracking = false
 
@@ -216,5 +220,15 @@ export default class SchemaTest extends BaseTest {
 			onlyOnCar: null
 		}
 		assert.expectType<SchemaDefinitionValues<typeof truckDefinition>>(values)
+	}
+
+	@test('can get typed fields')
+	protected static testFieldTyping() {
+		const schema = new Schema(personDefinition)
+		const field = schema.fields['name']
+		const field2 = schema.fields['requiredCar']
+
+		assert.expectType<TextField>(field)
+		assert.expectType<SchemaField>(field2)
 	}
 }
