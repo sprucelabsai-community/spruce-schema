@@ -1,3 +1,11 @@
+# [1.30.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.29.0...v1.30.0) (2020-05-12)
+
+
+### Features
+
+* field type lookups ([65113d8](https://github.com/sprucelabsai/spruce-schema/commit/65113d8))
+* field typing improvements ([dda3ece](https://github.com/sprucelabsai/spruce-schema/commit/dda3ece))
+
 # [1.29.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.28.0...v1.29.0) (2020-05-11)
 
 
