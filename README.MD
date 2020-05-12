@@ -5,4 +5,6 @@ Spruce XP Documentation
 <h3 align="center">Spruce XP is an Experience Platform built to create unforgettable experience and build long-lasting relationships.
 </h2>
 <hr />
-<img align="center" src="docs/images/sprucebot.message.gif">
+<p align="center">
+<img align="center" width="90%" src="docs/images/sprucebot.message.gif">
+</p>
