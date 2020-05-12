@@ -1,6 +1,6 @@
 ![hero](/docs/images/hero.jpg)
-<div align="center">
-# Spruce XP Documentation
-## Spruce XP is an Experience Platform built to create unforgettable experience and build long-lasting relationships.
-</div>
-Test
+<h1 align="center">
+Spruce XP Documentation
+</h1>
+<h3 align="center">Spruce XP is an Experience Platform built to create unforgettable experience and build long-lasting relationships.
+</h2>
