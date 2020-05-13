@@ -1,3 +1,12 @@
+# [1.32.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.31.0...v1.32.0) (2020-05-13)
+
+
+### Features
+
+* order change ([90b1f31](https://github.com/sprucelabsai/spruce-schema/commit/90b1f31))
+* remove br ([f785e16](https://github.com/sprucelabsai/spruce-schema/commit/f785e16))
+* tweak ([a2c177a](https://github.com/sprucelabsai/spruce-schema/commit/a2c177a))
+
 # [1.31.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.30.0...v1.31.0) (2020-05-12)
 
 
