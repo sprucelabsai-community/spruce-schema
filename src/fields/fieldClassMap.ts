@@ -12,6 +12,7 @@ import DateTimeField from './DateTimeField'
 import TextField from './TextField'
 import FileField from './FileField'
 import DateField from './DateField'
+import DirectoryField from './DirectoryField'
 
 /** A global place to reference all field type classes */
 export const FieldClassMap = {
@@ -27,7 +28,8 @@ export const FieldClassMap = {
 	[FieldType.DateTime]: DateTimeField,
 	[FieldType.Text]: TextField,
 	[FieldType.File]: FileField,
-	[FieldType.Date]: DateField
+	[FieldType.Date]: DateField,
+	[FieldType.Directory]: DirectoryField
 }
 
 // export interface IFieldClassMap {

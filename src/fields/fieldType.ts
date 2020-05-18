@@ -23,6 +23,8 @@ export enum FieldType {
 	Raw = 'raw',
 	/** File select/upload */
 	File = 'file',
+	/** Directory selection */
+	Directory = 'directory',
 	/** A date object with time being ignored*/
 	Date = 'date'
 }

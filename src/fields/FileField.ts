@@ -2,6 +2,7 @@ import AbstractField from './AbstractField'
 import { IFieldDefinition } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import pathUtil from 'path'
+import fsUtil from 'fs'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'
@@ -28,7 +29,7 @@ export interface IFileFieldValue {
 }
 
 export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
-	/** * .File a great way to deal with file management */
+	/** * .File - a great way to deal with file management */
 	type: FieldType.File
 	options?: {
 		acceptableTypes?: string[]
@@ -51,12 +52,24 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	}
 
 	public validate(value: any): IInvalidFieldError[] {
+		const errors: IInvalidFieldError[] = []
 		try {
-			this.toValueType(value)
-			return []
+			const file = this.toValueType(value)
+			if (!file.ext && file.path) {
+				// if this file has no extension, lets see if it's a directory
+				const isDirExists =
+					fsUtil.existsSync(file.path) &&
+					fsUtil.lstatSync(file.path).isDirectory()
+
+				if (isDirExists) {
+					errors.push({ code: 'is_directory_not_file', name: this.name })
+				}
+			}
 		} catch (err) {
-			return [{ code: 'invalid_file', name: this.name }]
+			errors.push({ code: 'invalid_file', name: this.name })
 		}
+
+		return errors
 	}
 
 	/** Take a range of possible values and transform it into a IFileFieldValue */
