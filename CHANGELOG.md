@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.32.1...v1.33.0) (2020-05-18)
+
+
+### Features
+
+* move fs require into function calls ([c61d4a3](https://github.com/sprucelabsai/spruce-schema/commit/c61d4a3))
+
 ## [1.32.1](https://github.com/sprucelabsai/spruce-schema/compare/v1.32.0...v1.32.1) (2020-05-18)
 
 # [1.32.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.31.0...v1.32.0) (2020-05-13)
