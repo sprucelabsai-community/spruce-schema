@@ -1,8 +1,6 @@
 import AbstractField from './AbstractField'
 import { IFieldDefinition } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
-import pathUtil from 'path'
-import fsUtil from 'fs'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'
@@ -56,6 +54,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		try {
 			const file = this.toValueType(value)
 			if (!file.ext && file.path) {
+				// eslint-disable-next-line @typescript-eslint/no-var-requires
+				const fsUtil = require('fs')
 				// if this file has no extension, lets see if it's a directory
 				const isDirExists =
 					fsUtil.existsSync(file.path) &&
@@ -91,6 +91,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 			stringValue = name || path
 		}
 
+		// eslint-disable-next-line @typescript-eslint/no-var-requires
+		const pathUtil = require('path')
 		const dirname =
 			pathUtil.sep === '/' ? pathUtil.dirname : pathUtil.win32.dirname
 
