@@ -56,6 +56,12 @@ export interface IPersonDefinition extends ISchemaDefinition {
 				schema: ICarDefinition
 			}
 		}
+		optionalCarWithCallback: {
+			type: FieldType.Schema
+			options: {
+				schemasCallback: () => [ICarDefinition]
+			}
+		}
 		optionalIsArrayCars: {
 			type: FieldType.Schema
 			isArray: true
@@ -162,6 +168,12 @@ export const personDefinition = buildSchemaDefinition<IPersonDefinition>({
 			type: FieldType.Schema,
 			options: {
 				schema: carDefinition
+			}
+		},
+		optionalCarWithCallback: {
+			type: FieldType.Schema,
+			options: {
+				schemasCallback: () => [carDefinition]
 			}
 		},
 		optionalIsArrayCars: {

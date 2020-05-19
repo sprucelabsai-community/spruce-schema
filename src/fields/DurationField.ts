@@ -1,10 +1,11 @@
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import AbstractField from './AbstractField'
-import { IFieldDefinition } from '../schema.types'
+import { IFieldDefinition, ValidateOptions } from '../schema.types'
 import { IInvalidFieldError } from '../errors/error.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import SchemaError from '../errors/SchemaError'
 import { ErrorCode } from '../errors/error.types'
+import { ITextFieldDefinition } from './TextField'
 
 /** A duration value object */
 export interface IDurationFieldValue {
@@ -86,7 +87,10 @@ export default class DurationField extends AbstractField<
 		}
 	}
 
-	public validate(value: any): IInvalidFieldError[] {
+	public validate(
+		value: any,
+		_?: ValidateOptions<ITextFieldDefinition>
+	): IInvalidFieldError[] {
 		const errors: IInvalidFieldError[] = []
 		try {
 			buildDuration(value)

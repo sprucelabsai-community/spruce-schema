@@ -1,7 +1,7 @@
 import SchemaError from '../errors/SchemaError'
 import log from '../lib/log'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
-import { IValidateOptions, IField } from '../schema.types'
+import { ValidateOptions, IField } from '../schema.types'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
@@ -87,7 +87,7 @@ public static templateDetails(
 	}
 
 	/** Validate a value against this field */
-	public validate(value: any, _?: IValidateOptions): IInvalidFieldError[] {
+	public validate(value: any, _?: ValidateOptions<F>): IInvalidFieldError[] {
 		const errors: IInvalidFieldError[] = []
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
 			errors.push({

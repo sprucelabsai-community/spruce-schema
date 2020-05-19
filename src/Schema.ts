@@ -20,7 +20,8 @@ import {
 	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
-	ISchema
+	ISchema,
+	IField
 } from './schema.types'
 import { ISchemaFieldDefinition } from './fields'
 
@@ -185,7 +186,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	>(
 		forField: F,
 		value: any,
-		options: ISchemaNormalizeOptions<CreateSchemaInstances> = {}
+		options?: ISchemaNormalizeOptions<T, CreateSchemaInstances>
 	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
@@ -203,10 +204,12 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 			})
 		}
 
-		const { validate = true, createSchemaInstances = true } = options
+		const { validate = true, createSchemaInstances = true, byField } =
+			options ?? {}
 
-		// Get field
+		// Get field && override options by that field
 		const field = this.fields[forField]
+		const overrideOptions = byField?.[forField] ?? {}
 
 		// Validate if we're supposed to
 		let errors: IInvalidFieldError[] = []
@@ -214,7 +217,11 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 			localValue.forEach(value => {
 				errors = [
 					...errors,
-					...field.validate(value, { definitionsById: Schema.definitionsById })
+					...field.validate(value, {
+						definitionsById: Schema.definitionsById,
+						...(field.definition.options ?? {}),
+						...overrideOptions
+					})
 				]
 			})
 		}
@@ -234,9 +241,11 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 			localValue = localValue.map(value =>
 				typeof value === 'undefined'
 					? undefined
-					: field.toValueType(value, {
+					: (field as IField<any>).toValueType(value, {
 							definitionsById: Schema.definitionsById,
-							createSchemaInstances
+							createSchemaInstances,
+							...(field.definition.options ?? {}),
+							...overrideOptions
 					  })
 			)
 		}
@@ -256,7 +265,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		CreateSchemaInstances extends boolean = true
 	>(
 		fieldName: F,
-		options: ISchemaNormalizeOptions<CreateSchemaInstances> = {}
+		options: ISchemaNormalizeOptions<T, CreateSchemaInstances> = {}
 	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances> {
 		// Get value off self
 		const value: SchemaFieldDefinitionValueType<T, F> | undefined | null =
@@ -269,7 +278,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	public set<F extends SchemaFieldNames<T>>(
 		fieldName: F,
 		value: SchemaFieldDefinitionValueType<T, F>,
-		options: ISchemaNormalizeOptions<false> = {}
+		options: ISchemaNormalizeOptions<T, false> = {}
 	): this {
 		// If the value is not null or undefined, coerce it into an array
 		const localValue = this.normalizeValue(fieldName, value, options)
@@ -328,8 +337,8 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		this.getNamedFields().forEach(namedField => {
 			const { name, field } = namedField
 			if (typeof field.definition.defaultValue !== 'undefined') {
-				// TODO not sure how to tell the compiler we matched the type be checking defaultValue
-				// @ts-ignores
+				// TODO how to type name so it works as key of values
+				// @ts-ignore
 				values[name] = this.normalizeValue(
 					name,
 					field.definition.defaultValue,

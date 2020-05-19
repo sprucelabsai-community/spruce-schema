@@ -1,5 +1,5 @@
 import AbstractField from './AbstractField'
-import { IFieldDefinition } from '../schema.types'
+import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import {
 	IFieldTemplateDetails,
@@ -34,13 +34,21 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 	}
 
 	/** * Transform to match the value type of string */
-	public toValueType(value: any): string {
-		const transformed =
+	public toValueType<C extends boolean>(
+		value: any,
+		options?: ToValueTypeOptions<ITextFieldDefinition, C>
+	): string {
+		let transformed =
 			typeof value === 'string'
 				? value
 				: value && value.toString && value.toString()
 
 		if (typeof transformed === 'string') {
+			const maxLength = options?.maxLength ?? 0
+
+			if (maxLength > 0 && transformed.length > maxLength) {
+				transformed = transformed.substr(0, maxLength)
+			}
 			return transformed
 		}
 

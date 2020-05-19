@@ -231,4 +231,12 @@ export default class SchemaTest extends BaseTest {
 		assert.expectType<TextField>(field)
 		assert.expectType<SchemaField>(field2)
 	}
+
+	@test('getting values using options by field')
+	protected static testGettingOptionsByField() {
+		const schema = new Schema(personDefinition)
+		schema.set('name', 'a really long name that should get truncated')
+		const name = schema.get('name', { byField: { name: { maxLength: 10 } } })
+		assert.equal(name, 'a really l')
+	}
 }

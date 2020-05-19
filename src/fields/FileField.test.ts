@@ -186,4 +186,28 @@ export default class FileFieldTest extends BaseTest {
 		assert.isOk(values.target)
 		assert.equal(values.target.path, expectedPath)
 	}
+
+	@test(
+		'can get paths relative to provided relativeTo',
+		'/home/user/test/me',
+		'/home/user',
+		'test/me'
+	)
+	@test(
+		'can get paths relative to provided relativeTo going back',
+		'/home/user/test/me',
+		'/home/user/tacos',
+		'../test/me'
+	)
+	protected static testGettingRelativePath(
+		_spruce: Spruce,
+		path: string,
+		relativeTo: string,
+		expectedPath: string
+	) {
+		const schema = new Schema(this.fileDefinition)
+		schema.set('target', { path, name: 'app.ts' })
+		const target = schema.get('target', { byField: { target: { relativeTo } } })
+		assert.equal(target.path, expectedPath)
+	}
 }

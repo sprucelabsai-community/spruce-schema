@@ -1,5 +1,9 @@
 import AbstractField from './AbstractField'
-import { IFieldDefinition } from '../schema.types'
+import {
+	IFieldDefinition,
+	ToValueTypeOptions,
+	ValidateOptions
+} from '../schema.types'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
@@ -30,8 +34,12 @@ export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
 	/** * .File - a great way to deal with file management */
 	type: FieldType.File
 	options?: {
+		/** Which mime types are acceptable? */
 		acceptableTypes?: string[]
+		/** What is the biggest this file can be? */
 		maxSize?: string
+		/** All paths will be generated to this directory, if possible */
+		relativeTo?: string
 	}
 }
 
@@ -49,7 +57,10 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		}
 	}
 
-	public validate(value: any): IInvalidFieldError[] {
+	public validate(
+		value: any,
+		_?: ValidateOptions<IFileFieldDefinition>
+	): IInvalidFieldError[] {
 		const errors: IInvalidFieldError[] = []
 		try {
 			const file = this.toValueType(value)
@@ -73,9 +84,15 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	}
 
 	/** Take a range of possible values and transform it into a IFileFieldValue */
-	public toValueType(value: any): IFileFieldValue {
+	public toValueType<C extends boolean>(
+		value: any,
+		options?: ToValueTypeOptions<IFileFieldDefinition, C>
+	): IFileFieldValue {
 		let stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
+
+		const relativeTo = options?.relativeTo
+
 		let path: string | undefined
 		let name: string | undefined
 		let ext: string | undefined
@@ -123,6 +140,12 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		}
 		ext = ext ?? pathUtil.extname(name)
 		type = type ?? (mime.lookup(name) || undefined)
+
+		if (relativeTo && path) {
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
+			const pathUtil = require('path')
+			path = (pathUtil.relative(relativeTo, path) as string) || path
+		}
 
 		return {
 			name,

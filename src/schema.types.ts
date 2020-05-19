@@ -9,29 +9,29 @@ import { ISchemaFieldDefinition } from './fields/SchemaField'
 import { ISelectFieldDefinition } from './fields/SelectField'
 import { IInvalidFieldError } from './errors/error.types'
 
-export interface ISchema<T extends ISchemaDefinition> {
+export interface ISchema<S extends ISchemaDefinition> {
 	/** The id of the schema (for union resolution) */
-	schemaId: T['id']
+	schemaId: S['id']
 	/** The definition associated with this schema */
-	definition: T
+	definition: S
 	/** The values of this schema */
-	values: SchemaDefinitionPartialValues<T>
+	values: SchemaDefinitionPartialValues<S>
 	/** Get a value for particular field  */
 	get<
-		F extends SchemaFieldNames<T>,
+		F extends SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
 	>(
 		fieldName: F,
-		options?: ISchemaNormalizeOptions<CreateSchemaInstances>
-	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances>
+		options?: ISchemaNormalizeOptions<S, CreateSchemaInstances>
+	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances>
 
 	/** Get all values for all fields */
 	getValues<
-		F extends SchemaFieldNames<T> = SchemaFieldNames<T>,
+		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
 	>(
-		options?: ISchemaGetValuesOptions<T, F, CreateSchemaInstances>
-	): Pick<SchemaDefinitionAllValues<T, CreateSchemaInstances>, F>
+		options?: ISchemaGetValuesOptions<S, F, CreateSchemaInstances>
+	): Pick<SchemaDefinitionAllValues<S, CreateSchemaInstances>, F>
 }
 
 /** The structure of schema.fields. key is field name, value is field definition */
@@ -130,11 +130,11 @@ export interface IField<F extends FieldDefinition> {
 	/** The name of this field (camel case) */
 	readonly name: string
 	/** Validate a value */
-	validate(value: any, options?: IValidateOptions): IInvalidFieldError[]
+	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
 	/** Transform any value to the value type of this field. should take anything and return a valid value or blow up. Will never receive undefined */
 	toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
-		options?: IToValueTypeOptions<CreateSchemaInstances>
+		options?: ToValueTypeOptions<F, CreateSchemaInstances>
 	): Exclude<
 		FieldDefinitionValueType<F, CreateSchemaInstances>,
 		undefined | null
@@ -142,10 +142,10 @@ export interface IField<F extends FieldDefinition> {
 }
 
 /** Options passed to validate() */
-export interface IValidateOptions {
+export type ValidateOptions<F extends FieldDefinition> = {
 	/** All definitions we're validating against */
 	definitionsById?: { [id: string]: ISchemaDefinition }
-}
+} & Partial<F['options']>
 
 export interface IFieldDefinitionToSchemaDefinitionOptions {
 	/** All definitions we're validating against */
@@ -160,14 +160,15 @@ export interface ISchemaFieldDefinitionValueUnion<
 }
 
 /** Options passed to toValueType */
-export interface IToValueTypeOptions<
+export type ToValueTypeOptions<
+	F extends FieldDefinition,
 	CreateSchemaInstances extends boolean = true
-> {
+> = {
 	/** All definitions by id for lookups by fields */
 	definitionsById?: { [id: string]: ISchemaDefinition }
 	/** Create and return a new Schema()  */
 	createSchemaInstances?: CreateSchemaInstances
-}
+} & Partial<F['options']>
 
 export type SchemaFields<T extends ISchemaDefinition> = {
 	[F in SchemaFieldNames<T>]: T['fields'][F] extends IFieldDefinition
@@ -355,12 +356,19 @@ export interface ISchemaNamedField<T extends ISchemaDefinition> {
 
 /** Options you can pass to schema.get() */
 export interface ISchemaNormalizeOptions<
+	S extends ISchemaDefinition,
 	CreateSchemaInstances extends boolean
 > {
 	/** Should i validate any values passed through */
 	validate?: boolean
 	/** Should I create schema instances for schema fields (defaults to true) */
 	createSchemaInstances?: CreateSchemaInstances
+	/** Options passed to each field that conforms to the field definition's options */
+	byField?: {
+		[K in SchemaFieldNames<S>]?: S['fields'][K] extends IFieldDefinition
+			? Partial<IFieldDefinitionMap[S['fields'][K]['type']]['options']>
+			: never
+	}
 }
 
 /** Options for schema.getValues */
@@ -368,7 +376,7 @@ export interface ISchemaGetValuesOptions<
 	T extends ISchemaDefinition,
 	F extends SchemaFieldNames<T>,
 	CreateSchemaInstances extends boolean
-> extends ISchemaNormalizeOptions<CreateSchemaInstances> {
+> extends ISchemaNormalizeOptions<T, CreateSchemaInstances> {
 	fields?: F[]
 }
 /** Options for schema.getDefaultValues */
@@ -376,7 +384,7 @@ export interface ISchemaGetDefaultValuesOptions<
 	T extends ISchemaDefinition,
 	F extends FieldNamesWithDefaultValueSet<T>,
 	CreateSchemaInstances extends boolean
-> extends ISchemaNormalizeOptions<CreateSchemaInstances> {
+> extends ISchemaNormalizeOptions<T, CreateSchemaInstances> {
 	fields?: F[]
 }
 

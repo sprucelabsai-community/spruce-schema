@@ -2,7 +2,7 @@ import AbstractField from './AbstractField'
 import { FieldType } from '#spruce:schema/fields/fieldType'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import { IFieldTemplateDetailOptions } from '../template.types'
-import { IValidateOptions, IFieldDefinition } from '../schema.types'
+import { ValidateOptions, IFieldDefinition } from '../schema.types'
 
 export type IPhoneFieldDefinition = IFieldDefinition<string> & {
 	/** * .Phone a great way to validate and format values */
@@ -28,7 +28,10 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		return phoneNumber
 	}
 
-	public validate(value: any, options: IValidateOptions) {
+	public validate(
+		value: any,
+		options?: ValidateOptions<IPhoneFieldDefinition>
+	) {
 		// Debugger
 		const errors = super.validate(value, options)
 

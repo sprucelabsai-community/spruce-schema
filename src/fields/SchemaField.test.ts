@@ -6,8 +6,10 @@ import {
 	IPersonDefinition,
 	personDefinition,
 	ICarDefinition,
-	ITruckDefinition
+	ITruckDefinition,
+	carDefinition
 } from './__mocks__/personWithCars'
+import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 
 export default class SchemaFieldTest extends BaseTest {
 	@test(
@@ -139,5 +141,28 @@ export default class SchemaFieldTest extends BaseTest {
 				requiredCarsOrTrucks[3].get('onlyOnTruck'),
 			'so much haul'
 		)
+	}
+
+	@test('can use schemasCallback')
+	protected static testSchemas() {
+		const person = new Schema(personDefinition)
+		const car = new Schema(carDefinition, { name: 'fast' })
+		person.set('optionalCarWithCallback', car.getValues())
+
+		const carField = person
+			.getNamedFields()
+			.find(f => f.name === 'optionalCarWithCallback')
+
+		assert.isOk(carField)
+
+		if (!carField) {
+			return
+		}
+
+		const ids = SchemaField.fieldDefinitionToSchemaIds(
+			carField.field.definition as ISchemaFieldDefinition
+		)
+
+		assert.deepEqual(ids, [carDefinition.id])
 	}
 }

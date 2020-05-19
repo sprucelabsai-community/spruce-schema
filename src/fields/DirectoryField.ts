@@ -1,4 +1,4 @@
-import { IFieldDefinition } from '../schema.types'
+import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
 import { FieldType } from './fieldType'
 import AbstractField from './AbstractField'
 import {
@@ -17,7 +17,10 @@ export type IDirectoryFieldDefinition = IFieldDefinition<
 > & {
 	/** * .Directory - select whole directories all at once */
 	type: FieldType.Directory
-	options?: {}
+	options?: {
+		/** Will give you a path relative to this one, if possible */
+		relativeTo?: string
+	}
 }
 
 export default class DirectoryField extends AbstractField<
@@ -38,11 +41,15 @@ export default class DirectoryField extends AbstractField<
 		}
 	}
 
-	public toValueType(value: any): IDirectoryFieldValue {
+	public toValueType(
+		value: any,
+		options?: ToValueTypeOptions<IDirectoryFieldDefinition>
+	): IDirectoryFieldValue {
 		const stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
 
 		let path: string | undefined
+		const relativeTo = options?.relativeTo
 
 		if (stringValue) {
 			path = stringValue
@@ -58,6 +65,12 @@ export default class DirectoryField extends AbstractField<
 				incomingValue: value,
 				name: this.name
 			})
+		}
+
+		if (path && relativeTo) {
+			// eslint-disable-next-line @typescript-eslint/no-var-requires
+			const pathUtil = require('path')
+			path = (pathUtil.relative(relativeTo, path) as string | undefined) || path
 		}
 
 		return { path }

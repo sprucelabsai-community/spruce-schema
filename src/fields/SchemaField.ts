@@ -11,9 +11,9 @@ import SchemaError from '../errors/SchemaError'
 import {
 	ISchemaDefinition,
 	IFieldDefinition,
-	IToValueTypeOptions,
+	ToValueTypeOptions,
 	FieldDefinitionValueType,
-	IValidateOptions,
+	ValidateOptions,
 	ISchemaFieldDefinitionValueUnion,
 	IFieldDefinitionToSchemaDefinitionOptions
 } from '../schema.types'
@@ -35,6 +35,8 @@ export type ISchemaFieldDefinition = IFieldDefinition<
 		schemaIds?: string[]
 		/** Actual schemas if more that one, this will make a union */
 		schemas?: ISchemaDefinition[]
+		/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */
+		schemasCallback?: () => ISchemaDefinition[]
 	}
 }
 
@@ -53,7 +55,8 @@ export default class SchemaField<
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
-			...(options.schemaIds || [])
+			...(options.schemaIds || []),
+			...(options.schemasCallback ? options.schemasCallback() : [])
 		]
 
 		return schemasOrIds.map(item => {
@@ -84,7 +87,10 @@ export default class SchemaField<
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
-			...(options.schemaIds || [])
+			...(options.schemaIds || []),
+			...(options.schemasCallback
+				? options.schemasCallback().map(s => s.id)
+				: [])
 		]
 
 		const ids: string[] = schemasOrIds.map(schemaOrId => {
@@ -196,7 +202,7 @@ export default class SchemaField<
 	/** Make sure value is a legit value */
 	public validate(
 		value: any,
-		options?: IValidateOptions
+		options?: ValidateOptions<ISchemaFieldDefinition>
 	): IInvalidFieldError[] {
 		const errors = super.validate(value, options)
 
@@ -295,7 +301,7 @@ export default class SchemaField<
 	/** To a value type */
 	public toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
-		options?: IToValueTypeOptions<CreateSchemaInstances>
+		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateSchemaInstances>
 	): FieldDefinitionValueType<F, CreateSchemaInstances> {
 		//  first lets validate it's a good form
 		const errors = this.validate(value, options)
