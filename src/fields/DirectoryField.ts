@@ -41,9 +41,9 @@ export default class DirectoryField extends AbstractField<
 		}
 	}
 
-	public toValueType(
+	public toValueType<C extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<IDirectoryFieldDefinition>
+		options?: ToValueTypeOptions<IDirectoryFieldDefinition, C>
 	): IDirectoryFieldValue {
 		const stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
