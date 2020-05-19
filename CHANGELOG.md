@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.33.0...v1.34.0) (2020-05-18)
+
+
+### Features
+
+* type change on abstract field ([a26792c](https://github.com/sprucelabsai/spruce-schema/commit/a26792c))
+
 # [1.33.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.32.1...v1.33.0) (2020-05-18)
 
 
