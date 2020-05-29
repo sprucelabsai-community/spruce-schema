@@ -88,9 +88,7 @@ export default class SchemaField<
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
 			...(options.schemaIds || []),
-			...(options.schemasCallback
-				? options.schemasCallback().map(s => s.id)
-				: [])
+			...(options.schemasCallback ? options.schemasCallback() : [])
 		]
 
 		const ids: string[] = schemasOrIds.map(schemaOrId => {
@@ -126,20 +124,21 @@ export default class SchemaField<
 			)
 
 			if (matchedTemplateItem) {
-				let valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
-					renderAs === TemplateRenderAs.Type
-						? `I${matchedTemplateItem.namePascal}`
-						: matchedTemplateItem.namePascal
-				}${
-					renderAs === TemplateRenderAs.Value
-						? `.definition`
-						: renderAs === TemplateRenderAs.DefinitionType
-						? `.IDefinition`
-						: ``
-				}`
+				let valueType: string | undefined
+				if (renderAs === TemplateRenderAs.Value) {
+					valueType = `${matchedTemplateItem.nameCamel}Definition${matchedTemplateItem.namespace}`
+				} else {
+					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
+						renderAs === TemplateRenderAs.Type
+							? `I${matchedTemplateItem.namePascal}`
+							: matchedTemplateItem.namePascal
+					}${
+						renderAs === TemplateRenderAs.DefinitionType ? `.IDefinition` : ``
+					}`
 
-				if (renderAs === TemplateRenderAs.Type && schemaIds.length > 1) {
-					valueType = `{ schemaId: '${schemaId}', values: ${valueType} }`
+					if (renderAs === TemplateRenderAs.Type && schemaIds.length > 1) {
+						valueType = `{ schemaId: '${schemaId}', values: ${valueType} }`
+					}
 				}
 
 				unions.push({
