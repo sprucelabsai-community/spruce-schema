@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.34.0...v1.35.0) (2020-05-19)
+
+
+### Features
+
+* validate options and union fields and schema id callbacks ([8ebf7d8](https://github.com/sprucelabsai/spruce-schema/commit/8ebf7d8))
+
 # [1.34.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.33.0...v1.34.0) (2020-05-18)
 
 
