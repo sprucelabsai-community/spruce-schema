@@ -1,3 +1,10 @@
+# [2.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.35.0...v2.0.0) (2020-05-29)
+
+
+### Breaking Changes
+
+* template changes ([52b3c77](https://github.com/sprucelabsai/spruce-schema/commit/52b3c77))
+
 # [1.35.0](https://github.com/sprucelabsai/spruce-schema/compare/v1.34.0...v1.35.0) (2020-05-19)
 
 
