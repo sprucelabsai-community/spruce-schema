@@ -35,7 +35,7 @@
 	"dependencies": {
 		"@sprucelabs/error": "^1.2.0",
 		"@sprucelabs/log": "^10.2.1",
-		"@sprucelabs/path-resolver": "^1.3.0",
+		"@sprucelabs/path-resolver": "1.3.2-prerelease-fix-core-node-modules-resolution.1",
 		"google-libphonenumber": "^3.2.8",
 		"libphonenumber-js": "^1.7.48",
 		"mime-db": "^1.43.0",

@@ -1253,10 +1253,10 @@
   resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.1.tgz#acd368915e5d763ec4588165e8ccc69db6ed8c42"
   integrity sha512-hJA7RfEudH+jpMCeR/MYjS3/YVK0ZYa6CmkJIxlYalM2DtWl5M//4uuE+JqYDa1q84QE/gwiZlDR1DvSBx12xA==
 
-"@sprucelabs/path-resolver@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/path-resolver/-/path-resolver-1.3.0.tgz#c4e906bee40fa59cb12f12abd8a15704ce307e3c"
-  integrity sha512-CwemY2Xc81gjjr2aPDxRoqHjnRmfBhwWfSDhqpbEOeQRoJgvsFCCTFy0CGAtDA5GOAOWbu2BKKwfgd+bn8Swfg==
+"@sprucelabs/path-resolver@1.3.2-prerelease-fix-core-node-modules-resolution.1":
+  version "1.3.2-prerelease-fix-core-node-modules-resolution.1"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/path-resolver/-/path-resolver-1.3.2-prerelease-fix-core-node-modules-resolution.1.tgz#98e248bf306689f558fd2e075f03a18b883d07b2"
+  integrity sha512-YWbZRbxYWpcV3ukBOm+rRC1ARjmiIU/59RXNw2gop53N4+/wCX6MoZXN7eeJ/RKiJ2yIAicczFOLupxbsddtTA==
   dependencies:
     "@sprucelabs/error" "^1.0.11"
     "@sprucelabs/log" "^10.2.1"
