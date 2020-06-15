@@ -25,8 +25,6 @@ import {
 } from './schema.types'
 import { ISchemaFieldDefinition } from './fields'
 
-let fieldClassMap: any | undefined
-
 /** Universal schema class  */
 export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	/** Should i do a duplicate check on schemas when tracking globally? */
@@ -52,18 +50,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	/** For caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
-	public constructor(
-		definition: T,
-		values?: SchemaDefinitionPartialValues<T>
-		// fieldClassMap: Record<FieldType, any> = FieldClassMap
-	) {
-		if (!fieldClassMap) {
-			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			fieldClassMap = require('#spruce:schema/fields/fieldClassMap')
-				.FieldClassMap
-		}
-
-		// Set definition and values
+	public constructor(definition: T, values?: SchemaDefinitionPartialValues<T>) {
 		this.definition = definition
 		this.values = values ? values : {}
 
@@ -78,7 +65,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
-			const field = FieldFactory.field(name, definition, fieldClassMap)
+			const field = FieldFactory.field(name, definition)
 			// TODO why do i have to cast to any?
 			this.fields[name as SchemaFieldNames<T>] = field as any
 
