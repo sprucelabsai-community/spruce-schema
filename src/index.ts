@@ -6,10 +6,6 @@ export default Schema
 // Schema types
 export * from './schema.types'
 
-// Field types
-export * from '#spruce:schema/fields/fields.types'
-export { FieldType } from '#spruce:schema/fields/fieldType'
-
 // Fields
 export * from './fields'
 
@@ -25,11 +21,6 @@ export { default as buildFieldDefinition } from './utilities/buildFieldDefinitio
 // Util types
 export * from './utilities/optional.types'
 export * from './utilities/selectChoicesToHash'
-
-// Field registration
-export * from './utilities/registerFieldType'
-export { default as registerFieldType } from './utilities/registerFieldType'
-export * from './utilities/registerFieldType'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
