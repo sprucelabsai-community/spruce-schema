@@ -1,6 +1,6 @@
 import BaseTest, { test, assert, ISpruce } from '@sprucelabs/test'
 import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 import {
 	IFieldTemplateDetailOptions,
@@ -129,8 +129,8 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			importAs: 'generated_test',
 			templateItems: SchemaFieldTemplateTest.templateItems,
 			definition: {
-				type: FieldType.Schema,
-				...definition
+				...definition,
+				type: FieldType.Schema
 			},
 			renderAs: TemplateRenderAs.Type // is overwritten below
 		}

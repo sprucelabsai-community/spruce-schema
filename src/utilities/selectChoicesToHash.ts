@@ -7,7 +7,7 @@ import {
 	ISchemaDefinitionFields,
 	PickFieldNames
 } from '../schema.types'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 /** Turn select options into a key/value pair */
 export type SelectChoicesToHash<

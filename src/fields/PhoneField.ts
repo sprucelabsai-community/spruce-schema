@@ -1,5 +1,5 @@
 import AbstractField from './AbstractField'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import { ValidateOptions, IFieldDefinition } from '../schema.types'

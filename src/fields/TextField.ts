@@ -1,6 +1,6 @@
 import AbstractField from './AbstractField'
 import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions

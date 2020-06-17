@@ -21,16 +21,17 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
-		"build": "npm run clean && concurrently \"npm run build:node\"",
-		"build:node": "tsc | true",
-		"build:browser": "tsc --project tsconfig.browser.json",
+		"build": "npm run clean && concurrently \"npm run build.node\"",
+		"build.node": "tsc | true",
+		"build.browser": "tsc --project tsconfig.browser.json",
 		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
 		"clean": "rm -rf build/",
-		"lint": "eslint '**/*.ts' && tsc -p . --noEmit",
-		"lint:fix": "eslint --fix '**/*.ts'",
+		"lint": "eslint '**/*.ts' && npm run lint.tsc",
+		"lint.tsc": "tsc -p . --noEmit",
+		"lint.fix": "eslint --fix '**/*.ts'",
 		"test": "jest --no-cache",
 		"release": "semantic-release",
-		"test:watch": "jest --watch"
+		"test.watch": "jest --watch"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^1.2.0",

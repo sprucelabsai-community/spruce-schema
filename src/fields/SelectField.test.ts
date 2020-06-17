@@ -1,7 +1,7 @@
 import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import Schema from '../Schema'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
 
 interface IUserDefinition {

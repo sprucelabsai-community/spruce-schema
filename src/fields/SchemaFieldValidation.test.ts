@@ -1,5 +1,5 @@
 import BaseTest, { test, assert, ISpruce } from '@sprucelabs/test'
-import { personDefinition } from './__mocks__/personWithCars'
+import { personDefinition } from '../__test_mocks__/personWithCars'
 import FieldFactory from '../factories/FieldFactory'
 
 export default class SchemaFieldTest extends BaseTest {

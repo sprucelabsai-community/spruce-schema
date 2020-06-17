@@ -4,7 +4,7 @@ import {
 	IFieldDefinitionMap,
 	IFieldMap
 } from '#spruce:schema/fields/fields.types'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import { ISchemaFieldDefinition } from './fields/SchemaField'
 import { ISelectFieldDefinition } from './fields/SelectField'
 import { IInvalidFieldError } from './errors/error.types'
@@ -178,11 +178,11 @@ export type SchemaFields<T extends ISchemaDefinition> = {
 
 /** To map a schema to an object with values whose types match */
 export type SchemaDefinitionAllValues<
-	T extends ISchemaDefinition,
+	S extends ISchemaDefinition,
 	CreateSchemaInstances extends boolean = false
 > = {
-	[K in SchemaFieldNames<T>]-?: SchemaFieldDefinitionValueType<
-		T,
+	[K in SchemaFieldNames<S>]-?: SchemaFieldDefinitionValueType<
+		S,
 		K,
 		CreateSchemaInstances
 	>
@@ -212,13 +212,13 @@ export type SchemaDefinitionValues<
 
 /** Only the default values of a definition */
 export type SchemaDefinitionDefaultValues<
-	T extends ISchemaDefinition,
+	S extends ISchemaDefinition,
 	CreateSchemaInstances extends boolean = false,
-	K extends FieldNamesWithDefaultValueSet<T> = FieldNamesWithDefaultValueSet<T>,
+	K extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<S>,
 	V extends SchemaDefinitionAllValues<
-		T,
+		S,
 		CreateSchemaInstances
-	> = SchemaDefinitionAllValues<T, CreateSchemaInstances>
+	> = SchemaDefinitionAllValues<S, CreateSchemaInstances>
 > = {
 	[F in K]: NonNullable<V[F]>
 }
@@ -295,11 +295,6 @@ export type SchemaFieldValueType<
 		: IsArray<SchemaDefinitionValues<F['options']['schema']>, F['isArray']>
 	: any
 
-/** Asserting field value type */
-export type FieldValidationAssertion<F extends FieldDefinition> =
-	| FieldDefinitionValueType<F, false>
-	| FieldDefinitionValueType<F, true>
-
 /** Value type for field definition */
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,
@@ -319,15 +314,15 @@ export type FieldDefinitionValueType<
 			>,
 			F['isRequired']
 	  >
-	: never
+	: any
 
 /** Get the type of the value of a schemas field */
 export type SchemaFieldDefinitionValueType<
-	T extends ISchemaDefinition,
-	K extends SchemaFieldNames<T>,
+	S extends ISchemaDefinition,
+	K extends SchemaFieldNames<S>,
 	CreateSchemaInstances extends boolean = false
-> = T['fields'][K] extends FieldDefinition
-	? FieldDefinitionValueType<T['fields'][K], CreateSchemaInstances>
+> = S['fields'][K] extends FieldDefinition
+	? FieldDefinitionValueType<S['fields'][K], CreateSchemaInstances>
 	: never
 
 /** A union of all field names */

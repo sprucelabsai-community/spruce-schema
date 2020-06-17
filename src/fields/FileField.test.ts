@@ -1,6 +1,6 @@
 import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import path from 'path'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import { IFileFieldValue } from './FileField'
 import FieldFactory from '../factories/FieldFactory'
 import Schema from '../Schema'

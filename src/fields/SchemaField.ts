@@ -1,6 +1,6 @@
 import AbstractField from './AbstractField'
 import Schema from '../Schema'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import {
 	IFieldTemplateDetailOptions,
@@ -324,10 +324,11 @@ export default class SchemaField<
 			{ definitionsById }
 		)
 
+		const isUnion = destinationDefinitions.length > 1
 		let instance: Schema<ISchemaDefinition> | undefined
 
 		// if we are only pointing 1 one possible definition, then mapping is pretty easy
-		if (destinationDefinitions.length === 1) {
+		if (!isUnion) {
 			instance = new Schema(destinationDefinitions[0], value)
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop
@@ -347,12 +348,20 @@ export default class SchemaField<
 			instance = new Schema(matchedDefinition, values)
 		}
 
-		// return the instance if they wanted it, if not, get the raw values back (with no validation)
-		return (createSchemaInstances
-			? instance
-			: instance.getValues({ validate: false })) as FieldDefinitionValueType<
-			F,
-			CreateSchemaInstances
-		>
+		if (createSchemaInstances) {
+			return instance as FieldDefinitionValueType<F, CreateSchemaInstances>
+		}
+
+		if (isUnion) {
+			return {
+				schemaId: instance.schemaId,
+				values: instance.getValues({ validate: false, createSchemaInstances })
+			} as FieldDefinitionValueType<F, CreateSchemaInstances>
+		}
+
+		return instance.getValues({
+			validate: false,
+			createSchemaInstances
+		}) as FieldDefinitionValueType<F, CreateSchemaInstances>
 	}
 }

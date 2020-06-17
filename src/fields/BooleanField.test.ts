@@ -1,6 +1,6 @@
 import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
 import { FieldFactory } from '..'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class TextFieldTest extends BaseTest {
 	@test('can transform string false to boolean false', 'false', false)

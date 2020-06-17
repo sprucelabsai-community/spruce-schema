@@ -1,4 +1,4 @@
-export enum FieldType {
+enum FieldType {
 	/** A string, something like varchar(255), configure size using options to impact rendering and storage length */
 	Text = 'text',
 	/** A true/false, renders as a toggle or checkbox, or a Y/N if used in cli */
@@ -28,3 +28,5 @@ export enum FieldType {
 	/** A date object with time being ignored*/
 	Date = 'date'
 }
+
+export default FieldType

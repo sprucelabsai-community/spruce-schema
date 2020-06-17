@@ -1,6 +1,6 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import Schema from '../Schema'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import { SchemaDefinitionValues, SchemaFieldValueType } from '../schema.types'
 import {
 	IPersonDefinition,
@@ -8,7 +8,7 @@ import {
 	ICarDefinition,
 	ITruckDefinition,
 	carDefinition
-} from './__mocks__/personWithCars'
+} from '../__test_mocks__/personWithCars'
 import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 
 export default class SchemaFieldTest extends BaseTest {

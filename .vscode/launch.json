@@ -7,7 +7,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "test:file",
+			"name": "test.file",
 			"runtimeExecutable": "${env:NVM_BIN}/node",
 			"runtimeArgs": [
 				"-r",
@@ -25,7 +25,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "test:all",
+			"name": "test.all",
 			"runtimeExecutable": "${env:NVM_BIN}/node",
 			"runtimeArgs": [
 				"-r",

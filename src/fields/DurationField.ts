@@ -1,4 +1,4 @@
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import AbstractField from './AbstractField'
 import { IFieldDefinition, ValidateOptions } from '../schema.types'
 import { IInvalidFieldError } from '../errors/error.types'

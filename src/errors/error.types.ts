@@ -1,5 +1,5 @@
 import { SpruceErrorOptions, ISpruceErrorOptions } from '@sprucelabs/error'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export enum ErrorCode {
 	/** * Schema was not found */

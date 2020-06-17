@@ -4,9 +4,9 @@ import {
 	selectChoicesToHash,
 	definitionChoicesToHash
 } from './selectChoicesToHash'
-import { personDefinition } from '../fields/__mocks__/personWithCars'
+import { personDefinition } from '../__test_mocks__/personWithCars'
 import { PickFieldNames } from '../schema.types'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class SelectOptionsToHashTest extends BaseTest {
 	@test('choice hashing')

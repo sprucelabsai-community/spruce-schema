@@ -1,4 +1,5 @@
-import { FieldType } from '#spruce:schema/fields/fieldType'
+// THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
+import FieldType from '#spruce:schema/fields/fieldType'
 import BooleanField, { IBooleanFieldDefinition } from './BooleanField'
 import DirectoryField, { IDirectoryFieldDefinition } from './DirectoryField'
 import SelectField, { ISelectFieldDefinition } from './SelectField'

@@ -4,7 +4,7 @@ import {
 	ToValueTypeOptions,
 	ValidateOptions
 } from '../schema.types'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import Mime from 'mime-type'
 import mimeDb from 'mime-db'
 import { SchemaError } from '..'

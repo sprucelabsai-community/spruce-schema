@@ -26,7 +26,7 @@ import {
 import { ISchemaFieldDefinition } from './fields'
 
 /** Universal schema class  */
-export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
+export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	/** Should i do a duplicate check on schemas when tracking globally? */
 	public static enableDuplicateCheckWhenTracking = true
 
@@ -39,18 +39,18 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	}
 
 	/** The schema definition */
-	public definition: T
+	public definition: S
 
 	/** The values of this schema */
-	public values: SchemaDefinitionPartialValues<T>
+	public values: SchemaDefinitionPartialValues<S>
 
 	/** All the field objects keyed by field name, use getField rather than accessing this directly */
-	public fields: SchemaFields<T>
+	public fields: SchemaFields<S>
 
 	/** For caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
-	public constructor(definition: T, values?: SchemaDefinitionPartialValues<T>) {
+	public constructor(definition: S, values?: SchemaDefinitionPartialValues<S>) {
 		this.definition = definition
 		this.values = values ? values : {}
 
@@ -61,16 +61,16 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		}
 
 		// Empty fields to start
-		this.fields = {} as SchemaFields<T>
+		this.fields = {} as SchemaFields<S>
 
 		Object.keys(fieldDefinitions).forEach(name => {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.field(name, definition)
 			// TODO why do i have to cast to any?
-			this.fields[name as SchemaFieldNames<T>] = field as any
+			this.fields[name as SchemaFieldNames<S>] = field as any
 
 			if (definition.value) {
-				this.set(name as SchemaFieldNames<T>, definition.value)
+				this.set(name as SchemaFieldNames<S>, definition.value)
 			}
 		})
 	}
@@ -168,17 +168,17 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 	/** Normalize a value against a field. runs through valueType transformer and makes an array if isArray is true */
 	public normalizeValue<
-		F extends SchemaFieldNames<T>,
+		F extends SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
 	>(
 		forField: F,
 		value: any,
-		options?: ISchemaNormalizeOptions<T, CreateSchemaInstances>
-	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances> {
+		options?: ISchemaNormalizeOptions<S, CreateSchemaInstances>
+	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
-				? ([] as SchemaFieldDefinitionValueType<T, F>)
+				? ([] as SchemaFieldDefinitionValueType<S, F>)
 				: Array.isArray(value)
 				? value
 				: [value]
@@ -240,7 +240,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 		return (field.isArray
 			? localValue
 			: localValue[0]) as SchemaFieldDefinitionValueType<
-			T,
+			S,
 			F,
 			CreateSchemaInstances
 		>
@@ -248,24 +248,24 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 	/** Get any field by name */
 	public get<
-		F extends SchemaFieldNames<T>,
+		F extends SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
 	>(
 		fieldName: F,
-		options: ISchemaNormalizeOptions<T, CreateSchemaInstances> = {}
-	): SchemaFieldDefinitionValueType<T, F, CreateSchemaInstances> {
+		options: ISchemaNormalizeOptions<S, CreateSchemaInstances> = {}
+	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances> {
 		// Get value off self
-		const value: SchemaFieldDefinitionValueType<T, F> | undefined | null =
+		const value: SchemaFieldDefinitionValueType<S, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
 		return this.normalizeValue(fieldName, value, options)
 	}
 
 	/** Set a value and ensure its type */
-	public set<F extends SchemaFieldNames<T>>(
+	public set<F extends SchemaFieldNames<S>>(
 		fieldName: F,
-		value: SchemaFieldDefinitionValueType<T, F>,
-		options: ISchemaNormalizeOptions<T, false> = {}
+		value: SchemaFieldDefinitionValueType<S, F>,
+		options: ISchemaNormalizeOptions<S, false> = {}
 	): this {
 		// If the value is not null or undefined, coerce it into an array
 		const localValue = this.normalizeValue(fieldName, value, options)
@@ -286,7 +286,7 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	}
 
 	/** Returns an array of schema validation errors */
-	public validate(options: ISchemaValidateOptions<T> = {}) {
+	public validate(options: ISchemaValidateOptions<S> = {}) {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
 		this.getNamedFields(options).forEach(item => {
@@ -312,14 +312,14 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 	/** Get all default values based on the definition */
 	public getDefaultValues<
-		F extends FieldNamesWithDefaultValueSet<T> = FieldNamesWithDefaultValueSet<
-			T
+		F extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<
+			S
 		>,
 		CreateSchemaInstances extends boolean = true
 	>(
-		options: ISchemaGetDefaultValuesOptions<T, F, CreateSchemaInstances> = {}
-	): Pick<SchemaDefinitionDefaultValues<T, CreateSchemaInstances>, F> {
-		const values: Partial<SchemaDefinitionDefaultValues<T>> = {}
+		options: ISchemaGetDefaultValuesOptions<S, F, CreateSchemaInstances> = {}
+	): Pick<SchemaDefinitionDefaultValues<S, CreateSchemaInstances>, F> {
+		const values: Partial<SchemaDefinitionDefaultValues<S>> = {}
 
 		this.getNamedFields().forEach(namedField => {
 			const { name, field } = namedField
@@ -334,19 +334,19 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 			}
 		})
 		return values as Pick<
-			SchemaDefinitionDefaultValues<T, CreateSchemaInstances>,
+			SchemaDefinitionDefaultValues<S, CreateSchemaInstances>,
 			F
 		>
 	}
 
 	/** Get all values valued */
 	public getValues<
-		F extends SchemaFieldNames<T> = SchemaFieldNames<T>,
+		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
 	>(
-		options: ISchemaGetValuesOptions<T, F, CreateSchemaInstances> = {}
-	): Pick<SchemaDefinitionAllValues<T, CreateSchemaInstances>, F> {
-		const values: SchemaDefinitionPartialValues<T, CreateSchemaInstances> = {}
+		options: ISchemaGetValuesOptions<S, F, CreateSchemaInstances> = {}
+	): Pick<SchemaDefinitionAllValues<S, CreateSchemaInstances>, F> {
+		const values: SchemaDefinitionPartialValues<S, CreateSchemaInstances> = {}
 
 		const { fields = Object.keys(this.fields) } = options
 
@@ -360,13 +360,13 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 
 		// We know this conforms after the loop above, nothing to do here
 		return values as Pick<
-			SchemaDefinitionAllValues<T, CreateSchemaInstances>,
+			SchemaDefinitionAllValues<S, CreateSchemaInstances>,
 			F
 		>
 	}
 
 	/** Set a bunch of values at once */
-	public setValues(values: SchemaDefinitionPartialValues<T>): this {
+	public setValues(values: SchemaDefinitionPartialValues<S>): this {
 		this.getNamedFields().forEach(namedField => {
 			const { name } = namedField
 			const value = values[name]
@@ -379,13 +379,13 @@ export default class Schema<T extends ISchemaDefinition> implements ISchema<T> {
 	}
 
 	/** Get all fields as an array for easy looping and mapping */
-	public getNamedFields<F extends SchemaFieldNames<T>>(
-		options: ISchemaNamedFieldsOptions<T, F> = {}
-	): ISchemaNamedField<T>[] {
+	public getNamedFields<F extends SchemaFieldNames<S>>(
+		options: ISchemaNamedFieldsOptions<S, F> = {}
+	): ISchemaNamedField<S>[] {
 		// If (this.namedFieldCache) {
 		// 	return this.namedFieldCache
 		// }
-		const namedFields: ISchemaNamedField<T>[] = []
+		const namedFields: ISchemaNamedField<S>[] = []
 		const { fields = Object.keys(this.fields) as F[] } = options
 
 		fields.forEach(name => {

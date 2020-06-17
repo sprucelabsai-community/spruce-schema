@@ -1,18 +1,52 @@
 import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import buildSchemaDefinition from './utilities/buildSchemaDefinition'
-import { FieldType } from '#spruce:schema/fields/fieldType'
+import FieldType from '#spruce:schema/fields/fieldType'
 import { unset } from 'lodash'
 import { ErrorCode } from './errors/error.types'
 import Schema from './Schema'
 import SchemaError from './errors/SchemaError'
 import {
 	truckDefinition,
-	personDefinition
-} from './fields/__mocks__/personWithCars'
-import { SchemaDefinitionValues } from './schema.types'
+	personDefinition,
+	ICarDefinition,
+	ITruckDefinition,
+	IPersonDefinition
+} from './__test_mocks__/personWithCars'
+import { SchemaDefinitionValues, ISchema } from './schema.types'
 import { TextField, SchemaField } from './fields'
 
 Schema.enableDuplicateCheckWhenTracking = false
+
+type IPersonMappedValues = SchemaDefinitionValues<IPersonDefinition, true>
+
+interface IPersonExpectedValues {
+	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
+	optionalTextWithDefaultValue?: string | null
+	optionalIsArrayCarOrTruckWithDefaultValue?: (
+		| ISchema<ICarDefinition>
+		| ISchema<ITruckDefinition>
+	)[]
+	optionalCarOrTruckWithDefaultValue?:
+		| ISchema<ICarDefinition>
+		| ISchema<ITruckDefinition>
+}
+
+interface IPersonExpectedValuesWithoutSchema {
+	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
+	optionalTextWithDefaultValue?: string | null
+	optionalIsArrayCarOrTruckWithDefaultValue?: {
+		schemaId: 'car' | 'truck'
+		values:
+			| SchemaDefinitionValues<ICarDefinition>
+			| SchemaDefinitionValues<ITruckDefinition>
+	}[]
+	optionalCarOrTruckWithDefaultValue?: {
+		schemaId: 'car' | 'truck'
+		values:
+			| SchemaDefinitionValues<ICarDefinition>
+			| SchemaDefinitionValues<ITruckDefinition>
+	}
+}
 
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')
@@ -210,8 +244,8 @@ export default class SchemaTest extends BaseTest {
 		)
 	}
 
-	@test('test definition values against interface')
-	protected static testValueTypes() {
+	@test('test typing against object literal maps correctly')
+	protected static testValuesTypesAgainstObjectLiteral() {
 		const values: {
 			name: string
 			onlyOnCar: string | undefined | null
@@ -220,6 +254,20 @@ export default class SchemaTest extends BaseTest {
 			onlyOnCar: null
 		}
 		assert.expectType<SchemaDefinitionValues<typeof truckDefinition>>(values)
+	}
+
+	@test('can type values correctly')
+	protected static testFullValuesTypes() {
+		const personSchema = new Schema(personDefinition)
+		const values = personSchema.getValues()
+		const valuesWithoutInstances = personSchema.getValues({
+			createSchemaInstances: false
+		})
+		assert.expectType<IPersonExpectedValues>(values)
+		assert.expectType<IPersonMappedValues>(values)
+		assert.expectType<IPersonExpectedValuesWithoutSchema>(
+			valuesWithoutInstances
+		)
 	}
 
 	@test('can get typed fields')
