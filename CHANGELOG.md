@@ -1,3 +1,10 @@
+# [3.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v2.0.2...v3.0.0) (2020-06-17)
+
+
+### Breaking Changes
+
+* file name changes ([6ed95c7](https://github.com/sprucelabsai/spruce-schema/commit/6ed95c7))
+
 ## [2.0.2](https://github.com/sprucelabsai/spruce-schema/compare/v2.0.1...v2.0.2) (2020-06-16)
 
 ## [2.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v2.0.0...v2.0.1) (2020-06-15)
