@@ -158,20 +158,4 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 			'fast car'
 		)
 	}
-
-	// @test('Creates types that work as expected')
-	// protected static defaultTypesTests(
-	// 	dummy: IScrewdriverDefinitionDefaultValues
-	// ) {
-	// 	const expected = {
-	// 		wrenchSize: 12,
-	// 		tags: ['low', 'tough', 'tool']
-	// 	}
-
-	// 	assert.expectType<SchemaDefinitionDefaultValues<IWrenchDefinition>>(
-	// 		expected
-	// 	)
-
-	// 	assert.expectType<IScrewdriverDefinitionExpectedDefaultValues>(dummy)
-	// }
 }
