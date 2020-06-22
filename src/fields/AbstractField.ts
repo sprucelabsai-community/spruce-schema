@@ -92,7 +92,7 @@ public static templateDetails(
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
 			errors.push({
 				code: 'missing_required',
-				friendlyMessage: `${this.label} is required!`,
+				friendlyMessage: `${this.name} is required!`,
 				name: this.name
 			})
 		}
