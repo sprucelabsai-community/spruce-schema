@@ -103,7 +103,6 @@ export default class SchemaTest extends BaseTest {
 				'Did not get back the error I expected'
 			)
 		} else {
-			debugger
 			throw new Error('Schema.validateDefinition should return a SpruceError')
 		}
 	}
