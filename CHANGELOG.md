@@ -1,3 +1,11 @@
+# [3.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v3.1.0...v3.2.0) (2020-06-25)
+
+
+### Features
+
+* test version bump ([ba16664](https://github.com/sprucelabsai/spruce-schema/commit/ba16664))
+* versioning ([6b6ad21](https://github.com/sprucelabsai/spruce-schema/commit/6b6ad21))
+
 # [3.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v3.0.1...v3.1.0) (2020-06-22)
 
 
