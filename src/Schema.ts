@@ -406,13 +406,9 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		return this
 	}
 
-	/** Get all fields as an array for easy looping and mapping */
 	public getNamedFields<F extends SchemaFieldNames<S>>(
 		options: ISchemaNamedFieldsOptions<S, F> = {}
 	): ISchemaNamedField<S>[] {
-		// If (this.namedFieldCache) {
-		// 	return this.namedFieldCache
-		// }
 		const namedFields: ISchemaNamedField<S>[] = []
 		const { fields = Object.keys(this.fields) as F[] } = options
 
@@ -422,5 +418,10 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		})
 
 		return namedFields
+	}
+
+	public getField<F extends SchemaFieldNames<S>>(name: F) {
+		const field = this.fields[name]
+		return field
 	}
 }
