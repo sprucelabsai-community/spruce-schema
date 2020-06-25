@@ -1,7 +1,7 @@
 // Import logger from '@sprucelabs/log'
 
-import { isValidNumber } from 'libphonenumber-js'
 import libPhoneNumber from 'google-libphonenumber'
+import { isValidNumber } from 'libphonenumber-js'
 
 // @ts-ignore
 // const log = logger.log

@@ -1,5 +1,5 @@
-import registerFieldType from '../utilities/registerFieldType'
 import { DirectoryField } from '../fields'
+import registerFieldType from '../utilities/registerFieldType'
 
 export default registerFieldType({
 	type: 'Directory',

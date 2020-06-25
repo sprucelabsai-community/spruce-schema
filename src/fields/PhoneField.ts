@@ -1,8 +1,8 @@
+import { ValidateOptions, IFieldDefinition } from '../schema.types'
+import { IFieldTemplateDetailOptions } from '../template.types'
+import PhoneNumber from '../utilities/PhoneNumberUtility'
 import AbstractField from './AbstractField'
 import FieldType from '#spruce:schema/fields/fieldType'
-import PhoneNumber from '../utilities/PhoneNumberUtility'
-import { IFieldTemplateDetailOptions } from '../template.types'
-import { ValidateOptions, IFieldDefinition } from '../schema.types'
 
 export type IPhoneFieldDefinition = IFieldDefinition<string> & {
 	/** * .Phone a great way to validate and format values */

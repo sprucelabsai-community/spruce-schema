@@ -1,5 +1,5 @@
-import { FieldDefinition, IFieldMap } from '#spruce:schema/fields/fields.types'
 import { FieldClassMap } from '#spruce:schema/fields/fieldClassMap'
+import { FieldDefinition, IFieldMap } from '#spruce:schema/fields/fields.types'
 // let firstRun = true
 
 export default class FieldFactory {

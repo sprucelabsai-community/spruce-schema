@@ -1,5 +1,5 @@
-import SpruceError from '../errors/SpruceError'
 import { ErrorCode } from '../errors/error.types'
+import SpruceError from '../errors/SpruceError'
 import { FieldSubclass } from '../schema.types'
 
 export interface IFieldRegistration {

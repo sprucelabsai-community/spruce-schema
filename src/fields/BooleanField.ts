@@ -1,7 +1,7 @@
-import AbstractField from './AbstractField'
 import { IFieldDefinition } from '../schema.types'
-import FieldType from '#spruce:schema/fields/fieldType'
 import { IFieldTemplateDetailOptions } from '../template.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export type IBooleanFieldDefinition = IFieldDefinition<boolean> & {
 	/** * A true/false field */

@@ -1,5 +1,5 @@
-import registerFieldType from '../utilities/registerFieldType'
 import { SchemaField } from '../fields'
+import registerFieldType from '../utilities/registerFieldType'
 
 export default registerFieldType({
 	type: 'Schema',

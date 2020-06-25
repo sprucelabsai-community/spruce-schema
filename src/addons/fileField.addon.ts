@@ -1,5 +1,5 @@
-import registerFieldType from '../utilities/registerFieldType'
 import { FileField } from '../fields'
+import registerFieldType from '../utilities/registerFieldType'
 
 export default registerFieldType({
 	type: 'File',
