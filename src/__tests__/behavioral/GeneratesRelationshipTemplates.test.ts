@@ -1,14 +1,14 @@
-import BaseTest, { test, assert, ISpruce } from '@sprucelabs/test'
-import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
-import FieldType from '#spruce:schema/fields/fieldType'
-import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import SchemaField, { ISchemaFieldDefinition } from '../../fields/SchemaField'
 import {
 	IFieldTemplateDetailOptions,
 	ISchemaTemplateItem,
 	TemplateRenderAs
-} from '../template.types'
+} from '../../template.types'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import FieldType from '#spruce:schema/fields/fieldType'
 
-export default class SchemaFieldTemplateTest extends BaseTest {
+export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 	private static wrenchDefinition = buildSchemaDefinition({
 		id: 'wrench',
 		name: 'Wrench',
@@ -42,8 +42,8 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				type: FieldType.Schema,
 				options: {
 					schemas: [
-						SchemaFieldTemplateTest.wrenchDefinition,
-						SchemaFieldTemplateTest.screwdriverDefinition
+						GeneratesRelationshipTemplatesTest.wrenchDefinition,
+						GeneratesRelationshipTemplatesTest.screwdriverDefinition
 					]
 				}
 			},
@@ -52,8 +52,8 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				isArray: true,
 				options: {
 					schemas: [
-						SchemaFieldTemplateTest.wrenchDefinition,
-						SchemaFieldTemplateTest.screwdriverDefinition
+						GeneratesRelationshipTemplatesTest.wrenchDefinition,
+						GeneratesRelationshipTemplatesTest.screwdriverDefinition
 					]
 				}
 			}
@@ -67,57 +67,62 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			nameCamel: 'unionPerson',
 			nameReadable: 'Union person',
 			namespace: 'Core',
-			id: SchemaFieldTemplateTest.personDefinition.id,
-			definition: SchemaFieldTemplateTest.personDefinition
+			id: GeneratesRelationshipTemplatesTest.personDefinition.id,
+			definition: GeneratesRelationshipTemplatesTest.personDefinition
 		},
 		{
 			namePascal: 'Wrench',
 			nameCamel: 'wrench',
 			nameReadable: 'Wrench',
 			namespace: 'Core',
-			id: SchemaFieldTemplateTest.wrenchDefinition.id,
-			definition: SchemaFieldTemplateTest.wrenchDefinition
+			id: GeneratesRelationshipTemplatesTest.wrenchDefinition.id,
+			definition: GeneratesRelationshipTemplatesTest.wrenchDefinition
 		},
 		{
 			namePascal: 'screwdriver',
 			nameCamel: 'screwdriver',
 			nameReadable: 'Screwdriver',
 			namespace: 'Core',
-			id: SchemaFieldTemplateTest.screwdriverDefinition.id,
-			definition: SchemaFieldTemplateTest.screwdriverDefinition
+			id: GeneratesRelationshipTemplatesTest.screwdriverDefinition.id,
+			definition: GeneratesRelationshipTemplatesTest.screwdriverDefinition
 		}
 	]
 
 	@test(
 		'schemaId',
-		{ isArray: false, options: { schemaId: 'union-person' } },
+		{ isArray: false, options: { schemaId: { id: 'union-person' } } },
 		'[unionPersonDefinitionCore]',
 		'SpruceSchemas.Core.IUnionPerson',
 		'SpruceSchemas.Core.UnionPerson.IDefinition[]'
 	)
 	@test(
 		'schemaId isArray',
-		{ isArray: true, options: { schemaId: 'union-person' } },
+		{ isArray: true, options: { schemaId: { id: 'union-person' } } },
 		'[unionPersonDefinitionCore]',
 		'SpruceSchemas.Core.IUnionPerson[]',
 		'SpruceSchemas.Core.UnionPerson.IDefinition[]'
 	)
 	@test(
 		'schemaIds',
-		{ isArray: false, options: { schemaIds: ['union-person', 'wrench'] } },
+		{
+			isArray: false,
+			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] }
+		},
 		'[unionPersonDefinitionCore, wrenchDefinitionCore]',
 		"{ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench }",
 		'(SpruceSchemas.Core.UnionPerson.IDefinition | SpruceSchemas.Core.Wrench.IDefinition)[]'
 	)
 	@test(
 		'schemaIds isArray',
-		{ isArray: true, options: { schemaIds: ['union-person', 'wrench'] } },
+		{
+			isArray: true,
+			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] }
+		},
 		'[unionPersonDefinitionCore, wrenchDefinitionCore]',
 		"({ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench })[]",
 		'(SpruceSchemas.Core.UnionPerson.IDefinition | SpruceSchemas.Core.Wrench.IDefinition)[]'
 	)
 	protected static async testTemplateDetails(
-		_: ISpruce,
 		definition: ISchemaFieldDefinition,
 		renderAsValue: string,
 		renderAsType: string,
@@ -127,7 +132,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			language: 'ts',
 			globalNamespace: 'SpruceSchemas',
 			importAs: 'generated_test',
-			templateItems: SchemaFieldTemplateTest.templateItems,
+			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
 			definition: {
 				...definition,
 				type: FieldType.Schema
@@ -142,16 +147,17 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
+
 		rendersAs.forEach(renderAs => {
 			const options = {
 				...templateOptions,
 				// @ts-ignore
 				renderAs: TemplateRenderAs[renderAs]
 			}
-			const { valueType } = SchemaField.templateDetails(options)
+			const { valueType } = SchemaField.generateTemplateDetails(options)
 			const exp = expected[`renderAs${renderAs}` as keyof typeof expected]
 
-			assert.equal(valueType, exp)
+			assert.isEqual(valueType, exp)
 		})
 	}
 }

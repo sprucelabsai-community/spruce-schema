@@ -1,7 +1,7 @@
 import BaseSpruceError from '@sprucelabs/error'
 import { SchemaErrorOptions, ErrorCode } from './error.types'
 
-export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
+export default class SpruceError extends BaseSpruceError<SchemaErrorOptions> {
 	/** A readable message */
 	public friendlyMessage(): string {
 		const { options } = this
@@ -35,7 +35,7 @@ export default class SchemaError extends BaseSpruceError<SchemaErrorOptions> {
 				message = `${options.code}: ${options.instructions}`
 				break
 			case ErrorCode.InvalidSchemaDefinition:
-				message = `Invalid definition. ${
+				message = `Invalid definition with id: ${options.schemaId}. ${
 					options.errors.length > 0
 						? `Errors are: \n\n${options.errors.join('\n')}\n\n`
 						: ``

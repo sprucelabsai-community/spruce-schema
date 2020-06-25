@@ -17,7 +17,9 @@ export enum ErrorCode {
 	/** * Invalid field options */
 	InvalidFieldOptions = 'INVALID_FIELD_OPTIONS',
 	/** * A field was registered that was not valid */
-	InvalidFieldRegistration = 'INVALID_FIELD_REGISTRATION'
+	InvalidFieldRegistration = 'INVALID_FIELD_REGISTRATION',
+	/** * Something missed on matching a version. */
+	VersionNotFound = 'VERSION_NOT_FOUND'
 }
 
 export type SchemaErrorOptions =
@@ -29,6 +31,7 @@ export type SchemaErrorOptions =
 	| INotImplementedErrorOptions
 	| IInvalidFieldOptionsErrorOptions
 	| IInvalidFieldRegistrationErrorOptions
+	| IVersionRequiredErrorOptions
 	| SpruceErrorOptions
 
 export interface ISchemaErrorOptionsNotFound
@@ -120,4 +123,10 @@ export interface IInvalidFieldRegistrationErrorOptions
 	importAs: string
 	/** The description of the field */
 	description: string
+}
+
+export interface IVersionRequiredErrorOptions
+	extends ISpruceErrorOptions<ErrorCode> {
+	code: ErrorCode.VersionNotFound
+	schemaId?: string
 }

@@ -16,7 +16,7 @@ export enum TemplateRenderAs {
 	DefinitionType = 'definitionType'
 }
 
-/** The shape of options passed to AbstractField.templateDetails(options) */
+/** The shape of options passed to AbstractField.generateTemplateDetails(options) */
 export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
 	/** The language we're generating to, only TS for now */
 	language: 'ts'

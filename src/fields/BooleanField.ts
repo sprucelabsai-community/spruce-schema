@@ -15,7 +15,7 @@ export default class BooleanField extends AbstractField<
 		return 'A true/false. Converts false string to false, all other strings to true.'
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IBooleanFieldDefinition>
 	) {
 		return {

@@ -1,10 +1,11 @@
-import SchemaError from './errors/SchemaError'
 import {
 	ErrorCode,
 	IInvalidFieldErrorOptions,
 	IInvalidFieldError
 } from './errors/error.types'
+import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
+import { ISchemaFieldDefinition } from './fields'
 import {
 	ISchemaDefinition,
 	SchemaDefinitionPartialValues,
@@ -21,9 +22,9 @@ import {
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
 	ISchema,
-	IField
+	IField,
+	IDefinitionsById
 } from './schema.types'
-import { ISchemaFieldDefinition } from './fields'
 
 /** Universal schema class  */
 export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
@@ -31,21 +32,28 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
 	/** Global definition hash for lookups by id */
-	private static definitionsById: { [key: string]: ISchemaDefinition } = {}
+	private static definitionsById: IDefinitionsById = {}
 
 	/** Our unique id */
 	public get schemaId() {
 		return this.definition.id
 	}
+	public get version() {
+		return this.definition.version
+	}
+
+	public get description() {
+		return this.definition.id
+	}
 
 	/** The schema definition */
-	public definition: S
+	private definition: S
 
 	/** The values of this schema */
 	public values: SchemaDefinitionPartialValues<S>
 
 	/** All the field objects keyed by field name, use getField rather than accessing this directly */
-	public fields: SchemaFields<S>
+	private fields: SchemaFields<S>
 
 	/** For caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
@@ -75,30 +83,50 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		})
 	}
 
-	/** Track a definition for lookup later */
 	public static trackDefinition(definition: ISchemaDefinition) {
-		Schema.validateDefinition(definition)
-		const existing = Schema.definitionsById[definition.id]
-		if (existing && Schema.enableDuplicateCheckWhenTracking) {
-			throw new SchemaError({
-				code: ErrorCode.DuplicateSchema,
-				schemaId: definition.id
-			})
+		this.validateDefinition(definition)
+
+		const id = definition.id
+		if (!this.definitionsById[id]) {
+			this.definitionsById[id] = []
 		}
-		Schema.definitionsById[definition.id] = definition
+		this.definitionsById[id].push(definition)
 	}
 
-	/** Forget the definition. You can no longer look it up by id */
 	public static forgetDefinition(id: string) {
 		delete Schema.definitionsById[id]
 	}
 
-	/** Get a tracked definition by id */
-	public static getDefinition(id: string): ISchemaDefinition | undefined {
-		return this.definitionsById[id]
+	public static forgetAllDefinitions() {
+		this.definitionsById = {}
 	}
 
-	/** Compares 2 definitions and tells you if they are the same */
+	public static getDefinition(
+		id: string,
+		version?: string
+	): ISchemaDefinition | undefined {
+		if (!this.definitionsById[id]) {
+			throw new SpruceError({
+				code: ErrorCode.SchemaNotFound,
+				schemaId: id
+			})
+		}
+
+		const match = this.definitionsById[id].find(d => d.version === version)
+
+		if (!match) {
+			throw new SpruceError({
+				code: ErrorCode.VersionNotFound
+			})
+		}
+
+		return match
+	}
+
+	public static getTrackingCount() {
+		return Object.keys(this.definitionsById).length
+	}
+
 	public static areDefinitionsTheSame(
 		left: ISchemaDefinition,
 		right: ISchemaDefinition
@@ -158,7 +186,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		}
 
 		if (errors.length > 0) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.InvalidSchemaDefinition,
 				schemaId: definition?.id ?? 'ID MISSING',
 				errors
@@ -184,7 +212,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 				: [value]
 
 		if (!Array.isArray(localValue)) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
 				errors: [{ name: forField, code: 'value_not_array' }]
@@ -215,7 +243,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		// If there are any errors, bail
 		if (errors.length > 0) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
 				errors
@@ -302,7 +330,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		})
 
 		if (errors.length > 0) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
 				errors

@@ -31,7 +31,7 @@ export default class SelectField<
 		}
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ISelectFieldDefinition>
 	) {
 		// Build union of select options

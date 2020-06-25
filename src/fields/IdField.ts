@@ -13,7 +13,7 @@ export default class IdField extends AbstractField<IIdFieldDefinition> {
 	public static get description() {
 		return "A unique identifier field, UUID's in our case."
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IIdFieldDefinition>
 	) {
 		return {

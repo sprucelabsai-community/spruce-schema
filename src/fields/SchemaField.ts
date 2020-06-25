@@ -1,13 +1,6 @@
-import AbstractField from './AbstractField'
-import Schema from '../Schema'
-import FieldType from '#spruce:schema/fields/fieldType'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
-import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
-	TemplateRenderAs
-} from '../template.types'
-import SchemaError from '../errors/SchemaError'
+import SpruceError from '../errors/SpruceError'
+import Schema from '../Schema'
 import {
 	ISchemaDefinition,
 	IFieldDefinition,
@@ -15,8 +8,16 @@ import {
 	FieldDefinitionValueType,
 	ValidateOptions,
 	ISchemaFieldDefinitionValueUnion,
-	IFieldDefinitionToSchemaDefinitionOptions
+	IFieldDefinitionToSchemaDefinitionOptions,
+	ISchemaIdWithVersion
 } from '../schema.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+	TemplateRenderAs
+} from '../template.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export type ISchemaFieldDefinition = IFieldDefinition<
 	Record<string, any>,
@@ -28,11 +29,11 @@ export type ISchemaFieldDefinition = IFieldDefinition<
 	type: FieldType.Schema
 	options: {
 		/** The id of the schema you are relating to */
-		schemaId?: string
+		schemaId?: ISchemaIdWithVersion
 		/** The actual schema */
 		schema?: ISchemaDefinition
 		/** If this needs to be a union of ids */
-		schemaIds?: string[]
+		schemaIds?: ISchemaIdWithVersion[]
 		/** Actual schemas if more that one, this will make a union */
 		schemas?: ISchemaDefinition[]
 		/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */
@@ -46,12 +47,15 @@ export default class SchemaField<
 	public static get description() {
 		return 'A way to map relationships.'
 	}
-	/** Take field options and get you an array of schema definitions or ids */
-	public static fieldDefinitionToSchemasOrIds(
+
+	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): (string | ISchemaDefinition)[] {
+	): (ISchemaIdWithVersion | ISchemaDefinition)[] {
 		const { options } = field
-		const schemasOrIds: (string | ISchemaDefinition)[] = [
+		const schemasOrIds: (
+			| { version?: string; id: string }
+			| ISchemaDefinition
+		)[] = [
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
@@ -61,6 +65,13 @@ export default class SchemaField<
 
 		return schemasOrIds.map(item => {
 			if (typeof item === 'string') {
+				return { id: item }
+			}
+
+			if (
+				typeof item.id === 'string' &&
+				typeof (item as any).name === 'undefined'
+			) {
 				return item
 			}
 
@@ -68,7 +79,7 @@ export default class SchemaField<
 				Schema.validateDefinition(item)
 				return item
 			} catch (err) {
-				throw new SchemaError({
+				throw new SpruceError({
 					code: ErrorCode.InvalidSchemaDefinition,
 					schemaId: JSON.stringify(options),
 					originalError: err,
@@ -78,57 +89,73 @@ export default class SchemaField<
 		})
 	}
 
-	/** Take field options and turn it into an array of schema id's */
-	public static fieldDefinitionToSchemaIds(
+	public static mapFieldDefinitionToSchemaIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): string[] {
-		const { options } = field
-		const schemasOrIds: (string | ISchemaDefinition)[] = [
-			...(options.schema ? [options.schema] : []),
-			...(options.schemaId ? [options.schemaId] : []),
-			...(options.schemas || []),
-			...(options.schemaIds || []),
-			...(options.schemasCallback ? options.schemasCallback() : [])
-		]
+	): ISchemaIdWithVersion[] {
+		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
-		const ids: string[] = schemasOrIds.map(schemaOrId => {
-			if (typeof schemaOrId === 'string') {
-				return schemaOrId
+		const ids: ISchemaIdWithVersion[] = schemasOrIds.map(item => {
+			if (
+				typeof item.id === 'string' &&
+				typeof (item as any).name === 'undefined'
+			) {
+				return item
 			}
-			try {
-				Schema.isDefinitionValid(schemaOrId)
-				return schemaOrId.id
-			} catch (err) {
-				throw new SchemaError({
-					code: ErrorCode.InvalidSchemaDefinition,
-					schemaId: JSON.stringify(options),
-					originalError: err,
-					errors: ['invalid_schema_field_options']
-				})
+
+			const idWithVersion: ISchemaIdWithVersion = {
+				id: item.id
 			}
+
+			if (item.version) {
+				idWithVersion.version = item.version
+			}
+
+			return idWithVersion
 		})
 
 		return ids
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
 	): IFieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
-		const schemaIds = SchemaField.fieldDefinitionToSchemaIds(definition)
+		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
+			definition
+		)
 		const unions: { schemaId: string; valueType: string }[] = []
 
-		schemaIds.forEach(schemaId => {
-			const matchedTemplateItem = templateItems.find(
-				item => item.id.toLowerCase() === schemaId.toLowerCase()
+		idsWithVersion.forEach(idWithVersion => {
+			const { id, version } = idWithVersion
+			const allMatches = templateItems.filter(
+				item => item.id.toLowerCase() === id.toLowerCase()
 			)
+
+			let matchedTemplateItem
+
+			if (allMatches.length === 0) {
+				matchedTemplateItem = allMatches[0]
+			} else {
+				matchedTemplateItem = allMatches.find(
+					d => d.definition.version === version
+				)
+
+				if (!matchedTemplateItem) {
+					throw new SpruceError({
+						code: ErrorCode.VersionNotFound,
+						schemaId: id
+					})
+				}
+			}
 
 			if (matchedTemplateItem) {
 				let valueType: string | undefined
 				if (renderAs === TemplateRenderAs.Value) {
 					valueType = `${matchedTemplateItem.nameCamel}Definition${matchedTemplateItem.namespace}`
 				} else {
-					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
+					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
+						version ? `.${version}` : ''
+					}.${
 						renderAs === TemplateRenderAs.Type
 							? `I${matchedTemplateItem.namePascal}`
 							: matchedTemplateItem.namePascal
@@ -136,8 +163,10 @@ export default class SchemaField<
 						renderAs === TemplateRenderAs.DefinitionType ? `.IDefinition` : ``
 					}`
 
-					if (renderAs === TemplateRenderAs.Type && schemaIds.length > 1) {
-						valueType = `{ schemaId: '${schemaId}', values: ${valueType} }`
+					if (renderAs === TemplateRenderAs.Type && idsWithVersion.length > 1) {
+						valueType = `{ schemaId: '${id}'${
+							version ? `, version: '${version}'` : ''
+						}, values: ${valueType} }`
 					}
 				}
 
@@ -146,9 +175,9 @@ export default class SchemaField<
 					valueType
 				})
 			} else {
-				throw new SchemaError({
+				throw new SpruceError({
 					code: ErrorCode.SchemaNotFound,
-					schemaId,
+					schemaId: id,
 					friendlyMessage:
 						'Failed during generation of value type on the Schema field. This can happen if schema id "${schemaId}" is not in "templateItems" (which should hold every schema in your skill).'
 				})
@@ -177,13 +206,14 @@ export default class SchemaField<
 		}
 	}
 
-	/** Turn a field definition into it's related schemas, but requires the schemas be registered */
-	private static fieldDefinitionToSchemaDefinitions(
+	private static mapFieldDefinitionToSchemaDefinitions(
 		definition: ISchemaFieldDefinition,
 		options?: IFieldDefinitionToSchemaDefinitionOptions
 	): ISchemaDefinition[] {
 		const { definitionsById = {} } = options || {}
-		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds(definition)
+		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
+			definition
+		)
 
 		const definitions = schemasOrIds.map(schemaOrId => {
 			const definition =
@@ -198,7 +228,6 @@ export default class SchemaField<
 		return definitions
 	}
 
-	/** Make sure value is a legit value */
 	public validate(
 		value: any,
 		options?: ValidateOptions<ISchemaFieldDefinition>
@@ -230,7 +259,7 @@ export default class SchemaField<
 
 				try {
 					// pull schemas out of our own definition
-					definitions = SchemaField.fieldDefinitionToSchemaDefinitions(
+					definitions = SchemaField.mapFieldDefinitionToSchemaDefinitions(
 						this.definition,
 						options
 					)
@@ -297,7 +326,6 @@ export default class SchemaField<
 		return errors
 	}
 
-	/** To a value type */
 	public toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateSchemaInstances>
@@ -306,7 +334,7 @@ export default class SchemaField<
 		const errors = this.validate(value, options)
 
 		if (errors.length > 0) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.TransformationFailed,
 				fieldType: FieldType.Schema,
 				incomingTypeof: typeof value,
@@ -319,7 +347,7 @@ export default class SchemaField<
 		const { createSchemaInstances, definitionsById = {} } = options || {}
 
 		// try and pull the schema definition from the options and by id
-		const destinationDefinitions: ISchemaDefinition[] = SchemaField.fieldDefinitionToSchemaDefinitions(
+		const destinationDefinitions: ISchemaDefinition[] = SchemaField.mapFieldDefinitionToSchemaDefinitions(
 			this.definition,
 			{ definitionsById }
 		)
@@ -333,11 +361,13 @@ export default class SchemaField<
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
-			const matchedDefinition = destinationDefinitions.find(
+			const allMatches = destinationDefinitions.filter(
 				def => def.id === schemaId
 			)
-			if (!matchedDefinition) {
-				throw new SchemaError({
+			let matchedDefinition: ISchemaDefinition | undefined
+
+			if (allMatches.length === 0) {
+				throw new SpruceError({
 					code: ErrorCode.TransformationFailed,
 					fieldType: FieldType.Schema,
 					name: this.name,
@@ -345,6 +375,24 @@ export default class SchemaField<
 					incomingTypeof: typeof value
 				})
 			}
+
+			if (allMatches.length > 1) {
+				if (value.version) {
+					matchedDefinition = allMatches.find(
+						def => def.version === value.version
+					)
+				}
+
+				if (!matchedDefinition) {
+					throw new SpruceError({
+						code: ErrorCode.VersionNotFound,
+						schemaId
+					})
+				}
+			} else {
+				matchedDefinition = allMatches[0]
+			}
+
 			instance = new Schema(matchedDefinition, values)
 		}
 

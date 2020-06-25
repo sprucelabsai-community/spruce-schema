@@ -1,7 +1,7 @@
-import BaseTest, { test, assert, ISpruce } from '@sprucelabs/test'
-import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import SchemaField, { ISchemaFieldDefinition } from '../../fields/SchemaField'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import FieldType from '#spruce:schema/fields/fieldType'
-import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 
 export default class SchemaFieldTemplateTest extends BaseTest {
 	private static wrenchDefinition = buildSchemaDefinition({
@@ -56,22 +56,22 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 	})
 
 	@test('can normalize schemaId to array [schemaId]', { schemaId: 'user' }, [
-		'user'
+		{ id: 'user' }
 	])
 	@test(
 		'can normalize schemaIds to array [schemaId]',
 		{ schemaIds: ['user', 'wrench'] },
-		['user', 'wrench']
+		[{ id: 'user' }, { id: 'wrench' }]
 	)
 	@test(
 		'can normalize schemaIds to array [schemaId]',
 		{ schemaIds: ['user', 'wrench'] },
-		['user', 'wrench']
+		[{ id: 'user' }, { id: 'wrench' }]
 	)
 	@test(
 		'can normalize schema to array [schemaId]',
 		{ schema: SchemaFieldTemplateTest.wrenchDefinition },
-		['wrench'],
+		[{ id: 'wrench' }],
 		[SchemaFieldTemplateTest.wrenchDefinition]
 	)
 	@test(
@@ -82,7 +82,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				SchemaFieldTemplateTest.screwdriverDefinition
 			]
 		},
-		['wrench', 'screwdriver'],
+		[{ id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.wrenchDefinition,
 			SchemaFieldTemplateTest.screwdriverDefinition
@@ -97,7 +97,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				SchemaFieldTemplateTest.screwdriverDefinition
 			]
 		},
-		['union-person', 'wrench', 'screwdriver'],
+		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.personDefinition,
 			SchemaFieldTemplateTest.wrenchDefinition,
@@ -113,7 +113,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			],
 			schema: SchemaFieldTemplateTest.personDefinition
 		},
-		['union-person', 'wrench', 'screwdriver'],
+		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.personDefinition,
 			SchemaFieldTemplateTest.wrenchDefinition,
@@ -129,29 +129,35 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			],
 			schemaId: 'union-person'
 		},
-		['union-person', 'wrench', 'screwdriver'],
+		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
-			'union-person',
+			{ id: 'union-person' },
 			SchemaFieldTemplateTest.wrenchDefinition,
 			SchemaFieldTemplateTest.screwdriverDefinition
 		]
 	)
 	protected static async testNormalizingOptionsToId(
-		_: ISpruce,
 		options: ISchemaFieldDefinition['options'],
-		toSchemaIdExpected: string[],
-		toSchemaOrIdExpected?: string[]
+		toSchemaIdExpected: any,
+		toSchemaOrIdExpected?: any
 	) {
-		const ids = SchemaField.fieldDefinitionToSchemaIds({
-			type: FieldType.Schema,
-			options
-		})
-		assert.deepEqual(ids, toSchemaIdExpected)
+		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
+			{
+				type: FieldType.Schema,
+				options
+			}
+		)
+		assert.deepEqual(idsWithVersion, toSchemaIdExpected)
 
-		const schemasOrIds = SchemaField.fieldDefinitionToSchemasOrIds({
-			type: FieldType.Schema,
-			options
-		})
-		assert.deepEqual(schemasOrIds, toSchemaOrIdExpected ?? toSchemaIdExpected)
+		const schemasOrIdsWithVersion = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
+			{
+				type: FieldType.Schema,
+				options
+			}
+		)
+		assert.deepEqual(
+			schemasOrIdsWithVersion,
+			toSchemaOrIdExpected ?? toSchemaIdExpected
+		)
 	}
 }

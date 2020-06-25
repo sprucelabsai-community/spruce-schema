@@ -1,7 +1,7 @@
-import SchemaError from '../errors/SchemaError'
-import log from '../lib/log'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
+import SpruceError from '../errors/SpruceError'
 import { ValidateOptions, IField } from '../schema.types'
+import log from '../singletons/log'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
@@ -29,7 +29,7 @@ export default abstract class AbstractField<F extends FieldDefinition>
 
 	/** A description of this field for others */
 	public static get description(): string {
-		throw new SchemaError({
+		throw new SpruceError({
 			code: ErrorCode.NotImplemented,
 			instructions: `Copy and paste this into ${this.name}:
 
@@ -42,15 +42,15 @@ public static get description() {
 	}
 
 	/** Details needed for generating templates */
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<any>
 	): IFieldTemplateDetails {
 		log.info(options)
-		throw new SchemaError({
+		throw new SpruceError({
 			code: ErrorCode.NotImplemented,
 			instructions: `Copy and paste this into ${this.name}:
 			
-public static templateDetails(
+public static generateTemplateDetails(
 	options: IFieldTemplateDetailOptions<I{{YourFieldName}}Definition>
 ): IFieldTemplateDetails {
 	const { definition } = options

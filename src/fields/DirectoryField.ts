@@ -1,12 +1,12 @@
+import { ErrorCode } from '../errors/error.types'
+import SpruceError from '../errors/SpruceError'
 import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
-import FieldType from '#spruce:schema/fields/fieldType'
-import AbstractField from './AbstractField'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails
 } from '../template.types'
-import SchemaError from '../errors/SchemaError'
-import { ErrorCode } from '../errors/error.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export interface IDirectoryFieldValue {
 	path: string
@@ -30,7 +30,7 @@ export default class DirectoryField extends AbstractField<
 		return 'A way to select entire directories once!'
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IDirectoryFieldDefinition>
 	): IFieldTemplateDetails {
 		const { definition } = options
@@ -58,7 +58,7 @@ export default class DirectoryField extends AbstractField<
 		}
 
 		if (!(typeof path === 'string') || path.length === 0) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.TransformationFailed,
 				fieldType: FieldType.Directory,
 				incomingTypeof: typeof value,

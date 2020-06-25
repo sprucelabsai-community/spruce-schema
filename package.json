@@ -44,14 +44,14 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^3.0.4",
-		"@sprucelabs/test": "^2.2.1",
+		"@sprucelabs/test": "^3.0.1",
 		"@types/google-libphonenumber": "^7.4.17",
 		"@types/lodash": "^4.14.149",
 		"@types/mime-db": "^1.27.1",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.0.2",
 		"eslint": "^5",
-		"eslint-config-spruce": "^10.2.0",
+		"eslint-config-spruce": "^10.5.3",
 		"lodash": "^4.17.15",
 		"prettier": "^1.19",
 		"ts-node": "^8.8.2",
@@ -75,8 +75,12 @@
 		"preset": "ts-jest",
 		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
+			"<rootDir>/tmp/",
 			"<rootDir>/build/",
 			"<rootDir>/node_modules/"
+		],
+		"testMatch": [
+			"**/__tests__/**/*.test.ts"
 		],
 		"moduleNameMapper": {
 			"^#spruce:schema/(.*)$": "<rootDir>/src/$1",

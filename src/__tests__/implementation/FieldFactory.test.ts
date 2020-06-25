@@ -1,8 +1,8 @@
-import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
-import FieldFactory from './FieldFactory'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldFactory from '../../factories/FieldFactory'
 import { FieldDefinition } from '#spruce:schema/fields/fields.types'
 import FieldType from '#spruce:schema/fields/fieldType'
-import { ISelectFieldDefinitionChoice } from '../fields'
+import { ISelectFieldDefinitionChoice } from '../../fields'
 
 const choices: ISelectFieldDefinitionChoice[] = [
 	{ value: 'foo', label: 'Foo' },
@@ -16,7 +16,6 @@ export default class TextFieldTest extends BaseTest {
 		choices
 	)
 	protected static async transformTests(
-		spruce: ISpruce,
 		definition: FieldDefinition,
 		expectedValue: any
 	) {

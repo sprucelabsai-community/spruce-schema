@@ -15,7 +15,7 @@ export default class DateField extends AbstractField<IDateFieldDefinition> {
 	public static get description() {
 		return 'Date and time support.'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IDateFieldDefinition>
 	) {
 		return {

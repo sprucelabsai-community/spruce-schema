@@ -1,3 +1,6 @@
+import { IInvalidFieldError } from './errors/error.types'
+import { ISchemaFieldDefinition } from './fields/SchemaField'
+import { ISelectFieldDefinition } from './fields/SelectField'
 import {
 	FieldDefinition,
 	Field,
@@ -5,18 +8,13 @@ import {
 	IFieldMap
 } from '#spruce:schema/fields/fields.types'
 import FieldType from '#spruce:schema/fields/fieldType'
-import { ISchemaFieldDefinition } from './fields/SchemaField'
-import { ISelectFieldDefinition } from './fields/SelectField'
-import { IInvalidFieldError } from './errors/error.types'
 
 export interface ISchema<S extends ISchemaDefinition> {
-	/** The id of the schema (for union resolution) */
 	schemaId: S['id']
-	/** The definition associated with this schema */
-	definition: S
-	/** The values of this schema */
+	description?: string
+	version?: string
 	values: SchemaDefinitionPartialValues<S>
-	/** Get a value for particular field  */
+
 	get<
 		F extends SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
@@ -25,7 +23,6 @@ export interface ISchema<S extends ISchemaDefinition> {
 		options?: ISchemaNormalizeOptions<S, CreateSchemaInstances>
 	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances>
 
-	/** Get all values for all fields */
 	getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		CreateSchemaInstances extends boolean = true
@@ -45,6 +42,8 @@ export interface ISchemaDefinition {
 	id: string
 	/** The name of this schema a human will see */
 	name: string
+	/** A version in any form you want, we use YYYY-MM-DD */
+	version?: string
 	/** A brief human readable explanation of this schema */
 	description?: string
 	/** How we type dynamic keys on this schema, if defined you cannot define fields */
@@ -141,21 +140,27 @@ export interface IField<F extends FieldDefinition> {
 	>
 }
 
+/** Holds all versions of each definition by its id */
+export interface IDefinitionsById {
+	[id: string]: ISchemaDefinition[]
+}
+
 /** Options passed to validate() */
 export type ValidateOptions<F extends FieldDefinition> = {
 	/** All definitions we're validating against */
-	definitionsById?: { [id: string]: ISchemaDefinition }
+	definitionsById?: IDefinitionsById
 } & Partial<F['options']>
 
 export interface IFieldDefinitionToSchemaDefinitionOptions {
 	/** All definitions we're validating against */
-	definitionsById?: { [id: string]: ISchemaDefinition }
+	definitionsById?: IDefinitionsById
 }
 
 export interface ISchemaFieldDefinitionValueUnion<
 	V extends Record<string, any> = Record<string, any>
 > {
 	schemaId: string
+	version?: string
 	values: V
 }
 
@@ -165,7 +170,7 @@ export type ToValueTypeOptions<
 	CreateSchemaInstances extends boolean = true
 > = {
 	/** All definitions by id for lookups by fields */
-	definitionsById?: { [id: string]: ISchemaDefinition }
+	definitionsById?: IDefinitionsById
 	/** Create and return a new Schema()  */
 	createSchemaInstances?: CreateSchemaInstances
 } & Partial<F['options']>
@@ -275,6 +280,7 @@ type SchemaFieldUnion<
 			? ISchema<S[K]>
 			: {
 					schemaId: S[K]['id']
+					version?: S[K]['version']
 					values: SchemaDefinitionValues<S[K]>
 			  }
 		: any
@@ -405,3 +411,8 @@ export type PickFieldNames<S extends ISchemaDefinition, T extends FieldType> = {
 			: never
 		: never
 }[Extract<keyof S['fields'], string>]
+
+export interface ISchemaIdWithVersion {
+	id: string
+	version?: string
+}

@@ -1,8 +1,16 @@
-import BaseTest, { test, assert, ISpruce } from '@sprucelabs/test'
-import { personDefinition } from '../__test_mocks__/personWithCars'
-import FieldFactory from '../factories/FieldFactory'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldFactory from '../../factories/FieldFactory'
+import buildPersonWithCar, { IPersonDefinition } from '../data/personWithCars'
 
 export default class SchemaFieldTest extends BaseTest {
+	private static personDefinition: IPersonDefinition
+
+	protected static async beforeEach() {
+		super.beforeEach()
+		const { personDefinition } = buildPersonWithCar()
+		this.personDefinition = personDefinition
+	}
+
 	@test('fails on non-object', true, ['value_must_be_object'])
 	@test(
 		'passes because everything has name and a string is good',
@@ -13,25 +21,24 @@ export default class SchemaFieldTest extends BaseTest {
 		'invalid_related_schema_values'
 	])
 	protected static async testNonUnionValidation(
-		s: ISpruce,
 		value: any,
 		expectedErrorCodes: string[]
 	) {
 		const requiredField = FieldFactory.field(
 			'requiredCar',
-			personDefinition.fields.requiredCar
+			this.personDefinition.fields.requiredCar
 		)
 		const optionalField = FieldFactory.field(
 			'optionalCar',
-			personDefinition.fields.optionalCar
+			this.personDefinition.fields.optionalCar
 		)
 		const requiredIsArrayField = FieldFactory.field(
 			'requiredIsArrayCar',
-			personDefinition.fields.requiredIsArrayCars
+			this.personDefinition.fields.requiredIsArrayCars
 		)
 		const optionalIsArrayField = FieldFactory.field(
 			'optionalRequiredCar',
-			personDefinition.fields.optionalIsArrayCars
+			this.personDefinition.fields.optionalIsArrayCars
 		)
 
 		let codes = requiredField.validate(value).map(err => err.code)

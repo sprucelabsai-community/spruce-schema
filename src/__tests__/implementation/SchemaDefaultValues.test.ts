@@ -1,19 +1,17 @@
-import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
-import { default as Schema } from './Schema'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import { default as Schema } from '../../Schema'
 import {
 	FieldNamesWithDefaultValueSet,
 	ISchemaDefinition,
 	SchemaDefinitionDefaultValues,
 	ISchema,
 	SchemaDefinitionValues
-} from './schema.types'
-import {
+} from '../../schema.types'
+import buildPersonWithCars, {
 	IPersonDefinition,
-	personDefinition,
-	carDefinition,
 	ICarDefinition,
 	ITruckDefinition
-} from './__test_mocks__/personWithCars'
+} from '../data/personWithCars'
 
 Schema.enableDuplicateCheckWhenTracking = false
 
@@ -51,6 +49,9 @@ interface IPersonExpectedDefaultValuesWithoutSchema {
 	}
 }
 
+// we don't need these registered
+const { personDefinition, carDefinition } = buildPersonWithCars()
+
 export default class SchemaDefaultValuesTest extends BaseTest {
 	@test('Test typing on default values (test will always pass, lint will fail)')
 	protected static textAndSelectDefaultValues() {
@@ -59,7 +60,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 			| undefined
 
 		// make sure types are 100% (only works if they are currently undefined)
-		assert.expectType<
+		assert.isType<
 			| 'optionalSelectWithDefaultValue'
 			| 'optionalTextWithDefaultValue'
 			| 'optionalCarWithDefaultValue'
@@ -87,7 +88,6 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		}
 	)
 	protected static defaultValueTests(
-		s: ISpruce,
 		definition: ISchemaDefinition,
 		expectedDefaultValues: Record<string, any>
 	) {
@@ -107,12 +107,12 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		assert.isFunction(
 			defaultValues.optionalIsArrayCarOrTruckWithDefaultValue[0].get
 		)
-		assert.equal(
+		assert.isEqual(
 			defaultValuesWithoutSchemas.optionalIsArrayCarOrTruckWithDefaultValue[0]
 				.schemaId,
 			'car'
 		)
-		assert.equal(
+		assert.isEqual(
 			defaultValuesWithoutSchemas.optionalIsArrayCarOrTruckWithDefaultValue[0]
 				.values.name,
 			'fast car'
@@ -122,16 +122,16 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 			name: 'fast car'
 		}) as ISchema<ICarDefinition>
 
-		assert.expectType<IPersonMappedDefaultValues>(defaultValues)
+		assert.isType<IPersonMappedDefaultValues>(defaultValues)
 		assert.deepEqual(defaultValues.optionalIsArrayCarOrTruckWithDefaultValue, [
 			carSchema
 		])
 
-		assert.expectType<IPersonExpectedDefaultValuesWithoutSchema>(
+		assert.isType<IPersonExpectedDefaultValuesWithoutSchema>(
 			defaultValuesWithoutSchemas
 		)
 
-		assert.expectType<IPersonExpectedDefaultValues>(defaultValues)
+		assert.isType<IPersonExpectedDefaultValues>(defaultValues)
 	}
 
 	@test('Can get default values for union fields')
@@ -143,15 +143,15 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		} = schema.getDefaultValues()
 
 		assert.isFunction(optionalCarOrTruckWithDefaultValue.get)
-		assert.equal(optionalIsArrayCarOrTruckWithDefaultValue.length, 1, '')
+		assert.isEqual(optionalIsArrayCarOrTruckWithDefaultValue.length, 1, '')
 
-		assert.equal(
+		assert.isEqual(
 			optionalCarOrTruckWithDefaultValue.schemaId === 'car' &&
 				optionalCarOrTruckWithDefaultValue.get('name'),
 			'fast car'
 		)
 
-		assert.equal(
+		assert.isEqual(
 			optionalIsArrayCarOrTruckWithDefaultValue[0] &&
 				optionalIsArrayCarOrTruckWithDefaultValue[0].schemaId === 'car' &&
 				optionalIsArrayCarOrTruckWithDefaultValue[0].get('name'),

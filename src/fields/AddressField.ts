@@ -24,7 +24,7 @@ export default class AddressField extends AbstractField<
 	public static get description() {
 		return 'An address with geocoding ability *coming soon*'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IAddressFieldDefinition>
 	) {
 		return {

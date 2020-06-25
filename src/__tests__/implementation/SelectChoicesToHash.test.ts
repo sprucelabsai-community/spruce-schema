@@ -1,23 +1,24 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
+import { PickFieldNames } from '../../schema.types'
 import {
 	SelectChoicesToHash,
 	selectChoicesToHash,
 	definitionChoicesToHash
-} from './selectChoicesToHash'
-import { personDefinition } from '../__test_mocks__/personWithCars'
-import { PickFieldNames } from '../schema.types'
+} from '../../utilities/selectChoicesToHash'
+import buildPersonWithCars from '../data/personWithCars'
 import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class SelectOptionsToHashTest extends BaseTest {
 	@test('choice hashing')
 	protected static async testCreatingOptionHashes() {
+		const { personDefinition } = buildPersonWithCars()
 		const options = personDefinition.fields.optionalSelect.options.choices
 
 		type Test = SelectChoicesToHash<typeof options>
 		const optionsHash = selectChoicesToHash(options)
 
-		assert.expectType<Test>(optionsHash)
-		assert.expectType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
+		assert.isType<Test>(optionsHash)
+		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
 
 		type SelectFields = PickFieldNames<
 			typeof personDefinition,
@@ -37,14 +38,14 @@ export default class SelectOptionsToHashTest extends BaseTest {
 		const fieldName: SelectFields = 'optionalSelectWithDefaultValue'
 		const fieldName2: SelectFields = 'optionalSelect'
 
-		assert.expectType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
+		assert.isType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
 			fieldName
 		)
-		assert.expectType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
+		assert.isType<'optionalSelect' | 'optionalSelectWithDefaultValue'>(
 			fieldName2
 		)
 
-		assert.expectType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash2)
-		assert.expectType<{ world: 'hello'; darling: 'goodbye' }>(optionsHash3)
+		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash2)
+		assert.isType<{ world: 'hello'; darling: 'goodbye' }>(optionsHash3)
 	}
 }

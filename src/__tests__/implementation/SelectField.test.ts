@@ -1,8 +1,8 @@
 import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
-import Schema from '../Schema'
+import Schema from '../../Schema'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import FieldType from '#spruce:schema/fields/fieldType'
-import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
 
 interface IUserDefinition {
 	id: 'select-union-test'
@@ -54,6 +54,6 @@ export default class SelectFieldTest extends BaseTest {
 			favoriteColor: 'blue'
 		})
 		const favColor = user.get('favoriteColor')
-		assert.expectType<'blue' | 'red' | undefined | null>(favColor)
+		assert.isType<'blue' | 'red' | undefined | null>(favColor)
 	}
 }

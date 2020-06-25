@@ -19,7 +19,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 		return 'Handles all types of numbers with min/max and clamp support'
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<INumberFieldDefinition>
 	) {
 		return {

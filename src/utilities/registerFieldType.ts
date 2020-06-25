@@ -1,4 +1,4 @@
-import SchemaError from '../errors/SchemaError'
+import SpruceError from '../errors/SpruceError'
 import { ErrorCode } from '../errors/error.types'
 import { FieldSubclass } from '../schema.types'
 
@@ -60,7 +60,7 @@ export function validateFieldRegistration(
 	}
 
 	if (errors.length > 0) {
-		throw new SchemaError({
+		throw new SpruceError({
 			code: ErrorCode.InvalidFieldRegistration,
 			...builtRegistration
 		})

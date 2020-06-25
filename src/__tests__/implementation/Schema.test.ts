@@ -1,19 +1,16 @@
-import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
-import buildSchemaDefinition from './utilities/buildSchemaDefinition'
-import FieldType from '#spruce:schema/fields/fieldType'
+import BaseTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
-import { ErrorCode } from './errors/error.types'
-import Schema from './Schema'
-import SchemaError from './errors/SchemaError'
-import {
-	truckDefinition,
-	personDefinition,
+import { ErrorCode } from '../../errors/error.types'
+import SpruceError from '../../errors/SpruceError'
+import Schema from '../../Schema'
+import { SchemaDefinitionValues, ISchema } from '../../schema.types'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import buildPersonWithCars, {
 	ICarDefinition,
 	ITruckDefinition,
 	IPersonDefinition
-} from './__test_mocks__/personWithCars'
-import { SchemaDefinitionValues, ISchema } from './schema.types'
-import { TextField, SchemaField } from './fields'
+} from '../data/personWithCars'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 Schema.enableDuplicateCheckWhenTracking = false
 
@@ -48,6 +45,8 @@ interface IPersonExpectedValuesWithoutSchema {
 	}
 }
 
+const { personDefinition, truckDefinition } = buildPersonWithCars()
+
 export default class SchemaTest extends BaseTest {
 	@test('Can do basic definition validation')
 	protected static async testBasicValidation() {
@@ -68,7 +67,6 @@ export default class SchemaTest extends BaseTest {
 		'needs_fields_or_dynamic_key_signature'
 	])
 	protected static async testMissingKeys(
-		spruce: ISpruce,
 		fieldToDelete: string,
 		expectedErrors: string[]
 	) {
@@ -87,12 +85,12 @@ export default class SchemaTest extends BaseTest {
 
 		unset(definition, fieldToDelete)
 
-		const error: any = assert.throws(() =>
+		const error: any = await assert.throws(() =>
 			Schema.validateDefinition(definition)
 		)
 
 		if (
-			error instanceof SchemaError &&
+			error instanceof SpruceError &&
 			error.options.code === ErrorCode.InvalidSchemaDefinition
 		) {
 			const {
@@ -105,7 +103,8 @@ export default class SchemaTest extends BaseTest {
 				'Did not get back the error I expected'
 			)
 		} else {
-			throw new Error('Schema.validateDefinition should return a SchemaError')
+			debugger
+			throw new Error('Schema.validateDefinition should return a SpruceError')
 		}
 	}
 
@@ -160,7 +159,7 @@ export default class SchemaTest extends BaseTest {
 		})
 
 		const values = schema.getValues({ fields: ['name'] })
-		assert.equal(values.name, 'tay')
+		assert.isEqual(values.name, 'tay')
 		assert.isUndefined(
 			//@ts-ignore
 			values.favoriteColors,
@@ -195,7 +194,7 @@ export default class SchemaTest extends BaseTest {
 		// @ts-ignore
 		schema.values = { name: ['becca'], favoriteColors: 'blue' }
 		const name = schema.get('name')
-		assert.equal(name, 'becca')
+		assert.isEqual(name, 'becca')
 
 		const colors = schema.get('favoriteColors')
 		assert.isTrue(
@@ -237,7 +236,7 @@ export default class SchemaTest extends BaseTest {
 		// @ts-ignore
 		schema.values.favoriteNumber = ['7', '8', '100']
 		const favNumber = schema.get('favoriteNumber')
-		assert.equal(
+		assert.isEqual(
 			favNumber,
 			7,
 			'Schema did not transform array of strings to single number'
@@ -253,7 +252,7 @@ export default class SchemaTest extends BaseTest {
 			name: 'test',
 			onlyOnCar: null
 		}
-		assert.expectType<SchemaDefinitionValues<typeof truckDefinition>>(values)
+		assert.isType<SchemaDefinitionValues<typeof truckDefinition>>(values)
 	}
 
 	@test('can type values correctly')
@@ -263,21 +262,9 @@ export default class SchemaTest extends BaseTest {
 		const valuesWithoutInstances = personSchema.getValues({
 			createSchemaInstances: false
 		})
-		assert.expectType<IPersonExpectedValues>(values)
-		assert.expectType<IPersonMappedValues>(values)
-		assert.expectType<IPersonExpectedValuesWithoutSchema>(
-			valuesWithoutInstances
-		)
-	}
-
-	@test('can get typed fields')
-	protected static testFieldTyping() {
-		const schema = new Schema(personDefinition)
-		const field = schema.fields['name']
-		const field2 = schema.fields['requiredCar']
-
-		assert.expectType<TextField>(field)
-		assert.expectType<SchemaField>(field2)
+		assert.isType<IPersonExpectedValues>(values)
+		assert.isType<IPersonMappedValues>(values)
+		assert.isType<IPersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
 	}
 
 	@test('getting values using options by field')
@@ -285,6 +272,6 @@ export default class SchemaTest extends BaseTest {
 		const schema = new Schema(personDefinition)
 		schema.set('name', 'a really long name that should get truncated')
 		const name = schema.get('name', { byField: { name: { maxLength: 10 } } })
-		assert.equal(name, 'a really l')
+		assert.isEqual(name, 'a really l')
 	}
 }

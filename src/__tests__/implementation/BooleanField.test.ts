@@ -1,20 +1,17 @@
-import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
-import { FieldFactory } from '..'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import { FieldFactory } from '../..'
 import FieldType from '#spruce:schema/fields/fieldType'
 
-export default class TextFieldTest extends BaseTest {
+export default class BooleanFieldTest extends BaseTest {
 	@test('can transform string false to boolean false', 'false', false)
 	@test('can transform string true to boolean true', 'true', true)
 	@test('can transform gibberish to truthy', 'waka', true)
-	protected static async transformTests(
-		spruce: ISpruce,
-		value: any,
-		expected: boolean
-	) {
+	@test('empty string is false', '', false)
+	protected static async transformTests(value: any, expected: boolean) {
 		const field = FieldFactory.field('transformTest', {
 			type: FieldType.Boolean
 		})
 		const result = field.toValueType(value)
-		assert.equal(result, expected)
+		assert.isEqual(result, expected)
 	}
 }

@@ -1,10 +1,10 @@
-import AbstractField from './AbstractField'
 import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
-import FieldType from '#spruce:schema/fields/fieldType'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
 } from '../template.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export type ITextFieldDefinition = IFieldDefinition<string> & {
 	/** * Text field */
@@ -24,7 +24,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 	}
 
 	/** Generate template details */
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ITextFieldDefinition>
 	): IFieldTemplateDetails {
 		const { definition } = options

@@ -1,17 +1,21 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
-import Schema from '../Schema'
-import FieldType from '#spruce:schema/fields/fieldType'
-import { SchemaDefinitionValues, SchemaFieldValueType } from '../schema.types'
+import { test, assert } from '@sprucelabs/test'
+import AbstractSchemaTest from '../../AbstractSchemaTest'
+import SchemaField, { ISchemaFieldDefinition } from '../../fields/SchemaField'
+import Schema from '../../Schema'
 import {
+	SchemaDefinitionValues,
+	SchemaFieldValueType
+} from '../../schema.types'
+import buildPersonWithCars, {
 	IPersonDefinition,
-	personDefinition,
 	ICarDefinition,
-	ITruckDefinition,
-	carDefinition
-} from '../__test_mocks__/personWithCars'
-import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
+	ITruckDefinition
+} from '../data/personWithCars'
+import FieldType from '#spruce:schema/fields/fieldType'
 
-export default class SchemaFieldTest extends BaseTest {
+const { personDefinition, carDefinition } = buildPersonWithCars()
+
+export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 	@test(
 		'schema definition schema field types work with (test will always pass, but lint will fail)'
 	)
@@ -25,8 +29,8 @@ export default class SchemaFieldTest extends BaseTest {
 
 		assert.isOk(user.name)
 		assert.isOk(user.requiredCar)
-		assert.equal(user.requiredCar.name, 'go cart')
-		assert.equal(user.optionalCar, undefined)
+		assert.isEqual(user.requiredCar.name, 'go cart')
+		assert.isEqual(user.optionalCar, undefined)
 	}
 
 	@test('test getting value returns schema instance')
@@ -39,7 +43,7 @@ export default class SchemaFieldTest extends BaseTest {
 
 		const car = person.get('requiredCar')
 		assert.isOk(car)
-		assert.equal(car.get('onlyOnCar'), 'only on car!')
+		assert.isEqual(car.get('onlyOnCar'), 'only on car!')
 	}
 
 	@test('Testing schema field type as schema instance')
@@ -62,7 +66,7 @@ export default class SchemaFieldTest extends BaseTest {
 		// @ts-ignore
 		user.values.requiredIsArrayCars = { name: 'scooter' }
 		cars = user.get('requiredIsArrayCars')
-		assert.equal(cars.length, 1)
+		assert.isEqual(cars.length, 1)
 
 		firstCarValues = cars[0].getValues()
 		assert.deepEqual(firstCarValues, { name: 'scooter', onlyOnCar: undefined })
@@ -81,7 +85,7 @@ export default class SchemaFieldTest extends BaseTest {
 		}
 
 		if (testSingleSchemaField.schemaId === 'car') {
-			assert.equal(testSingleSchemaField.values.name, 'fast car')
+			assert.isEqual(testSingleSchemaField.values.name, 'fast car')
 		}
 
 		type ManyType = SchemaFieldValueType<{
@@ -101,7 +105,7 @@ export default class SchemaFieldTest extends BaseTest {
 
 		testArraySchemaField.forEach(tool => {
 			if (tool.schemaId === 'truck') {
-				assert.equal(tool.values.onlyOnTruck, 'cary so much')
+				assert.isEqual(tool.values.onlyOnTruck, 'cary so much')
 			}
 		})
 	}
@@ -126,25 +130,25 @@ export default class SchemaFieldTest extends BaseTest {
 		})
 
 		const requiredCarsOrTrucks = person.get('requiredIsArrayCarOrTruck')
-		assert.equal(requiredCarsOrTrucks[0].definition.id, 'car')
-		assert.equal(requiredCarsOrTrucks[1].definition.id, 'truck')
-		assert.equal(requiredCarsOrTrucks[2].definition.id, 'car')
-		assert.equal(requiredCarsOrTrucks[3].definition.id, 'truck')
+		assert.isEqual(requiredCarsOrTrucks[0].schemaId, 'car')
+		assert.isEqual(requiredCarsOrTrucks[1].schemaId, 'truck')
+		assert.isEqual(requiredCarsOrTrucks[2].schemaId, 'car')
+		assert.isEqual(requiredCarsOrTrucks[3].schemaId, 'truck')
 
-		assert.equal(
+		assert.isEqual(
 			requiredCarsOrTrucks[0].schemaId === 'car' &&
 				requiredCarsOrTrucks[0].get('name'),
 			'fast car 1'
 		)
-		assert.equal(
+		assert.isEqual(
 			requiredCarsOrTrucks[3].schemaId === 'truck' &&
 				requiredCarsOrTrucks[3].get('onlyOnTruck'),
 			'so much haul'
 		)
 	}
 
-	@test('can use schemasCallback')
-	protected static testSchemas() {
+	@test()
+	protected static testFieldWithCallback() {
 		const person = new Schema(personDefinition)
 		const car = new Schema(carDefinition, { name: 'fast' })
 		person.set('optionalCarWithCallback', car.getValues())
@@ -159,10 +163,10 @@ export default class SchemaFieldTest extends BaseTest {
 			return
 		}
 
-		const ids = SchemaField.fieldDefinitionToSchemaIds(
+		const ids = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			carField.field.definition as ISchemaFieldDefinition
 		)
 
-		assert.deepEqual(ids, [carDefinition.id])
+		assert.deepEqual(ids, [{ id: carDefinition.id }])
 	}
 }

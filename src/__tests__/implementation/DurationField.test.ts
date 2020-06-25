@@ -1,6 +1,6 @@
-import BaseTest, { ISpruce, test, assert } from '@sprucelabs/test'
-import { IDurationFieldValue, buildDuration } from './DurationField'
-import FieldFactory from '../factories/FieldFactory'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import { IDurationFieldValue, buildDuration } from '../../fields/DurationField'
+import FieldFactory from '../../factories/FieldFactory'
 import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class DurationFieldTest extends BaseTest {
@@ -20,7 +20,6 @@ export default class DurationFieldTest extends BaseTest {
 		{ ms: 0, seconds: 12, minutes: 31, hours: 2 }
 	)
 	protected static async testCompletingDurationObject(
-		spruce: ISpruce,
 		partial: Partial<IDurationFieldValue>,
 		expected: IDurationFieldValue
 	) {

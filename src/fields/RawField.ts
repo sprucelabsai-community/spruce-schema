@@ -1,7 +1,7 @@
-import FieldType from '#spruce:schema/fields/fieldType'
-import AbstractField from './AbstractField'
 import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 export type IRawFieldDefinition = IFieldDefinition<any> & {
 	/** * .Raw - Deprecated, don't use */
@@ -15,7 +15,7 @@ export default class RawField extends AbstractField<IRawFieldDefinition> {
 	public static get description() {
 		return 'Deprecated. For internal purposes only (will be deleted soon)'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
 	) {
 		return {

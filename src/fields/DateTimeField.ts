@@ -19,7 +19,7 @@ export default class DateTimeField extends AbstractField<
 	public static get description() {
 		return 'Date and time support.'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IDateTimeFieldDefinition>
 	) {
 		return {

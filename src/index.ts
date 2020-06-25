@@ -11,7 +11,7 @@ export * from './fields'
 
 // Errors
 export * from './errors/error.types'
-export { default as SchemaError } from './errors/SchemaError'
+export { default as SchemaError } from './errors/SpruceError'
 
 // Builders
 export { default as buildErrorDefinition } from './utilities/buildErrorDefinition'

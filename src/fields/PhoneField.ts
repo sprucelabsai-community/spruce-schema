@@ -14,7 +14,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 	public static get description() {
 		return 'Takes anything close to a phone number and formats it. Also great at validating numbers.'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IPhoneFieldDefinition>
 	) {
 		return {

@@ -1,15 +1,15 @@
-import AbstractField from './AbstractField'
+import mimeDb from 'mime-db'
+import Mime from 'mime-type'
+import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import {
 	IFieldDefinition,
 	ToValueTypeOptions,
 	ValidateOptions
 } from '../schema.types'
-import FieldType from '#spruce:schema/fields/fieldType'
-import Mime from 'mime-type'
-import mimeDb from 'mime-db'
-import { SchemaError } from '..'
-import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
+import AbstractField from './AbstractField'
+import FieldType from '#spruce:schema/fields/fieldType'
+import { SchemaError } from '..'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
@@ -47,7 +47,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public static get description() {
 		return 'A way to handle files. Supports mime-type lookups.'
 	}
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
 	) {
 		return {

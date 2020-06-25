@@ -1,11 +1,11 @@
-import FieldType from '#spruce:schema/fields/fieldType'
-import AbstractField from './AbstractField'
-import { IFieldDefinition, ValidateOptions } from '../schema.types'
 import { IInvalidFieldError } from '../errors/error.types'
-import { IFieldTemplateDetailOptions } from '../template.types'
-import SchemaError from '../errors/SchemaError'
 import { ErrorCode } from '../errors/error.types'
+import SpruceError from '../errors/SpruceError'
+import { IFieldDefinition, ValidateOptions } from '../schema.types'
+import { IFieldTemplateDetailOptions } from '../template.types'
+import AbstractField from './AbstractField'
 import { ITextFieldDefinition } from './TextField'
+import FieldType from '#spruce:schema/fields/fieldType'
 
 /** A duration value object */
 export interface IDurationFieldValue {
@@ -34,7 +34,7 @@ export function buildDuration(
 	}
 
 	if (typeof totalMs !== 'number') {
-		throw new SchemaError({
+		throw new SpruceError({
 			code: ErrorCode.InvalidField,
 			schemaId: 'na',
 			errors: [
@@ -77,7 +77,7 @@ export default class DurationField extends AbstractField<
 		return 'A span of time represented in { hours, minutes, seconds, ms }'
 	}
 
-	public static templateDetails(
+	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IDurationFieldDefinition>
 	) {
 		return {

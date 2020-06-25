@@ -1,11 +1,10 @@
-import BaseTest, { test, ISpruce, assert } from '@sprucelabs/test'
 import path from 'path'
+import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldFactory from '../../factories/FieldFactory'
+import { IFileFieldValue } from '../../fields/FileField'
+import Schema from '../../Schema'
+import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import FieldType from '#spruce:schema/fields/fieldType'
-import { IFileFieldValue } from './FileField'
-import FieldFactory from '../factories/FieldFactory'
-import Schema from '../Schema'
-import buildSchemaDefinition from '../utilities/buildSchemaDefinition'
-import Spruce from '@sprucelabs/test/build/src/Spruce'
 
 interface IFileDetailExpectations {
 	expectedName: string
@@ -50,7 +49,6 @@ export default class FileFieldTest extends BaseTest {
 		expectedExtension: '.png'
 	})
 	public static testGettingFileDetails(
-		spruce: ISpruce,
 		filePath: string,
 		expectations: IFileDetailExpectations
 	) {
@@ -61,21 +59,21 @@ export default class FileFieldTest extends BaseTest {
 
 		// Assert our expectations
 		// expected name
-		assert.equal(
+		assert.isEqual(
 			file.name,
 			expectations.expectedName,
 			'File name did not parse as expected'
 		)
 
 		// Expected type
-		assert.equal(
+		assert.isEqual(
 			file.type,
 			expectations.expectedType,
 			'File type did not lookup as expected'
 		)
 
 		// Expected extension
-		assert.equal(
+		assert.isEqual(
 			file.ext,
 			expectations.expectedExtension,
 			'File type did not lookup as expected'
@@ -103,7 +101,6 @@ export default class FileFieldTest extends BaseTest {
 		}
 	)
 	public static testCompletingFileObject(
-		spruce: ISpruce,
 		partial: Partial<IFileFieldValue>,
 		complete: IFileFieldValue
 	) {
@@ -163,7 +160,6 @@ export default class FileFieldTest extends BaseTest {
 		`${windowsTestPath}/test.ts`
 	)
 	public static testInSchema(
-		_spruce: Spruce,
 		env: EnvKind,
 		expectedPath: string,
 		setTarget: IFileFieldValue
@@ -184,7 +180,7 @@ export default class FileFieldTest extends BaseTest {
 		})
 
 		assert.isOk(values.target)
-		assert.equal(values.target.path, expectedPath)
+		assert.isEqual(values.target.path, expectedPath)
 	}
 
 	@test(
@@ -200,7 +196,6 @@ export default class FileFieldTest extends BaseTest {
 		'../test/me'
 	)
 	protected static testGettingRelativePath(
-		_spruce: Spruce,
 		path: string,
 		relativeTo: string,
 		expectedPath: string
@@ -208,6 +203,6 @@ export default class FileFieldTest extends BaseTest {
 		const schema = new Schema(this.fileDefinition)
 		schema.set('target', { path, name: 'app.ts' })
 		const target = schema.get('target', { byField: { target: { relativeTo } } })
-		assert.equal(target.path, expectedPath)
+		assert.isEqual(target.path, expectedPath)
 	}
 }
