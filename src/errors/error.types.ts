@@ -39,6 +39,7 @@ export interface ISchemaErrorOptionsNotFound
 	/** * Could not find a schema by id */
 	code: ErrorCode.SchemaNotFound
 	schemaId: string
+	version?: string
 }
 
 export interface IDuplicateSchemaErrorOptions
@@ -46,6 +47,7 @@ export interface IDuplicateSchemaErrorOptions
 	/** * A schema with this id already exists */
 	code: ErrorCode.DuplicateSchema
 	schemaId: string
+	version?: string
 }
 export interface IInvalidFieldError {
 	code: string

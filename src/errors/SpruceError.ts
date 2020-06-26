@@ -1,4 +1,5 @@
 import BaseSpruceError from '@sprucelabs/error'
+import { version } from 'prettier'
 import { SchemaErrorOptions, ErrorCode } from './error.types'
 
 export default class SpruceError extends BaseSpruceError<SchemaErrorOptions> {
@@ -10,8 +11,14 @@ export default class SpruceError extends BaseSpruceError<SchemaErrorOptions> {
 
 		switch (options?.code) {
 			case ErrorCode.DuplicateSchema:
+				message = `Duplicate schema${options.version ? ' and version' : ''}: ${
+					options.schemaId
+				}${version ? ` ${version}` : ''}`
+				break
 			case ErrorCode.SchemaNotFound:
-				message = `Duplicate schema id "${options.schemaId}"`
+				message = `Could not find schema "${options.schemaId}${
+					options.version ? `(${options.version})` : ''
+				}"`
 				break
 			case ErrorCode.InvalidField:
 				message = `Invalid fields on ${options.schemaId}: `
