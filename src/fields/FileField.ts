@@ -13,7 +13,10 @@ import { SchemaError } from '..'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
-mime.define('application/typescript', { extensions: ['ts', 'tsx'] })
+mime.define('application/typescript', {
+	source: 'spruce',
+	extensions: ['ts', 'tsx']
+})
 
 export interface IFileFieldValue {
 	/** Date last modified */
@@ -129,6 +132,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		}
 
 		name = name ?? stringValue.replace(path, '').replace(pathUtil.sep, '')
+
 		if (!name) {
 			throw new SchemaError({
 				code: ErrorCode.TransformationFailed,
@@ -138,8 +142,18 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 				name: this.name
 			})
 		}
+
 		ext = ext ?? pathUtil.extname(name)
-		type = type ?? (mime.lookup(name) || undefined)
+
+		if (!type) {
+			const lookupResults = mime.lookup(name)
+
+			if (Array.isArray(lookupResults)) {
+				type = lookupResults.pop()
+			} else {
+				type = lookupResults
+			}
+		}
 
 		if (relativeTo && path) {
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
