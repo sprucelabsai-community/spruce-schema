@@ -31,7 +31,9 @@
 		"lint.fix": "eslint --fix '**/*.ts'",
 		"test": "jest --no-cache",
 		"release": "semantic-release",
-		"test.watch": "jest --watch"
+		"test.watch": "jest --watch",
+                "arkit": "arkit -f src/index.ts -o arkit.svg",
+                "arkit.png": "arkit -f src/index.ts -o arkit.png"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^1.2.0",
@@ -48,6 +50,7 @@
 		"@types/google-libphonenumber": "^7.4.17",
 		"@types/lodash": "^4.14.149",
 		"@types/mime-db": "^1.27.1",
+		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
 		"concurrently": "^5.0.2",
 		"eslint": "^5",
