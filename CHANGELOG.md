@@ -1,3 +1,10 @@
+## [3.2.5](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.4...v3.2.5) (2020-06-30)
+
+
+### Bug Fixes
+
+* correct types ([367f144](https://github.com/sprucelabsai/spruce-schema/commit/367f144))
+
 ## [3.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.3...v3.2.4) (2020-06-26)
 
 ## [3.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.2...v3.2.3) (2020-06-26)
