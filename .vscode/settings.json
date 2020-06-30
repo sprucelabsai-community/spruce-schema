@@ -47,5 +47,8 @@
 	"editor.codeActionsOnSaveTimeout": 5000,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
-	}
+	},
+	"cSpell.words": [
+		"arkit"
+	]
 }
