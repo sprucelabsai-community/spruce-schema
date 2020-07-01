@@ -1,4 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField, { ISchemaFieldDefinition } from '../../fields/SchemaField'
 import Schema from '../../Schema'
@@ -11,7 +12,6 @@ import buildPersonWithCars, {
 	ICarDefinition,
 	ITruckDefinition
 } from '../data/personWithCars'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 const { personDefinition, carDefinition } = buildPersonWithCars()
 

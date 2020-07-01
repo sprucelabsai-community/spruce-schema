@@ -1,7 +1,7 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IDurationFieldValue, buildDuration } from '../../fields/DurationField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class DurationFieldTest extends BaseTest {
 	@test(

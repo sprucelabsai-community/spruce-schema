@@ -1,7 +1,7 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export interface IAddressFieldValue {
 	street1: string

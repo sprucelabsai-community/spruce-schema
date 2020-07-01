@@ -1,3 +1,4 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import Schema from '../Schema'
@@ -17,7 +18,6 @@ import {
 	TemplateRenderAs
 } from '../template.types'
 import AbstractField from './AbstractField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export type ISchemaFieldDefinition = IFieldDefinition<
 	Record<string, any>,

@@ -1,5 +1,5 @@
+import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import { ISchemaDefinition } from './schema.types'
-import { FieldDefinition } from '#spruce:schema/fields/fields.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */

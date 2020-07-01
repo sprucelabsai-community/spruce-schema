@@ -1,6 +1,6 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { FieldFactory } from '../..'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class BooleanFieldTest extends BaseTest {
 	@test('can transform string false to boolean false', 'false', false)

@@ -1,3 +1,4 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
@@ -5,7 +6,6 @@ import { IFieldDefinition, ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
 import { ITextFieldDefinition } from './TextField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 /** A duration value object */
 export interface IDurationFieldValue {

@@ -1,4 +1,5 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { PickFieldNames } from '../../schema.types'
 import {
 	SelectChoicesToHash,
@@ -6,7 +7,6 @@ import {
 	definitionChoicesToHash
 } from '../../utilities/selectChoicesToHash'
 import buildPersonWithCars from '../data/personWithCars'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export default class SelectOptionsToHashTest extends BaseTest {
 	@test('choice hashing')

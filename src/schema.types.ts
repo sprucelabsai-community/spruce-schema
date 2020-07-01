@@ -1,13 +1,13 @@
-import { IInvalidFieldError } from './errors/error.types'
-import { ISchemaFieldDefinition } from './fields/SchemaField'
-import { ISelectFieldDefinition } from './fields/SelectField'
 import {
 	FieldDefinition,
 	Field,
 	IFieldDefinitionMap,
 	IFieldMap
-} from '#spruce:schema/fields/fields.types'
-import FieldType from '#spruce:schema/fields/fieldType'
+} from '#spruce/schemas/fields/fields.types'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import { IInvalidFieldError } from './errors/error.types'
+import { ISchemaFieldDefinition } from './fields/SchemaField'
+import { ISelectFieldDefinition } from './fields/SelectField'
 
 export interface ISchema<S extends ISchemaDefinition> {
 	schemaId: S['id']

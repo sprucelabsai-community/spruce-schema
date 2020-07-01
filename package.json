@@ -26,7 +26,7 @@
 		"build.browser": "tsc --project tsconfig.browser.json",
 		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
 		"clean": "rm -rf build/",
-		"lint": "eslint '**/*.ts' && npm run lint.tsc",
+		"lint": "eslint '**/*.ts' --fix && npm run lint.tsc",
 		"lint.tsc": "tsc -p . --noEmit",
 		"lint.fix": "eslint --fix '**/*.ts'",
 		"test": "jest --no-cache",
@@ -86,8 +86,7 @@
 			"**/__tests__/**/*.test.ts"
 		],
 		"moduleNameMapper": {
-			"^#spruce:schema/(.*)$": "<rootDir>/src/$1",
-			"^#spruce/(.*)$": "<rootDir>/.spruce/$1"
+			"^#spruce/schemas/(.*)$": "<rootDir>/src/$1"
 		}
 	}
 }

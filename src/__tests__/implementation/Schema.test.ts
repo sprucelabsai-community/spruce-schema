@@ -1,5 +1,6 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode } from '../../errors/error.types'
 import SpruceError from '../../errors/SpruceError'
 import Schema from '../../Schema'
@@ -10,7 +11,6 @@ import buildPersonWithCars, {
 	ITruckDefinition,
 	IPersonDefinition
 } from '../data/personWithCars'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 Schema.enableDuplicateCheckWhenTracking = false
 

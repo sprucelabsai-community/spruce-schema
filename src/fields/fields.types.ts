@@ -1,4 +1,5 @@
 // THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AddressField, { IAddressFieldDefinition } from './AddressField'
 import BooleanField, { IBooleanFieldDefinition } from './BooleanField'
 import DateField, { IDateFieldDefinition } from './DateField'
@@ -13,7 +14,6 @@ import RawField, { IRawFieldDefinition } from './RawField'
 import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
 import SelectField, { ISelectFieldDefinition } from './SelectField'
 import TextField, { ITextFieldDefinition } from './TextField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition

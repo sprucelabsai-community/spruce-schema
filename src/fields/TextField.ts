@@ -1,10 +1,10 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
 } from '../template.types'
 import AbstractField from './AbstractField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export type ITextFieldDefinition = IFieldDefinition<string> & {
 	/** * Text field */

@@ -1,8 +1,8 @@
 import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import Schema from '../../Schema'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 interface IUserDefinition {
 	id: 'select-union-test'

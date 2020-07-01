@@ -1,5 +1,6 @@
 import mimeDb from 'mime-db'
 import Mime from 'mime-type'
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import {
 	IFieldDefinition,
@@ -8,7 +9,6 @@ import {
 } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-import FieldType from '#spruce:schema/fields/fieldType'
 import { SchemaError } from '..'
 
 // @ts-ignore

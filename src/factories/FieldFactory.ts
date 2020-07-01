@@ -1,4 +1,4 @@
-import { FieldDefinition, IFieldMap } from '#spruce:schema/fields/fields.types'
+import { FieldDefinition, IFieldMap } from '#spruce/schemas/fields/fields.types'
 // let firstRun = true
 let FieldClassMap: Record<string, any>
 
@@ -11,12 +11,12 @@ export default class FieldFactory {
 		// this will pull in augmentations to the field class map object, only needed first load
 		// if (firstRun) {
 		// 	// @ts-ignore
-		// 	require('#spruce:schema/fields/fieldClassMap')
+		// 	require('#spruce/schemas/fields/fieldClassMap')
 		// 	firstRun = false
 		// }
 
 		if (!FieldClassMap) {
-			FieldClassMap = require('#spruce:schema/fields/fieldClassMap')
+			FieldClassMap = require('#spruce/schemas/fields/fieldClassMap')
 				.FieldClassMap
 		}
 

@@ -1,3 +1,4 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	ISelectFieldDefinitionChoice,
 	ISelectFieldDefinition
@@ -7,7 +8,6 @@ import {
 	ISchemaDefinitionFields,
 	PickFieldNames
 } from '../schema.types'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 /** Turn select options into a key/value pair */
 export type SelectChoicesToHash<

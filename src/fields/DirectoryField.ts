@@ -1,3 +1,4 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
@@ -6,7 +7,6 @@ import {
 	IFieldTemplateDetails
 } from '../template.types'
 import AbstractField from './AbstractField'
-import FieldType from '#spruce:schema/fields/fieldType'
 
 export interface IDirectoryFieldValue {
 	path: string

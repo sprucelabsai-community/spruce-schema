@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '../../fields/fieldType'
+import FieldType from '../../fields/fieldTypeEnum'
 import Schema from '../../Schema'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 
