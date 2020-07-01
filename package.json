@@ -30,10 +30,10 @@
 		"lint.tsc": "tsc -p . --noEmit",
 		"lint.fix": "eslint --fix '**/*.ts'",
 		"test": "jest --no-cache",
-		"release": "semantic-release",
 		"test.watch": "jest --watch",
-		"arkit": "arkit -f src/index.ts -o docs/arkit.svg",
-		"arkit.png": "arkit -f src/index.ts -o docs/arkit.png"
+		"release": "semantic-release",
+		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
+		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^1.2.0",

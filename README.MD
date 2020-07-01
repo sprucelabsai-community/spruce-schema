@@ -18,3 +18,7 @@ Spruce XP Documentation
 <p align="center">
 <a href="https://developer.spruce.ai/#/schemas/index"><img width="250" src="https://raw.githubusercontent.com/sprucelabsai/spruce-schema/dev/docs/images/read-full-docs.png" /></a>
 </p>
+
+### Dependencies
+
+[Arkit diagram here](docs/dependencies.md).

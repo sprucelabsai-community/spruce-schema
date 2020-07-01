@@ -1,19 +1,20 @@
 // THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import AddressField, { IAddressFieldDefinition } from './AddressField'
-import BooleanField, { IBooleanFieldDefinition } from './BooleanField'
-import DateField, { IDateFieldDefinition } from './DateField'
-import DateTimeField, { IDateTimeFieldDefinition } from './DateTimeField'
-import DirectoryField, { IDirectoryFieldDefinition } from './DirectoryField'
-import DurationField, { IDurationFieldDefinition } from './DurationField'
-import FileField, { IFileFieldDefinition } from './FileField'
-import IdField, { IIdFieldDefinition } from './IdField'
-import NumberField, { INumberFieldDefinition } from './NumberField'
-import PhoneField, { IPhoneFieldDefinition } from './PhoneField'
-import RawField, { IRawFieldDefinition } from './RawField'
-import SchemaField, { ISchemaFieldDefinition } from './SchemaField'
-import SelectField, { ISelectFieldDefinition } from './SelectField'
-import TextField, { ITextFieldDefinition } from './TextField'
+import AbstractField from './AbstractField'
+import { IAddressFieldDefinition } from './AddressField'
+import { IBooleanFieldDefinition } from './BooleanField'
+import { IDateFieldDefinition } from './DateField'
+import { IDateTimeFieldDefinition } from './DateTimeField'
+import { IDirectoryFieldDefinition } from './DirectoryField'
+import { IDurationFieldDefinition } from './DurationField'
+import { IFileFieldDefinition } from './FileField'
+import { IIdFieldDefinition } from './IdField'
+import { INumberFieldDefinition } from './NumberField'
+import { IPhoneFieldDefinition } from './PhoneField'
+import { IRawFieldDefinition } from './RawField'
+import { ISchemaFieldDefinition } from './SchemaField'
+import { ISelectFieldDefinition } from './SelectField'
+import { ITextFieldDefinition } from './TextField'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition
@@ -31,37 +32,21 @@ export type FieldDefinition =
 	| IDateFieldDefinition
 	| IDirectoryFieldDefinition
 
-export type FieldClass =
-	| typeof BooleanField
-	| typeof SelectField
-	| typeof DurationField
-	| typeof IdField
-	| typeof TextField
-	| typeof AddressField
-	| typeof PhoneField
-	| typeof SchemaField
-	| typeof RawField
-	| typeof NumberField
-	| typeof DateTimeField
-	| typeof FileField
-	| typeof DateField
-	| typeof DirectoryField
-
 export type Field =
-	| BooleanField
-	| SelectField
-	| DurationField
-	| IdField
-	| TextField
-	| AddressField
-	| PhoneField
-	| SchemaField
-	| RawField
-	| NumberField
-	| DateTimeField
-	| FileField
-	| DateField
-	| DirectoryField
+	| AbstractField<IBooleanFieldDefinition>
+	| AbstractField<ISelectFieldDefinition>
+	| AbstractField<IDurationFieldDefinition>
+	| AbstractField<IIdFieldDefinition>
+	| AbstractField<ITextFieldDefinition>
+	| AbstractField<IAddressFieldDefinition>
+	| AbstractField<IPhoneFieldDefinition>
+	| AbstractField<ISchemaFieldDefinition>
+	| AbstractField<IRawFieldDefinition>
+	| AbstractField<INumberFieldDefinition>
+	| AbstractField<IDateTimeFieldDefinition>
+	| AbstractField<IFileFieldDefinition>
+	| AbstractField<IDateFieldDefinition>
+	| AbstractField<IDirectoryFieldDefinition>
 
 /** Useful for type lookups for generics */
 export interface IFieldDefinitionMap {
@@ -83,18 +68,18 @@ export interface IFieldDefinitionMap {
 
 /** Used to lookup field classes by type */
 export interface IFieldMap {
-	[FieldType.Boolean]: BooleanField
-	[FieldType.Select]: SelectField
-	[FieldType.Duration]: DurationField
-	[FieldType.Id]: IdField
-	[FieldType.Text]: TextField
-	[FieldType.Address]: AddressField
-	[FieldType.Phone]: PhoneField
-	[FieldType.Schema]: SchemaField
-	[FieldType.Raw]: RawField
-	[FieldType.Number]: NumberField
-	[FieldType.DateTime]: DateTimeField
-	[FieldType.File]: FileField
-	[FieldType.Date]: DateField
-	[FieldType.Directory]: DirectoryField
+	[FieldType.Boolean]: AbstractField<IBooleanFieldDefinition>
+	[FieldType.Select]: AbstractField<ISelectFieldDefinition>
+	[FieldType.Duration]: AbstractField<IDurationFieldDefinition>
+	[FieldType.Id]: AbstractField<IIdFieldDefinition>
+	[FieldType.Text]: AbstractField<ITextFieldDefinition>
+	[FieldType.Address]: AbstractField<IAddressFieldDefinition>
+	[FieldType.Phone]: AbstractField<IPhoneFieldDefinition>
+	[FieldType.Schema]: AbstractField<ISchemaFieldDefinition>
+	[FieldType.Raw]: AbstractField<IRawFieldDefinition>
+	[FieldType.Number]: AbstractField<INumberFieldDefinition>
+	[FieldType.DateTime]: AbstractField<IDateTimeFieldDefinition>
+	[FieldType.File]: AbstractField<IFileFieldDefinition>
+	[FieldType.Date]: AbstractField<IDateFieldDefinition>
+	[FieldType.Directory]: AbstractField<IDirectoryFieldDefinition>
 }
