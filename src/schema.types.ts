@@ -134,9 +134,11 @@ export interface IField<F extends FieldDefinition> {
 	toValueType<CreateSchemaInstances extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<F, CreateSchemaInstances>
-	): Exclude<
-		Unpack<FieldDefinitionValueType<F, CreateSchemaInstances>>,
-		undefined | null
+	): Unpack<
+		Exclude<
+			FieldDefinitionValueType<F, CreateSchemaInstances>,
+			undefined | null
+		>
 	>
 }
 

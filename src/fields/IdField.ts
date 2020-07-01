@@ -1,13 +1,6 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-
-export type IIdFieldDefinition = IFieldDefinition<string> & {
-	/** * .Id a field to hold a unique id (UUID4 in Spruce) */
-	type: FieldType.Id
-	options?: {}
-}
+import { IIdFieldDefinition } from './IdField.types'
 
 export default class IdField extends AbstractField<IIdFieldDefinition> {
 	public static get description() {

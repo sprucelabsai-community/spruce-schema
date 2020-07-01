@@ -1,23 +1,23 @@
-// THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
+// This types file can only depend on types.
 import FieldType from './fieldTypeEnum'
 
 // GOAL: this import goes away
 import { IField } from '../../../schema.types'
 // GOAL: all these move to type files
-import { IAddressFieldDefinition } from '../../../fields/AddressField'
-import { IBooleanFieldDefinition } from '../../../fields/BooleanField'
-import { IDateFieldDefinition } from '../../../fields/DateField'
-import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField'
-import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField'
-import { IDurationFieldDefinition } from '../../../fields/DurationField'
 import { IFileFieldDefinition } from '../../../fields/FileField'
-import { IIdFieldDefinition } from '../../../fields/IdField'
-import { INumberFieldDefinition } from '../../../fields/NumberField'
 import { IPhoneFieldDefinition } from '../../../fields/PhoneField'
 import { IRawFieldDefinition } from '../../../fields/RawField'
 import { ISchemaFieldDefinition } from '../../../fields/SchemaField'
 import { ISelectFieldDefinition } from '../../../fields/SelectField'
 import { ITextFieldDefinition } from '../../../fields/TextField'
+import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
+import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
+import { IDurationFieldDefinition } from '../../../fields/DurationField.types'
+import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
+import { IDateFieldDefinition } from '../../../fields/DateField.types'
+import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
+import { IIdFieldDefinition } from '../../../fields/IdField.types'
+import { INumberFieldDefinition } from '../../../fields/NumberField.types'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition

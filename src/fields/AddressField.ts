@@ -1,22 +1,6 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-
-export interface IAddressFieldValue {
-	street1: string
-	street2?: string
-	city: string
-	province: string
-	country: string
-	zip: string
-}
-
-export type IAddressFieldDefinition = IFieldDefinition<IAddressFieldValue> & {
-	/** * An address with street, city, province, country, and zip details */
-	type: FieldType.Address
-	options?: {}
-}
+import { IAddressFieldDefinition } from './AddressField.types'
 
 export default class AddressField extends AbstractField<
 	IAddressFieldDefinition

@@ -1,27 +1,16 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
+import { ToValueTypeOptions } from '../schema.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails
 } from '../template.types'
 import AbstractField from './AbstractField'
-
-export interface IDirectoryFieldValue {
-	path: string
-}
-
-export type IDirectoryFieldDefinition = IFieldDefinition<
+import {
+	IDirectoryFieldDefinition,
 	IDirectoryFieldValue
-> & {
-	/** * .Directory - select whole directories all at once */
-	type: FieldType.Directory
-	options?: {
-		/** Will give you a path relative to this one, if possible */
-		relativeTo?: string
-	}
-}
+} from './DirectoryField.types'
 
 export default class DirectoryField extends AbstractField<
 	IDirectoryFieldDefinition

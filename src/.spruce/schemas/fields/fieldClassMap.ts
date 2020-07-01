@@ -1,3 +1,5 @@
+// This is the only file that depends on concrete implementation. It is used by the FieldFactory to instantiate new fields
+
 import FieldType from './fieldTypeEnum'
 import AddressField from '../../../fields/AddressField'
 import BooleanField from '../../../fields/BooleanField'

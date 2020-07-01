@@ -1,19 +1,14 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { IFieldDefinition, ValidateOptions } from '../schema.types'
+import { ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
+import {
+	IDurationFieldDefinition,
+	IDurationFieldValue
+} from './DurationField.types'
 import { ITextFieldDefinition } from './TextField'
-
-/** A duration value object */
-export interface IDurationFieldValue {
-	hours: number
-	minutes: number
-	seconds: number
-	ms: number
-}
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(
@@ -55,19 +50,6 @@ export function buildDuration(
 	const hours = (totalMs - minutes) / 60
 
 	return { hours, minutes, seconds, ms }
-}
-
-export type IDurationFieldDefinition = IFieldDefinition<IDurationFieldValue> & {
-	/** * .Duration - a span of time  */
-	type: FieldType.Duration
-	options?: {
-		/** How it should be rendered, defaults to {{h}}h{{m}}min */
-		durationFormat?: string
-		/** The minimum duration we'll allow of this field */
-		minDuration?: IDurationFieldValue
-		/** The max duration possible with this field */
-		maxDuration?: IDurationFieldValue
-	}
 }
 
 export default class DurationField extends AbstractField<

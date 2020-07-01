@@ -1,17 +1,6 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-
-export interface IDateTimeFieldValue {
-	gmt: string
-}
-
-export type IDateTimeFieldDefinition = IFieldDefinition<IDateTimeFieldValue> & {
-	/** * A date/time field that stores everything in GMT and handles all the timezone */
-	type: FieldType.DateTime
-	options?: { dateTimeFormat?: string }
-}
+import { IDateTimeFieldDefinition } from './DateTimeField.types'
 
 export default class DateTimeField extends AbstractField<
 	IDateTimeFieldDefinition
