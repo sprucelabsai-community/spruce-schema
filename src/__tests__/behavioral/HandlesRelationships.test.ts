@@ -1,13 +1,11 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import { SchemaFieldValueType } from '../../fields/field.static.types'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import Schema from '../../Schema'
-import {
-	SchemaDefinitionValues,
-	SchemaFieldValueType
-} from '../../schema.types'
+import { SchemaDefinitionValues } from '../../schema.types'
 import buildPersonWithCars, {
 	IPersonDefinition,
 	ICarDefinition,

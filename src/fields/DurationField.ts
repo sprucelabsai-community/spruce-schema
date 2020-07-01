@@ -1,13 +1,13 @@
 import { IInvalidFieldError } from '../errors/error.types'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
 import {
 	IDurationFieldDefinition,
 	IDurationFieldValue
 } from './DurationField.types'
+import { ValidateOptions } from './field.static.types'
 import { ITextFieldDefinition } from './TextField.types'
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */

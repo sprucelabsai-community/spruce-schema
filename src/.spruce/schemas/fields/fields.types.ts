@@ -1,9 +1,6 @@
 // This types file can only depend on types.
 import FieldType from './fieldTypeEnum'
-
-// GOAL: this import goes away
-import { IField } from '../../../schema.types'
-// GOAL: all these move to type files
+import { IField } from '../../../fields/field.static.types'
 import { IFileFieldDefinition } from '../../../fields/FileField.types'
 import { ISelectFieldDefinition } from '../../../fields/SelectField.types'
 import { ITextFieldDefinition } from '../../../fields/TextField.types'

@@ -3,9 +3,9 @@ import Mime from 'mime-type'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { ToValueTypeOptions, ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
+import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { IFileFieldDefinition, IFileFieldValue } from './FileField.types'
 
 // @ts-ignore

@@ -1,9 +1,9 @@
-import { ToValueTypeOptions } from '../schema.types'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
 } from '../template.types'
 import AbstractField from './AbstractField'
+import { ToValueTypeOptions } from './field.static.types'
 import { ITextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<ITextFieldDefinition> {

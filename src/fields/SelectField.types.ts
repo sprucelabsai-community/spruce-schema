@@ -1,5 +1,5 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition } from '../schema.types'
+import { IFieldDefinition } from './field.static.types'
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */

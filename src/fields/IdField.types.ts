@@ -1,5 +1,5 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition } from '../schema.types'
+import { IFieldDefinition } from './field.static.types'
 
 export type IIdFieldDefinition = IFieldDefinition<string> & {
 	/** * .Id a field to hold a unique id (UUID4 in Spruce) */

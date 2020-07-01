@@ -2,20 +2,19 @@ import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import Schema from '../Schema'
-import {
-	ISchemaDefinition,
-	ToValueTypeOptions,
-	FieldDefinitionValueType,
-	ValidateOptions,
-	IFieldDefinitionToSchemaDefinitionOptions,
-	ISchemaIdWithVersion
-} from '../schema.types'
+import { ISchemaDefinition, ISchemaIdWithVersion } from '../schema.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 	TemplateRenderAs
 } from '../template.types'
 import AbstractField from './AbstractField'
+import {
+	IFieldDefinitionToSchemaDefinitionOptions,
+	ValidateOptions,
+	ToValueTypeOptions,
+	FieldDefinitionValueType
+} from './field.static.types'
 import { ISchemaFieldDefinition } from './SchemaField.types'
 
 export default class SchemaField<

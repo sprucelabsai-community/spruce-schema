@@ -1,7 +1,6 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { ToValueTypeOptions } from '../schema.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails
@@ -11,6 +10,7 @@ import {
 	IDirectoryFieldDefinition,
 	IDirectoryFieldValue
 } from './DirectoryField.types'
+import { ToValueTypeOptions } from './field.static.types'
 
 export default class DirectoryField extends AbstractField<
 	IDirectoryFieldDefinition

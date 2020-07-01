@@ -1,7 +1,7 @@
-import { ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import AbstractField from './AbstractField'
+import { ValidateOptions } from './field.static.types'
 import { IPhoneFieldDefinition } from './PhoneField.types'
 
 export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {

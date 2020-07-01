@@ -1,10 +1,10 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
-	IFieldDefinition,
 	ISchemaIdWithVersion,
 	ISchemaFieldDefinitionValueUnion,
 	ISchemaDefinition
 } from '../schema.types'
+import { IFieldDefinition } from './field.static.types'
 
 export type ISchemaFieldDefinition = IFieldDefinition<
 	Record<string, any>,

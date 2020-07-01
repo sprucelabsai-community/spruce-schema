@@ -1,6 +1,6 @@
 import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { FieldSubclass } from '../schema.types'
+import { FieldSubclass } from '../fields/field.static.types'
 
 export interface IFieldRegistration {
 	/** The type that is used as the key to the enum */
