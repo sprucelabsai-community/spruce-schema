@@ -86,7 +86,7 @@
 			"**/__tests__/**/*.test.ts"
 		],
 		"moduleNameMapper": {
-			"^#spruce/schemas/(.*)$": "<rootDir>/src/$1"
+			"^#spruce/(.*)$": "<rootDir>/src/.spruce/$1"
 		}
 	}
 }

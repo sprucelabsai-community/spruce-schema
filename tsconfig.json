@@ -20,6 +20,10 @@
 			"#spruce/*": [".spruce/*"]
 		}
 	},
-	"include": ["./*.ts", "./**/*.ts"],
+	"include": [
+		"./*.ts",
+		"./**/*.ts",
+		"src/.spruce/schemas/fields/fieldClassMap.ts"
+	],
 	"exclude": ["**/node_modules/*", "build/*"]
 }

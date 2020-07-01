@@ -1,5 +1,5 @@
 // THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import FieldType from './fieldTypeEnum'
 
 // GOAL: this import goes away
 import { IField } from '../../../schema.types'
