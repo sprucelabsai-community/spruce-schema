@@ -7,6 +7,7 @@ import {
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import AbstractField from './fields/AbstractField'
+import { IDefinitionsById } from './fields/field.static.types'
 import { ISchemaFieldDefinition } from './fields/SchemaField.types'
 import {
 	ISchemaDefinition,
@@ -25,7 +26,6 @@ import {
 	FieldNamesWithDefaultValueSet,
 	ISchema
 } from './schema.types'
-import { IDefinitionsById } from './types/utilities.types'
 
 /** Universal schema class  */
 export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {

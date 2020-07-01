@@ -1,9 +1,3 @@
-import { ISchemaDefinition } from '../schema.types'
-
-export interface IDefinitionsById {
-	[id: string]: ISchemaDefinition[]
-}
-
 /** Make a thing that was an array not an array so isArray can control it */
 export type Unpack<A> = A extends Array<infer E> ? E : A
 
