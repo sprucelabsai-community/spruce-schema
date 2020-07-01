@@ -93,7 +93,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 	) {
 		const schema = new Schema(definition)
 		const defaultValues = schema.getDefaultValues()
-		assert.deepEqual(defaultValues, expectedDefaultValues)
+		assert.isEqualDeep(defaultValues, expectedDefaultValues)
 	}
 
 	@test('Can get default typed correctly (test will pass, lint will fail)')
@@ -123,9 +123,10 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		}) as ISchema<ICarDefinition>
 
 		assert.isType<IPersonMappedDefaultValues>(defaultValues)
-		assert.deepEqual(defaultValues.optionalIsArrayCarOrTruckWithDefaultValue, [
-			carSchema
-		])
+		assert.isEqualDeep(
+			defaultValues.optionalIsArrayCarOrTruckWithDefaultValue,
+			[carSchema]
+		)
 
 		assert.isType<IPersonExpectedDefaultValuesWithoutSchema>(
 			defaultValuesWithoutSchemas

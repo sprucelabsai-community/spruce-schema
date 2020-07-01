@@ -147,7 +147,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				options
 			}
 		)
-		assert.deepEqual(idsWithVersion, toSchemaIdExpected)
+		assert.isEqualDeep(idsWithVersion, toSchemaIdExpected)
 
 		const schemasOrIdsWithVersion = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			{
@@ -155,7 +155,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				options
 			}
 		)
-		assert.deepEqual(
+		assert.isEqualDeep(
 			schemasOrIdsWithVersion,
 			toSchemaOrIdExpected ?? toSchemaIdExpected
 		)

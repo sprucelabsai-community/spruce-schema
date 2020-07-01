@@ -57,7 +57,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 		let cars = user.get('requiredIsArrayCars')
 		let firstCarValues = cars[0].getValues()
-		assert.deepEqual(firstCarValues, {
+		assert.isEqualDeep(firstCarValues, {
 			name: 'dirty car',
 			onlyOnCar: undefined
 		})
@@ -69,7 +69,10 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		assert.isEqual(cars.length, 1)
 
 		firstCarValues = cars[0].getValues()
-		assert.deepEqual(firstCarValues, { name: 'scooter', onlyOnCar: undefined })
+		assert.isEqualDeep(firstCarValues, {
+			name: 'scooter',
+			onlyOnCar: undefined
+		})
 	}
 
 	@test('Can type for many schemas')
@@ -167,6 +170,6 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			carField.field.definition as ISchemaFieldDefinition
 		)
 
-		assert.deepEqual(ids, [{ id: carDefinition.id }])
+		assert.isEqualDeep(ids, [{ id: carDefinition.id }])
 	}
 }

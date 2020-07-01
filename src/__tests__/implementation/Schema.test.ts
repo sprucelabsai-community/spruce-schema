@@ -85,7 +85,7 @@ export default class SchemaTest extends BaseTest {
 
 		unset(definition, fieldToDelete)
 
-		const error: any = await assert.throws(() =>
+		const error: any = assert.doesThrow(() =>
 			Schema.validateDefinition(definition)
 		)
 
@@ -97,13 +97,13 @@ export default class SchemaTest extends BaseTest {
 				options: { errors }
 			} = error
 
-			assert.deepEqual(
+			assert.isEqualDeep(
 				errors,
 				expectedErrors,
 				'Did not get back the error I expected'
 			)
 		} else {
-			throw new Error('Schema.validateDefinition should return a SpruceError')
+			assert.fail('Schema.validateDefinition should return a SpruceError')
 		}
 	}
 
@@ -167,7 +167,7 @@ export default class SchemaTest extends BaseTest {
 
 		// Try setting favorite colors
 		schema.set('favoriteColors', ['test'])
-		assert.deepEqual(
+		assert.isEqualDeep(
 			schema.values.favoriteColors,
 			['test'],
 			'Did not set value correctly'
@@ -176,7 +176,7 @@ export default class SchemaTest extends BaseTest {
 		// Try setting favorite color wrong, but should be coerced back to an array
 		// @ts-ignore
 		schema.set('favoriteColors', 'test2')
-		assert.deepEqual(
+		assert.isEqualDeep(
 			schema.values.favoriteColors,
 			['test2'],
 			'Did not set value correctly'
@@ -184,7 +184,7 @@ export default class SchemaTest extends BaseTest {
 
 		// Check non array values too
 		schema.set('name', 'Taylor')
-		assert.deepEqual(schema.values, {
+		assert.isEqualDeep(schema.values, {
 			name: 'Taylor',
 			favoriteColors: ['test2']
 		})
@@ -229,7 +229,7 @@ export default class SchemaTest extends BaseTest {
 		schema.values.favoriteColors = [1, 2, 3]
 
 		const favColors = schema.get('favoriteColors')
-		assert.deepEqual(favColors, ['1', '2', '3'])
+		assert.isEqualDeep(favColors, ['1', '2', '3'])
 
 		// Opposite test
 		// @ts-ignore

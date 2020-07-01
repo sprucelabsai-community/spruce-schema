@@ -21,8 +21,8 @@ export default class CanGetSchemasTest extends AbstractSchemaTest {
 	}
 
 	@test()
-	protected static async throwsIfCantMatchId() {
-		await assert.throws(
+	protected static throwsIfCantMatchId() {
+		assert.doesThrow(
 			() => Schema.getDefinition('pizzaPi'),
 			/SCHEMA_NOT_FOUND/gi
 		)

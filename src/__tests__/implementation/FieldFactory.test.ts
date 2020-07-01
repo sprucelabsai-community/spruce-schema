@@ -22,7 +22,7 @@ export default class TextFieldTest extends BaseTest {
 		const field = FieldFactory.field('test', definition)
 		switch (field.definition.type) {
 			case FieldType.Select:
-				assert.deepEqual(field.definition.options.choices, expectedValue)
+				assert.isEqualDeep(field.definition.options.choices, expectedValue)
 				break
 		}
 	}

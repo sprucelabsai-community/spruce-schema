@@ -42,15 +42,15 @@ export default class SchemaFieldTest extends BaseTest {
 		)
 
 		let codes = requiredField.validate(value).map(err => err.code)
-		assert.deepEqual(codes, expectedErrorCodes)
+		assert.isEqualDeep(codes, expectedErrorCodes)
 
 		codes = optionalField.validate(value).map(err => err.code)
-		assert.deepEqual(codes, expectedErrorCodes)
+		assert.isEqualDeep(codes, expectedErrorCodes)
 
 		codes = requiredIsArrayField.validate(value).map(err => err.code)
-		assert.deepEqual(codes, expectedErrorCodes)
+		assert.isEqualDeep(codes, expectedErrorCodes)
 
 		codes = optionalIsArrayField.validate(value).map(err => err.code)
-		assert.deepEqual(codes, expectedErrorCodes)
+		assert.isEqualDeep(codes, expectedErrorCodes)
 	}
 }

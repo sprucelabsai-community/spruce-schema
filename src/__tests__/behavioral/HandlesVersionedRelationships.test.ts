@@ -50,7 +50,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() }
 		})
 
-		await assert.throws(() => person.getValues(), /version/gi)
+		assert.doesThrow(() => person.getValues(), /version/gi)
 	}
 
 	@test()

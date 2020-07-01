@@ -25,7 +25,7 @@ export default class DurationFieldTest extends BaseTest {
 	) {
 		const field = FieldFactory.field('test', { type: FieldType.Duration })
 		const value = field.toValueType(partial)
-		assert.deepEqual(
+		assert.isEqualDeep(
 			value,
 			expected,
 			`Duration field did not map ${JSON.stringify(
@@ -34,7 +34,7 @@ export default class DurationFieldTest extends BaseTest {
 		)
 
 		// test build directly
-		assert.deepEqual(
+		assert.isEqualDeep(
 			buildDuration(partial),
 			expected,
 			`Duration field did not map ${JSON.stringify(

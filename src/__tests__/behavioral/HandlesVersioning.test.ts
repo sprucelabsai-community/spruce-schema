@@ -61,15 +61,15 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 		assert.isOk(wrenchV1)
 		assert.isOk(wrenchV2)
 
-		assert.isEqual(wrenchV1.id, 'wrench', 'v1')
-		assert.isEqual(wrenchV2.id, 'wrench', 'v2')
+		assert.isEqual(wrenchV1.id, 'wrench')
+		assert.isEqual(wrenchV2.id, 'wrench')
 
-		assert.notEqual(wrenchV1.version, wrenchV2.version)
+		assert.isNotEqual(wrenchV1.version, wrenchV2.version)
 	}
 
 	@test()
 	protected static async throwsIfYouForgetAVersionOnAVersioned() {
-		await assert.throws(
+		assert.doesThrow(
 			() => Schema.getDefinition('wrench'),
 			/VERSION_NOT_FOUND/gi
 		)

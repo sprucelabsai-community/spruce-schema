@@ -207,7 +207,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 					renderAs: TemplateRenderAs[renderAs]
 				}
 
-				await assert.throws(
+				assert.doesThrow(
 					() => SchemaField.generateTemplateDetails(options),
 					/VERSION/
 				)

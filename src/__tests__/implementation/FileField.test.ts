@@ -106,7 +106,7 @@ export default class FileFieldTest extends BaseTest {
 	) {
 		const file = FieldFactory.field('test', { type: FieldType.File })
 		const augmented = file.toValueType(partial)
-		assert.deepEqual(augmented, complete)
+		assert.isEqualDeep(augmented, complete)
 	}
 
 	@test(
