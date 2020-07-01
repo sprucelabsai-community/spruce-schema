@@ -39,7 +39,7 @@ export type SchemaFieldUnion<
 
 export type SchemaFieldValueTypeGenerator<
 	F extends ISchemaFieldDefinition,
-	CreateSchemaInstances extends boolean = true
+	CreateSchemaInstances extends boolean = false
 > = F['options']['schemas'] extends Array<ISchemaDefinition>
 	? IsArrayNoUnpack<
 			SchemaFieldUnion<F['options']['schemas'], CreateSchemaInstances>[number],

@@ -1,11 +1,6 @@
 // This is the static compliment to #spruce/schemas/fields/fields.types
 // The rule is, if it's not going to be overwritten by a generator, put it in #spruce
 import {
-	ISchemaDefinition,
-	SchemaDefinitionValues,
-	ISchema
-} from 'schema.types'
-import {
 	FieldDefinition,
 	IFieldValueTypeGeneratorMap
 } from '#spruce/schemas/fields/fields.types'
@@ -14,30 +9,13 @@ import { IInvalidFieldError } from '../errors/error.types'
 import {
 	IDefinitionsById,
 	Unpack,
-	IsArrayNoUnpack,
 	IsArray,
 	IsRequired
 } from '../types/utilities.types'
-import { ISchemaFieldDefinition } from './SchemaField.types'
 
 export interface IFieldDefinitionToSchemaDefinitionOptions {
 	/** All definitions we're validating against */
 	definitionsById?: IDefinitionsById
-}
-
-export type SchemaFieldUnion<
-	S extends Array<ISchemaDefinition>,
-	CreateSchemaInstances extends boolean = false
-> = {
-	[K in keyof S]: S[K] extends ISchemaDefinition
-		? CreateSchemaInstances extends true
-			? ISchema<S[K]>
-			: {
-					schemaId: S[K]['id']
-					version?: S[K]['version']
-					values: SchemaDefinitionValues<S[K]>
-			  }
-		: any
 }
 
 export type ToValueTypeOptions<
@@ -108,20 +86,6 @@ export type IFieldDefinition<
 			value?: Value | null
 	  }
 )
-
-export type SchemaFieldValueType<
-	F extends ISchemaFieldDefinition,
-	CreateSchemaInstances extends boolean = false
-> = F['options']['schemas'] extends Array<ISchemaDefinition>
-	? IsArrayNoUnpack<
-			SchemaFieldUnion<F['options']['schemas'], CreateSchemaInstances>[number],
-			F['isArray']
-	  >
-	: F['options']['schema'] extends ISchemaDefinition
-	? CreateSchemaInstances extends true
-		? IsArray<ISchema<F['options']['schema']>, F['isArray']>
-		: IsArray<SchemaDefinitionValues<F['options']['schema']>, F['isArray']>
-	: any
 
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,

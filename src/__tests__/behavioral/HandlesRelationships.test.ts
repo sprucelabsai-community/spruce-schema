@@ -1,9 +1,11 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import { SchemaFieldValueType } from '../../fields/field.static.types'
 import SchemaField from '../../fields/SchemaField'
-import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
+import {
+	ISchemaFieldDefinition,
+	SchemaFieldValueTypeGenerator
+} from '../../fields/SchemaField.types'
 import Schema from '../../Schema'
 import { SchemaDefinitionValues } from '../../schema.types'
 import buildPersonWithCars, {
@@ -76,7 +78,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test('Can type for many schemas')
 	protected static testingUnionOfSchemas() {
-		const testSingleSchemaField: SchemaFieldValueType<{
+		const testSingleSchemaField: SchemaFieldValueTypeGenerator<{
 			type: FieldType.Schema
 			options: {
 				schemas: [ICarDefinition, ITruckDefinition]
@@ -90,7 +92,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			assert.isEqual(testSingleSchemaField.values.name, 'fast car')
 		}
 
-		type ManyType = SchemaFieldValueType<{
+		type ManyType = SchemaFieldValueTypeGenerator<{
 			type: FieldType.Schema
 			isArray: true
 			options: {
