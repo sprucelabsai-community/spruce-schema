@@ -4,12 +4,9 @@ import FieldType from './fieldTypeEnum'
 // GOAL: this import goes away
 import { IField } from '../../../schema.types'
 // GOAL: all these move to type files
-import { IFileFieldDefinition } from '../../../fields/FileField'
-import { IPhoneFieldDefinition } from '../../../fields/PhoneField'
-import { IRawFieldDefinition } from '../../../fields/RawField'
-import { ISchemaFieldDefinition } from '../../../fields/SchemaField'
-import { ISelectFieldDefinition } from '../../../fields/SelectField'
-import { ITextFieldDefinition } from '../../../fields/TextField'
+import { IFileFieldDefinition } from '../../../fields/FileField.types'
+import { ISelectFieldDefinition } from '../../../fields/SelectField.types'
+import { ITextFieldDefinition } from '../../../fields/TextField.types'
 import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
 import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
 import { IDurationFieldDefinition } from '../../../fields/DurationField.types'
@@ -18,6 +15,9 @@ import { IDateFieldDefinition } from '../../../fields/DateField.types'
 import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
 import { IIdFieldDefinition } from '../../../fields/IdField.types'
 import { INumberFieldDefinition } from '../../../fields/NumberField.types'
+import { IPhoneFieldDefinition } from '../../../fields/PhoneField.types'
+import { ISchemaFieldDefinition } from '../../../fields/SchemaField.types'
+import { IRawFieldDefinition } from '../../../fields/RawField.types'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition

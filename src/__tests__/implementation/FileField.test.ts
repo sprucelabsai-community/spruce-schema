@@ -2,7 +2,7 @@ import path from 'path'
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
-import { IFileFieldValue } from '../../fields/FileField'
+import { IFileFieldValue } from '../../fields/FileField.types'
 import Schema from '../../Schema'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 

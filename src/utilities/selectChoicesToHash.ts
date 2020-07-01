@@ -1,8 +1,8 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
-	ISelectFieldDefinitionChoice,
-	ISelectFieldDefinition
-} from '../fields/SelectField'
+	ISelectFieldDefinition,
+	ISelectFieldDefinitionChoice
+} from '../fields/SelectField.types'
 import {
 	ISchemaDefinition,
 	ISchemaDefinitionFields,

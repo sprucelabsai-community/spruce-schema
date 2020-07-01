@@ -1,7 +1,7 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
-import { ISelectFieldDefinitionChoice } from '../../fields'
+import { ISelectFieldDefinitionChoice } from '../../fields/SelectField.types'
 
 const choices: ISelectFieldDefinitionChoice[] = [
 	{ value: 'foo', label: 'Foo' },

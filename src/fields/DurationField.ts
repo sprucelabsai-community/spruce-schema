@@ -8,7 +8,7 @@ import {
 	IDurationFieldDefinition,
 	IDurationFieldValue
 } from './DurationField.types'
-import { ITextFieldDefinition } from './TextField'
+import { ITextFieldDefinition } from './TextField.types'
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(

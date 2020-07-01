@@ -107,6 +107,16 @@ export interface IPersonDefinition extends ISchemaDefinition {
 				]
 			}
 		}
+		requiredSelect: {
+			type: FieldType.Select
+			options: {
+				isRequired: true
+				choices: [
+					{ value: 'foo'; label: 'Foo' },
+					{ value: 'bar'; label: 'Bar' }
+				]
+			}
+		}
 		optionalSelectWithDefaultValue: {
 			type: FieldType.Select
 			defaultValue: 'hello'
@@ -270,6 +280,16 @@ const buildPersonWithCars = () => {
 			optionalSelect: {
 				type: FieldType.Select,
 				options: {
+					choices: [
+						{ value: 'foo', label: 'Foo' },
+						{ value: 'bar', label: 'Bar' }
+					]
+				}
+			},
+			requiredSelect: {
+				type: FieldType.Select,
+				options: {
+					isRequired: true,
 					choices: [
 						{ value: 'foo', label: 'Foo' },
 						{ value: 'bar', label: 'Bar' }

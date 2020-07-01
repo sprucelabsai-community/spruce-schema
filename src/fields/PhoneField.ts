@@ -1,14 +1,8 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { ValidateOptions, IFieldDefinition } from '../schema.types'
+import { ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import AbstractField from './AbstractField'
-
-export type IPhoneFieldDefinition = IFieldDefinition<string> & {
-	/** * .Phone a great way to validate and format values */
-	type: FieldType.Phone
-	options?: {}
-}
+import { IPhoneFieldDefinition } from './PhoneField.types'
 
 export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 	public static get description() {

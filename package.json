@@ -27,6 +27,7 @@
 		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
 		"clean": "rm -rf build/",
 		"lint": "eslint '**/*.ts' --fix && npm run lint.tsc",
+		"lint.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run lint'",
 		"lint.tsc": "tsc -p . --noEmit",
 		"lint.fix": "eslint --fix '**/*.ts'",
 		"test": "jest --no-cache",

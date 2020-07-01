@@ -1,22 +1,10 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { IFieldDefinition, ToValueTypeOptions } from '../schema.types'
+import { ToValueTypeOptions } from '../schema.types'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions
 } from '../template.types'
 import AbstractField from './AbstractField'
-
-export type ITextFieldDefinition = IFieldDefinition<string> & {
-	/** * Text field */
-	type: FieldType.Text
-	/** Options */
-	options?: {
-		/** The minimum length we'll allow of this field */
-		minLength?: number
-		/** The max length possible with this string */
-		maxLength?: number
-	}
-}
+import { ITextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<ITextFieldDefinition> {
 	public static get description() {

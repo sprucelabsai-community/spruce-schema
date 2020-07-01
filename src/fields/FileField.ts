@@ -2,14 +2,11 @@ import mimeDb from 'mime-db'
 import Mime from 'mime-type'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
-import {
-	IFieldDefinition,
-	ToValueTypeOptions,
-	ValidateOptions
-} from '../schema.types'
+import SpruceError from '../errors/SpruceError'
+import { ToValueTypeOptions, ValidateOptions } from '../schema.types'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
-import { SchemaError } from '..'
+import { IFileFieldDefinition, IFileFieldValue } from './FileField.types'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
@@ -17,34 +14,6 @@ mime.define('application/typescript', {
 	source: 'spruce',
 	extensions: ['ts', 'tsx']
 })
-
-export interface IFileFieldValue {
-	/** Date last modified */
-	lastModified?: Date
-	/** The name of the file */
-	name: string
-	/** The size of the file if we are able to load it locally */
-	size?: number
-	/** The mime type of the file */
-	type?: string
-	/** The path to the file if local */
-	path?: string
-	/** The file extension */
-	ext?: string
-}
-
-export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
-	/** * .File - a great way to deal with file management */
-	type: FieldType.File
-	options?: {
-		/** Which mime types are acceptable? */
-		acceptableTypes?: string[]
-		/** What is the biggest this file can be? */
-		maxSize?: string
-		/** All paths will be generated to this directory, if possible */
-		relativeTo?: string
-	}
-}
 
 export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public static get description() {
@@ -134,7 +103,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		name = name ?? stringValue.replace(path, '').replace(pathUtil.sep, '')
 
 		if (!name) {
-			throw new SchemaError({
+			throw new SpruceError({
 				code: ErrorCode.TransformationFailed,
 				fieldType: FieldType.File,
 				incomingTypeof: typeof value,

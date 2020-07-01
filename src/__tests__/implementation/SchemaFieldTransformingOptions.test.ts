@@ -1,6 +1,7 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import SchemaField, { ISchemaFieldDefinition } from '../../fields/SchemaField'
+import SchemaField from '../../fields/SchemaField'
+import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 
 export default class SchemaFieldTemplateTest extends BaseTest {

@@ -4,11 +4,9 @@ import SpruceError from '../errors/SpruceError'
 import Schema from '../Schema'
 import {
 	ISchemaDefinition,
-	IFieldDefinition,
 	ToValueTypeOptions,
 	FieldDefinitionValueType,
 	ValidateOptions,
-	ISchemaFieldDefinitionValueUnion,
 	IFieldDefinitionToSchemaDefinitionOptions,
 	ISchemaIdWithVersion
 } from '../schema.types'
@@ -18,28 +16,7 @@ import {
 	TemplateRenderAs
 } from '../template.types'
 import AbstractField from './AbstractField'
-
-export type ISchemaFieldDefinition = IFieldDefinition<
-	Record<string, any>,
-	Record<string, any>,
-	ISchemaFieldDefinitionValueUnion[],
-	ISchemaFieldDefinitionValueUnion[]
-> & {
-	/** * .Schema go team! */
-	type: FieldType.Schema
-	options: {
-		/** The id of the schema you are relating to */
-		schemaId?: ISchemaIdWithVersion
-		/** The actual schema */
-		schema?: ISchemaDefinition
-		/** If this needs to be a union of ids */
-		schemaIds?: ISchemaIdWithVersion[]
-		/** Actual schemas if more that one, this will make a union */
-		schemas?: ISchemaDefinition[]
-		/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */
-		schemasCallback?: () => ISchemaDefinition[]
-	}
-}
+import { ISchemaFieldDefinition } from './SchemaField.types'
 
 export default class SchemaField<
 	F extends ISchemaFieldDefinition = ISchemaFieldDefinition
@@ -278,6 +255,8 @@ export default class SchemaField<
 				// if we are validating schemas, we look them all up by id
 				let instance: Schema<ISchemaDefinition> | undefined
 				if (definitions && definitions.length === 1) {
+					// @ts-ignore warns about infinite recursion, which is true, because relationships between schemas can go forever
+					// because
 					instance = new Schema(definitions[0], value)
 				} else if (definitions && definitions.length > 0) {
 					const { schemaId, values } = value || {}

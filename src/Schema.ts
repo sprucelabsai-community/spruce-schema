@@ -1,3 +1,4 @@
+import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import {
 	ErrorCode,
 	IInvalidFieldErrorOptions,
@@ -5,9 +6,8 @@ import {
 } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
-import { ISchemaFieldDefinition } from './fields'
 import AbstractField from './fields/AbstractField'
-import { FieldDefinition } from './fields/fields.types'
+import { ISchemaFieldDefinition } from './fields/SchemaField.types'
 import {
 	ISchemaDefinition,
 	SchemaDefinitionPartialValues,

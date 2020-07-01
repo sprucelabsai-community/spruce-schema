@@ -6,8 +6,8 @@ import {
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from './errors/error.types'
-import { ISchemaFieldDefinition } from './fields/SchemaField'
-import { ISelectFieldDefinition } from './fields/SelectField'
+import { ISchemaFieldDefinition } from './fields/SchemaField.types'
+import { ISelectFieldDefinition } from './fields/SelectField.types'
 
 export interface ISchema<S extends ISchemaDefinition> {
 	schemaId: S['id']
