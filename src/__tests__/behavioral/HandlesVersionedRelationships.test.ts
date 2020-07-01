@@ -89,7 +89,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 
 		const car = person.get('optionalCarOrTruck')
 
-		switch (car.schemaId) {
+		switch (car && car.schemaId) {
 			case 'truck':
 				assert.fail('should have resolved to car')
 				break

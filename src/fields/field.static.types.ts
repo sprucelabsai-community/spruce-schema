@@ -7,7 +7,7 @@ import {
 } from 'schema.types'
 import {
 	FieldDefinition,
-	IFieldDefinitionMap
+	IFieldValueTypeGeneratorMap
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
@@ -19,7 +19,6 @@ import {
 	IsRequired
 } from '../types/utilities.types'
 import { ISchemaFieldDefinition } from './SchemaField.types'
-import { ISelectFieldDefinition } from './SelectField.types'
 
 export interface IFieldDefinitionToSchemaDefinitionOptions {
 	/** All definitions we're validating against */
@@ -127,17 +126,12 @@ export type SchemaFieldValueType<
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,
 	CreateSchemaInstances extends boolean = false
-> = F extends ISchemaFieldDefinition // Schema field
-	? SchemaFieldValueType<F, CreateSchemaInstances>
-	: F extends ISelectFieldDefinition // Select field
-	? IsRequired<
-			IsArray<F['options']['choices'][number]['value'], F['isArray']>,
-			F['isRequired']
-	  >
-	: F extends FieldDefinition // All fields
+> = F extends FieldDefinition
 	? IsRequired<
 			IsArray<
-				NonNullable<IFieldDefinitionMap[F['type']]['value']>,
+				NonNullable<
+					IFieldValueTypeGeneratorMap<F, CreateSchemaInstances>[F['type']]
+				>,
 				F['isArray']
 			>,
 			F['isRequired']

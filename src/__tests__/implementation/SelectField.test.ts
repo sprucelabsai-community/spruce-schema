@@ -25,8 +25,8 @@ interface IUserDefinition {
 		}
 		favoriteColorRequired: {
 			type: FieldType.Select
+			isRequired: true
 			options: {
-				isRequired: true
 				choices: [
 					{
 						value: 'blue'
@@ -64,8 +64,8 @@ export default class SelectFieldTest extends BaseTest {
 			},
 			favoriteColorRequired: {
 				type: FieldType.Select,
+				isRequired: true,
 				options: {
-					isRequired: true,
 					choices: [
 						{
 							value: 'blue',
@@ -86,10 +86,9 @@ export default class SelectFieldTest extends BaseTest {
 			favoriteColor: 'blue'
 		})
 		const favColor = user.get('favoriteColor')
-		// TODO why are we not getting this?
-		// const favoriteColorRequired = user.get('favoriteColorRequired')
+		const favoriteColorRequired = user.get('favoriteColorRequired')
 
 		assert.isType<'blue' | 'red' | undefined | null>(favColor)
-		// assert.isType<'blue' | 'red'>(favoriteColorRequired)
+		assert.isType<'blue' | 'red'>(favoriteColorRequired)
 	}
 }

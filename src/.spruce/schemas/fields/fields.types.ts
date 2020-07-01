@@ -2,7 +2,7 @@
 import FieldType from './fieldTypeEnum'
 import { IField } from '../../../fields/field.static.types'
 import { IFileFieldDefinition } from '../../../fields/FileField.types'
-import { ISelectFieldDefinition } from '../../../fields/SelectField.types'
+import { ISelectFieldDefinition, SelectValueTypeGenerator } from '../../../fields/SelectField.types'
 import { ITextFieldDefinition } from '../../../fields/TextField.types'
 import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
 import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
@@ -13,7 +13,7 @@ import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
 import { IIdFieldDefinition } from '../../../fields/IdField.types'
 import { INumberFieldDefinition } from '../../../fields/NumberField.types'
 import { IPhoneFieldDefinition } from '../../../fields/PhoneField.types'
-import { ISchemaFieldDefinition } from '../../../fields/SchemaField.types'
+import { ISchemaFieldDefinition, SchemaFieldValueTypeGenerator } from '../../../fields/SchemaField.types'
 import { IRawFieldDefinition } from '../../../fields/RawField.types'
 
 export type FieldDefinition =
@@ -63,6 +63,23 @@ export interface IFieldDefinitionMap {
 	[FieldType.File]: IFileFieldDefinition
 	[FieldType.Date]: IDateFieldDefinition
 	[FieldType.Directory]: IDirectoryFieldDefinition
+}
+
+export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateSchemaInstances extends boolean> {
+	[FieldType.Boolean]: IBooleanFieldDefinition['value']
+	[FieldType.Select]: SelectValueTypeGenerator<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>
+	[FieldType.Duration]: IDurationFieldDefinition['value']
+	[FieldType.Id]: IIdFieldDefinition['value']
+	[FieldType.Text]: ITextFieldDefinition['value']
+	[FieldType.Address]: IAddressFieldDefinition['value']
+	[FieldType.Phone]: IPhoneFieldDefinition['value']
+	[FieldType.Schema]: SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>
+	[FieldType.Raw]: IRawFieldDefinition['value']
+	[FieldType.Number]: INumberFieldDefinition['value']
+	[FieldType.DateTime]: IDateTimeFieldDefinition['value']
+	[FieldType.File]: IFileFieldDefinition['value']
+	[FieldType.Date]: IDateFieldDefinition['value']
+	[FieldType.Directory]: IDirectoryFieldDefinition['value']
 }
 
 export interface IFieldMap {

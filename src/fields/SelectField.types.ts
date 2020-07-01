@@ -8,10 +8,16 @@ export interface ISelectFieldDefinitionChoice {
 	label: string
 }
 
+export interface ISelectFieldOptions {
+	choices: ISelectFieldDefinitionChoice[]
+}
+
+export type SelectValueTypeGenerator<
+	F extends ISelectFieldDefinition
+> = F['options']['choices'][number]['value']
+
 export type ISelectFieldDefinition = IFieldDefinition<string> & {
 	/** * .Select - A way to chose between a choices */
 	type: FieldType.Select
-	options: {
-		choices: ISelectFieldDefinitionChoice[]
-	}
+	options: ISelectFieldOptions
 }

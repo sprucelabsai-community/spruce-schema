@@ -132,6 +132,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		})
 
 		const requiredCarsOrTrucks = person.get('requiredIsArrayCarOrTruck')
+
 		assert.isEqual(requiredCarsOrTrucks[0].schemaId, 'car')
 		assert.isEqual(requiredCarsOrTrucks[1].schemaId, 'truck')
 		assert.isEqual(requiredCarsOrTrucks[2].schemaId, 'car')

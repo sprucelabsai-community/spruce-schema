@@ -19,30 +19,32 @@ type IPersonMappedValues = SchemaDefinitionValues<IPersonDefinition, true>
 interface IPersonExpectedValues {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
-	optionalIsArrayCarOrTruckWithDefaultValue?: (
-		| ISchema<ICarDefinition>
-		| ISchema<ITruckDefinition>
-	)[]
+	optionalIsArrayCarOrTruckWithDefaultValue?:
+		| (ISchema<ICarDefinition> | ISchema<ITruckDefinition>)[]
+		| null
 	optionalCarOrTruckWithDefaultValue?:
 		| ISchema<ICarDefinition>
 		| ISchema<ITruckDefinition>
+		| null
 }
 
 interface IPersonExpectedValuesWithoutSchema {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
-	optionalIsArrayCarOrTruckWithDefaultValue?: {
-		schemaId: 'car' | 'truck'
-		values:
-			| SchemaDefinitionValues<ICarDefinition>
-			| SchemaDefinitionValues<ITruckDefinition>
-	}[]
+	optionalIsArrayCarOrTruckWithDefaultValue?:
+		| {
+				schemaId: 'car' | 'truck'
+				values:
+					| SchemaDefinitionValues<ICarDefinition>
+					| SchemaDefinitionValues<ITruckDefinition>
+		  }[]
+		| null
 	optionalCarOrTruckWithDefaultValue?: {
 		schemaId: 'car' | 'truck'
 		values:
 			| SchemaDefinitionValues<ICarDefinition>
 			| SchemaDefinitionValues<ITruckDefinition>
-	}
+	} | null
 }
 
 const { personDefinition, truckDefinition } = buildPersonWithCars()
