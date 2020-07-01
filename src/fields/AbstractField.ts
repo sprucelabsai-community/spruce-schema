@@ -61,32 +61,26 @@ public static generateTemplateDetails(
 		})
 	}
 
-	/** Get options defined for this field */
 	public get options() {
 		return this.definition.options
 	}
 
-	/** Is this field required */
 	public get isRequired() {
 		return !!this.definition.isRequired
 	}
 
-	/** Is this field an array? */
 	public get isArray() {
 		return !!this.definition.isArray
 	}
 
-	/** The label for this field */
 	public get label() {
 		return this.definition.label
 	}
 
-	/** The hint for this field */
 	public get hint() {
 		return this.definition.hint
 	}
 
-	/** Validate a value against this field */
 	public validate(value: any, _?: ValidateOptions<F>): IInvalidFieldError[] {
 		const errors: IInvalidFieldError[] = []
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
@@ -101,7 +95,8 @@ public static generateTemplateDetails(
 	}
 
 	/** Transform any value to the value type of this field */
-	public toValueType(value: any) {
+	public toValueType(value: any, _: any) {
 		return value
 	}
 }
+/** A field that comprises a schema */

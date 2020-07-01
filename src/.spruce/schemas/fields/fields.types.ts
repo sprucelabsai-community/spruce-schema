@@ -1,22 +1,23 @@
 // THIS FILE IS REPLACED BY A GENERATED FILE USING PATH ALIASING AND SHOULD ALWAYS BE IMPORTED AS 'spruce:schema/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+
 // GOAL: this import goes away
-import { IField } from '../schema.types'
+import { IField } from '../../../schema.types'
 // GOAL: all these move to type files
-import { IAddressFieldDefinition } from './AddressField'
-import { IBooleanFieldDefinition } from './BooleanField'
-import { IDateFieldDefinition } from './DateField'
-import { IDateTimeFieldDefinition } from './DateTimeField'
-import { IDirectoryFieldDefinition } from './DirectoryField'
-import { IDurationFieldDefinition } from './DurationField'
-import { IFileFieldDefinition } from './FileField'
-import { IIdFieldDefinition } from './IdField'
-import { INumberFieldDefinition } from './NumberField'
-import { IPhoneFieldDefinition } from './PhoneField'
-import { IRawFieldDefinition } from './RawField'
-import { ISchemaFieldDefinition } from './SchemaField'
-import { ISelectFieldDefinition } from './SelectField'
-import { ITextFieldDefinition } from './TextField'
+import { IAddressFieldDefinition } from '../../../fields/AddressField'
+import { IBooleanFieldDefinition } from '../../../fields/BooleanField'
+import { IDateFieldDefinition } from '../../../fields/DateField'
+import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField'
+import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField'
+import { IDurationFieldDefinition } from '../../../fields/DurationField'
+import { IFileFieldDefinition } from '../../../fields/FileField'
+import { IIdFieldDefinition } from '../../../fields/IdField'
+import { INumberFieldDefinition } from '../../../fields/NumberField'
+import { IPhoneFieldDefinition } from '../../../fields/PhoneField'
+import { IRawFieldDefinition } from '../../../fields/RawField'
+import { ISchemaFieldDefinition } from '../../../fields/SchemaField'
+import { ISelectFieldDefinition } from '../../../fields/SelectField'
+import { ITextFieldDefinition } from '../../../fields/TextField'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition

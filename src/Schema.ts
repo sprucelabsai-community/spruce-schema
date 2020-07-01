@@ -6,6 +6,8 @@ import {
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import { ISchemaFieldDefinition } from './fields'
+import AbstractField from './fields/AbstractField'
+import { FieldDefinition } from './fields/fields.types'
 import {
 	ISchemaDefinition,
 	SchemaDefinitionPartialValues,
@@ -22,7 +24,6 @@ import {
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
 	ISchema,
-	IField,
 	IDefinitionsById
 } from './schema.types'
 
@@ -256,7 +257,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			localValue = localValue.map(value =>
 				typeof value === 'undefined'
 					? undefined
-					: (field as IField<any>).toValueType(value, {
+					: (field as AbstractField<FieldDefinition>).toValueType(value, {
 							definitionsById: Schema.definitionsById,
 							createSchemaInstances,
 							...(field.definition.options ?? {}),

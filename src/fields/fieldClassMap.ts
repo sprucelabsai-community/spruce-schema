@@ -1,4 +1,3 @@
-import { FieldClass } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AddressField from './AddressField'
 import BooleanField from './BooleanField'
@@ -16,7 +15,7 @@ import SelectField from './SelectField'
 import TextField from './TextField'
 
 /** A global place to reference all field type classes */
-export const FieldClassMap: Record<FieldType, FieldClass> = {
+export const FieldClassMap = {
 	[FieldType.Boolean]: BooleanField,
 	[FieldType.Select]: SelectField,
 	[FieldType.Duration]: DurationField,
@@ -31,4 +30,4 @@ export const FieldClassMap: Record<FieldType, FieldClass> = {
 	[FieldType.File]: FileField,
 	[FieldType.Date]: DateField,
 	[FieldType.Directory]: DirectoryField
-}
+} as const

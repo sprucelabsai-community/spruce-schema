@@ -55,24 +55,21 @@ export default class FileFieldTest extends BaseTest {
 		const field = FieldFactory.field('test', {
 			type: FieldType.File
 		})
+
 		const file = field.toValueType(filePath)
 
-		// Assert our expectations
-		// expected name
 		assert.isEqual(
 			file.name,
 			expectations.expectedName,
 			'File name did not parse as expected'
 		)
 
-		// Expected type
 		assert.isEqual(
 			file.type,
 			expectations.expectedType,
 			'File type did not lookup as expected'
 		)
 
-		// Expected extension
 		assert.isEqual(
 			file.ext,
 			expectations.expectedExtension,

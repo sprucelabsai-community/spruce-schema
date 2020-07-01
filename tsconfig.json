@@ -14,10 +14,10 @@
 		"moduleResolution": "node",
 		"sourceMap": true,
 		"outDir": "build",
-		"baseUrl": ".",
+		"baseUrl": "src",
 		"experimentalDecorators": true,
 		"paths": {
-			"#spruce/schemas/*": ["src/*"]
+			"#spruce/*": [".spruce/*"]
 		}
 	},
 	"include": ["./*.ts", "./**/*.ts"],
