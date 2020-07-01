@@ -1,6 +1,7 @@
+import fieldClassMap from '#spruce/schemas/fields/fieldClassMap'
 import { FieldDefinition, IFieldMap } from '#spruce/schemas/fields/fields.types'
+
 // let firstRun = true
-let FieldClassMap: Record<string, any>
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */
@@ -8,19 +9,7 @@ export default class FieldFactory {
 		name: string,
 		definition: F
 	): IFieldMap[F['type']] {
-		// this will pull in augmentations to the field class map object, only needed first load
-		// if (firstRun) {
-		// 	// @ts-ignore
-		// 	require('#spruce/schemas/fields/fieldClassMap')
-		// 	firstRun = false
-		// }
-
-		if (!FieldClassMap) {
-			FieldClassMap = require('#spruce/schemas/fields/fieldClassMap')
-				.FieldClassMap
-		}
-
-		const fieldClass = FieldClassMap[definition.type]
+		const fieldClass = fieldClassMap[definition.type]
 
 		if (!fieldClass) {
 			throw new Error(

@@ -17,7 +17,7 @@ import SelectField from '../../../fields/SelectField'
 import TextField from '../../../fields/TextField'
 
 /** A global place to reference all field type classes */
-export const FieldClassMap = {
+const fieldClassMap = {
 	[FieldType.Boolean]: BooleanField,
 	[FieldType.Select]: SelectField,
 	[FieldType.Duration]: DurationField,
@@ -33,3 +33,6 @@ export const FieldClassMap = {
 	[FieldType.Date]: DateField,
 	[FieldType.Directory]: DirectoryField
 } as const
+
+
+export default fieldClassMap
