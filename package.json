@@ -32,8 +32,8 @@
 		"test": "jest --no-cache",
 		"release": "semantic-release",
 		"test.watch": "jest --watch",
-		"arkit": "arkit -f src/index.ts -o docs/arkit.svg",
-		"arkit.png": "arkit -f src/index.ts -o docs/arkit.png"
+		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
+		"arkit.png": "arkit -f src/index.ts -o docs/images/arkit.png"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^1.2.0",
