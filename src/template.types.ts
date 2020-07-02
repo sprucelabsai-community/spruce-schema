@@ -55,7 +55,7 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 
 /** How a field is represented in the template */
 export interface IFieldTemplateItem extends ISchemaTemplateNames {
-	/** The name of the field class */
+	/** The name of the field class itself */
 	className: string
 	/** There package where the field definition lives */
 	package: string
@@ -67,6 +67,8 @@ export interface IFieldTemplateItem extends ISchemaTemplateNames {
 	camelType: string
 	/** Is this field type introduced by the skill be worked on right meow */
 	isLocal: boolean
-	/** The description associated with the field */
+	/** Exactly what it says */
 	description: string
+	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
+	valueTypeGeneratorType: string
 }
