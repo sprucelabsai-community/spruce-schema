@@ -1,3 +1,10 @@
+# [4.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v3.3.0...v4.0.0) (2020-07-02)
+
+
+### Breaking Changes
+
+* updated template support ([9063932](https://github.com/sprucelabsai/spruce-schema/commit/9063932))
+
 # [3.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.9...v3.3.0) (2020-07-02)
 
 
