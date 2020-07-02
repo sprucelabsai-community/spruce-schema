@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.9...v3.3.0) (2020-07-02)
+
+
+### Features
+
+* progress ([a674a1a](https://github.com/sprucelabsai/spruce-schema/commit/a674a1a))
+
 ## [3.2.9](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.8...v3.2.9) (2020-07-01)
 
 ## [3.2.8](https://github.com/sprucelabsai/spruce-schema/compare/v3.2.7...v3.2.8) (2020-06-30)
