@@ -12,7 +12,7 @@ jobs:
       - run: yarn lint
       - run: yarn build
       - run: yarn test
-  do_release:
+  npm_publish:
     docker:
       - image: circleci/node:12
     steps:
@@ -23,8 +23,8 @@ jobs:
       - run:
           command: |
             COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
-            if [[ $COMMIT_MSG == *"[skip-ci-version]"* ]]; then
-              echo "[skip-ci-version] detected. Stopping."
+            if [[ $COMMIT_MSG == *"[npm-release]"* ]]; then
+              echo "[npm-release] detected. No publish necessary 👊"
               circleci step halt
             fi
       - run: yarn install --frozen-lockfile
@@ -32,39 +32,15 @@ jobs:
       - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
       - run: git config --global user.name "$GIT_AUTHOR_NAME"
       - run: yarn run release
-  tag_latest:
-    docker:
-      - image: circleci/node:12
-    steps:
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-      - checkout
-      - run:
-          name: Tag latest
-          command: npm dist-tag add $(node -p "require('./package.json').name")@$(npm v . dist-tags.beta) latest
 workflows:
   version: 2
   do_build:
     jobs:
       - test:
           context: public_package_publish
-          filters:
-            branches:
-              ignore:
-                - master
-      - do_release:
+      - npm_publish:
           requires:
             - test
-          context: public_package_publish
-          filters:
-            branches:
-              only:
-                - alpha
-                - qa
-                - dev
-                - /prerelease-.*/
-      - tag_latest:
           context: public_package_publish
           filters:
             branches:

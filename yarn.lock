@@ -1278,10 +1278,10 @@
     "@sprucelabs/error" "^1.0.11"
     "@sprucelabs/log" "^10.2.1"
 
-"@sprucelabs/semantic-release@^3.0.4":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/semantic-release/-/semantic-release-3.0.5.tgz#8a9ea27d4893c3acb2f965338aaa384a0eddca8b"
-  integrity sha512-CGN3z5e2H29o8Xvf4wlAOPuDGcEcfGkSPhqxN+U4UU5hpteb02+9G8+3gXN7q2sExUcxm+DJWwuM+tSYCEJ/qA==
+"@sprucelabs/semantic-release@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/semantic-release/-/semantic-release-4.0.4.tgz#5b36a88fd9018b91f75d58a24d25f3fa53a93b8b"
+  integrity sha512-hRvNTNBM27xP2/v3FCvQLbdqwlSUoCp5jYuOKzAq1XIrafI7alMRtkhsSuY4R+5ViZmM6XdOoF5ZARDowAjUew==
   dependencies:
     "@semantic-release/changelog" "^5.0.0"
     "@semantic-release/git" "^9.0.0"
