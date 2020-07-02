@@ -48,11 +48,12 @@ export function validateFieldRegistration(
 	if (typeof registration !== 'object') {
 		errors.push('field_registration_must_be_object')
 	} else {
-		Object.keys(builtRegistration).forEach(key => {
+		Object.keys(builtRegistration).forEach(untypedKey => {
+			const key = untypedKey as keyof IFieldRegistration
 			if (typeof registration[key] !== 'string') {
 				errors.push(`${key}_must_be_string`)
 			} else {
-				builtRegistration[key as keyof IFieldRegistration] = registration[key]
+				builtRegistration[key] = registration[key]
 			}
 		})
 	}
