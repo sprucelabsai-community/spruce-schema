@@ -14,12 +14,11 @@ export default abstract class AbstractField<F extends FieldDefinition>
 	public definition: F
 
 	/** Shortcut to this field */
-	public type: F['type']
+	public readonly type: F['type']
 
 	/** The name of this field (camel case) */
-	public name: string
+	public readonly name: string
 
-	/** Construct a new field based on the definition */
 	public constructor(name: string, definition: F) {
 		this.definition = definition
 		this.name = name
@@ -27,7 +26,6 @@ export default abstract class AbstractField<F extends FieldDefinition>
 		return this
 	}
 
-	/** A description of this field for others */
 	public static get description(): string {
 		throw new SpruceError({
 			code: ErrorCode.NotImplemented,
@@ -39,6 +37,10 @@ public static get description() {
 
 `
 		})
+	}
+
+	public static get valueTypeGeneratorType(): string {
+		return `I${this.name}Definition['value']`
 	}
 
 	/** Details needed for generating templates */

@@ -12,6 +12,10 @@ export default class SelectField<
 		return 'Stored as string, lets user select between available options.'
 	}
 
+	public static get valueTypeGeneratorType() {
+		return 'SelectValueTypeGenerator<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>'
+	}
+
 	public constructor(name: string, definition: T) {
 		super(name, definition)
 		if (!definition.options || !definition.options.choices) {

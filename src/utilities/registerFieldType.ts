@@ -5,37 +5,34 @@ import { FieldSubclass } from '../fields/field.static.types'
 export interface IFieldRegistration {
 	/** The type that is used as the key to the enum */
 	type: string
-
 	/** The package that defined this field */
 	package: string
-
 	/** The name of this class based on class reference */
 	className: string
-
 	/** Pulls the description off the field */
 	description: string
-
 	/** How should this field be imported (SpruceSchema) */
 	importAs: string
+	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
+	valueTypeGeneratorType: string
 }
 
 export interface IFieldRegistrationOptions {
-	/** The package that defined this field */
+	/** The package that defined this field, like @sprucelabs/schema */
 	package: string
 
-	/** The type that is used as the key to the enum */
+	/** The type that is used as the key to the enum, auto PascalCased */
 	type: string
 
-	/** The class */
+	/** A reference to the class of the field */
 	class: FieldSubclass<any>
 
-	/** How should this field be imported (SpruceSchema) */
+	/** How should this field be imported (import * as {{importAs}} from {{package}}) */
 	importAs: string
 }
 
-/** Validator to see if registrations are good */
 export function validateFieldRegistration(
-	registration: any
+	registration: IFieldRegistration
 ): asserts registration is IFieldRegistration {
 	const errors: string[] = []
 
@@ -44,7 +41,8 @@ export function validateFieldRegistration(
 		className: '***missing***',
 		type: '***missing***',
 		importAs: '***missing***',
-		description: '***missing***'
+		description: '***missing***',
+		valueTypeGeneratorType: '***missing***'
 	}
 
 	if (typeof registration !== 'object') {
@@ -78,9 +76,12 @@ export default function registerFieldType(
 		importAs: options.importAs,
 		// TODO change this up when typescript supports typing static methods on a class
 		// @ts-ignore
-		description: options.class.description
+		description: options.class.description,
+		// @ts-ignore
+		valueTypeGeneratorType: options.class.valueTypeGeneratorType
 	}
 
 	validateFieldRegistration(registration)
+
 	return registration
 }

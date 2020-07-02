@@ -1,6 +1,7 @@
 // This types file can only depend on types.
 import FieldType from './fieldTypeEnum'
 import { IField } from '../../../fields/field.static.types'
+
 import { IFileFieldDefinition } from '../../../fields/FileField.types'
 import { ISelectFieldDefinition, SelectValueTypeGenerator } from '../../../fields/SelectField.types'
 import { ITextFieldDefinition } from '../../../fields/TextField.types'

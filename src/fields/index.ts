@@ -10,12 +10,14 @@ export { default as DurationField } from './DurationField'
 export * from './IdField'
 export { default as IdField } from './IdField'
 export * from './SelectField'
+export * from './SelectField.types'
 export { default as SelectField } from './SelectField'
 export * from './AddressField'
 export { default as AddressField } from './AddressField'
 export * from './PhoneField'
 export { default as PhoneField } from './PhoneField'
 export * from './SchemaField'
+export * from './SchemaField.types'
 export { default as SchemaField } from './SchemaField'
 export * from './RawField'
 export { default as RawField } from './RawField'
@@ -27,3 +29,8 @@ export * from './FileField'
 export { default as FileField } from './FileField'
 export * from './DateField'
 export { default as DateField } from './DateField'
+
+export {
+	IFieldDefinition,
+	FieldDefinitionValueType
+} from './field.static.types'
