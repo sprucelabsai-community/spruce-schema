@@ -7,7 +7,7 @@ import {
 	SchemaFieldValueTypeGenerator
 } from '../../fields/SchemaField.types'
 import Schema from '../../Schema'
-import { SchemaDefinitionValues } from '../../schema.types'
+import { SchemaDefinitionValues } from '../../schemas.static.types'
 import buildPersonWithCars, {
 	IPersonDefinition,
 	ICarDefinition,

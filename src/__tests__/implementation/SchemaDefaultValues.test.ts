@@ -6,7 +6,7 @@ import {
 	SchemaDefinitionDefaultValues,
 	ISchema,
 	SchemaDefinitionValues
-} from '../../schema.types'
+} from '../../schemas.static.types'
 import buildPersonWithCars, {
 	IPersonDefinition,
 	ICarDefinition,

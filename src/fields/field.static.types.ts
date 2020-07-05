@@ -1,16 +1,15 @@
 // This is the static compliment to #spruce/schemas/fields/fields.types
-// The rule is, if it's not going to be overwritten by a generator, put it in #spruce
-import {
-	ISchemaDefinition,
-	SchemaDefinitionValues,
-	ISchema
-} from 'schema.types'
 import {
 	FieldDefinition,
 	IFieldValueTypeGeneratorMap
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
+import {
+	ISchemaDefinition,
+	SchemaDefinitionValues,
+	ISchema
+} from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
 export interface IDefinitionsById {

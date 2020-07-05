@@ -1,3 +1,4 @@
+// This is the static compliment to #spruce/schemas/schema/schemas.types
 import {
 	FieldDefinition,
 	Field,

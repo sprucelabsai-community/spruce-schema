@@ -5,7 +5,7 @@ import {
 	ISchemaDefinition,
 	ISchema,
 	SchemaDefinitionValues
-} from '../schema.types'
+} from '../schemas.static.types'
 import { IsArrayNoUnpack, IsArray } from '../types/utilities.types'
 import { IFieldDefinition } from './field.static.types'
 
