@@ -1,6 +1,6 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import Schema from '../../Schema'
-import { ISchemaDefinition } from '../../schema.types'
+import { ISchemaDefinition } from '../../schemas.static.types'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 
 // turn off duplicate checks because tests all run in the same runtime

@@ -2,7 +2,10 @@ import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import Schema from '../Schema'
-import { ISchemaDefinition, ISchemaIdWithVersion } from '../schema.types'
+import {
+	ISchemaDefinition,
+	ISchemaIdWithVersion
+} from '../schemas.static.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
@@ -131,7 +134,7 @@ export default class SchemaField<
 			if (matchedTemplateItem) {
 				let valueType: string | undefined
 				if (renderAs === TemplateRenderAs.Value) {
-					valueType = `${matchedTemplateItem.nameCamel}Definition${matchedTemplateItem.namespace}`
+					valueType = `${matchedTemplateItem.nameCamel}Definition`
 				} else {
 					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
 						version ? `.${version}` : ''

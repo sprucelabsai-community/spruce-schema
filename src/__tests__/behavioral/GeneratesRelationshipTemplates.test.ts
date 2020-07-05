@@ -92,14 +92,14 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 	@test(
 		'schemaId',
 		{ isArray: false, options: { schemaId: { id: 'union-person' } } },
-		'[unionPersonDefinitionCore]',
+		'[unionPersonDefinition]',
 		'SpruceSchemas.Core.IUnionPerson',
 		'SpruceSchemas.Core.UnionPerson.IDefinition[]'
 	)
 	@test(
 		'schemaId isArray',
 		{ isArray: true, options: { schemaId: { id: 'union-person' } } },
-		'[unionPersonDefinitionCore]',
+		'[unionPersonDefinition]',
 		'SpruceSchemas.Core.IUnionPerson[]',
 		'SpruceSchemas.Core.UnionPerson.IDefinition[]'
 	)
@@ -109,7 +109,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			isArray: false,
 			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] }
 		},
-		'[unionPersonDefinitionCore, wrenchDefinitionCore]',
+		'[unionPersonDefinition, wrenchDefinition]',
 		"{ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench }",
 		'(SpruceSchemas.Core.UnionPerson.IDefinition | SpruceSchemas.Core.Wrench.IDefinition)[]'
 	)
@@ -119,7 +119,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			isArray: true,
 			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] }
 		},
-		'[unionPersonDefinitionCore, wrenchDefinitionCore]',
+		'[unionPersonDefinition, wrenchDefinition]',
 		"({ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench })[]",
 		'(SpruceSchemas.Core.UnionPerson.IDefinition | SpruceSchemas.Core.Wrench.IDefinition)[]'
 	)

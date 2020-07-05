@@ -2,7 +2,7 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { buildSchemaDefinition } from '../..'
-import { ISchemaDefinition } from '../../schema.types'
+import { ISchemaDefinition } from '../../schemas.static.types'
 
 export default class BuildSchemaDefinitionTest extends BaseTest {
 	@test('Can build schema (will always pass, but fail lint)')

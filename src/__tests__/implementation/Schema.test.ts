@@ -4,7 +4,7 @@ import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ErrorCode } from '../../errors/error.types'
 import SpruceError from '../../errors/SpruceError'
 import Schema from '../../Schema'
-import { SchemaDefinitionValues, ISchema } from '../../schema.types'
+import { SchemaDefinitionValues, ISchema } from '../../schemas.static.types'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import buildPersonWithCars, {
 	ICarDefinition,

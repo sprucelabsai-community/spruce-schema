@@ -16,7 +16,12 @@ export type SelectValueTypeGenerator<
 	F extends ISelectFieldDefinition
 > = F['options']['choices'][number]['value']
 
-export type ISelectFieldDefinition = IFieldDefinition<string> & {
+export type ISelectFieldDefinition = IFieldDefinition<
+	string,
+	string,
+	string[],
+	string[]
+> & {
 	/** * .Select - A way to chose between a choices */
 	type: FieldType.Select
 	options: ISelectFieldOptions

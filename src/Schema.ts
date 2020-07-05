@@ -25,7 +25,7 @@ import {
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
 	ISchema
-} from './schema.types'
+} from './schemas.static.types'
 
 /** Universal schema class  */
 export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {

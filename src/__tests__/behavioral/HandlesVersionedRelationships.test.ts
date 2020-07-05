@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import Schema from '../../Schema'
-import { ISchema } from '../../schema.types'
+import { ISchema } from '../../schemas.static.types'
 import buildVersionedPersonWithCars, {
 	ICarV2Definition
 } from '../data/versionedPersonWithCars'

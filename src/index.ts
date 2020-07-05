@@ -4,7 +4,7 @@ import Schema from './Schema'
 export default Schema
 
 // Schema types
-export * from './schema.types'
+export * from './schemas.static.types'
 
 // Fields
 export * from './fields'

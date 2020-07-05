@@ -1,6 +1,6 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { PickFieldNames } from '../../schema.types'
+import { PickFieldNames } from '../../schemas.static.types'
 import {
 	SelectChoicesToHash,
 	selectChoicesToHash,

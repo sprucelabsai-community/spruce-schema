@@ -7,7 +7,7 @@ import {
 	ISchemaDefinition,
 	ISchemaDefinitionFields,
 	PickFieldNames
-} from '../schema.types'
+} from '../schemas.static.types'
 
 /** Turn select options into a key/value pair */
 export type SelectChoicesToHash<
