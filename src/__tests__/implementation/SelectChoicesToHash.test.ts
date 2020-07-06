@@ -4,7 +4,7 @@ import { PickFieldNames } from '../../schemas.static.types'
 import {
 	SelectChoicesToHash,
 	selectChoicesToHash,
-	definitionChoicesToHash
+	definitionChoicesToHash,
 } from '../../utilities/selectChoicesToHash'
 import buildPersonWithCars from '../data/personWithCars'
 

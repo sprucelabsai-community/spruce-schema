@@ -1,6 +1,6 @@
 import {
 	IFieldTemplateDetails,
-	IFieldTemplateDetailOptions
+	IFieldTemplateDetailOptions,
 } from '../template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions } from './field.static.types'
@@ -17,7 +17,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 	): IFieldTemplateDetails {
 		const { definition } = options
 		return {
-			valueType: `string${definition.isArray ? '[]' : ''}`
+			valueType: `string${definition.isArray ? '[]' : ''}`,
 		}
 	}
 

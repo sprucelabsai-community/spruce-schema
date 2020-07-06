@@ -13,7 +13,7 @@ export enum TemplateRenderAs {
 	/** We are rendering as a value (only called if a value is set in the schema definition) */
 	Value = 'value',
 	/** We are rendering as the definition's type (IDefinition) */
-	DefinitionType = 'definitionType'
+	DefinitionType = 'definitionType',
 }
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */

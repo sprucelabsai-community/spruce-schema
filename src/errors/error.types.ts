@@ -19,7 +19,7 @@ export enum ErrorCode {
 	/** * A field was registered that was not valid */
 	InvalidFieldRegistration = 'INVALID_FIELD_REGISTRATION',
 	/** * Something missed on matching a version. */
-	VersionNotFound = 'VERSION_NOT_FOUND'
+	VersionNotFound = 'VERSION_NOT_FOUND',
 }
 
 export type SchemaErrorOptions =

@@ -3,7 +3,7 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import Schema from '../../Schema'
 import { ISchema } from '../../schemas.static.types'
 import buildVersionedPersonWithCars, {
-	ICarV2Definition
+	ICarV2Definition,
 } from '../data/versionedPersonWithCars'
 
 export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTest {
@@ -13,7 +13,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 			personV1Definition,
 			personV2Definition,
 			carV1Definition,
-			carV2Definition
+			carV2Definition,
 		} = buildVersionedPersonWithCars()
 
 		assert.isEqual(personV1Definition.id, personV2Definition.id)
@@ -32,13 +32,13 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		const {
 			personV2Definition,
 			carV1Definition,
-			carV2Definition
+			carV2Definition,
 		} = buildVersionedPersonWithCars()
 
 		const carV1 = new Schema(carV1Definition, { name: 'version 1' })
 		const carV2 = new Schema(carV2Definition, {
 			name: 'version 2',
-			newRequiredOnCar: 'is required'
+			newRequiredOnCar: 'is required',
 		})
 
 		assert.isEqual(carV1.version, 'v1')
@@ -47,7 +47,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		const person = new Schema(personV2Definition, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: { schemaId: 'car', values: carV1.getValues() },
-			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() }
+			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() },
 		})
 
 		assert.doesThrow(() => person.getValues(), /version/gi)
@@ -58,13 +58,13 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		const {
 			personV2Definition,
 			carV1Definition,
-			carV2Definition
+			carV2Definition,
 		} = buildVersionedPersonWithCars()
 
 		const carV1 = new Schema(carV1Definition, { name: 'version 1' })
 		const carV2 = new Schema(carV2Definition, {
 			name: 'version 2',
-			newRequiredOnCar: 'is required'
+			newRequiredOnCar: 'is required',
 		})
 
 		assert.isEqual(carV1.version, 'v1')
@@ -75,13 +75,13 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 			optionalCarWithCallback: {
 				schemaId: 'car',
 				version: carV1.version,
-				values: carV1.getValues()
+				values: carV1.getValues(),
 			},
 			optionalCarOrTruck: {
 				schemaId: 'car',
 				version: carV2.version,
-				values: carV2.getValues()
-			}
+				values: carV2.getValues(),
+			},
 		})
 
 		const values = person.getValues()

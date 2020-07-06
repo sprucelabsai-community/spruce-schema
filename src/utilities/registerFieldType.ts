@@ -42,13 +42,13 @@ export function validateFieldRegistration(
 		type: '***missing***',
 		importAs: '***missing***',
 		description: '***missing***',
-		valueTypeGeneratorType: '***missing***'
+		valueTypeGeneratorType: '***missing***',
 	}
 
 	if (typeof registration !== 'object') {
 		errors.push('field_registration_must_be_object')
 	} else {
-		Object.keys(builtRegistration).forEach(untypedKey => {
+		Object.keys(builtRegistration).forEach((untypedKey) => {
 			const key = untypedKey as keyof IFieldRegistration
 			if (typeof registration[key] !== 'string') {
 				errors.push(`${key}_must_be_string`)
@@ -61,7 +61,7 @@ export function validateFieldRegistration(
 	if (errors.length > 0) {
 		throw new SpruceError({
 			code: ErrorCode.InvalidFieldRegistration,
-			...builtRegistration
+			...builtRegistration,
 		})
 	}
 }
@@ -79,7 +79,7 @@ export default function registerFieldType(
 		// @ts-ignore
 		description: options.class.description,
 		// @ts-ignore
-		valueTypeGeneratorType: options.class.valueTypeGeneratorType
+		valueTypeGeneratorType: options.class.valueTypeGeneratorType,
 	}
 
 	validateFieldRegistration(registration)

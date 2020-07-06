@@ -14,7 +14,7 @@ interface IFileDetailExpectations {
 
 enum EnvKind {
 	Linux = 'linux',
-	Windows = 'windows'
+	Windows = 'windows',
 }
 
 const linuxTestPath = '/some/directory/path'
@@ -28,32 +28,32 @@ export default class FileFieldTest extends BaseTest {
 			target: {
 				type: FieldType.File,
 				isRequired: true,
-				label: 'What file would you like to test?'
-			}
-		}
+				label: 'What file would you like to test?',
+			},
+		},
 	})
 
 	@test('Can get .ts details', '/does/not/need/to/exist/TestFile.ts', {
 		expectedName: 'TestFile.ts',
 		expectedType: 'application/typescript',
-		expectedExtension: '.ts'
+		expectedExtension: '.ts',
 	})
 	@test('Can get .js details', '/does/not/need/to/exist/TestFile.js', {
 		expectedName: 'TestFile.js',
 		expectedType: 'application/javascript',
-		expectedExtension: '.js'
+		expectedExtension: '.js',
 	})
 	@test('Can get .png details', '/does/not/need/to/exist/avatar.png', {
 		expectedName: 'avatar.png',
 		expectedType: 'image/png',
-		expectedExtension: '.png'
+		expectedExtension: '.png',
 	})
 	public static testGettingFileDetails(
 		filePath: string,
 		expectations: IFileDetailExpectations
 	) {
 		const field = FieldFactory.field('test', {
-			type: FieldType.File
+			type: FieldType.File,
 		})
 
 		const file = field.toValueType(filePath)
@@ -84,7 +84,7 @@ export default class FileFieldTest extends BaseTest {
 			name: 'NewFile.ts',
 			ext: '.ts',
 			type: 'application/typescript',
-			path: undefined
+			path: undefined,
 		}
 	)
 	@test(
@@ -94,7 +94,7 @@ export default class FileFieldTest extends BaseTest {
 			name: 'NewFile.ts',
 			ext: '.ts',
 			type: 'application/typescript',
-			path: '/path/to/a/non/existent/file/isOk'
+			path: '/path/to/a/non/existent/file/isOk',
 		}
 	)
 	public static testCompletingFileObject(
@@ -114,7 +114,7 @@ export default class FileFieldTest extends BaseTest {
 			path: linuxTestPath,
 			ext: '.ts',
 			type: 'application/typescript',
-			name: 'test.ts'
+			name: 'test.ts',
 		}
 	)
 	@test(
@@ -122,7 +122,7 @@ export default class FileFieldTest extends BaseTest {
 		EnvKind.Linux,
 		linuxTestPath,
 		{
-			name: `${linuxTestPath}/test.ts`
+			name: `${linuxTestPath}/test.ts`,
 		}
 	)
 	@test(
@@ -139,7 +139,7 @@ export default class FileFieldTest extends BaseTest {
 			path: windowsTestPath,
 			ext: '.ts',
 			type: 'application/typescript',
-			name: 'test.ts'
+			name: 'test.ts',
 		}
 	)
 	@test(
@@ -147,7 +147,7 @@ export default class FileFieldTest extends BaseTest {
 		EnvKind.Windows,
 		windowsTestPath,
 		{
-			name: `${windowsTestPath}\\test.ts`
+			name: `${windowsTestPath}\\test.ts`,
 		}
 	)
 	@test(
@@ -173,7 +173,7 @@ export default class FileFieldTest extends BaseTest {
 		schema.set('target', setTarget)
 
 		const values = schema.getValues({
-			fields: ['target']
+			fields: ['target'],
 		})
 
 		assert.isOk(values.target)

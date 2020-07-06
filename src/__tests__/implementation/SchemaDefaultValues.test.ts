@@ -5,12 +5,12 @@ import {
 	ISchemaDefinition,
 	SchemaDefinitionDefaultValues,
 	ISchema,
-	SchemaDefinitionValues
+	SchemaDefinitionValues,
 } from '../../schemas.static.types'
 import buildPersonWithCars, {
 	IPersonDefinition,
 	ICarDefinition,
-	ITruckDefinition
+	ITruckDefinition,
 } from '../data/personWithCars'
 
 Schema.enableDuplicateCheckWhenTracking = false
@@ -75,16 +75,16 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		personDefinition,
 		{
 			optionalCarWithDefaultValue: new Schema(carDefinition, {
-				name: 'fast car'
+				name: 'fast car',
 			}),
 			optionalSelectWithDefaultValue: 'hello',
 			optionalTextWithDefaultValue: 'world',
 			optionalIsArrayCarOrTruckWithDefaultValue: [
-				new Schema(carDefinition, { name: 'fast car' })
+				new Schema(carDefinition, { name: 'fast car' }),
 			],
 			optionalCarOrTruckWithDefaultValue: new Schema(carDefinition, {
-				name: 'fast car'
-			})
+				name: 'fast car',
+			}),
 		}
 	)
 	protected static defaultValueTests(
@@ -101,7 +101,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		const schema = new Schema(personDefinition)
 		const defaultValues = schema.getDefaultValues()
 		const defaultValuesWithoutSchemas = schema.getDefaultValues({
-			createSchemaInstances: false
+			createSchemaInstances: false,
 		})
 
 		assert.isFunction(
@@ -119,7 +119,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		)
 
 		const carSchema = new Schema(carDefinition, {
-			name: 'fast car'
+			name: 'fast car',
 		}) as ISchema<ICarDefinition>
 
 		assert.isType<IPersonMappedDefaultValues>(defaultValues)
@@ -140,7 +140,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		const schema = new Schema(personDefinition)
 		const {
 			optionalIsArrayCarOrTruckWithDefaultValue,
-			optionalCarOrTruckWithDefaultValue
+			optionalCarOrTruckWithDefaultValue,
 		} = schema.getDefaultValues()
 
 		assert.isFunction(optionalCarOrTruckWithDefaultValue.get)

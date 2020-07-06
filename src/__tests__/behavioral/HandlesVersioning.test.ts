@@ -19,9 +19,9 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 			version: 'v1',
 			fields: {
 				length: {
-					type: FieldType.Number
-				}
-			}
+					type: FieldType.Number,
+				},
+			},
 		})
 		const wrenchV2 = buildSchemaDefinition({
 			id: 'wrench',
@@ -29,13 +29,13 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 			version: 'v2',
 			fields: {
 				length: {
-					type: FieldType.Number
+					type: FieldType.Number,
 				},
 				diameter: {
 					type: FieldType.Number,
-					isRequired: true
-				}
-			}
+					isRequired: true,
+				},
+			},
 		})
 		return { wrenchV1, wrenchV2 }
 	}

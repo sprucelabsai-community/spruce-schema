@@ -14,7 +14,7 @@ export default class DateTimeField extends AbstractField<
 		return {
 			valueType: `${options.importAs}.IDateTimeFieldValue${
 				options.definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 }

@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'Text',
 	class: TextField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })

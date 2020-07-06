@@ -3,12 +3,12 @@ import {
 	FieldDefinition,
 	Field,
 	IFieldDefinitionMap,
-	IFieldMap
+	IFieldMap,
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	IFieldDefinition,
-	FieldDefinitionValueType
+	FieldDefinitionValueType,
 } from './fields/field.static.types'
 
 export interface ISchema<S extends ISchemaDefinition> {

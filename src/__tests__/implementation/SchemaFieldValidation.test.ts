@@ -18,7 +18,7 @@ export default class SchemaFieldTest extends BaseTest {
 		[]
 	)
 	@test("knows it's missing the name and name is required", { taco: true }, [
-		'invalid_related_schema_values'
+		'invalid_related_schema_values',
 	])
 	protected static async testNonUnionValidation(
 		value: any,
@@ -41,16 +41,16 @@ export default class SchemaFieldTest extends BaseTest {
 			this.personDefinition.fields.optionalIsArrayCars
 		)
 
-		let codes = requiredField.validate(value).map(err => err.code)
+		let codes = requiredField.validate(value).map((err) => err.code)
 		assert.isEqualDeep(codes, expectedErrorCodes)
 
-		codes = optionalField.validate(value).map(err => err.code)
+		codes = optionalField.validate(value).map((err) => err.code)
 		assert.isEqualDeep(codes, expectedErrorCodes)
 
-		codes = requiredIsArrayField.validate(value).map(err => err.code)
+		codes = requiredIsArrayField.validate(value).map((err) => err.code)
 		assert.isEqualDeep(codes, expectedErrorCodes)
 
-		codes = optionalIsArrayField.validate(value).map(err => err.code)
+		codes = optionalIsArrayField.validate(value).map((err) => err.code)
 		assert.isEqualDeep(codes, expectedErrorCodes)
 	}
 }

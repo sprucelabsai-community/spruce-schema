@@ -12,7 +12,7 @@ export default class DateField extends AbstractField<IDateFieldDefinition> {
 		return {
 			valueType: `${options.importAs}.IDateFieldValue${
 				options.definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 }

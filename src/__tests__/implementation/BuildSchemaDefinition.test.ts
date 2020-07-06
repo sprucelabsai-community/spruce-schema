@@ -12,9 +12,9 @@ export default class BuildSchemaDefinitionTest extends BaseTest {
 			name: 'test 1',
 			fields: {
 				firstName: {
-					type: FieldType.Text
-				}
-			}
+					type: FieldType.Text,
+				},
+			},
 		})
 		assert.isOk(schema)
 		assert.isOk(schema.fields.firstName)
@@ -30,15 +30,15 @@ export default class BuildSchemaDefinitionTest extends BaseTest {
 					type: FieldType.Text,
 					label: 'Name',
 					isRequired: true,
-					hint: "What's the name of your skill?"
+					hint: "What's the name of your skill?",
 				},
 				description: {
 					type: FieldType.Text,
 					label: 'Description',
 					isRequired: true,
-					hint: 'How would you describe your skill?'
-				}
-			}
+					hint: 'How would you describe your skill?',
+				},
+			},
 		})
 
 		type TestType = typeof schema

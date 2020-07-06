@@ -1,14 +1,14 @@
 // This is the static compliment to #spruce/schemas/fields/fields.types
 import {
 	FieldDefinition,
-	IFieldValueTypeGeneratorMap
+	IFieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import {
 	ISchemaDefinition,
 	SchemaDefinitionValues,
-	ISchema
+	ISchema,
 } from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 

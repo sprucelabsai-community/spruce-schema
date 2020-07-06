@@ -10,7 +10,7 @@ export default class IdField extends AbstractField<IIdFieldDefinition> {
 		options: IFieldTemplateDetailOptions<IIdFieldDefinition>
 	) {
 		return {
-			valueType: `string${options.definition.isArray ? '[]' : ''}`
+			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}
 	}
 }

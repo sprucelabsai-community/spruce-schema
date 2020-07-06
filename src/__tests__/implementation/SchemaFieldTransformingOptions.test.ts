@@ -11,9 +11,9 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		fields: {
 			wrenchSize: {
 				type: FieldType.Number,
-				label: 'Size'
-			}
-		}
+				label: 'Size',
+			},
+		},
 	})
 
 	private static screwdriverDefinition = buildSchemaDefinition({
@@ -21,13 +21,13 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		name: 'Screwdriver',
 		fields: {
 			isFlathead: {
-				type: FieldType.Boolean
+				type: FieldType.Boolean,
 			},
 			screwdriverLength: {
 				type: FieldType.Number,
-				label: 'Length'
-			}
-		}
+				label: 'Length',
+			},
+		},
 	})
 
 	private static personDefinition = buildSchemaDefinition({
@@ -39,9 +39,9 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				options: {
 					schemas: [
 						SchemaFieldTemplateTest.wrenchDefinition,
-						SchemaFieldTemplateTest.screwdriverDefinition
-					]
-				}
+						SchemaFieldTemplateTest.screwdriverDefinition,
+					],
+				},
 			},
 			tools: {
 				type: FieldType.Schema,
@@ -49,15 +49,15 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 				options: {
 					schemas: [
 						SchemaFieldTemplateTest.wrenchDefinition,
-						SchemaFieldTemplateTest.screwdriverDefinition
-					]
-				}
-			}
-		}
+						SchemaFieldTemplateTest.screwdriverDefinition,
+					],
+				},
+			},
+		},
 	})
 
 	@test('can normalize schemaId to array [schemaId]', { schemaId: 'user' }, [
-		{ id: 'user' }
+		{ id: 'user' },
 	])
 	@test(
 		'can normalize schemaIds to array [schemaId]',
@@ -80,13 +80,13 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		{
 			schemas: [
 				SchemaFieldTemplateTest.wrenchDefinition,
-				SchemaFieldTemplateTest.screwdriverDefinition
-			]
+				SchemaFieldTemplateTest.screwdriverDefinition,
+			],
 		},
 		[{ id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.wrenchDefinition,
-			SchemaFieldTemplateTest.screwdriverDefinition
+			SchemaFieldTemplateTest.screwdriverDefinition,
 		]
 	)
 	@test(
@@ -95,14 +95,14 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 			schema: SchemaFieldTemplateTest.personDefinition,
 			schemas: [
 				SchemaFieldTemplateTest.wrenchDefinition,
-				SchemaFieldTemplateTest.screwdriverDefinition
-			]
+				SchemaFieldTemplateTest.screwdriverDefinition,
+			],
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.personDefinition,
 			SchemaFieldTemplateTest.wrenchDefinition,
-			SchemaFieldTemplateTest.screwdriverDefinition
+			SchemaFieldTemplateTest.screwdriverDefinition,
 		]
 	)
 	@test(
@@ -110,15 +110,15 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		{
 			schemas: [
 				SchemaFieldTemplateTest.wrenchDefinition,
-				SchemaFieldTemplateTest.screwdriverDefinition
+				SchemaFieldTemplateTest.screwdriverDefinition,
 			],
-			schema: SchemaFieldTemplateTest.personDefinition
+			schema: SchemaFieldTemplateTest.personDefinition,
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			SchemaFieldTemplateTest.personDefinition,
 			SchemaFieldTemplateTest.wrenchDefinition,
-			SchemaFieldTemplateTest.screwdriverDefinition
+			SchemaFieldTemplateTest.screwdriverDefinition,
 		]
 	)
 	@test(
@@ -126,15 +126,15 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		{
 			schemas: [
 				SchemaFieldTemplateTest.wrenchDefinition,
-				SchemaFieldTemplateTest.screwdriverDefinition
+				SchemaFieldTemplateTest.screwdriverDefinition,
 			],
-			schemaId: 'union-person'
+			schemaId: 'union-person',
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
 		[
 			{ id: 'union-person' },
 			SchemaFieldTemplateTest.wrenchDefinition,
-			SchemaFieldTemplateTest.screwdriverDefinition
+			SchemaFieldTemplateTest.screwdriverDefinition,
 		]
 	)
 	protected static async testNormalizingOptionsToId(
@@ -145,7 +145,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			{
 				type: FieldType.Schema,
-				options
+				options,
 			}
 		)
 		assert.isEqualDeep(idsWithVersion, toSchemaIdExpected)
@@ -153,7 +153,7 @@ export default class SchemaFieldTemplateTest extends BaseTest {
 		const schemasOrIdsWithVersion = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			{
 				type: FieldType.Schema,
-				options
+				options,
 			}
 		)
 		assert.isEqualDeep(

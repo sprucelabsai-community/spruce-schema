@@ -3,12 +3,12 @@ import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails
+	IFieldTemplateDetails,
 } from '../template.types'
 import AbstractField from './AbstractField'
 import {
 	IDirectoryFieldDefinition,
-	IDirectoryFieldValue
+	IDirectoryFieldValue,
 } from './DirectoryField.types'
 import { ToValueTypeOptions } from './field.static.types'
 
@@ -26,7 +26,7 @@ export default class DirectoryField extends AbstractField<
 		return {
 			valueType: `${options.importAs}.IDirectoryFieldValue${
 				definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 
@@ -52,7 +52,7 @@ export default class DirectoryField extends AbstractField<
 				fieldType: FieldType.Directory,
 				incomingTypeof: typeof value,
 				incomingValue: value,
-				name: this.name
+				name: this.name,
 			})
 		}
 

@@ -11,7 +11,7 @@ export default class BooleanFieldTest extends BaseTest {
 	@test('empty string is false', '', false)
 	protected static async transformTests(value: any, expected: boolean) {
 		const field = FieldFactory.field('transformTest', {
-			type: FieldType.Boolean
+			type: FieldType.Boolean,
 		})
 		const result = field.toValueType(value)
 		assert.isEqual(result, expected)
@@ -23,7 +23,7 @@ export default class BooleanFieldTest extends BaseTest {
 			label: 'Public',
 			type: FieldType.Boolean,
 			hint: 'Is this location viewable by guests?',
-			defaultValue: false
+			defaultValue: false,
 		}
 
 		assert.isType<IBooleanFieldDefinition>(def)
@@ -34,7 +34,7 @@ export default class BooleanFieldTest extends BaseTest {
 		const def: FieldDefinition = {
 			type: FieldType.Boolean,
 			isArray: true,
-			defaultValue: [true]
+			defaultValue: [true],
 		}
 
 		assert.isType<IBooleanFieldDefinition>(def)

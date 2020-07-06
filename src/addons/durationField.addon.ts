@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'Duration',
 	class: DurationField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })
