@@ -4,7 +4,7 @@ import SpruceError from '../errors/SpruceError'
 import log from '../singletons/log'
 import {
 	IFieldTemplateDetails,
-	IFieldTemplateDetailOptions
+	IFieldTemplateDetailOptions,
 } from '../template.types'
 import { ValidateOptions, IField } from './field.static.types'
 
@@ -35,7 +35,7 @@ public static get description() {
 	return '*** describe your field here ***'
 }
 
-`
+`,
 		})
 	}
 
@@ -59,7 +59,7 @@ public static generateTemplateDetails(
 	return {
 		valueType: \`string\${definition.isArray ? '[]' : ''}\`
 	}
-}`
+}`,
 		})
 	}
 
@@ -89,7 +89,7 @@ public static generateTemplateDetails(
 			errors.push({
 				code: 'missing_required',
 				friendlyMessage: `${this.name} is required!`,
-				name: this.name
+				name: this.name,
 			})
 		}
 

@@ -5,7 +5,7 @@ import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
 import {
 	IDurationFieldDefinition,
-	IDurationFieldValue
+	IDurationFieldValue,
 } from './DurationField.types'
 import { ValidateOptions } from './field.static.types'
 import { ITextFieldDefinition } from './TextField.types'
@@ -36,9 +36,9 @@ export function buildDuration(
 				{
 					code: 'failed_to_parse_to_date',
 					name: 'na',
-					friendlyMessage: `Could not turn ${value} into IDurationFieldValue`
-				}
-			]
+					friendlyMessage: `Could not turn ${value} into IDurationFieldValue`,
+				},
+			],
 		})
 	}
 
@@ -65,7 +65,7 @@ export default class DurationField extends AbstractField<
 		return {
 			valueType: `${options.importAs}.IDurationFieldValue${
 				options.definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 
@@ -81,7 +81,7 @@ export default class DurationField extends AbstractField<
 				code: err.options?.code || 'failed_to_parse_to_date',
 				name: this.name,
 				error: err,
-				friendlyMessage: err.options?.friendlyMessage
+				friendlyMessage: err.options?.friendlyMessage,
 			})
 		}
 

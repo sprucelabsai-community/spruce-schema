@@ -9,7 +9,7 @@ export default class HandlesRequiredFieldsTest extends AbstractSchemaTest {
 		const { carDefinition } = buildPersonWithCars()
 		const car = new Schema(carDefinition, {
 			name: 'taco',
-			onlyOnCar: 'bell'
+			onlyOnCar: 'bell',
 		})
 
 		const name = car.get('name')

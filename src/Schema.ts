@@ -2,7 +2,7 @@ import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import {
 	ErrorCode,
 	IInvalidFieldErrorOptions,
-	IInvalidFieldError
+	IInvalidFieldError,
 } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
@@ -24,7 +24,7 @@ import {
 	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
-	ISchema
+	ISchema,
 } from './schemas.static.types'
 
 /** Universal schema class  */
@@ -72,7 +72,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		// Empty fields to start
 		this.fields = {} as SchemaFields<S>
 
-		Object.keys(fieldDefinitions).forEach(name => {
+		Object.keys(fieldDefinitions).forEach((name) => {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.field(name, definition)
 			// TODO why do i have to cast to any?
@@ -109,15 +109,15 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		if (!this.definitionsById[id]) {
 			throw new SpruceError({
 				code: ErrorCode.SchemaNotFound,
-				schemaId: id
+				schemaId: id,
 			})
 		}
 
-		const match = this.definitionsById[id].find(d => d.version === version)
+		const match = this.definitionsById[id].find((d) => d.version === version)
 
 		if (!match) {
 			throw new SpruceError({
-				code: ErrorCode.VersionNotFound
+				code: ErrorCode.VersionNotFound,
 			})
 		}
 
@@ -190,7 +190,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			throw new SpruceError({
 				code: ErrorCode.InvalidSchemaDefinition,
 				schemaId: definition?.id ?? 'ID MISSING',
-				errors
+				errors,
 			})
 		}
 	}
@@ -216,7 +216,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
-				errors: [{ name: forField, code: 'value_not_array' }]
+				errors: [{ name: forField, code: 'value_not_array' }],
 			})
 		}
 
@@ -230,14 +230,14 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		// Validate if we're supposed to
 		let errors: IInvalidFieldError[] = []
 		if (validate) {
-			localValue.forEach(value => {
+			localValue.forEach((value) => {
 				errors = [
 					...errors,
 					...field.validate(value, {
 						definitionsById: Schema.definitionsById,
 						...(field.definition.options ?? {}),
-						...overrideOptions
-					})
+						...overrideOptions,
+					}),
 				]
 			})
 		}
@@ -247,21 +247,21 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
-				errors
+				errors,
 			})
 		}
 
 		// If there is a value, transform it to it's expected value
 		// Is array will always pass here
 		if (localValue.length > 0) {
-			localValue = localValue.map(value =>
+			localValue = localValue.map((value) =>
 				typeof value === 'undefined'
 					? undefined
 					: (field as AbstractField<FieldDefinition>).toValueType(value, {
 							definitionsById: Schema.definitionsById,
 							createSchemaInstances,
 							...(field.definition.options ?? {}),
-							...overrideOptions
+							...overrideOptions,
 					  })
 			)
 		}
@@ -318,11 +318,11 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	public validate(options: ISchemaValidateOptions<S> = {}) {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
-		this.getNamedFields(options).forEach(item => {
+		this.getNamedFields(options).forEach((item) => {
 			const { name, field } = item
 			const value = this.get(name, { validate: false })
 			const fieldErrors = field.validate(value, {
-				definitionsById: Schema.definitionsById
+				definitionsById: Schema.definitionsById,
 			})
 
 			if (fieldErrors.length > 0) {
@@ -334,7 +334,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			throw new SpruceError({
 				code: ErrorCode.InvalidField,
 				schemaId: this.definition.id,
-				errors
+				errors,
 			})
 		}
 	}
@@ -350,7 +350,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	): Pick<SchemaDefinitionDefaultValues<S, CreateSchemaInstances>, F> {
 		const values: Partial<SchemaDefinitionDefaultValues<S>> = {}
 
-		this.getNamedFields().forEach(namedField => {
+		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 			if (typeof field.definition.defaultValue !== 'undefined') {
 				// TODO how to type name so it works as key of values
@@ -379,7 +379,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		const { fields = Object.keys(this.fields) } = options
 
-		this.getNamedFields().forEach(namedField => {
+		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
 			if (fields.indexOf(name) > -1) {
 				const value = this.get(name, options)
@@ -396,7 +396,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 	/** Set a bunch of values at once */
 	public setValues(values: SchemaDefinitionPartialValues<S>): this {
-		this.getNamedFields().forEach(namedField => {
+		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
 			const value = values[name]
 			if (typeof value !== 'undefined') {
@@ -413,7 +413,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		const namedFields: ISchemaNamedField<S>[] = []
 		const { fields = Object.keys(this.fields) as F[] } = options
 
-		fields.forEach(name => {
+		fields.forEach((name) => {
 			const field = this.fields[name]
 			namedFields.push({ name, field })
 		})

@@ -4,14 +4,14 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField from '../../fields/SchemaField'
 import {
 	ISchemaFieldDefinition,
-	SchemaFieldValueTypeGenerator
+	SchemaFieldValueTypeGenerator,
 } from '../../fields/SchemaField.types'
 import Schema from '../../Schema'
 import { SchemaDefinitionValues } from '../../schemas.static.types'
 import buildPersonWithCars, {
 	IPersonDefinition,
 	ICarDefinition,
-	ITruckDefinition
+	ITruckDefinition,
 } from '../data/personWithCars'
 
 const { personDefinition, carDefinition } = buildPersonWithCars()
@@ -25,7 +25,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			name: 'go team',
 			requiredCar: { name: 'go cart' },
 			requiredIsArrayCars: [],
-			requiredIsArrayCarOrTruck: []
+			requiredIsArrayCarOrTruck: [],
 		}
 
 		assert.isOk(user.name)
@@ -39,7 +39,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		const person = new Schema(personDefinition, {
 			requiredCar: { name: 'car', onlyOnCar: 'only on car!' },
 			requiredIsArrayCars: [],
-			requiredIsArrayCarOrTruck: []
+			requiredIsArrayCarOrTruck: [],
 		})
 
 		const car = person.get('requiredCar')
@@ -53,14 +53,14 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			name: 'tay',
 			requiredCar: { name: 'dirty car' },
 			requiredIsArrayCarOrTruck: [],
-			requiredIsArrayCars: [{ name: 'dirty car' }]
+			requiredIsArrayCars: [{ name: 'dirty car' }],
 		})
 
 		let cars = user.get('requiredIsArrayCars')
 		let firstCarValues = cars[0].getValues()
 		assert.isEqualDeep(firstCarValues, {
 			name: 'dirty car',
-			onlyOnCar: undefined
+			onlyOnCar: undefined,
 		})
 
 		// Test transforming to array works by setting isArray field to a single value
@@ -72,7 +72,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		firstCarValues = cars[0].getValues()
 		assert.isEqualDeep(firstCarValues, {
 			name: 'scooter',
-			onlyOnCar: undefined
+			onlyOnCar: undefined,
 		})
 	}
 
@@ -85,7 +85,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			}
 		}> = {
 			schemaId: 'car',
-			values: { name: 'fast car' }
+			values: { name: 'fast car' },
 		}
 
 		if (testSingleSchemaField.schemaId === 'car') {
@@ -103,11 +103,11 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			{ schemaId: 'car', values: { name: 'the car', onlyOnCar: 'so fast' } },
 			{
 				schemaId: 'truck',
-				values: { name: 'the truck', onlyOnTruck: 'cary so much' }
-			}
+				values: { name: 'the truck', onlyOnTruck: 'cary so much' },
+			},
 		]
 
-		testArraySchemaField.forEach(tool => {
+		testArraySchemaField.forEach((tool) => {
 			if (tool.schemaId === 'truck') {
 				assert.isEqual(tool.values.onlyOnTruck, 'cary so much')
 			}
@@ -122,15 +122,15 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			requiredIsArrayCarOrTruck: [
 				{
 					schemaId: 'car',
-					values: { name: 'fast car 1', onlyOnCar: 'so much fast' }
+					values: { name: 'fast car 1', onlyOnCar: 'so much fast' },
 				},
 				{ schemaId: 'truck', values: { name: 'big truck 1' } },
 				{ schemaId: 'car', values: { name: 'fast car 2' } },
 				{
 					schemaId: 'truck',
-					values: { name: 'big truck 2', onlyOnTruck: 'so much haul' }
-				}
-			]
+					values: { name: 'big truck 2', onlyOnTruck: 'so much haul' },
+				},
+			],
 		})
 
 		const requiredCarsOrTrucks = person.get('requiredIsArrayCarOrTruck')
@@ -160,7 +160,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 		const carField = person
 			.getNamedFields()
-			.find(f => f.name === 'optionalCarWithCallback')
+			.find((f) => f.name === 'optionalCarWithCallback')
 
 		assert.isOk(carField)
 

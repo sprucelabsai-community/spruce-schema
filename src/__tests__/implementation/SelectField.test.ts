@@ -53,14 +53,14 @@ export default class SelectFieldTest extends BaseTest {
 					choices: [
 						{
 							value: 'blue',
-							label: 'Blue'
+							label: 'Blue',
 						},
 						{
 							value: 'red',
-							label: 'Red'
-						}
-					]
-				}
+							label: 'Red',
+						},
+					],
+				},
 			},
 			favoriteColorRequired: {
 				type: FieldType.Select,
@@ -69,21 +69,21 @@ export default class SelectFieldTest extends BaseTest {
 					choices: [
 						{
 							value: 'blue',
-							label: 'Blue'
+							label: 'Blue',
 						},
 						{
 							value: 'red',
-							label: 'Red'
-						}
-					]
-				}
-			}
-		}
+							label: 'Red',
+						},
+					],
+				},
+			},
+		},
 	})
 	@test('Makes select options a union (test passes, lint will fail)')
 	protected static async canMakeSelectOptionsUnion() {
 		const user = new Schema(this.userDefinition, {
-			favoriteColor: 'blue'
+			favoriteColor: 'blue',
 		})
 		const favColor = user.get('favoriteColor')
 		const favoriteColorRequired = user.get('favoriteColorRequired')

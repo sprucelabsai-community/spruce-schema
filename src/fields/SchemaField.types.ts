@@ -4,7 +4,7 @@ import {
 	ISchemaFieldDefinitionValueUnion,
 	ISchemaDefinition,
 	ISchema,
-	SchemaDefinitionValues
+	SchemaDefinitionValues,
 } from '../schemas.static.types'
 import { IsArrayNoUnpack, IsArray } from '../types/utilities.types'
 import { IFieldDefinition } from './field.static.types'

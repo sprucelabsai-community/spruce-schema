@@ -12,7 +12,7 @@ import { IFileFieldDefinition, IFileFieldValue } from './FileField.types'
 const mime = new Mime(mimeDb, 2)
 mime.define('application/typescript', {
 	source: 'spruce',
-	extensions: ['ts', 'tsx']
+	extensions: ['ts', 'tsx'],
 })
 
 export default class FileField extends AbstractField<IFileFieldDefinition> {
@@ -25,7 +25,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		return {
 			valueType: `${options.importAs}.IFileFieldValue${
 				options.definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 
@@ -108,7 +108,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 				fieldType: FieldType.File,
 				incomingTypeof: typeof value,
 				incomingValue: value,
-				name: this.name
+				name: this.name,
 			})
 		}
 
@@ -134,7 +134,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 			name,
 			path,
 			type,
-			ext
+			ext,
 		}
 	}
 }

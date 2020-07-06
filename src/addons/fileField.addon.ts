@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'File',
 	class: FileField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })

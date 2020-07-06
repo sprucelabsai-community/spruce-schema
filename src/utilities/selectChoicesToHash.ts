@@ -1,12 +1,12 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice
+	ISelectFieldDefinitionChoice,
 } from '../fields/SelectField.types'
 import {
 	ISchemaDefinition,
 	ISchemaDefinitionFields,
-	PickFieldNames
+	PickFieldNames,
 } from '../schemas.static.types'
 
 /** Turn select options into a key/value pair */
@@ -25,7 +25,7 @@ export function selectChoicesToHash<
 >(options: Options): SelectChoicesToHash<Options> {
 	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
-	Object.keys(options).forEach(key => {
+	Object.keys(options).forEach((key) => {
 		// @ts-ignore
 		partial[options[key]] = key
 	})

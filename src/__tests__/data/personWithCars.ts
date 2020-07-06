@@ -163,12 +163,12 @@ const buildPersonWithCars = () => {
 		fields: {
 			name: {
 				type: FieldType.Text,
-				isRequired: true
+				isRequired: true,
 			},
 			onlyOnCar: {
-				type: FieldType.Text
-			}
-		}
+				type: FieldType.Text,
+			},
+		},
 	})
 
 	const untypedCarDefinition = buildSchemaDefinition({
@@ -177,12 +177,12 @@ const buildPersonWithCars = () => {
 		fields: {
 			name: {
 				type: FieldType.Text,
-				isRequired: true
+				isRequired: true,
 			},
 			onlyOnCar: {
-				type: FieldType.Text
-			}
-		}
+				type: FieldType.Text,
+			},
+		},
 	})
 
 	const truckDefinition = buildSchemaDefinition<ITruckDefinition>({
@@ -191,12 +191,12 @@ const buildPersonWithCars = () => {
 		fields: {
 			name: {
 				type: FieldType.Text,
-				isRequired: true
+				isRequired: true,
 			},
 			onlyOnTruck: {
-				type: FieldType.Text
-			}
-		}
+				type: FieldType.Text,
+			},
+		},
 	})
 
 	const untypedTruckDefinition = buildSchemaDefinition({
@@ -205,12 +205,12 @@ const buildPersonWithCars = () => {
 		fields: {
 			name: {
 				type: FieldType.Text,
-				isRequired: true
+				isRequired: true,
 			},
 			onlyOnTruck: {
-				type: FieldType.Text
-			}
-		}
+				type: FieldType.Text,
+			},
+		},
 	})
 
 	const personDefinition = buildSchemaDefinition<IPersonDefinition>({
@@ -220,71 +220,71 @@ const buildPersonWithCars = () => {
 			name: {
 				type: FieldType.Text,
 				isArray: false,
-				value: 'tay'
+				value: 'tay',
 			},
 			requiredCar: {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [carDefinition]
-				}
+					schemasCallback: () => [carDefinition],
+				},
 			},
 			optionalIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			requiredIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			requiredIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalSelect: {
 				type: FieldType.Select,
 				options: {
 					choices: [
 						{ value: 'foo', label: 'Foo' },
-						{ value: 'bar', label: 'Bar' }
-					]
-				}
+						{ value: 'bar', label: 'Bar' },
+					],
+				},
 			},
 			requiredSelect: {
 				type: FieldType.Select,
@@ -292,9 +292,9 @@ const buildPersonWithCars = () => {
 					isRequired: true,
 					choices: [
 						{ value: 'foo', label: 'Foo' },
-						{ value: 'bar', label: 'Bar' }
-					]
-				}
+						{ value: 'bar', label: 'Bar' },
+					],
+				},
 			},
 			optionalSelectWithDefaultValue: {
 				type: FieldType.Select,
@@ -302,37 +302,37 @@ const buildPersonWithCars = () => {
 				options: {
 					choices: [
 						{ value: 'hello', label: 'world' },
-						{ value: 'goodbye', label: 'darling' }
-					]
-				}
+						{ value: 'goodbye', label: 'darling' },
+					],
+				},
 			},
 			optionalTextWithDefaultValue: {
 				type: FieldType.Text,
-				defaultValue: 'world'
+				defaultValue: 'world',
 			},
 			optionalCarWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
-			}
-		}
+					schemas: [carDefinition, truckDefinition],
+				},
+			},
+		},
 	})
 
 	const untypedPersonDefinition = buildSchemaDefinition({
@@ -342,71 +342,71 @@ const buildPersonWithCars = () => {
 			name: {
 				type: FieldType.Text,
 				isArray: false,
-				value: 'tay'
+				value: 'tay',
 			},
 			requiredCar: {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [carDefinition]
-				}
+					schemasCallback: () => [carDefinition],
+				},
 			},
 			optionalIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			requiredIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			requiredIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalSelect: {
 				type: FieldType.Select,
 				options: {
 					choices: [
 						{ value: 'foo', label: 'Foo' },
-						{ value: 'bar', label: 'Bar' }
-					]
-				}
+						{ value: 'bar', label: 'Bar' },
+					],
+				},
 			},
 			optionalSelectWithDefaultValue: {
 				type: FieldType.Select,
@@ -414,37 +414,37 @@ const buildPersonWithCars = () => {
 				options: {
 					choices: [
 						{ value: 'hello', label: 'world' },
-						{ value: 'goodbye', label: 'darling' }
-					]
-				}
+						{ value: 'goodbye', label: 'darling' },
+					],
+				},
 			},
 			optionalTextWithDefaultValue: {
 				type: FieldType.Text,
-				defaultValue: 'world'
+				defaultValue: 'world',
 			},
 			optionalCarWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carDefinition
-				}
+					schema: carDefinition,
+				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
+					schemas: [carDefinition, truckDefinition],
+				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carDefinition, truckDefinition]
-				}
-			}
-		}
+					schemas: [carDefinition, truckDefinition],
+				},
+			},
+		},
 	})
 
 	return {
@@ -453,7 +453,7 @@ const buildPersonWithCars = () => {
 		carDefinition,
 		untypedCarDefinition,
 		truckDefinition,
-		untypedTruckDefinition
+		untypedTruckDefinition,
 	}
 }
 

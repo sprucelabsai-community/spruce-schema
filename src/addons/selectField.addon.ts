@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'Select',
 	class: SelectField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })

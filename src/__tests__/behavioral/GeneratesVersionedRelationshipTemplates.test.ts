@@ -5,7 +5,7 @@ import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import {
 	IFieldTemplateDetailOptions,
 	ISchemaTemplateItem,
-	TemplateRenderAs
+	TemplateRenderAs,
 } from '../../template.types'
 import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 
@@ -17,9 +17,9 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		fields: {
 			wrenchSize: {
 				type: FieldType.Number,
-				label: 'Size'
-			}
-		}
+				label: 'Size',
+			},
+		},
 	})
 
 	private static wrenchV2Definition = buildSchemaDefinition({
@@ -29,9 +29,9 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		fields: {
 			wrenchSize: {
 				type: FieldType.Number,
-				label: 'Size'
-			}
-		}
+				label: 'Size',
+			},
+		},
 	})
 
 	private static screwdriverDefinition = buildSchemaDefinition({
@@ -39,13 +39,13 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		name: 'Screwdriver',
 		fields: {
 			isFlathead: {
-				type: FieldType.Boolean
+				type: FieldType.Boolean,
 			},
 			screwdriverLength: {
 				type: FieldType.Number,
-				label: 'Length'
-			}
-		}
+				label: 'Length',
+			},
+		},
 	})
 
 	private static personDefinition = buildSchemaDefinition({
@@ -58,9 +58,9 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 					schemas: [
 						GeneratesRelationshipTemplatesTest.wrenchV1Definition,
 						GeneratesRelationshipTemplatesTest.wrenchV2Definition,
-						GeneratesRelationshipTemplatesTest.screwdriverDefinition
-					]
-				}
+						GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+					],
+				},
 			},
 			tools: {
 				type: FieldType.Schema,
@@ -69,11 +69,11 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 					schemas: [
 						GeneratesRelationshipTemplatesTest.wrenchV1Definition,
 						GeneratesRelationshipTemplatesTest.wrenchV2Definition,
-						GeneratesRelationshipTemplatesTest.screwdriverDefinition
-					]
-				}
-			}
-		}
+						GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+					],
+				},
+			},
+		},
 	})
 
 	// the global template items[]
@@ -84,7 +84,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			nameReadable: 'Union person',
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.personDefinition.id,
-			definition: GeneratesRelationshipTemplatesTest.personDefinition
+			definition: GeneratesRelationshipTemplatesTest.personDefinition,
 		},
 		{
 			namePascal: 'Wrench',
@@ -92,7 +92,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			nameReadable: 'Wrench',
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.wrenchV1Definition.id,
-			definition: GeneratesRelationshipTemplatesTest.wrenchV1Definition
+			definition: GeneratesRelationshipTemplatesTest.wrenchV1Definition,
 		},
 		{
 			namePascal: 'Wrench',
@@ -100,7 +100,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			nameReadable: 'Wrench',
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.wrenchV2Definition.id,
-			definition: GeneratesRelationshipTemplatesTest.wrenchV2Definition
+			definition: GeneratesRelationshipTemplatesTest.wrenchV2Definition,
 		},
 		{
 			namePascal: 'screwdriver',
@@ -108,8 +108,8 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			nameReadable: 'Screwdriver',
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.screwdriverDefinition.id,
-			definition: GeneratesRelationshipTemplatesTest.screwdriverDefinition
-		}
+			definition: GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+		},
 	]
 
 	@test(
@@ -117,8 +117,8 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		{
 			isArray: false,
 			options: {
-				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v2' }]
-			}
+				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v2' }],
+			},
 		},
 		'[unionPersonDefinition, wrenchDefinition]',
 		"{ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', version: 'v2', values: SpruceSchemas.Core.IWrench.v2 }",
@@ -129,8 +129,8 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		{
 			isArray: true,
 			options: {
-				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v1' }]
-			}
+				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v1' }],
+			},
 		},
 		'[unionPersonDefinition, wrenchDefinition]',
 		"({ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', version: 'v1', values: SpruceSchemas.Core.IWrench.v1 })[]",
@@ -149,24 +149,24 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
 			definition: {
 				...definition,
-				type: FieldType.Schema
+				type: FieldType.Schema,
 			},
-			renderAs: TemplateRenderAs.Type // is overwritten below
+			renderAs: TemplateRenderAs.Type, // is overwritten below
 		}
 
 		const expected = {
 			renderAsValue,
 			renderAsType,
-			renderAsDefinitionType
+			renderAsDefinitionType,
 		}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
 
-		rendersAs.forEach(renderAs => {
+		rendersAs.forEach((renderAs) => {
 			const options = {
 				...templateOptions,
 				// @ts-ignore
-				renderAs: TemplateRenderAs[renderAs]
+				renderAs: TemplateRenderAs[renderAs],
 			}
 			const { valueType } = SchemaField.generateTemplateDetails(options)
 			const exp = expected[`renderAs${renderAs}` as keyof typeof expected]
@@ -177,11 +177,11 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 
 	@test('missing version non array value', {
 		isArray: false,
-		options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] }
+		options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] },
 	})
 	@test('missing version array value', {
 		isArray: true,
-		options: { schemaId: { id: 'wrench' } }
+		options: { schemaId: { id: 'wrench' } },
 	})
 	protected static async throwsMissingVersion(
 		definition: ISchemaFieldDefinition
@@ -193,19 +193,19 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
 			definition: {
 				...definition,
-				type: FieldType.Schema
+				type: FieldType.Schema,
 			},
-			renderAs: TemplateRenderAs.Type // is overwritten below
+			renderAs: TemplateRenderAs.Type, // is overwritten below
 		}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
 
 		await Promise.all(
-			rendersAs.map(async renderAs => {
+			rendersAs.map(async (renderAs) => {
 				const options = {
 					...templateOptions,
 					// @ts-ignore
-					renderAs: TemplateRenderAs[renderAs]
+					renderAs: TemplateRenderAs[renderAs],
 				}
 
 				assert.doesThrow(

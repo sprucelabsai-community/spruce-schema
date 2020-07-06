@@ -12,7 +12,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		options: IFieldTemplateDetailOptions<IPhoneFieldDefinition>
 	) {
 		return {
-			valueType: `string${options.definition.isArray ? '[]' : ''}`
+			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}
 	}
 
