@@ -1,4 +1,3 @@
-import '@sprucelabs/path-resolver/register'
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import Schema from '../../Schema'

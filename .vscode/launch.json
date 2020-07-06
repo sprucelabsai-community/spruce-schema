@@ -10,8 +10,6 @@
 			"name": "test.file",
 			"runtimeExecutable": "${env:NVM_BIN}/node",
 			"runtimeArgs": [
-				"-r",
-				"@sprucelabs/path-resolver/register",
 				"--inspect-brk",
 				"${workspaceFolder}/node_modules/.bin/jest",
 				"${relativeFile}",
@@ -28,8 +26,6 @@
 			"name": "test.all",
 			"runtimeExecutable": "${env:NVM_BIN}/node",
 			"runtimeArgs": [
-				"-r",
-				"@sprucelabs/path-resolver/register",
 				"--inspect-brk",
 				"${workspaceFolder}/node_modules/.bin/jest"
 			],
