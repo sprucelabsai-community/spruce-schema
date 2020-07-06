@@ -48,7 +48,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"cSpell.words": [
-		"arkit"
-	]
+	"cSpell.words": ["arkit"],
+	"svg.preview.background": "white"
 }
