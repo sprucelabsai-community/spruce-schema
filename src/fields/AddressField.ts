@@ -14,7 +14,7 @@ export default class AddressField extends AbstractField<
 		return {
 			valueType: `${options.importAs}.IAddressFieldValue${
 				options.definition.isArray ? '[]' : ''
-			}`
+			}`,
 		}
 	}
 }

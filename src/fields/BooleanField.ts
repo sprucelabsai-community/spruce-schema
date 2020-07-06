@@ -13,7 +13,7 @@ export default class BooleanField extends AbstractField<
 		options: IFieldTemplateDetailOptions<IBooleanFieldDefinition>
 	) {
 		return {
-			valueType: `boolean${options.definition.isArray ? '[]' : ''}`
+			valueType: `boolean${options.definition.isArray ? '[]' : ''}`,
 		}
 	}
 	/** * Turn everything into a string */

@@ -5,7 +5,7 @@ import { ISelectFieldDefinitionChoice } from '../../fields/SelectField.types'
 
 const choices: ISelectFieldDefinitionChoice[] = [
 	{ value: 'foo', label: 'Foo' },
-	{ value: 'bar', label: 'Bar' }
+	{ value: 'bar', label: 'Bar' },
 ]
 
 export default class TextFieldTest extends BaseTest {
@@ -13,7 +13,7 @@ export default class TextFieldTest extends BaseTest {
 	protected static async buildSelectField() {
 		const field = FieldFactory.field('test', {
 			type: FieldType.Select,
-			options: { choices }
+			options: { choices },
 		})
 
 		assert.isEqualDeep(field.definition.options.choices, choices)

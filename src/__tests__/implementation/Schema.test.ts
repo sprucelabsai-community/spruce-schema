@@ -9,7 +9,7 @@ import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
 import buildPersonWithCars, {
 	ICarDefinition,
 	ITruckDefinition,
-	IPersonDefinition
+	IPersonDefinition,
 } from '../data/personWithCars'
 
 Schema.enableDuplicateCheckWhenTracking = false
@@ -54,7 +54,7 @@ export default class SchemaTest extends BaseTest {
 	protected static async testBasicValidation() {
 		const definition = {
 			id: 'simple-test',
-			name: 'Simple Test Schema'
+			name: 'Simple Test Schema',
 		}
 
 		assert.isFalse(
@@ -66,7 +66,7 @@ export default class SchemaTest extends BaseTest {
 	@test('Catches missing id', 'id', ['id_missing'])
 	@test('Catches missing name', 'name', ['name_missing'])
 	@test('Catches missing fields', 'fields', [
-		'needs_fields_or_dynamic_key_signature'
+		'needs_fields_or_dynamic_key_signature',
 	])
 	protected static async testMissingKeys(
 		fieldToDelete: string,
@@ -77,12 +77,12 @@ export default class SchemaTest extends BaseTest {
 			name: 'missing name',
 			fields: {
 				firstName: {
-					type: FieldType.Text
+					type: FieldType.Text,
 				},
 				lastName: {
-					type: FieldType.Text
-				}
-			}
+					type: FieldType.Text,
+				},
+			},
 		})
 
 		unset(definition, fieldToDelete)
@@ -96,7 +96,7 @@ export default class SchemaTest extends BaseTest {
 			error.options.code === ErrorCode.InvalidSchemaDefinition
 		) {
 			const {
-				options: { errors }
+				options: { errors },
 			} = error
 
 			assert.isEqualDeep(
@@ -120,21 +120,21 @@ export default class SchemaTest extends BaseTest {
 				name: {
 					type: FieldType.Text,
 					label: 'Name',
-					value: 'Tay'
+					value: 'Tay',
 				},
 				nicknames: {
 					type: FieldType.Text,
 					label: 'Nick names',
 					isArray: true,
-					value: ['Tay', 'Taylor']
+					value: ['Tay', 'Taylor'],
 				},
 				anotherName: {
 					type: FieldType.Number,
 					label: 'Favorite numbers',
 					isArray: true,
-					value: [10, 5, 5]
-				}
-			}
+					value: [10, 5, 5],
+				},
+			},
 		})
 
 		assert.isTrue(Schema.isDefinitionValid(definition))
@@ -149,14 +149,14 @@ export default class SchemaTest extends BaseTest {
 				name: {
 					type: FieldType.Text,
 					isArray: false,
-					value: 'tay'
+					value: 'tay',
 				},
 				favoriteColors: {
 					type: FieldType.Text,
 					isArray: true,
-					value: ['black']
-				}
-			}
+					value: ['black'],
+				},
+			},
 		})
 
 		const values = schema.getValues({ fields: ['name'] })
@@ -188,7 +188,7 @@ export default class SchemaTest extends BaseTest {
 		schema.set('name', 'Taylor')
 		assert.isEqualDeep(schema.values, {
 			name: 'Taylor',
-			favoriteColors: ['test2']
+			favoriteColors: ['test2'],
 		})
 
 		// Make sure getters work
@@ -213,17 +213,17 @@ export default class SchemaTest extends BaseTest {
 				name: {
 					type: FieldType.Text,
 					isArray: false,
-					value: 'tay'
+					value: 'tay',
 				},
 				favoriteColors: {
 					type: FieldType.Text,
 					isArray: true,
-					value: ['blue']
+					value: ['blue'],
 				},
 				favoriteNumber: {
-					type: FieldType.Number
-				}
-			}
+					type: FieldType.Number,
+				},
+			},
 		})
 
 		// Set favorite color to a bunch of numbers and make sure it comes back a bunch of strings
@@ -251,7 +251,7 @@ export default class SchemaTest extends BaseTest {
 			onlyOnCar: string | undefined | null
 		} = {
 			name: 'test',
-			onlyOnCar: null
+			onlyOnCar: null,
 		}
 		assert.isType<SchemaDefinitionValues<typeof truckDefinition>>(values)
 	}
@@ -261,7 +261,7 @@ export default class SchemaTest extends BaseTest {
 		const personSchema = new Schema(personDefinition)
 		const values = personSchema.getValues()
 		const valuesWithoutInstances = personSchema.getValues({
-			createSchemaInstances: false
+			createSchemaInstances: false,
 		})
 		assert.isType<IPersonExpectedValues>(values)
 		assert.isType<IPersonMappedValues>(values)

@@ -2,7 +2,7 @@ import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
 import {
 	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice
+	ISelectFieldDefinitionChoice,
 } from './SelectField.types'
 
 export default class SelectField<
@@ -29,11 +29,13 @@ export default class SelectField<
 		// Build union of select options
 		const { definition } = options
 		const {
-			options: { choices }
+			options: { choices },
 		} = definition
 
 		return {
-			valueType: `(${choices.map(choice => `"${choice.value}"`).join(' | ')})`
+			valueType: `(${choices
+				.map((choice) => `"${choice.value}"`)
+				.join(' | ')})`,
 		}
 	}
 

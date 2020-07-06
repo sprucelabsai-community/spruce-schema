@@ -11,7 +11,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 		options: IFieldTemplateDetailOptions<INumberFieldDefinition>
 	) {
 		return {
-			valueType: `number${options.definition.isArray ? '[]' : ''}`
+			valueType: `number${options.definition.isArray ? '[]' : ''}`,
 		}
 	}
 

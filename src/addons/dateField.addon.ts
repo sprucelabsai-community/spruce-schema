@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'Date',
 	class: DateField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })

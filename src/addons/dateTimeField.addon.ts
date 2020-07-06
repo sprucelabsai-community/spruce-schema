@@ -5,5 +5,5 @@ export default registerFieldType({
 	type: 'DateTime',
 	class: DateTimeField,
 	package: '@sprucelabs/schema',
-	importAs: 'SpruceSchema'
+	importAs: 'SpruceSchema',
 })

@@ -23,9 +23,11 @@ export default class SpruceError extends AbstractSpruceError<
 				break
 			case ErrorCode.InvalidField:
 				message = `Invalid fields on ${options.schemaId}: `
-				options.errors.forEach(fieldError => {
-					message += `${fieldError.friendlyMessage ??
-						`${fieldError.name}: ${fieldError.code}`}\n`
+				options.errors.forEach((fieldError) => {
+					message += `${
+						fieldError.friendlyMessage ??
+						`${fieldError.name}: ${fieldError.code}`
+					}\n`
 				})
 				break
 			case ErrorCode.TransformationFailed:
@@ -33,11 +35,9 @@ export default class SpruceError extends AbstractSpruceError<
 					options.fieldType
 				} field could not transform a ${
 					options.incomingTypeof
-				} to the desired valueType. The incoming value was ${(JSON.stringify(
-					options.incomingValue
-				),
-				null,
-				2)}.`
+				} to the desired valueType. The incoming value was ${
+					(JSON.stringify(options.incomingValue), null, 2)
+				}.`
 				break
 			case ErrorCode.NotImplemented:
 				message = `${options.code}: ${options.instructions}`

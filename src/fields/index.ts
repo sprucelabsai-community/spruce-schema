@@ -34,5 +34,5 @@ export { default as DateField } from './DateField'
 
 export {
 	IFieldDefinition,
-	FieldDefinitionValueType
+	FieldDefinitionValueType,
 } from './field.static.types'
