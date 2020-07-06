@@ -136,13 +136,11 @@ export default class SchemaField<
 				if (renderAs === TemplateRenderAs.Value) {
 					valueType = `${matchedTemplateItem.nameCamel}Definition`
 				} else {
-					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
-						version ? `.${version}` : ''
-					}.${
+					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}.${
 						renderAs === TemplateRenderAs.Type
 							? `I${matchedTemplateItem.namePascal}`
 							: matchedTemplateItem.namePascal
-					}${
+					}${version ? `.${version}` : ''}${
 						renderAs === TemplateRenderAs.DefinitionType ? `.IDefinition` : ``
 					}`
 
