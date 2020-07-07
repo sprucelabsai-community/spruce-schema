@@ -4,8 +4,10 @@ export { default as BooleanField } from './BooleanField'
 export * from './TextField'
 export { default as TextField } from './TextField'
 export * from './DirectoryField'
+export * from './DirectoryField.types'
 export { default as DirectoryField } from './DirectoryField'
 export * from './DurationField'
+export * from './DurationField.types'
 export { default as DurationField } from './DurationField'
 export * from './IdField'
 export { default as IdField } from './IdField'
@@ -28,11 +30,13 @@ export * from './DateTimeField'
 export * from './DateTimeField.types'
 export { default as DateTimeField } from './DateTimeField'
 export * from './FileField'
+export * from './FileField.types'
 export { default as FileField } from './FileField'
 export * from './DateField'
+export * from './DateField.types'
 export { default as DateField } from './DateField'
 
 export {
 	IFieldDefinition,
-	FieldDefinitionValueType,
+	FieldDefinitionValueType
 } from './field.static.types'
