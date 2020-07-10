@@ -21,6 +21,8 @@ export { default as buildFieldDefinition } from './utilities/buildFieldDefinitio
 // Util types
 export * from './utilities/optional.types'
 export * from './utilities/selectChoicesToHash'
+export { default as defaultSchemaValues } from './utilities/defaultSchemaValues'
+export { default as validateSchemaValues } from './utilities/validateSchemaValues'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
