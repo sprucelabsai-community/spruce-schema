@@ -30,4 +30,14 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 		assert.isEqualDeep(values, { firstName: '12345', age: 10 })
 	}
+
+	@test()
+	protected static normalizeTypesAsExpected() {
+		const values = normalizeSchemaValues(this.personDefinition, {
+			firstName: 'tay',
+			age: 0,
+		})
+
+		assert.isType<{ firstName: string; age?: number | null }>(values)
+	}
 }
