@@ -13,12 +13,17 @@
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"sourceMap": true,
-		"outDir": "./build",
-		"baseUrl": ".",
+		"outDir": "build",
+		"baseUrl": "src",
+		"experimentalDecorators": true,
 		"paths": {
-			"*": ["node_modules/*"]
+			"#spruce/*": [".spruce/*"]
 		}
 	},
-	"include": ["./*.ts", "./**/*.ts"],
+	"include": [
+		"./*.ts",
+		"./**/*.ts",
+		"src/.spruce/schemas/fields/fieldClassMap.ts"
+	],
 	"exclude": ["**/node_modules/*", "build/*"]
 }
