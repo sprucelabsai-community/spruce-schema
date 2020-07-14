@@ -5,11 +5,11 @@ import {
 	SchemaDefinitionPartialValues,
 } from '../schemas.static.types'
 
-export default function validateSchemaValues<S extends ISchemaDefinition>(
+export default function isSchemaValid<S extends ISchemaDefinition>(
 	definition: S,
 	values: SchemaDefinitionPartialValues<S>,
 	options?: ISchemaValidateOptions<S>
 ) {
 	const instance = new Schema(definition, values)
-	instance.validate(options)
+	return instance.isValid(options)
 }

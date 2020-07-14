@@ -304,17 +304,15 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		return this
 	}
 
-	/** Is this schema valid? */
-	public isValid() {
+	public isValid(options: ISchemaValidateOptions<S> = {}) {
 		try {
-			this.validate()
+			this.validate(options)
 			return true
 		} catch {
 			return false
 		}
 	}
 
-	/** Returns an array of schema validation errors */
 	public validate(options: ISchemaValidateOptions<S> = {}) {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
