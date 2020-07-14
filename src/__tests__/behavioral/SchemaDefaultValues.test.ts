@@ -135,8 +135,8 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		assert.isType<IPersonExpectedDefaultValues>(defaultValues)
 	}
 
-	@test('Can get default values for union fields')
-	protected static defaultSchemaValueTests() {
+	@test()
+	protected static canGetDefaultValuesForUnionFields() {
 		const schema = new Schema(personDefinition)
 		const {
 			optionalIsArrayCarOrTruckWithDefaultValue,
