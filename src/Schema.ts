@@ -50,7 +50,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	/** The schema definition */
 	private definition: S
 
-	/** The values of this schema */
+	/** The raw values of this schema */
 	public values: SchemaDefinitionPartialValues<S>
 
 	/** All the field objects keyed by field name, use getField rather than accessing this directly */

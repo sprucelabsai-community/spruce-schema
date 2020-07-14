@@ -50,7 +50,7 @@ interface IPersonExpectedValuesWithoutSchema {
 const { personDefinition, truckDefinition } = buildPersonWithCars()
 
 export default class SchemaTest extends BaseTest {
-	@test('Can do basic definition validation')
+	@test()
 	protected static async testBasicValidation() {
 		const definition = {
 			id: 'simple-test',

@@ -23,6 +23,8 @@ export * from './utilities/optional.types'
 export * from './utilities/selectChoicesToHash'
 export { default as defaultSchemaValues } from './utilities/defaultSchemaValues'
 export { default as validateSchemaValues } from './utilities/validateSchemaValues'
+export { default as normalizeSchemaValues } from './utilities/normalizeSchemaValues'
+export { default as isSchemaValid } from './utilities/isSchemaValid'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
