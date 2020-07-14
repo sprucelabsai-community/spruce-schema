@@ -12,9 +12,10 @@ export default function normalizeSchemaValues<
 	CreateSchemaInstances extends boolean = true
 >(
 	definition: S,
+	values: SchemaDefinitionPartialValues<S>,
 	options?: ISchemaGetValuesOptions<S, F, CreateSchemaInstances>
 ): SchemaDefinitionPartialValues<S, CreateSchemaInstances> {
-	const instance = new Schema(definition)
+	const instance = new Schema(definition, values)
 
 	return instance.getValues({
 		...(options ?? {}),
