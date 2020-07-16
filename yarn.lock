@@ -1281,15 +1281,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^1.3.13":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.13.tgz#f1015bc81dcec65441fe823d1f028e8d263f3a9f"
-  integrity sha512-Ea+mTj3QqjVIwW4kzmqKwtj9R3Hmo3aB7J+xX9GRrXFLAnBtRUV8fDnIFdnfGrUU0h8mO6RYv8e21P/+hmUdNg==
+"@sprucelabs/error@^1.3.15":
+  version "1.3.15"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.15.tgz#87e9fdeb61e35c5930ed5a47a9756898ed9a2c99"
+  integrity sha512-c0B4RwPnXEem6ItjN3d256vrkbOczN6/PFYNdiP0qRSa8hp0/EPMwTiWKnX6+KjNV40giUsvLYxJu710rkCLZg==
 
-"@sprucelabs/log@^10.2.16":
-  version "10.2.16"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.16.tgz#2c40b7c6f51b274441ce405674795fb45a1f1b48"
-  integrity sha512-LuJwxq0RQzejESoR9Zv4/gZmqzRuocbmh00n5KE/aNfj5RgXiaUkB3uKLx4nXbPgHGsm0u7ctE0QJg25BtAX9A==
+"@sprucelabs/log@^10.2.18":
+  version "10.2.18"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.18.tgz#7c786704e8291a407ca00605eacf67a22e46d15f"
+  integrity sha512-inmz+UMI9cL6FG1XGEpJMXhleWDaC4HIlsZDags119CoDvgR+k7D+jxrl/siwCZluUCanI+Bfx3ctU+PYtaHQA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.12":
-  version "5.3.12"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.12.tgz#577f29de375c0ce46ea86d85debbf6def41a3274"
-  integrity sha512-jyLbqSspUJr2gnqNEhTiMm09ds/CpOJN5kLxKLPYZxuZAADGru3xQFt3I0+TKe02I18lsB0gRt8nIM7dh6ga7w==
+"@sprucelabs/test@^5.3.14":
+  version "5.3.14"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.14.tgz#4aebd975e8b4a76fb5022a0c4d6369088ef30ca5"
+  integrity sha512-jVC/de9yYGwfp67IZSn2PWo+tI05hde7IBQ82XXhkcalyut5dun6eIa5JAd8GhE7ru2q7wC6Aj+lDKbt0bPASQ==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -5541,10 +5541,10 @@ libnpx@^10.2.2:
     y18n "^4.0.0"
     yargs "^11.0.0"
 
-libphonenumber-js@^1.7.54:
-  version "1.7.54"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.54.tgz#efc9865c72b754ff45331afee57fcb5c409b218b"
-  integrity sha512-RCJ0DHyMkzgztt+jBEmUpcb6iM72Ouodhr+MDETkRWZpT47jAmM7KT3xXMMogknbH2MNKdHNTuOCS+u44T+E5Q==
+libphonenumber-js@^1.7.55:
+  version "1.7.55"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.55.tgz#c42e1e70daccf7e7a329891964de79c80b1a7799"
+  integrity sha512-vYT83akP6uJq5QiMgzzVsWrGWJpQ4KgX2SmW0RBgLFD1UzICjVgp+7ajEep3oRcv2838kMTu1gj7KHPi0Y6Y6w==
   dependencies:
     minimist "^1.2.5"
     xml2js "^0.4.17"
@@ -8677,10 +8677,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^3.9.6, typescript@~3.9.2:
-  version "3.9.6"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.6.tgz#8f3e0198a34c3ae17091b35571d3afd31999365a"
-  integrity sha512-Pspx3oKAPJtjNwE92YS05HQoY7z2SFyOpHo9MqJor3BXAGNaPUs83CuVp9VISFkSjyRfiTpmKuAYGJB7S7hOxw==
+typescript@^3.9.7, typescript@~3.9.2:
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
+  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@^3.1.4:
   version "3.10.0"
