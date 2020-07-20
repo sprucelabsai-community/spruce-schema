@@ -10,6 +10,13 @@ jobs:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
+      - run:
+          command: |
+            COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
+            if [[ $COMMIT_MSG == *"[npm-publish]"* ]]; then
+              echo "[npm-publish] detected. No publish necessary 👊"
+              circleci-agent step halt
+            fi
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn test
