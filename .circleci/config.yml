@@ -19,7 +19,7 @@ jobs:
             fi
       - run: yarn install --frozen-lockfile
       - run: yarn lint
-      - run: yarn test
+      - run: yarn test -w 1
   npm_publish:
     docker:
       - image: circleci/node:12
