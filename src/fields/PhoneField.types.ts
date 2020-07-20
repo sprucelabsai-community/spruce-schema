@@ -9,5 +9,6 @@ export type IPhoneFieldDefinition = IFieldDefinition<
 > & {
 	/** * .Phone a great way to validate and format values */
 	type: FieldType.Phone
+	// eslint-disable-next-line @typescript-eslint/ban-types
 	options?: {}
 }

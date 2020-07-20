@@ -62,6 +62,7 @@ export type IFieldDefinition<
 	/** The filed type */
 	type: FieldType
 	/** Default options are empty */
+	// eslint-disable-next-line @typescript-eslint/ban-types
 	options?: {}
 	/** Generates in only for local interface and does not share with other skills */
 	isPrivate?: boolean
