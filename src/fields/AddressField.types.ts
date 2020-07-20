@@ -13,5 +13,6 @@ export interface IAddressFieldValue {
 export type IAddressFieldDefinition = IFieldDefinition<IAddressFieldValue> & {
 	/** * An address with street, city, province, country, and zip details */
 	type: FieldType.Address
+	// eslint-disable-next-line @typescript-eslint/ban-types
 	options?: {}
 }
