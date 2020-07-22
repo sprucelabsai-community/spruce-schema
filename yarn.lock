@@ -1281,15 +1281,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^1.3.30":
-  version "1.3.30"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.30.tgz#7365eb7cca0d38e7304e2476c3c1a768b46e33d8"
-  integrity sha512-7V5Px1kgzNe3DhPHEwISWK24D85BvodDm/mx5gX6U2XoW52PMq7A1fBXkFoowal1ScJ/Uizve5X2YsYUORH6kQ==
+"@sprucelabs/error@^1.3.31":
+  version "1.3.31"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.31.tgz#6934f7e3ca0167e99742ac633fbd71c940074f10"
+  integrity sha512-jr0ab+hQAR6GjLQ+QV++VE3V0JRuksYJ7zF4HAcu70rnU6oY+9EoL5agf8mL/K2pfwwgjDUMf1er++3252HoXg==
 
-"@sprucelabs/log@^10.2.33":
-  version "10.2.33"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.33.tgz#112e4008a6faa47d75518c6ad46816fb64610ae9"
-  integrity sha512-5SjWCUwJzIUiatT3/9a9cnIBANc+ZRq2/youhBhyyzvtwgWYNO0MSuiSWlPnOAZ0WdPmBut1CpqA+KeDNza8OA==
+"@sprucelabs/log@^10.2.34":
+  version "10.2.34"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.34.tgz#4ddd8eef36bb6cc69729de67250f9db80ac856f4"
+  integrity sha512-ykwNBOBqxpn45Qn/xq1O70vcadoyEo5Kp//quXyZJOoxeSHIwaEuDDeGYUZb4aF0413Dmts6zbmUYTwnLrOrVw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.31":
-  version "5.3.31"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.31.tgz#980c0f05d25dd1ef6606df1458776d355a9a1b57"
-  integrity sha512-CscwaLuZVEXtIcSoREH2dC+gPOMoUrm8iXcJaB025hiaK5lrnXyGxTlWpHrWIA9Gyq2FU6SpADdwkdmO3goizQ==
+"@sprucelabs/test@^5.3.32":
+  version "5.3.32"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.32.tgz#bcf97aa6b54842c6a11819edd4f2aee598884cb4"
+  integrity sha512-OTGxRKmY4RHnmSNj073hGgKJpC+b+KBBP4F6can9umuETSFFohyOla+Yjxqr9XFGD8VJb0bzYg2966U0nO1dBw==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -7381,9 +7381,9 @@ regenerate@^1.4.0:
   integrity sha512-j2+C8+NtXQgEKWk49MMP5P/u2GhnahTtVkRIHr5R5lVRlbKvmQ+oS+A5aLKWp2ma5VkT8sh6v+v4hbH0YHR66A==
 
 regenerator-runtime@^0.13.4:
-  version "0.13.6"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.6.tgz#d236043c46ffab2968c1ef651803d8acdea8ed65"
-  integrity sha512-GmwlGiazQEbOwQWDdbbaP10i15pGtScYWLbMZuu+RKRz0cZ+g8IUONazBnaZqe7j1670IV1HgE4/8iy7CQPf4Q==
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 regenerator-transform@^0.14.2:
   version "0.14.5"
