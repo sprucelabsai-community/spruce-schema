@@ -1281,15 +1281,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^1.3.28":
-  version "1.3.28"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.28.tgz#10433f56acc7c8f07037145789fe02c793d9996e"
-  integrity sha512-wdNHLv7D85BImBlbV4jCANwjWXNMo1VGPLsyS9mn3z136aS3Vmj8idi0DYNL/TwGoDuZbgTJg7ySp8H6oM4jSQ==
+"@sprucelabs/error@^1.3.29":
+  version "1.3.29"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.29.tgz#17342225361c7d0c6b88ec994e0733f561be390a"
+  integrity sha512-mw3F1cetzMa/b2TPxQwp5e+B9Tb8rdYBQ5A/zWVen25gpBkBJAn2VLS+pl5rhDlanNfVIDeSZmjSVrauXhLjtA==
 
-"@sprucelabs/log@^10.2.31":
-  version "10.2.31"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.31.tgz#354c04c393091ac49a3db4af98712a44541247f0"
-  integrity sha512-CWEBdYzvyD62vA/hnQntdFNW07Mlg1LYuIqh4NtZ0czKaBFjAo4A+Y75JyuwGKEwAdDkhjM1CNK8DCwRjAXdiw==
+"@sprucelabs/log@^10.2.32":
+  version "10.2.32"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.32.tgz#5591b67802bca36bc0fe3aee1f1e12db5f1feff7"
+  integrity sha512-xn9w6k0WF0gxpTV3gip33b3GhkLeuE537E+75VoG5DIyTwktbGl8L7SE7ORoFxHnhq4dLiKAJcPA+cDTBH5OlQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.29":
-  version "5.3.29"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.29.tgz#a32c2e8bf463719da6bf45717ed8520028766f8b"
-  integrity sha512-5ofadbwp8J+ARMqvlWR7ul/o8RcWyJpbunMfTutJkvEDi+Hqt1w4huEa140756kQH/75+JrxKVcdi6l8cVEZhg==
+"@sprucelabs/test@^5.3.30":
+  version "5.3.30"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.30.tgz#9856b95772a70f662a21195f9c349a746018448b"
+  integrity sha512-6hGZy+51gH+Gnl3YtzxCFFscV7HRZjPqebuvDppiOVFqLJ75NaRsROcUzOCkZuSZCoo9tB1JnNzstmn+846WMg==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -5774,9 +5774,9 @@ lru-cache@^6.0.0:
     yallist "^4.0.0"
 
 macos-release@^2.2.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/macos-release/-/macos-release-2.4.0.tgz#837b39fc01785c3584f103c5599e0f0c8068b49e"
-  integrity sha512-ko6deozZYiAkqa/0gmcsz+p4jSy3gY7/ZsCEokPaYd8k+6/aXGkiTgr61+Owup7Sf+xjqW8u2ElhoM9SEcEfuA==
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/macos-release/-/macos-release-2.4.1.tgz#64033d0ec6a5e6375155a74b1a1eba8e509820ac"
+  integrity sha512-H/QHeBIN1fIGJX517pvK8IEK53yQOW7YcEI55oYtgjDdoCQQz7eJS94qt5kNrscReEyuD/JcdFCm2XBEcGOITg==
 
 make-dir@^1.0.0:
   version "1.3.0"
