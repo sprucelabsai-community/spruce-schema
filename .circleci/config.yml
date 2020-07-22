@@ -11,6 +11,7 @@ jobs:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
       - run:
+          name: "Check and skip if npm-publish"
           command: |
             COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $COMMIT_MSG == *"[npm-publish]"* ]]; then
@@ -20,6 +21,22 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn lint
       - run: yarn test -w 1
+      - run:
+          name: Check branch for auto-upgrade
+          command: |
+            if [[ ${CIRCLE_BRANCH} != "upgrade-"* ]]; then
+              circleci-agent step halt
+            fi
+      - run:
+          name: Merge auto-upgrade into master
+          command: |
+            git config --global user.email "$GIT_AUTHOR_EMAIL"
+            git config --global user.name "$GIT_AUTHOR_NAME"
+            git fetch --all
+            git checkout master
+            git reset --hard origin/master
+            git merge --no-ff ${CIRCLE_BRANCH} -m "chore(auto-upgrade): Upgrade Tests Passed [auto-merge]"
+            git push origin
   npm_publish:
     docker:
       - image: circleci/node:12
@@ -29,6 +46,7 @@ jobs:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
       - run:
+          name: "Check and skip if npm-publish"
           command: |
             COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
             if [[ $COMMIT_MSG == *"[npm-publish]"* ]]; then
@@ -52,7 +70,7 @@ jobs:
       - run:
           name: "Set TARGETBRANCH env variable"
           command: |
-            TARGETBRANCH=upgrade_$(date '+%Y-%m-%d')
+            TARGETBRANCH=upgrade-$(date '+%Y-%m-%d')
             echo "export TARGETBRANCH=$TARGETBRANCH" >> $BASH_ENV
       - run:
           name: "Try to upgrade"
@@ -69,8 +87,7 @@ jobs:
       - run:
           name: "Create PR"
           command: |
-            TARGETBRANCH=upgrade_$(date '+%Y-%m-%d')
-            git commit -a -m "[chore] upgrade all [automated]"
+            git commit -a -m "chore(auto-upgrade): upgraded packages [upgrade-all]"
             git push --force origin $TARGETBRANCH
             git push --set-upstream origin $TARGETBRANCH
             echo "$(hub pull-request --base master --head $TARGETBRANCH -m 'Automated Package Upgrade' 2>&1)" |egrep "/pull/|already exists"
@@ -94,7 +111,7 @@ workflows:
           context: public_package_publish
     triggers:
       - schedule:
-          cron: "30 * * * *"
+          cron: "55 * * * *"
           filters:
             branches:
               only:
