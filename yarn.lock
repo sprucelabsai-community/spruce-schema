@@ -1301,16 +1301,16 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.38":
-  version "5.3.38"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.38.tgz#f6d0361d8055cac1961a8ead5a0d35e078f6bf0e"
-  integrity sha512-cSamrdjZ/Hwf1Mjfl3eRRojfGqiSTaJxaFNJK8xLpdPBUqDzAbIo/UsZoKDEq9vFctQj6otXeRA/+72fdVHW/g==
+"@sprucelabs/test@^5.3.39":
+  version "5.3.39"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.39.tgz#472baf09e127347d6d4eab254cf32ad35f2e4909"
+  integrity sha512-cs7obgHSij0PJ1js1WY1hs3bFbKUidbd4rsozQoRl+pVNGBrzUzyqBbMzTq4Kg1EtmYcaf47qq9lKr6xuk8ZtQ==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
     "@types/chai" "^4.2.11"
     "@types/faker" "^4.1.11"
-    "@types/jest" "^26.0.5"
+    "@types/jest" "^26.0.6"
     babel-jest "^26.1.0"
     deep-equal "^2.0.3"
     faker "^4.1.0"
@@ -1421,10 +1421,10 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^26.0.5":
-  version "26.0.5"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.5.tgz#23a8eecf4764a770ea8d3a0d1ea16b96c822035d"
-  integrity sha512-heU+7w8snfwfjtcj2H458aTx3m5unIToOJhx75ebHilBiiQ39OIdA18WkG4LP08YKeAoWAGvWg8s+22w/PeJ6w==
+"@types/jest@^26.0.6":
+  version "26.0.6"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.6.tgz#b9f5ef7ba7e0e45a0c482667a0cf314f0a6ed6b3"
+  integrity sha512-XhJCNf+oPyA90jyPhOT3yZo6xR8R7auyUAibzRewPwbOb649AOPXX/JSjbafcbxJrxs/+BymBmHSETM8VpGMOw==
   dependencies:
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
