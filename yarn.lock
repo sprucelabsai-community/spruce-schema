@@ -1281,15 +1281,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^1.3.36":
-  version "1.3.36"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.36.tgz#e5a339e4c7dcabe5639a863bbc55cff3ab793994"
-  integrity sha512-MelJShxOriCqsTQww4vfoUHAgznyYj3zioLDhzBYv5KKp7HrDqC9oo14WQw4PE4mz08kLH63rAVOxEGcC7pglQ==
+"@sprucelabs/error@^1.3.37":
+  version "1.3.37"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.37.tgz#035f954b929e060b641e218ebf3e40705e5a6cd6"
+  integrity sha512-rX6m/iV408mMu7iGg5T4raW73lBxKoFo6+A+dxuig11XE6RC0i/9zWt8xRCFSehjtXQrA4zkoWXV8WkwBhinCw==
 
-"@sprucelabs/log@^10.2.39":
-  version "10.2.39"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.39.tgz#bd932e82995df08e2c848c1cf39a55371e0522bf"
-  integrity sha512-FDk46/qudnYc16A12r9p4QH4sgY1DxWqGolG7fQq9Em8HbtdtCqrryS7ZuOFKPYsJ0JtvGkd3hYSHihWiYH7kA==
+"@sprucelabs/log@^10.2.40":
+  version "10.2.40"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.40.tgz#81fdca020270610de4c6d436fb2134c4badbe64e"
+  integrity sha512-LS/UJw/iIYYiZpluIsR+Zb0cNBjRx0XJGHL6/fdAkQexiyi/VpG2rImdvJ5ebFpUTylV/zES9rYqmlBu39g3dg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1301,14 +1301,14 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.40":
-  version "5.3.40"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.40.tgz#410937183db21681da59528984706869773861c3"
-  integrity sha512-BiWQAGqaBMx07flYj0WQmta+sD935CFsMQ01bcEDU4rUw+21UeC3KbbQSar/HhCPwyzT95GNPgySpKO581ZROg==
+"@sprucelabs/test@^5.3.41":
+  version "5.3.41"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.41.tgz#2d1142791e2913bd7adb5c0ed752ca18e51e574f"
+  integrity sha512-TXQMDF2n0U5npJ5QnuiRp1MsmwF63EiTZgssx168rDa3FvtZzBP5C6R6f53ZCn4v9AmVZfQ8RsrPI+GYQ8h75g==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
-    "@types/chai" "^4.2.11"
+    "@types/chai" "^4.2.12"
     "@types/faker" "^4.1.11"
     "@types/jest" "^26.0.6"
     babel-jest "^26.1.0"
@@ -1369,10 +1369,10 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/chai@^4.2.11":
-  version "4.2.11"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.11.tgz#d3614d6c5f500142358e6ed24e1bf16657536c50"
-  integrity sha512-t7uW6eFafjO+qJ3BIV2gGUyZs27egcNRkUdalkud+Qa3+kg//f129iuOFivHDXQ+vnU3fDXuwgv0cqMCbcE8sw==
+"@types/chai@^4.2.12":
+  version "4.2.12"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.12.tgz#6160ae454cd89dae05adc3bb97997f488b608201"
+  integrity sha512-aN5IAC8QNtSUdQzxu7lGBgYAOuU1tmRU4c9dIq5OKGf/SBVjXo+ffM2wEjudAWbgpOhy60nLoAGH1xm8fpCKFQ==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
