@@ -117,6 +117,10 @@ export type SchemaDefinitionDefaultValues<
 	[F in K]: NonNullable<V[F]>
 }
 
+export type SchemaDefinitionValuesWithDefaults<
+	T extends ISchemaDefinition
+> = SchemaDefinitionValues<T> & SchemaDefinitionDefaultValues<T>
+
 /** All fields that are optional on the schema */
 export type OptionalFieldNames<T extends ISchemaDefinition> = {
 	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
