@@ -1281,15 +1281,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^1.3.39":
-  version "1.3.39"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.39.tgz#290ac43fdc19266b65bd5bd613fbd6ee4ed09528"
-  integrity sha512-bHT9B07lDnCRiZ8qRadnCxEcRxQdxA9npIAuVubPgS1DtLRjSg9TO6U5qwDtq4SdXNZ9c35SxKSW4HdVdtuKVw==
+"@sprucelabs/error@^1.3.40":
+  version "1.3.40"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-1.3.40.tgz#fcfea3f66eda4033c3421b6828baf1a68c5437b9"
+  integrity sha512-AJeTEDqxNhkztRoUpAcwTsSxQnlk7Ctll+XD1QpXblSkjcHJPPlVJq1AafdJyNvtVJD5YbI+ZV+Hkpnrx+RmNQ==
 
-"@sprucelabs/log@^10.2.42":
-  version "10.2.42"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.42.tgz#a9f351684cb42d2d834f3abdaf75dbcac9557806"
-  integrity sha512-6LutSjtdi6jWXnDL95Q954A+C83AMAPPFo8q8mChtA7NMNZMYyRoEzrn+DtQH88hO9gGuV3Kmd9B/nyExphyOw==
+"@sprucelabs/log@^10.2.43":
+  version "10.2.43"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.43.tgz#e7795611f81d1aa72ba06d39a3bcfcd513ab2e79"
+  integrity sha512-XxxWf01MvIM1RsXqNFpQPhEJX9LMrDp/qXiJa1anr4M0aj477SA8ifODMTotduQTRxojsYDjBPejbpfQ77jx5Q==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.45":
-  version "5.3.45"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.45.tgz#76805f22ba082aea8cedd6e01899bc3039c8ccf2"
-  integrity sha512-MewDDZsyuLtX/yXnko5LE3kACGxzJaet9t3QNqI/YOiPIg3QjmtTHu/3yljyy8CdG+Byonvs3PWElbB8mRCOcQ==
+"@sprucelabs/test@^5.3.46":
+  version "5.3.46"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.46.tgz#3106eb20d49ae326ad9a4a7ffbed7cd42aae581f"
+  integrity sha512-5jlir8EKBmq2TYl/L4dclEH2A6KXkhRB0a/tv5NaAjzYSakZe/TKn8B9eU1eysVEUOcjfAVRmI5LHULeZ62TiA==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -6834,9 +6834,9 @@ parse-json@^4.0.0:
     json-parse-better-errors "^1.0.1"
 
 parse-json@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-5.0.0.tgz#73e5114c986d143efa3712d4ea24db9a4266f60f"
-  integrity sha512-OOY5b7PAEFV0E2Fir1KOkxchnZNCdowAJgQ5NuxjpBKTRP3pQhwkrkxqQjeoKJ+fO7bCpmIZaogI4eZGDMEGOw==
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-5.0.1.tgz#7cfe35c1ccd641bce3981467e6c2ece61b3b3878"
+  integrity sha512-ztoZ4/DYeXQq4E21v169sC8qWINGpcosGv9XhTDvg9/hWvx/zrFkc9BiWxR58OJLHGk28j5BL0SDLeV2WmFZlQ==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     error-ex "^1.3.1"
