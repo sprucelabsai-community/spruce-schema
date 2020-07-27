@@ -1,3 +1,10 @@
+# [5.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.63...v5.0.0) (2020-07-27)
+
+
+### Breaking Changes
+
+* no more enums ([9eab9bf](https://github.com/sprucelabsai/spruce-schema/commit/9eab9bf))
+
 ## [4.0.63](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.62...v4.0.63) (2020-07-27)
 
 ## [4.0.62](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.61...v4.0.62) (2020-07-27)
