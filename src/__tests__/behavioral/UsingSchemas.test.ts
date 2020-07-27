@@ -133,6 +133,18 @@ export default class SchemaTest extends BaseTest {
 					isArray: true,
 					value: [10, 5, 5],
 				},
+				schemaField: {
+					type: FieldType.Schema,
+					label: 'Favorite numbers',
+					isArray: true,
+					options: {
+						schema: {
+							id: 'nested',
+							name: 'Nested',
+							fields: {},
+						},
+					},
+				},
 			},
 		})
 

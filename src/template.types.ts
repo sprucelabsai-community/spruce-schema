@@ -22,8 +22,8 @@ export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
 	language: 'ts'
 	/** All other schemas schemas being rendered */
 	templateItems: ISchemaTemplateItem[]
-	/** The global namespace to access items (only SpruceSchemas supported for now) */
-	globalNamespace: 'SpruceSchemas'
+	/** The global namespace to access items */
+	globalNamespace: string
 	/** The options for this field */
 	definition: T
 	/** How we are being rendered */
