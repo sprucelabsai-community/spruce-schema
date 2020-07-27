@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.58":
-  version "5.3.58"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.58.tgz#d033fe0393064407d6720bb77991e4133e2e621e"
-  integrity sha512-pJUXNmUhZ+xePk6N12Oj80nxGwEuBrQDNUFbDrxvWe5bJHNqkXWjAX1w6YxENsHBCwhLHtObWQX3dVGekkUXxg==
+"@sprucelabs/test@^5.3.59":
+  version "5.3.59"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.59.tgz#3c0648ef7274dc6aada83fdf1e8dbc299b27e16b"
+  integrity sha512-GbbayotR3QdRyBQZRgn/Cgak2+CMOlYrRhTfD1z3MoAzKxS8Y6e2gYU6LhPEbL1uhcZZhIFLZKA0FKxfhVD7Zg==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -8828,9 +8828,9 @@ uuid@^3.3.2, uuid@^3.3.3:
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uuid@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.2.0.tgz#cb10dd6b118e2dada7d0cd9730ba7417c93d920e"
-  integrity sha512-CYpGiFTUrmI6OBMkAdjSDM0k5h8SkkiTP4WAjQgDgNB1S3Ou9VBEvr6q0Kv2H1mMk7IWfxYGpMH5sd5AvcIV2Q==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
+  integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"

@@ -48,7 +48,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^5.3.58",
+		"@sprucelabs/test": "^5.3.59",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.158",
 		"@types/mime-db": "^1.43.0",
