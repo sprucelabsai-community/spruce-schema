@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { SchemaErrorOptions, ErrorCode } from './error.types'
+import { SchemaErrorOptions } from './error.types'
 
 export default class SpruceError extends AbstractSpruceError<
 	SchemaErrorOptions
@@ -11,17 +11,17 @@ export default class SpruceError extends AbstractSpruceError<
 		let message: string | undefined
 
 		switch (options?.code) {
-			case ErrorCode.DuplicateSchema:
+			case 'DUPLICATE_SCHEMA':
 				message = `Duplicate schema${options.version ? ' and version' : ''}: ${
 					options.schemaId
 				}${options.version ? ` ${options.version}` : ''}`
 				break
-			case ErrorCode.SchemaNotFound:
+			case 'SCHEMA_NOT_FOUND':
 				message = `Could not find schema "${options.schemaId}${
 					options.version ? `(${options.version})` : ''
 				}"`
 				break
-			case ErrorCode.InvalidField:
+			case 'INVALID_FIELD':
 				message = `Invalid fields on ${options.schemaId}: `
 				options.errors.forEach((fieldError) => {
 					message += `${
@@ -30,7 +30,7 @@ export default class SpruceError extends AbstractSpruceError<
 					}\n`
 				})
 				break
-			case ErrorCode.TransformationFailed:
+			case 'TRANSFORMATION_ERROR':
 				message = `${options.code}: The FileType.${
 					options.fieldType
 				} field could not transform a ${
@@ -39,10 +39,10 @@ export default class SpruceError extends AbstractSpruceError<
 					(JSON.stringify(options.incomingValue), null, 2)
 				}.`
 				break
-			case ErrorCode.NotImplemented:
+			case 'NOT_IMPLEMENTED':
 				message = `${options.code}: ${options.instructions}`
 				break
-			case ErrorCode.InvalidSchemaDefinition:
+			case 'INVALID_SCHEMA_DEFINITION':
 				message = `Invalid definition with id: ${options.schemaId}. ${
 					options.errors.length > 0
 						? `Errors are: \n\n${options.errors.join('\n')}\n\n`
@@ -50,7 +50,7 @@ export default class SpruceError extends AbstractSpruceError<
 				}`
 
 				break
-			case ErrorCode.InvalidFieldOptions:
+			case 'INVALID_FIELD_OPTIONS':
 				message = `Invalid field options for schemaId: "${options.schemaId}", fieldName: "${options.fieldName}"`
 				message += !options.options
 					? ' - **missing options**'

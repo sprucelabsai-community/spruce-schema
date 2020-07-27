@@ -1,5 +1,5 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
+import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import Schema from '../Schema'
 import {
@@ -63,7 +63,7 @@ export default class SchemaField<
 				return item
 			} catch (err) {
 				throw new SpruceError({
-					code: ErrorCode.InvalidSchemaDefinition,
+					code: 'INVALID_SCHEMA_DEFINITION',
 					schemaId: JSON.stringify(options),
 					originalError: err,
 					errors: ['invalid_schema_field_options'],
@@ -125,7 +125,7 @@ export default class SchemaField<
 
 				if (!matchedTemplateItem) {
 					throw new SpruceError({
-						code: ErrorCode.VersionNotFound,
+						code: 'VERSION_NOT_FOUND',
 						schemaId: id,
 					})
 				}
@@ -157,7 +157,7 @@ export default class SchemaField<
 				})
 			} else {
 				throw new SpruceError({
-					code: ErrorCode.SchemaNotFound,
+					code: 'SCHEMA_NOT_FOUND',
 					schemaId: id,
 					friendlyMessage:
 						'Failed during generation of value type on the Schema field. This can happen if schema id "${schemaId}" is not in "templateItems" (which should hold every schema in your skill).',
@@ -320,7 +320,7 @@ export default class SchemaField<
 
 		if (errors.length > 0) {
 			throw new SpruceError({
-				code: ErrorCode.TransformationFailed,
+				code: 'TRANSFORMATION_ERROR',
 				fieldType: FieldType.Schema,
 				incomingTypeof: typeof value,
 				incomingValue: value,
@@ -353,7 +353,7 @@ export default class SchemaField<
 
 			if (allMatches.length === 0) {
 				throw new SpruceError({
-					code: ErrorCode.TransformationFailed,
+					code: 'TRANSFORMATION_ERROR',
 					fieldType: FieldType.Schema,
 					name: this.name,
 					incomingValue: value,
@@ -370,7 +370,7 @@ export default class SchemaField<
 
 				if (!matchedDefinition) {
 					throw new SpruceError({
-						code: ErrorCode.VersionNotFound,
+						code: 'VERSION_NOT_FOUND',
 						schemaId,
 					})
 				}

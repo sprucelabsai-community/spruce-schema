@@ -1,5 +1,5 @@
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import { ErrorCode, IInvalidFieldError } from '../errors/error.types'
+import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import log from '../singletons/log'
 import {
@@ -28,7 +28,7 @@ export default abstract class AbstractField<F extends FieldDefinition>
 
 	public static get description(): string {
 		throw new SpruceError({
-			code: ErrorCode.NotImplemented,
+			code: 'NOT_IMPLEMENTED',
 			instructions: `Copy and paste this into ${this.name}:
 
 public static get description() {
@@ -49,7 +49,7 @@ public static get description() {
 	): IFieldTemplateDetails {
 		log.info(options)
 		throw new SpruceError({
-			code: ErrorCode.NotImplemented,
+			code: 'NOT_IMPLEMENTED',
 			instructions: `Copy and paste this into ${this.name}:
 			
 public static generateTemplateDetails(
