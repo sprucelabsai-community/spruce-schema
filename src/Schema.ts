@@ -1,6 +1,5 @@
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import {
-	ErrorCode,
 	IInvalidFieldErrorOptions,
 	IInvalidFieldError,
 } from './errors/error.types'
@@ -108,7 +107,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	): ISchemaDefinition | undefined {
 		if (!this.definitionsById[id]) {
 			throw new SpruceError({
-				code: ErrorCode.SchemaNotFound,
+				code: 'SCHEMA_NOT_FOUND',
 				schemaId: id,
 			})
 		}
@@ -117,7 +116,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		if (!match) {
 			throw new SpruceError({
-				code: ErrorCode.VersionNotFound,
+				code: 'VERSION_NOT_FOUND',
 			})
 		}
 
@@ -188,7 +187,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		if (errors.length > 0) {
 			throw new SpruceError({
-				code: ErrorCode.InvalidSchemaDefinition,
+				code: 'INVALID_SCHEMA_DEFINITION',
 				schemaId: definition?.id ?? 'ID MISSING',
 				errors,
 			})
@@ -214,7 +213,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		if (!Array.isArray(localValue)) {
 			throw new SpruceError({
-				code: ErrorCode.InvalidField,
+				code: 'INVALID_FIELD',
 				schemaId: this.definition.id,
 				errors: [{ name: forField, code: 'value_not_array' }],
 			})
@@ -245,7 +244,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		// If there are any errors, bail
 		if (errors.length > 0) {
 			throw new SpruceError({
-				code: ErrorCode.InvalidField,
+				code: 'INVALID_FIELD',
 				schemaId: this.definition.id,
 				errors,
 			})
@@ -330,7 +329,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 
 		if (errors.length > 0) {
 			throw new SpruceError({
-				code: ErrorCode.InvalidField,
+				code: 'INVALID_FIELD',
 				schemaId: this.definition.id,
 				errors,
 			})

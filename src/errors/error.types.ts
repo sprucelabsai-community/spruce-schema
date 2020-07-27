@@ -1,27 +1,6 @@
 import { SpruceErrorOptions, ISpruceErrorOptions } from '@sprucelabs/error'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 
-export enum ErrorCode {
-	/** * Schema was not found */
-	SchemaNotFound = 'SCHEMA_NOT_FOUND',
-	/** * Schema by id already exists */
-	DuplicateSchema = 'DUPLICATE_SCHEMA',
-	/** * Field failed validation */
-	InvalidField = 'INVALID_FIELD',
-	/** * When transforming a value fails */
-	TransformationFailed = 'TRANSFORMATION_ERROR',
-	/** * When a definition is not value */
-	InvalidSchemaDefinition = 'INVALID_SCHEMA_DEFINITION',
-	/** * When something is not implemented */
-	NotImplemented = 'NOT_IMPLEMENTED',
-	/** * Invalid field options */
-	InvalidFieldOptions = 'INVALID_FIELD_OPTIONS',
-	/** * A field was registered that was not valid */
-	InvalidFieldRegistration = 'INVALID_FIELD_REGISTRATION',
-	/** * Something missed on matching a version. */
-	VersionNotFound = 'VERSION_NOT_FOUND',
-}
-
 export type SchemaErrorOptions =
 	| IDuplicateSchemaErrorOptions
 	| ISchemaErrorOptionsNotFound
@@ -34,18 +13,16 @@ export type SchemaErrorOptions =
 	| IVersionRequiredErrorOptions
 	| SpruceErrorOptions
 
-export interface ISchemaErrorOptionsNotFound
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface ISchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	/** * Could not find a schema by id */
-	code: ErrorCode.SchemaNotFound
+	code: 'SCHEMA_NOT_FOUND'
 	schemaId: string
 	version?: string
 }
 
-export interface IDuplicateSchemaErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface IDuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	/** * A schema with this id already exists */
-	code: ErrorCode.DuplicateSchema
+	code: 'DUPLICATE_SCHEMA'
 	schemaId: string
 	version?: string
 }
@@ -55,20 +32,18 @@ export interface IInvalidFieldError {
 	friendlyMessage?: string
 	name: string
 }
-export interface IInvalidFieldErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface IInvalidFieldErrorOptions extends ISpruceErrorOptions {
 	/** * The field did not pass validation */
-	code: ErrorCode.InvalidField
+	code: 'INVALID_FIELD'
 	/** The schema associated with this error */
 	schemaId: string
 	/** Field errors that occurred */
 	errors: IInvalidFieldError[]
 }
 
-export interface ITransformationFailedErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface ITransformationFailedErrorOptions extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: ErrorCode.TransformationFailed
+	code: 'TRANSFORMATION_ERROR'
 	/** The type of field trying to do the transformation */
 	fieldType: FieldType
 	/** The value type */
@@ -82,27 +57,25 @@ export interface ITransformationFailedErrorOptions
 }
 
 export interface IInvalidSchemaDefinitionErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+	extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: ErrorCode.InvalidSchemaDefinition
+	code: 'INVALID_SCHEMA_DEFINITION'
 	/** The id of the schema */
 	schemaId: string
 	/** All the errors in the definition */
 	errors: string[]
 }
 
-export interface INotImplementedErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface INotImplementedErrorOptions extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: ErrorCode.NotImplemented
+	code: 'NOT_IMPLEMENTED'
 	/** What someone is to do based on something to being implemented */
 	instructions: string
 }
 
-export interface IInvalidFieldOptionsErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+export interface IInvalidFieldOptionsErrorOptions extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: ErrorCode.InvalidFieldOptions
+	code: 'INVALID_FIELD_OPTIONS'
 	/** The schema with the bad options */
 	schemaId?: string
 	/** The field with the bad options */
@@ -112,9 +85,9 @@ export interface IInvalidFieldOptionsErrorOptions
 }
 
 export interface IInvalidFieldRegistrationErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
+	extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: ErrorCode.InvalidFieldRegistration
+	code: 'INVALID_FIELD_REGISTRATION'
 	/** Package that includes the field (used for import) */
 	package: string
 	/** The name of the class  field  */
@@ -127,8 +100,7 @@ export interface IInvalidFieldRegistrationErrorOptions
 	description: string
 }
 
-export interface IVersionRequiredErrorOptions
-	extends ISpruceErrorOptions<ErrorCode> {
-	code: ErrorCode.VersionNotFound
+export interface IVersionRequiredErrorOptions extends ISpruceErrorOptions {
+	code: 'VERSION_NOT_FOUND'
 	schemaId?: string
 }

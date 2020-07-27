@@ -1,5 +1,4 @@
 import { IInvalidFieldError } from '../errors/error.types'
-import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { IFieldTemplateDetailOptions } from '../template.types'
 import AbstractField from './AbstractField'
@@ -30,7 +29,7 @@ export function buildDuration(
 
 	if (typeof totalMs !== 'number') {
 		throw new SpruceError({
-			code: ErrorCode.InvalidField,
+			code: 'INVALID_FIELD',
 			schemaId: 'na',
 			errors: [
 				{

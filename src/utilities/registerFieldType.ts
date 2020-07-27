@@ -1,4 +1,3 @@
-import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldSubclass } from '../fields/field.static.types'
 
@@ -60,7 +59,7 @@ export function validateFieldRegistration(
 
 	if (errors.length > 0) {
 		throw new SpruceError({
-			code: ErrorCode.InvalidFieldRegistration,
+			code: 'INVALID_FIELD_REGISTRATION',
 			...builtRegistration,
 		})
 	}

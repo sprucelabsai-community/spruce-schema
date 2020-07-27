@@ -1,5 +1,4 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { ErrorCode } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetailOptions,
@@ -48,7 +47,7 @@ export default class DirectoryField extends AbstractField<
 
 		if (!(typeof path === 'string') || path.length === 0) {
 			throw new SpruceError({
-				code: ErrorCode.TransformationFailed,
+				code: 'TRANSFORMATION_ERROR',
 				fieldType: FieldType.Directory,
 				incomingTypeof: typeof value,
 				incomingValue: value,

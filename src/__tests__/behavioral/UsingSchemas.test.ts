@@ -1,7 +1,6 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { ErrorCode } from '../../errors/error.types'
 import SpruceError from '../../errors/SpruceError'
 import Schema from '../../Schema'
 import { SchemaDefinitionValues, ISchema } from '../../schemas.static.types'
@@ -93,7 +92,7 @@ export default class SchemaTest extends BaseTest {
 
 		if (
 			error instanceof SpruceError &&
-			error.options.code === ErrorCode.InvalidSchemaDefinition
+			error.options.code === 'INVALID_SCHEMA_DEFINITION'
 		) {
 			const {
 				options: { errors },
