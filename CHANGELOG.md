@@ -1,3 +1,21 @@
+## [4.0.63](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.62...v4.0.63) (2020-07-27)
+
+## [4.0.62](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.61...v4.0.62) (2020-07-27)
+
+## [4.0.61](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.60...v4.0.61) (2020-07-27)
+
+## [4.0.60](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.59...v4.0.60) (2020-07-26)
+
+## [4.0.59](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.58...v4.0.59) (2020-07-25)
+
+## [4.0.58](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.57...v4.0.58) (2020-07-25)
+
+## [4.0.57](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.56...v4.0.57) (2020-07-25)
+
+## [4.0.56](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.55...v4.0.56) (2020-07-25)
+
+## [4.0.55](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.54...v4.0.55) (2020-07-24)
+
 ## [4.0.54](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.53...v4.0.54) (2020-07-24)
 
 ## [4.0.53](https://github.com/sprucelabsai/spruce-schema/compare/v4.0.52...v4.0.53) (2020-07-24)
