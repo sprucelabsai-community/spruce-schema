@@ -3,7 +3,10 @@ import Mime from 'mime-type'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import { IFieldTemplateDetailOptions } from '../template.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+} from '../template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { IFileFieldDefinition, IFileFieldValue } from './FileField.types'
@@ -19,9 +22,10 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public static get description() {
 		return 'A way to handle files. Supports mime-type lookups.'
 	}
+
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
-	) {
+	): IFieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IFileFieldValue${
 				options.definition.isArray ? '[]' : ''

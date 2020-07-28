@@ -1,4 +1,7 @@
-import { IFieldTemplateDetailOptions } from '../template.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+} from '../template.types'
 import AbstractField from './AbstractField'
 import { IRawFieldDefinition } from './RawField.types'
 
@@ -8,7 +11,7 @@ export default class RawField extends AbstractField<IRawFieldDefinition> {
 	}
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
-	) {
+	): IFieldTemplateDetails {
 		return {
 			valueType: `(${options.definition.options.valueType})${
 				options.definition.isArray ? '[]' : ''

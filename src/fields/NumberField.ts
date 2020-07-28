@@ -1,4 +1,7 @@
-import { IFieldTemplateDetailOptions } from '../template.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+} from '../template.types'
 import AbstractField from './AbstractField'
 import { INumberFieldDefinition } from './NumberField.types'
 
@@ -9,7 +12,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<INumberFieldDefinition>
-	) {
+	): IFieldTemplateDetails {
 		return {
 			valueType: `number${options.definition.isArray ? '[]' : ''}`,
 		}
