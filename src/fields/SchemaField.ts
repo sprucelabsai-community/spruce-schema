@@ -27,10 +27,6 @@ export default class SchemaField<
 		return 'A way to map relationships.'
 	}
 
-	public static get valueTypeGeneratorType() {
-		return 'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>'
-	}
-
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
 		field: ISchemaFieldDefinition
 	): (ISchemaIdWithVersion | ISchemaDefinition)[] {
@@ -184,7 +180,7 @@ export default class SchemaField<
 
 		return {
 			valueTypeGenerator:
-				'SchemaValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>',
+				'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>',
 			valueType,
 		}
 	}

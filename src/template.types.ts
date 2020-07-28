@@ -72,5 +72,5 @@ export interface IFieldTemplateItem extends ISchemaTemplateNames {
 	/** Exactly what it says */
 	description: string
 	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
-	valueTypeGeneratorType: string
+	valueTypeGeneratorType?: string
 }
