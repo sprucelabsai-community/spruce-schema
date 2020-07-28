@@ -1,4 +1,7 @@
-import { IFieldTemplateDetailOptions } from '../template.types'
+import {
+	IFieldTemplateDetailOptions,
+	IFieldTemplateDetails,
+} from '../template.types'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import AbstractField from './AbstractField'
 import { ValidateOptions } from './field.static.types'
@@ -8,9 +11,10 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 	public static get description() {
 		return 'Takes anything close to a phone number and formats it. Also great at validating numbers.'
 	}
+
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IPhoneFieldDefinition>
-	) {
+	): IFieldTemplateDetails {
 		return {
 			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}
