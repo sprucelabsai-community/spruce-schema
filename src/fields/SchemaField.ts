@@ -179,7 +179,7 @@ export default class SchemaField<
 		}
 
 		return {
-			valueTypeGenerator:
+			valueTypeGeneratorType:
 				'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>',
 			valueType,
 		}
