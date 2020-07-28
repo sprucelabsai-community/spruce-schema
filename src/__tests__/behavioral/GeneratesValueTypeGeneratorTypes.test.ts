@@ -147,9 +147,9 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 				...templateOptions,
 				renderAs,
 			}
-			const { valueTypeGenerator } = Field.generateTemplateDetails(options)
+			const { valueTypeGeneratorType } = Field.generateTemplateDetails(options)
 
-			assert.isEqual(valueTypeGenerator, expected)
+			assert.isEqual(valueTypeGeneratorType, expected)
 		})
 	}
 }

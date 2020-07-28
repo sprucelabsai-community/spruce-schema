@@ -32,7 +32,7 @@ export default class SelectField<
 		} = definition
 
 		return {
-			valueTypeGenerator: 'SelectValueTypeGenerator',
+			valueTypeGeneratorType: 'SelectValueTypeGenerator',
 			valueType: `(${choices
 				.map((choice) => `"${choice.value}"`)
 				.join(' | ')})`,

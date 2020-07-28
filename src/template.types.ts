@@ -4,8 +4,8 @@ import { ISchemaDefinition } from './schemas.static.types'
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
 	valueType: string
-	/** This is a type mapper to take field definitions and turn them into value types */
-	valueTypeGenerator?: string
+	/** This is a type mapper to take field definitions and turn them into value types, defaults to valueType (string, number, etc.) */
+	valueTypeGeneratorType?: string
 }
 
 /** How are we being rendered in the template */
