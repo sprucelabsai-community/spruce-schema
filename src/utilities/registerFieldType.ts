@@ -12,8 +12,6 @@ export interface IFieldRegistration {
 	description: string
 	/** How should this field be imported (SpruceSchema) */
 	importAs: string
-	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
-	valueTypeGeneratorType: string
 }
 
 export interface IFieldRegistrationOptions {
@@ -41,7 +39,6 @@ export function validateFieldRegistration(
 		type: '***missing***',
 		importAs: '***missing***',
 		description: '***missing***',
-		valueTypeGeneratorType: '***missing***',
 	}
 
 	if (typeof registration !== 'object') {
@@ -77,8 +74,6 @@ export default function registerFieldType(
 		// TODO change this up when typescript supports typing static methods on a class
 		// @ts-ignore
 		description: options.class.description,
-		// @ts-ignore
-		valueTypeGeneratorType: options.class.valueTypeGeneratorType,
 	}
 
 	validateFieldRegistration(registration)

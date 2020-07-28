@@ -39,10 +39,6 @@ public static get description() {
 		})
 	}
 
-	public static get valueTypeGeneratorType(): string {
-		return `I${this.name}Definition['value']`
-	}
-
 	/** Details needed for generating templates */
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<any>
