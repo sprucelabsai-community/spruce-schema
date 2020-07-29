@@ -268,7 +268,7 @@ export default class SchemaTest extends BaseTest {
 		const personEntity = new SchemaEntity(personSchema)
 		const values = personEntity.getValues()
 		const valuesWithoutInstances = personEntity.getValues({
-			CreateEntityInstances: false,
+			createEntityInstances: false,
 		})
 		assert.isType<IPersonExpectedValues>(values)
 		assert.isType<IPersonMappedValues>(values)

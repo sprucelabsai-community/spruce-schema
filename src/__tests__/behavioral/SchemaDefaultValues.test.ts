@@ -90,7 +90,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 		const schema = new SchemaEntity(personSchema)
 		const defaultValues = schema.getDefaultValues()
 		const defaultValuesWithoutSchemas = schema.getDefaultValues({
-			CreateEntityInstances: false,
+			createEntityInstances: false,
 		})
 
 		assert.isFunction(
