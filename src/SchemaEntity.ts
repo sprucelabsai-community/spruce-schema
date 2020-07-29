@@ -205,7 +205,7 @@ export default class SchemaEntity<S extends ISchema>
 			})
 		}
 
-		const { validate = true, CreateEntityInstances = true, byField } =
+		const { validate = true, createEntityInstances = true, byField } =
 			options ?? {}
 
 		// Get field && override options by that field
@@ -244,7 +244,7 @@ export default class SchemaEntity<S extends ISchema>
 					? undefined
 					: (field as AbstractField<FieldDefinition>).toValueType(value, {
 							schemasById: SchemaEntity.schemasById,
-							CreateEntityInstances,
+							createEntityInstances,
 							...(field.definition.options ?? {}),
 							...overrideOptions,
 					  })

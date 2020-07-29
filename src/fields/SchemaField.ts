@@ -319,7 +319,7 @@ export default class SchemaField<
 			})
 		}
 
-		const { CreateEntityInstances, schemasById: schemasById = {} } =
+		const { createEntityInstances, schemasById: schemasById = {} } =
 			options || {}
 
 		// try and pull the schema definition from the options and by id
@@ -370,20 +370,20 @@ export default class SchemaField<
 			instance = new SchemaEntity(matchedSchema, values)
 		}
 
-		if (CreateEntityInstances) {
+		if (createEntityInstances) {
 			return instance as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
 		if (isUnion) {
 			return {
 				schemaId: instance.schemaId,
-				values: instance.getValues({ validate: false, CreateEntityInstances }),
+				values: instance.getValues({ validate: false, createEntityInstances }),
 			} as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
 		return instance.getValues({
 			validate: false,
-			CreateEntityInstances,
+			createEntityInstances,
 		}) as FieldDefinitionValueType<F, CreateEntityInstances>
 	}
 }

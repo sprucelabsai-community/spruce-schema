@@ -39,7 +39,7 @@ export type ToValueTypeOptions<
 	/** All definitions by id for lookups by fields */
 	schemasById?: ISchemasById
 	/** Create and return a new SchemaEntity()  */
-	CreateEntityInstances?: CreateEntityInstances
+	createEntityInstances?: CreateEntityInstances
 } & Partial<F['options']>
 
 /** Options passed to validate() */

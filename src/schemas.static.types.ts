@@ -190,7 +190,7 @@ export interface ISchemaNormalizeOptions<
 	/** Should i validate any values passed through */
 	validate?: boolean
 	/** Should I create schema instances for schema fields (defaults to true) */
-	CreateEntityInstances?: CreateEntityInstances
+	createEntityInstances?: CreateEntityInstances
 	/** Options passed to each field that conforms to the field definition's options */
 	byField?: {
 		[K in SchemaFieldNames<S>]?: S['fields'][K] extends IFieldDefinition
