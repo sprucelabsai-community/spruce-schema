@@ -1301,10 +1301,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.68":
-  version "5.3.68"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.68.tgz#6f5c8193e47505ece9cb8e99922af4a9bacb12a8"
-  integrity sha512-SryQHqK0cogpkSGJsjg/3BJi5cRJRkraAv1ONhHsCQCauaL2RahkWxjBu5uE794Rzu4k5FwwPCrdY3+g4pSgcQ==
+"@sprucelabs/test@^5.3.69":
+  version "5.3.69"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.69.tgz#abc74b430bc5fed8fccd77022645c17ca35209fa"
+  integrity sha512-Jbfd7Mrk2LCJiM+yUPGFTm7xhzOKjh95lel845P9mAxlKqJxlvdIJ3R43vY3qDMQFhFOGMS1H3ms9Opre7732w==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/preset-env" "^7.9.5"
@@ -3077,9 +3077,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.488:
-  version "1.3.512"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.512.tgz#620e6731c693ddaaf3750f23dde7f7c4347b7327"
-  integrity sha512-y02hdFg7c4jTfREcXf4fRhHLt7BzofMgd7JAKY+u9i62E0D1eIpLQPFo5/eboZL0bIVY9YHZA53+vCGNFREOXA==
+  version "1.3.513"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.513.tgz#d556da1e7d3142d209e2950bab4bf1c9b5fd75c9"
+  integrity sha512-4Mr0dfgKqe0VD6kq6FkdPmLIcJuEVsA6c6zfcs3rBb+eHEALYNI+KDhZYbzwyd+bbDuwha2Q44RHrB0I+bnXBw==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
