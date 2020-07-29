@@ -1,3 +1,10 @@
+# [6.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v5.0.16...v6.0.0) (2020-07-29)
+
+
+### Breaking Changes
+
+* template order change ([f4a2bd5](https://github.com/sprucelabsai/spruce-schema/commit/f4a2bd5))
+
 ## [5.0.16](https://github.com/sprucelabsai/spruce-schema/compare/v5.0.15...v5.0.16) (2020-07-29)
 
 ## [5.0.15](https://github.com/sprucelabsai/spruce-schema/compare/v5.0.14...v5.0.15) (2020-07-28)
