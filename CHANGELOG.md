@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.0...v7.0.1) (2020-07-29)
+
+# [7.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v6.0.1...v7.0.0) (2020-07-29)
+
+
+### Breaking Changes
+
+* rename Schema -> SchemaEntity and SchemaDefinition -> Schema ([df556cc](https://github.com/sprucelabsai/spruce-schema/commit/df556cc))
+
 ## [6.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v6.0.0...v6.0.1) (2020-07-29)
 
 # [6.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v5.0.16...v6.0.0) (2020-07-29)
