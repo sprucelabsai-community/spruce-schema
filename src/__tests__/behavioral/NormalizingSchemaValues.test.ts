@@ -1,11 +1,11 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 export default class NormalizingSchemaValues extends AbstractSchemaTest {
-	private static personDefinition = buildSchemaDefinition({
+	private static personSchema = buildSchema({
 		id: 'testPerson',
 		name: 'A test person',
 		fields: {
@@ -21,7 +21,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 	@test()
 	protected static normalizesSimpleAsExpected() {
-		const values = normalizeSchemaValues(this.personDefinition, {
+		const values = normalizeSchemaValues(this.personSchema, {
 			// @ts-ignore
 			firstName: 12345,
 			// @ts-ignore
@@ -33,7 +33,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 	@test()
 	protected static normalizeTypesAsExpected() {
-		const values = normalizeSchemaValues(this.personDefinition, {
+		const values = normalizeSchemaValues(this.personSchema, {
 			firstName: 'tay',
 			age: 0,
 		})

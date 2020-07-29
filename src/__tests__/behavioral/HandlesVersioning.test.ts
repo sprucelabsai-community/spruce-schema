@@ -1,7 +1,7 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import Schema from '../../Schema'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import buildSchema from '../../utilities/buildSchema'
 
 export default class HandlesVersioningTest extends AbstractSpruceTest {
 	@test()
@@ -13,7 +13,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	}
 
 	private static buildDefinitions() {
-		const wrenchV1 = buildSchemaDefinition({
+		const wrenchV1 = buildSchema({
 			id: 'wrench',
 			name: 'Wrench',
 			version: 'v1',
@@ -23,7 +23,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 				},
 			},
 		})
-		const wrenchV2 = buildSchemaDefinition({
+		const wrenchV2 = buildSchema({
 			id: 'wrench',
 			name: 'Wrench',
 			version: 'v2',
@@ -44,8 +44,8 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	protected static async canAccessSchemaById() {
 		this.buildDefinitions()
 
-		const wrenchV1 = Schema.getDefinition('wrench', 'v1')
-		const wrenchV2 = Schema.getDefinition('wrench', 'v2')
+		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
+		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
 
 		assert.isOk(wrenchV1)
 		assert.isOk(wrenchV2)
@@ -55,8 +55,8 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	protected static async getsBackCorrectSchema() {
 		this.buildDefinitions()
 
-		const wrenchV1 = Schema.getDefinition('wrench', 'v1')
-		const wrenchV2 = Schema.getDefinition('wrench', 'v2')
+		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
+		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
 
 		assert.isOk(wrenchV1)
 		assert.isOk(wrenchV2)
@@ -70,7 +70,7 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	@test()
 	protected static async throwsIfYouForgetAVersionOnAVersioned() {
 		assert.doesThrow(
-			() => Schema.getDefinition('wrench'),
+			() => SchemaEntity.getSchema('wrench'),
 			/VERSION_NOT_FOUND/gi
 		)
 	}

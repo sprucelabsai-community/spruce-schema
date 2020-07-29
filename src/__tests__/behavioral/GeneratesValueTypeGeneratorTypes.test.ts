@@ -13,10 +13,10 @@ import {
 	ISchemaTemplateItem,
 	TemplateRenderAs,
 } from '../../template.types'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import buildSchema from '../../utilities/buildSchema'
 
 export default class GeneratesRelationshipTemplatesTest extends BaseTest {
-	private static wrenchDefinition = buildSchemaDefinition({
+	private static wrenchSchema = buildSchema({
 		id: 'wrench',
 		name: 'Wrench',
 		fields: {
@@ -36,7 +36,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		},
 	})
 
-	private static screwdriverDefinition = buildSchemaDefinition({
+	private static screwdriverSchema = buildSchema({
 		id: 'screwdriver',
 		name: 'Screwdriver',
 		fields: {
@@ -50,7 +50,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 		},
 	})
 
-	private static personDefinition = buildSchemaDefinition({
+	private static personSchema = buildSchema({
 		id: 'union-person',
 		name: 'Union Person',
 		fields: {
@@ -58,8 +58,8 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 				type: FieldType.Schema,
 				options: {
 					schemas: [
-						GeneratesRelationshipTemplatesTest.wrenchDefinition,
-						GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+						GeneratesRelationshipTemplatesTest.wrenchSchema,
+						GeneratesRelationshipTemplatesTest.screwdriverSchema,
 					],
 				},
 			},
@@ -68,8 +68,8 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 				isArray: true,
 				options: {
 					schemas: [
-						GeneratesRelationshipTemplatesTest.wrenchDefinition,
-						GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+						GeneratesRelationshipTemplatesTest.wrenchSchema,
+						GeneratesRelationshipTemplatesTest.screwdriverSchema,
 					],
 				},
 			},
@@ -83,44 +83,44 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			nameCamel: 'unionPerson',
 			nameReadable: 'Union person',
 			namespace: 'Core',
-			id: GeneratesRelationshipTemplatesTest.personDefinition.id,
-			definition: GeneratesRelationshipTemplatesTest.personDefinition,
+			id: GeneratesRelationshipTemplatesTest.personSchema.id,
+			schema: GeneratesRelationshipTemplatesTest.personSchema,
 		},
 		{
 			namePascal: 'Wrench',
 			nameCamel: 'wrench',
 			nameReadable: 'Wrench',
 			namespace: 'Core',
-			id: GeneratesRelationshipTemplatesTest.wrenchDefinition.id,
-			definition: GeneratesRelationshipTemplatesTest.wrenchDefinition,
+			id: GeneratesRelationshipTemplatesTest.wrenchSchema.id,
+			schema: GeneratesRelationshipTemplatesTest.wrenchSchema,
 		},
 		{
 			namePascal: 'screwdriver',
 			nameCamel: 'screwdriver',
 			nameReadable: 'Screwdriver',
 			namespace: 'Core',
-			id: GeneratesRelationshipTemplatesTest.screwdriverDefinition.id,
-			definition: GeneratesRelationshipTemplatesTest.screwdriverDefinition,
+			id: GeneratesRelationshipTemplatesTest.screwdriverSchema.id,
+			schema: GeneratesRelationshipTemplatesTest.screwdriverSchema,
 		},
 	]
 
 	@test(
 		'Boolean field',
-		GeneratesRelationshipTemplatesTest.screwdriverDefinition.fields.isFlathead,
+		GeneratesRelationshipTemplatesTest.screwdriverSchema.fields.isFlathead,
 		BooleanField,
 		undefined
 	)
 	@test(
 		'Select field',
-		GeneratesRelationshipTemplatesTest.wrenchDefinition.fields.type,
+		GeneratesRelationshipTemplatesTest.wrenchSchema.fields.type,
 		SelectField,
 		'SelectValueTypeGenerator'
 	)
 	@test(
 		'Schema field',
-		GeneratesRelationshipTemplatesTest.personDefinition.fields.favoriteTool,
+		GeneratesRelationshipTemplatesTest.personSchema.fields.favoriteTool,
 		SchemaField,
-		'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>'
+		'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>'
 	)
 	protected static async testValueGeneratorType(
 		definition: IFieldDefinition,

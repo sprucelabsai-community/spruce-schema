@@ -1,15 +1,15 @@
-import Schema from '../Schema'
+import SchemaEntity from '../SchemaEntity'
 import {
-	ISchemaDefinition,
+	ISchema,
 	ISchemaValidateOptions,
-	SchemaDefinitionPartialValues,
+	SchemaPartialValues,
 } from '../schemas.static.types'
 
-export default function validateSchemaValues<S extends ISchemaDefinition>(
+export default function validateSchemaValues<S extends ISchema>(
 	definition: S,
-	values: SchemaDefinitionPartialValues<S>,
+	values: SchemaPartialValues<S>,
 	options?: ISchemaValidateOptions<S>
 ) {
-	const instance = new Schema(definition, values)
+	const instance = new SchemaEntity(definition, values)
 	instance.validate(options)
 }

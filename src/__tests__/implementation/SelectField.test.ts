@@ -1,9 +1,9 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import Schema from '../../Schema'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import buildSchema from '../../utilities/buildSchema'
 
-interface IUserDefinition {
+interface IUserSchema {
 	id: 'select-union-test'
 	name: 'select union test'
 	fields: {
@@ -42,7 +42,7 @@ interface IUserDefinition {
 }
 
 export default class SelectFieldTest extends BaseTest {
-	private static userDefinition = buildSchemaDefinition<IUserDefinition>({
+	private static userSchema = buildSchema<IUserSchema>({
 		id: 'select-union-test',
 		name: 'select union test',
 		fields: {
@@ -81,7 +81,7 @@ export default class SelectFieldTest extends BaseTest {
 	})
 	@test('Makes select options a union (test passes, lint will fail)')
 	protected static async canMakeSelectOptionsUnion() {
-		const user = new Schema(this.userDefinition, {
+		const user = new SchemaEntity(this.userSchema, {
 			favoriteColor: 'blue',
 		})
 		const favColor = user.get('favoriteColor')

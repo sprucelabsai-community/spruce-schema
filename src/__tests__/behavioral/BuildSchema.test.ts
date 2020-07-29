@@ -1,13 +1,13 @@
-// TODO figure out how to get schema field mixins working from buildSchemaDefinition (SchemaDefinitionValues fails)
+// TODO figure out how to get schema field mixins working from buildSchema (SchemaDefinitionValues fails)
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import { buildSchemaDefinition } from '../..'
-import { ISchemaDefinition } from '../../schemas.static.types'
+import { ISchema } from '../../schemas.static.types'
+import buildSchema from '../../utilities/buildSchema'
 
-export default class BuildSchemaDefinitionTest extends BaseTest {
+export default class BuildSchemaTest extends BaseTest {
 	@test('Can build schema (will always pass, but fail lint)')
 	protected static async testBasicSchemaBuilding() {
-		const schema = buildSchemaDefinition({
+		const schema = buildSchema({
 			id: 'test-1',
 			name: 'test 1',
 			fields: {
@@ -22,7 +22,7 @@ export default class BuildSchemaDefinitionTest extends BaseTest {
 
 	@test('test built schema type')
 	protected static async testBuiltSchemaType() {
-		const schema = buildSchemaDefinition({
+		const schema = buildSchema({
 			id: 'test-2',
 			name: 'test two',
 			fields: {
@@ -42,7 +42,7 @@ export default class BuildSchemaDefinitionTest extends BaseTest {
 		})
 
 		type TestType = typeof schema
-		const test = <T extends ISchemaDefinition>(def: T): T => def
+		const test = <T extends ISchema>(def: T): T => def
 
 		test<typeof schema>(schema)
 		test<TestType>(schema)

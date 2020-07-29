@@ -1,21 +1,21 @@
-import Schema from '../Schema'
+import SchemaEntity from '../SchemaEntity'
 import {
-	ISchemaDefinition,
-	SchemaDefinitionPartialValues,
+	ISchema,
+	SchemaPartialValues,
 	ISchemaGetValuesOptions,
 	SchemaFieldNames,
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
-	S extends ISchemaDefinition,
+	S extends ISchema,
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
-	CreateSchemaInstances extends boolean = true
+	CreateEntityInstances extends boolean = true
 >(
 	definition: S,
-	values: SchemaDefinitionPartialValues<S>,
-	options?: ISchemaGetValuesOptions<S, F, CreateSchemaInstances>
+	values: SchemaPartialValues<S>,
+	options?: ISchemaGetValuesOptions<S, F, CreateEntityInstances>
 ) {
-	const instance = new Schema(definition, values)
+	const instance = new SchemaEntity(definition, values)
 
 	return instance.getValues({
 		...(options ?? {}),

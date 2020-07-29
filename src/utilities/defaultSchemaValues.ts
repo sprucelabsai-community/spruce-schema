@@ -1,24 +1,24 @@
-import Schema from '../Schema'
+import SchemaEntity from '../SchemaEntity'
 import {
-	SchemaDefinitionDefaultValues,
-	ISchemaDefinition,
+	SchemaDefaultValues,
+	ISchema,
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
 } from '../schemas.static.types'
 
 export default function defaultSchemaValues<
-	S extends ISchemaDefinition,
+	S extends ISchema,
 	F extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<S>,
-	CreateSchemaInstances extends boolean = true
+	CreateEntityInstances extends boolean = true
 >(
 	definition: S,
-	options: ISchemaGetDefaultValuesOptions<S, F, CreateSchemaInstances> = {}
-): SchemaDefinitionDefaultValues<S> {
-	const instance = new Schema(definition)
+	options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
+): SchemaDefaultValues<S> {
+	const instance = new SchemaEntity(definition)
 
 	// @ts-ignore
 	return instance.getDefaultValues({
-		createSchemaInstances: false,
+		CreateEntityInstances: false,
 		...options,
 	})
 }

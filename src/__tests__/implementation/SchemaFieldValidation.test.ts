@@ -1,14 +1,14 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import buildPersonWithCar, { IPersonDefinition } from '../data/personWithCars'
+import buildPersonWithCar, { IPersonSchema } from '../data/personWithCars'
 
 export default class SchemaFieldTest extends BaseTest {
-	private static personDefinition: IPersonDefinition
+	private static personSchema: IPersonSchema
 
 	protected static async beforeEach() {
 		super.beforeEach()
-		const { personDefinition } = buildPersonWithCar()
-		this.personDefinition = personDefinition
+		const { personSchema } = buildPersonWithCar()
+		this.personSchema = personSchema
 	}
 
 	@test('fails on non-object', true, ['value_must_be_object'])
@@ -26,19 +26,19 @@ export default class SchemaFieldTest extends BaseTest {
 	) {
 		const requiredField = FieldFactory.field(
 			'requiredCar',
-			this.personDefinition.fields.requiredCar
+			this.personSchema.fields.requiredCar
 		)
 		const optionalField = FieldFactory.field(
 			'optionalCar',
-			this.personDefinition.fields.optionalCar
+			this.personSchema.fields.optionalCar
 		)
 		const requiredIsArrayField = FieldFactory.field(
 			'requiredIsArrayCar',
-			this.personDefinition.fields.requiredIsArrayCars
+			this.personSchema.fields.requiredIsArrayCars
 		)
 		const optionalIsArrayField = FieldFactory.field(
 			'optionalRequiredCar',
-			this.personDefinition.fields.optionalIsArrayCars
+			this.personSchema.fields.optionalIsArrayCars
 		)
 
 		let codes = requiredField.validate(value).map((err) => err.code)

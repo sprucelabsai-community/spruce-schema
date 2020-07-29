@@ -66,7 +66,7 @@ export interface IFieldDefinitionMap {
 	[FieldType.Directory]: IDirectoryFieldDefinition
 }
 
-export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateSchemaInstances extends boolean> {
+export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateEntityInstances extends boolean> {
 	[FieldType.Boolean]: IBooleanFieldDefinition['value']
 	[FieldType.Select]: SelectValueTypeGenerator<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>
 	[FieldType.Duration]: IDurationFieldDefinition['value']
@@ -74,7 +74,7 @@ export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateSc
 	[FieldType.Text]: ITextFieldDefinition['value']
 	[FieldType.Address]: IAddressFieldDefinition['value']
 	[FieldType.Phone]: IPhoneFieldDefinition['value']
-	[FieldType.Schema]: SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>
+	[FieldType.Schema]: SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>
 	[FieldType.Raw]: IRawFieldDefinition['value']
 	[FieldType.Number]: INumberFieldDefinition['value']
 	[FieldType.DateTime]: IDateTimeFieldDefinition['value']

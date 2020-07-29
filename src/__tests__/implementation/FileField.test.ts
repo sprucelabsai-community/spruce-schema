@@ -3,8 +3,8 @@ import BaseTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IFileFieldValue } from '../../fields/FileField.types'
-import Schema from '../../Schema'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import buildSchema from '../../utilities/buildSchema'
 
 interface IFileDetailExpectations {
 	expectedName: string
@@ -21,7 +21,7 @@ const linuxTestPath = '/some/directory/path'
 const windowsTestPath = 'C:\\some\\directory\\path'
 
 export default class FileFieldTest extends BaseTest {
-	private static fileDefinition = buildSchemaDefinition({
+	private static fileDefinition = buildSchema({
 		id: 'testFeature',
 		name: 'Test Feature',
 		fields: {
@@ -168,7 +168,7 @@ export default class FileFieldTest extends BaseTest {
 			// @ts-ignore
 			path.sep = '\\'
 		}
-		const schema = new Schema(this.fileDefinition)
+		const schema = new SchemaEntity(this.fileDefinition)
 
 		schema.set('target', setTarget)
 
@@ -197,7 +197,7 @@ export default class FileFieldTest extends BaseTest {
 		relativeTo: string,
 		expectedPath: string
 	) {
-		const schema = new Schema(this.fileDefinition)
+		const schema = new SchemaEntity(this.fileDefinition)
 		schema.set('target', { path, name: 'app.ts' })
 		const target = schema.get('target', { byField: { target: { relativeTo } } })
 		assert.isEqual(target.path, expectedPath)

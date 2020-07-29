@@ -1,12 +1,12 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import Schema from '../../Schema'
-import { ISchemaDefinition } from '../../schemas.static.types'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import { ISchema } from '../../schemas.static.types'
+import buildSchema from '../../utilities/buildSchema'
 
 // turn off duplicate checks because tests all run in the same runtime
-Schema.enableDuplicateCheckWhenTracking = false
+SchemaEntity.enableDuplicateCheckWhenTracking = false
 
-export interface ICarDefinition extends ISchemaDefinition {
+export interface ICarSchema extends ISchema {
 	id: 'car'
 	name: 'car'
 	fields: {
@@ -20,7 +20,7 @@ export interface ICarDefinition extends ISchemaDefinition {
 	}
 }
 
-export interface ITruckDefinition extends ISchemaDefinition {
+export interface ITruckSchema extends ISchema {
 	id: 'truck'
 	name: 'Truck'
 	fields: {
@@ -34,7 +34,7 @@ export interface ITruckDefinition extends ISchemaDefinition {
 	}
 }
 
-export interface IPersonDefinition extends ISchemaDefinition {
+export interface IPersonSchema extends ISchema {
 	id: 'person'
 	name: 'user schema test'
 	fields: {
@@ -47,26 +47,26 @@ export interface IPersonDefinition extends ISchemaDefinition {
 			type: FieldType.Schema
 			isRequired: true
 			options: {
-				schema: ICarDefinition
+				schema: ICarSchema
 			}
 		}
 		optionalCar: {
 			type: FieldType.Schema
 			options: {
-				schema: ICarDefinition
+				schema: ICarSchema
 			}
 		}
 		optionalCarWithCallback: {
 			type: FieldType.Schema
 			options: {
-				schemasCallback: () => [ICarDefinition]
+				schemasCallback: () => [ICarSchema]
 			}
 		}
 		optionalIsArrayCars: {
 			type: FieldType.Schema
 			isArray: true
 			options: {
-				schema: ICarDefinition
+				schema: ICarSchema
 			}
 		}
 		requiredIsArrayCars: {
@@ -74,20 +74,20 @@ export interface IPersonDefinition extends ISchemaDefinition {
 			isArray: true
 			isRequired: true
 			options: {
-				schema: ICarDefinition
+				schema: ICarSchema
 			}
 		}
 		optionalCarOrTruck: {
 			type: FieldType.Schema
 			options: {
-				schemas: [ICarDefinition, ITruckDefinition]
+				schemas: [ICarSchema, ITruckSchema]
 			}
 		}
 		optionalIsArrayCarOrTruck: {
 			type: FieldType.Schema
 			isArray: true
 			options: {
-				schemas: [ICarDefinition, ITruckDefinition]
+				schemas: [ICarSchema, ITruckSchema]
 			}
 		}
 		requiredIsArrayCarOrTruck: {
@@ -95,7 +95,7 @@ export interface IPersonDefinition extends ISchemaDefinition {
 			isArray: true
 			isRequired: true
 			options: {
-				schemas: [ICarDefinition, ITruckDefinition]
+				schemas: [ICarSchema, ITruckSchema]
 			}
 		}
 		optionalSelect: {
@@ -135,7 +135,7 @@ export interface IPersonDefinition extends ISchemaDefinition {
 			type: FieldType.Schema
 			defaultValue: { name: 'fast car' }
 			options: {
-				schema: ICarDefinition
+				schema: ICarSchema
 			}
 		}
 		optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -143,21 +143,21 @@ export interface IPersonDefinition extends ISchemaDefinition {
 			isArray: true
 			defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
 			options: {
-				schemas: [ICarDefinition, ITruckDefinition]
+				schemas: [ICarSchema, ITruckSchema]
 			}
 		}
 		optionalCarOrTruckWithDefaultValue: {
 			type: FieldType.Schema
 			defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
 			options: {
-				schemas: [ICarDefinition, ITruckDefinition]
+				schemas: [ICarSchema, ITruckSchema]
 			}
 		}
 	}
 }
 
 const buildPersonWithCars = () => {
-	const carDefinition = buildSchemaDefinition<ICarDefinition>({
+	const carSchema = buildSchema<ICarSchema>({
 		id: 'car',
 		name: 'car',
 		fields: {
@@ -171,7 +171,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const untypedCarDefinition = buildSchemaDefinition({
+	const untypedCarSchema = buildSchema({
 		id: 'car',
 		name: 'car',
 		fields: {
@@ -185,7 +185,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const truckDefinition = buildSchemaDefinition<ITruckDefinition>({
+	const truckSchema = buildSchema<ITruckSchema>({
 		id: 'truck',
 		name: 'Truck',
 		fields: {
@@ -199,7 +199,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const untypedTruckDefinition = buildSchemaDefinition({
+	const untypedTruckSchema = buildSchema({
 		id: 'truck',
 		name: 'Truck',
 		fields: {
@@ -213,7 +213,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const personDefinition = buildSchemaDefinition<IPersonDefinition>({
+	const personSchema = buildSchema<IPersonSchema>({
 		id: 'person',
 		name: 'user schema test',
 		fields: {
@@ -226,26 +226,26 @@ const buildPersonWithCars = () => {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [carDefinition],
+					schemasCallback: () => [carSchema],
 				},
 			},
 			optionalIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			requiredIsArrayCars: {
@@ -253,20 +253,20 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
@@ -274,7 +274,7 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalSelect: {
@@ -314,7 +314,7 @@ const buildPersonWithCars = () => {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -322,20 +322,20 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 		},
 	})
 
-	const untypedPersonDefinition = buildSchemaDefinition({
+	const untypedPersonSchema = buildSchema({
 		id: 'person',
 		name: 'user schema test',
 		fields: {
@@ -348,26 +348,26 @@ const buildPersonWithCars = () => {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [carDefinition],
+					schemasCallback: () => [carSchema],
 				},
 			},
 			optionalIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			requiredIsArrayCars: {
@@ -375,20 +375,20 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
@@ -396,7 +396,7 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalSelect: {
@@ -426,7 +426,7 @@ const buildPersonWithCars = () => {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carDefinition,
+					schema: carSchema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -434,26 +434,26 @@ const buildPersonWithCars = () => {
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carDefinition, truckDefinition],
+					schemas: [carSchema, truckSchema],
 				},
 			},
 		},
 	})
 
 	return {
-		personDefinition,
-		untypedPersonDefinition,
-		carDefinition,
-		untypedCarDefinition,
-		truckDefinition,
-		untypedTruckDefinition,
+		personSchema,
+		untypedPersonSchema,
+		carSchema,
+		untypedCarSchema,
+		truckSchema,
+		untypedTruckSchema,
 	}
 }
 
