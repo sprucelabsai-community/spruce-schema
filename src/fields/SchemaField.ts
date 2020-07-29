@@ -1,11 +1,8 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import Schema from '../Schema'
-import {
-	ISchemaDefinition,
-	ISchemaIdWithVersion,
-} from '../schemas.static.types'
+import SchemaEntity from '../SchemaEntity'
+import { ISchema, ISchemaIdWithVersion } from '../schemas.static.types'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
@@ -13,7 +10,7 @@ import {
 } from '../template.types'
 import AbstractField from './AbstractField'
 import {
-	IFieldDefinitionToSchemaDefinitionOptions,
+	IFieldDefinitionToSchemaOptions,
 	ValidateOptions,
 	ToValueTypeOptions,
 	FieldDefinitionValueType,
@@ -29,12 +26,9 @@ export default class SchemaField<
 
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): (ISchemaIdWithVersion | ISchemaDefinition)[] {
+	): (ISchemaIdWithVersion | ISchema)[] {
 		const { options } = field
-		const schemasOrIds: (
-			| { version?: string; id: string }
-			| ISchemaDefinition
-		)[] = [
+		const schemasOrIds: ({ version?: string; id: string } | ISchema)[] = [
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
@@ -55,7 +49,7 @@ export default class SchemaField<
 			}
 
 			try {
-				Schema.validateDefinition(item)
+				SchemaEntity.validateSchema(item)
 				return item
 			} catch (err) {
 				throw new SpruceError({
@@ -116,7 +110,7 @@ export default class SchemaField<
 				matchedTemplateItem = allMatches[0]
 			} else {
 				matchedTemplateItem = allMatches.find(
-					(d) => d.definition.version === version
+					(d) => d.schema.version === version
 				)
 
 				if (!matchedTemplateItem) {
@@ -130,14 +124,14 @@ export default class SchemaField<
 			if (matchedTemplateItem) {
 				let valueType: string | undefined
 				if (renderAs === TemplateRenderAs.Value) {
-					valueType = `${matchedTemplateItem.nameCamel}Definition`
+					valueType = `${matchedTemplateItem.nameCamel}Schema`
 				} else {
 					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
 						version ? `.${version}` : ''
 					}${
 						renderAs === TemplateRenderAs.Type
 							? `.I${matchedTemplateItem.namePascal}`
-							: `.I${matchedTemplateItem.namePascal}Definition`
+							: `.I${matchedTemplateItem.namePascal}Schema`
 					}`
 
 					if (renderAs === TemplateRenderAs.Type && idsWithVersion.length > 1) {
@@ -167,12 +161,12 @@ export default class SchemaField<
 		} else {
 			valueType = unions.map((item) => item.valueType).join(' | ')
 			valueType = `${
-				(definition.isArray || renderAs === TemplateRenderAs.DefinitionType) &&
+				(definition.isArray || renderAs === TemplateRenderAs.SchemaType) &&
 				unions.length > 1
 					? `(${valueType})`
 					: `${valueType}`
 			}${
-				definition.isArray || renderAs === TemplateRenderAs.DefinitionType
+				definition.isArray || renderAs === TemplateRenderAs.SchemaType
 					? '[]'
 					: ''
 			}`
@@ -180,16 +174,16 @@ export default class SchemaField<
 
 		return {
 			valueTypeGeneratorType:
-				'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateSchemaInstances>',
+				'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>',
 			valueType,
 		}
 	}
 
-	private static mapFieldDefinitionToSchemaDefinitions(
+	private static mapFieldDefinitionToSchemas(
 		definition: ISchemaFieldDefinition,
-		options?: IFieldDefinitionToSchemaDefinitionOptions
-	): ISchemaDefinition[] {
-		const { definitionsById = {} } = options || {}
+		options?: IFieldDefinitionToSchemaOptions
+	): ISchema[] {
+		const { schemasById: schemasById = {} } = options || {}
 		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			definition
 		)
@@ -197,10 +191,10 @@ export default class SchemaField<
 		const definitions = schemasOrIds.map((schemaOrId) => {
 			const definition =
 				typeof schemaOrId === 'string'
-					? definitionsById[schemaOrId] || Schema.getDefinition(schemaOrId)
+					? schemasById[schemaOrId] || SchemaEntity.getSchema(schemaOrId)
 					: schemaOrId
 
-			Schema.validateDefinition(definition)
+			SchemaEntity.validateSchema(definition)
 			return definition
 		})
 
@@ -214,9 +208,9 @@ export default class SchemaField<
 		const errors = super.validate(value, options)
 
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
-		if (value instanceof Schema) {
+		if (value instanceof SchemaEntity) {
 			try {
-				Schema.validateDefinition(value)
+				SchemaEntity.validateSchema(value)
 			} catch (err) {
 				errors.push({
 					error: err,
@@ -234,11 +228,11 @@ export default class SchemaField<
 					friendlyMessage: `${this.label ?? this.name} must be an object`,
 				})
 			} else {
-				let definitions: ISchemaDefinition[] | undefined
+				let schemas: ISchema[] | undefined
 
 				try {
 					// pull schemas out of our own definition
-					definitions = SchemaField.mapFieldDefinitionToSchemaDefinitions(
+					schemas = SchemaField.mapFieldDefinitionToSchemas(
 						this.definition,
 						options
 					)
@@ -250,17 +244,17 @@ export default class SchemaField<
 					})
 				}
 
-				if (definitions && definitions.length === 0) {
+				if (schemas && schemas.length === 0) {
 					errors.push({ code: 'related_schemas_missing', name: this.name })
 				}
 
 				// if we are validating schemas, we look them all up by id
-				let instance: Schema<ISchemaDefinition> | undefined
-				if (definitions && definitions.length === 1) {
+				let instance: SchemaEntity<ISchema> | undefined
+				if (schemas && schemas.length === 1) {
 					// @ts-ignore warns about infinite recursion, which is true, because relationships between schemas can go forever
 					// because
-					instance = new Schema(definitions[0], value)
-				} else if (definitions && definitions.length > 0) {
+					instance = new SchemaEntity(schemas[0], value)
+				} else if (schemas && schemas.length > 0) {
 					const { schemaId, values } = value || {}
 
 					if (!values) {
@@ -278,17 +272,15 @@ export default class SchemaField<
 								'You need to add `schemaId` to the value of ' + this.name,
 						})
 					} else {
-						const matchDefinition = definitions.find(
-							(def) => def.id === schemaId
-						)
-						if (!matchDefinition) {
+						const matchSchema = schemas.find((def) => def.id === schemaId)
+						if (!matchSchema) {
 							errors.push({
 								name: this.name,
 								code: 'related_schema_not_found',
 								friendlyMessage: `Could not find a schema by id ${schemaId}`,
 							})
 						} else {
-							instance = new Schema(matchDefinition, values)
+							instance = new SchemaEntity(matchSchema, values)
 						}
 					}
 				}
@@ -309,10 +301,10 @@ export default class SchemaField<
 		return errors
 	}
 
-	public toValueType<CreateSchemaInstances extends boolean>(
+	public toValueType<CreateEntityInstances extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateSchemaInstances>
-	): FieldDefinitionValueType<F, CreateSchemaInstances> {
+		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateEntityInstances>
+	): FieldDefinitionValueType<F, CreateEntityInstances> {
 		//  first lets validate it's a good form
 		const errors = this.validate(value, options)
 
@@ -327,27 +319,26 @@ export default class SchemaField<
 			})
 		}
 
-		const { createSchemaInstances, definitionsById = {} } = options || {}
+		const { CreateEntityInstances, schemasById: schemasById = {} } =
+			options || {}
 
 		// try and pull the schema definition from the options and by id
-		const destinationDefinitions: ISchemaDefinition[] = SchemaField.mapFieldDefinitionToSchemaDefinitions(
+		const destinationSchemas: ISchema[] = SchemaField.mapFieldDefinitionToSchemas(
 			this.definition,
-			{ definitionsById }
+			{ schemasById }
 		)
 
-		const isUnion = destinationDefinitions.length > 1
-		let instance: Schema<ISchemaDefinition> | undefined
+		const isUnion = destinationSchemas.length > 1
+		let instance: SchemaEntity<ISchema> | undefined
 
 		// if we are only pointing 1 one possible definition, then mapping is pretty easy
 		if (!isUnion) {
-			instance = new Schema(destinationDefinitions[0], value)
+			instance = new SchemaEntity(destinationSchemas[0], value)
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
-			const allMatches = destinationDefinitions.filter(
-				(def) => def.id === schemaId
-			)
-			let matchedDefinition: ISchemaDefinition | undefined
+			const allMatches = destinationSchemas.filter((def) => def.id === schemaId)
+			let matchedSchema: ISchema | undefined
 
 			if (allMatches.length === 0) {
 				throw new SpruceError({
@@ -361,38 +352,38 @@ export default class SchemaField<
 
 			if (allMatches.length > 1) {
 				if (value.version) {
-					matchedDefinition = allMatches.find(
+					matchedSchema = allMatches.find(
 						(def) => def.version === value.version
 					)
 				}
 
-				if (!matchedDefinition) {
+				if (!matchedSchema) {
 					throw new SpruceError({
 						code: 'VERSION_NOT_FOUND',
 						schemaId,
 					})
 				}
 			} else {
-				matchedDefinition = allMatches[0]
+				matchedSchema = allMatches[0]
 			}
 
-			instance = new Schema(matchedDefinition, values)
+			instance = new SchemaEntity(matchedSchema, values)
 		}
 
-		if (createSchemaInstances) {
-			return instance as FieldDefinitionValueType<F, CreateSchemaInstances>
+		if (CreateEntityInstances) {
+			return instance as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
 		if (isUnion) {
 			return {
 				schemaId: instance.schemaId,
-				values: instance.getValues({ validate: false, createSchemaInstances }),
-			} as FieldDefinitionValueType<F, CreateSchemaInstances>
+				values: instance.getValues({ validate: false, CreateEntityInstances }),
+			} as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
 		return instance.getValues({
 			validate: false,
-			createSchemaInstances,
-		}) as FieldDefinitionValueType<F, CreateSchemaInstances>
+			CreateEntityInstances,
+		}) as FieldDefinitionValueType<F, CreateEntityInstances>
 	}
 }

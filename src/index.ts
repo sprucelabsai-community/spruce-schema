@@ -1,7 +1,7 @@
-export * from './Schema'
+export * from './SchemaEntity'
 
-import Schema from './Schema'
-export default Schema
+import SchemaEntity from './SchemaEntity'
+export default SchemaEntity
 
 // Schema types
 export * from './schemas.static.types'
@@ -14,9 +14,8 @@ export * from './errors/error.types'
 export { default as SchemaError } from './errors/SpruceError'
 
 // Builders
-export { default as buildErrorDefinition } from './utilities/buildErrorDefinition'
-export { default as buildSchemaDefinition } from './utilities/buildSchemaDefinition'
-export { default as buildFieldDefinition } from './utilities/buildFieldDefinition'
+export { default as buildErrorSchema } from './utilities/buildErrorSchema'
+export { default as buildSchema } from './utilities/buildSchema'
 
 // Util types
 export * from './utilities/optional.types'

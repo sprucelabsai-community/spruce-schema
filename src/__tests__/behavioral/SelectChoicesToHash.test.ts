@@ -11,8 +11,8 @@ import buildPersonWithCars from '../data/personWithCars'
 export default class SelectOptionsToHashTest extends BaseTest {
 	@test('choice hashing')
 	protected static async testCreatingOptionHashes() {
-		const { personDefinition } = buildPersonWithCars()
-		const options = personDefinition.fields.optionalSelect.options.choices
+		const { personSchema } = buildPersonWithCars()
+		const options = personSchema.fields.optionalSelect.options.choices
 
 		type Test = SelectChoicesToHash<typeof options>
 		const optionsHash = selectChoicesToHash(options)
@@ -20,18 +20,12 @@ export default class SelectOptionsToHashTest extends BaseTest {
 		assert.isType<Test>(optionsHash)
 		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
 
-		type SelectFields = PickFieldNames<
-			typeof personDefinition,
-			FieldType.Select
-		>
+		type SelectFields = PickFieldNames<typeof personSchema, FieldType.Select>
 
-		const optionsHash2 = definitionChoicesToHash(
-			personDefinition,
-			'optionalSelect'
-		)
+		const optionsHash2 = definitionChoicesToHash(personSchema, 'optionalSelect')
 
 		const optionsHash3 = definitionChoicesToHash(
-			personDefinition,
+			personSchema,
 			'optionalSelectWithDefaultValue'
 		)
 

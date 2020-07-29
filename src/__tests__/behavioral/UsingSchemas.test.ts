@@ -2,28 +2,28 @@ import BaseTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../../errors/SpruceError'
-import Schema from '../../Schema'
-import { SchemaDefinitionValues, ISchema } from '../../schemas.static.types'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import { SchemaValues, ISchemaEntity } from '../../schemas.static.types'
+import buildSchema from '../../utilities/buildSchema'
 import buildPersonWithCars, {
-	ICarDefinition,
-	ITruckDefinition,
-	IPersonDefinition,
+	ICarSchema,
+	ITruckSchema,
+	IPersonSchema,
 } from '../data/personWithCars'
 
-Schema.enableDuplicateCheckWhenTracking = false
+SchemaEntity.enableDuplicateCheckWhenTracking = false
 
-type IPersonMappedValues = SchemaDefinitionValues<IPersonDefinition, true>
+type IPersonMappedValues = SchemaValues<IPersonSchema, true>
 
 interface IPersonExpectedValues {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
-		| (ISchema<ICarDefinition> | ISchema<ITruckDefinition>)[]
+		| (ISchemaEntity<ICarSchema> | ISchemaEntity<ITruckSchema>)[]
 		| null
 	optionalCarOrTruckWithDefaultValue?:
-		| ISchema<ICarDefinition>
-		| ISchema<ITruckDefinition>
+		| ISchemaEntity<ICarSchema>
+		| ISchemaEntity<ITruckSchema>
 		| null
 }
 
@@ -33,31 +33,27 @@ interface IPersonExpectedValuesWithoutSchema {
 	optionalIsArrayCarOrTruckWithDefaultValue?:
 		| {
 				schemaId: 'car' | 'truck'
-				values:
-					| SchemaDefinitionValues<ICarDefinition>
-					| SchemaDefinitionValues<ITruckDefinition>
+				values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
 		  }[]
 		| null
 	optionalCarOrTruckWithDefaultValue?: {
 		schemaId: 'car' | 'truck'
-		values:
-			| SchemaDefinitionValues<ICarDefinition>
-			| SchemaDefinitionValues<ITruckDefinition>
+		values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
 	} | null
 }
 
-const { personDefinition, truckDefinition } = buildPersonWithCars()
+const { personSchema, truckSchema } = buildPersonWithCars()
 
 export default class SchemaTest extends BaseTest {
 	@test()
 	protected static async testBasicValidation() {
-		const definition = {
+		const schema = {
 			id: 'simple-test',
 			name: 'Simple Test Schema',
 		}
 
 		assert.isFalse(
-			Schema.isDefinitionValid(definition),
+			SchemaEntity.isSchemaValid(schema),
 			'Bad definition incorrectly passed valid check'
 		)
 	}
@@ -71,7 +67,7 @@ export default class SchemaTest extends BaseTest {
 		fieldToDelete: string,
 		expectedErrors: string[]
 	) {
-		const definition = buildSchemaDefinition({
+		const definition = buildSchema({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -87,7 +83,7 @@ export default class SchemaTest extends BaseTest {
 		unset(definition, fieldToDelete)
 
 		const error: any = assert.doesThrow(() =>
-			Schema.validateDefinition(definition)
+			SchemaEntity.validateSchema(definition)
 		)
 
 		if (
@@ -112,7 +108,7 @@ export default class SchemaTest extends BaseTest {
 		'Does isArray make value an array (test always passes, linting should fail if broken)'
 	)
 	protected static async canIsArrayValue() {
-		const definition = buildSchemaDefinition({
+		const definition = buildSchema({
 			id: 'is-array-test',
 			name: 'is array',
 			fields: {
@@ -148,12 +144,12 @@ export default class SchemaTest extends BaseTest {
 			},
 		})
 
-		assert.isTrue(Schema.isDefinitionValid(definition))
+		assert.isTrue(SchemaEntity.isSchemaValid(definition))
 	}
 
 	@test('isArray get/set work and transform to/from array')
 	protected static testGetSet() {
-		const schema = new Schema({
+		const entity = new SchemaEntity({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -170,7 +166,7 @@ export default class SchemaTest extends BaseTest {
 			},
 		})
 
-		const values = schema.getValues({ fields: ['name'] })
+		const values = entity.getValues({ fields: ['name'] })
 		assert.isEqual(values.name, 'tay')
 		assert.isUndefined(
 			//@ts-ignore
@@ -179,36 +175,36 @@ export default class SchemaTest extends BaseTest {
 		)
 
 		// Try setting favorite colors
-		schema.set('favoriteColors', ['test'])
+		entity.set('favoriteColors', ['test'])
 		assert.isEqualDeep(
-			schema.values.favoriteColors,
+			entity.values.favoriteColors,
 			['test'],
 			'Did not set value correctly'
 		)
 
 		// Try setting favorite color wrong, but should be coerced back to an array
 		// @ts-ignore
-		schema.set('favoriteColors', 'test2')
+		entity.set('favoriteColors', 'test2')
 		assert.isEqualDeep(
-			schema.values.favoriteColors,
+			entity.values.favoriteColors,
 			['test2'],
 			'Did not set value correctly'
 		)
 
 		// Check non array values too
-		schema.set('name', 'Taylor')
-		assert.isEqualDeep(schema.values, {
+		entity.set('name', 'Taylor')
+		assert.isEqualDeep(entity.values, {
 			name: 'Taylor',
 			favoriteColors: ['test2'],
 		})
 
 		// Make sure getters work
 		// @ts-ignore
-		schema.values = { name: ['becca'], favoriteColors: 'blue' }
-		const name = schema.get('name')
+		entity.values = { name: ['becca'], favoriteColors: 'blue' }
+		const name = entity.get('name')
 		assert.isEqual(name, 'becca')
 
-		const colors = schema.get('favoriteColors')
+		const colors = entity.get('favoriteColors')
 		assert.isTrue(
 			Array.isArray(colors),
 			'Getter did not transform colors into array'
@@ -217,7 +213,7 @@ export default class SchemaTest extends BaseTest {
 
 	@test('Can transform isArray values')
 	protected static testTransformingValues() {
-		const schema = new Schema({
+		const schema = new SchemaEntity({
 			id: 'is-array-transform',
 			name: 'transform tests',
 			fields: {
@@ -264,15 +260,15 @@ export default class SchemaTest extends BaseTest {
 			name: 'test',
 			onlyOnCar: null,
 		}
-		assert.isType<SchemaDefinitionValues<typeof truckDefinition>>(values)
+		assert.isType<SchemaValues<typeof truckSchema>>(values)
 	}
 
 	@test('can type values correctly')
 	protected static testFullValuesTypes() {
-		const personSchema = new Schema(personDefinition)
-		const values = personSchema.getValues()
-		const valuesWithoutInstances = personSchema.getValues({
-			createSchemaInstances: false,
+		const personEntity = new SchemaEntity(personSchema)
+		const values = personEntity.getValues()
+		const valuesWithoutInstances = personEntity.getValues({
+			CreateEntityInstances: false,
 		})
 		assert.isType<IPersonExpectedValues>(values)
 		assert.isType<IPersonMappedValues>(values)
@@ -281,9 +277,9 @@ export default class SchemaTest extends BaseTest {
 
 	@test('getting values using options by field')
 	protected static testGettingOptionsByField() {
-		const schema = new Schema(personDefinition)
-		schema.set('name', 'a really long name that should get truncated')
-		const name = schema.get('name', { byField: { name: { maxLength: 10 } } })
+		const entity = new SchemaEntity(personSchema)
+		entity.set('name', 'a really long name that should get truncated')
+		const name = entity.get('name', { byField: { name: { maxLength: 10 } } })
 		assert.isEqual(name, 'a really l')
 	}
 }

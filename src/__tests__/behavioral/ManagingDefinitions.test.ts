@@ -2,7 +2,7 @@ import { test } from '@sprucelabs/test'
 import '../data/personWithCars'
 import { assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import Schema from '../../Schema'
+import SchemaEntity from '../../SchemaEntity'
 import buildPersonWithCars from '../data/personWithCars'
 
 export default class CanGetSchemasTest extends AbstractSchemaTest {
@@ -13,17 +13,17 @@ export default class CanGetSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static canGetDefinitionsByIdBasedOnImportedFile() {
-		const personDefinition = Schema.getDefinition('person')
-		const carDefinition = Schema.getDefinition('car')
+		const personSchema = SchemaEntity.getSchema('person')
+		const carSchema = SchemaEntity.getSchema('car')
 
-		assert.isOk(personDefinition)
-		assert.isOk(carDefinition)
+		assert.isOk(personSchema)
+		assert.isOk(carSchema)
 	}
 
 	@test()
 	protected static throwsIfCantMatchId() {
 		assert.doesThrow(
-			() => Schema.getDefinition('pizzaPi'),
+			() => SchemaEntity.getSchema('pizzaPi'),
 			/SCHEMA_NOT_FOUND/gi
 		)
 	}

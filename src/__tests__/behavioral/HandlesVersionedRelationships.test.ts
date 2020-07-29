@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import Schema from '../../Schema'
-import { ISchema } from '../../schemas.static.types'
+import SchemaEntity from '../../SchemaEntity'
+import { ISchemaEntity } from '../../schemas.static.types'
 import buildVersionedPersonWithCars, {
 	ICarV2Definition,
 } from '../data/versionedPersonWithCars'
@@ -10,33 +10,33 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 	@test()
 	protected static async canGetV1AndV2OfARelatedField() {
 		const {
-			personV1Definition,
-			personV2Definition,
-			carV1Definition,
-			carV2Definition,
+			personV1Schema,
+			personV2Schema,
+			carV1Schema,
+			carV2Schema,
 		} = buildVersionedPersonWithCars()
 
-		assert.isEqual(personV1Definition.id, personV2Definition.id)
+		assert.isEqual(personV1Schema.id, personV2Schema.id)
 
-		assert.isEqual(personV1Definition.version, 'v1')
-		assert.isEqual(personV2Definition.version, 'v2')
+		assert.isEqual(personV1Schema.version, 'v1')
+		assert.isEqual(personV2Schema.version, 'v2')
 
-		assert.isEqual(carV1Definition.id, carV2Definition.id)
+		assert.isEqual(carV1Schema.id, carV2Schema.id)
 
-		assert.isEqual(carV1Definition.version, 'v1')
-		assert.isEqual(carV2Definition.version, 'v2')
+		assert.isEqual(carV1Schema.version, 'v1')
+		assert.isEqual(carV2Schema.version, 'v2')
 	}
 
 	@test()
 	protected static async throwsWhenMissingVersionInUnionFields() {
 		const {
-			personV2Definition,
-			carV1Definition,
-			carV2Definition,
+			personV2Schema,
+			carV1Schema,
+			carV2Schema,
 		} = buildVersionedPersonWithCars()
 
-		const carV1 = new Schema(carV1Definition, { name: 'version 1' })
-		const carV2 = new Schema(carV2Definition, {
+		const carV1 = new SchemaEntity(carV1Schema, { name: 'version 1' })
+		const carV2 = new SchemaEntity(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -44,7 +44,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new Schema(personV2Definition, {
+		const person = new SchemaEntity(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: { schemaId: 'car', values: carV1.getValues() },
 			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() },
@@ -56,13 +56,13 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 	@test()
 	protected static async canSetSchemaFieldToOneOfAFewVersions() {
 		const {
-			personV2Definition,
-			carV1Definition,
-			carV2Definition,
+			personV2Schema,
+			carV1Schema,
+			carV2Schema,
 		} = buildVersionedPersonWithCars()
 
-		const carV1 = new Schema(carV1Definition, { name: 'version 1' })
-		const carV2 = new Schema(carV2Definition, {
+		const carV1 = new SchemaEntity(carV1Schema, { name: 'version 1' })
+		const carV2 = new SchemaEntity(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -70,7 +70,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new Schema(personV2Definition, {
+		const person = new SchemaEntity(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: {
 				schemaId: 'car',
@@ -94,7 +94,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 				assert.fail('should have resolved to car')
 				break
 			case 'car': {
-				const values = (car as ISchema<ICarV2Definition>).getValues()
+				const values = (car as ISchemaEntity<ICarV2Definition>).getValues()
 				assert.isEqual(values.name, 'version 2')
 			}
 		}

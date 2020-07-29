@@ -1,12 +1,12 @@
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import Schema from '../../Schema'
-import { ISchemaDefinition } from '../../schemas.static.types'
-import buildSchemaDefinition from '../../utilities/buildSchemaDefinition'
+import SchemaEntity from '../../SchemaEntity'
+import { ISchema } from '../../schemas.static.types'
+import buildSchema from '../../utilities/buildSchema'
 
 // turn off duplicate checks because tests all run in the same runtime
-Schema.enableDuplicateCheckWhenTracking = false
+SchemaEntity.enableDuplicateCheckWhenTracking = false
 
-export interface ICarV1Definition extends ISchemaDefinition {
+export interface ICarV1Definition extends ISchema {
 	id: 'car'
 	name: 'car'
 	fields: {
@@ -20,7 +20,7 @@ export interface ICarV1Definition extends ISchemaDefinition {
 	}
 }
 
-export interface ICarV2Definition extends ISchemaDefinition {
+export interface ICarV2Definition extends ISchema {
 	id: 'car'
 	name: 'car'
 	fields: {
@@ -35,7 +35,7 @@ export interface ICarV2Definition extends ISchemaDefinition {
 	}
 }
 
-export interface ITruckV1Definition extends ISchemaDefinition {
+export interface ITruckV1Definition extends ISchema {
 	id: 'truck'
 	name: 'Truck'
 	fields: {
@@ -49,7 +49,7 @@ export interface ITruckV1Definition extends ISchemaDefinition {
 	}
 }
 
-export interface IPersonV1Definition extends ISchemaDefinition {
+export interface IPersonV1Definition extends ISchema {
 	id: 'person'
 	name: 'user schema test'
 	fields: {
@@ -161,7 +161,7 @@ export interface IPersonV1Definition extends ISchemaDefinition {
 	}
 }
 
-export interface IPersonV2Definition extends ISchemaDefinition {
+export interface IPersonV2Definition extends ISchema {
 	id: 'person'
 	name: 'user schema test'
 	fields: {
@@ -277,7 +277,7 @@ export interface IPersonV2Definition extends ISchemaDefinition {
 	}
 }
 const buildVersionedPersonWithCars = () => {
-	const carV1Definition = buildSchemaDefinition<ICarV1Definition>({
+	const carV1Schema = buildSchema<ICarV1Definition>({
 		id: 'car',
 		name: 'car',
 		version: 'v1',
@@ -292,7 +292,7 @@ const buildVersionedPersonWithCars = () => {
 		},
 	})
 
-	const carV2Definition = buildSchemaDefinition<ICarV2Definition>({
+	const carV2Schema = buildSchema<ICarV2Definition>({
 		id: 'car',
 		name: 'car',
 		version: 'v2',
@@ -308,7 +308,7 @@ const buildVersionedPersonWithCars = () => {
 		},
 	})
 
-	const truckV1Definition = buildSchemaDefinition<ITruckV1Definition>({
+	const truckV1Definition = buildSchema<ITruckV1Definition>({
 		id: 'truck',
 		name: 'Truck',
 		fields: {
@@ -322,7 +322,7 @@ const buildVersionedPersonWithCars = () => {
 		},
 	})
 
-	const personV1Definition = buildSchemaDefinition<IPersonV1Definition>({
+	const personV1Schema = buildSchema<IPersonV1Definition>({
 		id: 'person',
 		name: 'user schema test',
 		version: 'v1',
@@ -336,26 +336,26 @@ const buildVersionedPersonWithCars = () => {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [carV1Definition],
+					schemasCallback: () => [carV1Schema],
 				},
 			},
 			optionalIsArrayCars: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			requiredIsArrayCars: {
@@ -363,20 +363,20 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
@@ -384,7 +384,7 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalSelect: {
@@ -414,7 +414,7 @@ const buildVersionedPersonWithCars = () => {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -422,20 +422,20 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 		},
 	})
 
-	const personV2Definition = buildSchemaDefinition<IPersonV2Definition>({
+	const personV2Schema = buildSchema<IPersonV2Definition>({
 		id: 'person',
 		name: 'user schema test',
 		version: 'v2',
@@ -449,21 +449,21 @@ const buildVersionedPersonWithCars = () => {
 				type: FieldType.Schema,
 				isRequired: true,
 				options: {
-					schema: carV2Definition,
+					schema: carV2Schema,
 				},
 			},
 			optionalCar: {
 				type: FieldType.Schema,
 				options: {
-					schema: carV2Definition,
+					schema: carV2Schema,
 				},
 			},
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
 					schemasCallback: () => [
-						carV1Definition,
-						carV2Definition,
+						carV1Schema,
+						carV2Schema,
 						truckV1Definition,
 					],
 				},
@@ -472,7 +472,7 @@ const buildVersionedPersonWithCars = () => {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			requiredIsArrayCars: {
@@ -480,20 +480,20 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalCarOrTruck: {
 				type: FieldType.Schema,
 				options: {
-					schemas: [carV1Definition, carV2Definition, truckV1Definition],
+					schemas: [carV1Schema, carV2Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
 				type: FieldType.Schema,
 				isArray: true,
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
@@ -501,7 +501,7 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				isRequired: true,
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalSelect: {
@@ -531,7 +531,7 @@ const buildVersionedPersonWithCars = () => {
 				type: FieldType.Schema,
 				defaultValue: { name: 'fast car' },
 				options: {
-					schema: carV1Definition,
+					schema: carV1Schema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -539,25 +539,25 @@ const buildVersionedPersonWithCars = () => {
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
 				type: FieldType.Schema,
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
-					schemas: [carV1Definition, truckV1Definition],
+					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 		},
 	})
 
 	return {
-		personV1Definition,
-		carV1Definition,
-		carV2Definition,
+		personV1Schema,
+		carV1Schema,
+		carV2Schema,
 		truckV1Definition,
-		personV2Definition,
+		personV2Schema,
 	}
 }
 

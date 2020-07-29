@@ -1,8 +1,8 @@
 import AbstractSpruceTest from '@sprucelabs/test'
-import Schema from './Schema'
+import SchemaEntity from './SchemaEntity'
 
 export default class AbstractSchemaTest extends AbstractSpruceTest {
 	protected static async beforeEach() {
-		Schema.forgetAllDefinitions()
+		SchemaEntity.forgetAllSchemas()
 	}
 }

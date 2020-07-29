@@ -6,51 +6,47 @@ import {
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import AbstractField from './fields/AbstractField'
-import { IDefinitionsById } from './fields/field.static.types'
-import { ISchemaFieldDefinition } from './fields/SchemaField.types'
+import { ISchemasById } from './fields/field.static.types'
 import {
-	ISchemaDefinition,
-	SchemaDefinitionPartialValues,
+	ISchema,
+	SchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
 	ISchemaNormalizeOptions,
-	SchemaFieldDefinitionValueType,
+	SchemaFieldValueType,
 	ISchemaValidateOptions,
-	SchemaDefinitionDefaultValues,
+	SchemaDefaultValues,
 	ISchemaGetValuesOptions,
-	SchemaDefinitionAllValues,
+	SchemaAllValues,
 	ISchemaNamedFieldsOptions,
 	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
 	FieldNamesWithDefaultValueSet,
-	ISchema,
+	ISchemaEntity,
 } from './schemas.static.types'
 
 /** Universal schema class  */
-export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
-	/** Should i do a duplicate check on schemas when tracking globally? */
+export default class SchemaEntity<S extends ISchema>
+	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
+	private static schemasById: ISchemasById = {}
 
-	/** Global definition hash for lookups by id */
-	private static definitionsById: IDefinitionsById = {}
-
-	/** Our unique id */
 	public get schemaId() {
-		return this.definition.id
+		return this.schema.id
 	}
+
 	public get version() {
-		return this.definition.version
+		return this.schema.version
 	}
 
 	public get description() {
-		return this.definition.id
+		return this.schema.id
 	}
 
-	/** The schema definition */
-	private definition: S
+	private schema: S
 
 	/** The raw values of this schema */
-	public values: SchemaDefinitionPartialValues<S>
+	public values: SchemaPartialValues<S>
 
 	/** All the field objects keyed by field name, use getField rather than accessing this directly */
 	private fields: SchemaFields<S>
@@ -58,12 +54,12 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	/** For caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
-	public constructor(definition: S, values?: SchemaDefinitionPartialValues<S>) {
-		this.definition = definition
+	public constructor(schema: S, values?: SchemaPartialValues<S>) {
+		this.schema = schema
 		this.values = values ? values : {}
 
-		// Pull field definitions off schema definition
-		const fieldDefinitions = this.definition.fields
+		// Pull field definitions off schema
+		const fieldDefinitions = this.schema.fields
 		if (!fieldDefinitions) {
 			throw new Error(`Schemas don't support dynamic fields yet`)
 		}
@@ -72,47 +68,44 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		this.fields = {} as SchemaFields<S>
 
 		Object.keys(fieldDefinitions).forEach((name) => {
-			const definition = fieldDefinitions[name]
-			const field = FieldFactory.field(name, definition)
+			const schema = fieldDefinitions[name]
+			const field = FieldFactory.field(name, schema)
 			// TODO why do i have to cast to any?
 			this.fields[name as SchemaFieldNames<S>] = field as any
 
-			if (definition.value) {
-				this.set(name as SchemaFieldNames<S>, definition.value)
+			if (schema.value) {
+				this.set(name as SchemaFieldNames<S>, schema.value)
 			}
 		})
 	}
 
-	public static trackDefinition(definition: ISchemaDefinition) {
-		this.validateDefinition(definition)
+	public static trackSchema(schema: ISchema) {
+		this.validateSchema(schema)
 
-		const id = definition.id
-		if (!this.definitionsById[id]) {
-			this.definitionsById[id] = []
+		const id = schema.id
+		if (!this.schemasById[id]) {
+			this.schemasById[id] = []
 		}
-		this.definitionsById[id].push(definition)
+		this.schemasById[id].push(schema)
 	}
 
-	public static forgetDefinition(id: string) {
-		delete Schema.definitionsById[id]
+	public static forgetSchema(id: string) {
+		delete SchemaEntity.schemasById[id]
 	}
 
-	public static forgetAllDefinitions() {
-		this.definitionsById = {}
+	public static forgetAllSchemas() {
+		this.schemasById = {}
 	}
 
-	public static getDefinition(
-		id: string,
-		version?: string
-	): ISchemaDefinition | undefined {
-		if (!this.definitionsById[id]) {
+	public static getSchema(id: string, version?: string): ISchema | undefined {
+		if (!this.schemasById[id]) {
 			throw new SpruceError({
 				code: 'SCHEMA_NOT_FOUND',
 				schemaId: id,
 			})
 		}
 
-		const match = this.definitionsById[id].find((d) => d.version === version)
+		const match = this.schemasById[id].find((d) => d.version === version)
 
 		if (!match) {
 			throw new SpruceError({
@@ -124,13 +117,10 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	}
 
 	public static getTrackingCount() {
-		return Object.keys(this.definitionsById).length
+		return Object.keys(this.schemasById).length
 	}
 
-	public static areDefinitionsTheSame(
-		left: ISchemaDefinition,
-		right: ISchemaDefinition
-	): boolean {
+	public static areSchemasTheSame(left: ISchema, right: ISchema): boolean {
 		if (left.id !== right.id) {
 			return false
 		}
@@ -147,12 +137,10 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		return true
 	}
 
-	/** Tells you if a schema definition is valid */
-	public static isDefinitionValid(
-		definition: unknown
-	): definition is ISchemaFieldDefinition {
+	/** Tells you if a schema schema is valid */
+	public static isSchemaValid(definition: unknown): definition is ISchema {
 		try {
-			Schema.validateDefinition(definition)
+			SchemaEntity.validateSchema(definition)
 			return true
 		} catch {
 			return false
@@ -160,27 +148,25 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	}
 
 	/** Throws a field validation error */
-	public static validateDefinition(
-		definition: any
-	): asserts definition is ISchemaDefinition {
+	public static validateSchema(schema: any): asserts schema is ISchema {
 		const errors: string[] = []
 
-		if (!definition) {
+		if (!schema) {
 			errors.push('definition_empty')
 		} else {
-			if (!definition.id) {
+			if (!schema.id) {
 				errors.push('id_missing')
-			} else if (!(typeof definition.id === 'string')) {
+			} else if (!(typeof schema.id === 'string')) {
 				errors.push('id_not_string')
 			}
 
-			if (!definition.name) {
+			if (!schema.name) {
 				errors.push('name_missing')
-			} else if (!(typeof definition.name === 'string')) {
+			} else if (!(typeof schema.name === 'string')) {
 				errors.push('name_not_string')
 			}
 
-			if (!definition.fields && !definition.dynamicKeySignature) {
+			if (!schema.fields && !schema.dynamicKeySignature) {
 				errors.push('needs_fields_or_dynamic_key_signature')
 			}
 		}
@@ -188,7 +174,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		if (errors.length > 0) {
 			throw new SpruceError({
 				code: 'INVALID_SCHEMA_DEFINITION',
-				schemaId: definition?.id ?? 'ID MISSING',
+				schemaId: schema?.id ?? 'ID MISSING',
 				errors,
 			})
 		}
@@ -197,16 +183,16 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	/** Normalize a value against a field. runs through valueType transformer and makes an array if isArray is true */
 	public normalizeValue<
 		F extends SchemaFieldNames<S>,
-		CreateSchemaInstances extends boolean = true
+		CreateEntityInstances extends boolean = true
 	>(
 		forField: F,
 		value: any,
-		options?: ISchemaNormalizeOptions<S, CreateSchemaInstances>
-	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances> {
+		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
+	): SchemaFieldValueType<S, F, CreateEntityInstances> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
-				? ([] as SchemaFieldDefinitionValueType<S, F>)
+				? ([] as SchemaFieldValueType<S, F>)
 				: Array.isArray(value)
 				? value
 				: [value]
@@ -214,12 +200,12 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		if (!Array.isArray(localValue)) {
 			throw new SpruceError({
 				code: 'INVALID_FIELD',
-				schemaId: this.definition.id,
+				schemaId: this.schema.id,
 				errors: [{ name: forField, code: 'value_not_array' }],
 			})
 		}
 
-		const { validate = true, createSchemaInstances = true, byField } =
+		const { validate = true, CreateEntityInstances = true, byField } =
 			options ?? {}
 
 		// Get field && override options by that field
@@ -233,7 +219,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 				errors = [
 					...errors,
 					...field.validate(value, {
-						definitionsById: Schema.definitionsById,
+						schemasById: SchemaEntity.schemasById,
 						...(field.definition.options ?? {}),
 						...overrideOptions,
 					}),
@@ -245,7 +231,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		if (errors.length > 0) {
 			throw new SpruceError({
 				code: 'INVALID_FIELD',
-				schemaId: this.definition.id,
+				schemaId: this.schema.id,
 				errors,
 			})
 		}
@@ -257,33 +243,31 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 				typeof value === 'undefined'
 					? undefined
 					: (field as AbstractField<FieldDefinition>).toValueType(value, {
-							definitionsById: Schema.definitionsById,
-							createSchemaInstances,
+							schemasById: SchemaEntity.schemasById,
+							CreateEntityInstances,
 							...(field.definition.options ?? {}),
 							...overrideOptions,
 					  })
 			)
 		}
 
-		return (field.isArray
-			? localValue
-			: localValue[0]) as SchemaFieldDefinitionValueType<
+		return (field.isArray ? localValue : localValue[0]) as SchemaFieldValueType<
 			S,
 			F,
-			CreateSchemaInstances
+			CreateEntityInstances
 		>
 	}
 
 	/** Get any field by name */
 	public get<
 		F extends SchemaFieldNames<S>,
-		CreateSchemaInstances extends boolean = true
+		CreateEntityInstances extends boolean = true
 	>(
 		fieldName: F,
-		options: ISchemaNormalizeOptions<S, CreateSchemaInstances> = {}
-	): SchemaFieldDefinitionValueType<S, F, CreateSchemaInstances> {
+		options: ISchemaNormalizeOptions<S, CreateEntityInstances> = {}
+	): SchemaFieldValueType<S, F, CreateEntityInstances> {
 		// Get value off self
-		const value: SchemaFieldDefinitionValueType<S, F> | undefined | null =
+		const value: SchemaFieldValueType<S, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
 		return this.normalizeValue(fieldName, value, options)
@@ -292,7 +276,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 	/** Set a value and ensure its type */
 	public set<F extends SchemaFieldNames<S>>(
 		fieldName: F,
-		value: SchemaFieldDefinitionValueType<S, F>,
+		value: SchemaFieldValueType<S, F>,
 		options: ISchemaNormalizeOptions<S, false> = {}
 	): this {
 		// If the value is not null or undefined, coerce it into an array
@@ -319,7 +303,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 			const { name, field } = item
 			const value = this.get(name, { validate: false })
 			const fieldErrors = field.validate(value, {
-				definitionsById: Schema.definitionsById,
+				schemasById: SchemaEntity.schemasById,
 			})
 
 			if (fieldErrors.length > 0) {
@@ -330,7 +314,7 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		if (errors.length > 0) {
 			throw new SpruceError({
 				code: 'INVALID_FIELD',
-				schemaId: this.definition.id,
+				schemaId: this.schema.id,
 				errors,
 			})
 		}
@@ -341,11 +325,11 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		F extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<
 			S
 		>,
-		CreateSchemaInstances extends boolean = true
+		CreateEntityInstances extends boolean = true
 	>(
-		options: ISchemaGetDefaultValuesOptions<S, F, CreateSchemaInstances> = {}
-	): Pick<SchemaDefinitionDefaultValues<S, CreateSchemaInstances>, F> {
-		const values: Partial<SchemaDefinitionDefaultValues<S>> = {}
+		options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
+	): Pick<SchemaDefaultValues<S, CreateEntityInstances>, F> {
+		const values: Partial<SchemaDefaultValues<S>> = {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
@@ -359,20 +343,17 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 				)
 			}
 		})
-		return values as Pick<
-			SchemaDefinitionDefaultValues<S, CreateSchemaInstances>,
-			F
-		>
+		return values as Pick<SchemaDefaultValues<S, CreateEntityInstances>, F>
 	}
 
 	/** Get all values valued */
 	public getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
-		CreateSchemaInstances extends boolean = true
+		CreateEntityInstances extends boolean = true
 	>(
-		options: ISchemaGetValuesOptions<S, F, CreateSchemaInstances> = {}
-	): Pick<SchemaDefinitionAllValues<S, CreateSchemaInstances>, F> {
-		const values: SchemaDefinitionPartialValues<S, CreateSchemaInstances> = {}
+		options: ISchemaGetValuesOptions<S, F, CreateEntityInstances> = {}
+	): Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
+		const values: SchemaPartialValues<S, CreateEntityInstances> = {}
 
 		const { fields = Object.keys(this.fields) } = options
 
@@ -385,14 +366,11 @@ export default class Schema<S extends ISchemaDefinition> implements ISchema<S> {
 		})
 
 		// We know this conforms after the loop above, nothing to do here
-		return values as Pick<
-			SchemaDefinitionAllValues<S, CreateSchemaInstances>,
-			F
-		>
+		return values as Pick<SchemaAllValues<S, CreateEntityInstances>, F>
 	}
 
 	/** Set a bunch of values at once */
-	public setValues(values: SchemaDefinitionPartialValues<S>): this {
+	public setValues(values: SchemaPartialValues<S>): this {
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
 			const value = values[name]

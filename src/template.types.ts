@@ -1,5 +1,5 @@
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import { ISchemaDefinition } from './schemas.static.types'
+import { ISchema } from './schemas.static.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -14,8 +14,8 @@ export enum TemplateRenderAs {
 	Type = 'type',
 	/** We are rendering as a value (only called if a value is set in the schema definition) */
 	Value = 'value',
-	/** We are rendering as the definition's type (IDefinition) */
-	DefinitionType = 'definitionType',
+	/** We are rendering as the definition's type (ISchema) */
+	SchemaType = 'schemaType',
 }
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */
@@ -49,10 +49,10 @@ export interface ISchemaTemplateNames {
 export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 	/** The namespace that owns this schema */
 	namespace: string
-	/** The schema's id pull out of definition for easy access */
+	/** The schema's id pull out of schema for easy access */
 	id: string
-	/** The full schema's definition */
-	definition: ISchemaDefinition
+	/** The full schema's schema */
+	schema: ISchema
 }
 
 /** How a field is represented in the template */

@@ -5,51 +5,47 @@ import {
 } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
-import {
-	ISchemaDefinition,
-	SchemaDefinitionValues,
-	ISchema,
-} from '../schemas.static.types'
+import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
-export interface IDefinitionsById {
-	[id: string]: ISchemaDefinition[]
+export interface ISchemasById {
+	[id: string]: ISchema[]
 }
 
 export type SchemaFieldUnion<
-	S extends Array<ISchemaDefinition>,
-	CreateSchemaInstances extends boolean = false
+	S extends Array<ISchema>,
+	CreateEntityInstances extends boolean = false
 > = {
-	[K in keyof S]: S[K] extends ISchemaDefinition
-		? CreateSchemaInstances extends true
-			? ISchema<S[K]>
+	[K in keyof S]: S[K] extends ISchema
+		? CreateEntityInstances extends true
+			? ISchemaEntity<S[K]>
 			: {
 					schemaId: S[K]['id']
 					version?: S[K]['version']
-					values: SchemaDefinitionValues<S[K]>
+					values: SchemaValues<S[K]>
 			  }
 		: any
 }
 
-export interface IFieldDefinitionToSchemaDefinitionOptions {
+export interface IFieldDefinitionToSchemaOptions {
 	/** All definitions we're validating against */
-	definitionsById?: IDefinitionsById
+	schemasById?: ISchemasById
 }
 
 export type ToValueTypeOptions<
 	F extends FieldDefinition,
-	CreateSchemaInstances extends boolean = true
+	CreateEntityInstances extends boolean = true
 > = {
 	/** All definitions by id for lookups by fields */
-	definitionsById?: IDefinitionsById
-	/** Create and return a new Schema()  */
-	createSchemaInstances?: CreateSchemaInstances
+	schemasById?: ISchemasById
+	/** Create and return a new SchemaEntity()  */
+	CreateEntityInstances?: CreateEntityInstances
 } & Partial<F['options']>
 
 /** Options passed to validate() */
 export type ValidateOptions<F extends FieldDefinition> = {
-	/** All definitions we're validating against */
-	definitionsById?: IDefinitionsById
+	/** All schemas we're validating against */
+	schemasById?: ISchemasById
 } & Partial<F['options']>
 
 // if it's not going to change, put it in here
@@ -108,12 +104,12 @@ export type IFieldDefinition<
 
 export type FieldDefinitionValueType<
 	F extends FieldDefinition,
-	CreateSchemaInstances extends boolean = false
+	CreateEntityInstances extends boolean = false
 > = F extends FieldDefinition
 	? IsRequired<
 			IsArray<
 				NonNullable<
-					IFieldValueTypeGeneratorMap<F, CreateSchemaInstances>[F['type']]
+					IFieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
 				>,
 				F['isArray']
 			>,
@@ -141,12 +137,12 @@ export interface IField<F extends FieldDefinition> {
 	/** Validate a value */
 	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
 	/** Transform any value to the value type of this field. should take anything and return a valid value or blow up. Will never receive undefined */
-	toValueType<CreateSchemaInstances extends boolean>(
+	toValueType<CreateEntityInstances extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<F, CreateSchemaInstances>
+		options?: ToValueTypeOptions<F, CreateEntityInstances>
 	): Unpack<
 		Exclude<
-			FieldDefinitionValueType<F, CreateSchemaInstances>,
+			FieldDefinitionValueType<F, CreateEntityInstances>,
 			undefined | null
 		>
 	>
