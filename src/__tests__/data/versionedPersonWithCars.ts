@@ -461,11 +461,7 @@ const buildVersionedPersonWithCars = () => {
 			optionalCarWithCallback: {
 				type: FieldType.Schema,
 				options: {
-					schemasCallback: () => [
-						carV1Schema,
-						carV2Schema,
-						truckV1Definition,
-					],
+					schemasCallback: () => [carV1Schema, carV2Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCars: {
