@@ -10,9 +10,9 @@
     "@babel/highlight" "^7.10.4"
 
 "@babel/compat-data@^7.10.4":
-  version "7.10.5"
-  resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.10.5.tgz#d38425e67ea96b1480a3f50404d1bf85676301a6"
-  integrity sha512-mPVoWNzIpYJHbWje0if7Ck36bpbtTvIxOi9+6WSK9wjGEXearAqlwBoTQvVjsAY2VIwgcs8V940geY3okzRCEw==
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.11.0.tgz#e9f73efe09af1355b723a7f39b11bad637d7c99c"
+  integrity sha512-TPSvJfv73ng0pfnEOh17bYMPQbI95+nGWc71Ss4vZdRBHTDqmM9Z8ZV4rYz8Ks7sfzc95n30k6ODIq5UGnXcYQ==
   dependencies:
     browserslist "^4.12.0"
     invariant "^2.2.4"
@@ -252,9 +252,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.1.0", "@babel/parser@^7.10.4", "@babel/parser@^7.10.5", "@babel/parser@^7.7.0":
-  version "7.10.5"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.10.5.tgz#e7c6bf5a7deff957cec9f04b551e2762909d826b"
-  integrity sha512-wfryxy4bE1UivvQKSQDU4/X6dr+i8bctjUjj8Zyt3DQy7NtPizJXT8M52nqpNKL+nq2PW8lxk4ZqLj0fD4B4hQ==
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.0.tgz#a9d7e11aead25d3b422d17b2c6502c8dddef6a5d"
+  integrity sha512-qvRvi4oI8xii8NllyEc4MDJjuZiNaRzyb7Y7lup1NqJV8TZHF4O27CcP+72WPn/k1zkgJ6WJfnIbk4jTsVAZHw==
 
 "@babel/plugin-proposal-async-generator-functions@^7.10.4":
   version "7.10.5"
@@ -1286,15 +1286,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.9":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.9.tgz#e9fce504484726e43dbd9dddc810a77944d7b107"
-  integrity sha512-gKaCCiC2lBqZ7nuwnBNCuz9g2slr7kJIXI1M9fce/E4p0ThY3Y3VxS829L4N3s029vz6m9Qq4ERPr2lt9B/p0g==
+"@sprucelabs/error@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.10.tgz#85c306f452758c5cb37d06b0fbaf7dadc7a866fb"
+  integrity sha512-cdJJL4OfLUb8PHxa3b4inGFPpk3eKhMPLvw+TBwGdvmUPen2sgqT05RnpwNHETs9TIaChXXPDAR6CS619lRpHQ==
 
-"@sprucelabs/log@^10.2.57":
-  version "10.2.57"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.57.tgz#22fb78a2f089754f4157c24522bdb98a51917b03"
-  integrity sha512-GTJnoOHiWJbzBMzGcAWBPx7h7d+72gyhSpYs+9fwTeeCMukOem3ngcQPKvJcC0hPBF3DPrFFelJleqfDOB04+A==
+"@sprucelabs/log@^10.2.58":
+  version "10.2.58"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.58.tgz#33d067d9685aa01b41bfd0f5dcef74036f160b1d"
+  integrity sha512-X3udm7qFaTgZF8XfrMakfEy2qEmsFLRXAkSh6HfdFIwgtaqUn8/g6dvFkoG8sPHTMRUg7eTFqrXka3jkGOdKdg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
