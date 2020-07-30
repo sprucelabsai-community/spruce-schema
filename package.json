@@ -39,8 +39,8 @@
 		"up": "yarn upgrade.base && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.0.7",
-		"@sprucelabs/log": "^10.2.55",
+		"@sprucelabs/error": "^2.0.8",
+		"@sprucelabs/log": "^10.2.56",
 		"google-libphonenumber": "^3.2.10",
 		"libphonenumber-js": "^1.7.55",
 		"mime-db": "^1.44.0",
@@ -48,7 +48,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^5.3.69",
+		"@sprucelabs/test": "^5.3.70",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.158",
 		"@types/mime-db": "^1.43.0",
