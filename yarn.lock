@@ -1327,10 +1327,10 @@
   resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.13.tgz#15181d7afc7191cad9010d97d12a9e1d48039ee4"
   integrity sha512-dYcWt+uf7ct2032rYn+BWmB1o8p+ZRN2u8TkuBGbLfc/LheiW4JC+JD2/Np8y4DRtxo4TOvueGbEWC5rwYLwfA==
 
-"@sprucelabs/log@^10.2.61":
-  version "10.2.61"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.61.tgz#2f3700365f06d34a7360a14088a4f8fa4c2edb00"
-  integrity sha512-xORAzTLYyPhRNMx06vg5SiFqaswJTAi9Ww8SLeP2frd/WzAkhpHQkLtqP7gQsYd7Rr/OrK8W6VUpsONUNPX9dw==
+"@sprucelabs/log@^10.2.62":
+  version "10.2.62"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.62.tgz#4706b08a0a6f25b091dcfa6bdc1f1aaada8a2fd4"
+  integrity sha512-bGLTdM7p+9q2f6KG3sgEbkYUQzLYmLofSSmxNgTOtIARCyGalHksJZB47JNp+nXl+wK15DsyKAfNW5cEVzl0ew==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.79":
-  version "5.3.79"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.79.tgz#7a06d4f79ea2e3c1e8cecddad0d5b03ee34b00cc"
-  integrity sha512-aEkcaCDT6KPcnQBj0K771hJHAVrrXdOmCmgoC0HQTF+l5jPkZfwbpl9N8bnKUOJh2GTR7qnpK90ik4bk+3SVaQ==
+"@sprucelabs/test@^5.3.80":
+  version "5.3.80"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.80.tgz#7abac78c292098a2fccca42b13252d03c8ff9613"
+  integrity sha512-MloYBbLtoD7Ew26bnvHRW68Odm+8wHMzltLjnh4AWqlOdKBaDpBSy04MqKZ8fuhzVUGo33UVIjdkKT9cK8pCuw==
   dependencies:
     "@babel/core" "^7.11.0"
     "@babel/preset-env" "^7.11.0"
@@ -3118,9 +3118,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.488:
-  version "1.3.515"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.515.tgz#96683d2c2be9bf83f6cca75d504a7b443d763c08"
-  integrity sha512-C9h2yLQwNSK/GTtWQsA9O6mLKv0ubmiAQgmz1HvHnAIH8g5Sje1shWxcooumbGiwgqvZ9yrTYULe4seMTgMYqQ==
+  version "1.3.516"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.516.tgz#03ec071b061e462b786bf7e7ce226fd7ab7cf1f6"
+  integrity sha512-WDM5AAQdOrvLqSX8g3Zd5AujBXfMxf96oeZkff0U2HF5op3tjShE+on2yay3r1UD4M9I3p0iHpAS4+yV8U8A9A==
 
 emittery@^0.7.1:
   version "0.7.1"
