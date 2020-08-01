@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.82":
-  version "5.3.82"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.82.tgz#3026c8d2f9de0c285fb8398e805a122f518085db"
-  integrity sha512-K0O1/UHJUTtdxUrThz5hrNsGONoqIvqaFNrQYzZu+5qSPEkWzfhmDtdkdtWlir89gphvKE7f1FLdOiS1D79zlA==
+"@sprucelabs/test@^5.3.83":
+  version "5.3.83"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.83.tgz#15061f326faa1c25ee35449b7145bd3304ce37bb"
+  integrity sha512-ACVuL2Mzb8mf6mF+EDlNkR7aN1JT9szZCdskxXA8mJAqbSF/k529qxo/nYK90pEaliKxDVkPws9RmZHBfWUO6g==
   dependencies:
     "@babel/core" "^7.11.0"
     "@babel/preset-env" "^7.11.0"
@@ -1611,9 +1611,9 @@ JSONStream@^1.0.4, JSONStream@^1.3.4, JSONStream@^1.3.5:
     through ">=2.2.7 <3"
 
 abab@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
-  integrity sha512-tsFzPpcttalNjFBCFMqsKYQcWxxen1pgJR56by//QwvJc4/OUS3kPOOttx2tSIfjsylB0pYu7f5D3K1RCxUnUg==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.4.tgz#6dfa57b417ca06d21b2478f0e638302f99c2405c"
+  integrity sha512-Eu9ELJWCz/c1e9gTiCY+FceWxcqzjYEbqMgtndnuSqZSUCOL73TWNK2mHfIj4Cw2E/ongOp+JISVNCmovt2KYQ==
 
 abbrev@1, abbrev@~1.1.1:
   version "1.1.1"
