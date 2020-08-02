@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.16":
-  version "2.0.16"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.16.tgz#c06647c2c149714a233a9be5c0e984a5ea5886e8"
-  integrity sha512-A95NcbkI1d+19+cSR2HVHfnlJkRYaBmj5KwY1BhJGdQdSlvwYq1YUHufDqs0BO3d0zIX/FZJcWXTUBtZEMWVIw==
+"@sprucelabs/error@^2.0.17":
+  version "2.0.17"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.17.tgz#e0c9cc3599cc929e1245839930f9430025e2bfe3"
+  integrity sha512-dGUzrnapsKp6sJoBwY8Sr86foMQCxoRD2VxE/cXrjKh61Cm8pJvggbiDYmF9CvxdjiI9SPCiVyLfMAksagRJhg==
 
-"@sprucelabs/log@^10.2.64":
-  version "10.2.64"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.64.tgz#99c0eb3296fe314b29112eb496d6f971b7427c7b"
-  integrity sha512-g+Twc82h80iB/ro3nIu8QV3UXEEvMhJ/n0v+HaTD4XOr9FObC5VTvNJLaLS8n1l8XaPAvXn3DoLZpoI+pXgE1A==
+"@sprucelabs/log@^10.2.65":
+  version "10.2.65"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.65.tgz#dfef744a5d8b080ee18daa86b80415d8f8331d42"
+  integrity sha512-kWPhAAkJ92OAJU5EmtJKE3H8m08GbpEkloNCvQc8Dd407/b0YoD6fh4wAZuYMImN5wKLVgyizJOWptFC60ekiw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.83":
-  version "5.3.83"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.83.tgz#15061f326faa1c25ee35449b7145bd3304ce37bb"
-  integrity sha512-ACVuL2Mzb8mf6mF+EDlNkR7aN1JT9szZCdskxXA8mJAqbSF/k529qxo/nYK90pEaliKxDVkPws9RmZHBfWUO6g==
+"@sprucelabs/test@^5.3.84":
+  version "5.3.84"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.84.tgz#d06812f0ca91bc609e8853fe51d398ee2a7e6475"
+  integrity sha512-wEhA1v39SNMsKKYiHH36XgMYkF05JT9PiHsKp7t6M2W1sF0X0IMsAIkVH4Pk5ACaFDc3V6HV1j1Xo5mG9PeVRA==
   dependencies:
     "@babel/core" "^7.11.0"
     "@babel/preset-env" "^7.11.0"
@@ -6657,9 +6657,9 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0, once@~1.4.0:
     wrappy "1"
 
 onetime@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/onetime/-/onetime-5.1.0.tgz#fff0f3c91617fe62bb50189636e99ac8a6df7be5"
-  integrity sha512-5NcSkPHhwTVFIQN+TUqXoS5+dlElHXdpAWu9I0HP20YOtIi+aZ0Ct82jdlILDxjLEAWwvm+qj1m6aEtsDVmm6Q==
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/onetime/-/onetime-5.1.1.tgz#5c8016847b0d67fcedb7eef254751cfcdc7e9418"
+  integrity sha512-ZpZpjcJeugQfWsfyQlshVoowIIQ1qBGSVll4rfDq6JJVO//fesjoX808hXWfBjY+ROZgpKDI5TRSRBSoJiZ8eg==
   dependencies:
     mimic-fn "^2.1.0"
 
