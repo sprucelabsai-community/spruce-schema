@@ -42,13 +42,13 @@
 		"@sprucelabs/error": "^2.0.21",
 		"@sprucelabs/log": "^10.2.69",
 		"google-libphonenumber": "^3.2.10",
-		"libphonenumber-js": "^1.7.55",
+		"libphonenumber-js": "^1.7.56",
 		"mime-db": "^1.44.0",
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^5.3.89",
+		"@sprucelabs/test": "^5.3.90",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.158",
 		"@types/mime-db": "^1.43.0",
