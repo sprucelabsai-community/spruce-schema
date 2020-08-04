@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.21":
-  version "2.0.21"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.21.tgz#b434d305b97975164356857a1321137be1ddeb16"
-  integrity sha512-KshWXhWe9S9kt0jgaH1SQJgdekRCVjmJgcKezlLVgtiP1wNSwRMz4DX2hzsUM66SFfeLSe3q4t/Zfzz8bGcrBg==
+"@sprucelabs/error@^2.0.22":
+  version "2.0.22"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.22.tgz#5bf60f20fab5f4215a861c590954025653815a46"
+  integrity sha512-KInXjIzUzsngUGnX4Kl2GHBT/63J9d1Ad5HfeTo2sTl4YI8Zbz14tF6hLhWF9WDvQJiMkEju7y7+HMoH2lkb5g==
 
-"@sprucelabs/log@^10.2.69":
-  version "10.2.69"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.69.tgz#2447333bc5198a08224170caefc48314d58688d3"
-  integrity sha512-uY6zCru3MKfJ6utHsD0Gn8OHvyAmwjiP8aSZ+Qg7i0Yj/fiiWzOuG5ANf/YceQpuTbCWxsFgZ8l/eBj7BbA/kg==
+"@sprucelabs/log@^10.2.70":
+  version "10.2.70"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.70.tgz#ada09a29d30f14635fdc243d03eecc076c890484"
+  integrity sha512-xG1hbHmSShXPn6TDs8iCtlPpinFdwBPqpiOMERPgLt4x03BPPQ8eo1N9QLhDihd7uSVRKx0oUlflP6TSJLU2xw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.91":
-  version "5.3.91"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.91.tgz#381f6e705d2f09927efbd5ccac93e69e1b2024c2"
-  integrity sha512-yVplhP10+ubZ6Qh1qtDKW14O82YcyHg8IMw1CbGX109UrneULCR8kjS82VAFd08P7D89ggAjBaGW3AvI7NNAaw==
+"@sprucelabs/test@^5.3.92":
+  version "5.3.92"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.92.tgz#247b45e944d69349fdde56d40638772565b7e31e"
+  integrity sha512-St0XIjRWLluW0nURCQzPn9fvo4V+E4+nEkzWAVu3erF1uqC5y6eNgkSMriUhSzh5rsT6119zlnoNrrDb4c0YRg==
   dependencies:
     "@babel/core" "^7.11.0"
     "@babel/preset-env" "^7.11.0"
@@ -4643,9 +4643,9 @@ is-redirect@^1.0.0:
   integrity sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
 
 is-regex@^1.0.5, is-regex@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.0.tgz#ece38e389e490df0dc21caea2bd596f987f767ff"
-  integrity sha512-iI97M8KTWID2la5uYXlkbSDQIg4F6o1sYboZKKTDpnDQMLtUL86zxhgDet3Q2SriaYsyGqZ6Mn2SjbRKeLHdqw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.1.tgz#c6f98aacc546f6cec5468a07b7b153ab564a57b9"
+  integrity sha512-1+QkEcxiLlB7VEyFtyBg94e08OAsvq7FUBgApTq/w2ymCLyKJgDPsybBENVtA7XCQEgEXxKPonG+mvYRxh/LIg==
   dependencies:
     has-symbols "^1.0.1"
 
