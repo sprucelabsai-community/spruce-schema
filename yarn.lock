@@ -259,9 +259,9 @@
     js-tokens "^4.0.0"
 
 "@babel/parser@^7.1.0", "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.1", "@babel/parser@^7.7.0":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.1.tgz#d91a387990b21e5d20047b336bb19b0553f02ff5"
-  integrity sha512-u9QMIRdKVF7hfEkb3nu2LgZDIzCQPv+yHD9Eg6ruoJLjkrQ9fFz4IBSlF/9XwoNri9+2F1IY+dYuOfZrXq8t3w==
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.2.tgz#0882ab8a455df3065ea2dcb4c753b2460a24bead"
+  integrity sha512-Vuj/+7vLo6l1Vi7uuO+1ngCDNeVmNbTngcJFKCR/oEtz8tKz0CJxZEGmPt9KcIloZhOZ3Zit6xbpXT2MDlS9Vw==
 
 "@babel/plugin-proposal-async-generator-functions@^7.10.4":
   version "7.10.5"
@@ -805,17 +805,17 @@
     esutils "^2.0.2"
 
 "@babel/runtime-corejs3@^7.10.2":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.11.1.tgz#075c87ae7abcf3edbdf9fbed917d5f11ac30958a"
-  integrity sha512-0gB7HCuTwvPxyCMWJTsRqh8muWkWR6U2c/o5x+oTJPR0xzaFl+thzQxHv4kzMkQadRIhe6KW1D/q1yVrjXmsKA==
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.11.2.tgz#02c3029743150188edeb66541195f54600278419"
+  integrity sha512-qh5IR+8VgFz83VBa6OkaET6uN/mJOhHONuy3m1sgF0CV6mXdPSEBdA7e1eUbVvyNtANjMbg22JUv71BaDXLY6A==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
 "@babel/runtime@^7.10.2", "@babel/runtime@^7.8.4":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.1.tgz#087afc57e7bf1073e792fe54f8fb3cfa752f9230"
-  integrity sha512-nH5y8fLvVl3HAb+ezbgcgwrH8QbClWo8xzkOu7+oyqngo3EVorwpWJQaqXPjGRpfj7mQvsJCl/S8knkfkPWqrw==
+  version "7.11.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.11.2.tgz#f549c13c754cc40b87644b9fa9f09a6a95fe0736"
+  integrity sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.27":
-  version "2.0.27"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.27.tgz#6d3a02f767d0eabe029df5138149cef6927019e1"
-  integrity sha512-o/mp08EithBEUxK2fA7K4/5DBYwf6GVjie+WnT16/qZFBwSxDr5JtEZI/u7A8EpHuImXKHH/hQV0ALn819gr+Q==
+"@sprucelabs/error@^2.0.28":
+  version "2.0.28"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.28.tgz#411382b458c4edc21572f05eea678a7cf7264323"
+  integrity sha512-8Ve2lPH6XuTSS4uWIwLrG1vMhAMo20fx3NFV0IQ1LjEAV5CBThtRRkK89vnEGBLrIkSYRDNt9gisCyWyo2VJTw==
 
-"@sprucelabs/log@^10.2.75":
-  version "10.2.75"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.75.tgz#cad69fe34c9502d30d4caf6f772b75b565157291"
-  integrity sha512-7DD55oQZLEhG0Pi+qt7JZInDj5zY/vb4CysDsvEmm1SrnvFXk3yLSBdL/cXmIfUwoi5K+7S3FT5HIRu6kyHU5A==
+"@sprucelabs/log@^10.2.76":
+  version "10.2.76"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.76.tgz#42753c885bde89a05940487f3ed681a67db10221"
+  integrity sha512-9R9GWarS/dg6ajsi+4MXpa6NajFlc656e0bc2SEZ/DgPo3J6PZZPwV3kLv5DtlGE+i1AyzKllwmY8Ee4dwprfg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.102":
-  version "5.3.102"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.102.tgz#08b05f04343e214966d574c7dbe2f84e6c6c1b60"
-  integrity sha512-NqxvZhLsQOw80KkbBn+WrpB1lLEE0kE/2IhZ1wBhRsDcp4JLEneeIjCVeKboxb3Y2Clcezmik8GVw22HYjxymA==
+"@sprucelabs/test@^5.3.103":
+  version "5.3.103"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.103.tgz#b96412899733418b1d3d65a4058ca48b39a47ef8"
+  integrity sha512-s521xAC++9T57ayNqqRPkQMilP+t5OEDjebhW0U0VkN2crpjf28c7stVRbrtL1ohPvBYIxoZGOVVUEl9EdcGeg==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
