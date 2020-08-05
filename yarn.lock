@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.99":
-  version "5.3.100"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.100.tgz#96ef6d5c2f534e4e214fb8d5206c512a32223835"
-  integrity sha512-vZwQJkVC6iCwVxwp/CaYMV6sPXj0CX5YGR17s7bSAiEB4yHF9lwAydyB5ggbQ6kvEW5NQGxmTvQIH3ca0UxyhQ==
+"@sprucelabs/test@^5.3.101":
+  version "5.3.101"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.101.tgz#d9ebaa28e2b847cab2b6c9b1aa9a890126ccdab5"
+  integrity sha512-M1dC9i6jdw/13ESGBNMjXoP+gMGYHAxNJF6f8t16wlWy2CMRcEMzDaSsDQpu7rkLTZZTULiYJ6Qg3i15fi6fww==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -2301,9 +2301,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001093:
-  version "1.0.30001110"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001110.tgz#9003e3c7f5a43ea6f1193d4d5acba0bfb152c71a"
-  integrity sha512-KqJWeat4rhSHF0ito4yz9q/JuZHkvn71SsBnxge4azjPDbowIjOUnS8i1xpKGxZxU6BFiPqO2hSV2eiCpFQVRw==
+  version "1.0.30001111"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001111.tgz#dd0ce822c70eb6c7c068e4a55c22e19ec1501298"
+  integrity sha512-xnDje2wchd/8mlJu8sXvWxOGvMgv+uT3iZ3bkIAynKOzToCssWCmkz/ZIkQBs/2pUB4uwnJKVORWQ31UkbVjOg==
 
 capture-exit@^2.0.0:
   version "2.0.0"
