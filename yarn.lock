@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.101":
-  version "5.3.101"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.101.tgz#d9ebaa28e2b847cab2b6c9b1aa9a890126ccdab5"
-  integrity sha512-M1dC9i6jdw/13ESGBNMjXoP+gMGYHAxNJF6f8t16wlWy2CMRcEMzDaSsDQpu7rkLTZZTULiYJ6Qg3i15fi6fww==
+"@sprucelabs/test@^5.3.102":
+  version "5.3.102"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.102.tgz#08b05f04343e214966d574c7dbe2f84e6c6c1b60"
+  integrity sha512-NqxvZhLsQOw80KkbBn+WrpB1lLEE0kE/2IhZ1wBhRsDcp4JLEneeIjCVeKboxb3Y2Clcezmik8GVw22HYjxymA==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3118,9 +3118,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.488:
-  version "1.3.519"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.519.tgz#d1da9c8a8a96ee7f60c32b2ca2593533a970c210"
-  integrity sha512-2r/p/9YOjIpX10KxcH1HcAGz1oadSD9Cwwotoek8wNJx/SRpklea14qdAMzCTTZlIezvsJ8sNsBQN05bJ/ZjhA==
+  version "1.3.520"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.520.tgz#dfda0a14a4aed785cbddfdb505ea122f75978392"
+  integrity sha512-q6H9E1sXDCjRHP+X06vcP+N0ki8ZvYoRPZfKnDuiRX10WWXxEHzKFVf4O9rBFMpuPtR3M+2KAdJnugJoBBp3Rw==
 
 emittery@^0.7.1:
   version "0.7.1"
