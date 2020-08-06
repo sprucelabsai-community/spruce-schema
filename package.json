@@ -48,9 +48,9 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^5.3.106",
+		"@sprucelabs/test": "^5.3.107",
 		"@types/google-libphonenumber": "^7.4.19",
-		"@types/lodash": "^4.14.158",
+		"@types/lodash": "^4.14.159",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
