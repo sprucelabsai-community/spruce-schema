@@ -1342,16 +1342,16 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.106":
-  version "5.3.106"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.106.tgz#446de0b54c5b2e024d004c55a9918611112e76a1"
-  integrity sha512-zYS43l4uVdhUIGlfY9e41Lz3gkdvXiAWPBiZJJN067mcPQLi6ANEawydOLXUF7YiF3SnoDd2VsECJ7RbaLqFjQ==
+"@sprucelabs/test@^5.3.107":
+  version "5.3.107"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.107.tgz#f32dcda0dbe069df8ea5a81ec373348602f7061b"
+  integrity sha512-bwx4z/BFitr5ToYkFbl+Iakjx5Fc5QrTbGr8OCDaAGlmW2vSHn6s8USXfdKI4XJ99+IMnlx54zFECgzVURFXSQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
     "@types/chai" "^4.2.12"
     "@types/faker" "^4.1.11"
-    "@types/jest" "^26.0.8"
+    "@types/jest" "^26.0.9"
     babel-jest "^26.2.2"
     deep-equal "^2.0.3"
     faker "^4.1.0"
@@ -1462,10 +1462,10 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^26.0.8":
-  version "26.0.8"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.8.tgz#f5c5559cf25911ce227f7ce30f1f160f24966369"
-  integrity sha512-eo3VX9jGASSuv680D4VQ89UmuLZneNxv2MCZjfwlInav05zXVJTzfc//lavdV0GPwSxsXJTy2jALscB7Acqg0g==
+"@types/jest@^26.0.9":
+  version "26.0.9"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.9.tgz#0543b57da5f0cd949c5f423a00c56c492289c989"
+  integrity sha512-k4qFfJ5AUKrWok5KYXp2EPm89b0P/KZpl7Vg4XuOTVVQEhLDBDBU3iBFrjjdgd8fLw96aAtmnwhXHl63bWeBQQ==
   dependencies:
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
@@ -1480,10 +1480,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/lodash@^4.14.158":
-  version "4.14.158"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.158.tgz#b38ea8b6fe799acd076d7a8d7ab71c26ef77f785"
-  integrity sha512-InCEXJNTv/59yO4VSfuvNrZHt7eeNtWQEgnieIA+mIC+MOWM9arOWG2eQ8Vhk6NbOre6/BidiXhkZYeDY9U35w==
+"@types/lodash@^4.14.159":
+  version "4.14.159"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.159.tgz#61089719dc6fdd9c5cb46efc827f2571d1517065"
+  integrity sha512-gF7A72f7WQN33DpqOWw9geApQPh4M3PxluMtaHxWHXEGSN12/WbcEk/eNSqWNQcQhF66VSZ06vCF94CrHwXJDg==
 
 "@types/mime-db@^1.43.0":
   version "1.43.0"
