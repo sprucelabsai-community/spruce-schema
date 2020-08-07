@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.32":
-  version "2.0.32"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.32.tgz#4602d5e203319318ae4ab6f90285d05c10319111"
-  integrity sha512-ltWRwlFtp/1qBSjjbaVg34DR4tjWw6yv5Y0JYBzX6idc3H7OLYivxFe2lpohGq8U059fCqpdFySe4yTpveBaEQ==
+"@sprucelabs/error@^2.0.33":
+  version "2.0.33"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.33.tgz#18e3d8c231255131289136fcd972544a6e913712"
+  integrity sha512-/YVXEl/wBRBS4X42pxDxvN+FSxxJMLcv+NwDrvA4Cm0lSgmDD1O+ZBR1povIjAWqmFdBcXiHJM/Ny6lJrtPolQ==
 
-"@sprucelabs/log@^10.2.80":
-  version "10.2.80"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.80.tgz#83209a4335cad98dbeace6b2f86eaabf9746d65d"
-  integrity sha512-iz99iUgh+yUsW+mNX3RH4bTCELJs4XgylCRIzmGB/bMo55BtwExcY/mE9POTHbNAzjZAeQmUKTJg0Me66fZh9w==
+"@sprucelabs/log@^10.2.81":
+  version "10.2.81"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.81.tgz#bd9ac0d8e5047f007c17630a14fa6d58f029979a"
+  integrity sha512-Uohb1auOnKemGJnd7xWdATBr/PzQq/UYV4AY6/AadS0UDOxeCY2GzdtuTtNUGtKYJKTLEKKhKgD8J1+TNNqRnw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.113":
-  version "5.3.113"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.113.tgz#c1d4d7dc4668839b1ebaf983d19f99a769e35df9"
-  integrity sha512-SzFfZ8ZH9T1avgY3BmtmWvM/fh9TrMMrdgZ0tf1vwYCinfJ1/ZggfPUwFkRglO1C3Jbgwy++cH+5k6XG12zYVw==
+"@sprucelabs/test@^5.3.114":
+  version "5.3.114"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.114.tgz#049441b0a84ab0495dae95ced01fc84c25cd5fc5"
+  integrity sha512-zJxUFjzsm+WyVah/xjJNgO7doUb2jCClGZ6vdDSGv/eTElV/JYb5J89lr7/1G73Hzlc2mc5vN7SFWFj771UpVA==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3118,9 +3118,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.523:
-  version "1.3.524"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.524.tgz#dd49646594466192de35956a5369bb20d616aa78"
-  integrity sha512-ZUvklIBkfXQyA6IeiEss1nfKRICcdB5afAGZAaPGaExdfrkpUu/WWVO+X7QpNnphaVMllXnAcvKnVPdyM+DCPQ==
+  version "1.3.525"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.525.tgz#bc74080a3fd651b54627ee1fd94972e7c4d38fa8"
+  integrity sha512-Cni4AhdgdPOH4ZOY0tqgdF+7tF378o4qVRJFq8wxY/asLIVICMAHxfXPfdlivnf6B3Hdg1CI8yuFJ9Wo5kNeSg==
 
 emittery@^0.7.1:
   version "0.7.1"
