@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.35":
-  version "2.0.35"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.35.tgz#9815ea2cee2f221a815815c7f1ebf8d3f63da879"
-  integrity sha512-hbLIyq2bHbt3uZqOCl5mNMs/lFliplF/PG6BOwNnvkfMUOKbWYK/dD/de23As/Ep9TrVQZ95Y1HRU+T+xkl/JA==
+"@sprucelabs/error@^2.0.36":
+  version "2.0.36"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.36.tgz#950254ef5d1dcfe3f3e59832ae5556e6a9731c4d"
+  integrity sha512-475oiisXr+BfWqHVoCxIbRmgHjU/CgsTWWimtGcTH4fzjgMVVRG+NNv717d/uCHqqLTADDqKyeGPkOmfTQuqqQ==
 
-"@sprucelabs/log@^10.2.83":
-  version "10.2.83"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.83.tgz#092dd5d89f1db2f533a2cfc495163314d2023149"
-  integrity sha512-qD9Ik2K3ti+p/4k0uZD9oojgj1f8ptQMpDQ39RnKLlRTIhHHIWepKiBWgoxxOBUruZXESseVmVqWE/nLoKt5cw==
+"@sprucelabs/log@^10.2.84":
+  version "10.2.84"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.84.tgz#81e50d6f0078fb5317eabc31bdef521c31f11371"
+  integrity sha512-80ASeARBISSPTU5rn8H8HBeXpkxXavOK10Q4tQplU0UkLozjSP7thPjJYLINhDMESRK1fieg5oQxPHLQKSkezw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.116":
-  version "5.3.116"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.116.tgz#1ec2deb818e0b72d4e6056baf76b83b534b1639d"
-  integrity sha512-yjsEs7mYjqo+8lynSNtvvA5vEoxjuZD78YqSj7y5m2B/lvqAXyCe0aJehe3F8R9B4FsDdbv5hY/N6TEPnsmFRQ==
+"@sprucelabs/test@^5.3.117":
+  version "5.3.117"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.117.tgz#0d1eefecb07a03f9661019a812fc77cb03e06d4e"
+  integrity sha512-bc7XtfRpDtpS8Iaf7uHPNUqj0agt8s+AHA9S/E4XK3HXGJ9PMy4aLHNX+K+/kpRMpvNii9P48LIjNHUzzeuvzA==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3295,10 +3295,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.7.18:
-  version "10.7.18"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.18.tgz#e802aa3bfa62635cb942710f78320b97bb3ff762"
-  integrity sha512-mdMeoKIVHR/vtKGAiG7RQ73uzNkicTzDT3IQKSI3QBVqHUdAcTPTuWOYt/LbKmldtuzd0tJtRl2MNWBihQHurw==
+eslint-config-spruce@^10.7.19:
+  version "10.7.19"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.19.tgz#58f909e211fce5990e34cce3811fed1dc7c7adef"
+  integrity sha512-gliGlnQArzvdSus7EXhQJRkxBBz+2dkqlzGeftsZltZOPGEhTHGAUMOYrzrhlF+dazvZ6kKgfpJ9298q0NmPhQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.8.0"
     "@typescript-eslint/parser" "^3.8.0"
@@ -3308,7 +3308,7 @@ eslint-config-spruce@^10.7.18:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.5"
-    eslint-plugin-spruce "^10.7.18"
+    eslint-plugin-spruce "^10.7.19"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3386,10 +3386,10 @@ eslint-plugin-react@^7.20.5:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.7.18:
-  version "10.7.18"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.18.tgz#947648cde90f086ee36bc57dc2314d2e57bab6ef"
-  integrity sha512-qblgzTo4OKL2q4mU6fF3HeHzxzp/YQb8Yvb1q2+6fZ8QcEGejLqkQsXpv/JeicBtmPuFXXXOYNC3XE+u+iQeHQ==
+eslint-plugin-spruce@^10.7.19:
+  version "10.7.19"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.19.tgz#8082f13f16a25aa927d3f7aaf5a431d210cfcafd"
+  integrity sha512-zj+Me4uzSjligse0DV3p+QP0Uz2ijcyyWEawX4NUPnp+E41PmyDcHdShBMkZ08DUU1/ycuTpYX6iME/nwB5WOA==
   dependencies:
     pascal-case "^3.1.1"
 
