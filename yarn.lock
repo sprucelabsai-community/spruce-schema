@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.42":
-  version "2.0.42"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.42.tgz#1401b3941eee32cf8fb1d7e6f7e7668aec9cbab1"
-  integrity sha512-AcEYst63zvH5PCljFy/2YyfMnHy/RsVAzVLRPyvHuVrJ/ZSd5ljggLrBRTpdBLeOcpl3uNRXOg3bh9qUczJ8VA==
+"@sprucelabs/error@^2.0.43":
+  version "2.0.43"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.43.tgz#6c35941cd103c6e553f8cef764d4ccf79f73e341"
+  integrity sha512-BGT7Z1gn0IgcnU40DzaLysfyVyuV+zxyB/R5U8RAWFJQSM2113GSvrlP1cuNpCZzlVh+ETTzpcUj+nbSeu2EIQ==
 
-"@sprucelabs/log@^10.2.90":
-  version "10.2.90"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.90.tgz#0721f2ca892d4149988eff230ab806ef942560ef"
-  integrity sha512-duCTrXB51zk2fdLQ6vHOehnorJtHg3eVNexxCViaj/rgrl85Zfy/5/fJMTOCM6bfp2KOtnWHOGx9Q5Kd+q7+Hg==
+"@sprucelabs/log@^10.2.91":
+  version "10.2.91"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.91.tgz#ca902af4960b418a7cd9b28829a2a94b09028c10"
+  integrity sha512-c8widIv/r//3sXdQBZw8rlva5khp3Gdpdc7QE7eqJl8fq0ySVdKLWnQFHiqywRdb31f2y4RwiwyJClqueIuIpg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.125":
-  version "5.3.125"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.125.tgz#f9ae4cde926a74706a048487f7cb79ddadbcaf7f"
-  integrity sha512-781gT+3BTAhJycCaKL761XAHgWYho9bkrHY+5RbsiXdJFpCCqpb0D+q+j2zt13rk1g2lwo6YiKGq4xlb8w+BLA==
+"@sprucelabs/test@^5.3.126":
+  version "5.3.126"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.126.tgz#444d3166ccacdb3b5e8237c6b3a38ccb43cea8b8"
+  integrity sha512-JU2JLcMUOoQsgwaG5i3zvgktxfnQZDghyg+G1erElgXkKkx16nL+GYAs+++0zMKs2PaRW4F52ldRwjv4U2Tikg==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3295,10 +3295,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.7.24:
-  version "10.7.24"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.24.tgz#e5d4ae1036b6a6dd841f5d5a369b893e7b5c1652"
-  integrity sha512-KVyiJNB8A4iZndvDwj+ayDCET/pvLxTYBgj82RUgt7GW00kjNaJ1KKIiBNv6DzQ+mMbzoxmXdzXYqYnrb2prDg==
+eslint-config-spruce@^10.7.25:
+  version "10.7.25"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.25.tgz#634ccec4fc9755a6d6edcfa168645f6290d19ec1"
+  integrity sha512-bLh4H7DEe3/jCp0R6ZAeVVzSkVmGV76lZpBxhw8LsoSTSBNonpfN0tZqisZdEHuDQm5P0UOziSLBe0QmVVs3dg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.8.0"
     "@typescript-eslint/parser" "^3.8.0"
@@ -3308,7 +3308,7 @@ eslint-config-spruce@^10.7.24:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.5"
-    eslint-plugin-spruce "^10.7.24"
+    eslint-plugin-spruce "^10.7.25"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3386,10 +3386,10 @@ eslint-plugin-react@^7.20.5:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.7.24:
-  version "10.7.24"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.24.tgz#17bc44dc2ddaac1bd10507dfcc17e72a9ff0da8e"
-  integrity sha512-Bo/OjP3l88tL4sCP+dUGDtwOBzl1DVegFh2xelcPGi4VTtMcC+K/shephwL7IVmdklHA5+Q+gj7Lm+DoTIHDtQ==
+eslint-plugin-spruce@^10.7.25:
+  version "10.7.25"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.25.tgz#3e4865030aec030dab755ba7128b51d3941f3d69"
+  integrity sha512-pYzbVXO0ZzNRfdIQfb6Y5NUWqNpMK4qAWEBvvwQisAbGEzs6JApFcQEnas601oBW+7u+51Hxjy497yRNBITB/A==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -3960,9 +3960,9 @@ get-stream@^4.0.0, get-stream@^4.1.0:
     pump "^3.0.0"
 
 get-stream@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-5.1.0.tgz#01203cdc92597f9b909067c3e656cc1f4d3c4dc9"
-  integrity sha512-EXr1FOzrzTfGeL0gQdeFEvOMm2mzMOglyiOXSTpPC+iAjAKftbr3jpCMWynogwYnM+eSj9sHGc6wjIcDvYiygw==
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-5.2.0.tgz#4966a1795ee5ace65e706c4b7beb71257d6e22d3"
+  integrity sha512-nBF+F1rAZVCu/p7rjzgA+Yb4lfYXrpl7a6VmJrU8wF9I1CKvP/QwPNZHnOlwbTkY6dvtFIzFMSyQXbLoTQPRpA==
   dependencies:
     pump "^3.0.0"
 
