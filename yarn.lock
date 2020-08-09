@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.40":
-  version "2.0.40"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.40.tgz#2549eb40c2d875f158ee4cd18b2c351f113bbc7b"
-  integrity sha512-pBdOGQqYT27cEPHCPVorlZnJk9/NGQWGvfBt98f7YfTcXwCY0XEwWNIJ7dFT7XcD6uAZfOE/wehRYKCnHiF2/Q==
+"@sprucelabs/error@^2.0.41":
+  version "2.0.41"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.41.tgz#7d5ef99acae42bf768c44435260eb2ed4132892b"
+  integrity sha512-YBGyIGQvVcxwXFZm1836C+3zwOO5OM5xZqhgP0cU8dJZ/tAIzd87nt/Ab0c7EP6QMg+NMSND+4NYYvlD5Ma1kg==
 
-"@sprucelabs/log@^10.2.88":
-  version "10.2.88"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.88.tgz#7fab01f5a450fd9303ad99fffcc044d47a853ca1"
-  integrity sha512-jYaygkGvYXzw9FIm6S3Y2wvLAqICtUJ5z7ILhNBGQ8/NcdfRLBQ4Jx/s6oEhAD5caKN7wUFBFPZeCuPiwtjptA==
+"@sprucelabs/log@^10.2.89":
+  version "10.2.89"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.89.tgz#09ccfb21c239bc462d1a1bd86765ffe7786bb228"
+  integrity sha512-/3AUisSnr28xsMCg1tq3/GqMlmj/6pxZm/3cnF6GE8lNeUTQsTu2G1LgqX2T7pABr8hRSlzPIfasNxPQcRvzog==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.123":
-  version "5.3.123"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.123.tgz#c975e4f4863a6b0ebcea2f5f76dfb380ccbdfb8c"
-  integrity sha512-R96isnxitOqgTzgXvv5WL7aT1na53BpnFxM/nruJ/Rz28dwsAIf9h30gsXR+TtHeNqcQ6cdyWvrRr5m/5u9k9w==
+"@sprucelabs/test@^5.3.124":
+  version "5.3.124"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.124.tgz#79e4c9cbff9d008fc2121c8bde6d97ca8fbb5e2b"
+  integrity sha512-GDWa6qbCucGpN1WgG6W89Sgv0KNNEZGAqwx8jsP4P2zKPCC0b573qpMyP/126GV3OPIs7hIU9IyWtlCsszP98A==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3295,10 +3295,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.7.23:
-  version "10.7.23"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.23.tgz#024583f73552e2b1e7893b192bc37502d34cfd8f"
-  integrity sha512-gPclgY0UlR7b+RVQs6/0JOAGFeu3DfvxuVD3qiB9lZ9dHSU6XudmeTV1r5glJ6aPQLC+H+Y7PDYZkkFqrG9LZQ==
+eslint-config-spruce@^10.7.24:
+  version "10.7.24"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.7.24.tgz#e5d4ae1036b6a6dd841f5d5a369b893e7b5c1652"
+  integrity sha512-KVyiJNB8A4iZndvDwj+ayDCET/pvLxTYBgj82RUgt7GW00kjNaJ1KKIiBNv6DzQ+mMbzoxmXdzXYqYnrb2prDg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.8.0"
     "@typescript-eslint/parser" "^3.8.0"
@@ -3308,7 +3308,7 @@ eslint-config-spruce@^10.7.23:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.5"
-    eslint-plugin-spruce "^10.7.23"
+    eslint-plugin-spruce "^10.7.24"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3386,10 +3386,10 @@ eslint-plugin-react@^7.20.5:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.7.23:
-  version "10.7.23"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.23.tgz#1c90af0aaa18586b5c5cf218b9ca9af4a3109987"
-  integrity sha512-aykTIn6gbFKD3NdEIjFJMuQsPA5dKCPur0Lh0ngaQXFvPLeR08g4rCHCBjGNeNR5q/+BZ00Bu5Pl+YLAPmzBVg==
+eslint-plugin-spruce@^10.7.24:
+  version "10.7.24"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.7.24.tgz#17bc44dc2ddaac1bd10507dfcc17e72a9ff0da8e"
+  integrity sha512-Bo/OjP3l88tL4sCP+dUGDtwOBzl1DVegFh2xelcPGi4VTtMcC+K/shephwL7IVmdklHA5+Q+gj7Lm+DoTIHDtQ==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -8598,9 +8598,9 @@ ts-jest@^26.1.4:
     yargs-parser "18.x"
 
 ts-morph@^7.0.0:
-  version "7.1.3"
-  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-7.1.3.tgz#b1bdda66e49500227453ef19874bbf9e0f359d04"
-  integrity sha512-NlfQolw+IT+gFDnRPrkce9h427d6/Vea8S2YdV5C6aAg2CGuWzmkMfcLKmrDqIkU8ZXcI3KqmJAqiaLhEcPXWQ==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-7.2.0.tgz#58371362feeb5659d997ee8c8007215e671973c9"
+  integrity sha512-0nxRlGsyPxCSrXa9nPx/aPI4gLc0X5ggf/nHptbArg4ZYaQgVhFoQ/PpJo5S/gUNVLmPPc/ZpYVtZOrnQ5sVCA==
   dependencies:
     "@dsherret/to-absolute-glob" "^2.0.2"
     "@ts-morph/common" "~0.5.2"
