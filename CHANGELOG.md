@@ -1,3 +1,10 @@
+## [7.0.73](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.72...v7.0.73) (2020-08-10)
+
+
+### Bug Fixes
+
+* more exports ([68655d6](https://github.com/sprucelabsai/spruce-schema/commit/68655d6))
+
 ## [7.0.72](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.71...v7.0.72) (2020-08-10)
 
 ## [7.0.71](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.70...v7.0.71) (2020-08-10)
