@@ -20,6 +20,8 @@ export { default as buildSchema } from './utilities/buildSchema'
 // Util types
 export * from './utilities/optional.types'
 export * from './utilities/selectChoicesToHash'
+export * from './utilities/registerFieldType'
+export { default as registerFieldType } from './utilities/registerFieldType'
 export { default as defaultSchemaValues } from './utilities/defaultSchemaValues'
 export { default as validateSchemaValues } from './utilities/validateSchemaValues'
 export { default as normalizeSchemaValues } from './utilities/normalizeSchemaValues'
