@@ -22,7 +22,7 @@
 	},
 	"scripts": {
 		"build": "npm run clean && concurrently \"npm run build.node\"",
-		"build.node": "tsc | true",
+		"build.node": "tsc",
 		"build.browser": "tsc --project tsconfig.browser.json",
 		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
 		"clean": "rm -rf build/",
