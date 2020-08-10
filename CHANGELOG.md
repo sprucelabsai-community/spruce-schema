@@ -1,3 +1,10 @@
+## [7.0.76](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.75...v7.0.76) (2020-08-10)
+
+
+### Bug Fixes
+
+* allow build.node to fail if it errors ([7af820d](https://github.com/sprucelabsai/spruce-schema/commit/7af820d))
+
 ## [7.0.75](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.74...v7.0.75) (2020-08-10)
 
 ## [7.0.74](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.73...v7.0.74) (2020-08-10)
