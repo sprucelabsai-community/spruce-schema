@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.46":
-  version "2.0.46"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.46.tgz#4b8fe963655581aaa8eb7784eef69b5e22375688"
-  integrity sha512-vlrqEqxxq38yokzgP7qD2Hvbzw6GEWl9XlMHDJfyZOKvdelCWwW2DxY8axv7gy8FcJgo1zKl5n0w7fyhUvcHww==
+"@sprucelabs/error@^2.0.47":
+  version "2.0.47"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.47.tgz#40c075f951b725245ff50451a64336436ce514f7"
+  integrity sha512-NgMPTBpnOlPxDQh/LZfyYF3K2eorZLRQ6mzYLWDLYHxYeIVuG1+soOMYMe7yftmvv9ykNFKECiUkyq62CUUjjA==
 
-"@sprucelabs/log@^10.2.93":
-  version "10.2.93"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.93.tgz#40f4c631ccf4593b4476d474be67b31cd154dfdf"
-  integrity sha512-avqHXD5K5Upv7ehLjBKHnV4xaj0nVe3kua+cuq2tJIweXiycChw16mx7GT9TkS3uzbKVe1Ub2occNiDZcMu9SQ==
+"@sprucelabs/log@^10.2.94":
+  version "10.2.94"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.94.tgz#53b4253f4a7e2c422cac2d63c9d10e461b60eb11"
+  integrity sha512-C/TOo4yy7k/LG57UvnPAgZ/KP6jZdGauuox6mIpgxUKKBA4F4sfVIGnGneS7R3kzW8OPc5WZin8diZbsfogqZQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.129":
-  version "5.3.129"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.129.tgz#ff3cc145066abb9a495019e9c1cdab6755630155"
-  integrity sha512-9N+hcENLBShdG50U721zMRqlf3cbcZ/gJDOD/dvr2vmjiPvwVCfoImvVeG1T1aVyB3u+I7lgI3nmYNtQy/ZpwQ==
+"@sprucelabs/test@^5.3.130":
+  version "5.3.130"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.130.tgz#93a15d6d0a129ae2eeed0c0fe1c853fc37a733cb"
+  integrity sha512-y7/igD3wAL9kdTKZwrp+xTrRGSUWrhSBZNYK/o8FxwdLXqYvZ6of8esIoWMywPFJHIB1JzwBrNceOoH+ktucJg==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3302,10 +3302,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.8.1:
-  version "10.8.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.8.1.tgz#4e212765ae30b99587a6f3c729a16501b3f2c513"
-  integrity sha512-LeMm6YJT1tZnPCZc03tC471T6OhNzftJtVYwqeq0uFoDB3pZZv5f86Ax4EDjNIjfReNbjXpNSv6UXvWsZQ7aSQ==
+eslint-config-spruce@^10.8.2:
+  version "10.8.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.8.2.tgz#7c13f202ce187d19bd0d80a3f8d71a5ebe42055b"
+  integrity sha512-nzT8C8yUcInIPNclEmfVakCXHsMzXzskRnRMLIqZryff5sgIO3Rt8AkEtbK36Rrs1MfxOY3dQbrWUI+qBCb4gg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.9.0"
     "@typescript-eslint/parser" "^3.9.0"
@@ -3315,7 +3315,7 @@ eslint-config-spruce@^10.8.1:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.5"
-    eslint-plugin-spruce "^10.8.1"
+    eslint-plugin-spruce "^10.8.2"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3393,10 +3393,10 @@ eslint-plugin-react@^7.20.5:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.8.1:
-  version "10.8.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.8.1.tgz#8cee4b3dd62ff81f5cdd146ae0c810cd03ffc2f6"
-  integrity sha512-SEkVNk4dPbFoHZc64ONp06rOJQh8oyRwbBkn//FHq76tVUflX2oBOtq0xXi4Zp4nIyiA0HojCdBplfdZXuKvFg==
+eslint-plugin-spruce@^10.8.2:
+  version "10.8.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.8.2.tgz#9e83da197224c9253bf31ba78202bde0cef6b938"
+  integrity sha512-ajhXFny/iq8CzJ3el9R4Uag3WFHedIXA4cvcfMUX3TFRC/xkPXW4ibTHif2pBJjf8WdqsuIbkUmdudOYmu8+6g==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -9079,9 +9079,9 @@ widest-line@^2.0.0:
     string-width "^2.1.1"
 
 windows-release@^3.1.0:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/windows-release/-/windows-release-3.3.1.tgz#cb4e80385f8550f709727287bf71035e209c4ace"
-  integrity sha512-Pngk/RDCaI/DkuHPlGTdIkDiTAnAkyMjoQMZqRsxydNl1qGXNIoZrB7RK8g53F2tEgQBMqQJHQdYZuQEEAu54A==
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/windows-release/-/windows-release-3.3.3.tgz#1c10027c7225743eec6b89df160d64c2e0293999"
+  integrity sha512-OSOGH1QYiW5yVor9TtmXKQvt2vjQqbYS+DqmsZw+r7xDwLXEeT3JGW0ZppFmHx4diyXmxt238KFR3N9jzevBRg==
   dependencies:
     execa "^1.0.0"
 
