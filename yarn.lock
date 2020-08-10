@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.47":
-  version "2.0.47"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.47.tgz#40c075f951b725245ff50451a64336436ce514f7"
-  integrity sha512-NgMPTBpnOlPxDQh/LZfyYF3K2eorZLRQ6mzYLWDLYHxYeIVuG1+soOMYMe7yftmvv9ykNFKECiUkyq62CUUjjA==
+"@sprucelabs/error@^2.0.48":
+  version "2.0.48"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.48.tgz#cbc8cca1a22994316cfe8dde13b998bb72f454fa"
+  integrity sha512-OjiPBCxxUQGXTbYMDRNGyem6xMJuhuyhDGSy0eY5ZGe5/kKCEaLr/7KsSWX6TVQ8kLlxuEs2n3cnuK+k0EK42A==
 
-"@sprucelabs/log@^10.2.94":
-  version "10.2.94"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.94.tgz#53b4253f4a7e2c422cac2d63c9d10e461b60eb11"
-  integrity sha512-C/TOo4yy7k/LG57UvnPAgZ/KP6jZdGauuox6mIpgxUKKBA4F4sfVIGnGneS7R3kzW8OPc5WZin8diZbsfogqZQ==
+"@sprucelabs/log@^10.2.95":
+  version "10.2.95"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.95.tgz#85d1e09ad6b9625020c4d905c87e128f72d7b4ec"
+  integrity sha512-XiwiZ1OSypmZzn4oSJWnY6qIHsYW1EPMMbVtYwfupRQ0qbxcgHzaHWoYqP8ZD3668XxbRWwkHiSjdFl/EZURFA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.130":
-  version "5.3.130"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.130.tgz#93a15d6d0a129ae2eeed0c0fe1c853fc37a733cb"
-  integrity sha512-y7/igD3wAL9kdTKZwrp+xTrRGSUWrhSBZNYK/o8FxwdLXqYvZ6of8esIoWMywPFJHIB1JzwBrNceOoH+ktucJg==
+"@sprucelabs/test@^5.3.131":
+  version "5.3.131"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.131.tgz#08b8ce179dcf14c2d017851376d58b389b6ab1a4"
+  integrity sha512-jVg5042MZOOqKCxrCDwLsAQVSNztBdhuL8+usHPWwxci9hPxQODF89TJg3W/uPZKtqAfR8L18gdHwYqzAEkhCw==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -3140,9 +3140,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.523:
-  version "1.3.526"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.526.tgz#0e004899edf75afc172cce1b8189aac5dca646aa"
-  integrity sha512-HiroW5ZbGwgT8kCnoEO8qnGjoTPzJxduvV/Vv/wH63eo2N6Zj3xT5fmmaSPAPUM05iN9/5fIEkIg3owTtV6QZg==
+  version "1.3.527"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.527.tgz#5f59202c066c77a13e6cb0869852ef784e8f2089"
+  integrity sha512-ZlB9ySKOnS4g2Ja/TWDz4Q79NZhKV+Vsgntg85zLN08t+QsN1hK/zeDrcqwysSfbfGRVtvai6QYMczeNNUUgUA==
 
 emittery@^0.7.1:
   version "0.7.1"
@@ -5956,17 +5956,15 @@ mem@^1.1.0:
     mimic-fn "^1.0.0"
 
 meow@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-7.0.1.tgz#1ed4a0a50b3844b451369c48362eb0515f04c1dc"
-  integrity sha512-tBKIQqVrAHqwit0vfuFPY3LlzJYkEOFyKa3bPgxzNl6q/RtN8KQ+ALYEASYuFayzSAsjlhXj/JZ10rH85Q6TUw==
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-7.1.0.tgz#50ecbcdafa16f8b58fb7eb9675b933f6473b3a59"
+  integrity sha512-kq5F0KVteskZ3JdfyQFivJEj2RaA8NFsS4+r9DaMKLcUHpk5OcHS3Q0XkCXONB1mZRPsu/Y/qImKri0nwSEZog==
   dependencies:
     "@types/minimist" "^1.2.0"
-    arrify "^2.0.1"
-    camelcase "^6.0.0"
     camelcase-keys "^6.2.2"
     decamelize-keys "^1.1.0"
     hard-rejection "^2.1.0"
-    minimist-options "^4.0.2"
+    minimist-options "4.1.0"
     normalize-package-data "^2.5.0"
     read-pkg-up "^7.0.1"
     redent "^3.0.0"
@@ -6059,7 +6057,7 @@ minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist-options@^4.0.2:
+minimist-options@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/minimist-options/-/minimist-options-4.1.0.tgz#c0655713c53a8a2ebd77ffa247d342c40f010619"
   integrity sha512-Q4r8ghd80yhO/0j1O3B2BjweX3fiHg9cdOwjJd2J76Q135c+NDxGCqdYKQ1SKBuFfgWbAUzBfvYjPUEeNgqN1A==
