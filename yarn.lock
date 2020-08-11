@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.54":
-  version "2.0.54"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.54.tgz#47e28fb81888c2a717971279dcd2d799b5e2175a"
-  integrity sha512-J71wUAI9uGCfnoGJxP5IwMkc92bmMeL9P24TtWcmBKr73qnJQN2PfPYAfwtFY3fxnsXmBX9RoEzXrSJ0ZKUctg==
+"@sprucelabs/error@^2.0.55":
+  version "2.0.55"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.55.tgz#c1bae6fced535ec5130f546c468676d783c020a9"
+  integrity sha512-aw2cjt5ZJjGBJrIS3gw9tL2w4/dECdQKRtUw+v26O5p5wyuawAcxJhepeNFBAjpT/lQ2sBs+aurrcjI2X3lFsw==
 
-"@sprucelabs/log@^10.2.101":
-  version "10.2.101"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.101.tgz#1236c41fceb7c5cb5c24a379d6174cd25e468bf5"
-  integrity sha512-/B4SoLnC1v5zB2ztwef9/T3riLMWqyzgnVqg/HOexHiYQJh3EWrQmWEXVyL33Z0HFKat2FvjE9BwBoAXu1H9iQ==
+"@sprucelabs/log@^10.2.102":
+  version "10.2.102"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.102.tgz#934cfc58f31dbbf8bd8c8e91ccc438a8ec9b8637"
+  integrity sha512-4p9XpgpDEg8tfBCbe+lwPD2s0IDstOVaiOBygB3N9od9ukrTrGlO+Ek56L0Q+M2C6tcUzMMoGH0FfwXK/Vj++A==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
