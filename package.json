@@ -40,8 +40,8 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.0.53",
-		"@sprucelabs/log": "^10.2.100",
+		"@sprucelabs/error": "^2.0.54",
+		"@sprucelabs/log": "^10.2.101",
 		"google-libphonenumber": "^3.2.10",
 		"libphonenumber-js": "^1.7.56",
 		"mime-db": "^1.44.0",
