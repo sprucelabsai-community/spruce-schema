@@ -35,8 +35,9 @@
 		"release": "semantic-release",
 		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
 		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
-		"upgrade.base": "yarn upgrade --latest && rm yarn.lock | true && yarn | true && yarn lint.fix | true",
-		"up": "yarn upgrade.base && yarn lint && yarn build && yarn test"
+		"upgrade.packages": "yarn upgrade --latest && rm yarn.lock | true && yarn | true && yarn lint.fix | true",
+		"upgrade.packages.all": "yarn upgrade.packages",
+		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^2.0.51",
