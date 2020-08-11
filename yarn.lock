@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.49":
-  version "2.0.49"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.49.tgz#b8cc80db6a1b421dcc50ff92443f7deebd5dce03"
-  integrity sha512-EAYhxDgiskGesT8Dd+wrkk8PgCTf6exrxfiFLV5qBvvqAmGaWDBI2v28Vi1SUWi3gPkZgtSEsAiNPUJSboOiBQ==
+"@sprucelabs/error@^2.0.50":
+  version "2.0.50"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.50.tgz#a888476ea6cb05760c78c9a410e95bb0917f5b12"
+  integrity sha512-me/gsH1t6LLA+UIGRuYc+zHCgDry3qi0aTdq4eB617liDdqQYj4EusWywNhSHhdxC8CdzqbSweTRbFcvagCvSQ==
 
-"@sprucelabs/log@^10.2.96":
-  version "10.2.96"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.96.tgz#1f6f00456fb69363ea83bec92ae774f47913dd2c"
-  integrity sha512-BVC7aYEIZFhO891SeCkUzFtClf9HuFwO2uHvhy6vUfnLdvBhMfZ9YOYPcn9c666TTUZ5hxnnYeDpYzEbggKe9g==
+"@sprucelabs/log@^10.2.97":
+  version "10.2.97"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.97.tgz#d14e70325c9c746181ed63f6d07a08ce3e729725"
+  integrity sha512-bXORFoqQWXS8d2P39caGM8bvNK1DHgJN2pSHChzZn/j53VyrO1c6XDHFGltV0PxlhCtaKozFk5jVZHs3qttnlA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.136":
-  version "5.3.136"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.136.tgz#7febc3eea4788045f521e50d03e31093403a78f3"
-  integrity sha512-zP6dEajRqc23z82HEYURVl2IyAR2JXiFyhks96QDCte6M+tkuElqSIeTAg1TrTisw6MQc7koLa6XLaIp3N5f5g==
+"@sprucelabs/test@^5.3.137":
+  version "5.3.137"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.137.tgz#1244d205687e905029cfc1599de4816fc14e58a7"
+  integrity sha512-+1WO4M5D8bmkdwAVmFw7t1EwnavRhsxWG00aUz4y+urvH9Fs7VqTL+W3vPKzBF7vSsuNAPEmuNPPdiM6jsr/1g==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -8604,9 +8604,9 @@ ts-jest@^26.2.0:
     yargs-parser "18.x"
 
 ts-morph@^7.0.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-7.2.0.tgz#58371362feeb5659d997ee8c8007215e671973c9"
-  integrity sha512-0nxRlGsyPxCSrXa9nPx/aPI4gLc0X5ggf/nHptbArg4ZYaQgVhFoQ/PpJo5S/gUNVLmPPc/ZpYVtZOrnQ5sVCA==
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-7.3.0.tgz#1777b893d9573b3522108b43159b5ba2515ffde7"
+  integrity sha512-BUKSoz7AFSKPcYTZODbICW2mOthAN4vc5juD6FL1lD/dLwZ0WvrC3zqBM3/X6f5gHxq3yaz+HmanHGaWm0ddbQ==
   dependencies:
     "@dsherret/to-absolute-glob" "^2.0.2"
     "@ts-morph/common" "~0.5.2"
