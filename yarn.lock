@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.135":
-  version "5.3.135"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.135.tgz#4e96b66ca7747002d31184f889d61b5d95d51ccb"
-  integrity sha512-n2nKpWPC3ipctgTHqh3ZFAnAnOS2cMdhcIRyrp1IhyP4Exm9I+8Za3clqson8A+2LFqypEyeCbuPK9du2y2tBA==
+"@sprucelabs/test@^5.3.136":
+  version "5.3.136"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.136.tgz#7febc3eea4788045f521e50d03e31093403a78f3"
+  integrity sha512-zP6dEajRqc23z82HEYURVl2IyAR2JXiFyhks96QDCte6M+tkuElqSIeTAg1TrTisw6MQc7koLa6XLaIp3N5f5g==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -1358,7 +1358,7 @@
     jest "^26.3.0"
     lodash "^4.17.19"
     ts-expect "^1.1.0"
-    ts-jest "^26.1.4"
+    ts-jest "^26.2.0"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -1469,7 +1469,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^26.0.9":
+"@types/jest@26.x", "@types/jest@^26.0.9":
   version "26.0.9"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.9.tgz#0543b57da5f0cd949c5f423a00c56c492289c989"
   integrity sha512-k4qFfJ5AUKrWok5KYXp2EPm89b0P/KZpl7Vg4XuOTVVQEhLDBDBU3iBFrjjdgd8fLw96aAtmnwhXHl63bWeBQQ==
@@ -8586,11 +8586,12 @@ ts-expect@^1.1.0:
   resolved "https://registry.yarnpkg.com/ts-expect/-/ts-expect-1.1.0.tgz#52a280a149e1943ff7473d3dcb2fe17f85f63853"
   integrity sha512-cKoBZ47X85x/Qh7taf30m3BhOJOhtNbb7KFHz9CCuWeRSAh0wzprnmiN9TSOQ0FWp3+qDWS5f2FDnxkY93Kdfw==
 
-ts-jest@^26.1.4:
-  version "26.1.4"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.1.4.tgz#87d41a96016a8efe4b8cc14501d3785459af6fa6"
-  integrity sha512-Nd7diUX6NZWfWq6FYyvcIPR/c7GbEF75fH1R6coOp3fbNzbRJBZZAn0ueVS0r8r9ral1VcrpneAFAwB3TsVS1Q==
+ts-jest@^26.2.0:
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.2.0.tgz#7ec22faceb05ee1467fdb5265d1b33c27441f163"
+  integrity sha512-9+y2qwzXdAImgLSYLXAb/Rhq9+K4rbt0417b8ai987V60g2uoNWBBmMkYgutI7D8Zhu+IbCSHbBtrHxB9d7xyA==
   dependencies:
+    "@types/jest" "26.x"
     bs-logger "0.x"
     buffer-from "1.x"
     fast-json-stable-stringify "2.x"
