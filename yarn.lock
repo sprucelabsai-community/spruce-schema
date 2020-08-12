@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.0.56":
-  version "2.0.56"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.56.tgz#e96724f156c63c99f64d386e8575fdeaa5bda718"
-  integrity sha512-H6CfrD+WfGCUifHfbvCkCy3LxXgbWEy1oKhHZK204JdAxxNmSUDQVxfMZLToOxI5DhLXAGmrpXHSD6NzUnoBWw==
+"@sprucelabs/error@^2.0.57":
+  version "2.0.57"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.0.57.tgz#5e8855fe2204d6fcf81cc80da514e240b2d60bb8"
+  integrity sha512-9RUcLl63sYZAG7S6U3ssv2+Ii3vt3rudDL6o0/DKskB7HmLoUglrYmRH1btwUFB7GTZfle6C4aeh/vDoqeTvPg==
 
-"@sprucelabs/log@^10.2.103":
-  version "10.2.103"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.103.tgz#f09b01fd4f354b299d98ad4796dafb4761341c6e"
-  integrity sha512-KD/P0XL6oJ2R9CROfVGmwmm9RjoBKspiBq20RikLzFWhINZdfJ8ZVpSmoLMAXDV9Ow7yN4AEzLJUXpSYR7FeDA==
+"@sprucelabs/log@^10.2.104":
+  version "10.2.104"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.104.tgz#d39a417979be25db656d4ed75158edde508f78c7"
+  integrity sha512-fayTlcB/SyBQMZsNR94qkidhUcDQ/bMGfjnYRN7hIR/1F+wt6Mp1iYFelCu59aumB2phxTF2cmEjPPWxK79XhQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^5.3.143":
-  version "5.3.143"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.143.tgz#ed8e9a4b8a0247e265a37987fb8ce23a8d889206"
-  integrity sha512-7a2R9l9FFC2NlT9I/kPrYDUlmUPik7j/lEbt5oh+k5LjSAKnToKDi5XkD5GTBJDz5JxHoUKWDDyOA/yPCcFnLQ==
+"@sprucelabs/test@^5.3.144":
+  version "5.3.144"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-5.3.144.tgz#072e957f29d6ed64d61d45f6221b987ade5f04e6"
+  integrity sha512-OQ4CsFgjDknDIMxjN5y6pj8pEUV1wLeu3RwuOolqtYEiJvKop4813sGC7hzHhHPpCGAzzj4WPl5MjwdRDgDEBg==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -1989,9 +1989,9 @@ aws-sign2@~0.7.0:
   integrity sha1-tG6JCTSpWR8tL2+G1+ap8bP+dqg=
 
 aws4@^1.8.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
-  integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.1.tgz#e1e82e4f3e999e2cfd61b161280d16a111f86428"
+  integrity sha512-zg7Hz2k5lI8kb7U32998pRRFin7zJlkfezGJjUc2heaD4Pw2wObakCDVzkKztTm/Ln7eiVvYsjqak0Ed4LkMDA==
 
 axe-core@^3.5.4:
   version "3.5.5"
