@@ -1,8 +1,3 @@
-export * from './SchemaEntity'
-
-import SchemaEntity from './SchemaEntity'
-export default SchemaEntity
-
 // Schema types
 export * from './schemas.static.types'
 
@@ -32,3 +27,8 @@ export { default as FieldFactory } from './factories/FieldFactory'
 
 // Template types
 export * from './template.types'
+
+export * from './SchemaEntity'
+
+import SchemaEntity from './SchemaEntity'
+export default SchemaEntity
