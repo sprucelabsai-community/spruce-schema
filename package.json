@@ -58,7 +58,7 @@
 		"concurrently": "^5.3.0",
 		"eslint": "^7.6.0",
 		"eslint-config-spruce": "^10.8.8",
-		"lodash": "^4.17.19",
+		"lodash": "^4.17.20",
 		"prettier": "^2.0.5",
 		"ts-node": "^8.10.2",
 		"typescript": "^3.9.7",
