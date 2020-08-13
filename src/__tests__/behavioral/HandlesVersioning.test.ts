@@ -8,8 +8,8 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 	protected static async letsMeBuildASchemaWithSameNameAndVersions() {
 		const { wrenchV1, wrenchV2 } = this.buildDefinitions()
 
-		assert.isOk(wrenchV1)
-		assert.isOk(wrenchV2)
+		assert.isTruthy(wrenchV1)
+		assert.isTruthy(wrenchV2)
 	}
 
 	private static buildDefinitions() {
@@ -47,8 +47,8 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
 		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
 
-		assert.isOk(wrenchV1)
-		assert.isOk(wrenchV2)
+		assert.isTruthy(wrenchV1)
+		assert.isTruthy(wrenchV2)
 	}
 
 	@test()
@@ -58,8 +58,8 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
 		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
 
-		assert.isOk(wrenchV1)
-		assert.isOk(wrenchV2)
+		assert.isTruthy(wrenchV1)
+		assert.isTruthy(wrenchV2)
 
 		assert.isEqual(wrenchV1.id, 'wrench')
 		assert.isEqual(wrenchV2.id, 'wrench')

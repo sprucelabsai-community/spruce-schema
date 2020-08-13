@@ -16,8 +16,8 @@ export default class CanGetSchemasTest extends AbstractSchemaTest {
 		const personSchema = SchemaEntity.getSchema('person')
 		const carSchema = SchemaEntity.getSchema('car')
 
-		assert.isOk(personSchema)
-		assert.isOk(carSchema)
+		assert.isTruthy(personSchema)
+		assert.isTruthy(carSchema)
 	}
 
 	@test()

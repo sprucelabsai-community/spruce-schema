@@ -16,8 +16,8 @@ export default class BuildSchemaTest extends BaseTest {
 				},
 			},
 		})
-		assert.isOk(schema)
-		assert.isOk(schema.fields.firstName)
+		assert.isTruthy(schema)
+		assert.isTruthy(schema.fields.firstName)
 	}
 
 	@test('test built schema type')
