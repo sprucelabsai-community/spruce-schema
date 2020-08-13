@@ -89,12 +89,12 @@ export default class FileFieldTest extends BaseTest {
 	)
 	@test(
 		'Can get file value based on only path',
-		{ path: '/path/to/a/non/existent/file/isOk/NewFile.ts' },
+		{ path: '/path/to/a/non/existent/file/isTruthy/NewFile.ts' },
 		{
 			name: 'NewFile.ts',
 			ext: '.ts',
 			type: 'application/typescript',
-			path: '/path/to/a/non/existent/file/isOk',
+			path: '/path/to/a/non/existent/file/isTruthy',
 		}
 	)
 	public static testCompletingFileObject(
@@ -176,7 +176,7 @@ export default class FileFieldTest extends BaseTest {
 			fields: ['target'],
 		})
 
-		assert.isOk(values.target)
+		assert.isTruthy(values.target)
 		assert.isEqual(values.target.path, expectedPath)
 	}
 

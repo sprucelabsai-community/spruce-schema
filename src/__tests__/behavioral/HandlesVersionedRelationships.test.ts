@@ -85,7 +85,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		})
 
 		const values = person.getValues()
-		assert.isOk(values)
+		assert.isTruthy(values)
 
 		const car = person.get('optionalCarOrTruck')
 

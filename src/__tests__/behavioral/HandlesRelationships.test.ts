@@ -28,8 +28,8 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			requiredIsArrayCarOrTruck: [],
 		}
 
-		assert.isOk(user.name)
-		assert.isOk(user.requiredCar)
+		assert.isTruthy(user.name)
+		assert.isTruthy(user.requiredCar)
 		assert.isEqual(user.requiredCar.name, 'go cart')
 		assert.isEqual(user.optionalCar, undefined)
 	}
@@ -43,7 +43,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		})
 
 		const car = person.get('requiredCar')
-		assert.isOk(car)
+		assert.isTruthy(car)
 		assert.isEqual(car.get('onlyOnCar'), 'only on car!')
 	}
 
@@ -162,7 +162,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			.getNamedFields()
 			.find((f) => f.name === 'optionalCarWithCallback')
 
-		assert.isOk(carField)
+		assert.isTruthy(carField)
 
 		if (!carField) {
 			return
