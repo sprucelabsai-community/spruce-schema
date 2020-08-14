@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.8":
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.8.tgz#bd34a47469008e521cba72cd6d225f744606c9d7"
-  integrity sha512-laASjzOEnq6sSXKnOH00Xnt/xJoGjMcZQVkTbr/mzx8eceRwzEDbSii0bVJKH/XngAmLQF92nTU8Ah5zfnP6Xw==
+"@sprucelabs/error@^2.2.9":
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.9.tgz#346fe754059cdd0eff95cac77193026b50356a29"
+  integrity sha512-VwNhnCdMDB3RAi5oL/vYdwMNxnG7pCorfYQ47rmN3vRsWWq21qEQdKNbOpO31Nk9D+DqPJbrrpHhMnD4AMPhGA==
 
-"@sprucelabs/log@^10.2.113":
-  version "10.2.113"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.113.tgz#0c6a856f75af6b234623381eb8bfb5e4256d4f15"
-  integrity sha512-xfj0Hiv5y4ub6IleK/5q4KFi1mnJr56C8yry5n9Dup7bbTaFevnaAA97iDt+pY4n0Fcwt+KT+aF1pimNbBOrvQ==
+"@sprucelabs/log@^10.2.114":
+  version "10.2.114"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.114.tgz#64779b59761ea57605832b2815696124af8cc7fd"
+  integrity sha512-u2Oh506zsMnT9QewsRRS2Ukl6Q02C1rg7U5p+Q3SOJiNIGdX2vxXqaeZgliZnaOwtIu3adCIYLtHgpY1fJ5MEw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.4":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.4.tgz#80d8247be4a3be0a536b265ca9f2a138535a45fb"
-  integrity sha512-DPGXOuIOgsdj9OCt2lsc84RK2XM1l+B1YD+be/04+jZWdRZugBWn2iZW9oozSxctC6JdM6xS7ike7hJqiK1mUg==
+"@sprucelabs/test@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.5.tgz#be4b85aa2d819b5c170ba08a496b66da6e31ee76"
+  integrity sha512-ZEHEC5V6GZtBTiqjZrOTC8QgCpmZXfxIta8x5MiDbALPjMQIefpatBaOohKUcfCLAxcI96juZKgGVg4/NqwQBQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -2623,11 +2623,11 @@ config-chain@^1.1.12:
     proto-list "~1.2.1"
 
 configstore@^3.0.0:
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/configstore/-/configstore-3.1.3.tgz#9674882b18fb397e3b8bd874d2749f62a31a4dd4"
-  integrity sha512-UEMhsBl7f/4siMBkpfm6971dJTVRP032kWkPmQXFIevhAzXcX2KjJMCWtmwqmdCuAlGAVX7DVY6ZkG6e/mh9Cw==
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/configstore/-/configstore-3.1.4.tgz#596122c2e5d47630438a3f622156be3a771a82a4"
+  integrity sha512-0zrqA+vOj4tKAFjho2DjcPby8YNYvU0g2fJLusolvRxpeC3qzfLTrTdPK1/lreiOd2J6prloAR6dcXhcr7mJEw==
   dependencies:
-    dot-prop "npm:dot-prop-legacy@^4.2.1"
+    dot-prop-legacy "^4.2.1"
     graceful-fs "^4.1.2"
     make-dir "^1.0.0"
     unique-string "^1.0.0"
@@ -3065,6 +3065,13 @@ domexception@^2.0.1:
   dependencies:
     webidl-conversions "^5.0.0"
 
+dot-prop-legacy@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/dot-prop-legacy/-/dot-prop-legacy-4.2.1.tgz#ca8f75d79f1471af35d9129a2647aa346bf0df07"
+  integrity sha512-OpVdloKY3b038o/XJ8zV0b6Uh2VZ/WJhdG2L94YOy+OeFjTZBWxeYfQVx5doIezkWCg7UVTjP2hGQBeSeljTag==
+  dependencies:
+    is-obj "^1.0.0"
+
 dot-prop@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-3.0.0.tgz#1b708af094a49c9a0e7dbcad790aba539dac1177"
@@ -3078,13 +3085,6 @@ dot-prop@^5.1.0:
   integrity sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
   dependencies:
     is-obj "^2.0.0"
-
-"dot-prop@npm:dot-prop-legacy@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/dot-prop-legacy/-/dot-prop-legacy-4.2.1.tgz#ca8f75d79f1471af35d9129a2647aa346bf0df07"
-  integrity sha512-OpVdloKY3b038o/XJ8zV0b6Uh2VZ/WJhdG2L94YOy+OeFjTZBWxeYfQVx5doIezkWCg7UVTjP2hGQBeSeljTag==
-  dependencies:
-    is-obj "^1.0.0"
 
 dotenv@^5.0.1:
   version "5.0.1"
