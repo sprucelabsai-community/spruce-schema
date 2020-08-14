@@ -1322,15 +1322,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.7":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.7.tgz#7300117b8f3b56c6f2b8b53f3cb5ff7298ca0cfc"
-  integrity sha512-LhZEmQpOLMNbkHRaym5hFmzoJQAqBItLW2c2lpQfZZWWth47qqAKhhHvQBlhxKnWb7UsubWlqlpMvKtnJB64RA==
+"@sprucelabs/error@^2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.8.tgz#bd34a47469008e521cba72cd6d225f744606c9d7"
+  integrity sha512-laASjzOEnq6sSXKnOH00Xnt/xJoGjMcZQVkTbr/mzx8eceRwzEDbSii0bVJKH/XngAmLQF92nTU8Ah5zfnP6Xw==
 
-"@sprucelabs/log@^10.2.112":
-  version "10.2.112"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.112.tgz#04c5983c9c33757ed075d40c618db812968c95b8"
-  integrity sha512-m5E0qH6kDf0YHCmU2rmVnozUJAx3fhcs95P1VwVONPUYASmfrWWMJJ2hoq5LzWmsHsg0g5mEL61VzqEOw4YLBg==
+"@sprucelabs/log@^10.2.113":
+  version "10.2.113"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.113.tgz#0c6a856f75af6b234623381eb8bfb5e4256d4f15"
+  integrity sha512-xfj0Hiv5y4ub6IleK/5q4KFi1mnJr56C8yry5n9Dup7bbTaFevnaAA97iDt+pY4n0Fcwt+KT+aF1pimNbBOrvQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.3.tgz#9fb6cdbc01ce90aa3e7063a00ee8e638a6ab5439"
-  integrity sha512-SrxcwRVVPhP7AWETmNVfNLOLryC7k9hBhEFWzAJRchQrsyiWrDHxaagPZz+qNGzf0qkiNQr/R6QFhjyUC7f8vw==
+"@sprucelabs/test@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.4.tgz#80d8247be4a3be0a536b265ca9f2a138535a45fb"
+  integrity sha512-DPGXOuIOgsdj9OCt2lsc84RK2XM1l+B1YD+be/04+jZWdRZugBWn2iZW9oozSxctC6JdM6xS7ike7hJqiK1mUg==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -6386,9 +6386,9 @@ npm-profile@^4.0.2, npm-profile@^4.0.4:
     npm-registry-fetch "^4.0.0"
 
 npm-registry-fetch@^4.0.0, npm-registry-fetch@^4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/npm-registry-fetch/-/npm-registry-fetch-4.0.5.tgz#cb87cf7f25bfb048d6c3ee19d115bebf93ea5bfa"
-  integrity sha512-yQ0/U4fYpCCqmueB2g8sc+89ckQ3eXpmU4+Yi2j5o/r0WkKvE2+Y0tK3DEILAtn2UaQTkjTHxIXe2/CSdit+/Q==
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/npm-registry-fetch/-/npm-registry-fetch-4.0.6.tgz#3bd895ff52cbe7ac117fb9778f0e83aa9b54bfd5"
+  integrity sha512-SEp9m7fPe8FIKzhg2JS+xs+w4YY9mEwRlMcEZRELph7rdoygIQGY6B+g0+wdZqokHE8f57ZkexxYWqFO0FkfCw==
   dependencies:
     JSONStream "^1.3.4"
     bluebird "^3.5.1"
