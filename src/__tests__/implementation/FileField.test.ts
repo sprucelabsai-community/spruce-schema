@@ -52,7 +52,7 @@ export default class FileFieldTest extends BaseTest {
 		filePath: string,
 		expectations: IFileDetailExpectations
 	) {
-		const field = FieldFactory.field('test', {
+		const field = FieldFactory.Field('test', {
 			type: FieldType.File,
 		})
 
@@ -101,7 +101,7 @@ export default class FileFieldTest extends BaseTest {
 		partial: Partial<IFileFieldValue>,
 		complete: IFileFieldValue
 	) {
-		const file = FieldFactory.field('test', { type: FieldType.File })
+		const file = FieldFactory.Field('test', { type: FieldType.File })
 		const augmented = file.toValueType(partial)
 		assert.isEqualDeep(augmented, complete)
 	}

@@ -24,7 +24,7 @@ export default class DurationFieldTest extends BaseTest {
 		partial: Partial<IDurationFieldValue>,
 		expected: IDurationFieldValue
 	) {
-		const field = FieldFactory.field('test', { type: FieldType.Duration })
+		const field = FieldFactory.Field('test', { type: FieldType.Duration })
 		const value = field.toValueType(partial)
 		assert.isEqualDeep(
 			value,

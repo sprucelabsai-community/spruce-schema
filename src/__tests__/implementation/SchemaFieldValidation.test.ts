@@ -24,19 +24,19 @@ export default class SchemaFieldTest extends BaseTest {
 		value: any,
 		expectedErrorCodes: string[]
 	) {
-		const requiredField = FieldFactory.field(
+		const requiredField = FieldFactory.Field(
 			'requiredCar',
 			this.personSchema.fields.requiredCar
 		)
-		const optionalField = FieldFactory.field(
+		const optionalField = FieldFactory.Field(
 			'optionalCar',
 			this.personSchema.fields.optionalCar
 		)
-		const requiredIsArrayField = FieldFactory.field(
+		const requiredIsArrayField = FieldFactory.Field(
 			'requiredIsArrayCar',
 			this.personSchema.fields.requiredIsArrayCars
 		)
-		const optionalIsArrayField = FieldFactory.field(
+		const optionalIsArrayField = FieldFactory.Field(
 			'optionalRequiredCar',
 			this.personSchema.fields.optionalIsArrayCars
 		)
