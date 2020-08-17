@@ -10,7 +10,7 @@ export default class BooleanFieldTest extends BaseTest {
 	@test('can transform gibberish to truthy', 'waka', true)
 	@test('empty string is false', '', false)
 	protected static async transformTests(value: any, expected: boolean) {
-		const field = FieldFactory.field('transformTest', {
+		const field = FieldFactory.Field('transformTest', {
 			type: FieldType.Boolean,
 		})
 		const result = field.toValueType(value)

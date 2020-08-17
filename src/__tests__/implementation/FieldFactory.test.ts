@@ -11,7 +11,7 @@ const choices: ISelectFieldDefinitionChoice[] = [
 export default class TextFieldTest extends BaseTest {
 	@test()
 	protected static async buildSelectField() {
-		const field = FieldFactory.field('test', {
+		const field = FieldFactory.Field('test', {
 			type: FieldType.Select,
 			options: { choices },
 		})

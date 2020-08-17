@@ -1,8 +1,16 @@
 import { FieldDefinition, IFieldMap } from '#spruce/schemas/fields/fields.types'
 
 export default class FieldFactory {
-	/** Factory for creating a new field from a definition */
 	public static field<F extends FieldDefinition>(
+		name: string,
+		definition: F
+	): IFieldMap[F['type']] {
+		console.log('Calling field')
+		return this.Field(name, definition)
+	}
+
+	/** Factory for creating a new field from a definition */
+	public static Field<F extends FieldDefinition>(
 		name: string,
 		definition: F
 	): IFieldMap[F['type']] {
