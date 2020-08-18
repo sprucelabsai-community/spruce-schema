@@ -1,11 +1,14 @@
 import { FieldDefinition, IFieldMap } from '#spruce/schemas/fields/fields.types'
+import log from '../singletons/log'
 
 export default class FieldFactory {
 	public static field<F extends FieldDefinition>(
 		name: string,
 		definition: F
 	): IFieldMap[F['type']] {
-		console.log('Calling field')
+		log.warn(
+			'Calling deprecated FieldFactory.field. Use the capital letter version of the factory function. FieldFactory.Field()'
+		)
 		return this.Field(name, definition)
 	}
 
