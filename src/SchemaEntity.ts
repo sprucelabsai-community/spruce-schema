@@ -301,7 +301,12 @@ export default class SchemaEntity<S extends ISchema>
 
 		this.getNamedFields(options).forEach((item) => {
 			const { name, field } = item
-			const value = this.get(name, { validate: false })
+
+			const value = this.get(name, {
+				validate: false,
+				createEntityInstances: false,
+			})
+
 			const fieldErrors = field.validate(value, {
 				schemasById: SchemaEntity.schemasById,
 			})
