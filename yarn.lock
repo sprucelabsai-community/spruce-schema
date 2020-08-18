@@ -1322,10 +1322,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.36":
-  version "2.2.36"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.36.tgz#59472241ab2ccecc8b445ae97caee55d48e4dcfa"
-  integrity sha512-tGRIOOzRFuHkm9AA/kX+nfcjGhZsOwJP0/sr2IyhzVNmoMVx5cGYacvUDQ4eKa0tK3jvU+g9HrOt4Na2wn7a7w==
+"@sprucelabs/error@^2.2.37":
+  version "2.2.37"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.37.tgz#2f469adf87afcbd7208fb1e07a8ecd94bd6a009e"
+  integrity sha512-lMPSKcWW8cjBvL0dTd9sA7Axy6w4iqUlGJ+uvH+Vagiv96hLARfATgwaZVjnJXk9H73V44R+TQUZ1+N49CMI4g==
 
 "@sprucelabs/log@^10.2.126":
   version "10.2.126"
@@ -1342,10 +1342,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.19":
-  version "6.0.19"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.19.tgz#d98fd2dc26d571881737de603e8a7eb378e914b1"
-  integrity sha512-HnwdADK+thm9FQxgyYp/Cji8DXnLs9oTiIAPxaFpMxd7DodcQWdDnkZoOYyGN+I5wfsk4vkVsjVH0J0Btnzhcg==
+"@sprucelabs/test@^6.0.20":
+  version "6.0.20"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.20.tgz#9af8cdb3d8fd8d1c4d074f039dc0c51f74264897"
+  integrity sha512-x+oWaQf9+AAEkc9tMerrA6xdXCFi9kpcXHTzZiY/6g7kaWwIkrG1P85/yDy5sfUwLOPeD9QaTXPjie9bj166mQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/preset-env" "^7.11.0"
@@ -2295,9 +2295,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001111:
-  version "1.0.30001115"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001115.tgz#c04cd828883ba47f6f776312e0817bcc9040cfa4"
-  integrity sha512-NZrG0439ePYna44lJX8evHX2L7Z3/z3qjVLnHgbBb/duNEnGo348u+BQS5o4HTWcrb++100dHFrU36IesIrC1Q==
+  version "1.0.30001116"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001116.tgz#f3a3dea347f9294a3bdc4292309039cc84117fb8"
+  integrity sha512-f2lcYnmAI5Mst9+g0nkMIznFGsArRmZ0qU+dnq8l91hymdc2J3SFbiPhOJEeDqC1vtE8nc1qNQyklzB8veJefQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3127,9 +3127,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.523:
-  version "1.3.535"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.535.tgz#e31ee048de6f9c8d92bd25d4e3d1a92bedbe5cb2"
-  integrity sha512-5k7WGdl1ZnbcU97acUnY/UXu6bCMDnKCAnEc1N0xNToPvMCp99PEvh5K3xNr4ZUVCf2FuratM++NgOxCtbtXzA==
+  version "1.3.536"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.536.tgz#78a4ff753111283489f3b6ad19664902245ab876"
+  integrity sha512-aU16nvH8/zNNeFIQ7H2SKRQlJ/srw7mCn/JDj2ImWUA7Lk2+3zJFpDGJNP2qRxPAZsC+qgnlgNTYIvT6EOdJFQ==
 
 emittery@^0.7.1:
   version "0.7.1"
@@ -5595,10 +5595,10 @@ libnpx@^10.2.4:
     y18n "^4.0.0"
     yargs "^14.2.3"
 
-libphonenumber-js@^1.7.56:
-  version "1.7.56"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.56.tgz#1f206c69acb112a43134141e2331a737cdfcb8a0"
-  integrity sha512-7ArN9sSVs9bzX72+HeryCrmI68w1ry3Sd67+BmbPxbaCU+ZpuB2R9YT/YTsTUFYbxkp933vpQUP5E/1TJ9WvTQ==
+libphonenumber-js@^1.7.57:
+  version "1.7.57"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.57.tgz#1ed4543b835523387f79783fb826a7e268a604fa"
+  integrity sha512-v6DkRf1ufgGXHb6NoKbQd1YlfWqOs6jym7WjPP+YF1YtbfiWwD7M/7/XUOW+if2jNlm5av4EzeL/lYf8ClJYjg==
   dependencies:
     minimist "^1.2.5"
     xml2js "^0.4.17"
