@@ -6,10 +6,10 @@ import {
 } from '../schemas.static.types'
 
 export default function validateSchemaValues<S extends ISchema>(
-	definition: S,
+	schema: S,
 	values: SchemaPartialValues<S>,
 	options?: ISchemaValidateOptions<S>
 ) {
-	const instance = new SchemaEntity(definition, values)
+	const instance = new SchemaEntity(schema, values)
 	instance.validate(options)
 }

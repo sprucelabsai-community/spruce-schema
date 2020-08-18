@@ -5,6 +5,34 @@ import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
 
+const profileImagesSchema = buildSchema({
+	id: 'profileImage',
+	name: 'Profile Image Sizes',
+	description: 'Various sizes that a profile image comes in.',
+	fields: {
+		profile60: {
+			label: '60x60',
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		profile150: {
+			label: '150x150',
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		'profile60@2x': {
+			label: '60x60',
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		'profile150@2x': {
+			label: '150x150',
+			type: FieldType.Text,
+			isRequired: true,
+		},
+	},
+})
+
 export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	private static personSchema = buildSchema({
 		id: 'testPerson',
@@ -17,6 +45,13 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			lastName: {
 				type: FieldType.Text,
 				isRequired: true,
+			},
+			profileImages: {
+				isRequired: true,
+				type: FieldType.Schema,
+				options: {
+					schema: profileImagesSchema,
+				},
 			},
 		},
 	})
@@ -68,5 +103,21 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			{ fields: ['lastName'] }
 		)
 		assert.isFalse(isValid)
+	}
+
+	@test()
+	protected static async passesWithValidPerson() {
+		const person = {
+			firstName: 'firstName',
+			lastName: 'lastName',
+			profileImages: {
+				profile60: '',
+				profile150: '',
+				'profile60@2x': '',
+				'profile150@2x': '',
+			},
+		}
+
+		validateSchemaValues(this.personSchema, person)
 	}
 }
