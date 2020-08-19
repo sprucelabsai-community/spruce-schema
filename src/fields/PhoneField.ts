@@ -1,7 +1,7 @@
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
-} from '../template.types'
+} from '../types/template.types'
 import PhoneNumber from '../utilities/PhoneNumberUtility'
 import AbstractField from './AbstractField'
 import { ValidateOptions } from './field.static.types'

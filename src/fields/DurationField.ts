@@ -3,7 +3,7 @@ import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
-} from '../template.types'
+} from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
 	IDurationFieldDefinition,

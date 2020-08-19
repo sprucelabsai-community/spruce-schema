@@ -1,5 +1,5 @@
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import { ISchema } from './schemas.static.types'
+import { ISchema } from '../schemas.static.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -53,6 +53,8 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 	id: string
 	/** The full schema's schema */
 	schema: ISchema
+	/** This schema was defined in another schema */
+	isNested?: boolean
 }
 
 /** How a field is represented in the template */

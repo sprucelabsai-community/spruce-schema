@@ -1,7 +1,7 @@
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
-} from '../template.types'
+} from '../types/template.types'
 import AbstractField from './AbstractField'
 import { IRawFieldDefinition } from './RawField.types'
 
