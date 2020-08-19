@@ -7,7 +7,7 @@ import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 	TemplateRenderAs,
-} from '../template.types'
+} from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
 	IFieldDefinitionToSchemaOptions,

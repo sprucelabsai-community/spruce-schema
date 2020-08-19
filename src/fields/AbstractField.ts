@@ -5,7 +5,7 @@ import log from '../singletons/log'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions,
-} from '../template.types'
+} from '../types/template.types'
 import { ValidateOptions, IField } from './field.static.types'
 
 export default abstract class AbstractField<F extends FieldDefinition>

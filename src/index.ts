@@ -31,4 +31,4 @@ export { default as isSchemaValid } from './utilities/isSchemaValid'
 export { default as FieldFactory } from './factories/FieldFactory'
 
 // Template types
-export * from './template.types'
+export * from './types/template.types'

@@ -6,7 +6,7 @@ import {
 	IFieldTemplateDetailOptions,
 	ISchemaTemplateItem,
 	TemplateRenderAs,
-} from '../../template.types'
+} from '../../types/template.types'
 import buildSchema from '../../utilities/buildSchema'
 
 export default class GeneratesRelationshipTemplatesTest extends BaseTest {

@@ -1,7 +1,7 @@
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions,
-} from '../template.types'
+} from '../types/template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions } from './field.static.types'
 import { ITextFieldDefinition } from './TextField.types'
