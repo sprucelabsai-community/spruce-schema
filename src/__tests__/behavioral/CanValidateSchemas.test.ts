@@ -57,7 +57,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	})
 
 	protected static async beforeEach() {
-		super.beforeEach()
+		await super.beforeEach()
 	}
 
 	@test()
