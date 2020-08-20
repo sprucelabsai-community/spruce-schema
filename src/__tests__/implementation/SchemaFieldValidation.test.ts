@@ -6,7 +6,7 @@ export default class SchemaFieldTest extends BaseTest {
 	private static personSchema: IPersonSchema
 
 	protected static async beforeEach() {
-		super.beforeEach()
+		await super.beforeEach()
 		const { personSchema } = buildPersonWithCar()
 		this.personSchema = personSchema
 	}
