@@ -18,16 +18,16 @@
     invariant "^2.2.4"
     semver "^5.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.11.1", "@babel/core@^7.7.5":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.1.tgz#2c55b604e73a40dc21b0e52650b11c65cf276643"
-  integrity sha512-XqF7F6FWQdKGGWAzGELL+aCO1p+lRY5Tj5/tbT3St1G8NaH70jhhDIKknIZaDans0OQBG5wRAldROLHSt44BgQ==
+"@babel/core@^7.1.0", "@babel/core@^7.11.4", "@babel/core@^7.7.5":
+  version "7.11.4"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.4.tgz#4301dfdfafa01eeb97f1896c5501a3f0655d4229"
+  integrity sha512-5deljj5HlqRXN+5oJTY7Zs37iH3z3b++KjiKtIsJy1NrjOOVSEaJHEetLBhyu0aQOSNNZ/0IuEAan9GzRuDXHg==
   dependencies:
     "@babel/code-frame" "^7.10.4"
-    "@babel/generator" "^7.11.0"
+    "@babel/generator" "^7.11.4"
     "@babel/helper-module-transforms" "^7.11.0"
     "@babel/helpers" "^7.10.4"
-    "@babel/parser" "^7.11.1"
+    "@babel/parser" "^7.11.4"
     "@babel/template" "^7.10.4"
     "@babel/traverse" "^7.11.0"
     "@babel/types" "^7.11.0"
@@ -40,10 +40,10 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.11.0":
-  version "7.11.0"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.11.0.tgz#4b90c78d8c12825024568cbe83ee6c9af193585c"
-  integrity sha512-fEm3Uzw7Mc9Xi//qU20cBKatTfs2aOtKqmvy/Vm7RkJEGFQ4xc9myCfbXxqK//ZS8MR/ciOHw6meGASJuKmDfQ==
+"@babel/generator@^7.11.0", "@babel/generator@^7.11.4":
+  version "7.11.4"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.11.4.tgz#1ec7eec00defba5d6f83e50e3ee72ae2fee482be"
+  integrity sha512-Rn26vueFx0eOoz7iifCN2UHT6rGtnkSGWSoDRIy8jZN3B91PzeSULbswfLoOWuTuAcNwpG/mxy+uCTDnZ9Mp1g==
   dependencies:
     "@babel/types" "^7.11.0"
     jsesc "^2.5.1"
@@ -106,11 +106,10 @@
     lodash "^4.17.19"
 
 "@babel/helper-explode-assignable-expression@^7.10.4":
-  version "7.10.4"
-  resolved "https://registry.yarnpkg.com/@babel/helper-explode-assignable-expression/-/helper-explode-assignable-expression-7.10.4.tgz#40a1cd917bff1288f699a94a75b37a1a2dbd8c7c"
-  integrity sha512-4K71RyRQNPRrR85sr5QY4X3VwG4wtVoXZB9+L3r1Gp38DhELyHCtovqydRi7c1Ovb17eRGiQ/FD5s8JdU0Uy5A==
+  version "7.11.4"
+  resolved "https://registry.yarnpkg.com/@babel/helper-explode-assignable-expression/-/helper-explode-assignable-expression-7.11.4.tgz#2d8e3470252cc17aba917ede7803d4a7a276a41b"
+  integrity sha512-ux9hm3zR4WV1Y3xXxXkdG/0gxF9nvI0YVmKVhvK9AfMoaQkemL3sJpXw+Xbz65azo8qJiEz2XVDUpK3KYhH3ZQ==
   dependencies:
-    "@babel/traverse" "^7.10.4"
     "@babel/types" "^7.10.4"
 
 "@babel/helper-function-name@^7.10.4":
@@ -183,14 +182,13 @@
     lodash "^4.17.19"
 
 "@babel/helper-remap-async-to-generator@^7.10.4":
-  version "7.10.4"
-  resolved "https://registry.yarnpkg.com/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.10.4.tgz#fce8bea4e9690bbe923056ded21e54b4e8b68ed5"
-  integrity sha512-86Lsr6NNw3qTNl+TBcF1oRZMaVzJtbWTyTko+CQL/tvNvcGYEFKbLXDPxtW0HKk3McNOk4KzY55itGWCAGK5tg==
+  version "7.11.4"
+  resolved "https://registry.yarnpkg.com/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.11.4.tgz#4474ea9f7438f18575e30b0cac784045b402a12d"
+  integrity sha512-tR5vJ/vBa9wFy3m5LLv2faapJLnDFxNWff2SAYkSE4rLUdbp7CdObYFgI7wK4T/Mj4UzpjPwzR8Pzmr5m7MHGA==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.10.4"
     "@babel/helper-wrap-function" "^7.10.4"
     "@babel/template" "^7.10.4"
-    "@babel/traverse" "^7.10.4"
     "@babel/types" "^7.10.4"
 
 "@babel/helper-replace-supers@^7.10.4":
@@ -258,10 +256,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.1", "@babel/parser@^7.7.0":
-  version "7.11.3"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.3.tgz#9e1eae46738bcd08e23e867bab43e7b95299a8f9"
-  integrity sha512-REo8xv7+sDxkKvoxEywIdsNFiZLybwdI7hcT5uEPyQrSMB4YQ973BfC9OOrD/81MaIjh6UxdulIQXkjmiH3PcA==
+"@babel/parser@^7.1.0", "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.4", "@babel/parser@^7.7.0":
+  version "7.11.4"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.4.tgz#6fa1a118b8b0d80d0267b719213dc947e88cc0ca"
+  integrity sha512-MggwidiH+E9j5Sh8pbrX5sJvMcsqS5o+7iB42M9/k0CD63MjYbdP4nhSh7uB5wnv2/RVzTZFTxzF/kIa5mrCqA==
 
 "@babel/plugin-proposal-async-generator-functions@^7.10.4":
   version "7.10.5"
@@ -1322,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.48":
-  version "2.2.48"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.48.tgz#fb80262884a99f2a405418917ca4d7190c1d79d8"
-  integrity sha512-HSVjXe/HJCCqeCNZRU9eEh0JxhKx7CsLxOC4RfEc3DHEbuhFhaCP0BlU0TSlZ/cmbX3VEPpWBjSbhgVAGlH4Cw==
+"@sprucelabs/error@^2.2.49":
+  version "2.2.49"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.49.tgz#7ebb76b47366957daa27797b9184888a48f988ca"
+  integrity sha512-aSarvprfrsy3xKPCbfxmOn86YNayYO0K7mSmYNz00BYZ/rgZY4aGIIY0f957FpIX+CaLS88VYv8x7T+QtXfcsQ==
 
-"@sprucelabs/log@^10.2.128":
-  version "10.2.128"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.128.tgz#b872c9e1091217b6aad03c614e6a0ecd8da81c7f"
-  integrity sha512-UciVE/D0l2hqms1BTPCJQqFM56/4LOeOnbk0a8UKZedv0I+emwmS/qm6yswCETP1HWK5EcY0LXi/urN2nUYhVg==
+"@sprucelabs/log@^10.2.129":
+  version "10.2.129"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.129.tgz#96746e107b82bcb5dcdcec25057097ac8f0ad0b9"
+  integrity sha512-1DMco4Y4IKxVIv+5LpCxdew0rdciMh9wtzmh0JZ8bYqDSiN9XRt640Rg4KJlg9RheqHJVStwKJdwxQL94P862A==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1342,12 +1340,12 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.25":
-  version "6.0.25"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.25.tgz#065057b0287f0786f35baf548efa88eb6ef52baf"
-  integrity sha512-BDqzf420XoYAvN2UVZQ8oySAKV12FdMNTKocJlDmqOmpFz036iJDX5hM5gSNkOAp/QJSkM6XR6wBBeyk1QrhLA==
+"@sprucelabs/test@^6.0.26":
+  version "6.0.26"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.26.tgz#7ad3019975ffbce8e1aa4c4d91697da0bd8a926f"
+  integrity sha512-2ECacAcj7vFKO7kL82feHD/LH4HBL5ZoXqplLOwhDz9E+qo5322MIWKQRLcqQF9nCnB5tVSRM08DsXTcjbzAQg==
   dependencies:
-    "@babel/core" "^7.11.1"
+    "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
     "@types/jest" "^26.0.10"
     babel-jest "^26.3.0"
@@ -3289,10 +3287,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.8.16:
-  version "10.8.16"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.8.16.tgz#78a7993c4fe16e88173a4dd391c63dd5f684a323"
-  integrity sha512-oDA1+nQPj/NIqYtdCujWeKN6QGHvQR6WZ8MuheQIMCjMax0KpI1iNClgTcy7rXlmWOTmwuQ/JfA3dw97iFHPHg==
+eslint-config-spruce@^10.8.17:
+  version "10.8.17"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.8.17.tgz#fa86ff933dfd31bed94d368c760b3ee4847f0ace"
+  integrity sha512-Q3VbVtEBFbKiZ+Gg7MW6t15UhCa3C/ppiBgf4cf4s3Fcic8bngTF1LC/bFCTQek0AgWWj/CwDa5YLrbcmicPkA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.9.1"
     "@typescript-eslint/parser" "^3.9.1"
@@ -3302,7 +3300,7 @@ eslint-config-spruce@^10.8.16:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.6"
-    eslint-plugin-spruce "^10.8.16"
+    eslint-plugin-spruce "^10.8.17"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3380,10 +3378,10 @@ eslint-plugin-react@^7.20.6:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.8.16:
-  version "10.8.16"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.8.16.tgz#5bead0ce3a08afdba8b3bb582d564f9a283967f6"
-  integrity sha512-dcadPUBTb+u8r82cKywijkPqozNBgjTS3V5NTanOErtGJpP466XdeTnn/XiTYuk9CYNQYNJ7TaUUnwnSTHxu0g==
+eslint-plugin-spruce@^10.8.17:
+  version "10.8.17"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.8.17.tgz#339826318a6a8f575ff78c4f26c6da2e5fae44a2"
+  integrity sha512-LZYX1T+XYl06GY6UtlU7JuXLtCq5EVG0O9Gyf5t1YEhDeHX+kfVJyxAq44XWV4Ddv8QxXTbYyBrMeU25d4PzDw==
   dependencies:
     pascal-case "^3.1.1"
 
