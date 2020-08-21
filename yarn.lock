@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.59":
-  version "2.2.59"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.59.tgz#3df6d206d8fa114470dec5d1e54f0b7e25aa9556"
-  integrity sha512-HwDctW4++2vI7UfF+42qSWLXHakvDjzSJjgTGqggwQVh7m9Wm5SZyR8hQmx8n9UwjPUPlaqBCv7tjL374Onpyg==
+"@sprucelabs/error@^2.2.60":
+  version "2.2.60"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.60.tgz#047a16e7da8036f1c8f4c62ae93513b0946ec487"
+  integrity sha512-vs3Ycvt4Qfar/0IhG6YE4PsWQYHSajnO23kGYTYB/y9wZS6h/N8G7gauqqhRBn+cpbg2LvKaCuVQ3uPbSJsRJw==
 
-"@sprucelabs/log@^10.2.134":
-  version "10.2.134"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.134.tgz#78fd871901b0cdf3e2127aff03f383d087eaa062"
-  integrity sha512-Z7cTtRQUKri6KSv4e1yxMGhLVOP1qEd7nKWTkuBcjLnIp70xiYzOKMXMtSwY6taD4i2BKhfpjimKz3bxT2Vb/w==
+"@sprucelabs/log@^10.2.135":
+  version "10.2.135"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.135.tgz#5893a06cfbc3fa16a3a81f5ee81f4a236e7b8c5b"
+  integrity sha512-KHScZM+hxWJmA8OMlDxztk/ZYCUH9jH/cbdxcaoTOT/R9hNvhIeU7spkIEGxbT1mtaZic0pNQ4eVuTxI8aUC6g==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.31":
-  version "6.0.31"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.31.tgz#23512ad76255283820ecaab99eeee70e02fda40a"
-  integrity sha512-2j4bz0jly8LyFiWaAgSWqEeTYQneXIQtAJ2HE1wT8eaAjLuJ4ejJCFk6rIGnkIRcWaIIKz1G3rk4ueiJ4wMrbA==
+"@sprucelabs/test@^6.0.32":
+  version "6.0.32"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.32.tgz#a68d9d549cc8c61e8f75fbed441588f35370fee3"
+  integrity sha512-pM4qqrfE0YnC1eX4CGyCg2RTpWAAOftiUUJKn3wTI+tc3k95Xw9ReURWvFquT2o3WNdygbVFzGZUpOW9hfFdSA==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -1664,9 +1664,9 @@ agentkeepalive@^3.4.1:
     humanize-ms "^1.2.1"
 
 aggregate-error@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.0.1.tgz#db2fe7246e536f40d9b5442a39e117d7dd6a24e0"
-  integrity sha512-quoaXsZ9/BLNae5yiNoUz+Nhkwz83GhWwtYFglcjEQB2NDHCIpApbqXxIFnm4Pq/Nvhrsq5sYJFyohrrxnTGAA==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/aggregate-error/-/aggregate-error-3.1.0.tgz#92670ff50f5359bdb7a3e0d40d0ec30c5737687a"
+  integrity sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==
   dependencies:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
