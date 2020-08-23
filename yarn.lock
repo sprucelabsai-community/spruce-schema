@@ -1325,10 +1325,10 @@
   resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.73.tgz#ccc84acd3d7cbcae1271060cf59423168b2dbc99"
   integrity sha512-tgOgzGhsGz4eKoZ8DQEHUumqnbsTJPKgqNLCMzqcMTrt1WpeSgsj5E9ggYSQSlZgNKTRY7Ttmy2AoCc6QOmzcg==
 
-"@sprucelabs/log@^10.2.139":
-  version "10.2.139"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.139.tgz#7440902892fcc59308808c618ab480c3b79363fb"
-  integrity sha512-1JborCFktI+rkCmPiwUuitDotk+Or5p9aHDzztaLveBQHuZiCJRhn/x9lvwIjZbzUW2bqDRgHwFgAlVl6ciNMQ==
+"@sprucelabs/log@^10.2.140":
+  version "10.2.140"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.140.tgz#ecfa795109308a02ffbe21838d084e6be6e71571"
+  integrity sha512-C/whODjwwOZlw1+h+Y0qbHNhcrVWvF3X3Bd8EA9JdmxI7LUl9oTXNSddPyZUgMELMWrC63wMpqvtnNrJxiYG5g==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
