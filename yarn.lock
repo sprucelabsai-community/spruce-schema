@@ -1320,10 +1320,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.81":
-  version "2.2.81"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.81.tgz#c0f3e8c16415d7b5831a5773ef65045d8d21c392"
-  integrity sha512-KnEQgya07N5jfi5C4Okq9sLbs9aVQReJG7U26a/CZTz57KECNH2sziSlKb4DGRLy9m/J0nVo9zTkXZUv4UTQ4Q==
+"@sprucelabs/error@^2.2.82":
+  version "2.2.82"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.82.tgz#bf0a0d012c95bd76203317df39f6cb5c3e0d908c"
+  integrity sha512-BHARMRSkWLuVVPIAHhybODNw0Td+Yzs2fJ6hmlyxa4IZiDSyANsi1okuUBKmEhxRaA1NVoDoKcDLChIeEdSSZQ==
 
 "@sprucelabs/log@^10.2.144":
   version "10.2.144"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.44":
-  version "6.0.44"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.44.tgz#07b230e05fe23bbb9ad947a611af544fac002df2"
-  integrity sha512-fZRYxY5PWlat5Is/tuaaKb0orT1ePnZYW1JmTmBb7/BDVe8I/o78b0nat/ltykmT0FixAenvYj+LlHx3CHuNTA==
+"@sprucelabs/test@^6.0.46":
+  version "6.0.46"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.46.tgz#86db7ccb7eb47db99290dcbc6e4f57e699ab6b78"
+  integrity sha512-9HnzhUMFOTEOAUeDIBHEiivwofnh/pb2H4QN/jhuLbtKgJdCr/jCldeK7Ct0OEwwhNPkzgCoxTnfzse39LG5aw==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -9014,13 +9014,13 @@ whatwg-mimetype@^2.3.0:
   integrity sha512-M4yMwr6mAnQz76TbJm914+gPpB/nCwvZbJU28cUD6dR004SAxDLOOSUaB1JDRqLtaOV/vi0IC5lEAGFgrjGv/g==
 
 whatwg-url@^8.0.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-8.1.0.tgz#c628acdcf45b82274ce7281ee31dd3c839791771"
-  integrity sha512-vEIkwNi9Hqt4TV9RdnaBPNt+E2Sgmo3gePebCRgZ1R7g6d23+53zCTnuB0amKI4AXq6VM8jj2DUAa0S1vjJxkw==
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-8.2.0.tgz#89383f80ea3888734d1cf29526c135d52e60166d"
+  integrity sha512-Sl4svq71j4kzaFD13uxkVl2AIsbj/xwp8NTM1VMhFRyNT1ZMTWaV6+Pva0fQs7y8+cAEPrDGfCAFLvJejhT79g==
   dependencies:
     lodash.sortby "^4.7.0"
     tr46 "^2.0.2"
-    webidl-conversions "^5.0.0"
+    webidl-conversions "^6.1.0"
 
 which-boxed-primitive@^1.0.1:
   version "1.0.1"
