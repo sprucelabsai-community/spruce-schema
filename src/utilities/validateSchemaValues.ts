@@ -3,13 +3,17 @@ import {
 	ISchema,
 	ISchemaValidateOptions,
 	SchemaPartialValues,
+	SchemaValues,
 } from '../schemas.static.types'
 
-export default function validateSchemaValues<S extends ISchema>(
+export default function validateSchemaValues<
+	S extends ISchema,
+	V extends SchemaPartialValues<S>
+>(
 	schema: S,
-	values: SchemaPartialValues<S>,
+	values: V,
 	options?: ISchemaValidateOptions<S>
-) {
+): asserts values is V & SchemaValues<S> {
 	const instance = new SchemaEntity(schema, values)
 	instance.validate(options)
 }

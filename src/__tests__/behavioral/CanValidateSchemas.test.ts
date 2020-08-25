@@ -1,6 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import { SchemaValues } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
@@ -46,6 +47,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				type: FieldType.Text,
 				isRequired: true,
 			},
+			email: {
+				type: FieldType.Text,
+				isRequired: false,
+			},
 			profileImages: {
 				isRequired: true,
 				type: FieldType.Schema,
@@ -68,6 +73,24 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		)
 
 		assert.doesInclude(err.message, /lastName is required/gi)
+	}
+
+	@test()
+	protected static async typesValidatedValues() {
+		const values = {
+			firstName: 'Bob',
+			lastName: 'Bob',
+			profileImages: {
+				profile60: '',
+				profile150: '',
+				'profile60@2x': '',
+				'profile150@2x': '',
+			},
+		}
+		validateSchemaValues(this.personSchema, values)
+		const personSchema = this.personSchema
+		assert.isType<SchemaValues<typeof personSchema>>(values)
+		assert.isType<string | undefined | null>(values.email)
 	}
 
 	@test()
