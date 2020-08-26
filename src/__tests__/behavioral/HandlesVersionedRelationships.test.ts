@@ -82,6 +82,8 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 				version: carV2.version,
 				values: carV2.getValues(),
 			},
+			requiredIsArrayCars: [],
+			requiredIsArrayCarOrTruck: [],
 		})
 
 		const values = person.getValues()

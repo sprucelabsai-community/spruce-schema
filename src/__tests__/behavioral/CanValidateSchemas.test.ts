@@ -61,18 +61,48 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		},
 	})
 
+	private static personWithFavColors = buildSchema({
+		id: 'testPerson',
+		name: 'A test person',
+		fields: {
+			firstName: {
+				type: FieldType.Text,
+				isRequired: true,
+			},
+			lastName: {
+				type: FieldType.Text,
+				isRequired: true,
+			},
+			favoriteColors: {
+				type: FieldType.Text,
+				isArray: true,
+				isRequired: true,
+			},
+		},
+	})
+
 	protected static async beforeEach() {
 		await super.beforeEach()
 	}
 
 	@test()
 	protected static async canValidateBasicSchema() {
-		const err = assert.doesThrow(
+		assert.doesThrow(
 			() => validateSchemaValues(this.personSchema, {}),
 			/firstName is required/gi
 		)
+	}
 
-		assert.doesInclude(err.message, /lastName is required/gi)
+	@test()
+	protected static async canValidateSchemaWithArrayValues() {
+		assert.doesThrow(
+			() =>
+				validateSchemaValues(this.personWithFavColors, {
+					firstName: 'tay',
+					lastName: 'ro',
+				}),
+			/favoriteColors is required/gi
+		)
 	}
 
 	@test()

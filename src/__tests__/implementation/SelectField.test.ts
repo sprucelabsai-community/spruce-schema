@@ -83,6 +83,7 @@ export default class SelectFieldTest extends BaseTest {
 	protected static async canMakeSelectOptionsUnion() {
 		const user = new SchemaEntity(this.userSchema, {
 			favoriteColor: 'blue',
+			favoriteColorRequired: 'blue',
 		})
 		const favColor = user.get('favoriteColor')
 		const favoriteColorRequired = user.get('favoriteColorRequired')
