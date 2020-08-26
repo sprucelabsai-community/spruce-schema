@@ -189,10 +189,6 @@ export default class SchemaEntity<S extends ISchema>
 		value: any,
 		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
 	): SchemaFieldValueType<S, F, CreateEntityInstances> {
-		if (forField === 'favoriteColors') {
-			debugger
-		}
-
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
@@ -316,7 +312,6 @@ export default class SchemaEntity<S extends ISchema>
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
 		this.getNamedFields(options).forEach((item) => {
-			debugger
 			const { name, field } = item
 
 			const value = this.get(name, {
