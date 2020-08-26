@@ -1320,10 +1320,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.104":
-  version "2.2.104"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.104.tgz#fdaf3b97d2e313b26780ca5eca8ebd1e49a681a8"
-  integrity sha512-Pnj+D8HcCT3P8bvBbRO6pqsXkivl/SiNEAgiBTS2hfM8WeTs+FnmuIBGMeVQn0yUWFzT1CYt9FAjwb8VKCe/ig==
+"@sprucelabs/error@^2.2.105":
+  version "2.2.105"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.105.tgz#1e7bf07d12bbb53e5d73a1bf23a01482978a37dd"
+  integrity sha512-GzV0vCBqR8Cd0fmVVLXywfI7baJuQw37yYKN5bzlRzVzGV/cBrQV1kuLinjbzTK3+85HoT5QmKvHgEiNCVJXPg==
 
 "@sprucelabs/log@^10.2.151":
   version "10.2.151"
