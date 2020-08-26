@@ -1320,10 +1320,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.101":
-  version "2.2.101"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.101.tgz#2965c995e581dc32a702b72db0ad5d2ca63a6f5c"
-  integrity sha512-mBULu0jgrwK5SxicwAQng8Hg3qUTC5OYo5pWkrGONuUTIHXca4Sfbw8tVEZS4VD6O/6xEYTJb1owA3UZrn38ow==
+"@sprucelabs/error@^2.2.102":
+  version "2.2.102"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.102.tgz#33abcbfc04d99da75ad73fc844e896059ca0eb7b"
+  integrity sha512-3Uz1J9Kf/rGx2MHCmRVO7bNUVzm7ACZgp8RktE5n4aurQ1/1pRxHKZtaToZH+b0XA5pWzKnXPCY0AyWnJh3Glg==
 
 "@sprucelabs/log@^10.2.151":
   version "10.2.151"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.57":
-  version "6.0.57"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.57.tgz#7c07d3286c89285c2d055537adafb8d7b6093cd7"
-  integrity sha512-oz0OepEWMV9YDgHi+igNB5GLPWkkXzL8sexqM120H7jPqOWE6utngxi2CE3/MkKA3CalVF1FGspgG3CVWqK8MA==
+"@sprucelabs/test@^6.0.58":
+  version "6.0.58"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.58.tgz#808bad0e626b197f44d28651c9ca8ab36dfe971a"
+  integrity sha512-JJAaDKfYpSz9cbAvaAPfg6ypxVqRwasQibD4HcEEyUz6aJp4xQ9FC2cY/pkEHL/IVNnDVc+OtuaVuQLk32WleQ==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -1353,7 +1353,7 @@
     jest "^26.4.2"
     lodash "^4.17.20"
     ts-expect "^1.1.0"
-    ts-jest "^26.2.0"
+    ts-jest "^26.3.0"
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -8592,7 +8592,7 @@ ts-expect@^1.1.0:
   resolved "https://registry.yarnpkg.com/ts-expect/-/ts-expect-1.1.0.tgz#52a280a149e1943ff7473d3dcb2fe17f85f63853"
   integrity sha512-cKoBZ47X85x/Qh7taf30m3BhOJOhtNbb7KFHz9CCuWeRSAh0wzprnmiN9TSOQ0FWp3+qDWS5f2FDnxkY93Kdfw==
 
-ts-jest@^26.2.0:
+ts-jest@^26.3.0:
   version "26.3.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.3.0.tgz#6b2845045347dce394f069bb59358253bc1338a9"
   integrity sha512-Jq2uKfx6bPd9+JDpZNMBJMdMQUC3sJ08acISj8NXlVgR2d5OqslEHOR2KHMgwymu8h50+lKIm0m0xj/ioYdW2Q==
