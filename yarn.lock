@@ -1141,11 +1141,11 @@
     universal-user-agent "^6.0.0"
 
 "@octokit/plugin-paginate-rest@^2.2.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-2.3.0.tgz#7d1073e56cfd15d3f99dcfe81fa5d2b466f3a6f6"
-  integrity sha512-Ye2ZJreP0ZlqJQz8fz+hXvrEAEYK4ay7br1eDpWzr6j76VXs/gKqxFcH8qRzkB3fo/2xh4Vy9VtGii4ZDc9qlA==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-2.3.1.tgz#00f91701dfda26227c3e748d42bc89e2d0d9ce55"
+  integrity sha512-81A+ONLpcSX7vWxnEmVZteQPNsbdeScSVUqjgMYPSk1trzG69iYkhS42wPRWtN0nYw6OEmT48DNeQCjHeyroYw==
   dependencies:
-    "@octokit/types" "^5.2.0"
+    "@octokit/types" "^5.3.0"
 
 "@octokit/plugin-request-log@^1.0.0":
   version "1.0.0"
@@ -1200,7 +1200,7 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@octokit/types@^5.0.0", "@octokit/types@^5.0.1", "@octokit/types@^5.2.0":
+"@octokit/types@^5.0.0", "@octokit/types@^5.0.1", "@octokit/types@^5.3.0":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@octokit/types/-/types-5.4.1.tgz#d5d5f2b70ffc0e3f89467c3db749fa87fc3b7031"
   integrity sha512-OlMlSySBJoJ6uozkr/i03nO5dlYQyE05vmQNZhAh9MyO4DPBP88QlwsDVLmVjIMFssvIZB6WO0ctIGMRG+xsJQ==
@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.105":
-  version "2.2.105"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.105.tgz#1e7bf07d12bbb53e5d73a1bf23a01482978a37dd"
-  integrity sha512-GzV0vCBqR8Cd0fmVVLXywfI7baJuQw37yYKN5bzlRzVzGV/cBrQV1kuLinjbzTK3+85HoT5QmKvHgEiNCVJXPg==
+"@sprucelabs/error@^2.2.106":
+  version "2.2.106"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.106.tgz#053ec59e518b7c11347d05468d22b162e66ef8d3"
+  integrity sha512-7lYK1Kptf/267cbMYdriOah8V90wTbRmYek2Qw/M6aD9UjpTZBNXzR+h+IVW9LGWcZkgW9M+5uS22ALThYUIXg==
 
-"@sprucelabs/log@^10.2.151":
-  version "10.2.151"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.151.tgz#9cc2f552e1211876a6ae5448b9e8caa3118c3355"
-  integrity sha512-f+q2IuZbgqwNEXbvrPA7l3HLJbgDSMtQx4lkIkEtafg/8CQebkRkiLiExiYgqR0UesAYcVpbReD1GE2qyrTbaA==
+"@sprucelabs/log@^10.2.152":
+  version "10.2.152"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.152.tgz#60dd1d3a6d8987d1cb004bc718273635de0883de"
+  integrity sha512-apBl9pcp/Gz5Vjj0xE0ePAz8JNuQMB/aDNVVvOxYlALkf3GjZOgNm5ULf5BYXiZ5gCYBkJBhbLju3Lxgu/kplg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.59":
-  version "6.0.59"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.59.tgz#8fdf4cbf09f09bbbfecf8bdf44c85dd5d4faeeb5"
-  integrity sha512-/mm8/xzLw6BnEBpz7G4EGXCEGipvjIAQE4swfdNmB7qY6k1bz5wRDl7Rvb/TkHkj022JAKh1sstPq8Es/vjPgQ==
+"@sprucelabs/test@^6.0.60":
+  version "6.0.60"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.60.tgz#a52b336d95e76235cfc29e94b2e3a0ceae2345d9"
+  integrity sha512-VbYC94WFXQY90lheDKvh5yl6uO+cXei1CFlG/Ck5gxwct/Du9GT8JW5tQI/R/PADm2YO6EpxXzKkZkAzjez09w==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
