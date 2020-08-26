@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.228...v7.1.0) (2020-08-26)
+
+
+### Features
+
+* array values throw missing_required if they are missing and required ([8d27032](https://github.com/sprucelabsai/spruce-schema/commit/8d27032))
+
 ## [7.0.228](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.227...v7.0.228) (2020-08-26)
 
 ## [7.0.227](https://github.com/sprucelabsai/spruce-schema/compare/v7.0.226...v7.0.227) (2020-08-26)
