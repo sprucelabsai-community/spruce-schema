@@ -266,8 +266,9 @@ export default class SchemaTest extends BaseTest {
 	@test('can type values correctly')
 	protected static testFullValuesTypes() {
 		const personEntity = new SchemaEntity(personSchema)
-		const values = personEntity.getValues()
+		const values = personEntity.getValues({ validate: false })
 		const valuesWithoutInstances = personEntity.getValues({
+			validate: false,
 			createEntityInstances: false,
 		})
 		assert.isType<IPersonExpectedValues>(values)
