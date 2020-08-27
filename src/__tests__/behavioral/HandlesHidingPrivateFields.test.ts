@@ -44,6 +44,25 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 	}
 
 	@test()
+	protected static async schemaCanKeepPrivateFields() {
+		const entity = new SchemaEntity(carSchema, {
+			name: 'cool car',
+			privateField: 'Go away!',
+		})
+
+		const values = entity.getValues({ includePrivateFields: true })
+
+		assert.isExactType<
+			typeof values,
+			{
+				name: string
+				privateField: string | undefined | null
+				onlyOnCar: string | undefined | null
+			}
+		>(true)
+	}
+
+	@test()
 	protected static async schemaCanDropPrivateFieldsWhenSelectingFields() {
 		const entity = new SchemaEntity(carSchema, {
 			name: 'cool car',
@@ -77,6 +96,25 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		assert.isExactType<
 			typeof values,
 			{ name: string; onlyOnCar?: string | undefined | null }
+		>(true)
+	}
+
+	@test()
+	protected static normalizeCanKeepPrivateFields() {
+		const values = normalizeSchemaValues(
+			carSchema,
+			{ name: 'sweet!', privateField: 'go away' },
+			{ includePrivateFields: true }
+		)
+
+		assert.isEqual(values.privateField, 'go away')
+		assert.isExactType<
+			typeof values,
+			{
+				name: string
+				onlyOnCar: string | undefined | null
+				privateField: string | undefined | null
+			}
 		>(true)
 	}
 
