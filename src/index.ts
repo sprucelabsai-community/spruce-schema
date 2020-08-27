@@ -27,6 +27,7 @@ export { default as validateSchemaValues } from './utilities/validateSchemaValue
 export { default as normalizeSchemaValues } from './utilities/normalizeSchemaValues'
 export { default as isSchemaValid } from './utilities/isSchemaValid'
 export { default as makeFieldsOptional } from './utilities/makeFieldsOptional'
+export { default as dropFields } from './utilities/dropFields'
 
 // Field factory
 export { default as FieldFactory } from './factories/FieldFactory'
