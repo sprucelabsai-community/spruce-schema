@@ -27,10 +27,20 @@ export interface ISchemaEntity<S extends ISchema> {
 
 	getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
-		CreateEntityInstances extends boolean = true
+		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
+		CreateEntityInstances extends boolean = true,
+		IncludePrivateFields extends boolean = true
 	>(
-		options?: ISchemaGetValuesOptions<S, F, CreateEntityInstances>
-	): Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+		options?: ISchemaGetValuesOptions<
+			S,
+			F,
+			PF,
+			CreateEntityInstances,
+			IncludePrivateFields
+		>
+	): IncludePrivateFields extends false
+		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
+		: Pick<SchemaAllValues<S, CreateEntityInstances>, F>
 }
 
 /** The structure of schema.fields. key is field name, value is field definition */
@@ -97,7 +107,7 @@ export type SchemaPartialValues<
 export type SchemaValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	K extends OptionalFieldNames<T> = OptionalFieldNames<T>,
+	K extends SchemaOptionalFieldNames<T> = SchemaOptionalFieldNames<T>,
 	V extends SchemaAllValues<T, CreateEntityInstances> = SchemaAllValues<
 		T,
 		CreateEntityInstances
@@ -108,7 +118,9 @@ export type SchemaValues<
 export type SchemaDefaultValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	K extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<S>,
+	K extends SchemaFieldNamesWithDefaultValue<
+		S
+	> = SchemaFieldNamesWithDefaultValue<S>,
 	V extends SchemaAllValues<S, CreateEntityInstances> = SchemaAllValues<
 		S,
 		CreateEntityInstances
@@ -121,7 +133,7 @@ export type SchemaValuesWithDefaults<T extends ISchema> = SchemaValues<T> &
 	SchemaDefaultValues<T>
 
 /** All fields that are optional on the schema */
-export type OptionalFieldNames<T extends ISchema> = {
+export type SchemaOptionalFieldNames<T extends ISchema> = {
 	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? never
@@ -130,7 +142,7 @@ export type OptionalFieldNames<T extends ISchema> = {
 }[SchemaFieldNames<T>]
 
 /** All fields that are required on the schema */
-export type RequiredFieldNames<T extends ISchema> = {
+export type SchemaRequiredFieldNames<T extends ISchema> = {
 	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? K
@@ -139,7 +151,7 @@ export type RequiredFieldNames<T extends ISchema> = {
 }[SchemaFieldNames<T>]
 
 /** Gets you all field names that have a default value set */
-export type FieldNamesWithDefaultValueSet<T extends ISchema> = {
+export type SchemaFieldNamesWithDefaultValue<T extends ISchema> = {
 	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['defaultValue'] extends Required<
 				T['fields'][K]['defaultValue']
@@ -162,6 +174,28 @@ export type SchemaFieldNames<T extends ISchema> = Extract<
 	keyof T['fields'],
 	string
 >
+
+export type SchemaPublicFieldNames<S extends ISchema> = {
+	[K in SchemaFieldNames<S>]: S['fields'][K] extends FieldDefinition
+		? S['fields'][K]['isPrivate'] extends true
+			? never
+			: K
+		: never
+}[SchemaFieldNames<S>]
+
+export type SchemaPublicValues<
+	S extends ISchema,
+	CreateEntityInstances extends boolean = false,
+	PublicFieldNames extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<
+		S
+	>,
+	AllValues extends SchemaValues<S, CreateEntityInstances> = SchemaValues<
+		S,
+		CreateEntityInstances
+	>
+> = S['fields'] extends ISchemaFields
+	? Exclude<Pick<AllValues, PublicFieldNames>, never>
+	: never
 
 /** Pluck out the field definition from the schema */
 export type SchemaFieldDefinition<
@@ -199,17 +233,26 @@ export interface ISchemaNormalizeOptions<
 }
 
 /** Options for schema.getValues */
-export interface ISchemaGetValuesOptions<
+export type ISchemaGetValuesOptions<
 	T extends ISchema,
 	F extends SchemaFieldNames<T>,
-	CreateEntityInstances extends boolean
-> extends ISchemaNormalizeOptions<T, CreateEntityInstances> {
-	fields?: F[]
-}
+	PF extends SchemaPublicFieldNames<T>,
+	CreateEntityInstances extends boolean,
+	IncludePrivateFields extends boolean
+> = ISchemaNormalizeOptions<T, CreateEntityInstances> &
+	(IncludePrivateFields extends false
+		? {
+				includePrivateFields: IncludePrivateFields
+				fields?: PF[]
+		  }
+		: {
+				includePrivateFields?: IncludePrivateFields
+				fields?: F[]
+		  })
 /** Options for schema.getDefaultValues */
 export interface ISchemaGetDefaultValuesOptions<
 	T extends ISchema,
-	F extends FieldNamesWithDefaultValueSet<T>,
+	F extends SchemaFieldNamesWithDefaultValue<T>,
 	CreateEntityInstances extends boolean
 > extends ISchemaNormalizeOptions<T, CreateEntityInstances> {
 	fields?: F[]

@@ -122,19 +122,13 @@ export interface IField<F extends FieldDefinition> {
 	readonly definition: F
 	/** The type of field */
 	readonly type: F['type']
-	/** The fields options */
 	readonly options: F['options']
-	/** If this field is required */
 	readonly isRequired: F['isRequired']
-	/** If this field is an array */
+	readonly isPrivate: F['isPrivate']
 	readonly isArray: F['isArray']
-	/** The field's label */
 	readonly label: F['label']
-	/** The field's hint */
 	readonly hint: F['hint']
-	/** The name of this field (camel case) */
 	readonly name: string
-	/** Validate a value */
 	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
 	/** Transform any value to the value type of this field. should take anything and return a valid value or blow up. Will never receive undefined */
 	toValueType<CreateEntityInstances extends boolean>(

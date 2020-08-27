@@ -17,6 +17,10 @@ export interface ICarSchema extends ISchema {
 		onlyOnCar: {
 			type: FieldType.Text
 		}
+		privateField: {
+			type: FieldType.Text
+			isPrivate: true
+		}
 	}
 }
 
@@ -167,6 +171,10 @@ const buildPersonWithCars = () => {
 			},
 			onlyOnCar: {
 				type: FieldType.Text,
+			},
+			privateField: {
+				type: FieldType.Text,
+				isPrivate: true,
 			},
 		},
 	})
