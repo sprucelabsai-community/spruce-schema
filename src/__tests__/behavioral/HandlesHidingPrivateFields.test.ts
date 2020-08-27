@@ -107,8 +107,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 			{ includePrivateFields: true }
 		)
 
-		//@ts-ignore
-		assert.isFalsy(values.privateField)
+		assert.isEqual(values.privateField, 'go away')
 		assert.isExactType<
 			typeof values,
 			{
