@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v7.1.13...v7.2.0) (2020-08-27)
+
+
+### Features
+
+* drop and make optional utilities ([095655d](https://github.com/sprucelabsai/spruce-schema/commit/095655d))
+
 ## [7.1.13](https://github.com/sprucelabsai/spruce-schema/compare/v7.1.12...v7.1.13) (2020-08-27)
 
 ## [7.1.12](https://github.com/sprucelabsai/spruce-schema/compare/v7.1.11...v7.1.12) (2020-08-27)
