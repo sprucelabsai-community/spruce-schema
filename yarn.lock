@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.119":
-  version "2.2.119"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.119.tgz#16fd142ee865b6e38e6eeafbbd23f2d9a93deef0"
-  integrity sha512-zADJG0OROHpBlwGZCbhVYNeYZF3y8wRea2hhpUjhp7jQVm/wVL8bPKC/Ytl6KdqioKX+ZRbITdY+kQdLDQpt8w==
+"@sprucelabs/error@^2.2.120":
+  version "2.2.120"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.120.tgz#715a39c302525a0df8e97870e54ee0f9c62b96fc"
+  integrity sha512-KOuoyaLII47mp716w/Fmf2DG35Nc6NwJYR2iMMT8JG3uyst5e3Q8bD8B6NeHvLCPyd7WNzRYx0krumhT6fkRug==
 
-"@sprucelabs/log@^10.2.157":
-  version "10.2.157"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.157.tgz#bda37d6914f8bcccda49cb0683046e6a5072db61"
-  integrity sha512-sO+64WGEdZiLnHY2YmTG5BAK6Q1JsGPy4XfNVGDJwH3ijGlClJlwgIt7X4h/Z0wGB6A8UoozHdKlu3SRLtBB9A==
+"@sprucelabs/log@^10.2.158":
+  version "10.2.158"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.158.tgz#2cdd8fce28ddde1dac66ed99fb60e741a375895f"
+  integrity sha512-jxKH/4dw1N9qrK2QmpDLV2HM6x1pXIXIq5hKNYVrpwZXFtRdVWJjHIGNjZn0t1VqRG7Jece8u+MHlW+K9ntCkw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.70":
-  version "6.0.70"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.70.tgz#f7db52b43641140bc5577fe253b4e0df3781328b"
-  integrity sha512-SZBjZ0gwO0K07w/cr3sJibLQQsoagOKS/73e7FFcgSvYyzCsxDqjidD3u0EEIsppfFOuZ1rLvCTQBN9qv1/jZQ==
+"@sprucelabs/test@^6.0.71":
+  version "6.0.71"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.71.tgz#798061bd09c8239cb3c0f91b8ebfedfc3151ad51"
+  integrity sha512-6ck9ROEb+1koDhtRzJEq1/vEJUAXHAqqLOEULzB0npMuCUCPfv0APrdPjYBOZfI9BAqrw8YFIcA9T2VDADtdYg==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -2875,7 +2875,7 @@ debug@^3.1.0:
   dependencies:
     ms "^2.1.1"
 
-debuglog@^1.0.1:
+debuglog@*, debuglog@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
   integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -3305,10 +3305,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.14:
-  version "10.9.14"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.14.tgz#0d4e8bb7d339cfdd70bd3beb6398860784b8574d"
-  integrity sha512-iOC1jJlJMI6U82o5eYf8+a9dYbjZD4QXNSgG8h7eohtkL27B44MVVmlpiF0+R1vlDL1eyezJUZ48vuTwGOW54w==
+eslint-config-spruce@^10.9.15:
+  version "10.9.15"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.15.tgz#4cc639c94f8dbd1086635605e1269a205bfc8620"
+  integrity sha512-/vU0nfBQPgC6NUiORF4cpe4i6Rnx5oZz68qGczKk+SMUU99hTYf3PzeEugyVzRtYdBxHy3rt319TM2bP3JvL+g==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^3.10.1"
     "@typescript-eslint/parser" "^3.10.1"
@@ -3318,7 +3318,7 @@ eslint-config-spruce@^10.9.14:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.6"
-    eslint-plugin-spruce "^10.9.14"
+    eslint-plugin-spruce "^10.9.15"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3396,10 +3396,10 @@ eslint-plugin-react@^7.20.6:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.14:
-  version "10.9.14"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.14.tgz#fc00ca4266c6a9c77d7bcecac7ef4a4912c4f91f"
-  integrity sha512-PukICT7N3JbHRZ9SqA3RL07F95pwjWPSh9DFfDD9hcR8+eUKwOS+2SFRXzIEwjLSlBut1wJb7dQK5OA0jov6nQ==
+eslint-plugin-spruce@^10.9.15:
+  version "10.9.15"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.15.tgz#2a8f09ce36b06632d4f2d00484d23487e0ae3320"
+  integrity sha512-PvdDsEr7qNJMZNN3x/8XwnU1oIe6MyHIFsQPOpe4JhodWtF3+pqpjtga8Pnx8M1rHU1NAxHbmY4VDvPz/lzSuA==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -4322,7 +4322,7 @@ import-local@^3.0.2:
     pkg-dir "^4.2.0"
     resolve-cwd "^3.0.0"
 
-imurmurhash@^0.1.4:
+imurmurhash@*, imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -5693,6 +5693,11 @@ lockfile@^1.0.4:
   dependencies:
     signal-exit "^3.0.2"
 
+lodash._baseindexof@*:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
+  integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
+
 lodash._baseuniq@~4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5701,10 +5706,32 @@ lodash._baseuniq@~4.6.0:
     lodash._createset "~4.0.0"
     lodash._root "~3.0.0"
 
+lodash._bindcallback@*:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
+  integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
+
+lodash._cacheindexof@*:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
+  integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
+
+lodash._createcache@*:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
+  integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
+  dependencies:
+    lodash._getnative "^3.0.0"
+
 lodash._createset@~4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
   integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
+
+lodash._getnative@*, lodash._getnative@^3.0.0:
+  version "3.9.1"
+  resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+  integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
 
 lodash._root@~3.0.0:
   version "3.0.1"
@@ -5750,6 +5777,11 @@ lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.restparam@*:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
+  integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
