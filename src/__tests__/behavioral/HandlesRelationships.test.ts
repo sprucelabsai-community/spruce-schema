@@ -61,6 +61,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		assert.isEqualDeep(firstCarValues, {
 			name: 'dirty car',
 			onlyOnCar: undefined,
+			privateField: undefined,
 		})
 
 		// Test transforming to array works by setting isArray field to a single value
@@ -73,6 +74,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		assert.isEqualDeep(firstCarValues, {
 			name: 'scooter',
 			onlyOnCar: undefined,
+			privateField: undefined,
 		})
 	}
 

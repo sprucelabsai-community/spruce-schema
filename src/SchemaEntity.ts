@@ -21,8 +21,10 @@ import {
 	ISchemaNamedFieldsOptions,
 	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
-	FieldNamesWithDefaultValueSet,
+	SchemaFieldNamesWithDefaultValue,
 	ISchemaEntity,
+	SchemaPublicValues,
+	SchemaPublicFieldNames,
 } from './schemas.static.types'
 
 /** Universal schema class  */
@@ -339,9 +341,9 @@ export default class SchemaEntity<S extends ISchema>
 
 	/** Get all default values based on the definition */
 	public getDefaultValues<
-		F extends FieldNamesWithDefaultValueSet<S> = FieldNamesWithDefaultValueSet<
+		F extends SchemaFieldNamesWithDefaultValue<
 			S
-		>,
+		> = SchemaFieldNamesWithDefaultValue<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
@@ -366,24 +368,39 @@ export default class SchemaEntity<S extends ISchema>
 	/** Get all values valued */
 	public getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
-		CreateEntityInstances extends boolean = true
+		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
+		CreateEntityInstances extends boolean = true,
+		IncludePrivateFields extends boolean = true
 	>(
-		options: ISchemaGetValuesOptions<S, F, CreateEntityInstances> = {}
-	): Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
+		options?: ISchemaGetValuesOptions<
+			S,
+			F,
+			PF,
+			CreateEntityInstances,
+			IncludePrivateFields
+		>
+	): IncludePrivateFields extends false
+		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
+		: Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
 		const values: SchemaPartialValues<S, CreateEntityInstances> = {}
 
-		const { fields = Object.keys(this.fields) } = options
+		const { fields = Object.keys(this.fields), includePrivateFields = true } =
+			options || {}
 
 		this.getNamedFields().forEach((namedField) => {
-			const { name } = namedField
-			if (fields.indexOf(name) > -1) {
+			const { name, field } = namedField
+			if (
+				fields.indexOf(name) > -1 &&
+				(includePrivateFields || !field.isPrivate)
+			) {
 				const value = this.get(name, options)
 				values[name] = value
 			}
 		})
 
 		// We know this conforms after the loop above, nothing to do here
-		return values as Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+		//@ts-ignore
+		return values
 	}
 
 	/** Set a bunch of values at once */

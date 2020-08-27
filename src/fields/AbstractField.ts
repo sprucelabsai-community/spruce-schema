@@ -67,6 +67,10 @@ public static generateTemplateDetails(
 		return !!this.definition.isRequired
 	}
 
+	public get isPrivate() {
+		return !!this.definition.isPrivate
+	}
+
 	public get isArray() {
 		return !!this.definition.isArray
 	}

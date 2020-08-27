@@ -1,11 +1,11 @@
 import BaseTest, { test, assert } from '@sprucelabs/test'
 import SchemaEntity from '../../SchemaEntity'
 import {
-	FieldNamesWithDefaultValueSet,
 	ISchema,
 	SchemaDefaultValues,
 	ISchemaEntity,
 	SchemaValues,
+	SchemaFieldNamesWithDefaultValue,
 } from '../../schemas.static.types'
 import buildPersonWithCars, {
 	IPersonSchema,
@@ -49,7 +49,7 @@ export default class SchemaDefaultValuesTest extends BaseTest {
 	@test('Test typing on default values (test will always pass, lint will fail)')
 	protected static textAndSelectDefaultValues() {
 		let fieldName:
-			| FieldNamesWithDefaultValueSet<typeof personSchema>
+			| SchemaFieldNamesWithDefaultValue<typeof personSchema>
 			| undefined
 
 		// make sure types are 100% (only works if they are currently undefined)
