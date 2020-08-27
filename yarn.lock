@@ -1320,10 +1320,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.116":
-  version "2.2.116"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.116.tgz#7764efe019a5e943caa2cb0d8482da72229eda1c"
-  integrity sha512-AkeQPHkh8d0pPFgIXakrhjAs2v8fHXpEyjNi5+t+wb4au4FsWAtbq4on47R1yV+Dh71oPMSbpyUByA1LyUbm9Q==
+"@sprucelabs/error@^2.2.117":
+  version "2.2.117"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.117.tgz#d5cbf8b30edb839810b4721eca00fc69464af981"
+  integrity sha512-sfcteA2E0KXI3mo2fWYwdDReoh8LVzPHuZWdt+/cznqhGbOBpUBwWSsDpnbHGsCA6z/Gn4xsmZb5Iyrr5TF9VA==
 
 "@sprucelabs/log@^10.2.157":
   version "10.2.157"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.67":
-  version "6.0.67"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.67.tgz#1e2e892ef57fa10d308cfc8609d94a9c33373231"
-  integrity sha512-hxmCmrWt/xo6SHk4pyMXgtuCzKepRNH1vKJ5x6t6uZaDKqGEwN6ONyOWXn4gM8HAgunOeVs/WKDD04FsirYM8Q==
+"@sprucelabs/test@^6.0.68":
+  version "6.0.68"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.68.tgz#bf7e54dc6ea3c67267e6899554a02a54f6de7a76"
+  integrity sha512-FY+FKXpJuvtkI/CvrcIUmnFMpNU5lQICT5F7osSZROViqYKKd7DtJK6AVXCaUH2CWEvUK7KpNEuftBoS7gEXEw==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -3125,9 +3125,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.523:
-  version "1.3.550"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.550.tgz#bf9bbb78182aac0fe2d23d3bd1483dde4483f512"
-  integrity sha512-MWDHoJsSieBaJ6mObvi3V0eKZufR1iMJl56VIGdXCgFHyCUbVDGm2IMXUNjDxgbGbKa3tA5+zJmHuBQqRxGiLA==
+  version "1.3.551"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.551.tgz#a94d243a4ca90705189bd4a5eca4e0f56b745a4f"
+  integrity sha512-11qcm2xvf2kqeFO5EIejaBx5cKXsW1quAyv3VctCMYwofnyVZLs97y6LCekss3/ghQpr7PYkSO3uId5FmxZsdw==
 
 emittery@^0.7.1:
   version "0.7.1"
