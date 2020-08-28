@@ -1,6 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
@@ -181,5 +182,31 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			() => validateSchemaValues(null, {}),
 			/INVALID_SCHEMA_DEFINITION/
 		)
+	}
+
+	@test()
+	protected static async failsWhenValidatingFieldsNotOnSchema() {
+		const err = assert.doesThrow(
+			//@ts-ignore
+			() =>
+				validateSchemaValues(this.personSchema, {
+					taco: 'bravo',
+					firstName: 'first',
+					lastName: 'last',
+					profileImages: {
+						profile60: '',
+						profile150: '',
+						'profile60@2x': '',
+						'profile150@2x': '',
+					},
+				}),
+			/FIELD_NOT_FOUND/
+		) as SpruceError
+
+		if (err.options.code === 'FIELD_NOT_FOUND') {
+			assert.isEqual(err.options.fields[0], 'taco')
+		} else {
+			assert.fail(`Expected FIELD_NOT_FOUND but got ${err.options.code}`)
+		}
 	}
 }

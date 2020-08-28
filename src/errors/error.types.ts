@@ -12,6 +12,7 @@ export type SchemaErrorOptions =
 	| IInvalidFieldRegistrationErrorOptions
 	| IVersionRequiredErrorOptions
 	| SpruceErrorOptions
+	| IFieldNotFoundErrorOptions
 
 export interface ISchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	/** * Could not find a schema by id */
@@ -103,4 +104,10 @@ export interface IInvalidFieldRegistrationErrorOptions
 export interface IVersionRequiredErrorOptions extends ISpruceErrorOptions {
 	code: 'VERSION_NOT_FOUND'
 	schemaId?: string
+}
+
+export interface IFieldNotFoundErrorOptions extends ISpruceErrorOptions {
+	code: 'FIELD_NOT_FOUND'
+	schemaId: string
+	fields: string[]
 }
