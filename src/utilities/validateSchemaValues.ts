@@ -14,6 +14,7 @@ export default function validateSchemaValues<
 	values: V,
 	options?: ISchemaValidateOptions<S>
 ): asserts values is V & SchemaValues<S> {
+	SchemaEntity.validateSchema(schema)
 	const instance = new SchemaEntity(schema, values)
 	instance.validate(options)
 }

@@ -173,4 +173,13 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 		validateSchemaValues(this.personSchema, person)
 	}
+
+	@test()
+	protected static async failsWithBadSchema() {
+		assert.doesThrow(
+			//@ts-ignore
+			() => validateSchemaValues(null, {}),
+			/INVALID_SCHEMA_DEFINITION/
+		)
+	}
 }
