@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.126":
-  version "2.2.126"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.126.tgz#da6f50529fa804cf3654da767cd9a19c759c18e5"
-  integrity sha512-38j0gKlldkEUbLEoPY1ZW5kvkQlRRVw5BRn/LyBSUajNstYYNg2ZAQpla4VIlgMVMfC2QGFRNMGz8DkJ7fvrUw==
+"@sprucelabs/error@^2.2.127":
+  version "2.2.127"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.127.tgz#12d931b4947a8231e520eb7df1d53094e21d894e"
+  integrity sha512-fpynYIojK/p7XdRuJTCbDnLm9mts0vIcyoQTzcAfRebvstEIelMVuvLLgTfFyWqIOckR7Wbh7EjANobD7q6nVw==
 
-"@sprucelabs/log@^10.2.158":
-  version "10.2.158"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.158.tgz#2cdd8fce28ddde1dac66ed99fb60e741a375895f"
-  integrity sha512-jxKH/4dw1N9qrK2QmpDLV2HM6x1pXIXIq5hKNYVrpwZXFtRdVWJjHIGNjZn0t1VqRG7Jece8u+MHlW+K9ntCkw==
+"@sprucelabs/log@^10.2.159":
+  version "10.2.159"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.159.tgz#ba6d4156c244a9def3273c55125b35071a89f511"
+  integrity sha512-8AKzXWB+aWePvgqqBAQPBqO6XJ6vXx0pednFfZFsBC2kAbhge6v93IXu5RUO/px27xjXfX5AY9pjHU/ozuq9gw==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.74":
-  version "6.0.74"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.74.tgz#1590858e721418bb4e2cbdab1d7ac232fc1344f3"
-  integrity sha512-Ok8tXNT3VNKERJdTrbsT4p/73SxEyOcru75QgEFVhcMtGx41eMrTmp+zGXLFoE5Sq+/c7BHxpJucgBXorvOrxQ==
+"@sprucelabs/test@^6.0.75":
+  version "6.0.75"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.75.tgz#958b2d6910d1d9ccd5e96185b41f4963b49aaf3e"
+  integrity sha512-Wl+32b+azHMvcB4TJdiJHmN06QKaiho5KSzowDm00V65iP0aBtJemIbLLPlG5a1/CyyzZyaCf3klQWmpcCt8Xw==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -8374,9 +8374,9 @@ supports-color@^6.1.0:
     has-flag "^3.0.0"
 
 supports-color@^7.0.0, supports-color@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.1.0.tgz#68e32591df73e25ad1c4b49108a2ec507962bfd1"
-  integrity sha512-oRSIpR8pxT1Wr2FquTNnGet79b3BWljqOuoW/h4oBhxJ/HUbX5nX6JSruTkvXDCFMwDPvsaTTbvMLKZWSy0R5g==
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
+  integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
   dependencies:
     has-flag "^4.0.0"
 
