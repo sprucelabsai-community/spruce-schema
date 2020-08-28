@@ -56,6 +56,14 @@ export default class SpruceError extends AbstractSpruceError<
 					? ' - **missing options**'
 					: `\n\n${JSON.stringify(options.options, null, 2).substr(0, 2000)}`
 				break
+
+			case 'FIELD_NOT_FOUND':
+				message = `I couldn't find ${options.fields
+					.map((name) => `'${name}'`)
+					.join(', ')} field${options.fields.length === 1 ? '' : 's'} on ${
+					options.schemaId
+				}.`
+				break
 			default:
 				message = this.message
 		}
