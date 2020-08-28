@@ -3,6 +3,7 @@ import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import dropFields from '../../utilities/dropFields'
+import dropPrivateFields from '../../utilities/dropPrivateFields'
 
 const personSchema = buildSchema({
 	id: 'person-with-all-fields',
@@ -15,6 +16,10 @@ const personSchema = buildSchema({
 		lastName: {
 			type: FieldType.Text,
 			isRequired: true,
+		},
+		privateField: {
+			type: FieldType.Text,
+			isPrivate: true,
 		},
 	},
 })
@@ -33,6 +38,71 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 			id: 'person-with-all-fields',
 			name: 'Person (all fields)',
 			fields: {
+				lastName: {
+					type: FieldType.Text,
+					isRequired: true,
+				},
+				privateField: {
+					type: FieldType.Text,
+					isPrivate: true,
+				},
+			},
+		})
+
+		assert.isExactType<
+			typeof optionalPerson,
+			{
+				id: string
+				name: string
+				fields: {
+					lastName: {
+						type: FieldType.Text
+						isRequired: true
+					}
+					privateField: {
+						type: FieldType.Text
+						isPrivate: true
+					}
+				}
+			}
+		>(true)
+	}
+
+	@test()
+	protected static async droppingPrivateFields() {
+		const publicPerson = {
+			...personSchema,
+			fields: {
+				...dropPrivateFields(personSchema.fields),
+			},
+		}
+
+		assert.isExactType<
+			typeof publicPerson,
+			{
+				id: string
+				name: string
+				fields: {
+					firstName: {
+						type: FieldType.Text
+						isRequired: true
+					}
+					lastName: {
+						type: FieldType.Text
+						isRequired: true
+					}
+				}
+			}
+		>(true)
+
+		assert.isEqualDeep(publicPerson, {
+			id: 'person-with-all-fields',
+			name: 'Person (all fields)',
+			fields: {
+				firstName: {
+					type: FieldType.Text,
+					isRequired: true,
+				},
 				lastName: {
 					type: FieldType.Text,
 					isRequired: true,
