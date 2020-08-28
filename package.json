@@ -41,7 +41,7 @@
 	},
 	"dependencies": {
 		"@sprucelabs/error": "^2.2.132",
-		"@sprucelabs/log": "^10.2.161",
+		"@sprucelabs/log": "^10.2.162",
 		"google-libphonenumber": "^3.2.12",
 		"libphonenumber-js": "^1.7.57",
 		"mime-db": "^1.44.0",
