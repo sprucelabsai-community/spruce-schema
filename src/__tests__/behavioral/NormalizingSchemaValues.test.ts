@@ -16,28 +16,67 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			age: {
 				type: FieldType.Number,
 			},
+			nestedArraySchema: {
+				type: FieldType.Schema,
+				isArray: true,
+				options: {
+					schema: {
+						id: 'nested-schema',
+						name: 'Nested',
+						fields: {
+							field1: {
+								type: FieldType.Text,
+							},
+						},
+					},
+				},
+			},
 		},
 	})
 
 	@test()
 	protected static normalizesSimpleAsExpected() {
-		const values = normalizeSchemaValues(this.personSchema, {
-			// @ts-ignore
-			firstName: 12345,
-			// @ts-ignore
-			age: '10',
-		})
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				// @ts-ignore
+				firstName: 12345,
+				// @ts-ignore
+				age: '10',
+				nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+			},
+			{ createEntityInstances: false }
+		)
 
-		assert.isEqualDeep(values, { firstName: '12345', age: 10 })
+		assert.isEqualDeep(values, {
+			firstName: '12345',
+			age: 10,
+			nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+		})
 	}
 
 	@test()
 	protected static normalizeTypesAsExpected() {
-		const values = normalizeSchemaValues(this.personSchema, {
-			firstName: 'tay',
-			age: 0,
-		})
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				firstName: 'tay',
+				age: 0,
+				nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+			},
+			{ createEntityInstances: false }
+		)
 
-		assert.isType<{ firstName: string; age?: number | null }>(values)
+		assert.isExactType<
+			typeof values,
+			{
+				firstName: string
+				age: number | null | undefined
+				nestedArraySchema:
+					| { field1?: string | null | undefined }[]
+					| null
+					| undefined
+			}
+		>(true)
 	}
 }

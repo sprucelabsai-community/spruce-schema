@@ -17,24 +17,33 @@ import buildPersonWithCars, {
 const { personSchema, carSchema } = buildPersonWithCars()
 
 export default class HandlesRelationshipsTest extends AbstractSchemaTest {
-	@test(
-		'schema field types work with (test will always pass, but lint will fail)'
-	)
-	protected static async canDefineBasicRelationships() {
+	@test()
+	protected static async canDefineBasicRelationshipUsingTypes() {
 		const user: SchemaValues<IPersonSchema> = {
 			name: 'go team',
 			requiredCar: { name: 'go cart' },
-			requiredIsArrayCars: [],
+			requiredIsArrayCars: [{ name: 'car 1' }, { name: 'car 2' }],
 			requiredIsArrayCarOrTruck: [],
 		}
 
 		assert.isTruthy(user.name)
 		assert.isTruthy(user.requiredCar)
 		assert.isEqual(user.requiredCar.name, 'go cart')
+		assert.isEqualDeep(user.requiredIsArrayCars, [
+			{ name: 'car 1' },
+			{ name: 'car 2' },
+		])
+		assert.isExactType<
+			typeof user.requiredIsArrayCars,
+			{
+				name: string
+			}[]
+		>(true)
+
 		assert.isEqual(user.optionalCar, undefined)
 	}
 
-	@test('test getting value returns schema instance')
+	@test()
 	protected static testGettingValueReturnsSchema() {
 		const person = new SchemaEntity(personSchema, {
 			requiredCar: { name: 'car', onlyOnCar: 'only on car!' },
@@ -47,22 +56,40 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		assert.isEqual(car.get('onlyOnCar'), 'only on car!')
 	}
 
-	@test('Testing schema field type as schema instance')
+	@test()
 	protected static testIsArray() {
 		const user = new SchemaEntity(personSchema, {
 			name: 'tay',
 			requiredCar: { name: 'dirty car' },
 			requiredIsArrayCarOrTruck: [],
-			requiredIsArrayCars: [{ name: 'dirty car' }],
+			requiredIsArrayCars: [{ name: 'dirty car' }, { name: 'clean car' }],
 		})
 
 		let cars = user.get('requiredIsArrayCars')
+
 		let firstCarValues = cars[0].getValues()
 		assert.isEqualDeep(firstCarValues, {
 			name: 'dirty car',
 			onlyOnCar: undefined,
 			privateField: undefined,
 		})
+
+		let carsFlat = user.get('requiredIsArrayCars', {
+			createEntityInstances: false,
+		})
+
+		assert.isEqualDeep(carsFlat, [
+			{
+				name: 'dirty car',
+				onlyOnCar: undefined,
+				privateField: undefined,
+			},
+			{
+				name: 'clean car',
+				onlyOnCar: undefined,
+				privateField: undefined,
+			},
+		])
 
 		// Test transforming to array works by setting isArray field to a single value
 		// @ts-ignore
@@ -78,7 +105,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		})
 	}
 
-	@test('Can type for many schemas')
+	@test()
 	protected static testingUnionOfSchemas() {
 		const testSingleSchemaField: SchemaFieldValueTypeGenerator<{
 			type: FieldType.Schema
@@ -116,7 +143,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		})
 	}
 
-	@test('will return schemas based on union field')
+	@test()
 	protected static testUnionResolutionCreatingSchemas() {
 		const person = new SchemaEntity(personSchema, {
 			requiredCar: { name: 'required name' },
