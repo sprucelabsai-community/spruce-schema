@@ -40,7 +40,7 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.134",
+		"@sprucelabs/error": "^2.2.135",
 		"@sprucelabs/log": "^10.2.164",
 		"google-libphonenumber": "^3.2.12",
 		"libphonenumber-js": "^1.7.57",
@@ -49,9 +49,9 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^6.0.80",
+		"@sprucelabs/test": "^6.0.81",
 		"@types/google-libphonenumber": "^7.4.19",
-		"@types/lodash": "^4.14.160",
+		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
