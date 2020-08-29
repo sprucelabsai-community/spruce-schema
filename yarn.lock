@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.139":
-  version "2.2.139"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.139.tgz#c4e6ca6fc03003677351bc3320a35ca3ad6e2310"
-  integrity sha512-3AMG7yuf0N1O+EXejHfUJI79OgpSvqVpxRKd2cM5EW3XDO8Zv5wFGv4A5x5mxk9qFcVaa7v3F2DGXWflaKfVDQ==
+"@sprucelabs/error@^2.2.140":
+  version "2.2.140"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.140.tgz#b482ec275927d36f05c434c325358b8511945bf8"
+  integrity sha512-m2URsAQYgB8k4r9DV89acJ5KevoDlRVdnDODa/40gOrnryvicPnuVVQ/XNbsCqwbtNBUhgg5U2SCMVGo1b8z8Q==
 
-"@sprucelabs/log@^10.2.165":
-  version "10.2.165"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.165.tgz#2148d0782934bbae38019b4a914a68fc018f44bb"
-  integrity sha512-TBHUFCZeQKe9fhP5JXhh2yNKN0w48DSsfuOd9urucOgg18Eu31Xb6lb0Id0AY76wLIlK7CRywoQx9uiQHQvn6Q==
+"@sprucelabs/log@^10.2.166":
+  version "10.2.166"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.166.tgz#7500efa9b431240688f0d56468b10e469ae433d7"
+  integrity sha512-If/gKWA3p2Dc6UHTPKCEjaoSdIB0lzFnWi59EiyATE3wiuYKSzbkyvFiDc2AvATBPKglnG7HrPKhZl4T0L3Cow==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.82":
-  version "6.0.82"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.82.tgz#496d8c9a40138b4ee75e58d9c6ec493f7818ccf5"
-  integrity sha512-HGJEqE6pp/z45MtwCYZiDIuL/GJSqzM992PJrKfyeLuUrnG3pKoKvns6no2lUt7Vl1w/sBKmbamOA3EXlSgERQ==
+"@sprucelabs/test@^6.0.83":
+  version "6.0.83"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.83.tgz#9ac77aff1f4398b89698f664e787e19c0429bf4f"
+  integrity sha512-0p7yfFgGml4XDCJWFDYc4phGOup/Sb8GLRz5l4i5PkrbZyF+rHMlTwxrnIO9y6IFoai7Q1+tyRMH5Esy4Jd5Ag==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -5964,9 +5964,9 @@ mem@^1.1.0:
     mimic-fn "^1.0.0"
 
 meow@^7.0.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/meow/-/meow-7.1.0.tgz#50ecbcdafa16f8b58fb7eb9675b933f6473b3a59"
-  integrity sha512-kq5F0KVteskZ3JdfyQFivJEj2RaA8NFsS4+r9DaMKLcUHpk5OcHS3Q0XkCXONB1mZRPsu/Y/qImKri0nwSEZog==
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-7.1.1.tgz#7c01595e3d337fcb0ec4e8eed1666ea95903d306"
+  integrity sha512-GWHvA5QOcS412WCo8vwKDlTelGLsCGBVevQB5Kva961rmNfun0PCbv5+xta2kUMFJyR8/oWnn7ddeKdosbAPbA==
   dependencies:
     "@types/minimist" "^1.2.0"
     camelcase-keys "^6.2.2"
