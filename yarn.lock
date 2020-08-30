@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.144":
-  version "2.2.144"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.144.tgz#68f0909e2f36e69594fb7885f957fd07643063ff"
-  integrity sha512-KQ6mDTM9KFgcurH1vkqw4qRlgfUxYtTUuUUGHbLkUQsvDzht3zcj9bTNAmD9BX7s9CaUNMcCsEbpV03bCSTXCg==
+"@sprucelabs/error@^2.2.145":
+  version "2.2.145"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.145.tgz#1e51c414efa590816e1d9e8cd78bccc209a82358"
+  integrity sha512-6/ev5I4GoxDMEiEGQx04zidzrzfL2hPcrm9bcyMjnjl27fYnw8n+OWone0we+VzGxamZEf1j8MGcnR07aksMAA==
 
-"@sprucelabs/log@^10.2.168":
-  version "10.2.168"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.168.tgz#3d1b06a2f4021fb5419ff0793e105cf531ddaff4"
-  integrity sha512-7nKLty+xz+hCpWb7bH30bw/bz28TQevgLAqu6HfNYSzCyoxlzpbKOMqJoJLE1bGTLKEOQXTeOzGGRcg2Q70ZJw==
+"@sprucelabs/log@^10.2.169":
+  version "10.2.169"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.169.tgz#bd5c5baea98f2e60e6d5c097f82c2b904dac8df0"
+  integrity sha512-987wnL+vg8BBBKIEu2rQcCcxYxA0lyeyEbXFNrD+TGalyViHn7SLJdcz5RpxXxjGrX0RKMYf12N27XT631BzhA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.85":
-  version "6.0.85"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.85.tgz#4d09f3e1e6e95e1203ed89114abc70c109aa33b4"
-  integrity sha512-cJy8eL8jLBmi6e5Uv5jK74Tn0z5ecrUZEoYlsDj9KJ1JigKG1vg9G5nEH77PfEx+XgsKz9nx2qS8Z+ocKPzI5A==
+"@sprucelabs/test@^6.0.86":
+  version "6.0.86"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.86.tgz#bd8cbcf536d2a7c05a9c75f913b15412684af640"
+  integrity sha512-Po9TqwQlhmT2y2Vln0joLBD330+vMb0SPBAePZxSo8d+mvYv0KJUY+/RDNaJdJ843mQhA/1T2eLu99jf3ptN+g==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -8862,9 +8862,9 @@ update-notifier@^2.2.0, update-notifier@^2.3.0, update-notifier@^2.5.0:
     xdg-basedir "^3.0.0"
 
 uri-js@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.2.2.tgz#94c540e1ff772956e2299507c010aea6c8838eb0"
-  integrity sha512-KY9Frmirql91X2Qgjry0Wd4Y+YTdrdZheS8TFwvkbLWf/G5KNJDCh6pKL5OZctEW4+0Baa5idK2ZQuELRwPznQ==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.3.0.tgz#e16cb9ef7b4036d74be59dc7342258e6f1aca20e"
+  integrity sha512-Q9Q9RlMM08eWfdPPmDDrXd8Ny3R1sY/DaRDR2zTPPneJ6GYiLx3++fPiZobv49ovkYAnHl/P72Ie3HWXIRVVYA==
   dependencies:
     punycode "^2.1.0"
 
