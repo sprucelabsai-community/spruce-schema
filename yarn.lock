@@ -1320,15 +1320,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.153":
-  version "2.2.153"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.153.tgz#3f4e3bbdf7218db38d325a43eb854dfb0d73c4cf"
-  integrity sha512-pzZxcFseg8b7s7vddZOUBWvb6p0Blsm6FrFq24OrVI8Xi+gBM9somiWVgIGgY/7Zw89MI3gLLJ6bIRtYjulovg==
+"@sprucelabs/error@^2.2.154":
+  version "2.2.154"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.154.tgz#019297c412157bdb09972c187648bcc059d559cd"
+  integrity sha512-6KtsoPZtc+F/xCS4ldhF7iTQoIvioslGgL/hnv4ibmG2sqov7uc1YoY6W67H93xBNCX48tZwp+hefbXZ/IuWZw==
 
-"@sprucelabs/log@^10.2.172":
-  version "10.2.172"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.172.tgz#cc33a73b4cfba55a20e22a158285686ca102550d"
-  integrity sha512-FVdlNdHS2Qtp9SRHLmK8aUu8/pYy4NJNPPonu7RxGW5+kMBOIvSxzGYWwAAqPiDRWw9CO1pLDdAmzeEjiPI3HQ==
+"@sprucelabs/log@^10.2.173":
+  version "10.2.173"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.173.tgz#0f129977a1a3f4ffe08d48862678f9839e39f919"
+  integrity sha512-1Gf2jfWVQgbUCGlRDL5uP1yUlaWAHGw43YkNsOruQWhw1Xm3Q77I9uJVeVd9PclMK2wCTuinIdm3K1RPCASsIQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1340,10 +1340,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.90":
-  version "6.0.90"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.90.tgz#a1655f9acc1d856ba4033f3ee0bdc59469480f74"
-  integrity sha512-S/VB3pquXl9kF8CRLe0Qq9nunjlHGGMOtlnJiN5cV3ZZgIVfNSHUP3fSmvnggyoTk4Jnhw7fUCf13SGs7ziWaw==
+"@sprucelabs/test@^6.0.91":
+  version "6.0.91"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.91.tgz#17968683b77cf62a5f2dd7ab815337bda5e5a71f"
+  integrity sha512-w1ek2ReYuqO09lbZLV5hYi7X0JzFOne8dFb97NENsp6Yu3vyvi/PQhkG5qatNh2T7H1maiLbpctmRxlb6jqDvQ==
   dependencies:
     "@babel/core" "^7.11.4"
     "@babel/preset-env" "^7.11.0"
@@ -2838,9 +2838,9 @@ data-urls@^2.0.0:
     whatwg-url "^8.0.0"
 
 date-fns@^2.0.1:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.0.tgz#d34f0f5f2fd498c984513042e8f7247ea86c4cb7"
-  integrity sha512-DWTRyfOA85sZ4IiXPHhiRIOs3fW5U6Msrp+gElXARa6EpoQTXPyHQmh7hr+ssw2nx9FtOQWnAMJKgL5vaJqILw==
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
+  integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
 dateformat@^3.0.0, dateformat@^3.0.3:
   version "3.0.3"
