@@ -92,16 +92,16 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 	@test(
 		'schemaId',
 		{ isArray: false, options: { schemaId: { id: 'union-person' } } },
-		'[unionPersonSchema]',
+		'unionPersonSchema',
 		'SpruceSchemas.Core.IUnionPerson',
-		'SpruceSchemas.Core.IUnionPersonSchema[]'
+		'SpruceSchemas.Core.IUnionPersonSchema'
 	)
 	@test(
 		'schemaId isArray',
 		{ isArray: true, options: { schemaId: { id: 'union-person' } } },
-		'[unionPersonSchema]',
+		'unionPersonSchema',
 		'SpruceSchemas.Core.IUnionPerson[]',
-		'SpruceSchemas.Core.IUnionPersonSchema[]'
+		'SpruceSchemas.Core.IUnionPersonSchema'
 	)
 	@test(
 		'schemaIds',
