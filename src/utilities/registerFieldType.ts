@@ -12,6 +12,8 @@ export interface IFieldRegistration {
 	description: string
 	/** How should this field be imported (SpruceSchema) */
 	importAs: string
+	/** The type mapper responsible for handling SchemaValues mapping of schema to interface of values */
+	valueTypeMapper?: string
 }
 
 export interface IFieldRegistrationOptions {
