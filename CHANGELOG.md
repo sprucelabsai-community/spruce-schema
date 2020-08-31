@@ -1,3 +1,10 @@
+# [8.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.44...v8.0.0) (2020-08-31)
+
+
+### Breaking Changes
+
+* schemas no longer force related schemas into array ([cb5deac](https://github.com/sprucelabsai/spruce-schema/commit/cb5deac))
+
 ## [7.2.44](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.43...v7.2.44) (2020-08-31)
 
 ## [7.2.43](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.42...v7.2.43) (2020-08-31)
