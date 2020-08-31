@@ -51,6 +51,7 @@ export function validateFieldRegistration(
 			if (typeof registration[key] !== 'string') {
 				errors.push(`${key}_must_be_string`)
 			} else {
+				//@ts-ignore
 				builtRegistration[key] = registration[key]
 			}
 		})
