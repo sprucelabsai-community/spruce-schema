@@ -4,7 +4,7 @@ import AbstractField from '../../fields/AbstractField'
 
 export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 	@test('Boolean field', BooleanField, undefined)
-	@test('Select field', SelectField, 'SelectValueTypeGenerator')
+	@test('Select field', SelectField, 'SelectValueTypeMapper')
 	@test(
 		'Schema field',
 		SchemaField,
