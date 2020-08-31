@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v8.0.0...v8.1.0) (2020-08-31)
+
+
+### Features
+
+* new type details generator ([2d7546a](https://github.com/sprucelabsai/spruce-schema/commit/2d7546a))
+
 # [8.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.44...v8.0.0) (2020-08-31)
 
 
