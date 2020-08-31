@@ -1,3 +1,33 @@
+## [7.2.44](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.43...v7.2.44) (2020-08-31)
+
+## [7.2.43](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.42...v7.2.43) (2020-08-31)
+
+## [7.2.42](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.41...v7.2.42) (2020-08-30)
+
+## [7.2.41](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.40...v7.2.41) (2020-08-30)
+
+## [7.2.40](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.39...v7.2.40) (2020-08-30)
+
+## [7.2.39](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.38...v7.2.39) (2020-08-30)
+
+## [7.2.38](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.37...v7.2.38) (2020-08-30)
+
+## [7.2.37](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.36...v7.2.37) (2020-08-30)
+
+## [7.2.36](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.35...v7.2.36) (2020-08-30)
+
+## [7.2.35](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.34...v7.2.35) (2020-08-30)
+
+## [7.2.34](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.33...v7.2.34) (2020-08-30)
+
+## [7.2.33](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.32...v7.2.33) (2020-08-29)
+
+## [7.2.32](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.31...v7.2.32) (2020-08-29)
+
+## [7.2.31](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.30...v7.2.31) (2020-08-29)
+
+## [7.2.30](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.29...v7.2.30) (2020-08-29)
+
 ## [7.2.29](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.28...v7.2.29) (2020-08-29)
 
 ## [7.2.28](https://github.com/sprucelabsai/spruce-schema/compare/v7.2.27...v7.2.28) (2020-08-29)
