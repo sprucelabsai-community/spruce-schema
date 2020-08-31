@@ -24,7 +24,8 @@ export default class SelectField<
 
 	public static generateTypeDetails() {
 		return {
-			valueTypeMapper: 'SelectFieldValueTypeMapper',
+			valueTypeMapper:
+				'SelectFieldValueTypeMapper<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>',
 		}
 	}
 
