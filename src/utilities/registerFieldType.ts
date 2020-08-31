@@ -12,6 +12,8 @@ export interface IFieldRegistration {
 	description: string
 	/** How should this field be imported (SpruceSchema) */
 	importAs: string
+	/** The type mapper responsible for handling SchemaValues mapping of schema to interface of values */
+	valueTypeMapper?: string
 }
 
 export interface IFieldRegistrationOptions {
@@ -49,6 +51,7 @@ export function validateFieldRegistration(
 			if (typeof registration[key] !== 'string') {
 				errors.push(`${key}_must_be_string`)
 			} else {
+				//@ts-ignore
 				builtRegistration[key] = registration[key]
 			}
 		})
@@ -74,6 +77,9 @@ export default function registerFieldType(
 		// TODO change this up when typescript supports typing static methods on a class
 		// @ts-ignore
 		description: options.class.description,
+		// TODO change this up when typescript supports typing static methods on a class
+		// @ts-ignore
+		valueTypeMapper: options.class.valueTypeMapper,
 	}
 
 	validateFieldRegistration(registration)
