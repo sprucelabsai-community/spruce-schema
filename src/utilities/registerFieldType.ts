@@ -74,6 +74,9 @@ export default function registerFieldType(
 		// TODO change this up when typescript supports typing static methods on a class
 		// @ts-ignore
 		description: options.class.description,
+		// TODO change this up when typescript supports typing static methods on a class
+		// @ts-ignore
+		valueTypeMapper: options.class.valueTypeMapper,
 	}
 
 	validateFieldRegistration(registration)
