@@ -157,7 +157,10 @@ export default class SchemaField<
 
 		let valueType
 		if (renderAs === TemplateRenderAs.Value) {
-			valueType = '[' + unions.map((item) => item.valueType).join(', ') + ']'
+			valueType =
+				unions.length === 1
+					? unions[0].valueType
+					: '[' + unions.map((item) => item.valueType).join(', ') + ']'
 		} else {
 			valueType = unions.map((item) => item.valueType).join(' | ')
 			valueType = `${
@@ -166,7 +169,8 @@ export default class SchemaField<
 					? `(${valueType})`
 					: `${valueType}`
 			}${
-				definition.isArray || renderAs === TemplateRenderAs.SchemaType
+				(definition.isArray && renderAs === TemplateRenderAs.Type) ||
+				(unions.length > 1 && renderAs === TemplateRenderAs.SchemaType)
 					? '[]'
 					: ''
 			}`
