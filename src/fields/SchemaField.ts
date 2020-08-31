@@ -89,6 +89,13 @@ export default class SchemaField<
 		return ids
 	}
 
+	public static generateTypeDetails() {
+		return {
+			valueTypeMapper:
+				'SchemaFieldValueTypeMapper<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>',
+		}
+	}
+
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
 	): IFieldTemplateDetails {
@@ -177,8 +184,6 @@ export default class SchemaField<
 		}
 
 		return {
-			valueTypeGeneratorType:
-				'SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>',
 			valueType,
 		}
 	}

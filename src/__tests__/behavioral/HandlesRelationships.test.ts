@@ -4,7 +4,7 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField from '../../fields/SchemaField'
 import {
 	ISchemaFieldDefinition,
-	SchemaFieldValueTypeGenerator,
+	SchemaFieldValueTypeMapper,
 } from '../../fields/SchemaField.types'
 import SchemaEntity from '../../SchemaEntity'
 import { SchemaValues } from '../../schemas.static.types'
@@ -107,7 +107,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testingUnionOfSchemas() {
-		const testSingleSchemaField: SchemaFieldValueTypeGenerator<{
+		const testSingleSchemaField: SchemaFieldValueTypeMapper<{
 			type: FieldType.Schema
 			options: {
 				schemas: [ICarSchema, ITruckSchema]
@@ -121,7 +121,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			assert.isEqual(testSingleSchemaField.values.name, 'fast car')
 		}
 
-		type ManyType = SchemaFieldValueTypeGenerator<{
+		type ManyType = SchemaFieldValueTypeMapper<{
 			type: FieldType.Schema
 			isArray: true
 			options: {

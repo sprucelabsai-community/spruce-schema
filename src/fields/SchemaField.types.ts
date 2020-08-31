@@ -37,7 +37,7 @@ export type SchemaFieldUnion<
 		: any
 }
 
-export type SchemaFieldValueTypeGenerator<
+export type SchemaFieldValueTypeMapper<
 	F extends ISchemaFieldDefinition,
 	CreateEntityInstances extends boolean = false
 > = F['options']['schemas'] extends Array<ISchema>
