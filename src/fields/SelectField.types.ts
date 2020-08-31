@@ -12,7 +12,7 @@ export interface ISelectFieldOptions {
 	choices: ISelectFieldDefinitionChoice[]
 }
 
-export type SelectValueTypeGenerator<
+export type SelectFieldValueTypeMapper<
 	F extends ISelectFieldDefinition
 > = F['options']['choices'][number]['value']
 

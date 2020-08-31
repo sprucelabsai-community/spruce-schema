@@ -3,7 +3,7 @@ import FieldType from './fieldTypeEnum'
 import { IField } from '../../../fields/field.static.types'
 
 import { IFileFieldDefinition } from '../../../fields/FileField.types'
-import { ISelectFieldDefinition, SelectValueTypeGenerator } from '../../../fields/SelectField.types'
+import { ISelectFieldDefinition, SelectFieldValueTypeMapper } from '../../../fields/SelectField.types'
 import { ITextFieldDefinition } from '../../../fields/TextField.types'
 import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
 import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
@@ -68,7 +68,7 @@ export interface IFieldDefinitionMap {
 
 export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateEntityInstances extends boolean> {
 	[FieldType.Boolean]: IBooleanFieldDefinition['value']
-	[FieldType.Select]: SelectValueTypeGenerator<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>
+	[FieldType.Select]: SelectFieldValueTypeMapper<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>
 	[FieldType.Duration]: IDurationFieldDefinition['value']
 	[FieldType.Id]: IIdFieldDefinition['value']
 	[FieldType.Text]: ITextFieldDefinition['value']
