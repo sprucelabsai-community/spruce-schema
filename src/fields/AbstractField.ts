@@ -39,6 +39,13 @@ public static get description() {
 		})
 	}
 
+	/** For mapping schemas to types dynamically in schema values */
+	public static generateTypeDetails(): { valueTypeMapper: string | undefined } {
+		return {
+			valueTypeMapper: undefined,
+		}
+	}
+
 	/** Details needed for generating templates */
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<any>

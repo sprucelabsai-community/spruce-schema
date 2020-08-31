@@ -14,7 +14,7 @@ import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
 import { IIdFieldDefinition } from '../../../fields/IdField.types'
 import { INumberFieldDefinition } from '../../../fields/NumberField.types'
 import { IPhoneFieldDefinition } from '../../../fields/PhoneField.types'
-import { ISchemaFieldDefinition, SchemaFieldValueTypeGenerator } from '../../../fields/SchemaField.types'
+import { ISchemaFieldDefinition, SchemaFieldValueTypeMapper } from '../../../fields/SchemaField.types'
 import { IRawFieldDefinition } from '../../../fields/RawField.types'
 
 export type FieldDefinition =
@@ -74,7 +74,7 @@ export interface IFieldValueTypeGeneratorMap<F extends FieldDefinition, CreateEn
 	[FieldType.Text]: ITextFieldDefinition['value']
 	[FieldType.Address]: IAddressFieldDefinition['value']
 	[FieldType.Phone]: IPhoneFieldDefinition['value']
-	[FieldType.Schema]: SchemaFieldValueTypeGenerator<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>
+	[FieldType.Schema]: SchemaFieldValueTypeMapper<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>
 	[FieldType.Raw]: IRawFieldDefinition['value']
 	[FieldType.Number]: INumberFieldDefinition['value']
 	[FieldType.DateTime]: IDateTimeFieldDefinition['value']

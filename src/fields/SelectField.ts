@@ -22,6 +22,12 @@ export default class SelectField<
 		}
 	}
 
+	public static generateTypeDetails() {
+		return {
+			valueTypeMapper: 'SelectValueTypeGenerator',
+		}
+	}
+
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ISelectFieldDefinition>
 	): IFieldTemplateDetails {
@@ -32,7 +38,6 @@ export default class SelectField<
 		} = definition
 
 		return {
-			valueTypeGeneratorType: 'SelectValueTypeGenerator',
 			valueType: `(${choices
 				.map((choice) => `"${choice.value}"`)
 				.join(' | ')})`,
