@@ -7,6 +7,7 @@ type MakeFieldsOptional<F extends ISchemaFields> = {
 
 export default function makeFieldsOptional<
 	F extends ISchemaFields,
+	// eslint-disable-next-line
 	D extends FieldName<F>
 >(fields: F): MakeFieldsOptional<F> {
 	const optionalFields: Record<string, any> = {}

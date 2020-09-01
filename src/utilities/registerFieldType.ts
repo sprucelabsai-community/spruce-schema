@@ -32,6 +32,7 @@ export interface IFieldRegistrationOptions {
 
 export function validateFieldRegistration(
 	registration: IFieldRegistration
+	// eslint-disable-next-line no-undef
 ): asserts registration is IFieldRegistration {
 	const errors: string[] = []
 
