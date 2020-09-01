@@ -18,7 +18,7 @@
     invariant "^2.2.4"
     semver "^5.5.0"
 
-"@babel/core@^7.1.0", "@babel/core@^7.11.4", "@babel/core@^7.7.5":
+"@babel/core@^7.1.0", "@babel/core@^7.11.5", "@babel/core@^7.7.5":
   version "7.11.5"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.11.5.tgz#6ad96e2f71899ea3f9b651f0a911e85205d1ff6d"
   integrity sha512-fsEANVOcZHzrsV6dMVWqpSeXClq3lNbYrfFGme6DE25FQWe7pyeYpXyx9guqUnpy466JLzZ8z4uwSr2iv60V5Q==
@@ -717,7 +717,7 @@
     "@babel/helper-create-regexp-features-plugin" "^7.10.4"
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/preset-env@^7.11.0":
+"@babel/preset-env@^7.11.5":
   version "7.11.5"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.11.5.tgz#18cb4b9379e3e92ffea92c07471a99a2914e4272"
   integrity sha512-kXqmW1jVcnB2cdueV+fyBM8estd5mlNfaQi6lwLgRwCby4edpavgbFhiBNjmWA3JpB/yZGSISa7Srf+TwxDQoA==
@@ -1330,10 +1330,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.161":
-  version "2.2.161"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.161.tgz#4814dfe742503a775f5493eb25236ab006cfe684"
-  integrity sha512-q/M5bfr20fhwyosnAHuXtE2579u1uupwaEm59QYnmEgfmWb3SIn9er9B7izbcMV6Kt4zVx/heN0TyGW6kIxeLQ==
+"@sprucelabs/error@^2.2.162":
+  version "2.2.162"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.162.tgz#2d4ded0de61530d9966a9e385fd2947945f69628"
+  integrity sha512-R/n/XomcJJ9gxRbKFCdLI6LtA+t+9EERbrW3SLkVhRKct0tx3wlCBtOLyikLlj4GNuz30YxyRNxuFwmRg2St3Q==
 
 "@sprucelabs/log@^10.2.177":
   version "10.2.177"
@@ -1350,14 +1350,14 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.91":
-  version "6.0.91"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.91.tgz#17968683b77cf62a5f2dd7ab815337bda5e5a71f"
-  integrity sha512-w1ek2ReYuqO09lbZLV5hYi7X0JzFOne8dFb97NENsp6Yu3vyvi/PQhkG5qatNh2T7H1maiLbpctmRxlb6jqDvQ==
+"@sprucelabs/test@^6.0.92":
+  version "6.0.92"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.92.tgz#dfb8132b7fb9be7833aeed98c369ff9eae3b8ccd"
+  integrity sha512-p6IcPXz58PmywUJtRo1nxWaI6JVSQhWh+g3I92tM9kjobuDDCQb8C6XxBH9J2l9uNnFRIVcgQq6MYX1RMccnJQ==
   dependencies:
-    "@babel/core" "^7.11.4"
-    "@babel/preset-env" "^7.11.0"
-    "@types/jest" "^26.0.10"
+    "@babel/core" "^7.11.5"
+    "@babel/preset-env" "^7.11.5"
+    "@types/jest" "^26.0.12"
     babel-jest "^26.3.0"
     deep-equal "^2.0.3"
     jest "^26.4.2"
@@ -1459,7 +1459,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@26.x", "@types/jest@^26.0.10":
+"@types/jest@26.x", "@types/jest@^26.0.12":
   version "26.0.12"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.12.tgz#0f20fef9e74f55a312530284e6178f3b3254f501"
   integrity sha512-vZOFjm562IPb1EmaKxMjdcouxVb1l3NqoUH4XC4tDQ2R/AWde+0HXBUhyfc6L+7vc3mJ393U+5vr3nH2CLSVVg==
