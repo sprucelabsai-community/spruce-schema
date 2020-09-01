@@ -14,6 +14,7 @@ export default function validateSchemaValues<
 	schema: S,
 	values: V,
 	options?: ISchemaValidateOptions<S>
+	// eslint-disable-next-line no-undef
 ): asserts values is V & SchemaValues<S> {
 	SchemaEntity.validateSchema(schema)
 
