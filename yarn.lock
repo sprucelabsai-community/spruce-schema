@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.175":
-  version "2.2.175"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.175.tgz#20ab17728d4a0dbbe80d6ca21537318adcb09a9a"
-  integrity sha512-wrV+8LmYxnyZ4K3xKBglpbHnXbTcnQ7suCKx8jtTr4jMRK45T/pkeo4KXHeU3QRcV2ELtHKgxExKV8id3A0lqQ==
+"@sprucelabs/error@^2.2.176":
+  version "2.2.176"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.176.tgz#c4e3204db1f4e3d36a2bf17036f83aee38f3904c"
+  integrity sha512-ttbBk6c0OEO7P9gxyuIumII+gn1EtFWLOmEI7POMJgXQsV+uNcoKmmmrvsAK5c4sOiTrchzZONjxET9Q5XvsBw==
 
-"@sprucelabs/log@^10.2.182":
-  version "10.2.182"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.182.tgz#5a3ed9098fe2dbcad9593ea7d60ea32784d3916b"
-  integrity sha512-VgkQLtoRy/C57nQRflLaC6YwZWqj1nWzriI9jXL/OJ5h2KNG5yzF4o4g03o8fT4bQLJLzEpO8jUAdckV6L1OjQ==
+"@sprucelabs/log@^10.2.183":
+  version "10.2.183"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.183.tgz#fbb81aeca508db8453ea193e3f8b29c106bc2f7b"
+  integrity sha512-NP6W5xcrCPTNqiNUxvmgiZ0+PRwv8LoJ5U8ykYUeg51VQgHHSnCkqTDPiKBDc+ATFU8aBdmsrpHnPRacTX9Whg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.101":
-  version "6.0.101"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.101.tgz#3f58573aa68043ec0751d4664ee2b34ff3a8c77e"
-  integrity sha512-Xs9AVOlDQVxEIahgjQ5gPkRm7GLzDEGIVCvlydDMLzcEw8fdKc8V1Mo8faMgdKCCKTOAzzxNyEutJJoGceeXTQ==
+"@sprucelabs/test@^6.0.102":
+  version "6.0.102"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.102.tgz#374995d540b8477d894accbd5204b5ac2b1f2d5e"
+  integrity sha512-L4yq836T7T28EVLfkOKnLcFW5JB5uu+3troSsXlgDTUaKaEPPVNDEyW9mPtMgbLQe2fUrktsHrN5gwLS32pc9w==
   dependencies:
     "@babel/core" "^7.11.5"
     "@babel/preset-env" "^7.11.5"
@@ -3326,10 +3326,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.27:
-  version "10.9.27"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.27.tgz#e72ec48006453fc4217ad3e49c3aae36fa571777"
-  integrity sha512-nRS8CGa48FMWM2Lyc4QSZLQDw6q5rXkWUIJQ+IZTeAu4FY3jCvYi67I57S2oWemKzaEoSJ+mm0sWZeWsvCCiFA==
+eslint-config-spruce@^10.9.28:
+  version "10.9.28"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.28.tgz#1745b317554d03ad467149cc8fcaa05014d0f0ef"
+  integrity sha512-i0xupBPEDfghGp1PGYyNahWYavNw5RaT1SRmYZkt2HfS2DPz3zMUNpGXEV7UfRi18gfYUQfxtRiljTLrsa5YCw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.0.1"
     "@typescript-eslint/parser" "^4.0.1"
@@ -3339,7 +3339,7 @@ eslint-config-spruce@^10.9.27:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.6"
-    eslint-plugin-spruce "^10.9.27"
+    eslint-plugin-spruce "^10.9.28"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3417,10 +3417,10 @@ eslint-plugin-react@^7.20.6:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.27:
-  version "10.9.27"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.27.tgz#efab536e9e760f3b598e6435ee60925cecb17086"
-  integrity sha512-xaCuoV/3SmoodJB9KDhVeC4SuGRKdc5xfYc0OjyPUIlLKLwvhoY5YWmc/l/h4WGTkf0VQjfw8EMD6xll3nYNMA==
+eslint-plugin-spruce@^10.9.28:
+  version "10.9.28"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.28.tgz#f6891202d02676dd9c3243f286bf917b4cdebf0f"
+  integrity sha512-BlMseds98lRshKnYIJYxToOnbMcYxPCcnf+vauMXxYIHsASlNeUWnhQeyGvG3C/hVFa3RQHC3vp/C0l5H7PTrQ==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -5351,9 +5351,9 @@ json-parse-better-errors@^1.0.0, json-parse-better-errors@^1.0.1, json-parse-bet
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
 json-parse-even-better-errors@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.0.tgz#371873c5ffa44304a6ba12419bcfa95f404ae081"
-  integrity sha512-o3aP+RsWDJZayj1SbHNQAI8x0v3T3SKiGoZlNYfbUP1S3omJQ6i9CnqADqkSPaOAxwua4/1YWx5CM7oiChJt2Q==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz#7c47805a94319928e05777405dc12e1f7a4ee02d"
+  integrity sha512-xyFwyhro/JEof6Ghe2iz2NcXoj2sloNsWr/XsERDK/oiPCfaNhl5ONfp+jQdAZRQQ0IJWNzH9zIZF7li91kh2w==
 
 json-schema-traverse@^0.4.1:
   version "0.4.1"
