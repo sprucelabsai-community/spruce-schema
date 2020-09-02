@@ -1,3 +1,10 @@
+# [9.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v8.1.24...v9.0.0) (2020-09-02)
+
+
+### Breaking Changes
+
+* dynamic field signature update ([6c3b6f4](https://github.com/sprucelabsai/spruce-schema/commit/6c3b6f4))
+
 ## [8.1.24](https://github.com/sprucelabsai/spruce-schema/compare/v8.1.23...v8.1.24) (2020-09-02)
 
 ## [8.1.23](https://github.com/sprucelabsai/spruce-schema/compare/v8.1.22...v8.1.23) (2020-09-02)
