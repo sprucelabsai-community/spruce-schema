@@ -59,7 +59,12 @@ export interface ISchema {
 	/** A brief human readable explanation of this schema */
 	description?: string
 	/** How we type dynamic keys on this schema, if defined you cannot define fields */
-	dynamicKeySignature?: FieldDefinition & { key: string }
+	dynamicFieldSignature?: FieldDefinition & {
+		/** How the key is named in the generated interface */
+		keyName: string
+		/** Defaults to string */
+		keyTypeLiteral?: string
+	}
 	/** All the fields, keyed by name, required if no dynamicKeySignature is set */
 	fields?: ISchemaFields
 }
