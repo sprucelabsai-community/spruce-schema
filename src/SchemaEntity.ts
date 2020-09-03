@@ -170,7 +170,7 @@ export default class SchemaEntity<S extends ISchema>
 				errors.push('name_not_string')
 			}
 
-			if (!schema.fields && !schema.dynamicKeySignature) {
+			if (!schema.fields && !schema.dynamicFieldSignature) {
 				errors.push('needs_fields_or_dynamic_key_signature')
 			}
 		}

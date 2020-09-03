@@ -5,7 +5,7 @@ import {
 	SchemaPartialValues,
 } from '../schemas.static.types'
 
-export default function isSchemaValid<S extends ISchema>(
+export default function areSchemaValuesValid<S extends ISchema>(
 	definition: S,
 	values: SchemaPartialValues<S>,
 	options?: ISchemaValidateOptions<S>
