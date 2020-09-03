@@ -65,7 +65,7 @@ export interface ISchema {
 		/** Defaults to string */
 		keyTypeLiteral?: string
 	}
-	/** All the fields, keyed by name, required if no dynamicKeySignature is set */
+	/** All the fields, keyed by name, required if no dynamicFieldSignature is set */
 	fields?: ISchemaFields
 }
 

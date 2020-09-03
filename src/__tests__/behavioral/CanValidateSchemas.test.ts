@@ -1,10 +1,11 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import SchemaEntity from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
+import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
-import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
 
 const profileImagesSchema = buildSchema({
@@ -32,6 +33,15 @@ const profileImagesSchema = buildSchema({
 			type: FieldType.Text,
 			isRequired: true,
 		},
+	},
+})
+
+const dynamicSchema = buildSchema({
+	id: 'dynamicSchema',
+	name: 'dynamic schema',
+	dynamicFieldSignature: {
+		type: FieldType.Text,
+		keyName: 'anything',
 	},
 })
 
@@ -135,13 +145,19 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async canCheckValidityWithoutThrowing() {
-		const isValid = isSchemaValid(this.personSchema, {})
+		const isValid = areSchemaValuesValid(this.personSchema, {})
 		assert.isFalse(isValid)
 	}
 
 	@test()
+	protected static async canCheckValidityOnDynamicFieldsWithoutThrowing() {
+		const isValid = SchemaEntity.isSchemaValid(dynamicSchema)
+		assert.isTrue(isValid)
+	}
+
+	@test()
 	protected static async canCheckValidityOnSpecificFields() {
-		const isValid = isSchemaValid(
+		const isValid = areSchemaValuesValid(
 			this.personSchema,
 			{ firstName: 'test' },
 			{ fields: ['firstName'] }
@@ -151,7 +167,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async failsOnSpecificFields() {
-		const isValid = isSchemaValid(
+		const isValid = areSchemaValuesValid(
 			this.personSchema,
 			{ firstName: 'test' },
 			{ fields: ['lastName'] }
