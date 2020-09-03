@@ -140,6 +140,7 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	/** Tells you if a schema schema is valid */
+	// eslint-disable-next-line no-undef
 	public static isSchemaValid(definition: unknown): definition is ISchema {
 		try {
 			SchemaEntity.validateSchema(definition)
@@ -150,6 +151,7 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	/** Throws a field validation error */
+	// eslint-disable-next-line no-undef
 	public static validateSchema(schema: any): asserts schema is ISchema {
 		const errors: string[] = []
 
