@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.193":
-  version "2.2.193"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.193.tgz#1a5e517348af16dbaa9dc70568778b7ed432c720"
-  integrity sha512-fNVIOXQl2nprlUuiQdB720hyn9FYf93CkOma5EXAmfLX3Xol8hzBFnXzWhVIGU5tKj3so/WgTIblM9Zv857aTQ==
+"@sprucelabs/error@^2.2.194":
+  version "2.2.194"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.194.tgz#91002a4501958248ac7a6de5d3f342fada4cc4de"
+  integrity sha512-vDYtSsuXrnxgXfiQwwsfUhZ0CD07A/d21oFUG8oEpiYIVocituFFkOQL3nVXEzdJhD5kkSmVIO3ZlOcvQKAMww==
 
-"@sprucelabs/log@^10.2.188":
-  version "10.2.188"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.188.tgz#e7c9848a7a4d3a5f38203b5ab97d91438c39e49c"
-  integrity sha512-oznAk/Vz94QoHOhzGGOHtLIp1aosooymu1uYYLcm/diwYpTisErnglIghtE7vvBJg7jpkuaUObEh9vfBIWn8JA==
+"@sprucelabs/log@^10.2.189":
+  version "10.2.189"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.189.tgz#d03b0e21609caf9f1f386d0d226a929bb4ac95e2"
+  integrity sha512-pzLQmiIi4q0IJPfks+A6+gAXT0DuJJrebzSSvpuq+l8Jm7rr7iQxxDR6JTd9d4nix4Zoqd+82q/NbRYbhNCo7g==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.112":
-  version "6.0.112"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.112.tgz#084ecd248a948861cb9a687a296ec312acefb0ec"
-  integrity sha512-SW9Zv+hbqrU5Am1LCZkw4BhV4xMGmpN88YuoVDghb9UWK750D9LX4nyDVHVSox8tiVLHUi6ymqlH5159dWJtkQ==
+"@sprucelabs/test@^6.0.113":
+  version "6.0.113"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.113.tgz#2c004565f3f9b512800a4191d38dfdbfc94646be"
+  integrity sha512-YgiG5U+YlGtonznHWOpqYrxp727vsKQmUpbA2cxdBe57fRDIZtR9Wxwai3UYzuJNdYFUm1IR+xu7oN8sREQbgQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2314,9 +2314,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001111:
-  version "1.0.30001123"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001123.tgz#7b981d81382ab2c8fd062f3e6439215e8c503c22"
-  integrity sha512-03dJDoa4YC4332jq0rqwiM+Hw6tA5RJtrnZKvOQy7ASoIUv8CinkcmGhYpCvCjedvkBQrrKnkcELxrUSW/XwNQ==
+  version "1.0.30001124"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001124.tgz#5d9998190258e11630d674fc50ea8e579ae0ced2"
+  integrity sha512-zQW8V3CdND7GHRH6rxm6s59Ww4g/qGWTheoboW9nfeMg7sUoopIfKCcNZUjwYRCOrvereh3kwDpZj4VLQ7zGtA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
