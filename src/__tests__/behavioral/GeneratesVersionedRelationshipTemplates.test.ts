@@ -85,6 +85,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.personSchema.id,
 			schema: GeneratesRelationshipTemplatesTest.personSchema,
+			destinationDir: '#spruce/schemas',
 		},
 		{
 			namePascal: 'Wrench',
@@ -93,6 +94,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.wrenchV1Schema.id,
 			schema: GeneratesRelationshipTemplatesTest.wrenchV1Schema,
+			destinationDir: '#spruce/schemas',
 		},
 		{
 			namePascal: 'Wrench',
@@ -101,6 +103,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.wrenchV2Schema.id,
 			schema: GeneratesRelationshipTemplatesTest.wrenchV2Schema,
+			destinationDir: '#spruce/schemas',
 		},
 		{
 			namePascal: 'screwdriver',
@@ -109,6 +112,7 @@ export default class GeneratesRelationshipTemplatesTest extends BaseTest {
 			namespace: 'Core',
 			id: GeneratesRelationshipTemplatesTest.screwdriverSchema.id,
 			schema: GeneratesRelationshipTemplatesTest.screwdriverSchema,
+			destinationDir: '#spruce/schemas',
 		},
 	]
 
