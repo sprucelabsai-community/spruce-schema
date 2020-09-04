@@ -53,6 +53,8 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 	schema: ISchema
 	/** This schema was defined in another schema */
 	isNested?: boolean
+	/** Where this schema is going to be written (so other schemas can import it) */
+	destinationDir: string
 }
 
 /** How a field is represented in the template */
