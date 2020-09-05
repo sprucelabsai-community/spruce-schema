@@ -32,6 +32,7 @@ export default class MakingFieldsOptionalTest extends AbstractSchemaTest {
 		assert.isEqualDeep(optionalPerson, {
 			id: 'person-with-all-required',
 			name: 'Person (all required fields)',
+			builder: 'buildSchema',
 			fields: {
 				firstName: {
 					type: FieldType.Text,
