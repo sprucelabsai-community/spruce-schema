@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.199":
-  version "2.2.199"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.199.tgz#17d8117dc3d7b37a4f3e609ccb4c90a0b6e734db"
-  integrity sha512-721r8jYApfIuuJIA2dSjRTsi3UBRPHTyasu63cTR17noLDGdeIMPj+CjvmsRnXiLUlBkOqJQO28OW2WLQRfANQ==
+"@sprucelabs/error@^2.2.200":
+  version "2.2.200"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.200.tgz#1812ac1544ffb96de8b8d84b730097556ff16ee8"
+  integrity sha512-FHKnw363XQKAyo+hzZlx56JV3uilMR3wkQjjrhoGVGJCs9s5dgopst/Ey2YQSc/HocjFM9UKtG0aUSnUH8+biw==
 
-"@sprucelabs/log@^10.2.190":
-  version "10.2.190"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.190.tgz#0542453cc3940732671d7b73e6b17266cab8a9a6"
-  integrity sha512-ueH3mSt2q0AmEXKtr0doB8T6qVfU58Sa3j0lqZENCbvSOoHcsM/bkSeI51uURDGhKLhmcMBhN86scGNLQcIxUQ==
+"@sprucelabs/log@^10.2.191":
+  version "10.2.191"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.191.tgz#57304c5d82c681613843ff8f621905e6dc66a32d"
+  integrity sha512-p3pnbArY3+m+WmiE2sScgw+/zA+dyqQgf3ybxzqfWbZj/7N30Gr6yiF0TvkIxC+O3KcbuhfyxIDasxC3ezVOIQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.115":
-  version "6.0.115"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.115.tgz#297e92ef42d168184b8a66d07447994c4ea54fe7"
-  integrity sha512-5M7Hu2zaV61+jS9Ygof3BkD2wiE2Y3Z5qn8gw9TWBq1iuHmGmekHouSfjuc7bDV+lI2dJfq+Z9GK0cxP6piIlA==
+"@sprucelabs/test@^6.0.116":
+  version "6.0.116"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.116.tgz#e84aa4a64b85a57956ea9d5476207e237f69377f"
+  integrity sha512-/s0TPEtCJhREQwapzFQ/97JTfyUijkXAutFM/apps2/+WKnRVSxs4Z3qTD4BZMD+v8vwKjfDbRVf96ZOkOkHsQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3326,10 +3326,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.32:
-  version "10.9.32"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.32.tgz#324c920a5fb4c558ada4df8e36dad80ec6a6d881"
-  integrity sha512-2uUT0NyGXkPJoLAhR+QzcFHon0jVIa81EWZMuwfGYLKTcdMsLivo5m9HmqXkH+nuYeC6HETTyH31NYRaJZAo9w==
+eslint-config-spruce@^10.9.33:
+  version "10.9.33"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.33.tgz#9b40b049f5bdf9a75003486042397783a7aecb30"
+  integrity sha512-IGwaYHxDiQsw9izL4IDHkyWdlNE87No74VdEqLNr80mE3XaUqx5nnObRWnkO7r5wj/xXMLCcQpMH7NCd13Yc/A==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.0.1"
     "@typescript-eslint/parser" "^4.0.1"
@@ -3339,7 +3339,7 @@ eslint-config-spruce@^10.9.32:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.6"
-    eslint-plugin-spruce "^10.9.32"
+    eslint-plugin-spruce "^10.9.33"
 
 eslint-import-resolver-node@^0.3.3:
   version "0.3.4"
@@ -3417,10 +3417,10 @@ eslint-plugin-react@^7.20.6:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.32:
-  version "10.9.32"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.32.tgz#9f5f32978a5769e9374151e0b2f9c14ea62558b6"
-  integrity sha512-IKNHNtC5a0XnZm/HgR8oTsA3W+CEpz19BI6EhHrUjMIWFeEbhmJaopeUbO8JPFc77LFkubz+fvAqX0BigDV+ag==
+eslint-plugin-spruce@^10.9.33:
+  version "10.9.33"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.33.tgz#853a23e80c2e9a0c7c302faa129f38d5a8595175"
+  integrity sha512-/bDIuig3NMxsA+asyJeV1xJCK4Wm9vNQ9kZcfYsuT+gwzhU+XxaaD1UtuvS6s/+jT4pPWtejukTZsdC91XBrvQ==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -6267,9 +6267,9 @@ node-fetch-npm@^2.0.2:
     safe-buffer "^5.1.1"
 
 node-fetch@^2.3.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
-  integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-gyp@^5.0.2, node-gyp@^5.1.0:
   version "5.1.1"
