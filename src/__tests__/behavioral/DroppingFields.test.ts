@@ -37,6 +37,7 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 		assert.isEqualDeep(optionalPerson, {
 			id: 'person-with-all-fields',
 			name: 'Person (all fields)',
+			builder: 'buildSchema',
 			fields: {
 				lastName: {
 					type: FieldType.Text,
@@ -54,6 +55,7 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 			{
 				id: string
 				name: string
+				builder: 'buildSchema'
 				fields: {
 					lastName: {
 						type: FieldType.Text
@@ -82,6 +84,7 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 			{
 				id: string
 				name: string
+				builder: 'buildSchema'
 				fields: {
 					firstName: {
 						type: FieldType.Text
@@ -98,6 +101,7 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 		assert.isEqualDeep(publicPerson, {
 			id: 'person-with-all-fields',
 			name: 'Person (all fields)',
+			builder: 'buildSchema',
 			fields: {
 				firstName: {
 					type: FieldType.Text,

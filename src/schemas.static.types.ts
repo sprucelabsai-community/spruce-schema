@@ -54,6 +54,8 @@ export interface ISchema {
 	id: string
 	/** The name of this schema a human will see */
 	name: string
+	/** The builder used to make this schema */
+	readonly builder?: string
 	/** A version in any form you want, we use YYYY-MM-DD */
 	version?: string
 	/** A brief human readable explanation of this schema */
