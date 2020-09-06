@@ -1336,10 +1336,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.206":
-  version "2.2.206"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.206.tgz#ae2af76bbeee774b597c33a2bdee8aab866e1596"
-  integrity sha512-tq+DSPt2d6m4a7rvT0rloKr/eyJ9GRmyWcgoLW6Fw0cRM1sCPE1RyeqtGy+zuw2baUzbQRj5/+Q1BdTv6N82kA==
+"@sprucelabs/error@^2.2.207":
+  version "2.2.207"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.207.tgz#890910702a90dd50ff2a50837f06a0334c8b2ca3"
+  integrity sha512-qb1GY2Iy9RyyD//wz6we1VpyfOvDdvmJ3zGmnAz0sj1zSmp7h878k/h9161F/1GAU7xF4rNgScNPLX9TdrRaHA==
 
 "@sprucelabs/log@^10.2.195":
   version "10.2.195"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.120":
-  version "6.0.120"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.120.tgz#f318bfef47e78cf76566f3fe18d15e78e3697952"
-  integrity sha512-s+gGBXjHf3RFUL7cJ54Sfx+lCC+jVupFGVPONY2sdY1iomyVz6uJr/FduEuTKQeqmEi5kYqZS0pR8LiX62cVLA==
+"@sprucelabs/test@^6.0.121":
+  version "6.0.121"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.121.tgz#0f02e3f23ef11cff419a23c7528e5e3b9144beff"
+  integrity sha512-fLy9YXCvU/Od0NbOIx/bUhYCkxUlsDhgOahdr8lSdh+wN4/Gd5ThuvVj7RQG30p2xhDs57h8SP9CG+Ys/BQDNA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -9041,9 +9041,9 @@ whatwg-mimetype@^2.3.0:
   integrity sha512-M4yMwr6mAnQz76TbJm914+gPpB/nCwvZbJU28cUD6dR004SAxDLOOSUaB1JDRqLtaOV/vi0IC5lEAGFgrjGv/g==
 
 whatwg-url@^8.0.0:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-8.2.1.tgz#ed73417230784b281fb2a32c3c501738b46167c3"
-  integrity sha512-ZmVCr6nfBeaMxEHALLEGy0LszYjpJqf6PVNQUQ1qd9Et+q7Jpygd4rGGDXgHjD8e99yLFseD69msHDM4YwPZ4A==
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-8.2.2.tgz#85e7f9795108b53d554cec640b2e8aee2a0d4bfd"
+  integrity sha512-PcVnO6NiewhkmzV0qn7A+UZ9Xx4maNTI+O+TShmfE4pqjoCMwUMjkvoNhNHPTvgR7QH9Xt3R13iHuWy2sToFxQ==
   dependencies:
     lodash.sortby "^4.7.0"
     tr46 "^2.0.2"
