@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.201":
-  version "2.2.201"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.201.tgz#a7f7f0afad2fd0def1a6cee91210045818d76d88"
-  integrity sha512-mygnQry1b+z9fn6rOGyPAv9/Nq7esV3XTq1JtUvBM8cyDZYJBkhm7tSTxg+kKY3KhSrq68agCbHjK6zG/scAoQ==
+"@sprucelabs/error@^2.2.202":
+  version "2.2.202"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.202.tgz#d355c170ddb36c7e7470f6017e8f4c206ba8a37d"
+  integrity sha512-911VfYoq+6MZ+WzmliBRYraA0MeGvE0jKuo3NEKVKln7wBKeZ0WtA8qD2ZCryEqC11askcXqs6NEwmJZ4zMPDw==
 
-"@sprucelabs/log@^10.2.191":
-  version "10.2.191"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.191.tgz#57304c5d82c681613843ff8f621905e6dc66a32d"
-  integrity sha512-p3pnbArY3+m+WmiE2sScgw+/zA+dyqQgf3ybxzqfWbZj/7N30Gr6yiF0TvkIxC+O3KcbuhfyxIDasxC3ezVOIQ==
+"@sprucelabs/log@^10.2.192":
+  version "10.2.192"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.192.tgz#84547476992d78f4efb23e2ac93d2c8ab8c83e42"
+  integrity sha512-NHacib+llmYvpBfBnWSdAczwIyKcYIjMnb7d7Hu5iqFGbewG+6RlRRFCWfrLGA+WlJUrpB1eTfd0iSlAJcqcbg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.116":
-  version "6.0.116"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.116.tgz#e84aa4a64b85a57956ea9d5476207e237f69377f"
-  integrity sha512-/s0TPEtCJhREQwapzFQ/97JTfyUijkXAutFM/apps2/+WKnRVSxs4Z3qTD4BZMD+v8vwKjfDbRVf96ZOkOkHsQ==
+"@sprucelabs/test@^6.0.117":
+  version "6.0.117"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.117.tgz#4a55bb609b695895d87dc5c92cb25354b2726bed"
+  integrity sha512-oYPVxJNfwYtsfOpDhc2YFkoIGaOZM7HhhE9qkCFc//4IZ+t8Wx4xHZeq818RgebVoJeampkcDaBZVtJx5Rckwg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3099,9 +3099,9 @@ dot-prop@^4.2.1:
     is-obj "^1.0.0"
 
 dot-prop@^5.1.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-5.2.0.tgz#c34ecc29556dc45f1f4c22697b6f4904e0cc4fcb"
-  integrity sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-5.3.0.tgz#90ccce708cd9cd82cc4dc8c3ddd9abdd55b20e88"
+  integrity sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==
   dependencies:
     is-obj "^2.0.0"
 
