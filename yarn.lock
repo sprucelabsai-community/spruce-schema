@@ -1266,9 +1266,9 @@
     p-reduce "^2.0.0"
 
 "@semantic-release/github@^7.0.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-7.1.0.tgz#913ec334d1243425daec53d362168a14b21371b7"
-  integrity sha512-66ctLwe3gvbTwDwIOYyclUbzEgm5l9EU61lunXu0yNHvHlU4DSKB26Wfh0laGa6w6k9ltmgXvESMlnJ/7Lb1xw==
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-7.1.1.tgz#e998aa9a9cd770838d9f27c64f060c2b686b9d95"
+  integrity sha512-w8CLCvGVKNe2FPOYQ68OFxFVNNha7YRzptnwTZYdjXYtgTDKw0XVfnMSd9NlJeQPYGfQmIhIVPNBU/cA6zUY0A==
   dependencies:
     "@octokit/rest" "^17.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -1336,10 +1336,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.211":
-  version "2.2.211"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.211.tgz#6a8b1eee6270e5b3067230200831956b5faf5957"
-  integrity sha512-ekY89rhg8qha9/ZBItFDHLzj01n6rMUDonqd0PLiLksvQFC04en/S6lScwp4YEhAX6XjYyvau4WD8AVZmT+ksA==
+"@sprucelabs/error@^2.2.212":
+  version "2.2.212"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.212.tgz#60b13fa99e8fa8d70f047690cc417b3c8284e6a6"
+  integrity sha512-MlSueBxK7stxcSHmVi58fjFLLWzJ589S1OwQo2q0Y4MZA2++Txo9w9+d15XqoIM8eI/CCdLDE9WGEvxuwuKUvw==
 
 "@sprucelabs/log@^10.2.196":
   version "10.2.196"
