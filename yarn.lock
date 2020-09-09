@@ -1336,10 +1336,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.218":
-  version "2.2.218"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.218.tgz#4190331919dbae2edef89d04e1b16973a69d26c6"
-  integrity sha512-ZHlsmRxs2ppRHH/hCQiTYMGXVHMMkTBzsYsL7gy/CnBXn1GiYUxmfggFp93mIHMBXtWiWP/DUELStLCRWZuUUQ==
+"@sprucelabs/error@^2.2.219":
+  version "2.2.219"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.219.tgz#0051605d284f456d79cfeff2308454765cd114b5"
+  integrity sha512-u0zk7F685/i1oUqzjWwPlnoffYFQsebea9vvgCxQ6jD+OS9yknxDAVdj0rwmThEoNkHPMXLiHxgzbMsGi3RAmw==
 
 "@sprucelabs/log@^10.2.197":
   version "10.2.197"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.124":
-  version "6.0.124"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.124.tgz#4032e6d64093b9038aa7deccb17278b0259ff8da"
-  integrity sha512-uHOFfIDILQkJbBbu42E73+sRsmKuPVG8qy2o8xeOIhZ2YG0a/npPYyuP2P7j8BZJEWWPC2KnuCUzItyhC+kKKw==
+"@sprucelabs/test@^6.0.125":
+  version "6.0.125"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.125.tgz#84c694de352eab4357f41ccd119e3facefaa475f"
+  integrity sha512-LDX102KyjXgJ5mjI6OY0+cJzscQgC2B32XsslMX7j8YzEaNqYeG5JmgdPOFfN1J9buzuEg4dOG6mUwSAjKcbeg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2314,9 +2314,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001124:
-  version "1.0.30001124"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001124.tgz#5d9998190258e11630d674fc50ea8e579ae0ced2"
-  integrity sha512-zQW8V3CdND7GHRH6rxm6s59Ww4g/qGWTheoboW9nfeMg7sUoopIfKCcNZUjwYRCOrvereh3kwDpZj4VLQ7zGtA==
+  version "1.0.30001125"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001125.tgz#2a1a51ee045a0a2207474b086f628c34725e997b"
+  integrity sha512-9f+r7BW8Qli917mU3j0fUaTweT3f3vnX/Lcs+1C73V+RADmFme+Ih0Br8vONQi3X0lseOe6ZHfsZLCA8MSjxUA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
