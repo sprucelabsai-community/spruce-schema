@@ -2,7 +2,7 @@ import { PhoneField } from '../fields'
 import registerFieldType from '../utilities/registerFieldType'
 
 export default registerFieldType({
-	type: 'phone',
+	type: 'Phone',
 	class: PhoneField,
 	package: '@sprucelabs/schema',
 	importAs: 'SpruceSchema',
