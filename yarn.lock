@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.223":
-  version "2.2.223"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.223.tgz#6e808390e59a4ea000ef1cd370e7241ef02aa478"
-  integrity sha512-WRBaPSO44+Gdwp3GZXUHxdW7SeD7wBtnQWCZyMl32b8j3+4ymvu1BOkT4GDQ7pH4tHR8Me0UY2fv4y9ONBHh2g==
+"@sprucelabs/error@^2.2.224":
+  version "2.2.224"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.224.tgz#3590bcd154f5464edffaef4bf44441c0a6490878"
+  integrity sha512-6NZlwi/83QgZSAJtGjykWd58cobOZ23/poTcVQJq38/QQnO15+GBEhqnnf/J9yVD9sMBt/srUlEAF9dZtxkdWA==
 
-"@sprucelabs/log@^10.2.199":
-  version "10.2.199"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.199.tgz#43610342dbbdd2ed43fe1162802feb9ac47e0282"
-  integrity sha512-M3EEi7nbtdgLCT87oSJCJLgjbmR3yQ73FgEMR8jGJViQ0JqTptNJg3lw1seUiem8t+3+bWYnTRCF2IijMQxUfA==
+"@sprucelabs/log@^10.2.200":
+  version "10.2.200"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.200.tgz#da920bf16f67e8521eb9add88d941f4ad127474a"
+  integrity sha512-Ytd8CtZD4ZqVmTcC+fs2Bx5GlG75+vwjBhUwNJyOWROcpHb/7ST6kaylSMhFuVLgwiRMv26arJqXxAbP8fRH+A==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.127":
-  version "6.0.127"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.127.tgz#5fabe11befa960f3a268d52ea8d5953f57bfa761"
-  integrity sha512-ywIsLVmq04w//PzT77IcTYq5InAPylA2ThycHPFXfoB5q+EiYVtmB2wra9Q7y3Fs6jTZbpRlVv2TnRCq/Y7FYw==
+"@sprucelabs/test@^6.0.128":
+  version "6.0.128"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.128.tgz#c6566d273b7bd664e4e7f35760a61a0bb5c1b867"
+  integrity sha512-0ObUk18PBBz+z1jcgMxJtugl9++xc8Rag6n7sOxCxl4Oya9A8RYd8AJZN7twt7cBGybKV3CYmDAP5snMM4KMxQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -4497,9 +4497,9 @@ is-buffer@^1.1.5:
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
 
 is-callable@^1.1.4, is-callable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.0.tgz#83336560b54a38e35e3a2df7afd0454d691468bb"
-  integrity sha512-pyVD9AaGLxtg6srb2Ng6ynWJqkHU9bEM087AKck0w8QwDarTfNcpIYoU8x8Hv2Icm8u6kFJM18Dag8lyqGkviw==
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.1.tgz#4d1e21a4f437509d25ce55f8184350771421c96d"
+  integrity sha512-wliAfSzx6V+6WfMOmus1xy0XvSgf/dlStkvTfq7F0g4bOIW0PSUbnyse3NhDwdyYS1ozfUtAAySqTws3z9Eqgg==
 
 is-ci@^1.0.10:
   version "1.2.1"
