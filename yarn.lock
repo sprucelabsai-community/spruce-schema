@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.216":
-  version "2.2.216"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.216.tgz#b5758e65af51fb1c04e8e6758e672eb794b8807f"
-  integrity sha512-FRHTdEz9d4eNhU9oLB8Ao1ccsbPc+Q1T74wJrcAmSsXZqtVww5XjmptTgEgyx0wGeE3lA0kbeOQ1hz/Ub896wA==
+"@sprucelabs/error@^2.2.217":
+  version "2.2.217"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.217.tgz#939ae4b95f8142cbf735e979bae30caf42e8ffa3"
+  integrity sha512-A0Ri6sLIlCGOMGkq/WKLccm47gBcIWbw2sUqje2tfut4FCZe7SrzODSLXA1Ppuqof9JL2caFogrLqbSecUytkQ==
 
-"@sprucelabs/log@^10.2.196":
-  version "10.2.196"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.196.tgz#88ade4dda34bcd79a17056e05c61fd16dd410667"
-  integrity sha512-0OHOW80BKFd6oyIFKmHdS6NE99Af/opAo4HWsYoNusZz/0xdmOB8Bn+ffGq+n11p5Qr6nVGhY+MiV4Trw8LoNA==
+"@sprucelabs/log@^10.2.197":
+  version "10.2.197"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.197.tgz#ffeb8f8660c6b7e293692b0c6e2ea06e29d74d94"
+  integrity sha512-GJm+Fwd4Ka2jvMFDRYV7RumHQ8WygGnzN2O2UMYMWl46Fe1IzBMa+ke1y4hsl3euQs6hCFEre0ElZsTXlW9ThQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.122":
-  version "6.0.122"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.122.tgz#aef88e2af6c3d6be3fe2fa8f3027c114d8373c7d"
-  integrity sha512-HikpEz77OleFM8n2Y20/BBY5idE3Zpckx/4hLhFaby1kQwBUjbeqjDQlZXsRz4Q9zD469ynCxoLvHOzgQR2wDg==
+"@sprucelabs/test@^6.0.124":
+  version "6.0.124"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.124.tgz#4032e6d64093b9038aa7deccb17278b0259ff8da"
+  integrity sha512-uHOFfIDILQkJbBbu42E73+sRsmKuPVG8qy2o8xeOIhZ2YG0a/npPYyuP2P7j8BZJEWWPC2KnuCUzItyhC+kKKw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -6311,9 +6311,9 @@ node-notifier@^8.0.0:
     which "^2.0.2"
 
 node-releases@^1.1.60:
-  version "1.1.60"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.60.tgz#6948bdfce8286f0b5d0e5a88e8384e954dfe7084"
-  integrity sha512-gsO4vjEdQaTusZAEebUWp2a5d7dF5DYoIpDG7WySnk7BuZDW+GPpHXoXXuYawRBr/9t5q54tirPz79kFIWg4dA==
+  version "1.1.61"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.61.tgz#707b0fca9ce4e11783612ba4a2fcba09047af16e"
+  integrity sha512-DD5vebQLg8jLCOzwupn954fbIiZht05DAZs0k2u8NStSe6h9XdsuIQL8hSRKYiU8WUQRznmSDrKGbv3ObOmC7g==
 
 nopt@^4.0.1, nopt@^4.0.3:
   version "4.0.3"
