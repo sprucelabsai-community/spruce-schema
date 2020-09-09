@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v9.0.50...v9.1.0) (2020-09-09)
+
+
+### Features
+
+* phone case fix ([8f8f56a](https://github.com/sprucelabsai/spruce-schema/commit/8f8f56a))
+
 ## [9.0.50](https://github.com/sprucelabsai/spruce-schema/compare/v9.0.49...v9.0.50) (2020-09-09)
 
 ## [9.0.49](https://github.com/sprucelabsai/spruce-schema/compare/v9.0.48...v9.0.49) (2020-09-09)
