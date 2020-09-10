@@ -1148,9 +1148,9 @@
     universal-user-agent "^6.0.0"
 
 "@octokit/graphql@^4.3.1":
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-4.5.5.tgz#f01d6b231b117372dab2bcd9295ce94272454956"
-  integrity sha512-hi4lvdXTU8AsMMxnwBvi/aDZbbCohM46/kZjePQce+gkfbAseCP1D8tdHPszQ5j1bDALzgazCLMeF/dzqaiA/g==
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-4.5.6.tgz#708143ba15cf7c1879ed6188266e7f270be805d4"
+  integrity sha512-Rry+unqKTa3svswT2ZAuqenpLrzJd+JTv89LTeVa5UM/5OX8o4KTkPL7/1ABq4f/ZkELb0XEK/2IEoYwykcLXg==
   dependencies:
     "@octokit/request" "^5.3.0"
     "@octokit/types" "^5.0.0"
@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.231":
-  version "2.2.231"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.231.tgz#01e932d83211d9a3a5b72f2c30f7ebc2a70d13a7"
-  integrity sha512-o/jhC1D2lhSUGWaDcL1+iN94NW3rjqfGN1HMIoIDB5ujCYvEnGNJJj++P4w+lPUwHQVQDgWfafe4VyL48w1DpQ==
+"@sprucelabs/error@^2.2.232":
+  version "2.2.232"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.232.tgz#16a5e0c3020a6aaf0804630ad246f76140979c58"
+  integrity sha512-w+kweaqTuc3mFNspaC52gplxpDSNWnFSvkPcZkDUqrQU9rZzR6Z0gieADcI/akBjXy6/7GmdIxhdtoG4MI0Omg==
 
-"@sprucelabs/log@^10.2.204":
-  version "10.2.204"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.204.tgz#8fcb29b346e68a9432a89f557e9ce49e62e6666d"
-  integrity sha512-lKROBNN2FDvCk/JrA28Pi/5gAhjRHKEfBvtVw08z584Wz7pNOOALRMijJLVJHyNYIYw5LZWy+NLr1UFTI2vBfQ==
+"@sprucelabs/log@^10.2.205":
+  version "10.2.205"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.205.tgz#33b2b1fae8284ee439d94a829df06482801a3c52"
+  integrity sha512-tsPPQ5YPap1p7XZ2CnB/buPN9uy7ndqJaLdjVbZ02M1GPlfz9MArHKrUOv6InARhH8EX3Q+gPrQ3JckDlS7Xng==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.132":
-  version "6.0.132"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.132.tgz#a92d07e6e946bd611c0b13c6c9681207047631e9"
-  integrity sha512-zTTgh1ZmqW7PkyjUB+2wGr+F47kt5E3rpsTe57V3J5Io5hOh39kR+O0NGwgLMRDx9nVTl0wwD+YPKixRIx+Nng==
+"@sprucelabs/test@^6.0.133":
+  version "6.0.133"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.133.tgz#d59448c15ee2e4c21ebd46ebeac443f57c747adf"
+  integrity sha512-LyhguYfv4ybaqIZP9QinCYawF9ZXbajk+eS41NnzXw7Y82WyVzClgoenHg3F+lTBH9pxJgvx4bc6tB4XN4LCmg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
