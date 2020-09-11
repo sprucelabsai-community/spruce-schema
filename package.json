@@ -26,7 +26,7 @@
 		"build.browser": "tsc --project tsconfig.browser.json",
 		"watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run build'",
 		"clean": "rm -rf build/",
-		"lint": "eslint '**/*.ts' --fix && npm run lint.tsc",
+		"lint": "eslint '**/*.ts' --fix && npm run lint.tsc && echo PASS",
 		"lint.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'npm run lint'",
 		"lint.tsc": "tsc -p . --noEmit",
 		"lint.fix": "eslint --fix '**/*.ts'",
