@@ -30,7 +30,6 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		value: any,
 		options?: ValidateOptions<IPhoneFieldDefinition>
 	) {
-		// Debugger
 		const errors = super.validate(value, options)
 
 		try {

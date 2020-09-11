@@ -2,6 +2,7 @@ import { assert, test } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity, { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 const simpleDynamicSchema = buildSchema({
 	id: 'simpleDynamic',
@@ -13,9 +14,27 @@ const simpleDynamicSchema = buildSchema({
 })
 
 export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
-	@test.skip()
+	@test()
 	protected static async canCreateSchemaEntityWithDynamicKeys() {
 		const entity = new SchemaEntity(simpleDynamicSchema)
 		assert.isTruthy(entity)
+	}
+
+	@test()
+	protected static async canCreateSchemaEntityWithDynamicValues() {
+		const entity = new SchemaEntity(simpleDynamicSchema, {
+			foo: 'bar',
+			hello: 'world',
+		})
+
+		assert.isEqual(entity.get('foo'), 'bar')
+		assert.isEqual(entity.get('hello'), 'world')
+	}
+
+	@test()
+	protected static async canNormalizeDynamicValues() {
+		//@ts-ignore
+		const normalized = normalizeSchemaValues(simpleDynamicSchema, { foo: 3 })
+		assert.isEqualDeep(normalized, { foo: '3' })
 	}
 }
