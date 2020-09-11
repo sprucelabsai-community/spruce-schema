@@ -1,3 +1,18 @@
+## [9.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v9.2.2...v9.2.3) (2020-09-11)
+
+## [9.2.2](https://github.com/sprucelabsai/spruce-schema/compare/v9.2.1...v9.2.2) (2020-09-11)
+
+## [9.2.1](https://github.com/sprucelabsai/spruce-schema/compare/v9.2.0...v9.2.1) (2020-09-11)
+
+# [9.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.12...v9.2.0) (2020-09-11)
+
+
+### Features
+
+* dynamic field tests pass ([a51a361](https://github.com/sprucelabsai/spruce-schema/commit/a51a361))
+
+## [9.1.12](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.11...v9.1.12) (2020-09-11)
+
 ## [9.1.11](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.10...v9.1.11) (2020-09-11)
 
 ## [9.1.10](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.9...v9.1.10) (2020-09-11)
