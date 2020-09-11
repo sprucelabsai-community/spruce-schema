@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.235":
-  version "2.2.235"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.235.tgz#7f58268cccdb875862c9014284de9aab87f88d64"
-  integrity sha512-yiUFrxtKM9IZw/eDr9bYu+LHI+y0woJtTSjRkydjE2l8FmNcSnmWUznPLAPtan3qxrXPqZi89xJIX8vWZy+d8g==
+"@sprucelabs/error@^2.2.236":
+  version "2.2.236"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.236.tgz#ed2d65a9d63933c33a5f8ce929d0e731c5377cda"
+  integrity sha512-MoeeSfMEAdfEL0hnPobx4T8bAYJqolaAq7arerR1zA08nDs+JRswkcknbOhCGF2aggMHrrzBU8gRw92cvupCHg==
 
-"@sprucelabs/log@^10.2.205":
-  version "10.2.205"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.205.tgz#33b2b1fae8284ee439d94a829df06482801a3c52"
-  integrity sha512-tsPPQ5YPap1p7XZ2CnB/buPN9uy7ndqJaLdjVbZ02M1GPlfz9MArHKrUOv6InARhH8EX3Q+gPrQ3JckDlS7Xng==
+"@sprucelabs/log@^10.2.206":
+  version "10.2.206"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.206.tgz#1ff85199097b95bda9c6e00f9a6ba37aad85b245"
+  integrity sha512-T31U7qB9StqrLyq8ipPGAyCutcTx/jofnGWTiWCXX4Zjv+6uinKBBQkVcek+YbOLzAanevAHinNMDloZgQQ/Ug==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^6.0.134":
-  version "6.0.134"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.134.tgz#111a11b7aea75ce7e86fcac18f3d3f3e789d4038"
-  integrity sha512-9gJEIAvJYxgNUKXdlYuv0rYoEDMhXQu0Gls5BSbuTDud9MdWREDAr7csJf/LpFcBvOeP6XIHACTZSF5Mh3DH6A==
+"@sprucelabs/test@^6.0.135":
+  version "6.0.135"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-6.0.135.tgz#f959e7bf10d85b6f6d11f7bf2229f600bc912f6a"
+  integrity sha512-ZxS3JLt6sO8LKS5rVVxq5K793sv+Fc3l+e2cHajO4VPjg8oIILzNj91FbgSxA6eaqgTtAg/RWM26GnyTlb+4fQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1504,9 +1504,9 @@
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
 "@types/node@*", "@types/node@>= 8":
-  version "14.10.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.0.tgz#15815dff82c8dc30827f6b1286f865902945095a"
-  integrity sha512-SOIyrdADB4cq6eY1F+9iU48iIomFAPltu11LCvA9PKcyEwHadjCFzNVPotAR+oEJA0bCP4Xvvgy+vwu1ZjVh8g==
+  version "14.10.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.1.tgz#cc323bad8e8a533d4822f45ce4e5326f36e42177"
+  integrity sha512-aYNbO+FZ/3KGeQCEkNhHFRIzBOUgc7QvcVNKXbfnhDkSfwUv91JsQQa10rDgKSTSLkXZ1UIyPe4FJJNVgw1xWQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -3146,9 +3146,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.564:
-  version "1.3.565"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.565.tgz#8511797ab2b66b767e1aef4eb17d636bf01a2c72"
-  integrity sha512-me5dGlHFd8Q7mKhqbWRLIYnKjw4i0fO6hmW0JBxa7tM87fBfNEjWokRnDF7V+Qme/9IYpwhfMn+soWs40tXWqg==
+  version "1.3.566"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.566.tgz#e373876bb63e5c9bbcbe1b48cbb2db000f79bf88"
+  integrity sha512-V0fANdGN7waOE0tvCDhjf1vqPRevG3eo0asYm42c4t1qmZSunlnUuWQDxglUi9wDpbKQlGIttMJ+2DYpRwvYRA==
 
 emittery@^0.7.1:
   version "0.7.1"
