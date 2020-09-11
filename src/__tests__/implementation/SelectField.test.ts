@@ -1,4 +1,4 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity from '../../SchemaEntity'
 import buildSchema from '../../utilities/buildSchema'
@@ -41,7 +41,7 @@ interface IUserSchema {
 	}
 }
 
-export default class SelectFieldTest extends BaseTest {
+export default class SelectFieldTest extends AbstractSpruceTest {
 	private static userSchema = buildSchema<IUserSchema>({
 		id: 'select-union-test',
 		name: 'select union test',

@@ -1,10 +1,10 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { buildDuration } from '../../fields'
 import { IDurationFieldValue } from '../../fields/DurationField.types'
 
-export default class DurationFieldTest extends BaseTest {
+export default class DurationFieldTest extends AbstractSpruceTest {
 	@test(
 		'can get seconds from ms',
 		{ ms: 2340 },

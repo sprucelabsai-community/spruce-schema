@@ -1,4 +1,4 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
@@ -9,7 +9,7 @@ import {
 } from '../../types/template.types'
 import buildSchema from '../../utilities/buildSchema'
 
-export default class GeneratesRelationshipTemplatesTest extends BaseTest {
+export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTest {
 	private static wrenchV1Schema = buildSchema({
 		id: 'wrench',
 		name: 'Wrench',

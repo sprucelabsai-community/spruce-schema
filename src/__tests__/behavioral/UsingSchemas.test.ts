@@ -1,4 +1,4 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../../errors/SpruceError'
@@ -44,7 +44,7 @@ interface IPersonExpectedValuesWithoutSchema {
 
 const { personSchema, truckSchema } = buildPersonWithCars()
 
-export default class SchemaTest extends BaseTest {
+export default class SchemaTest extends AbstractSpruceTest {
 	@test()
 	protected static async testBasicValidation() {
 		const schema = {

@@ -1,8 +1,8 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
 import buildPersonWithCar, { IPersonSchema } from '../data/personWithCars'
 
-export default class SchemaFieldTest extends BaseTest {
+export default class SchemaFieldTest extends AbstractSpruceTest {
 	private static personSchema: IPersonSchema
 
 	protected static async beforeEach() {

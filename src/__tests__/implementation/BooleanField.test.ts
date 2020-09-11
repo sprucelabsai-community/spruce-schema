@@ -1,10 +1,10 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
 
-export default class BooleanFieldTest extends BaseTest {
+export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test('can transform string false to boolean false', 'false', false)
 	@test('can transform string true to boolean true', 'true', true)
 	@test('can transform gibberish to truthy', 'waka', true)

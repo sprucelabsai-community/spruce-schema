@@ -14,7 +14,7 @@ export default function normalizeSchemaValues<
 	CreateEntityInstances extends boolean = true,
 	IncludePrivateFields extends boolean = true
 >(
-	definition: S,
+	schema: S,
 	values: SchemaPartialValues<S>,
 	options?: ISchemaGetValuesOptions<
 		S,
@@ -24,7 +24,7 @@ export default function normalizeSchemaValues<
 		IncludePrivateFields
 	>
 ) {
-	const instance = new SchemaEntity(definition, values)
+	const instance = new SchemaEntity(schema, values)
 
 	return instance.getValues(options)
 }

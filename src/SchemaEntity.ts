@@ -6,7 +6,7 @@ import {
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import AbstractField from './fields/AbstractField'
-import { ISchemasById } from './fields/field.static.types'
+import { IField, ISchemasById } from './fields/field.static.types'
 import {
 	ISchema,
 	SchemaPartialValues,
@@ -25,6 +25,7 @@ import {
 	ISchemaEntity,
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
+	DynamicFieldSignature,
 } from './schemas.static.types'
 
 /** Universal schema class  */
@@ -47,11 +48,11 @@ export default class SchemaEntity<S extends ISchema>
 
 	private schema: S
 
-	/** The raw values of this schema */
 	public values: SchemaPartialValues<S>
-
-	/** All the field objects keyed by field name, use getField rather than accessing this directly */
 	private fields: SchemaFields<S>
+	private dynamicField?: S['dynamicFieldSignature'] extends DynamicFieldSignature
+		? IField<S['dynamicFieldSignature']>
+		: never
 
 	/** For caching getNamedFields() */
 	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
@@ -61,24 +62,33 @@ export default class SchemaEntity<S extends ISchema>
 		this.values = values ? values : {}
 
 		// Pull field definitions off schema
-		const fieldDefinitions = this.schema.fields
-		if (!fieldDefinitions) {
-			throw new Error(`Schemas don't support dynamic fields yet`)
+		const fieldDefinitions = this.schema.fields || {}
+		const dynamicFieldSignature = this.schema.dynamicFieldSignature
+
+		if (!fieldDefinitions && !dynamicFieldSignature) {
+			throw new Error(`Schema's need fields or dynamicFieldSignature set.`)
 		}
 
-		// Empty fields to start
 		this.fields = {} as SchemaFields<S>
 
-		Object.keys(fieldDefinitions).forEach((name) => {
-			const schema = fieldDefinitions[name]
-			const field = FieldFactory.Field(name, schema)
+		Object.keys(fieldDefinitions || {}).forEach((name) => {
+			const definition = fieldDefinitions[name]
+			const field = FieldFactory.Field(name, definition)
 			// TODO why do i have to cast to any?
 			this.fields[name as SchemaFieldNames<S>] = field as any
 
-			if (schema.value) {
-				this.set(name as SchemaFieldNames<S>, schema.value)
+			if (definition.value) {
+				this.set(name as SchemaFieldNames<S>, definition.value)
 			}
 		})
+
+		if (dynamicFieldSignature) {
+			//@ts-ignore
+			this.dynamicField = FieldFactory.Field(
+				'dynamicField',
+				dynamicFieldSignature
+			)
+		}
 	}
 
 	public static trackSchema(schema: ISchema) {
@@ -213,7 +223,7 @@ export default class SchemaEntity<S extends ISchema>
 			options ?? {}
 
 		// Get field && override options by that field
-		const field = this.fields[forField]
+		const field = (this.dynamicField || this.fields[forField]) as IField<any>
 		const overrideOptions = byField?.[forField] ?? {}
 
 		if (value === null || typeof value === 'undefined') {
@@ -367,7 +377,6 @@ export default class SchemaEntity<S extends ISchema>
 		return values as Pick<SchemaDefaultValues<S, CreateEntityInstances>, F>
 	}
 
-	/** Get all values valued */
 	public getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
@@ -386,7 +395,7 @@ export default class SchemaEntity<S extends ISchema>
 		: Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
 		const values: SchemaPartialValues<S, CreateEntityInstances> = {}
 
-		const { fields = Object.keys(this.fields), includePrivateFields = true } =
+		const { fields = this.allFieldNames(), includePrivateFields = true } =
 			options || {}
 
 		this.getNamedFields().forEach((namedField) => {
@@ -421,15 +430,22 @@ export default class SchemaEntity<S extends ISchema>
 	public getNamedFields<F extends SchemaFieldNames<S>>(
 		options: ISchemaNamedFieldsOptions<S, F> = {}
 	): ISchemaNamedField<S>[] {
+		const { fields = this.allFieldNames() } = options
+
 		const namedFields: ISchemaNamedField<S>[] = []
-		const { fields = Object.keys(this.fields) as F[] } = options
 
 		fields.forEach((name) => {
-			const field = this.fields[name]
+			const field = (this.dynamicField || this.fields[name]) as IField<any>
 			namedFields.push({ name, field })
 		})
 
 		return namedFields
+	}
+
+	private allFieldNames<F extends SchemaFieldNames<S>>() {
+		return this.dynamicField
+			? (Object.keys(this.values) as F[])
+			: (Object.keys(this.fields) as F[])
 	}
 
 	public getField<F extends SchemaFieldNames<S>>(name: F) {
