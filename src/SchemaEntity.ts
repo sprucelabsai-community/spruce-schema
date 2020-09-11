@@ -13,19 +13,21 @@ import {
 	SchemaFields,
 	SchemaFieldNames,
 	ISchemaNormalizeOptions,
-	SchemaFieldValueType,
 	ISchemaValidateOptions,
 	SchemaDefaultValues,
 	ISchemaGetValuesOptions,
 	SchemaAllValues,
 	ISchemaNamedFieldsOptions,
-	ISchemaNamedField,
 	ISchemaGetDefaultValuesOptions,
 	SchemaFieldNamesWithDefaultValue,
 	ISchemaEntity,
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 	DynamicFieldSignature,
+	SchemaDynamicOrStaticPartialValues,
+	SchemaDynamicOrStaticFieldNames,
+	SchemaDynamicOrStaticFieldValueType,
+	SchemaDynamicOrStaticNamedField,
 } from './schemas.static.types'
 
 /** Universal schema class  */
@@ -48,17 +50,18 @@ export default class SchemaEntity<S extends ISchema>
 
 	private schema: S
 
-	public values: SchemaPartialValues<S>
+	public values: SchemaDynamicOrStaticPartialValues<S>
 	private fields: SchemaFields<S>
 	private dynamicField?: S['dynamicFieldSignature'] extends DynamicFieldSignature
 		? IField<S['dynamicFieldSignature']>
 		: never
 
-	/** For caching getNamedFields() */
-	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
-
-	public constructor(schema: S, values?: SchemaPartialValues<S>) {
+	public constructor(
+		schema: S,
+		values?: SchemaDynamicOrStaticPartialValues<S>
+	) {
 		this.schema = schema
+		//@ts-ignore
 		this.values = values ? values : {}
 
 		// Pull field definitions off schema
@@ -78,7 +81,7 @@ export default class SchemaEntity<S extends ISchema>
 			this.fields[name as SchemaFieldNames<S>] = field as any
 
 			if (definition.value) {
-				this.set(name as SchemaFieldNames<S>, definition.value)
+				this.set(name as SchemaDynamicOrStaticFieldNames<S>, definition.value)
 			}
 		})
 
@@ -196,17 +199,17 @@ export default class SchemaEntity<S extends ISchema>
 
 	/** Normalize a value against a field. runs through valueType transformer and makes an array if isArray is true */
 	public normalizeValue<
-		F extends SchemaFieldNames<S>,
+		F extends SchemaDynamicOrStaticFieldNames<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		forField: F,
 		value: any,
 		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
-	): SchemaFieldValueType<S, F, CreateEntityInstances> {
+	): SchemaDynamicOrStaticFieldValueType<S, F, CreateEntityInstances> {
 		// If the value is not null or undefined, coerce it into an array
 		let localValue =
 			value === null || typeof value === 'undefined'
-				? ([] as SchemaFieldValueType<S, F>)
+				? ([] as SchemaDynamicOrStaticFieldValueType<S, F>)
 				: Array.isArray(value)
 				? value
 				: [value]
@@ -223,7 +226,9 @@ export default class SchemaEntity<S extends ISchema>
 			options ?? {}
 
 		// Get field && override options by that field
+		//@ts-ignore
 		const field = (this.dynamicField || this.fields[forField]) as IField<any>
+		//@ts-ignore
 		const overrideOptions = byField?.[forField] ?? {}
 
 		if (value === null || typeof value === 'undefined') {
@@ -277,7 +282,9 @@ export default class SchemaEntity<S extends ISchema>
 			)
 		}
 
-		return (field.isArray ? localValue : localValue[0]) as SchemaFieldValueType<
+		return (field.isArray
+			? localValue
+			: localValue[0]) as SchemaDynamicOrStaticFieldValueType<
 			S,
 			F,
 			CreateEntityInstances
@@ -286,28 +293,30 @@ export default class SchemaEntity<S extends ISchema>
 
 	/** Get any field by name */
 	public get<
-		F extends SchemaFieldNames<S>,
+		F extends SchemaDynamicOrStaticFieldNames<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		fieldName: F,
 		options: ISchemaNormalizeOptions<S, CreateEntityInstances> = {}
-	): SchemaFieldValueType<S, F, CreateEntityInstances> {
+	): SchemaDynamicOrStaticFieldValueType<S, F, CreateEntityInstances> {
 		// Get value off self
-		const value: SchemaFieldValueType<S, F> | undefined | null =
+		const value: SchemaDynamicOrStaticFieldValueType<S, F> | undefined | null =
+			//@ts-ignore
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
 		return this.normalizeValue(fieldName, value, options)
 	}
 
 	/** Set a value and ensure its type */
-	public set<F extends SchemaFieldNames<S>>(
+	public set<F extends SchemaDynamicOrStaticFieldNames<S>>(
 		fieldName: F,
-		value: SchemaFieldValueType<S, F>,
+		value: SchemaDynamicOrStaticFieldValueType<S, F>,
 		options: ISchemaNormalizeOptions<S, false> = {}
 	): this {
 		// If the value is not null or undefined, coerce it into an array
 		const localValue = this.normalizeValue(fieldName, value, options)
 
+		//@ts-ignore
 		this.values[fieldName] = localValue
 
 		return this
@@ -328,7 +337,7 @@ export default class SchemaEntity<S extends ISchema>
 		this.getNamedFields(options).forEach((item) => {
 			const { name, field } = item
 
-			const value = this.get(name, {
+			const value = this.get(name as SchemaDynamicOrStaticFieldNames<S>, {
 				validate: false,
 				createEntityInstances: false,
 			})
@@ -365,10 +374,9 @@ export default class SchemaEntity<S extends ISchema>
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 			if (typeof field.definition.defaultValue !== 'undefined') {
-				// TODO how to type name so it works as key of values
-				// @ts-ignore
+				//@ts-ignore
 				values[name] = this.normalizeValue(
-					name,
+					name as SchemaDynamicOrStaticFieldNames<S>,
 					field.definition.defaultValue,
 					options
 				)
@@ -401,10 +409,13 @@ export default class SchemaEntity<S extends ISchema>
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 			if (
+				//@ts-ignore
 				fields.indexOf(name) > -1 &&
 				(includePrivateFields || !field.isPrivate)
 			) {
+				//@ts-ignore
 				const value = this.get(name, options)
+				//@ts-ignore
 				values[name] = value
 			}
 		})
@@ -418,9 +429,10 @@ export default class SchemaEntity<S extends ISchema>
 	public setValues(values: SchemaPartialValues<S>): this {
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
+			//@ts-ignore
 			const value = values[name]
 			if (typeof value !== 'undefined') {
-				// TODO why cast? types should map by here
+				//@ts-ignore
 				this.set(name, value as any)
 			}
 		})
@@ -429,13 +441,14 @@ export default class SchemaEntity<S extends ISchema>
 
 	public getNamedFields<F extends SchemaFieldNames<S>>(
 		options: ISchemaNamedFieldsOptions<S, F> = {}
-	): ISchemaNamedField<S>[] {
+	): SchemaDynamicOrStaticNamedField<S>[] {
 		const { fields = this.allFieldNames() } = options
 
-		const namedFields: ISchemaNamedField<S>[] = []
+		const namedFields: SchemaDynamicOrStaticNamedField<S>[] = []
 
 		fields.forEach((name) => {
 			const field = (this.dynamicField || this.fields[name]) as IField<any>
+			//@ts-ignore
 			namedFields.push({ name, field })
 		})
 

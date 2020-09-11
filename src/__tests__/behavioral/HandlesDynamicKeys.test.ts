@@ -32,9 +32,27 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 	}
 
 	@test()
+	protected static async canNormalizeUsingSchemaEntity() {
+		const entity = new SchemaEntity(simpleDynamicSchema, {
+			//@ts-ignore
+			foo: 1,
+			hello: 'world',
+		})
+
+		assert.isEqual(entity.get('foo'), '1')
+		assert.isEqual(entity.get('hello'), 'world')
+	}
+
+	@test()
 	protected static async canNormalizeDynamicValues() {
 		//@ts-ignore
 		const normalized = normalizeSchemaValues(simpleDynamicSchema, { foo: 3 })
+		assert.isEqualDeep(normalized, { foo: '3' })
+	}
+
+	@test()
+	protected static async canNormalizeDynamicValuesAndPassTypesChecks() {
+		const normalized = normalizeSchemaValues(simpleDynamicSchema, { foo: '3' })
 		assert.isEqualDeep(normalized, { foo: '3' })
 	}
 }
