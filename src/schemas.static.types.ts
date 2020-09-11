@@ -110,7 +110,6 @@ export type SchemaFields<T extends ISchema> = {
 		: never
 }
 
-/** To map a schema to an object with values whose types match */
 export type SchemaAllValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
@@ -122,7 +121,6 @@ export type SchemaAllValues<
 	>
 }
 
-/** To map a schema to an object where all keys are optional */
 export type SchemaStaticFieldsPartialValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false
@@ -133,8 +131,25 @@ export type SchemaStaticFieldsPartialValues<
 		| null
 }
 
-/** Turn a schema until it's "values" type */
 export type SchemaValues<
+	T extends ISchema,
+	CreateEntityInstances extends boolean = false,
+	K extends SchemaOptionalFieldNames<T> = SchemaOptionalFieldNames<T>,
+	V extends SchemaAllValues<T, CreateEntityInstances> = SchemaAllValues<
+		T,
+		CreateEntityInstances
+	>
+> = T['dynamicFieldSignature'] extends DynamicFieldSignature
+	? Record<
+			string,
+			FieldDefinitionValueType<
+				T['dynamicFieldSignature'],
+				CreateEntityInstances
+			>
+	  >
+	: SchemaStaticValues<T, CreateEntityInstances, K, V>
+
+export type SchemaStaticValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false,
 	K extends SchemaOptionalFieldNames<T> = SchemaOptionalFieldNames<T>,
