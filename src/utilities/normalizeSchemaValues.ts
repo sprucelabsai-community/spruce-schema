@@ -1,10 +1,10 @@
 import SchemaEntity from '../SchemaEntity'
 import {
 	ISchema,
-	SchemaPartialValues,
 	ISchemaGetValuesOptions,
 	SchemaFieldNames,
 	SchemaPublicFieldNames,
+	SchemaDynamicOrStaticValues,
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
@@ -15,7 +15,7 @@ export default function normalizeSchemaValues<
 	IncludePrivateFields extends boolean = true
 >(
 	schema: S,
-	values: SchemaPartialValues<S>,
+	values: SchemaDynamicOrStaticValues<S>,
 	options?: ISchemaGetValuesOptions<
 		S,
 		F,
