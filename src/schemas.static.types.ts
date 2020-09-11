@@ -15,18 +15,18 @@ export interface ISchemaEntity<S extends ISchema> {
 	schemaId: S['id']
 	description?: string
 	version?: string
-	values: SchemaDynamicOrStaticPartialValues<S>
+	values: SchemaPartialValues<S>
 
 	get<
-		F extends SchemaDynamicOrStaticFieldNames<S>,
+		F extends SchemaFieldNames<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		fieldName: F,
 		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
-	): SchemaDynamicOrStaticFieldValueType<S, F, CreateEntityInstances>
+	): SchemaFieldValueType<S, F, CreateEntityInstances>
 
 	getValues<
-		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
+		F extends SchemaStaticFieldNames<S> = SchemaStaticFieldNames<S>,
 		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 		CreateEntityInstances extends boolean = true,
 		IncludePrivateFields extends boolean = true
@@ -38,7 +38,9 @@ export interface ISchemaEntity<S extends ISchema> {
 			CreateEntityInstances,
 			IncludePrivateFields
 		>
-	): IncludePrivateFields extends false
+	): S['dynamicFieldSignature'] extends DynamicFieldSignature
+		? Record<string, SchemaFieldValueType<S, string>>
+		: IncludePrivateFields extends false
 		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
 		: Pick<SchemaAllValues<S, CreateEntityInstances>, F>
 }
@@ -67,12 +69,12 @@ export type SchemaDynamicValues<
 		: never
 }
 
-export type SchemaDynamicOrStaticPartialValues<
+export type SchemaPartialValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = S['dynamicFieldSignature'] extends DynamicFieldSignature
 	? SchemaDynamicValues<S, CreateEntityInstances>
-	: SchemaPartialValues<S, CreateEntityInstances>
+	: SchemaStaticFieldsPartialValues<S, CreateEntityInstances>
 
 /** A schema defines the data structure of something */
 export interface ISchema {
@@ -103,7 +105,7 @@ export interface ISchemaFieldValueUnion<
 /** Options passed to toValueType */
 
 export type SchemaFields<T extends ISchema> = {
-	[F in SchemaFieldNames<T>]: T['fields'][F] extends IFieldDefinition
+	[F in SchemaStaticFieldNames<T>]: T['fields'][F] extends IFieldDefinition
 		? IFieldMap[T['fields'][F]['type']]
 		: never
 }
@@ -113,7 +115,7 @@ export type SchemaAllValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = {
-	[K in SchemaFieldNames<S>]-?: SchemaFieldValueType<
+	[K in SchemaStaticFieldNames<S>]-?: SchemaStaticFieldValueType<
 		S,
 		K,
 		CreateEntityInstances
@@ -121,12 +123,12 @@ export type SchemaAllValues<
 }
 
 /** To map a schema to an object where all keys are optional */
-export type SchemaPartialValues<
+export type SchemaStaticFieldsPartialValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = {
-	[K in SchemaFieldNames<T>]?:
-		| SchemaFieldValueType<T, K, CreateEntityInstances>
+	[K in SchemaStaticFieldNames<T>]?:
+		| SchemaStaticFieldValueType<T, K, CreateEntityInstances>
 		| undefined
 		| null
 }
@@ -162,70 +164,70 @@ export type SchemaValuesWithDefaults<T extends ISchema> = SchemaValues<T> &
 
 /** All fields that are optional on the schema */
 export type SchemaOptionalFieldNames<T extends ISchema> = {
-	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
+	[K in SchemaStaticFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? never
 			: K
 		: never
-}[SchemaFieldNames<T>]
+}[SchemaStaticFieldNames<T>]
 
 /** All fields that are required on the schema */
 export type SchemaRequiredFieldNames<T extends ISchema> = {
-	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
+	[K in SchemaStaticFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['isRequired'] extends true
 			? K
 			: never
 		: never
-}[SchemaFieldNames<T>]
+}[SchemaStaticFieldNames<T>]
 
 /** Gets you all field names that have a default value set */
 export type SchemaFieldNamesWithDefaultValue<T extends ISchema> = {
-	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinition
+	[K in SchemaStaticFieldNames<T>]: T['fields'][K] extends FieldDefinition
 		? T['fields'][K]['defaultValue'] extends Required<
 				T['fields'][K]['defaultValue']
 		  >
 			? K
 			: never
 		: never
-}[SchemaFieldNames<T>]
+}[SchemaStaticFieldNames<T>]
 
-export type SchemaFieldValueType<
+export type SchemaStaticFieldValueType<
 	S extends ISchema,
-	K extends SchemaFieldNames<S>,
+	K extends SchemaStaticFieldNames<S>,
 	CreateEntityInstances extends boolean = false
 > = S['fields'][K] extends FieldDefinition
 	? FieldDefinitionValueType<S['fields'][K], CreateEntityInstances>
 	: never
 
-export type SchemaDynamicOrStaticFieldValueType<
+export type SchemaFieldValueType<
 	S extends ISchema,
-	K extends SchemaFieldNames<S> | string,
+	K extends SchemaStaticFieldNames<S> | string,
 	CreateEntityInstances extends boolean = false
 > = S['dynamicFieldSignature'] extends DynamicFieldSignature
 	? FieldDefinitionValueType<S['dynamicFieldSignature'], CreateEntityInstances>
-	: K extends SchemaFieldNames<S>
-	? SchemaFieldValueType<S, K, CreateEntityInstances>
+	: K extends SchemaStaticFieldNames<S>
+	? SchemaStaticFieldValueType<S, K, CreateEntityInstances>
 	: never
 
 /** A union of all field names */
-export type SchemaFieldNames<T extends ISchema> = Extract<
+export type SchemaStaticFieldNames<T extends ISchema> = Extract<
 	keyof T['fields'],
 	string
 >
 
-export type SchemaDynamicOrStaticFieldNames<
+export type SchemaFieldNames<
 	T extends ISchema
 > = T['dynamicFieldSignature'] extends DynamicFieldSignature
 	? string
 	: Extract<keyof T['fields'], string>
 
 export type SchemaPublicFieldNames<S extends ISchema> = {
-	[K in SchemaFieldNames<S>]: S['fields'][K] extends FieldDefinition
+	[K in SchemaStaticFieldNames<S>]: S['fields'][K] extends FieldDefinition
 		? S['fields'][K]['isPrivate'] extends true
 			? never
 			: K
 		: never
-}[SchemaFieldNames<S>]
+}[SchemaStaticFieldNames<S>]
 
 export type SchemaPublicValues<
 	S extends ISchema,
@@ -244,26 +246,26 @@ export type SchemaPublicValues<
 /** Pluck out the field definition from the schema */
 export type SchemaFieldDefinition<
 	T extends ISchema,
-	K extends SchemaFieldNames<T>
+	K extends SchemaStaticFieldNames<T>
 > = T['fields'][K] extends FieldDefinition ? T['fields'][K]['type'] : never
 
 /** Get the field type for a field from a schema */
 export type SchemaFieldType<
 	T extends ISchema,
-	K extends SchemaFieldNames<T>
+	K extends SchemaStaticFieldNames<T>
 > = T['fields'][K] extends FieldDefinition ? T['fields'][K]['type'] : never
 
 /** Response to getNamedFields */
-export interface ISchemaNamedField<T extends ISchema> {
-	name: SchemaFieldNames<T>
+export interface ISchemaStaticNamedField<T extends ISchema> {
+	name: SchemaStaticFieldNames<T>
 	field: Field
 }
 
-export type SchemaDynamicOrStaticNamedField<
+export type SchemaNamedField<
 	T extends ISchema
 > = T['dynamicFieldSignature'] extends DynamicFieldSignature
 	? { name: string; field: Field }
-	: ISchemaNamedField<T>
+	: ISchemaStaticNamedField<T>
 
 /** Options you can pass to schema.get() */
 export interface ISchemaNormalizeOptions<
@@ -276,7 +278,7 @@ export interface ISchemaNormalizeOptions<
 	createEntityInstances?: CreateEntityInstances
 	/** Options passed to each field that conforms to the field definition's options */
 	byField?: {
-		[K in SchemaFieldNames<S>]?: S['fields'][K] extends IFieldDefinition
+		[K in SchemaStaticFieldNames<S>]?: S['fields'][K] extends IFieldDefinition
 			? Partial<IFieldDefinitionMap[S['fields'][K]['type']]['options']>
 			: never
 	}
@@ -285,7 +287,7 @@ export interface ISchemaNormalizeOptions<
 /** Options for schema.getValues */
 export type ISchemaGetValuesOptions<
 	T extends ISchema,
-	F extends SchemaFieldNames<T>,
+	F extends SchemaStaticFieldNames<T>,
 	PF extends SchemaPublicFieldNames<T>,
 	CreateEntityInstances extends boolean,
 	IncludePrivateFields extends boolean
@@ -311,7 +313,7 @@ export interface ISchemaGetDefaultValuesOptions<
 /** Options for schema.getNamedFields */
 export interface ISchemaNamedFieldsOptions<
 	T extends ISchema,
-	F extends SchemaFieldNames<T>
+	F extends SchemaStaticFieldNames<T>
 > {
 	fields?: F[]
 }
@@ -319,7 +321,7 @@ export interface ISchemaNamedFieldsOptions<
 /** Options for schema.validate */
 export interface ISchemaValidateOptions<
 	T extends ISchema,
-	F extends SchemaFieldNames<T> = SchemaFieldNames<T>
+	F extends SchemaStaticFieldNames<T> = SchemaStaticFieldNames<T>
 > extends ISchemaNamedFieldsOptions<T, F> {}
 
 /** Field names for all matching type */

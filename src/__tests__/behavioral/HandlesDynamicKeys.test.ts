@@ -2,6 +2,7 @@ import { assert, test } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity, { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import { SchemaValues } from '../../schemas.static.types'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 const simpleDynamicSchema = buildSchema({
@@ -10,6 +11,16 @@ const simpleDynamicSchema = buildSchema({
 	dynamicFieldSignature: {
 		type: FieldType.Text,
 		keyName: 'key',
+	},
+})
+
+const staticFieldSchema = buildSchema({
+	id: 'simpleStatic',
+	name: 'Simple static',
+	fields: {
+		onlyField: {
+			type: FieldType.Text,
+		},
 	},
 })
 
@@ -41,6 +52,13 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 
 		assert.isEqual(entity.get('foo'), '1')
 		assert.isEqual(entity.get('hello'), 'world')
+
+		const foo = entity.get('foo')
+		assert.isExactType<typeof foo, string | undefined | null>(true)
+
+		const values = entity.getValues()
+
+		assert.isEqual(values.foo, '1')
 	}
 
 	@test()
@@ -54,5 +72,12 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 	protected static async canNormalizeDynamicValuesAndPassTypesChecks() {
 		const normalized = normalizeSchemaValues(simpleDynamicSchema, { foo: '3' })
 		assert.isEqualDeep(normalized, { foo: '3' })
+	}
+
+	@test()
+	protected static async typesSchemaWithStaticFieldsValuesNicely() {
+		const values: SchemaValues<typeof staticFieldSchema> = { onlyField: 'yes!' }
+		const normalized = normalizeSchemaValues(staticFieldSchema, values)
+		assert.isEqualDeep(normalized, values)
 	}
 }

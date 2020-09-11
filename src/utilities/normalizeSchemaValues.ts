@@ -2,20 +2,20 @@ import SchemaEntity from '../SchemaEntity'
 import {
 	ISchema,
 	ISchemaGetValuesOptions,
-	SchemaFieldNames,
+	SchemaStaticFieldNames,
 	SchemaPublicFieldNames,
-	SchemaDynamicOrStaticPartialValues,
+	SchemaPartialValues,
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
 	S extends ISchema,
-	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
+	F extends SchemaStaticFieldNames<S> = SchemaStaticFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 	CreateEntityInstances extends boolean = true,
 	IncludePrivateFields extends boolean = true
 >(
 	schema: S,
-	values: SchemaDynamicOrStaticPartialValues<S>,
+	values: SchemaPartialValues<S>,
 	options?: ISchemaGetValuesOptions<
 		S,
 		F,

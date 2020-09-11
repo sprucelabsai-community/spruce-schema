@@ -3,13 +3,13 @@ import SchemaEntity from '../SchemaEntity'
 import {
 	ISchema,
 	ISchemaValidateOptions,
-	SchemaDynamicOrStaticPartialValues,
+	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
 
 export default function validateSchemaValues<
 	S extends ISchema,
-	V extends SchemaDynamicOrStaticPartialValues<S>
+	V extends SchemaPartialValues<S>
 >(
 	schema: S,
 	values: V,
@@ -35,9 +35,7 @@ export default function validateSchemaValues<
 
 function pluckExtraFields<
 	S extends ISchema,
-	V extends SchemaDynamicOrStaticPartialValues<
-		S
-	> = SchemaDynamicOrStaticPartialValues<S>
+	V extends SchemaPartialValues<S> = SchemaPartialValues<S>
 >(values: V, schema: S) {
 	const extraFields: string[] = []
 	if (schema.fields) {
