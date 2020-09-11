@@ -1,5 +1,5 @@
 import path from 'path'
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IFileFieldValue } from '../../fields/FileField.types'
@@ -20,7 +20,7 @@ enum EnvKind {
 const linuxTestPath = '/some/directory/path'
 const windowsTestPath = 'C:\\some\\directory\\path'
 
-export default class FileFieldTest extends BaseTest {
+export default class FileFieldTest extends AbstractSpruceTest {
 	private static fileDefinition = buildSchema({
 		id: 'testFeature',
 		name: 'Test Feature',

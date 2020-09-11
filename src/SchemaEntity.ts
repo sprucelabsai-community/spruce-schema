@@ -70,13 +70,13 @@ export default class SchemaEntity<S extends ISchema>
 		this.fields = {} as SchemaFields<S>
 
 		Object.keys(fieldDefinitions).forEach((name) => {
-			const schema = fieldDefinitions[name]
-			const field = FieldFactory.Field(name, schema)
+			const definition = fieldDefinitions[name]
+			const field = FieldFactory.Field(name, definition)
 			// TODO why do i have to cast to any?
 			this.fields[name as SchemaFieldNames<S>] = field as any
 
-			if (schema.value) {
-				this.set(name as SchemaFieldNames<S>, schema.value)
+			if (definition.value) {
+				this.set(name as SchemaFieldNames<S>, definition.value)
 			}
 		})
 	}

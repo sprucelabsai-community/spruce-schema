@@ -1,4 +1,4 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import SchemaEntity from '../../SchemaEntity'
 import {
 	ISchema,
@@ -45,7 +45,7 @@ interface IPersonExpectedDefaultValuesWithoutSchema {
 // we don't need these registered
 const { personSchema, carSchema } = buildPersonWithCars()
 
-export default class SchemaDefaultValuesTest extends BaseTest {
+export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 	@test('Test typing on default values (test will always pass, lint will fail)')
 	protected static textAndSelectDefaultValues() {
 		let fieldName:

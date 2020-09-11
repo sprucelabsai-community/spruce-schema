@@ -1,4 +1,4 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { PickFieldNames } from '../../schemas.static.types'
 import {
@@ -8,7 +8,7 @@ import {
 } from '../../utilities/selectChoicesToHash'
 import buildPersonWithCars from '../data/personWithCars'
 
-export default class SelectOptionsToHashTest extends BaseTest {
+export default class SelectOptionsToHashTest extends AbstractSpruceTest {
 	@test('choice hashing')
 	protected static async testCreatingOptionHashes() {
 		const { personSchema } = buildPersonWithCars()

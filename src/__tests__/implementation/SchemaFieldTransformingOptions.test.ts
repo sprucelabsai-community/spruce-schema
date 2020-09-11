@@ -1,10 +1,10 @@
-import BaseTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import buildSchema from '../../utilities/buildSchema'
 
-export default class SchemaFieldTemplateTest extends BaseTest {
+export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 	private static wrenchSchema = buildSchema({
 		id: 'wrench',
 		name: 'Wrench',

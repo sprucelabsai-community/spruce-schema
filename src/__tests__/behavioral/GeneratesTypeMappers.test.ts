@@ -1,8 +1,8 @@
-import BaseTest, { assert, test } from '@sprucelabs/test'
+import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
 import { BooleanField, SelectField, SchemaField } from '../../fields'
 import AbstractField from '../../fields/AbstractField'
 
-export default class GeneratesRelationshipTemplatesTest extends BaseTest {
+export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTest {
 	@test('Boolean field', BooleanField, undefined)
 	@test(
 		'Select field',
