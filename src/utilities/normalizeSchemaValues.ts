@@ -4,7 +4,7 @@ import {
 	ISchemaGetValuesOptions,
 	SchemaFieldNames,
 	SchemaPublicFieldNames,
-	SchemaDynamicOrStaticValues,
+	SchemaDynamicOrStaticPartialValues,
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
@@ -15,7 +15,7 @@ export default function normalizeSchemaValues<
 	IncludePrivateFields extends boolean = true
 >(
 	schema: S,
-	values: SchemaDynamicOrStaticValues<S>,
+	values: SchemaDynamicOrStaticPartialValues<S>,
 	options?: ISchemaGetValuesOptions<
 		S,
 		F,

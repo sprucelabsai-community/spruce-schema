@@ -24,7 +24,7 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 	DynamicFieldSignature,
-	SchemaDynamicOrStaticValues,
+	SchemaDynamicOrStaticPartialValues,
 	SchemaDynamicOrStaticFieldNames,
 	SchemaDynamicOrStaticFieldValueType,
 	SchemaDynamicOrStaticNamedField,
@@ -50,13 +50,16 @@ export default class SchemaEntity<S extends ISchema>
 
 	private schema: S
 
-	public values: SchemaDynamicOrStaticValues<S>
+	public values: SchemaDynamicOrStaticPartialValues<S>
 	private fields: SchemaFields<S>
 	private dynamicField?: S['dynamicFieldSignature'] extends DynamicFieldSignature
 		? IField<S['dynamicFieldSignature']>
 		: never
 
-	public constructor(schema: S, values?: SchemaDynamicOrStaticValues<S>) {
+	public constructor(
+		schema: S,
+		values?: SchemaDynamicOrStaticPartialValues<S>
+	) {
 		this.schema = schema
 		//@ts-ignore
 		this.values = values ? values : {}

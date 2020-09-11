@@ -15,7 +15,7 @@ export interface ISchemaEntity<S extends ISchema> {
 	schemaId: S['id']
 	description?: string
 	version?: string
-	values: SchemaDynamicOrStaticValues<S>
+	values: SchemaDynamicOrStaticPartialValues<S>
 
 	get<
 		F extends SchemaDynamicOrStaticFieldNames<S>,
@@ -67,7 +67,7 @@ export type SchemaDynamicValues<
 		: never
 }
 
-export type SchemaDynamicOrStaticValues<
+export type SchemaDynamicOrStaticPartialValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = S['dynamicFieldSignature'] extends DynamicFieldSignature

@@ -3,13 +3,13 @@ import SchemaEntity from '../SchemaEntity'
 import {
 	ISchema,
 	ISchemaValidateOptions,
-	SchemaPartialValues,
+	SchemaDynamicOrStaticPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
 
 export default function validateSchemaValues<
 	S extends ISchema,
-	V extends SchemaPartialValues<S>
+	V extends SchemaDynamicOrStaticPartialValues<S>
 >(
 	schema: S,
 	values: V,
@@ -18,7 +18,7 @@ export default function validateSchemaValues<
 ): asserts values is V & SchemaValues<S> {
 	SchemaEntity.validateSchema(schema)
 
-	const extraFields: string[] = pluckExtraFields<S, V>(values, schema)
+	const extraFields: string[] = pluckExtraFields<S>(values, schema)
 
 	if (extraFields.length > 0) {
 		throw new SpruceError({
@@ -33,10 +33,12 @@ export default function validateSchemaValues<
 	instance.validate(options)
 }
 
-function pluckExtraFields<S extends ISchema, V extends SchemaPartialValues<S>>(
-	values: V,
-	schema: S
-) {
+function pluckExtraFields<
+	S extends ISchema,
+	V extends SchemaDynamicOrStaticPartialValues<
+		S
+	> = SchemaDynamicOrStaticPartialValues<S>
+>(values: V, schema: S) {
 	const extraFields: string[] = []
 	if (schema.fields) {
 		const passedFields = Object.keys(values)
