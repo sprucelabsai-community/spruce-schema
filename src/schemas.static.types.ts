@@ -72,9 +72,7 @@ export type SchemaDynamicValues<
 export type SchemaPartialValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
-> = S['dynamicFieldSignature'] extends DynamicFieldSignature
-	? SchemaDynamicValues<S, CreateEntityInstances>
-	: SchemaStaticFieldsPartialValues<S, CreateEntityInstances>
+> = Partial<SchemaValues<S, CreateEntityInstances>>
 
 /** A schema defines the data structure of something */
 export interface ISchema {
@@ -82,8 +80,6 @@ export interface ISchema {
 	id: string
 	/** The name of this schema a human will see */
 	name: string
-	/** The builder used to make this schema */
-	readonly builder?: string
 	/** A version in any form you want, we use YYYY-MM-DD */
 	version?: string
 	/** A brief human readable explanation of this schema */
@@ -147,9 +143,9 @@ export type SchemaValues<
 				CreateEntityInstances
 			>
 	  >
-	: SchemaStaticValues<T, CreateEntityInstances, K, V>
+	: SchemaStaticFieldValues<T, CreateEntityInstances, K, V>
 
-export type SchemaStaticValues<
+export type SchemaStaticFieldValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false,
 	K extends SchemaOptionalFieldNames<T> = SchemaOptionalFieldNames<T>,
