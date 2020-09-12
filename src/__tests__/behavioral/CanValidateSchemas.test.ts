@@ -1,9 +1,9 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import SchemaEntity from '../..'
+import SchemaEntity, { normalizeSchemaValues } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import { SchemaValues } from '../../schemas.static.types'
+import { ISchema, SchemaValues } from '../../schemas.static.types'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
@@ -45,53 +45,75 @@ const dynamicSchema = buildSchema({
 	},
 })
 
+const personSchema = buildSchema({
+	id: 'testPerson',
+	name: 'A test person',
+	fields: {
+		firstName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		lastName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		email: {
+			type: FieldType.Text,
+			isRequired: false,
+		},
+		profileImages: {
+			isRequired: true,
+			type: FieldType.Schema,
+			options: {
+				schema: profileImagesSchema,
+			},
+		},
+	},
+})
+
+const personWithFavColors = buildSchema({
+	id: 'testPerson',
+	name: 'A test person',
+	fields: {
+		firstName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		lastName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		favoriteColors: {
+			type: FieldType.Text,
+			isArray: true,
+			isRequired: true,
+		},
+	},
+})
+
+type PersonWithFavColorSchema = typeof personWithFavColors
+type PersonWithFavColorValues = SchemaValues<PersonWithFavColorSchema>
+
+class TestWithSchemas<
+	Schema extends ISchema,
+	Values extends SchemaValues<Schema> = SchemaValues<Schema>
+> {
+	public schema: Schema
+
+	public constructor(schema: Schema) {
+		this.schema = schema
+	}
+
+	public validate(values: Values) {
+		validateSchemaValues(this.schema, values)
+	}
+
+	public normalize(values: Values) {
+		return normalizeSchemaValues(this.schema, values)
+	}
+}
+
 export default class CanValidateSchemasTest extends AbstractSchemaTest {
-	private static personSchema = buildSchema({
-		id: 'testPerson',
-		name: 'A test person',
-		fields: {
-			firstName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			lastName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			email: {
-				type: FieldType.Text,
-				isRequired: false,
-			},
-			profileImages: {
-				isRequired: true,
-				type: FieldType.Schema,
-				options: {
-					schema: profileImagesSchema,
-				},
-			},
-		},
-	})
-
-	private static personWithFavColors = buildSchema({
-		id: 'testPerson',
-		name: 'A test person',
-		fields: {
-			firstName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			lastName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			favoriteColors: {
-				type: FieldType.Text,
-				isArray: true,
-				isRequired: true,
-			},
-		},
-	})
-
 	protected static async beforeEach() {
 		await super.beforeEach()
 	}
@@ -99,7 +121,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async canValidateBasicSchema() {
 		assert.doesThrow(
-			() => validateSchemaValues(this.personSchema, {}),
+			() => validateSchemaValues(personSchema, {}),
 			/firstName is required/gi
 		)
 	}
@@ -108,7 +130,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateSchemaWithArrayValues() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(this.personWithFavColors, {
+				validateSchemaValues(personWithFavColors, {
 					firstName: 'tay',
 					lastName: 'ro',
 				}),
@@ -128,8 +150,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				'profile150@2x': '',
 			},
 		}
-		validateSchemaValues(this.personSchema, values)
-		const personSchema = this.personSchema
+		validateSchemaValues(personSchema, values)
 		assert.isType<SchemaValues<typeof personSchema>>(values)
 		assert.isType<string | undefined | null>(values.email)
 	}
@@ -137,7 +158,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async canValidateSpecificFields() {
 		const err = assert.doesThrow(() =>
-			validateSchemaValues(this.personSchema, {}, { fields: ['firstName'] })
+			validateSchemaValues(personSchema, {}, { fields: ['firstName'] })
 		)
 
 		assert.doesNotInclude(err.message, /lastName/gi)
@@ -145,7 +166,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async canCheckValidityWithoutThrowing() {
-		const isValid = areSchemaValuesValid(this.personSchema, {})
+		const isValid = areSchemaValuesValid(personSchema, {})
 		assert.isFalse(isValid)
 	}
 
@@ -158,7 +179,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async canCheckValidityOnSpecificFields() {
 		const isValid = areSchemaValuesValid(
-			this.personSchema,
+			personSchema,
 			{ firstName: 'test' },
 			{ fields: ['firstName'] }
 		)
@@ -168,7 +189,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async failsOnSpecificFields() {
 		const isValid = areSchemaValuesValid(
-			this.personSchema,
+			personSchema,
 			{ firstName: 'test' },
 			{ fields: ['lastName'] }
 		)
@@ -188,7 +209,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			},
 		}
 
-		validateSchemaValues(this.personSchema, person)
+		validateSchemaValues(personSchema, person)
 	}
 
 	@test()
@@ -201,11 +222,30 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	}
 
 	@test()
+	protected static async typeTesting() {
+		function test(values: PersonWithFavColorValues) {
+			validateSchemaValues(personWithFavColors, values)
+		}
+
+		const validValues = {
+			firstName: 'first',
+			lastName: 'last',
+			favoriteColors: ['green'],
+		}
+
+		test(validValues)
+
+		const testInstance = new TestWithSchemas(personWithFavColors)
+		testInstance.validate(validValues)
+		assert.isEqualDeep(testInstance.normalize(validValues), validValues)
+	}
+
+	@test()
 	protected static async failsWhenValidatingFieldsNotOnSchema() {
 		const err = assert.doesThrow(
 			//@ts-ignore
 			() =>
-				validateSchemaValues(this.personSchema, {
+				validateSchemaValues(personSchema, {
 					taco: 'bravo',
 					firstName: 'first',
 					lastName: 'last',
