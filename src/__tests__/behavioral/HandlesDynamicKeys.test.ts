@@ -40,6 +40,10 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 
 		assert.isEqual(entity.get('foo'), 'bar')
 		assert.isEqual(entity.get('hello'), 'world')
+
+		entity.set('foo', 'bar2')
+
+		assert.isEqual(entity.get('foo'), 'bar2')
 	}
 
 	@test()
