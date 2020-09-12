@@ -1,3 +1,11 @@
+# [9.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.11...v9.2.0) (2020-09-12)
+
+
+### Features
+
+* fix version ([6a2c190](https://github.com/sprucelabsai/spruce-schema/commit/6a2c190))
+* fix version for npm ([35fc80b](https://github.com/sprucelabsai/spruce-schema/commit/35fc80b))
+
 ## [9.1.12](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.11...v9.1.12) (2020-09-12)
 
 ## [9.1.11](https://github.com/sprucelabsai/spruce-schema/compare/v9.1.10...v9.1.11) (2020-09-11)
