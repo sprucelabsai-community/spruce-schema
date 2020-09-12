@@ -3,7 +3,11 @@ import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity, { normalizeSchemaValues } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import { ISchema, SchemaValues } from '../../schemas.static.types'
+import {
+	ISchema,
+	ISchemaGetValuesOptions,
+	SchemaValues,
+} from '../../schemas.static.types'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
@@ -104,12 +108,15 @@ class TestWithSchemas<
 		this.schema = schema
 	}
 
-	public validate(values: Values) {
-		validateSchemaValues(this.schema, values)
+	public validate(values: Values, options?: ISchemaGetValuesOptions<Schema>) {
+		validateSchemaValues(this.schema, values, options)
 	}
 
-	public normalize(values: Values) {
-		return normalizeSchemaValues(this.schema, values)
+	public normalize(
+		values: Values,
+		options?: { includePrivateFields: boolean }
+	) {
+		return normalizeSchemaValues(this.schema, values, options)
 	}
 }
 
@@ -237,7 +244,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 		const testInstance = new TestWithSchemas(personWithFavColors)
 		testInstance.validate(validValues)
-		assert.isEqualDeep(testInstance.normalize(validValues), validValues)
+		assert.isEqualDeep(
+			testInstance.normalize(validValues, { includePrivateFields: false }),
+			validValues
+		)
 	}
 
 	@test()

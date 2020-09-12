@@ -9,10 +9,10 @@ import {
 
 export default function normalizeSchemaValues<
 	S extends ISchema,
-	F extends SchemaStaticFieldNames<S> = SchemaStaticFieldNames<S>,
-	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
-	CreateEntityInstances extends boolean = true,
-	IncludePrivateFields extends boolean = true
+	F extends SchemaStaticFieldNames<S>,
+	PF extends SchemaPublicFieldNames<S>,
+	CreateEntityInstances extends boolean,
+	IncludePrivateFields extends boolean
 >(
 	schema: S,
 	values: SchemaPartialValues<S>,
@@ -25,6 +25,5 @@ export default function normalizeSchemaValues<
 	>
 ) {
 	const instance = new SchemaEntity(schema, values)
-
 	return instance.getValues(options)
 }

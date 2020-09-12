@@ -298,18 +298,17 @@ export interface ISchemaNormalizeOptions<
 /** Options for schema.getValues */
 export type ISchemaGetValuesOptions<
 	T extends ISchema,
-	F extends SchemaStaticFieldNames<T>,
-	PF extends SchemaPublicFieldNames<T>,
-	CreateEntityInstances extends boolean,
-	IncludePrivateFields extends boolean
-> = ISchemaNormalizeOptions<T, CreateEntityInstances> &
-	(IncludePrivateFields extends false
+	F extends SchemaStaticFieldNames<T> = SchemaStaticFieldNames<T>,
+	PF extends SchemaPublicFieldNames<T> = SchemaPublicFieldNames<T>,
+	CreateEntityInstances extends boolean = false,
+	IncludePrivateFields extends boolean = false
+> = ISchemaNormalizeOptions<T, CreateEntityInstances> & {
+	includePrivateFields?: IncludePrivateFields
+} & (IncludePrivateFields extends false
 		? {
-				includePrivateFields: IncludePrivateFields
 				fields?: PF[]
 		  }
 		: {
-				includePrivateFields?: IncludePrivateFields
 				fields?: F[]
 		  })
 /** Options for schema.getDefaultValues */

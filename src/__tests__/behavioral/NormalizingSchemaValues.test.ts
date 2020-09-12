@@ -71,8 +71,8 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			typeof values,
 			{
 				firstName: string
-				age: number | null | undefined
-				nestedArraySchema:
+				age?: number | null | undefined
+				nestedArraySchema?:
 					| { field1?: string | null | undefined }[]
 					| null
 					| undefined
