@@ -1,3 +1,10 @@
+# [9.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v9.3.10...v9.4.0) (2020-09-13)
+
+
+### Features
+
+* dynamic field schema ([4d55416](https://github.com/sprucelabsai/spruce-schema/commit/4d55416))
+
 ## [9.3.10](https://github.com/sprucelabsai/spruce-schema/compare/v9.3.9...v9.3.10) (2020-09-13)
 
 ## [9.3.9](https://github.com/sprucelabsai/spruce-schema/compare/v9.3.8...v9.3.9) (2020-09-13)
