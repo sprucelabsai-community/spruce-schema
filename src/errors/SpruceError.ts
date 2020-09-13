@@ -22,7 +22,7 @@ export default class SpruceError extends AbstractSpruceError<
 				}"`
 				break
 			case 'INVALID_FIELD':
-				message = `Invalid fields on ${options.schemaId}: `
+				message = `Invalid fields on '${options.schemaId}': `
 				options.errors.forEach((fieldError) => {
 					message += `${
 						fieldError.friendlyMessage ??
@@ -31,13 +31,22 @@ export default class SpruceError extends AbstractSpruceError<
 				})
 				break
 			case 'TRANSFORMATION_ERROR':
-				message = `${options.code}: The FileType.${
-					options.fieldType
-				} field could not transform a ${
-					options.incomingTypeof
-				} to the desired valueType. The incoming value was ${
-					(JSON.stringify(options.incomingValue), null, 2)
-				}.`
+				message = ''
+				options.errors?.forEach((error) => {
+					message += `Error on ${error.name}: `
+					if (error.error) {
+						message += `${error.error?.message}`
+					}
+				})
+
+				if (message === '') {
+					message = `Could not transform a(n) ${
+						options.incomingTypeof
+					} to the  ${options.fieldType}. The incoming value was ${
+						(JSON.stringify(options.incomingValue), null, 2)
+					}.`
+				}
+
 				break
 			case 'NOT_IMPLEMENTED':
 				message = `${options.code}: ${options.instructions}`
