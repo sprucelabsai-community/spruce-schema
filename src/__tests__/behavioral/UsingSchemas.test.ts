@@ -147,8 +147,8 @@ export default class SchemaTest extends AbstractSpruceTest {
 		assert.isTrue(SchemaEntity.isSchemaValid(definition))
 	}
 
-	@test('isArray get/set work and transform to/from array')
-	protected static testGetSet() {
+	@test()
+	protected static getSetArrays() {
 		const entity = new SchemaEntity({
 			id: 'missing-fields',
 			name: 'missing name',
@@ -166,7 +166,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 			},
 		})
 
-		const values = entity.getValues({ fields: ['name'] })
+		let values = entity.getValues({ fields: ['name'] })
 		assert.isEqual(values.name, 'tay')
 		assert.isUndefined(
 			//@ts-ignore
@@ -174,33 +174,29 @@ export default class SchemaTest extends AbstractSpruceTest {
 			'getValues did not filter by fields'
 		)
 
-		// Try setting favorite colors
 		entity.set('favoriteColors', ['test'])
 		assert.isEqualDeep(
-			entity.values.favoriteColors,
+			entity.get('favoriteColors'),
 			['test'],
 			'Did not set value correctly'
 		)
 
-		// Try setting favorite color wrong, but should be coerced back to an array
 		// @ts-ignore
 		entity.set('favoriteColors', 'test2')
 		assert.isEqualDeep(
-			entity.values.favoriteColors,
+			entity.get('favoriteColors'),
 			['test2'],
 			'Did not set value correctly'
 		)
 
-		// Check non array values too
 		entity.set('name', 'Taylor')
-		assert.isEqualDeep(entity.values, {
+		assert.isEqualDeep(entity.getValues(), {
 			name: 'Taylor',
 			favoriteColors: ['test2'],
 		})
 
-		// Make sure getters work
 		// @ts-ignore
-		entity.values = { name: ['becca'], favoriteColors: 'blue' }
+		entity.setValues({ name: ['becca'], favoriteColors: 'blue' })
 		const name = entity.get('name')
 		assert.isEqual(name, 'becca')
 
@@ -211,8 +207,8 @@ export default class SchemaTest extends AbstractSpruceTest {
 		)
 	}
 
-	@test('Can transform isArray values')
-	protected static testTransformingValues() {
+	@test()
+	protected static testTransformingValuesToValueTypes() {
 		const schema = new SchemaEntity({
 			id: 'is-array-transform',
 			name: 'transform tests',
@@ -233,20 +229,18 @@ export default class SchemaTest extends AbstractSpruceTest {
 			},
 		})
 
-		// Set favorite color to a bunch of numbers and make sure it comes back a bunch of strings
 		// @ts-ignore
-		schema.values.favoriteColors = [1, 2, 3]
+		schema.set('favoriteColors', [1, 2, 3])
 
 		const favColors = schema.get('favoriteColors')
 		assert.isEqualDeep(favColors, ['1', '2', '3'])
 
-		// Opposite test
 		// @ts-ignore
-		schema.values.favoriteNumber = ['7', '8', '100']
+		schema.set('favoriteNumber', ['9', '8', '100'])
 		const favNumber = schema.get('favoriteNumber')
 		assert.isEqual(
 			favNumber,
-			7,
+			9,
 			'Schema did not transform array of strings to single number'
 		)
 	}

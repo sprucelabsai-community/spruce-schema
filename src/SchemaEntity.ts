@@ -1,11 +1,6 @@
-import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import {
-	IInvalidFieldErrorOptions,
-	IInvalidFieldError,
-} from './errors/error.types'
+import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
-import AbstractField from './fields/AbstractField'
 import { ISchemasById } from './fields/field.static.types'
 import {
 	ISchema,
@@ -26,12 +21,13 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
+import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
 export default class SchemaEntity<S extends ISchema>
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
-	private static schemasById: ISchemasById = {}
+	public static schemasById: ISchemasById = {}
 
 	public get schemaId() {
 		return this.schema.id
@@ -46,15 +42,8 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	private schema: S
-
-	/** The raw values of this schema */
-	public values: SchemaPartialValues<S>
-
-	/** All the field objects keyed by field name, use getField rather than accessing this directly */
+	private values: SchemaPartialValues<S>
 	private fields: SchemaFields<S>
-
-	/** For caching getNamedFields() */
-	// private namedFieldCache: ISchemaNamedField<T>[] | undefined
 
 	public constructor(schema: S, values?: SchemaPartialValues<S>) {
 		this.schema = schema
@@ -63,7 +52,9 @@ export default class SchemaEntity<S extends ISchema>
 		// Pull field definitions off schema
 		const fieldDefinitions = this.schema.fields
 		if (!fieldDefinitions) {
-			throw new Error(`Schemas don't support dynamic fields yet`)
+			throw new Error(
+				`SchemaEntity requires fields. If you want to use dynamicFieldSignature, try DynamicSchemaEntity.`
+			)
 		}
 
 		// Empty fields to start
@@ -72,7 +63,7 @@ export default class SchemaEntity<S extends ISchema>
 		Object.keys(fieldDefinitions).forEach((name) => {
 			const definition = fieldDefinitions[name]
 			const field = FieldFactory.Field(name, definition)
-			// TODO why do i have to cast to any?
+
 			this.fields[name as SchemaFieldNames<S>] = field as any
 
 			if (definition.value) {
@@ -184,8 +175,7 @@ export default class SchemaEntity<S extends ISchema>
 		}
 	}
 
-	/** Normalize a value against a field. runs through valueType transformer and makes an array if isArray is true */
-	public normalizeValue<
+	private normalizeValue<
 		F extends SchemaFieldNames<S>,
 		CreateEntityInstances extends boolean = true
 	>(
@@ -193,88 +183,22 @@ export default class SchemaEntity<S extends ISchema>
 		value: any,
 		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
 	): SchemaFieldValueType<S, F, CreateEntityInstances> {
-		// If the value is not null or undefined, coerce it into an array
-		let localValue =
-			value === null || typeof value === 'undefined'
-				? ([] as SchemaFieldValueType<S, F>)
-				: Array.isArray(value)
-				? value
-				: [value]
-
-		if (!Array.isArray(localValue)) {
-			throw new SpruceError({
-				code: 'INVALID_FIELD',
-				schemaId: this.schema.id,
-				errors: [{ name: forField, code: 'value_not_array' }],
-			})
-		}
-
-		const { validate = true, createEntityInstances = true, byField } =
-			options ?? {}
-
-		// Get field && override options by that field
 		const field = this.fields[forField]
-		const overrideOptions = byField?.[forField] ?? {}
 
-		if (value === null || typeof value === 'undefined') {
-			if (!validate || !field.isRequired) {
-				return value
-			} else {
-				throw new SpruceError({
-					code: 'INVALID_FIELD',
-					schemaId: this.schema.id,
-					errors: [{ name: forField, code: 'missing_required' }],
-				})
-			}
+		const overrideOptions = {
+			...(options ?? {}),
+			...(options?.byField?.[forField] ?? {}),
 		}
 
-		// Validate if we're supposed to
-		let errors: IInvalidFieldError[] = []
-		if (validate) {
-			localValue.forEach((value) => {
-				errors = [
-					...errors,
-					...field.validate(value, {
-						schemasById: SchemaEntity.schemasById,
-						...(field.definition.options ?? {}),
-						...overrideOptions,
-					}),
-				]
-			})
-		}
-
-		// If there are any errors, bail
-		if (errors.length > 0) {
-			throw new SpruceError({
-				code: 'INVALID_FIELD',
-				schemaId: this.schema.id,
-				errors,
-			})
-		}
-
-		// If there is a value, transform it to it's expected value
-		// Is array will always pass here
-		if (localValue.length > 0) {
-			localValue = localValue.map((value) =>
-				typeof value === 'undefined'
-					? undefined
-					: (field as AbstractField<FieldDefinition>).toValueType(value, {
-							schemasById: SchemaEntity.schemasById,
-							createEntityInstances,
-							...(field.definition.options ?? {}),
-							...overrideOptions,
-					  })
-			)
-		}
-
-		return (field.isArray ? localValue : localValue[0]) as SchemaFieldValueType<
-			S,
-			F,
-			CreateEntityInstances
-		>
+		return normalizeFieldValue(
+			this.schemaId,
+			SchemaEntity.schemasById,
+			field,
+			value,
+			overrideOptions
+		)
 	}
 
-	/** Get any field by name */
 	public get<
 		F extends SchemaFieldNames<S>,
 		CreateEntityInstances extends boolean = true
@@ -289,13 +213,11 @@ export default class SchemaEntity<S extends ISchema>
 		return this.normalizeValue(fieldName, value, options)
 	}
 
-	/** Set a value and ensure its type */
 	public set<F extends SchemaFieldNames<S>>(
 		fieldName: F,
 		value: SchemaFieldValueType<S, F>,
 		options: ISchemaNormalizeOptions<S, false> = {}
 	): this {
-		// If the value is not null or undefined, coerce it into an array
 		const localValue = this.normalizeValue(fieldName, value, options)
 
 		this.values[fieldName] = localValue
@@ -315,8 +237,8 @@ export default class SchemaEntity<S extends ISchema>
 	public validate(options: ISchemaValidateOptions<S> = {}) {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
-		this.getNamedFields(options).forEach((item) => {
-			const { name, field } = item
+		this.getNamedFields(options).forEach((namedField) => {
+			const { name, field } = namedField
 
 			const value = this.get(name, {
 				validate: false,
@@ -341,7 +263,6 @@ export default class SchemaEntity<S extends ISchema>
 		}
 	}
 
-	/** Get all default values based on the definition */
 	public getDefaultValues<
 		F extends SchemaFieldNamesWithDefaultValue<
 			S
@@ -367,7 +288,6 @@ export default class SchemaEntity<S extends ISchema>
 		return values as Pick<SchemaDefaultValues<S, CreateEntityInstances>, F>
 	}
 
-	/** Get all values valued */
 	public getValues<
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
@@ -405,7 +325,6 @@ export default class SchemaEntity<S extends ISchema>
 		return values
 	}
 
-	/** Set a bunch of values at once */
 	public setValues(values: SchemaPartialValues<S>): this {
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField

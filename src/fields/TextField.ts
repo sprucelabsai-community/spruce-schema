@@ -1,3 +1,5 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetails,
 	IFieldTemplateDetailOptions,
@@ -11,7 +13,6 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 		return 'A text field. Converts non-strings into strings by calling toString(). Size set by options.'
 	}
 
-	/** Generate template details */
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<ITextFieldDefinition>
 	): IFieldTemplateDetails {
@@ -21,7 +22,6 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 		}
 	}
 
-	/** * Transform to match the value type of string */
 	public toValueType<C extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<ITextFieldDefinition, C>
@@ -29,7 +29,10 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 		let transformed =
 			typeof value === 'string'
 				? value
-				: value && value.toString && value.toString()
+				: typeof value === 'number' &&
+				  value &&
+				  value.toString &&
+				  value.toString()
 
 		if (typeof transformed === 'string') {
 			const maxLength = options?.maxLength ?? 0
@@ -40,6 +43,21 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 			return transformed
 		}
 
-		throw new Error(`"${value}" is not transformable to a string`)
+		throw new SpruceError({
+			code: 'TRANSFORMATION_ERROR',
+			fieldType: FieldType.Text,
+			incomingTypeof: typeof value,
+			incomingValue: value,
+			errors: [
+				{
+					error: new Error(
+						`${JSON.stringify(value)} could not be converted to a string.`
+					),
+					code: 'schema_field_invalid',
+					name: this.name,
+				},
+			],
+			name: this.name,
+		})
 	}
 }

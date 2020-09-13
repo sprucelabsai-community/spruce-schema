@@ -1,3 +1,5 @@
+import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
@@ -20,6 +22,26 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 
 	// TODO clamp and validate
 	public toValueType(value: any): number {
-		return +value
+		const numberValue = +value
+		if (isNaN(numberValue)) {
+			throw new SpruceError({
+				code: 'TRANSFORMATION_ERROR',
+				fieldType: FieldType.Number,
+				incomingTypeof: typeof value,
+				incomingValue: value,
+				errors: [
+					{
+						error: new Error(
+							`${JSON.stringify(value)} could not be converted to a number.`
+						),
+						code: 'schema_field_invalid',
+						name: this.name,
+					},
+				],
+				name: this.name,
+			})
+		}
+
+		return numberValue
 	}
 }
