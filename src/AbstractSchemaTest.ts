@@ -1,8 +1,11 @@
 import AbstractSpruceTest from '@sprucelabs/test'
-import SchemaEntity from './SchemaEntity'
+import { SchemaRegistry } from '.'
 
 export default class AbstractSchemaTest extends AbstractSpruceTest {
+	protected static registry: SchemaRegistry
 	protected static async beforeEach() {
-		SchemaEntity.forgetAllSchemas()
+		await super.beforeEach()
+		this.registry = SchemaRegistry.getInstance()
+		this.registry.forgetAllSchemas()
 	}
 }

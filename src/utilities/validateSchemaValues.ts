@@ -1,3 +1,4 @@
+import { validateSchema } from '..'
 import SpruceError from '../errors/SpruceError'
 import SchemaEntity from '../SchemaEntity'
 import {
@@ -16,7 +17,7 @@ export default function validateSchemaValues<
 	options?: ISchemaValidateOptions<S>
 	// eslint-disable-next-line no-undef
 ): asserts values is V & SchemaValues<S> {
-	SchemaEntity.validateSchema(schema)
+	validateSchema(schema)
 
 	const extraFields: string[] = pluckExtraFields<S, V>(values, schema)
 
@@ -29,7 +30,6 @@ export default function validateSchemaValues<
 	}
 
 	const instance = new SchemaEntity(schema, values)
-
 	instance.validate(options)
 }
 

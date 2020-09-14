@@ -5,6 +5,8 @@ import SpruceError from '../../errors/SpruceError'
 import SchemaEntity from '../../SchemaEntity'
 import { SchemaValues, ISchemaEntity } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
+import isSchemaValid from '../../utilities/isSchemaValid'
+import validateSchema from '../../utilities/validateSchema'
 import buildPersonWithCars, {
 	ICarSchema,
 	ITruckSchema,
@@ -53,7 +55,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 		}
 
 		assert.isFalse(
-			SchemaEntity.isSchemaValid(schema),
+			isSchemaValid(schema),
 			'Bad definition incorrectly passed valid check'
 		)
 	}
@@ -82,9 +84,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 
 		unset(definition, fieldToDelete)
 
-		const error: any = assert.doesThrow(() =>
-			SchemaEntity.validateSchema(definition)
-		)
+		const error: any = assert.doesThrow(() => validateSchema(definition))
 
 		if (
 			error instanceof SpruceError &&
@@ -144,7 +144,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 			},
 		})
 
-		assert.isTrue(SchemaEntity.isSchemaValid(definition))
+		assert.isTrue(isSchemaValid(definition))
 	}
 
 	@test()

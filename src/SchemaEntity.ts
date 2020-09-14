@@ -48,17 +48,18 @@ export default class SchemaEntity<S extends ISchema>
 	public constructor(schema: S, values?: SchemaPartialValues<S>) {
 		this.schema = schema
 		this.values = values ? values : {}
+		this.fields = {} as SchemaFields<S>
 
-		// Pull field definitions off schema
+		this.buildFields()
+	}
+
+	private buildFields() {
 		const fieldDefinitions = this.schema.fields
 		if (!fieldDefinitions) {
 			throw new Error(
 				`SchemaEntity requires fields. If you want to use dynamicFieldSignature, try DynamicSchemaEntity.`
 			)
 		}
-
-		// Empty fields to start
-		this.fields = {} as SchemaFields<S>
 
 		Object.keys(fieldDefinitions).forEach((name) => {
 			const definition = fieldDefinitions[name]
@@ -70,109 +71,6 @@ export default class SchemaEntity<S extends ISchema>
 				this.set(name as SchemaFieldNames<S>, definition.value)
 			}
 		})
-	}
-
-	public static trackSchema(schema: ISchema) {
-		this.validateSchema(schema)
-
-		const id = schema.id
-		if (!this.schemasById[id]) {
-			this.schemasById[id] = []
-		}
-		this.schemasById[id].push(schema)
-	}
-
-	public static forgetSchema(id: string) {
-		delete SchemaEntity.schemasById[id]
-	}
-
-	public static forgetAllSchemas() {
-		this.schemasById = {}
-	}
-
-	public static getSchema(id: string, version?: string): ISchema | undefined {
-		if (!this.schemasById[id]) {
-			throw new SpruceError({
-				code: 'SCHEMA_NOT_FOUND',
-				schemaId: id,
-			})
-		}
-
-		const match = this.schemasById[id].find((d) => d.version === version)
-
-		if (!match) {
-			throw new SpruceError({
-				code: 'VERSION_NOT_FOUND',
-			})
-		}
-
-		return match
-	}
-
-	public static getTrackingCount() {
-		return Object.keys(this.schemasById).length
-	}
-
-	public static areSchemasTheSame(left: ISchema, right: ISchema): boolean {
-		if (left.id !== right.id) {
-			return false
-		}
-
-		const fields1 = Object.keys(left.fields ?? {}).sort()
-		const fields2 = Object.keys(right.fields ?? {}).sort()
-
-		if (fields1.join('|') !== fields2.join('|')) {
-			return false
-		}
-
-		// TODO let fields compare their definitions
-
-		return true
-	}
-
-	/** Tells you if a schema schema is valid */
-	// eslint-disable-next-line no-undef
-	public static isSchemaValid(definition: unknown): definition is ISchema {
-		try {
-			SchemaEntity.validateSchema(definition)
-			return true
-		} catch {
-			return false
-		}
-	}
-
-	/** Throws a field validation error */
-	// eslint-disable-next-line no-undef
-	public static validateSchema(schema: any): asserts schema is ISchema {
-		const errors: string[] = []
-
-		if (!schema) {
-			errors.push('definition_empty')
-		} else {
-			if (!schema.id) {
-				errors.push('id_missing')
-			} else if (!(typeof schema.id === 'string')) {
-				errors.push('id_not_string')
-			}
-
-			if (!schema.name) {
-				errors.push('name_missing')
-			} else if (!(typeof schema.name === 'string')) {
-				errors.push('name_not_string')
-			}
-
-			if (!schema.fields && !schema.dynamicFieldSignature) {
-				errors.push('needs_fields_or_dynamic_key_signature')
-			}
-		}
-
-		if (errors.length > 0) {
-			throw new SpruceError({
-				code: 'INVALID_SCHEMA_DEFINITION',
-				schemaId: schema?.id ?? 'ID MISSING',
-				errors,
-			})
-		}
 	}
 
 	private normalizeValue<
@@ -206,7 +104,6 @@ export default class SchemaEntity<S extends ISchema>
 		fieldName: F,
 		options: ISchemaNormalizeOptions<S, CreateEntityInstances> = {}
 	): SchemaFieldValueType<S, F, CreateEntityInstances> {
-		// Get value off self
 		const value: SchemaFieldValueType<S, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
@@ -276,7 +173,6 @@ export default class SchemaEntity<S extends ISchema>
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 			if (typeof field.definition.defaultValue !== 'undefined') {
-				// TODO how to type name so it works as key of values
 				// @ts-ignore
 				values[name] = this.normalizeValue(
 					name,
@@ -320,7 +216,6 @@ export default class SchemaEntity<S extends ISchema>
 			}
 		})
 
-		// We know this conforms after the loop above, nothing to do here
 		//@ts-ignore
 		return values
 	}
@@ -330,10 +225,10 @@ export default class SchemaEntity<S extends ISchema>
 			const { name } = namedField
 			const value = values[name]
 			if (typeof value !== 'undefined') {
-				// TODO why cast? types should map by here
 				this.set(name, value as any)
 			}
 		})
+
 		return this
 	}
 
@@ -349,10 +244,5 @@ export default class SchemaEntity<S extends ISchema>
 		})
 
 		return namedFields
-	}
-
-	public getField<F extends SchemaFieldNames<S>>(name: F) {
-		const field = this.fields[name]
-		return field
 	}
 }

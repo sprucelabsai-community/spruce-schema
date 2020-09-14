@@ -20,7 +20,6 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 		}
 	}
 
-	// TODO clamp and validate
 	public toValueType(value: any): number {
 		const numberValue = +value
 		if (isNaN(numberValue)) {
