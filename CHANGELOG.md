@@ -1,3 +1,10 @@
+# [10.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v9.4.6...v10.0.0) (2020-09-14)
+
+
+### Breaking Changes
+
+* schema registry ([4ee7be2](https://github.com/sprucelabsai/spruce-schema/commit/4ee7be2))
+
 ## [9.4.6](https://github.com/sprucelabsai/spruce-schema/compare/v9.4.5...v9.4.6) (2020-09-13)
 
 ## [9.4.5](https://github.com/sprucelabsai/spruce-schema/compare/v9.4.4...v9.4.5) (2020-09-13)
