@@ -1,0 +1,68 @@
+import SpruceError from '../errors/SpruceError'
+import { ISchemasById } from '../fields/field.static.types'
+import { ISchema } from '../schemas.static.types'
+import validateSchema from '../utilities/validateSchema'
+
+export default class SchemaRegistry {
+	private schemasById: ISchemasById = {}
+	private static instance: SchemaRegistry
+
+	public static getInstance() {
+		if (!this.instance) {
+			this.instance = new SchemaRegistry()
+		}
+		return this.instance
+	}
+
+	public trackSchema(schema: ISchema) {
+		validateSchema(schema)
+
+		const id = schema.id
+		if (!this.schemasById[id]) {
+			this.schemasById[id] = []
+		}
+		this.schemasById[id].push(schema)
+	}
+
+	public getTrackingCount() {
+		let count = 0
+		Object.keys(this.schemasById).forEach((key) => {
+			count += this.schemasById[key].length
+		})
+		return count
+	}
+
+	public forgetAllSchemas() {
+		this.schemasById = {}
+	}
+
+	public getSchema(id: string, version?: string): ISchema | undefined {
+		if (!this.schemasById[id]) {
+			throw new SpruceError({
+				code: 'SCHEMA_NOT_FOUND',
+				schemaId: id,
+			})
+		}
+
+		const match = this.schemasById[id].find((d) => d.version === version)
+
+		if (!match) {
+			throw new SpruceError({
+				code: 'VERSION_NOT_FOUND',
+				schemaId: id,
+			})
+		}
+
+		return match
+	}
+
+	public forgetSchema(id: string, version?: string) {
+		this.schemasById[id] = this.schemasById[id]?.filter(
+			(schema) => !(schema.id === id && schema.version === version)
+		)
+
+		if (this.schemasById[id]?.length === 0) {
+			delete this.schemasById[id]
+		}
+	}
+}

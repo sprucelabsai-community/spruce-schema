@@ -3,11 +3,13 @@ import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import SchemaEntity from '../SchemaEntity'
 import { ISchema, ISchemaIdWithVersion } from '../schemas.static.types'
+import SchemaRegistry from '../singletons/SchemaRegistry'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 	TemplateRenderAs,
 } from '../types/template.types'
+import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
 	IFieldDefinitionToSchemaOptions,
@@ -49,7 +51,7 @@ export default class SchemaField<
 			}
 
 			try {
-				SchemaEntity.validateSchema(item)
+				validateSchema(item)
 				return item
 			} catch (err) {
 				throw new SpruceError({
@@ -197,17 +199,18 @@ export default class SchemaField<
 			definition
 		)
 
-		const definitions = schemasOrIds.map((schemaOrId) => {
-			const definition =
+		const schemas = schemasOrIds.map((schemaOrId) => {
+			const schema =
 				typeof schemaOrId === 'string'
-					? schemasById[schemaOrId] || SchemaEntity.getSchema(schemaOrId)
+					? schemasById[schemaOrId] ||
+					  SchemaRegistry.getInstance().getSchema(schemaOrId)
 					: schemaOrId
 
-			SchemaEntity.validateSchema(definition)
-			return definition
+			validateSchema(schema)
+			return schema
 		})
 
-		return definitions
+		return schemas
 	}
 
 	public validate(
@@ -219,7 +222,7 @@ export default class SchemaField<
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
 		if (value instanceof SchemaEntity) {
 			try {
-				SchemaEntity.validateSchema(value)
+				validateSchema(value)
 			} catch (err) {
 				errors.push({
 					error: err,

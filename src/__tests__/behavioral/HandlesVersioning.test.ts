@@ -1,18 +1,18 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import SchemaEntity from '../../SchemaEntity'
+import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
 
-export default class HandlesVersioningTest extends AbstractSpruceTest {
+export default class HandlesVersioningTest extends AbstractSchemaTest {
 	@test()
 	protected static async letsMeBuildASchemaWithSameNameAndVersions() {
-		const { wrenchV1, wrenchV2 } = this.buildDefinitions()
+		const { wrenchV1, wrenchV2 } = this.buildSchemas()
 
 		assert.isTruthy(wrenchV1)
 		assert.isTruthy(wrenchV2)
 	}
 
-	private static buildDefinitions() {
+	private static buildSchemas() {
 		const wrenchV1 = buildSchema({
 			id: 'wrench',
 			name: 'Wrench',
@@ -42,10 +42,10 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async canAccessSchemaById() {
-		this.buildDefinitions()
+		this.buildSchemas()
 
-		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
-		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
+		const wrenchV1 = this.registry.getSchema('wrench', 'v1')
+		const wrenchV2 = this.registry.getSchema('wrench', 'v2')
 
 		assert.isTruthy(wrenchV1)
 		assert.isTruthy(wrenchV2)
@@ -53,10 +53,10 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async getsBackCorrectSchema() {
-		this.buildDefinitions()
+		this.buildSchemas()
 
-		const wrenchV1 = SchemaEntity.getSchema('wrench', 'v1')
-		const wrenchV2 = SchemaEntity.getSchema('wrench', 'v2')
+		const wrenchV1 = this.registry.getSchema('wrench', 'v1')
+		const wrenchV2 = this.registry.getSchema('wrench', 'v2')
 
 		assert.isTruthy(wrenchV1)
 		assert.isTruthy(wrenchV2)
@@ -69,8 +69,9 @@ export default class HandlesVersioningTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async throwsIfYouForgetAVersionOnAVersioned() {
+		this.buildSchemas()
 		assert.doesThrow(
-			() => SchemaEntity.getSchema('wrench'),
+			() => this.registry.getSchema('wrench'),
 			/VERSION_NOT_FOUND/gi
 		)
 	}

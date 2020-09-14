@@ -1,8 +1,8 @@
-import SchemaEntity from '../SchemaEntity'
 import { ISchema } from '../schemas.static.types'
+import SchemaRegistry from '../singletons/SchemaRegistry'
 
 /** Builds a schema definition */
 export default function buildSchema<T extends ISchema>(schema: T): T {
-	SchemaEntity.trackSchema(schema)
+	SchemaRegistry.getInstance().trackSchema(schema)
 	return schema
 }

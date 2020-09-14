@@ -1,11 +1,11 @@
 import { test, assert } from '@sprucelabs/test'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
-import SchemaEntity from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
+import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
 
 const profileImagesSchema = buildSchema({
@@ -97,7 +97,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	}
 
 	@test()
-	protected static async canValidateBasicSchema() {
+	protected static async canValidateBasicSchemaValues() {
 		assert.doesThrow(
 			() => validateSchemaValues(this.personSchema, {}),
 			/firstName is required/gi
@@ -151,7 +151,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async canCheckValidityOnDynamicFieldsWithoutThrowing() {
-		const isValid = SchemaEntity.isSchemaValid(dynamicSchema)
+		const isValid = isSchemaValid(dynamicSchema)
 		assert.isTrue(isValid)
 	}
 
