@@ -2,7 +2,7 @@ import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 } from '../types/template.types'
-import PhoneNumber from '../utilities/PhoneNumberUtility'
+import formatPhoneNumber from '../utilities/formatPhoneNumber'
 import AbstractField from './AbstractField'
 import { ValidateOptions } from './field.static.types'
 import { IPhoneFieldDefinition } from './PhoneField.types'
@@ -22,7 +22,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 
 	public toValueType(value: any): string {
 		const stringValue = `${value}`
-		const phoneNumber = PhoneNumber.format(stringValue)
+		const phoneNumber = formatPhoneNumber(stringValue)
 		return phoneNumber
 	}
 
@@ -33,7 +33,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		const errors = super.validate(value, options)
 
 		try {
-			typeof value !== 'undefined' && PhoneNumber.format(value, false)
+			typeof value !== 'undefined' && formatPhoneNumber(value, false)
 		} catch (err) {
 			errors.push({ code: 'invalid_phone_number', name: this.name })
 		}
