@@ -45,70 +45,105 @@ const dynamicSchema = buildSchema({
 	},
 })
 
+const personSchema = buildSchema({
+	id: 'testPerson',
+	name: 'A test person',
+	fields: {
+		firstName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		lastName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		email: {
+			type: FieldType.Text,
+			isRequired: false,
+		},
+		profileImages: {
+			isRequired: true,
+			type: FieldType.Schema,
+			options: {
+				schema: profileImagesSchema,
+			},
+		},
+	},
+})
+
+const personWithFavColorsSchema = buildSchema({
+	id: 'testPerson',
+	name: 'A test person',
+	fields: {
+		firstName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		lastName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		favoriteColors: {
+			type: FieldType.Text,
+			isArray: true,
+			isRequired: true,
+		},
+	},
+})
+
+const toolSchema = buildSchema({
+	id: 'tool',
+	name: 'Tool',
+	fields: {
+		name: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+	},
+})
+
+const personWithFavToolsSchema = buildSchema({
+	id: 'personWithFavTools',
+	name: 'Person with favorite tools',
+	fields: {
+		firstName: {
+			type: FieldType.Text,
+			isRequired: true,
+		},
+		lastName: {
+			type: FieldType.Text,
+		},
+		favoriteTools: {
+			isRequired: true,
+			type: FieldType.Schema,
+			isArray: true,
+			options: {
+				schema: toolSchema,
+			},
+		},
+	},
+})
+
 export default class CanValidateSchemasTest extends AbstractSchemaTest {
-	private static personSchema = buildSchema({
-		id: 'testPerson',
-		name: 'A test person',
-		fields: {
-			firstName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			lastName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			email: {
-				type: FieldType.Text,
-				isRequired: false,
-			},
-			profileImages: {
-				isRequired: true,
-				type: FieldType.Schema,
-				options: {
-					schema: profileImagesSchema,
-				},
-			},
-		},
-	})
-
-	private static personWithFavColors = buildSchema({
-		id: 'testPerson',
-		name: 'A test person',
-		fields: {
-			firstName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			lastName: {
-				type: FieldType.Text,
-				isRequired: true,
-			},
-			favoriteColors: {
-				type: FieldType.Text,
-				isArray: true,
-				isRequired: true,
-			},
-		},
-	})
-
 	protected static async beforeEach() {
 		await super.beforeEach()
 	}
 
 	@test()
 	protected static async canValidateBasicSchemaValues() {
-		assert.doesThrow(
-			() => validateSchemaValues(this.personSchema, {}),
+		const err = assert.doesThrow(
+			() => validateSchemaValues(personSchema, {}),
 			/firstName is required/gi
 		)
+
+		assert.isEqual(err.message.substr(0, 14), 'INVALID_FIELD:')
 	}
 
 	@test()
 	protected static async canValidateSchemaWithArrayValues() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(this.personWithFavColors, {
+				validateSchemaValues(personWithFavColorsSchema, {
 					firstName: 'tay',
 					lastName: 'ro',
 				}),
@@ -128,8 +163,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				'profile150@2x': '',
 			},
 		}
-		validateSchemaValues(this.personSchema, values)
-		const personSchema = this.personSchema
+		validateSchemaValues(personSchema, values)
 		assert.isType<SchemaValues<typeof personSchema>>(values)
 		assert.isType<string | undefined | null>(values.email)
 	}
@@ -137,7 +171,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async canValidateSpecificFields() {
 		const err = assert.doesThrow(() =>
-			validateSchemaValues(this.personSchema, {}, { fields: ['firstName'] })
+			validateSchemaValues(personSchema, {}, { fields: ['firstName'] })
 		)
 
 		assert.doesNotInclude(err.message, /lastName/gi)
@@ -145,7 +179,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async canCheckValidityWithoutThrowing() {
-		const isValid = areSchemaValuesValid(this.personSchema, {})
+		const isValid = areSchemaValuesValid(personSchema, {})
 		assert.isFalse(isValid)
 	}
 
@@ -158,7 +192,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async canCheckValidityOnSpecificFields() {
 		const isValid = areSchemaValuesValid(
-			this.personSchema,
+			personSchema,
 			{ firstName: 'test' },
 			{ fields: ['firstName'] }
 		)
@@ -168,7 +202,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async failsOnSpecificFields() {
 		const isValid = areSchemaValuesValid(
-			this.personSchema,
+			personSchema,
 			{ firstName: 'test' },
 			{ fields: ['lastName'] }
 		)
@@ -188,7 +222,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			},
 		}
 
-		validateSchemaValues(this.personSchema, person)
+		validateSchemaValues(personSchema, person)
 	}
 
 	@test()
@@ -203,9 +237,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	@test()
 	protected static async failsWhenValidatingFieldsNotOnSchema() {
 		const err = assert.doesThrow(
-			//@ts-ignore
 			() =>
-				validateSchemaValues(this.personSchema, {
+				validateSchemaValues(personSchema, {
 					taco: 'bravo',
 					firstName: 'first',
 					lastName: 'last',
@@ -224,5 +257,69 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		} else {
 			assert.fail(`Expected FIELD_NOT_FOUND but got ${err.options.code}`)
 		}
+	}
+
+	@test()
+	protected static async givesInvalidFieldErrorWhenValidatingEmptyArrayNestedSchemas() {
+		const err = assert.doesThrow(
+			() =>
+				validateSchemaValues(personWithFavToolsSchema, {
+					firstName: 'first',
+					lastName: 'last',
+					favoriteTools: [],
+				}),
+			/INVALID_FIELD/
+		) as SpruceError
+
+		if (err.options.code === 'INVALID_FIELD') {
+			assert.isLength(err.options.errors, 1)
+			assert.isEqual(err.options.errors[0].code, 'missing_required')
+		} else {
+			assert.fail(`Expected INVALID_FIELD but got ${err.options.code}`)
+		}
+	}
+
+	@test()
+	protected static async givesInvalidFieldErrorWhenValidatingNestedSchemas() {
+		const err = assert.doesThrow(
+			() =>
+				validateSchemaValues(personWithFavToolsSchema, {
+					firstName: 'first',
+					lastName: 'last',
+					favoriteTools: [
+						{
+							//@ts-ignore
+							foo: 'bar',
+						},
+					],
+				}),
+			/INVALID_FIELD/
+		) as SpruceError
+
+		if (err.options.code === 'INVALID_FIELD') {
+			assert.isLength(err.options.errors, 1)
+			assert.isEqual(
+				err.options.errors[0].code,
+				'invalid_related_schema_values'
+			)
+			assert.isEqual(
+				err.options.errors[0].error?.message.substr(0, 14),
+				'INVALID_FIELD:'
+			)
+		} else {
+			assert.fail(`Expected INVALID_FIELD but got ${err.options.code}`)
+		}
+	}
+
+	@test()
+	protected static async canValidateNestedArraySchema() {
+		validateSchemaValues(personWithFavToolsSchema, {
+			firstName: 'Tay',
+			favoriteTools: [
+				{
+					name: 'Laptop',
+				},
+			],
+		})
 	}
 }

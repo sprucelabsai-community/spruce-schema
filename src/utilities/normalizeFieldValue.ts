@@ -92,7 +92,7 @@ export default function normalizeFieldValue<
 		: localValue[0]) as FieldDefinitionValueType<F, CreateEntityInstances>
 }
 
-function normalizeValueToArray<
+export function normalizeValueToArray<
 	F extends Field,
 	CreateEntityInstances extends boolean
 >(value: any) {

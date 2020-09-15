@@ -21,7 +21,9 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
-import normalizeFieldValue from './utilities/normalizeFieldValue'
+import normalizeFieldValue, {
+	normalizeValueToArray,
+} from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
 export default class SchemaEntity<S extends ISchema>
@@ -136,18 +138,20 @@ export default class SchemaEntity<S extends ISchema>
 
 		this.getNamedFields(options).forEach((namedField) => {
 			const { name, field } = namedField
+			let valueArray = normalizeValueToArray(this.values[name])
 
-			const value = this.get(name, {
-				validate: false,
-				createEntityInstances: false,
-			})
+			if (valueArray.length === 0) {
+				valueArray = [undefined]
+			}
 
-			const fieldErrors = field.validate(value, {
-				schemasById: SchemaEntity.schemasById,
-			})
+			for (const value of valueArray) {
+				const fieldErrors = field.validate(value, {
+					schemasById: SchemaEntity.schemasById,
+				})
 
-			if (fieldErrors.length > 0) {
-				errors.push(...fieldErrors)
+				if (fieldErrors.length > 0) {
+					errors.push(...fieldErrors)
+				}
 			}
 		})
 
