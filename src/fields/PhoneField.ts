@@ -30,11 +30,9 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		value: any,
 		options?: ValidateOptions<IPhoneFieldDefinition>
 	) {
-		// Debugger
 		const errors = super.validate(value, options)
 
 		try {
-			// Only check if it's defined
 			typeof value !== 'undefined' && PhoneNumber.format(value, false)
 		} catch (err) {
 			errors.push({ code: 'invalid_phone_number', name: this.name })

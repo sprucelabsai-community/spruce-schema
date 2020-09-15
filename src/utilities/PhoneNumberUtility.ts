@@ -32,25 +32,29 @@ export default class PhoneNumber {
 		} catch (e) {
 			// Log.debug('Unable to format phone number')
 			if (!failSilently) {
-				throw new Error('INVALID_PHONENUMBER')
+				throw new Error('INVALID_PHONE_NUMBER')
 			}
 		}
 
 		if (!failSilently) {
 			let isValid
-			const cleanedValue = val.replace(/\D/g, '') // Strip all non-numeric
-			if (cleanedValue.startsWith('1555')) {
-				// TODO: need solution for international
-				isValid = cleanedValue.length === 11
+			const cleanedValue = val.replace(/\D/g, '')
+			if (this.isDummyNumber(val)) {
+				isValid = cleanedValue.length === 11 || cleanedValue.length === 10
 			} else {
 				isValid = isValidNumber(formattedNumber)
 			}
 
 			if (!isValid) {
-				throw new Error('INVALID_PHONENUMBER')
+				throw new Error('INVALID_PHONE_NUMBER')
 			}
 		}
 
 		return formattedNumber
+	}
+
+	public static isDummyNumber(phone: string) {
+		const cleanedValue = phone.replace(/\D/g, '')
+		return cleanedValue.startsWith('1555') || cleanedValue.startsWith('555')
 	}
 }
