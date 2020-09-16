@@ -1336,10 +1336,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.276":
-  version "2.2.276"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.276.tgz#fc67690198e007bdce2643271616b5da72299def"
-  integrity sha512-g+/l5zFMvZlr9vbCGA2IBIuIORkvlJEQ4rsJC5gEwD6ybs3+g3tcbw7ePTBM/pI9wmTTKsuDhuvPj5/a4I/1UA==
+"@sprucelabs/error@^2.2.278":
+  version "2.2.278"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.278.tgz#8bfdd0ce67f35e709293628a8e04162f81d491ca"
+  integrity sha512-n/8Dwfn1si9kSQsRfrFsnhWl3PpL1KbCpX2/py90p/d9AzU7Lppikr4bBCYlXFwVGiBwJlhtk9Xv3H5DLjq+1w==
 
 "@sprucelabs/log@^10.2.219":
   version "10.2.219"
@@ -1356,14 +1356,14 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.19":
-  version "7.0.19"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.19.tgz#249a66aee99117d78a455a0c20de5af32fc194c3"
-  integrity sha512-DgNpdgHBE0aOi6odX13NfBap2i8Zw7tD0dkbnnRr+c9BKzDODz+D4ZoHsF+qHC+wUVELDKz9/VD9m2qxZdQWMA==
+"@sprucelabs/test@^7.0.20":
+  version "7.0.20"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.20.tgz#d83d71fbe19a1fa7e378d17113986deeaaa93f68"
+  integrity sha512-rGi9fh8LvBE8ygVTBoiZTKkBhfc80ifGis7SyS8I4y/sa0O5Ul09oQQ35FV+laIUmq/av5sTXZL7pbwgIu9U3Q==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
-    "@types/jest" "^26.0.13"
+    "@types/jest" "^26.0.14"
     babel-jest "^26.3.0"
     deep-equal "^2.0.3"
     jest "^26.4.2"
@@ -1465,7 +1465,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@26.x", "@types/jest@^26.0.13":
+"@types/jest@26.x", "@types/jest@^26.0.14":
   version "26.0.14"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.14.tgz#078695f8f65cb55c5a98450d65083b2b73e5a3f3"
   integrity sha512-Hz5q8Vu0D288x3iWXePSn53W7hAjP0H7EQ6QvDO9c7t46mR0lNOLlfuwQ+JkVxuhygHzlzPX+0jKdA3ZgSh+Vg==
