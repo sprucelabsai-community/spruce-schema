@@ -59,7 +59,7 @@
 		"eslint": "^7.9.0",
 		"eslint-config-spruce": "^10.9.47",
 		"lodash": "^4.17.20",
-		"prettier": "^2.1.1",
+		"prettier": "^2.1.2",
 		"ts-node": "^9.0.0",
 		"typescript": "^4.0.2",
 		"yarn": "^1.22.5"
