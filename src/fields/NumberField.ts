@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetailOptions,
@@ -25,7 +24,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 		if (isNaN(numberValue)) {
 			throw new SpruceError({
 				code: 'TRANSFORMATION_ERROR',
-				fieldType: FieldType.Number,
+				fieldType: 'number',
 				incomingTypeof: typeof value,
 				incomingValue: value,
 				errors: [

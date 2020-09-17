@@ -7,5 +7,5 @@ All files in #spruce must be referenced by #spruce.
 Example:
 
 ```js
-import FileType from "#spruce/schemas/fields/fieldTypeEnum";
+import FileType from "#spruce/schemas/schemas.types";
 ```

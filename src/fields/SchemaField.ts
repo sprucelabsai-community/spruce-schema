@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import SchemaEntity from '../SchemaEntity'
@@ -323,7 +322,7 @@ export default class SchemaField<
 		if (errors.length > 0) {
 			throw new SpruceError({
 				code: 'TRANSFORMATION_ERROR',
-				fieldType: FieldType.Schema,
+				fieldType: 'schema',
 				incomingTypeof: typeof value,
 				incomingValue: value,
 				errors,
@@ -355,7 +354,7 @@ export default class SchemaField<
 			if (allMatches.length === 0) {
 				throw new SpruceError({
 					code: 'TRANSFORMATION_ERROR',
-					fieldType: FieldType.Schema,
+					fieldType: 'schema',
 					name: this.name,
 					incomingValue: value,
 					incomingTypeof: typeof value,

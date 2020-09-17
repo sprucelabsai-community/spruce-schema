@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../errors/SpruceError'
 import {
 	IFieldTemplateDetails,
@@ -45,7 +44,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 
 		throw new SpruceError({
 			code: 'TRANSFORMATION_ERROR',
-			fieldType: FieldType.Text,
+			fieldType: 'text',
 			incomingTypeof: typeof value,
 			incomingValue: value,
 			errors: [

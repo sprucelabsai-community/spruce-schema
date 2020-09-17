@@ -1,6 +1,5 @@
 // TODO figure out how to get schema field mixins working from buildSchema (SchemaDefinitionValues fails)
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { ISchema } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 
@@ -12,7 +11,7 @@ export default class BuildSchemaTest extends AbstractSpruceTest {
 			name: 'test 1',
 			fields: {
 				firstName: {
-					type: FieldType.Text,
+					type: 'text',
 				},
 			},
 		})
@@ -27,13 +26,13 @@ export default class BuildSchemaTest extends AbstractSpruceTest {
 			name: 'test two',
 			fields: {
 				skillName: {
-					type: FieldType.Text,
+					type: 'text',
 					label: 'Name',
 					isRequired: true,
 					hint: "What's the name of your skill?",
 				},
 				description: {
-					type: FieldType.Text,
+					type: 'text',
 					label: 'Description',
 					isRequired: true,
 					hint: 'How would you describe your skill?',

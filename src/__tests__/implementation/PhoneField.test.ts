@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 
 export class PhoneFieldTest extends AbstractSpruceTest {
@@ -33,7 +32,7 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 	)
 	protected static phoneFieldNumberChecks(phone: string, expected: any) {
 		const field = FieldFactory.Field('phone', {
-			type: FieldType.Phone,
+			type: 'phone',
 		})
 
 		const errors = field.validate(phone)

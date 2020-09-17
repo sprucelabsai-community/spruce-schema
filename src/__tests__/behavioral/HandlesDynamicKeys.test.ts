@@ -1,5 +1,4 @@
 import { assert, test } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntity from '../../DynamicSchemaEntity'
 import { DynamicSchemaAllValues, ISchema } from '../../schemas.static.types'
@@ -9,7 +8,7 @@ const textDynamicSchema = buildSchema({
 	id: 'textDynamic',
 	name: 'Dynamic text based schema',
 	dynamicFieldSignature: {
-		type: FieldType.Text,
+		type: 'text',
 		keyName: 'key',
 	},
 })
@@ -18,7 +17,7 @@ const numberDynamicSchema = buildSchema({
 	id: 'numberDynamic',
 	name: 'Dynamic number based schema',
 	dynamicFieldSignature: {
-		type: FieldType.Number,
+		type: 'number',
 		keyName: 'key',
 	},
 })
@@ -27,7 +26,7 @@ const numberRequiredDynamicSchema = buildSchema({
 	id: 'numberDynamic',
 	name: 'Dynamic number based schema',
 	dynamicFieldSignature: {
-		type: FieldType.Number,
+		type: 'number',
 		isRequired: true,
 		keyName: 'key',
 	},
@@ -37,7 +36,7 @@ const arrayRequiredDynamicSchema = buildSchema({
 	id: 'numberDynamic',
 	name: 'Dynamic number based schema',
 	dynamicFieldSignature: {
-		type: FieldType.Number,
+		type: 'number',
 		isRequired: true,
 		isArray: true,
 		keyName: 'key',

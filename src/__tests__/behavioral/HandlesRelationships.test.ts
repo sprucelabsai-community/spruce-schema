@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField from '../../fields/SchemaField'
 import {
@@ -108,7 +107,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 	@test()
 	protected static testingUnionOfSchemas() {
 		const testSingleSchemaField: SchemaFieldValueTypeMapper<{
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schemas: [ICarSchema, ITruckSchema]
 			}
@@ -122,7 +121,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		}
 
 		type ManyType = SchemaFieldValueTypeMapper<{
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			options: {
 				schemas: [ICarSchema, ITruckSchema]

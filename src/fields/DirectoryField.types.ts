@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export interface IDirectoryFieldValue {
@@ -9,7 +8,7 @@ export type IDirectoryFieldDefinition = IFieldDefinition<
 	IDirectoryFieldValue
 > & {
 	/** * .Directory - select whole directories all at once */
-	type: FieldType.Directory
+	type: 'directory'
 	options?: {
 		/** Will give you a path relative to this one, if possible */
 		relativeTo?: string

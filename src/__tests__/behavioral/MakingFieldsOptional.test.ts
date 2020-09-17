@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import makeFieldsOptional from '../../utilities/makeFieldsOptional'
@@ -9,11 +8,11 @@ const personSchema = buildSchema({
 	name: 'Person (all required fields)',
 	fields: {
 		firstName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		lastName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 	},
@@ -34,11 +33,11 @@ export default class MakingFieldsOptionalTest extends AbstractSchemaTest {
 			name: 'Person (all required fields)',
 			fields: {
 				firstName: {
-					type: FieldType.Text,
+					type: 'text',
 					isRequired: false,
 				},
 				lastName: {
-					type: FieldType.Text,
+					type: 'text',
 					isRequired: false,
 				},
 			},

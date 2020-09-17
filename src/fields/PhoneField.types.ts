@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export type IPhoneFieldDefinition = IFieldDefinition<
@@ -8,7 +7,7 @@ export type IPhoneFieldDefinition = IFieldDefinition<
 	string[]
 > & {
 	/** * .Phone a great way to validate and format values */
-	type: FieldType.Phone
+	type: 'phone'
 	// eslint-disable-next-line @typescript-eslint/ban-types
 	options?: {}
 }

@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 /** A duration value object */
@@ -11,7 +10,7 @@ export interface IDurationFieldValue {
 
 export type IDurationFieldDefinition = IFieldDefinition<IDurationFieldValue> & {
 	/** * .Duration - a span of time  */
-	type: FieldType.Duration
+	type: 'duration'
 	options?: {
 		/** How it should be rendered, defaults to {{h}}h{{m}}min */
 		durationFormat?: string

@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
 
@@ -19,7 +18,7 @@ export default class HandlesVersioningTest extends AbstractSchemaTest {
 			version: 'v1',
 			fields: {
 				length: {
-					type: FieldType.Number,
+					type: 'number',
 				},
 			},
 		})
@@ -29,10 +28,10 @@ export default class HandlesVersioningTest extends AbstractSchemaTest {
 			version: 'v2',
 			fields: {
 				length: {
-					type: FieldType.Number,
+					type: 'number',
 				},
 				diameter: {
-					type: FieldType.Number,
+					type: 'number',
 					isRequired: true,
 				},
 			},

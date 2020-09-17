@@ -1,15 +1,14 @@
-// This is the static compliment to #spruce/schemas/schema/schemas.types
 import {
 	FieldDefinition,
 	Field,
 	IFieldDefinitionMap,
 	IFieldMap,
 } from '#spruce/schemas/fields/fields.types'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	IFieldDefinition,
 	FieldDefinitionValueType,
 	IField,
+	FieldType,
 } from './fields/field.static.types'
 
 export interface ISchemaEntity<S extends ISchema> {

@@ -1,6 +1,5 @@
 import mimeDb from 'mime-db'
 import Mime from 'mime-type'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
@@ -109,7 +108,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 		if (!name) {
 			throw new SpruceError({
 				code: 'TRANSFORMATION_ERROR',
-				fieldType: FieldType.File,
+				fieldType: 'file',
 				incomingTypeof: typeof value,
 				incomingValue: value,
 				name: this.name,

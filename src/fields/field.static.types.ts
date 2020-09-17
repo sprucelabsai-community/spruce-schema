@@ -1,9 +1,9 @@
 // This is the static compliment to #spruce/schemas/fields/fields.types
 import {
 	FieldDefinition,
+	IFieldMap,
 	IFieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IInvalidFieldError } from '../errors/error.types'
 import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
@@ -48,6 +48,8 @@ export type ValidateOptions<F extends FieldDefinition> = {
 	schemasById?: ISchemasById
 } & Partial<F['options']>
 
+export type FieldType = keyof IFieldMap
+
 // if it's not going to change, put it in here
 export type IFieldDefinition<
 	Value = any,
@@ -55,49 +57,23 @@ export type IFieldDefinition<
 	ArrayValue = Value[],
 	DefaultArrayValue = Partial<Value>[]
 > = {
-	/** The filed type */
 	type: FieldType
 	/** Default options are empty */
 	// eslint-disable-next-line @typescript-eslint/ban-types
 	options?: {}
-	/** Generates in only for local interface and does not share with other skills */
 	isPrivate?: boolean
-	/** The permissions used in different contexts */
-	acls?: {
-		create: {
-			[slug: string]: string[]
-		}
-		read: {
-			[slug: string]: string[]
-		}
-		update: {
-			[slug: string]: string[]
-		}
-		delete: {
-			[slug: string]: string[]
-		}
-	}
-	/** How this field is represented to the end-user as an html label or when collecting input from cli */
 	label?: string
-	/** Give an example of how someone should think about this field or give an example of what it may be */
 	hint?: string
-	/** Is this field required */
 	isRequired?: boolean
 } & (
 	| {
-			/** * If this element is an array */
 			isArray: true
-			/** The default for for this if no value is set */
 			defaultValue?: DefaultArrayValue | null
-			/** The current value for this field */
 			value?: ArrayValue | null
 	  }
 	| {
-			/** * If this value is NOT an array */
 			isArray?: false | undefined
-			/** The default value for this if no value is set */
 			defaultValue?: DefaultValue | null
-			/** The current value for this field */
 			value?: Value | null
 	  }
 )

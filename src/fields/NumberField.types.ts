@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export type INumberFieldDefinition = IFieldDefinition<
@@ -8,7 +7,7 @@ export type INumberFieldDefinition = IFieldDefinition<
 	number[]
 > & {
 	/** * .Number - a number, silly */
-	type: FieldType.Number
+	type: 'number'
 
 	/** Configure this field */
 	options?: {

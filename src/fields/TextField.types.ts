@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export type ITextFieldDefinition = IFieldDefinition<
@@ -8,7 +7,7 @@ export type ITextFieldDefinition = IFieldDefinition<
 	string[]
 > & {
 	/** * Text field */
-	type: FieldType.Text
+	type: 'text'
 	/** Options */
 	options?: {
 		/** The minimum length we'll allow of this field */

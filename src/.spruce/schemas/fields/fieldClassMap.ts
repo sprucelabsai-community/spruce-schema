@@ -1,6 +1,3 @@
-// This is the only file that depends on concrete implementation. It is used by the FieldFactory to instantiate new fields
-
-import FieldType from './fieldTypeEnum'
 import AddressField from '../../../fields/AddressField'
 import BooleanField from '../../../fields/BooleanField'
 import DateField from '../../../fields/DateField'
@@ -16,22 +13,21 @@ import SchemaField from '../../../fields/SchemaField'
 import SelectField from '../../../fields/SelectField'
 import TextField from '../../../fields/TextField'
 
-/** A global place to reference all field type classes */
 const fieldClassMap = {
-	[FieldType.Boolean]: BooleanField,
-	[FieldType.Select]: SelectField,
-	[FieldType.Duration]: DurationField,
-	[FieldType.Id]: IdField,
-	[FieldType.Address]: AddressField,
-	[FieldType.Phone]: PhoneField,
-	[FieldType.Schema]: SchemaField,
-	[FieldType.Raw]: RawField,
-	[FieldType.Number]: NumberField,
-	[FieldType.DateTime]: DateTimeField,
-	[FieldType.Text]: TextField,
-	[FieldType.File]: FileField,
-	[FieldType.Date]: DateField,
-	[FieldType.Directory]: DirectoryField
+	['boolean']: BooleanField,
+	['select']: SelectField,
+	['duration']: DurationField,
+	['id']: IdField,
+	['address']: AddressField,
+	['phone']: PhoneField,
+	['schema']: SchemaField,
+	['raw']: RawField,
+	['number']: NumberField,
+	['dateTime']: DateTimeField,
+	['text']: TextField,
+	['file']: FileField,
+	['date']: DateField,
+	['directory']: DirectoryField
 } as const
 
 

@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import dropFields from '../../utilities/dropFields'
@@ -10,15 +9,15 @@ const personSchema = buildSchema({
 	name: 'Person (all fields)',
 	fields: {
 		firstName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		lastName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		privateField: {
-			type: FieldType.Text,
+			type: 'text',
 			isPrivate: true,
 		},
 	},
@@ -39,11 +38,11 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 			name: 'Person (all fields)',
 			fields: {
 				lastName: {
-					type: FieldType.Text,
+					type: 'text',
 					isRequired: true,
 				},
 				privateField: {
-					type: FieldType.Text,
+					type: 'text',
 					isPrivate: true,
 				},
 			},
@@ -56,11 +55,11 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 				name: string
 				fields: {
 					lastName: {
-						type: FieldType.Text
+						type: 'text'
 						isRequired: true
 					}
 					privateField: {
-						type: FieldType.Text
+						type: 'text'
 						isPrivate: true
 					}
 				}
@@ -84,11 +83,11 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 				name: string
 				fields: {
 					firstName: {
-						type: FieldType.Text
+						type: 'text'
 						isRequired: true
 					}
 					lastName: {
-						type: FieldType.Text
+						type: 'text'
 						isRequired: true
 					}
 				}
@@ -100,11 +99,11 @@ export default class DroppingFieldsTest extends AbstractSchemaTest {
 			name: 'Person (all fields)',
 			fields: {
 				firstName: {
-					type: FieldType.Text,
+					type: 'text',
 					isRequired: true,
 				},
 				lastName: {
-					type: FieldType.Text,
+					type: 'text',
 					isRequired: true,
 				},
 			},
