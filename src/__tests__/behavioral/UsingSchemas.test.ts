@@ -3,7 +3,11 @@ import { unset } from 'lodash'
 import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../../errors/SpruceError'
 import SchemaEntity from '../../SchemaEntity'
-import { SchemaValues, ISchemaEntity } from '../../schemas.static.types'
+import {
+	SchemaValues,
+	ISchemaEntity,
+	ISchema,
+} from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchema from '../../utilities/validateSchema'
@@ -46,6 +50,44 @@ interface IPersonExpectedValuesWithoutSchema {
 
 const { personSchema, truckSchema } = buildPersonWithCars()
 
+const nestedSchemas = buildSchema({
+	id: 'contract',
+	name: 'contract',
+	fields: {
+		requiredArrayField: {
+			type: FieldType.Schema,
+			isArray: true,
+			isRequired: true,
+			options: {
+				schema: {
+					id: 'nested',
+					name: 'Nested',
+					fields: {
+						fieldOnNested: {
+							type: FieldType.Text,
+							isRequired: true,
+						},
+					},
+				},
+			},
+		},
+	},
+})
+
+const nestedSingleRequiredFieldSchemas = buildSchema({
+	id: 'singleRequiredField',
+	name: 'single required field',
+	fields: {
+		contract: {
+			type: FieldType.Schema,
+			isRequired: true,
+			options: {
+				schema: nestedSchemas,
+			},
+		},
+	},
+})
+
 export default class SchemaTest extends AbstractSpruceTest {
 	@test()
 	protected static async testBasicValidation() {
@@ -69,7 +111,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 		fieldToDelete: string,
 		expectedErrors: string[]
 	) {
-		const definition = buildSchema({
+		const schema = buildSchema({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -82,9 +124,9 @@ export default class SchemaTest extends AbstractSpruceTest {
 			},
 		})
 
-		unset(definition, fieldToDelete)
+		unset(schema, fieldToDelete)
 
-		const error: any = assert.doesThrow(() => validateSchema(definition))
+		const error: any = assert.doesThrow(() => validateSchema(schema))
 
 		if (
 			error instanceof SpruceError &&
@@ -108,7 +150,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 		'Does isArray make value an array (test always passes, linting should fail if broken)'
 	)
 	protected static async canIsArrayValue() {
-		const definition = buildSchema({
+		const schema = buildSchema({
 			id: 'is-array-test',
 			name: 'is array',
 			fields: {
@@ -144,7 +186,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 			},
 		})
 
-		assert.isTrue(isSchemaValid(definition))
+		assert.isTrue(isSchemaValid(schema))
 	}
 
 	@test()
@@ -245,7 +287,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 		)
 	}
 
-	@test('test typing against object literal maps correctly')
+	@test()
 	protected static testValuesTypesAgainstObjectLiteral() {
 		const values: {
 			name: string
@@ -257,7 +299,7 @@ export default class SchemaTest extends AbstractSpruceTest {
 		assert.isType<SchemaValues<typeof truckSchema>>(values)
 	}
 
-	@test('can type values correctly')
+	@test()
 	protected static testFullValuesTypes() {
 		const personEntity = new SchemaEntity(personSchema)
 		const values = personEntity.getValues({ validate: false })
@@ -270,11 +312,51 @@ export default class SchemaTest extends AbstractSpruceTest {
 		assert.isType<IPersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
 	}
 
-	@test('getting values using options by field')
+	@test()
 	protected static testGettingOptionsByField() {
 		const entity = new SchemaEntity(personSchema)
 		entity.set('name', 'a really long name that should get truncated')
 		const name = entity.get('name', { byField: { name: { maxLength: 10 } } })
 		assert.isEqual(name, 'a really l')
+	}
+
+	@test()
+	protected static canCorrectlyTypeSchemaWithOneRequiredField() {
+		const values: SchemaValues<typeof nestedSingleRequiredFieldSchemas> = {
+			contract: {
+				requiredArrayField: [],
+			},
+		}
+
+		const {
+			contract: { requiredArrayField },
+		} = values
+
+		function testFunc(_options: { fieldOnNested: string }) {}
+
+		testFunc(requiredArrayField[0])
+
+		assert.isExactType<typeof requiredArrayField[0], { fieldOnNested: string }>(
+			true
+		)
+	}
+
+	@test()
+	protected static testGenerics() {
+		interface GenericTestInterface<S extends ISchema = ISchema> {
+			payloadSchema: S
+			callback: (payload: SchemaValues<S>) => void
+		}
+
+		const testObj: GenericTestInterface<typeof nestedSingleRequiredFieldSchemas> = {
+			payloadSchema: nestedSingleRequiredFieldSchemas,
+			callback: (payload) => {
+				const { requiredArrayField } = payload.contract
+				const mappedArray = requiredArrayField.map((item) => item.fieldOnNested)
+				assert.isExactType<typeof mappedArray, string[]>(true)
+			},
+		}
+
+		assert.isTruthy(testObj)
 	}
 }
