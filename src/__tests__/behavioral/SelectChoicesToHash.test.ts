@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { PickFieldNames } from '../../schemas.static.types'
 import {
 	SelectChoicesToHash,
@@ -20,7 +19,7 @@ export default class SelectOptionsToHashTest extends AbstractSpruceTest {
 		assert.isType<Test>(optionsHash)
 		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
 
-		type SelectFields = PickFieldNames<typeof personSchema, FieldType.Select>
+		type SelectFields = PickFieldNames<typeof personSchema, 'select'>
 
 		const optionsHash2 = definitionChoicesToHash(personSchema, 'optionalSelect')
 

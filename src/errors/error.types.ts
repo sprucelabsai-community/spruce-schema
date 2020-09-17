@@ -1,5 +1,5 @@
 import { SpruceErrorOptions, ISpruceErrorOptions } from '@sprucelabs/error'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
+import { FieldType } from '../fields/field.static.types'
 
 export type SchemaErrorOptions =
 	| IDuplicateSchemaErrorOptions

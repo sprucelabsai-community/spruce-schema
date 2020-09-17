@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
@@ -10,14 +9,14 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		name: 'A test person',
 		fields: {
 			firstName: {
-				type: FieldType.Text,
+				type: 'text',
 				isRequired: true,
 			},
 			age: {
-				type: FieldType.Number,
+				type: 'number',
 			},
 			nestedArraySchema: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schema: {
@@ -25,7 +24,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 						name: 'Nested',
 						fields: {
 							field1: {
-								type: FieldType.Text,
+								type: 'text',
 							},
 						},
 					},

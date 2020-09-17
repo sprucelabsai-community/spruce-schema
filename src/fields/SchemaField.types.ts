@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	ISchemaIdWithVersion,
 	ISchemaFieldValueUnion,
@@ -58,6 +57,6 @@ export type ISchemaFieldDefinition = IFieldDefinition<
 	ISchemaFieldValueUnion[]
 > & {
 	/** * .Schema go team! */
-	type: FieldType.Schema
+	type: 'schema'
 	options: ISchemaFieldOptions
 }

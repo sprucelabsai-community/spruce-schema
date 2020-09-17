@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity from '../../SchemaEntity'
 import { ISchema } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
@@ -11,11 +10,11 @@ export interface ICarV1Definition extends ISchema {
 	name: 'car'
 	fields: {
 		name: {
-			type: FieldType.Text
+			type: 'text'
 			isRequired: true
 		}
 		onlyOnCar: {
-			type: FieldType.Text
+			type: 'text'
 		}
 	}
 }
@@ -25,11 +24,11 @@ export interface ICarV2Definition extends ISchema {
 	name: 'car'
 	fields: {
 		name: {
-			type: FieldType.Text
+			type: 'text'
 			isRequired: true
 		}
 		newRequiredOnCar: {
-			type: FieldType.Text
+			type: 'text'
 			isRequired: true
 		}
 	}
@@ -40,11 +39,11 @@ export interface ITruckV1Definition extends ISchema {
 	name: 'Truck'
 	fields: {
 		name: {
-			type: FieldType.Text
+			type: 'text'
 			isRequired: true
 		}
 		onlyOnTruck: {
-			type: FieldType.Text
+			type: 'text'
 		}
 	}
 }
@@ -54,38 +53,38 @@ export interface IPersonV1Definition extends ISchema {
 	name: 'user schema test'
 	fields: {
 		name: {
-			type: FieldType.Text
+			type: 'text'
 			isArray: false
 			value: 'tay'
 		}
 		requiredCar: {
-			type: FieldType.Schema
+			type: 'schema'
 			isRequired: true
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		optionalCar: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		optionalCarWithCallback: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schemasCallback: () => [ICarV1Definition]
 			}
 		}
 		optionalIsArrayCars: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		requiredIsArrayCars: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			isRequired: true
 			options: {
@@ -93,20 +92,20 @@ export interface IPersonV1Definition extends ISchema {
 			}
 		}
 		optionalCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schemas: [ICarV1Definition, ITruckV1Definition]
 			}
 		}
 		optionalIsArrayCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			options: {
 				schemas: [ICarV1Definition, ITruckV1Definition]
 			}
 		}
 		requiredIsArrayCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			isRequired: true
 			options: {
@@ -114,7 +113,7 @@ export interface IPersonV1Definition extends ISchema {
 			}
 		}
 		optionalSelect: {
-			type: FieldType.Select
+			type: 'select'
 			options: {
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
@@ -123,7 +122,7 @@ export interface IPersonV1Definition extends ISchema {
 			}
 		}
 		optionalSelectWithDefaultValue: {
-			type: FieldType.Select
+			type: 'select'
 			defaultValue: 'hello'
 			options: {
 				choices: [
@@ -133,18 +132,18 @@ export interface IPersonV1Definition extends ISchema {
 			}
 		}
 		optionalTextWithDefaultValue: {
-			type: FieldType.Text
+			type: 'text'
 			defaultValue: 'world'
 		}
 		optionalCarWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			defaultValue: { name: 'fast car' }
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		optionalIsArrayCarOrTruckWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
 			options: {
@@ -152,7 +151,7 @@ export interface IPersonV1Definition extends ISchema {
 			}
 		}
 		optionalCarOrTruckWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
 			options: {
 				schemas: [ICarV1Definition, ITruckV1Definition]
@@ -166,25 +165,25 @@ export interface IPersonV2Definition extends ISchema {
 	name: 'user schema test'
 	fields: {
 		name: {
-			type: FieldType.Text
+			type: 'text'
 			isArray: false
 			value: 'tay'
 		}
 		requiredCar: {
-			type: FieldType.Schema
+			type: 'schema'
 			isRequired: true
 			options: {
 				schema: ICarV2Definition
 			}
 		}
 		optionalCar: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schema: ICarV2Definition
 			}
 		}
 		optionalCarWithCallback: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schemasCallback: () => [
 					ICarV1Definition,
@@ -194,14 +193,14 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalIsArrayCars: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		requiredIsArrayCars: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			isRequired: true
 			options: {
@@ -209,20 +208,20 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			options: {
 				schemas: [ICarV1Definition, ICarV2Definition, ITruckV1Definition]
 			}
 		}
 		optionalIsArrayCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			options: {
 				schemas: [ICarV1Definition, ITruckV1Definition]
 			}
 		}
 		requiredIsArrayCarOrTruck: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			isRequired: true
 			options: {
@@ -230,7 +229,7 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalSelect: {
-			type: FieldType.Select
+			type: 'select'
 			options: {
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
@@ -239,7 +238,7 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalSelectWithDefaultValue: {
-			type: FieldType.Select
+			type: 'select'
 			defaultValue: 'hello'
 			options: {
 				choices: [
@@ -249,18 +248,18 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalTextWithDefaultValue: {
-			type: FieldType.Text
+			type: 'text'
 			defaultValue: 'world'
 		}
 		optionalCarWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			defaultValue: { name: 'fast car' }
 			options: {
 				schema: ICarV1Definition
 			}
 		}
 		optionalIsArrayCarOrTruckWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			isArray: true
 			defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
 			options: {
@@ -268,7 +267,7 @@ export interface IPersonV2Definition extends ISchema {
 			}
 		}
 		optionalCarOrTruckWithDefaultValue: {
-			type: FieldType.Schema
+			type: 'schema'
 			defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
 			options: {
 				schemas: [ICarV1Definition, ITruckV1Definition]
@@ -283,11 +282,11 @@ const buildVersionedPersonWithCars = () => {
 		version: 'v1',
 		fields: {
 			name: {
-				type: FieldType.Text,
+				type: 'text',
 				isRequired: true,
 			},
 			onlyOnCar: {
-				type: FieldType.Text,
+				type: 'text',
 			},
 		},
 	})
@@ -298,11 +297,11 @@ const buildVersionedPersonWithCars = () => {
 		version: 'v2',
 		fields: {
 			name: {
-				type: FieldType.Text,
+				type: 'text',
 				isRequired: true,
 			},
 			newRequiredOnCar: {
-				type: FieldType.Text,
+				type: 'text',
 				isRequired: true,
 			},
 		},
@@ -313,11 +312,11 @@ const buildVersionedPersonWithCars = () => {
 		name: 'Truck',
 		fields: {
 			name: {
-				type: FieldType.Text,
+				type: 'text',
 				isRequired: true,
 			},
 			onlyOnTruck: {
-				type: FieldType.Text,
+				type: 'text',
 			},
 		},
 	})
@@ -328,38 +327,38 @@ const buildVersionedPersonWithCars = () => {
 		version: 'v1',
 		fields: {
 			name: {
-				type: FieldType.Text,
+				type: 'text',
 				isArray: false,
 				value: 'tay',
 			},
 			requiredCar: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isRequired: true,
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			optionalCar: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			optionalCarWithCallback: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemasCallback: () => [carV1Schema],
 				},
 			},
 			optionalIsArrayCars: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			requiredIsArrayCars: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				isRequired: true,
 				options: {
@@ -367,20 +366,20 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				isRequired: true,
 				options: {
@@ -388,7 +387,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalSelect: {
-				type: FieldType.Select,
+				type: 'select',
 				options: {
 					choices: [
 						{ value: 'foo', label: 'Foo' },
@@ -397,7 +396,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalSelectWithDefaultValue: {
-				type: FieldType.Select,
+				type: 'select',
 				defaultValue: 'hello',
 				options: {
 					choices: [
@@ -407,18 +406,18 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalTextWithDefaultValue: {
-				type: FieldType.Text,
+				type: 'text',
 				defaultValue: 'world',
 			},
 			optionalCarWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				defaultValue: { name: 'fast car' },
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
@@ -426,7 +425,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
 					schemas: [carV1Schema, truckV1Definition],
@@ -441,38 +440,38 @@ const buildVersionedPersonWithCars = () => {
 		version: 'v2',
 		fields: {
 			name: {
-				type: FieldType.Text,
+				type: 'text',
 				isArray: false,
 				value: 'tay',
 			},
 			requiredCar: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isRequired: true,
 				options: {
 					schema: carV2Schema,
 				},
 			},
 			optionalCar: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schema: carV2Schema,
 				},
 			},
 			optionalCarWithCallback: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemasCallback: () => [carV1Schema, carV2Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCars: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			requiredIsArrayCars: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				isRequired: true,
 				options: {
@@ -480,20 +479,20 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemas: [carV1Schema, carV2Schema, truckV1Definition],
 				},
 			},
 			optionalIsArrayCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schemas: [carV1Schema, truckV1Definition],
 				},
 			},
 			requiredIsArrayCarOrTruck: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				isRequired: true,
 				options: {
@@ -501,7 +500,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalSelect: {
-				type: FieldType.Select,
+				type: 'select',
 				options: {
 					choices: [
 						{ value: 'foo', label: 'Foo' },
@@ -510,7 +509,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalSelectWithDefaultValue: {
-				type: FieldType.Select,
+				type: 'select',
 				defaultValue: 'hello',
 				options: {
 					choices: [
@@ -520,18 +519,18 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalTextWithDefaultValue: {
-				type: FieldType.Text,
+				type: 'text',
 				defaultValue: 'world',
 			},
 			optionalCarWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				defaultValue: { name: 'fast car' },
 				options: {
 					schema: carV1Schema,
 				},
 			},
 			optionalIsArrayCarOrTruckWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				defaultValue: [{ schemaId: 'car', values: { name: 'fast car' } }],
 				options: {
@@ -539,7 +538,7 @@ const buildVersionedPersonWithCars = () => {
 				},
 			},
 			optionalCarOrTruckWithDefaultValue: {
-				type: FieldType.Schema,
+				type: 'schema',
 				defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
 				options: {
 					schemas: [carV1Schema, truckV1Definition],

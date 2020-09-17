@@ -1,6 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
 
@@ -11,7 +10,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test('empty string is false', '', false)
 	protected static async transformTests(value: any, expected: boolean) {
 		const field = FieldFactory.Field('transformTest', {
-			type: FieldType.Boolean,
+			type: 'boolean',
 		})
 		const result = field.toValueType(value)
 		assert.isEqual(result, expected)
@@ -21,7 +20,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 	protected static canHandleDefaultValue() {
 		const def: FieldDefinition = {
 			label: 'Public',
-			type: FieldType.Boolean,
+			type: 'boolean',
 			hint: 'Is this location viewable by guests?',
 			defaultValue: false,
 		}
@@ -32,7 +31,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test()
 	protected static canHandleArrayDefaultValue() {
 		const def: FieldDefinition = {
-			type: FieldType.Boolean,
+			type: 'boolean',
 			isArray: true,
 			defaultValue: [true],
 		}

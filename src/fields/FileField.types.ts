@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export interface IFileFieldValue {
@@ -18,7 +17,7 @@ export interface IFileFieldValue {
 
 export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
 	/** * .File - a great way to deal with file management */
-	type: FieldType.File
+	type: 'file'
 	options?: {
 		/** Which mime types are acceptable? */
 		acceptableTypes?: string[]

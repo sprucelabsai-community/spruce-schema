@@ -1,6 +1,5 @@
 import path from 'path'
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { IFileFieldValue } from '../../fields/FileField.types'
 import SchemaEntity from '../../SchemaEntity'
@@ -26,7 +25,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		name: 'Test Feature',
 		fields: {
 			target: {
-				type: FieldType.File,
+				type: 'file',
 				isRequired: true,
 				label: 'What file would you like to test?',
 			},
@@ -53,7 +52,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		expectations: IFileDetailExpectations
 	) {
 		const field = FieldFactory.Field('test', {
-			type: FieldType.File,
+			type: 'file',
 		})
 
 		const file = field.toValueType(filePath)
@@ -101,7 +100,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		partial: Partial<IFileFieldValue>,
 		complete: IFileFieldValue
 	) {
-		const file = FieldFactory.Field('test', { type: FieldType.File })
+		const file = FieldFactory.Field('test', { type: 'file' })
 		const augmented = file.toValueType(partial)
 		assert.isEqualDeep(augmented, complete)
 	}

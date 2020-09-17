@@ -1,6 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { unset } from 'lodash'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SpruceError from '../../errors/SpruceError'
 import SchemaEntity from '../../SchemaEntity'
 import {
@@ -55,7 +54,7 @@ const nestedSchemas = buildSchema({
 	name: 'contract',
 	fields: {
 		requiredArrayField: {
-			type: FieldType.Schema,
+			type: 'schema',
 			isArray: true,
 			isRequired: true,
 			options: {
@@ -64,7 +63,7 @@ const nestedSchemas = buildSchema({
 					name: 'Nested',
 					fields: {
 						fieldOnNested: {
-							type: FieldType.Text,
+							type: 'text',
 							isRequired: true,
 						},
 					},
@@ -79,7 +78,7 @@ const nestedSingleRequiredFieldSchemas = buildSchema({
 	name: 'single required field',
 	fields: {
 		contract: {
-			type: FieldType.Schema,
+			type: 'schema',
 			isRequired: true,
 			options: {
 				schema: nestedSchemas,
@@ -116,10 +115,10 @@ export default class SchemaTest extends AbstractSpruceTest {
 			name: 'missing name',
 			fields: {
 				firstName: {
-					type: FieldType.Text,
+					type: 'text',
 				},
 				lastName: {
-					type: FieldType.Text,
+					type: 'text',
 				},
 			},
 		})
@@ -155,24 +154,24 @@ export default class SchemaTest extends AbstractSpruceTest {
 			name: 'is array',
 			fields: {
 				name: {
-					type: FieldType.Text,
+					type: 'text',
 					label: 'Name',
 					value: 'Tay',
 				},
 				nicknames: {
-					type: FieldType.Text,
+					type: 'text',
 					label: 'Nick names',
 					isArray: true,
 					value: ['Tay', 'Taylor'],
 				},
 				anotherName: {
-					type: FieldType.Number,
+					type: 'number',
 					label: 'Favorite numbers',
 					isArray: true,
 					value: [10, 5, 5],
 				},
 				schemaField: {
-					type: FieldType.Schema,
+					type: 'schema',
 					label: 'Favorite numbers',
 					isArray: true,
 					options: {
@@ -196,12 +195,12 @@ export default class SchemaTest extends AbstractSpruceTest {
 			name: 'missing name',
 			fields: {
 				name: {
-					type: FieldType.Text,
+					type: 'text',
 					isArray: false,
 					value: 'tay',
 				},
 				favoriteColors: {
-					type: FieldType.Text,
+					type: 'text',
 					isArray: true,
 					value: ['black'],
 				},
@@ -256,17 +255,17 @@ export default class SchemaTest extends AbstractSpruceTest {
 			name: 'transform tests',
 			fields: {
 				name: {
-					type: FieldType.Text,
+					type: 'text',
 					isArray: false,
 					value: 'tay',
 				},
 				favoriteColors: {
-					type: FieldType.Text,
+					type: 'text',
 					isArray: true,
 					value: ['blue'],
 				},
 				favoriteNumber: {
-					type: FieldType.Number,
+					type: 'number',
 				},
 			},
 		})

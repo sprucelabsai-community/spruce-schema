@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import {
 	ISelectFieldDefinition,
 	ISelectFieldDefinitionChoice,
@@ -32,7 +31,7 @@ export function selectChoicesToHash<
 /** Take a definition and a field name and returns a value/label hash */
 export function definitionChoicesToHash<
 	S extends ISchema,
-	F extends PickFieldNames<S, FieldType.Select>
+	F extends PickFieldNames<S, 'select'>
 >(
 	definition: S,
 	fieldName: F

@@ -1,5 +1,4 @@
 import { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
@@ -15,22 +14,22 @@ const profileImagesSchema = buildSchema({
 	fields: {
 		profile60: {
 			label: '60x60',
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		profile150: {
 			label: '150x150',
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		'profile60@2x': {
 			label: '60x60',
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		'profile150@2x': {
 			label: '150x150',
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 	},
@@ -40,7 +39,7 @@ const dynamicSchema = buildSchema({
 	id: 'dynamicSchema',
 	name: 'dynamic schema',
 	dynamicFieldSignature: {
-		type: FieldType.Text,
+		type: 'text',
 		keyName: 'anything',
 	},
 })
@@ -50,20 +49,20 @@ const personSchema = buildSchema({
 	name: 'A test person',
 	fields: {
 		firstName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		lastName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		email: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: false,
 		},
 		profileImages: {
 			isRequired: true,
-			type: FieldType.Schema,
+			type: 'schema',
 			options: {
 				schema: profileImagesSchema,
 			},
@@ -76,15 +75,15 @@ const personWithFavColorsSchema = buildSchema({
 	name: 'A test person',
 	fields: {
 		firstName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		lastName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		favoriteColors: {
-			type: FieldType.Text,
+			type: 'text',
 			isArray: true,
 			isRequired: true,
 		},
@@ -96,7 +95,7 @@ const toolSchema = buildSchema({
 	name: 'Tool',
 	fields: {
 		name: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 	},
@@ -107,15 +106,15 @@ const personWithFavToolsSchema = buildSchema({
 	name: 'Person with favorite tools',
 	fields: {
 		firstName: {
-			type: FieldType.Text,
+			type: 'text',
 			isRequired: true,
 		},
 		lastName: {
-			type: FieldType.Text,
+			type: 'text',
 		},
 		favoriteTools: {
 			isRequired: true,
-			type: FieldType.Schema,
+			type: 'schema',
 			isArray: true,
 			options: {
 				schema: toolSchema,

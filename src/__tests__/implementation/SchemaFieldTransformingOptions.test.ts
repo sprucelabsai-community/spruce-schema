@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import buildSchema from '../../utilities/buildSchema'
@@ -10,7 +9,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 		name: 'Wrench',
 		fields: {
 			wrenchSize: {
-				type: FieldType.Number,
+				type: 'number',
 				label: 'Size',
 			},
 		},
@@ -21,10 +20,10 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 		name: 'Screwdriver',
 		fields: {
 			isFlathead: {
-				type: FieldType.Boolean,
+				type: 'boolean',
 			},
 			screwdriverLength: {
-				type: FieldType.Number,
+				type: 'number',
 				label: 'Length',
 			},
 		},
@@ -35,7 +34,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 		name: 'Union Person',
 		fields: {
 			favoriteTool: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemas: [
 						SchemaFieldTemplateTest.wrenchSchema,
@@ -44,7 +43,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 				},
 			},
 			tools: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schemas: [
@@ -144,7 +143,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 	) {
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			{
-				type: FieldType.Schema,
+				type: 'schema',
 				options,
 			}
 		)
@@ -152,7 +151,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 
 		const schemasOrIdsWithVersion = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			{
-				type: FieldType.Schema,
+				type: 'schema',
 				options,
 			}
 		)

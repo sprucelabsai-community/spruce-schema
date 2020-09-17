@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import FieldFactory from '../../factories/FieldFactory'
 import { buildDuration } from '../../fields'
 import { IDurationFieldValue } from '../../fields/DurationField.types'
@@ -24,7 +23,7 @@ export default class DurationFieldTest extends AbstractSpruceTest {
 		partial: Partial<IDurationFieldValue>,
 		expected: IDurationFieldValue
 	) {
-		const field = FieldFactory.Field('test', { type: FieldType.Duration })
+		const field = FieldFactory.Field('test', { type: 'duration' })
 		const value = field.toValueType(partial)
 		assert.isEqualDeep(
 			value,

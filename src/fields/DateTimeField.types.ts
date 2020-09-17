@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export interface IDateTimeFieldValue {
@@ -7,6 +6,6 @@ export interface IDateTimeFieldValue {
 
 export type IDateTimeFieldDefinition = IFieldDefinition<IDateTimeFieldValue> & {
 	/** * A date/time field that stores everything in GMT and handles all the timezone */
-	type: FieldType.DateTime
+	type: 'dateTime'
 	options?: { dateTimeFormat?: string }
 }

@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaEntity from '../../SchemaEntity'
 import buildSchema from '../../utilities/buildSchema'
 
@@ -8,7 +7,7 @@ interface IUserSchema {
 	name: 'select union test'
 	fields: {
 		favoriteColor: {
-			type: FieldType.Select
+			type: 'select'
 			options: {
 				choices: [
 					{
@@ -23,7 +22,7 @@ interface IUserSchema {
 			}
 		}
 		favoriteColorRequired: {
-			type: FieldType.Select
+			type: 'select'
 			isRequired: true
 			options: {
 				choices: [
@@ -47,7 +46,7 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 		name: 'select union test',
 		fields: {
 			favoriteColor: {
-				type: FieldType.Select,
+				type: 'select',
 				options: {
 					choices: [
 						{
@@ -62,7 +61,7 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 				},
 			},
 			favoriteColorRequired: {
-				type: FieldType.Select,
+				type: 'select',
 				isRequired: true,
 				options: {
 					choices: [

@@ -1,4 +1,3 @@
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import { IFieldDefinition } from './field.static.types'
 
 export interface ISelectFieldDefinitionChoice {
@@ -23,6 +22,6 @@ export type ISelectFieldDefinition = IFieldDefinition<
 	string[]
 > & {
 	/** * .Select - A way to chose between a choices */
-	type: FieldType.Select
+	type: 'select'
 	options: ISelectFieldOptions
 }

@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import FieldType from '#spruce/schemas/fields/fieldTypeEnum'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import {
@@ -16,7 +15,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		version: 'v1',
 		fields: {
 			wrenchSize: {
-				type: FieldType.Number,
+				type: 'number',
 				label: 'Size',
 			},
 		},
@@ -28,7 +27,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		version: 'v2',
 		fields: {
 			wrenchSize: {
-				type: FieldType.Number,
+				type: 'number',
 				label: 'Size',
 			},
 		},
@@ -39,10 +38,10 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		name: 'Screwdriver',
 		fields: {
 			isFlathead: {
-				type: FieldType.Boolean,
+				type: 'boolean',
 			},
 			screwdriverLength: {
-				type: FieldType.Number,
+				type: 'number',
 				label: 'Length',
 			},
 		},
@@ -53,7 +52,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		name: 'Union Person',
 		fields: {
 			favoriteTool: {
-				type: FieldType.Schema,
+				type: 'schema',
 				options: {
 					schemas: [
 						GeneratesRelationshipTemplatesTest.wrenchV1Schema,
@@ -63,7 +62,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 				},
 			},
 			tools: {
-				type: FieldType.Schema,
+				type: 'schema',
 				isArray: true,
 				options: {
 					schemas: [
@@ -153,7 +152,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
 			definition: {
 				...definition,
-				type: FieldType.Schema,
+				type: 'schema',
 			},
 			renderAs: TemplateRenderAs.Type, // is overwritten below
 		}
@@ -197,7 +196,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
 			definition: {
 				...definition,
-				type: FieldType.Schema,
+				type: 'schema',
 			},
 			renderAs: TemplateRenderAs.Type, // is overwritten below
 		}

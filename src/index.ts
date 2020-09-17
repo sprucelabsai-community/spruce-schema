@@ -34,3 +34,6 @@ export { default as FieldFactory } from './factories/FieldFactory'
 
 export * from './types/template.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
+
+export * from '#spruce/schemas/fields/fieldClassMap'
+export * from '#spruce/schemas/fields/fields.types'
