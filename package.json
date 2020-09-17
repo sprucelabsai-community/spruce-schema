@@ -6,7 +6,7 @@
 	"files": [
 		"build"
 	],
-	"version": "11.0.2",
+	"version": "11.0.3",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"description": "Spruce experience schemas",
