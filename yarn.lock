@@ -1336,15 +1336,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@sprucelabs/error@^2.2.285":
-  version "2.2.285"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.285.tgz#222f16ab70f80e405e22f076f9e7623276474a82"
-  integrity sha512-SQOJpXjUQW3oqNZhhVhc5sf9VXMngZDAnk0NH0GEYwRhhUiM2WCgIUEka1mw1c4PoeWAR2r4w9hChzxuuhXxBg==
+"@sprucelabs/error@^2.2.286":
+  version "2.2.286"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.286.tgz#6943be6b5752ba8e30cb9d82e39672f565784c7c"
+  integrity sha512-LXrmn6i+zvS6o+tGWmTdvugSexIevdFF1lqSpIkgGWnSUva40TyXmcXCaRGh6p9Kw1E97JVpABvOLdpGWsifnQ==
 
-"@sprucelabs/log@^10.2.223":
-  version "10.2.223"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.223.tgz#7ccabc7a61d66d0b5bdc694482eadbc9f91a1205"
-  integrity sha512-Ut/g4LVSP4pnB3Wsrdhz1LcYed3dXVkA9lzG3YB7y2x+mvue2rMwe3fpEeGWJEYalJAlWuy1SXEkdfuBsUD+rg==
+"@sprucelabs/log@^10.2.224":
+  version "10.2.224"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.224.tgz#bd6bb3cfc8985be8237362949826dcfb542511eb"
+  integrity sha512-RkmD2xUR/hTbrqNzcmiwVS0upLq2hTNFz0Isj3gcmN1CwnyDhoI6RXJ5gfYeGT4IDaHWLKnod9gvQTRALWnq0g==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1356,10 +1356,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.24":
-  version "7.0.24"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.24.tgz#2623bc1eef2cff26be0e40c4a48af6f0ee00069e"
-  integrity sha512-fRXzffW6AxBLlnThD54Jnf1ErLv8jIQ4cf1gRHvA2DN8OKhdZ+fGBcI9S1R1fKMTSYafw90BF06uCzXWY6fqbw==
+"@sprucelabs/test@^7.0.25":
+  version "7.0.25"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.25.tgz#d383893244e787f7f1869bea578fcd1087f53c80"
+  integrity sha512-U/QQkHOr/1d+oisYdeR/JjktvxjuK/TxIru4IK37GCteqGV8uUMFyotmCpQ8iyeG5DtrI5h7prCMnc9NvLYojg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1504,9 +1504,9 @@
   integrity sha1-aaI6OtKcrwCX8G7aWbNh7i8GOfY=
 
 "@types/node@*", "@types/node@>= 8":
-  version "14.10.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.3.tgz#5ae1f119c96643fc9b19b2d1a83bfa2ec3dbb7ea"
-  integrity sha512-zdN0hor7TLkjAdKTnYW+Y22oIhUUpil5ZD1V1OFq0CR0CLKw+NdR6dkziTfkWRLo6sKzisayoj/GNpNbe4LY9Q==
+  version "14.11.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.11.0.tgz#6e00c8e88725a9a8651a299bd25338859e5fe07e"
+  integrity sha512-ra55is8RNgzUmgrWLmT5Sd0JR+Q2GNDm56fP1y3IEOe6+g1Ad6Ye7Td27v7kmT1wxlsPyASdANpzUbiRg/Ofog==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -7789,9 +7789,9 @@ saxes@^5.0.0:
     xmlchars "^2.2.0"
 
 semantic-release@^17.0.4:
-  version "17.1.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.1.1.tgz#d9775968e841b2b7c5020559e4481aea8520ca75"
-  integrity sha512-9H+207eynBJElrQBHySZm+sIEoJeUhPA2zU4cdlY1QSInd2lnE8GRD2ALry9EassE22c9WW+aCREwBhro5AIIg==
+  version "17.1.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.1.2.tgz#7d77555185722012b34e3ca74e4d13f813daf3cd"
+  integrity sha512-szYBXm10QjQO5Tb1S2PSkvOBW3MajWJat5EWtx+MzaVT/jquuxf9o+Zn8FC1j157xvJ5p9r1d/MZGslgs7oQQg==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
