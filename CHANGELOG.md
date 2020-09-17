@@ -1,3 +1,10 @@
+# [11.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.29...v11.0.0) (2020-09-17)
+
+
+### Breaking Changes
+
+* no more enum ([e267dfc](https://github.com/sprucelabsai/spruce-schema/commit/e267dfc))
+
 ## [10.0.29](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.28...v10.0.29) (2020-09-17)
 
 ## [10.0.28](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.27...v10.0.28) (2020-09-17)
