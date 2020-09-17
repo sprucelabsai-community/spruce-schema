@@ -61,7 +61,7 @@ export interface IDynamicSchemaEntity<
 	Schema extends ISchema,
 	Field extends IField<
 		any
-	> = Schema['dynamicFieldSignature'] extends IFieldDefinition
+	> = Schema['dynamicFieldSignature'] extends FieldDefinition
 		? IFieldMap[Schema['dynamicFieldSignature']['type']]
 		: any
 > extends Omit<
