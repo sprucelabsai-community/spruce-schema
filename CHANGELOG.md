@@ -1,3 +1,35 @@
+## [12.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v12.0.0...v12.0.1) (2020-09-18)
+
+# [12.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.7...v12.0.0) (2020-09-18)
+
+
+### Breaking Changes
+
+* no more path aliasing ([d31e018](https://github.com/sprucelabsai/spruce-schema/commit/d31e018))
+
+## [11.0.7](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.6...v11.0.7) (2020-09-18)
+
+## [11.0.6](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.5...v11.0.6) (2020-09-18)
+
+## [11.0.5](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.4...v11.0.5) (2020-09-18)
+
+## [11.0.4](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.3...v11.0.4) (2020-09-17)
+
+## [11.0.3](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.2...v11.0.3) (2020-09-17)
+
+## [11.0.2](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.1...v11.0.2) (2020-09-17)
+
+## [11.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.0...v11.0.1) (2020-09-17)
+
+# [11.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.29...v11.0.0) (2020-09-17)
+
+
+### Breaking Changes
+
+* no more enum ([e267dfc](https://github.com/sprucelabsai/spruce-schema/commit/e267dfc))
+
+## [10.0.29](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.28...v10.0.29) (2020-09-17)
+
 ## [10.0.28](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.27...v10.0.28) (2020-09-17)
 
 ## [10.0.27](https://github.com/sprucelabsai/spruce-schema/compare/v10.0.26...v10.0.27) (2020-09-17)

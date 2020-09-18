@@ -6,7 +6,7 @@
 	"files": [
 		"build"
 	],
-	"version": "10.0.28",
+	"version": "12.0.1",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"description": "Spruce experience schemas",
@@ -41,8 +41,8 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.287",
-		"@sprucelabs/log": "^10.2.225",
+		"@sprucelabs/error": "^2.2.291",
+		"@sprucelabs/log": "^10.2.226",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.7.58",
 		"mime-db": "^1.44.0",
@@ -51,18 +51,18 @@
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^7.0.26",
+		"@sprucelabs/test": "^7.0.28",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
 		"eslint": "^7.9.0",
-		"eslint-config-spruce": "^10.9.51",
+		"eslint-config-spruce": "^10.9.52",
 		"lodash": "^4.17.20",
 		"prettier": "^2.1.2",
-		"ts-tsc": "^9.0.0",
-		"typescript": "^4.0.2",
+		"ts-node": "^9.0.0",
+		"typescript": "^4.0.3",
 		"yarn": "^1.22.5"
 	},
 	"babel": {
