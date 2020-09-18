@@ -1,4 +1,4 @@
-import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
+import { FieldDefinition } from '../fields'
 import { ISchema } from '../schemas.static.types'
 
 export interface IFieldTemplateDetails {

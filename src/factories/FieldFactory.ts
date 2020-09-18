@@ -1,4 +1,4 @@
-import { FieldDefinition, IFieldMap } from '#spruce/schemas/fields/fields.types'
+import { FieldDefinition, IFieldMap, fieldClassMap } from '../fields'
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */
@@ -6,8 +6,6 @@ export default class FieldFactory {
 		name: string,
 		definition: F
 	): IFieldMap[F['type']] {
-		const fieldClassMap = require('#spruce/schemas/fields/fieldClassMap')
-			.default
 		const fieldClass = fieldClassMap[definition.type]
 
 		if (!fieldClass) {

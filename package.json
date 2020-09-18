@@ -87,9 +87,6 @@
 		],
 		"testMatch": [
 			"**/__tests__/**/*.test.ts"
-		],
-		"moduleNameMapper": {
-			"^#spruce/(.*)$": "<rootDir>/src/.spruce/$1"
-		}
+		]
 	}
 }

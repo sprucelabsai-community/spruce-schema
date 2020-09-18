@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
 import FieldFactory from '../../factories/FieldFactory'
+import { FieldDefinition } from '../../fields'
 import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
 
 export default class BooleanFieldTest extends AbstractSpruceTest {
