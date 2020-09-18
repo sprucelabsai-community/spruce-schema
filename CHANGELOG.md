@@ -1,3 +1,10 @@
+# [12.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.7...v12.0.0) (2020-09-18)
+
+
+### Breaking Changes
+
+* no more path aliasing ([d31e018](https://github.com/sprucelabsai/spruce-schema/commit/d31e018))
+
 ## [11.0.7](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.6...v11.0.7) (2020-09-18)
 
 ## [11.0.6](https://github.com/sprucelabsai/spruce-schema/compare/v11.0.5...v11.0.6) (2020-09-18)
