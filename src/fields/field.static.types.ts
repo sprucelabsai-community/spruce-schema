@@ -1,11 +1,11 @@
-import { IInvalidFieldError } from '../errors/error.types'
-import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
-import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 import {
 	FieldDefinition,
 	IFieldMap,
 	IFieldValueTypeGeneratorMap,
-} from './fields.types'
+} from '#spruce/schemas/fields/fields.types'
+import { IInvalidFieldError } from '../errors/error.types'
+import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
+import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
 export interface ISchemasById {
 	[id: string]: ISchema[]

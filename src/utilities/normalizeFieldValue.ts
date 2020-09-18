@@ -1,12 +1,12 @@
-import { IInvalidFieldError } from '../errors/error.types'
-import SpruceError from '../errors/SpruceError'
-import { FieldDefinitionValueType, IField } from '../fields'
-import { ISchemasById } from '../fields/field.static.types'
 import {
 	Field,
 	FieldDefinition,
 	IFieldDefinitionMap,
-} from '../fields/fields.types'
+} from '#spruce/schemas/fields/fields.types'
+import { IInvalidFieldError } from '../errors/error.types'
+import SpruceError from '../errors/SpruceError'
+import { FieldDefinitionValueType, IField } from '../fields'
+import { ISchemasById } from '../fields/field.static.types'
 import { ISchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<

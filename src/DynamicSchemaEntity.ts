@@ -1,3 +1,4 @@
+import { IFieldMap } from '#spruce/schemas/fields/fields.types'
 import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
@@ -6,7 +7,6 @@ import {
 	IField,
 	IFieldDefinition,
 } from './fields/field.static.types'
-import { IFieldMap } from './fields/fields.types'
 import SchemaEntity from './SchemaEntity'
 import {
 	DynamicSchemaAllValues,

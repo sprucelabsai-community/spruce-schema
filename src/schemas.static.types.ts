@@ -1,15 +1,15 @@
 import {
+	FieldDefinition,
+	Field,
+	IFieldDefinitionMap,
+	IFieldMap,
+} from '#spruce/schemas/fields/fields.types'
+import {
 	IFieldDefinition,
 	FieldDefinitionValueType,
 	IField,
 	FieldType,
 } from './fields/field.static.types'
-import {
-	FieldDefinition,
-	Field,
-	IFieldDefinitionMap,
-	IFieldMap,
-} from './fields/fields.types'
 
 export interface ISchemaEntity<S extends ISchema> {
 	readonly schemaId: S['id']

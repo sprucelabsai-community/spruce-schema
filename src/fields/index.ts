@@ -40,8 +40,8 @@ export { default as FileField } from './FileField'
 export * from './DateField'
 export * from './DateField.types'
 export { default as DateField } from './DateField'
-export * from './fields.types'
-export { default as fieldClassMap } from './fieldClassMap'
+export * from '../.spruce/schemas/fields/fields.types'
+export { default as fieldClassMap } from '../.spruce/schemas/fields/fieldClassMap'
 
 export {
 	IFieldDefinition,

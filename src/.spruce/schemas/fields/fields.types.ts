@@ -1,24 +1,24 @@
-import { IAddressFieldDefinition } from './AddressField.types'
-import { IBooleanFieldDefinition } from './BooleanField.types'
-import { IDateFieldDefinition } from './DateField.types'
-import { IDateTimeFieldDefinition } from './DateTimeField.types'
-import { IDirectoryFieldDefinition } from './DirectoryField.types'
-import { IDurationFieldDefinition } from './DurationField.types'
-import { IField } from './field.static.types'
-import { IFileFieldDefinition } from './FileField.types'
-import { IIdFieldDefinition } from './IdField.types'
-import { INumberFieldDefinition } from './NumberField.types'
-import { IPhoneFieldDefinition } from './PhoneField.types'
-import { IRawFieldDefinition } from './RawField.types'
+import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
+import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
+import { IDateFieldDefinition } from '../../../fields/DateField.types'
+import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
+import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
+import { IDurationFieldDefinition } from '../../../fields/DurationField.types'
+import { IField } from '../../../fields/field.static.types'
+import { IFileFieldDefinition } from '../../../fields/FileField.types'
+import { IIdFieldDefinition } from '../../../fields/IdField.types'
+import { INumberFieldDefinition } from '../../../fields/NumberField.types'
+import { IPhoneFieldDefinition } from '../../../fields/PhoneField.types'
+import { IRawFieldDefinition } from '../../../fields/RawField.types'
 import {
 	ISchemaFieldDefinition,
 	SchemaFieldValueTypeMapper,
-} from './SchemaField.types'
+} from '../../../fields/SchemaField.types'
 import {
 	ISelectFieldDefinition,
 	SelectFieldValueTypeMapper,
-} from './SelectField.types'
-import { ITextFieldDefinition } from './TextField.types'
+} from '../../../fields/SelectField.types'
+import { ITextFieldDefinition } from '../../../fields/TextField.types'
 
 export type FieldDefinition =
 	| IBooleanFieldDefinition
