@@ -15,10 +15,7 @@
 		"sourceMap": true,
 		"outDir": "build",
 		"baseUrl": "src",
-		"experimentalDecorators": true,
-		"paths": {
-			"#spruce/*": [".spruce/*"]
-		}
+		"experimentalDecorators": true
 	},
 	"include": [
 		"./*.ts",
