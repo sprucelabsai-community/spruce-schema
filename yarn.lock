@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.295":
-  version "2.2.295"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.295.tgz#fcd2dc71f82d634344bc611d7ca5cdd42fc6928c"
-  integrity sha512-OMXpEzWKoMaBMTOvw7tRhsiocKQUXf8Znvy8zDd7erN27VAiR/McC1nn+nUe6P0AXmSTGfdt/S6V/lpWff7TFQ==
+"@sprucelabs/error@^2.2.296":
+  version "2.2.296"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.296.tgz#c60d432e33e04fce01f38952ebb07588fd30483d"
+  integrity sha512-ABm2mr4/kNktkFTmw/AE+XizPHAiZ9aC9OoTLmX0gt+3VgHnXXkxBAHOvIK00jh2lgYx/B7WLc1ad6eKAjSGrg==
 
-"@sprucelabs/log@^10.2.227":
-  version "10.2.227"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.227.tgz#58bbcb6979b395e6b57f681aa96f50609741bd72"
-  integrity sha512-pp8cgLlm5BhblQul22Slo73fI5IlFtUHGVR1FMYr2C/YH+QftMNkzR2R9b2dMsm+lG40BQgMMk1mwq2cO0B1cg==
+"@sprucelabs/log@^10.2.228":
+  version "10.2.228"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.228.tgz#261fb3ae8b7aa1ac9dd19dabc54a725199525ea0"
+  integrity sha512-gPVG/TOE+i2zSHdlw+EvQ1P+572aqx6XNExlOhSaZgdoNK4RyG0/zubFH7EL0oVHheSmKO/Y+bobdlQBhfEnmQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.30":
-  version "7.0.30"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.30.tgz#f8266e7f3d050b80d5bf7e54f893d0165a69d366"
-  integrity sha512-BFUyW399EVsvCdthoP535qSYqR2RlMog7lPyp2Ot6Ij/2p47yXc5YQAPg/Xoz+Jl5eSZa5u0B7RYUJhlLjjTJA==
+"@sprucelabs/test@^7.0.31":
+  version "7.0.31"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.31.tgz#3710ceedbb1803fbeb1a09a3eb24d5d08e94c952"
+  integrity sha512-p0zHZXAWSmQowZj5kEtNTlP/3CM12JG7/Fv3axXFOwfKMyjkheLpe4opVFr/QY2Gmz8q8pA0sbI++EoFAITKtw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2876,11 +2876,11 @@ debug@3.1.0:
     ms "2.0.0"
 
 debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
-  integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.2.0.tgz#7f150f93920e94c58f5574c2fd01a3110effe7f1"
+  integrity sha512-IX2ncY78vDTjZMFUdmsvIRFY2Cf4FnD0wRs+nQwJU8Lu99/tPFdb0VybiiMTPe3I6rQmwsqQqRBvxU+bZ/I8sg==
   dependencies:
-    ms "^2.1.1"
+    ms "2.1.2"
 
 debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
@@ -6184,7 +6184,7 @@ ms@2.0.0:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
   integrity sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
 
-ms@^2.0.0, ms@^2.1.1:
+ms@2.1.2, ms@^2.0.0, ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
