@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.302":
-  version "2.2.302"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.302.tgz#4099a536ab467217d1033ac33b869af7ba185910"
-  integrity sha512-uyblnzQlK0+myXdo/Bx1SNvnNg08/febqRIa3iMc9BCtzblKQaHqyw1sMWUEqMEFSYD4sIB59lQWqlkU2+MfgQ==
+"@sprucelabs/error@^2.2.303":
+  version "2.2.303"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.303.tgz#907e5a4c85b62efd5316e6e3a239d4b2fd2434e1"
+  integrity sha512-U8dhEOYPd1hpiDxdYOXgPkX09rQzifIrmZEv0C5xwrW5s6XUDQkGX8DcSHEuHRLJjB3gZX+Lbd48gds0yhKHkQ==
 
 "@sprucelabs/log@^10.2.229":
   version "10.2.229"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.34":
-  version "7.0.34"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.34.tgz#aae692238d77bc3d38b5241dd01f0460bcdef5fd"
-  integrity sha512-5kUmPlRrKN99Zth6dMgS87VQXJCyj40MRLp8f6NJYzffRY6rzhnPXbcUjpRdzwHAy1OQbG+X7e358l9+C1snOQ==
+"@sprucelabs/test@^7.0.35":
+  version "7.0.35"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.35.tgz#433b1a77ce0413ef7762d0bedd7675428476284a"
+  integrity sha512-iXZP4U9WpMVZqMdOchr1oL+kJno4eVXx94irakBqDUQAYC3Xr2WITUz3bDLBW3MVFZ2ZvzAmAqfmW3NGi+xTKQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -9246,9 +9246,9 @@ yaml@^1.7.2:
   integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
 
 yargs-parser@20.x, yargs-parser@^20.0.0:
-  version "20.1.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.1.0.tgz#9abade5095ac4391156496743e60d5ec9a5b486c"
-  integrity sha512-RV4YEjMLfjWkK9jNV/aZytlJ5uz+JBk7t29FofILa41jJAU/yCwghgsjH2xT0h7eu7b6MrCDJb1qZjeDJ/jI1w==
+  version "20.2.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.0.tgz#944791ca2be2e08ddadd3d87e9de4c6484338605"
+  integrity sha512-2agPoRFPoIcFzOIp6656gcvsg2ohtscpw2OINr/q46+Sq41xz2OYLqx5HRHabmFU1OARIPAYH5uteICE7mn/5A==
 
 yargs-parser@^13.1.2:
   version "13.1.2"
