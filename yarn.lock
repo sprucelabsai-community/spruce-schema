@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.316":
-  version "2.2.316"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.316.tgz#80fe3370590a70af3bfccb4449bc8b81c44f5c43"
-  integrity sha512-Bwqz9/XTK529K7H6f7r8ohpBzB76GeUTXTznvUvWOuBG2KC80HUhXsvCxRW9YyC2pdYZCUOZU4F07Rw6l8wr9Q==
+"@sprucelabs/error@^2.2.317":
+  version "2.2.317"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.317.tgz#fd806ecc68f38fa943da87a54a81903716865b28"
+  integrity sha512-b+5cYGRgvLTv4mYCfOuW2fRJcSFj8WD9JlqbnMp4o+52eSLiHF7601jSAI/trE0wM8awfWxtRLkmuPLAIFiMiQ==
 
 "@sprucelabs/log@^10.2.236":
   version "10.2.236"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.42":
-  version "7.0.42"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.42.tgz#3967849e4d9d4d8c072c31c3e06c282f50550e2f"
-  integrity sha512-XYXZcKFAKKAkKe6Su8l9urqbdfVMoXtRAmUMEZ1RtgrC55lRtujhkj3IQ1GmW9tSv28UjHAcPICW54g+VNbW/g==
+"@sprucelabs/test@^7.0.43":
+  version "7.0.43"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.43.tgz#1830f0dc370fbe94693f5b67627b138db8f31b72"
+  integrity sha512-AH26wTHKqt07/B3M4UQto0P2F5B29yFbDg4jbhdRW0utqvbChFMh/7vUcR+uvx7R60lF5juMzgpmVqGJzF4C/g==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2206,11 +2206,11 @@ browser-process-hrtime@^1.0.0:
   integrity sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
 
 browserslist@^4.12.0, browserslist@^4.8.5:
-  version "4.14.3"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.14.3.tgz#381f9e7f13794b2eb17e1761b4f118e8ae665a53"
-  integrity sha512-GcZPC5+YqyPO4SFnz48/B0YaCwS47Q9iPChRGi6t7HhflKBcINzFrJvRfC+jp30sRMKxF+d4EHGs27Z0XP1NaQ==
+  version "4.14.4"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.14.4.tgz#66a18131439f9e16c3da7f352518dfa12f60b0e3"
+  integrity sha512-7FOuawafVdEwa5Jv4nzeik/PepAjVte6HmVGHsjt2bC237jeL9QlcTBDF3PnHEvcC6uHwLGYPwZHNZMB7wWAnw==
   dependencies:
-    caniuse-lite "^1.0.30001131"
+    caniuse-lite "^1.0.30001135"
     electron-to-chromium "^1.3.570"
     escalade "^3.1.0"
     node-releases "^1.1.61"
@@ -2324,7 +2324,7 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.0.0.tgz#5259f7c30e35e278f1bdc2a4d91230b37cad981e"
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
-caniuse-lite@^1.0.30001131:
+caniuse-lite@^1.0.30001135:
   version "1.0.30001135"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001135.tgz#995b1eb94404a3c9a0d7600c113c9bb27f2cd8aa"
   integrity sha512-ziNcheTGTHlu9g34EVoHQdIu5g4foc8EsxMGC7Xkokmvw0dqNtX8BS8RgCgFBaAiSp2IdjvBxNdh0ssib28eVQ==
