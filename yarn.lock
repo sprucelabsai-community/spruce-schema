@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.314":
-  version "2.2.314"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.314.tgz#9173a3a5d4bb84584e25567f56e9868ec9dbe259"
-  integrity sha512-fes4TKeWazG2Ns5uEBRDcdrYCupSBjdKU3YegERB8cFCzzMevwV0cpFA2yXBqALwqhmQuJLjEXOwVn6oW1zZlQ==
+"@sprucelabs/error@^2.2.315":
+  version "2.2.315"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.315.tgz#c24e51358363bea4f83af6ad2596cc03146617d1"
+  integrity sha512-AXFaEUKnkozofw6B8s/77LR3g24j8XM4m7HRWc5CyG3+E7iK5QAjDPMDb3OWSN65UJ4EgEZyjsfYPpjAslJd8g==
 
 "@sprucelabs/log@^10.2.236":
   version "10.2.236"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.41":
-  version "7.0.41"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.41.tgz#c71a08d59fa8d29bfe7d16a359a3fe18d3a48897"
-  integrity sha512-PhcgMDhxzIVVoTuwbi2F1TSaVNOKuZ6esnFsWnNiPYYFZRd/zlMpIJrhfEHaX0Kq87fbmv9/J9i/nTynf/OsKA==
+"@sprucelabs/test@^7.0.42":
+  version "7.0.42"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.42.tgz#3967849e4d9d4d8c072c31c3e06c282f50550e2f"
+  integrity sha512-XYXZcKFAKKAkKe6Su8l9urqbdfVMoXtRAmUMEZ1RtgrC55lRtujhkj3IQ1GmW9tSv28UjHAcPICW54g+VNbW/g==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2325,9 +2325,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001131:
-  version "1.0.30001133"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001133.tgz#ec564c5495311299eb05245e252d589a84acd95e"
-  integrity sha512-s3XAUFaC/ntDb1O3lcw9K8MPeOW7KO3z9+GzAoBxfz1B0VdacXPMKgFUtG4KIsgmnbexmi013s9miVu4h+qMHw==
+  version "1.0.30001135"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001135.tgz#995b1eb94404a3c9a0d7600c113c9bb27f2cd8aa"
+  integrity sha512-ziNcheTGTHlu9g34EVoHQdIu5g4foc8EsxMGC7Xkokmvw0dqNtX8BS8RgCgFBaAiSp2IdjvBxNdh0ssib28eVQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
