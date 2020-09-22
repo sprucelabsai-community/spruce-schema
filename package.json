@@ -44,7 +44,7 @@
 		"@sprucelabs/error": "^2.2.316",
 		"@sprucelabs/log": "^10.2.236",
 		"google-libphonenumber": "^3.2.13",
-		"libphonenumber-js": "^1.7.58",
+		"libphonenumber-js": "^1.8.0",
 		"mime-db": "^1.44.0",
 		"mime-type": "^4.0.0"
 	},
