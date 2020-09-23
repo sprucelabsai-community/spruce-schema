@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.329":
-  version "2.2.329"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.329.tgz#d3f29d0bb6fdd3e98402286d73ac35252b1ab3f0"
-  integrity sha512-MxHjAZvfqRoLwKOrrsp2yAhtRaiwRnNL1Cha+ke+uEH2Mq1kPklqfADjb2w9vSLNdv477q8h1/gF2ey2LDw2Pw==
+"@sprucelabs/error@^2.2.330":
+  version "2.2.330"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.330.tgz#dbfa5dd98b0022d071cc0705f5c1aae12e2b9377"
+  integrity sha512-PMq/0UgZDQVEQnz49ijTAIBzwPJsJZXIHbHj2/ofg6hBftKijP7y5JmueFxs4VsLsVE1ssDbmiz5UXhzwvYJIw==
 
-"@sprucelabs/log@^10.2.238":
-  version "10.2.238"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.238.tgz#911d248066ccda71050048831e328816867c0397"
-  integrity sha512-1XHNQd5w6y89EPR/hQHXAQEV9LsEGMj6NWcDJ0aBfJnaPoWmf+6qGX+7ih7DbocAZV9IrZh3E6OT33EUOhaVAg==
+"@sprucelabs/log@^10.2.239":
+  version "10.2.239"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.239.tgz#a599c2b76e26ba43a3ac426a624d13fbd7b59a12"
+  integrity sha512-p4z78tfPaMMQ9fyfzIXGpg7gXWVR2AJ7fwQo4l4wu5zm5Jhg4zLiCzncIiM7Wh/TojXdUZSGMU4KUW2pEAFYXA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.50":
-  version "7.0.50"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.50.tgz#dd70186e100f1989348f3a81daeee09086906609"
-  integrity sha512-8enRljhc/UgvVzccQudou322d8l4I/y1ZUEvHa6OXdXwwWKDmJQ1AbJncdXVv/oS3WGE9JAEabI7nC+ZH70Kpw==
+"@sprucelabs/test@^7.0.51":
+  version "7.0.51"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.51.tgz#f6afae1360e70b8d01a0f13b6752767d04d558a9"
+  integrity sha512-UEZHPb38H8zPqouBEq0FEqlZWYT7tRBgTkBei5E0AsmtQ3Nl7PAOOVjLjX9ScD5Bt/CVXw9d3wHOqY1PwpGszw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3402,9 +3402,9 @@ eslint-plugin-prettier@^3.1.4:
     prettier-linter-helpers "^1.0.0"
 
 eslint-plugin-react@^7.21.0:
-  version "7.21.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.0.tgz#aa0699086f586d54a5005c99a703175bc5d21161"
-  integrity sha512-WaieZZ4cayAfPBmy5KkEqFfLQf/VkzoUsvM5DfD9G1lrz+3LtZ8X6nToEUQiFe1X5ApNIzkMd+7NUy+2OmSTQQ==
+  version "7.21.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.1.tgz#3d9fe506eab78756f67c671bb2a9aa9c20990a39"
+  integrity sha512-TGtWzWrFjZtrD1giMz0O6a9ul++YR9vZSzIL/a7qlb5I/ra/O5RkMGMJK+KKYnJrzz884kyAkEyWiU4Hg2HTrg==
   dependencies:
     array-includes "^3.1.1"
     array.prototype.flatmap "^1.2.3"
