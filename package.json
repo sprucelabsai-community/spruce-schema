@@ -45,7 +45,7 @@
 		"@sprucelabs/log": "^10.2.236",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.0",
-		"mime-db": "^1.44.0",
+		"mime-db": "^1.45.0",
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
