@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.318":
-  version "2.2.318"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.318.tgz#862e6ad367ae051e8faa25bb76be0f933192b422"
-  integrity sha512-S66ZyaTdxZVqMe+LVFuudumRiAUUElOsCO7/aQgyMGxoBbsJ7fbR8dCIWyvnaq8yX7Id8VyyW5O8x+g1GZuTSQ==
+"@sprucelabs/error@^2.2.319":
+  version "2.2.319"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.319.tgz#1b8ed1e3b890a83b337239058e7b41f17c84a8f3"
+  integrity sha512-4Q09sKud7LD2ab3br8U2fILd4Rl5S026V3K6dWBJbpGZqKTRMQGGOmgOlh1pBMhSKHd/cL5m17UajqQNlS14Tw==
 
 "@sprucelabs/log@^10.2.236":
   version "10.2.236"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.43":
-  version "7.0.43"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.43.tgz#1830f0dc370fbe94693f5b67627b138db8f31b72"
-  integrity sha512-AH26wTHKqt07/B3M4UQto0P2F5B29yFbDg4jbhdRW0utqvbChFMh/7vUcR+uvx7R60lF5juMzgpmVqGJzF4C/g==
+"@sprucelabs/test@^7.0.44":
+  version "7.0.44"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.44.tgz#11dd6e64556cb676d48acf9c3d55a74b4fd943ff"
+  integrity sha512-LLM5dsow/AmhumyPCvmJAdUtDQCInc50BBh+Z8eKJnSPGKBbaL20qrMVJBnCavmL3RsUf9duxSyB0AkZ3nYp2Q==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1550,9 +1550,9 @@
   integrity sha512-FA/BWv8t8ZWJ+gEOnLLd8ygxH/2UFbAvgEonyfN6yWGLKc7zVjbpl2Y4CTjid9h2RfgPP6SEt6uHwEOply00yw==
 
 "@types/yargs@^15.0.0":
-  version "15.0.5"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-15.0.5.tgz#947e9a6561483bdee9adffc983e91a6902af8b79"
-  integrity sha512-Dk/IDOPtOgubt/IaevIUbTgV7doaKkoorvOyYM2CMwuDyP89bekI7H4xLIwunNYiK9jhCkmc6pUrJk3cj2AB9w==
+  version "15.0.6"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-15.0.6.tgz#822919963e1acc0ed03dbb11570d548258004c62"
+  integrity sha512-sw6JBfeZeE7ep9Pmhcysxo4lgaMLlHuQ8ie0srx5VOEnN4RNJgLryCuvxCUotw6Jmd50zBwCJHs3iwjLyIJgbQ==
   dependencies:
     "@types/yargs-parser" "*"
 
