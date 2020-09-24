@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.336":
-  version "2.2.336"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.336.tgz#f8149f74d8f33ebab233b13f3bdaa069e81c8e24"
-  integrity sha512-BrdFpUE8FZFrN1wIF/v0uOBkSjJLqzSy0jpzFuKCvbW3PD5z3YT+nLtFqKdG/Zv+anTW9MevRhWtb/72JvWj/g==
+"@sprucelabs/error@^2.2.337":
+  version "2.2.337"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.337.tgz#3dda0bb19fe1c5ba41071757fc5104d47226764b"
+  integrity sha512-w3vm9JHFg3WTB76ZxEIjlqRxJkGdoFvdMd99cJi4uDNgp+7ztSyMS69b7LH9M6TDprbGH8+r8zx0vE8M7moS4w==
 
 "@sprucelabs/log@^10.2.242":
   version "10.2.242"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.54":
-  version "7.0.54"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.54.tgz#378bf1c68c8fd0403ee98d8fdd9f4947bc16a869"
-  integrity sha512-xEhMU/36Q5aZW16L9r4pTazrMNBBjX1EnijCdrFyLuSXHv92lMRsobXHJjLjm2SLlP6v3ajDaJjzlEP2pXpnUw==
+"@sprucelabs/test@^7.0.55":
+  version "7.0.55"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.55.tgz#42193ed17a13e35b4bd07ba92c007f5780e8dbb3"
+  integrity sha512-V3bP2SK5lrrIPLQzZFY75zNFWxBnGNt4zYaF38mgeycgeLQGxIG+Y4Zm+2HnM5irW2vFJT+UtzNC9tiYcDFVjw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
