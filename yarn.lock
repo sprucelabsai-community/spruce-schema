@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.341":
-  version "2.2.341"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.341.tgz#4f0e1e24629ab5219ba0ccea45d8baeb505be702"
-  integrity sha512-B7xl4V8zmPPowITe1gNwZFhlAOnTmSoEfGTnRXwU/wMPF7+X9r8aNmrETsrs/Y3yYCIWlwPEoe09T4YeGA3Zog==
+"@sprucelabs/error@^2.2.342":
+  version "2.2.342"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.342.tgz#f96a3c24bbcf50b244bb2bbd5e9fa07d8bf55487"
+  integrity sha512-cfEMtqIfuznpqMOuIidH5ai9q8xudmMR5dnK83tPn9Hvkvo/4bJ9yLEDLNZ+oqNVc1xwci31dyhMa8hB2wJEag==
 
 "@sprucelabs/log@^10.2.243":
   version "10.2.243"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.57":
-  version "7.0.57"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.57.tgz#b3014b98b21c9e3581ece32cb1378d0f1bd3d215"
-  integrity sha512-WMcOAGZy2dYfBOwjIr8fb5J89UdNZfXilGbwDIIlUlT+D84l2zDJY66P7IfqWPc4A9b2cBNQXkZwRJp/LojvtA==
+"@sprucelabs/test@^7.0.58":
+  version "7.0.58"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.58.tgz#1f048881ec8d940196a2f91521fc2530576ee26c"
+  integrity sha512-WbF/CS4Z9MT468SIz1GHwJQITzlAgRjqJGjw8QgS5UyB+EqmVeUfZ53v5Dze9I5GcuH0UIV3QM45+R0NMG/8vQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2327,9 +2327,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001135:
-  version "1.0.30001135"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001135.tgz#995b1eb94404a3c9a0d7600c113c9bb27f2cd8aa"
-  integrity sha512-ziNcheTGTHlu9g34EVoHQdIu5g4foc8EsxMGC7Xkokmvw0dqNtX8BS8RgCgFBaAiSp2IdjvBxNdh0ssib28eVQ==
+  version "1.0.30001136"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001136.tgz#6cc76c55b2dcd29a3a998cd5e21b68d5e12a5870"
+  integrity sha512-VRpgi7sxGbLKiok0v1ld5GK82wxCj/icLMMr6S0Akg83TYVfGWdPXoGILyefudS6chd8EX6RbW/Q26giELwaDA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3148,9 +3148,9 @@ editor@~1.0.0:
   integrity sha1-YMf4e9YrzGqJT6jM1q+3gjok90I=
 
 electron-to-chromium@^1.3.571:
-  version "1.3.571"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.571.tgz#e57977f1569f8326ae2a7905e26f3943536ba28f"
-  integrity sha512-UYEQ2Gtc50kqmyOmOVtj6Oqi38lm5yRJY3pLuWt6UIot0No1L09uu6Ja6/1XKwmz/p0eJFZTUZi+khd1PV1hHA==
+  version "1.3.572"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.572.tgz#62d87dfe32ca1f6b9a0f76917d24f66e94e19c01"
+  integrity sha512-TKqdEukCCl7JC20SwEoWTbtnGt4YjfHWAv4tcNky0a9qGo0WdM+Lrd60tps+nkaJCmktKBJjr99fLtEBU1ipWQ==
 
 emittery@^0.7.1:
   version "0.7.1"
