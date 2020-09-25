@@ -4,7 +4,6 @@ import { SchemaErrorOptions } from './error.types'
 export default class SpruceError extends AbstractSpruceError<
 	SchemaErrorOptions
 > {
-	/** A readable message */
 	public friendlyMessage(): string {
 		const { options } = this
 

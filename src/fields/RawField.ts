@@ -7,7 +7,7 @@ import { IRawFieldDefinition } from './RawField.types'
 
 export default class RawField extends AbstractField<IRawFieldDefinition> {
 	public static get description() {
-		return 'Deprecated. For internal purposes only (will be deleted soon)'
+		return 'Set an interface directly.'
 	}
 	public static generateTemplateDetails(
 		options: IFieldTemplateDetailOptions<IRawFieldDefinition>

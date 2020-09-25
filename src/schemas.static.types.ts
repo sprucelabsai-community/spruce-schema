@@ -99,7 +99,7 @@ export interface ISchemaFields {
 /** A schema defines the data structure of something */
 export interface ISchema {
 	id: string
-	name: string
+	name?: string
 	version?: string
 	description?: string
 	dynamicFieldSignature?: FieldDefinition & {
