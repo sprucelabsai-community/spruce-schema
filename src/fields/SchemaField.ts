@@ -261,7 +261,7 @@ export default class SchemaField<
 					// because
 					instance = new SchemaEntity(schemas[0], value)
 				} else if (schemas && schemas.length > 0) {
-					const { schemaId, values } = value || {}
+					const { schemaId, version, values } = value || {}
 
 					if (!values) {
 						errors.push({
@@ -278,12 +278,16 @@ export default class SchemaField<
 								'You need to add `schemaId` to the value of ' + this.name,
 						})
 					} else {
-						const matchSchema = schemas.find((def) => def.id === schemaId)
+						const matchSchema = schemas.find(
+							(schema) => schema.id === schemaId && schema.version === version
+						)
 						if (!matchSchema) {
 							errors.push({
 								name: this.name,
 								code: 'related_schema_not_found',
-								friendlyMessage: `Could not find a schema by id ${schemaId}`,
+								friendlyMessage: `Could not find a schema by id '${schemaId}'${
+									version ? ` and version '${version}'` : ' with no version'
+								}.`,
 							})
 						} else {
 							instance = new SchemaEntity(matchSchema, values)
@@ -311,7 +315,6 @@ export default class SchemaField<
 		value: any,
 		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateEntityInstances>
 	): FieldDefinitionValueType<F, CreateEntityInstances> {
-		//  first lets validate it's a good form
 		const errors = this.validate(value, options)
 
 		if (errors.length > 0) {

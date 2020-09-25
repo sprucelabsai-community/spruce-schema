@@ -53,4 +53,38 @@ export default class SchemaFieldTest extends AbstractSpruceTest {
 		codes = optionalIsArrayField.validate(value).map((err) => err.code)
 		assert.isEqualDeep(codes, expectedErrorCodes)
 	}
+
+	@test()
+	protected static async testSingleUnionFailsValidation() {
+		const optionalCarOrTruckField = FieldFactory.Field(
+			'optionalCarOrTruck',
+			this.personSchema.fields.optionalCarOrTruck
+		)
+
+		const value = {
+			schemaId: 'car',
+			values: {},
+		}
+		const codes = optionalCarOrTruckField.validate(value)
+
+		assert.doesInclude(codes[0].error?.message, /name is required/)
+	}
+
+	@test()
+	protected static async testSingleUnionValidation() {
+		const optionalCarOrTruckField = FieldFactory.Field(
+			'optionalCarOrTruck',
+			this.personSchema.fields.optionalCarOrTruck
+		)
+
+		const value = {
+			schemaId: 'car',
+			values: {
+				name: 'great car',
+			},
+		}
+		const codes = optionalCarOrTruckField.validate(value)
+
+		assert.isLength(codes, 0)
+	}
 }

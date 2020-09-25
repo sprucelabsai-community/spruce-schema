@@ -72,7 +72,6 @@ const personSchema = buildSchema({
 
 const personWithFavColorsSchema = buildSchema({
 	id: 'testPerson',
-	name: 'A test person',
 	fields: {
 		firstName: {
 			type: 'text',
@@ -92,11 +91,77 @@ const personWithFavColorsSchema = buildSchema({
 
 const toolSchema = buildSchema({
 	id: 'tool',
-	name: 'Tool',
 	fields: {
 		name: {
 			type: 'text',
 			isRequired: true,
+		},
+	},
+})
+
+const fruitSchema = buildSchema({
+	id: 'fruit',
+	fields: {
+		color: {
+			type: 'select',
+			isRequired: true,
+			options: {
+				choices: [
+					{
+						value: 'yellow',
+						label: 'Yellow',
+					},
+					{
+						value: 'green',
+						label: 'Green',
+					},
+				],
+			},
+		},
+	},
+})
+
+const versionedToolSchema = buildSchema({
+	id: 'versionedTool',
+	version: '1.0',
+	fields: {
+		name: {
+			type: 'text',
+			isRequired: true,
+		},
+	},
+})
+
+const version2ToolSchema = buildSchema({
+	id: 'versionedTool',
+	version: '2.0',
+	fields: {
+		size: {
+			type: 'text',
+			isRequired: true,
+		},
+	},
+})
+
+const versionedFruitSchema = buildSchema({
+	id: 'versionedFruit',
+	version: '1.0',
+	fields: {
+		color: {
+			type: 'select',
+			isRequired: true,
+			options: {
+				choices: [
+					{
+						value: 'yellow',
+						label: 'Yellow',
+					},
+					{
+						value: 'green',
+						label: 'Green',
+					},
+				],
+			},
 		},
 	},
 })
@@ -118,6 +183,54 @@ const personWithFavToolsSchema = buildSchema({
 			isArray: true,
 			options: {
 				schema: toolSchema,
+			},
+		},
+	},
+})
+
+const personWithFavToolsOrFruitSchema = buildSchema({
+	id: 'personWithFavTools',
+	name: 'Person with favorite tools',
+	fields: {
+		firstName: {
+			type: 'text',
+			isRequired: true,
+		},
+		lastName: {
+			type: 'text',
+		},
+		favoriteToolsOrFruit: {
+			isRequired: true,
+			type: 'schema',
+			isArray: true,
+			options: {
+				schemas: [toolSchema, fruitSchema],
+			},
+		},
+	},
+})
+
+const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
+	id: 'versionedPersonWithFavTools',
+	name: 'Person with favorite tools',
+	fields: {
+		firstName: {
+			type: 'text',
+			isRequired: true,
+		},
+		lastName: {
+			type: 'text',
+		},
+		favoriteToolsOrFruit: {
+			isRequired: true,
+			type: 'schema',
+			isArray: true,
+			options: {
+				schemas: [
+					versionedFruitSchema,
+					versionedToolSchema,
+					version2ToolSchema,
+				],
 			},
 		},
 	},
@@ -317,6 +430,82 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			favoriteTools: [
 				{
 					name: 'Laptop',
+				},
+			],
+		})
+	}
+
+	@test()
+	protected static async canValidateArrayOfUnionValuesMissingRequired() {
+		assert.doesThrow(
+			() =>
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					favoriteToolsOrFruit: [],
+				}),
+			/favoriteToolsOrFruit is required/gi
+		)
+	}
+
+	@test()
+	protected static async canValidateArrayOfUnionValues() {
+		validateSchemaValues(personWithFavToolsOrFruitSchema, {
+			firstName: 'Ryan',
+			favoriteToolsOrFruit: [
+				{
+					schemaId: 'fruit',
+					values: {
+						color: 'green',
+					},
+				},
+				{
+					schemaId: 'fruit',
+					values: {
+						color: 'yellow',
+					},
+				},
+				{
+					schemaId: 'tool',
+					values: {
+						name: 'wrench',
+					},
+				},
+			],
+		})
+	}
+
+	@test()
+	protected static async canValidateArrayOfVersionedUnionValues() {
+		validateSchemaValues(versionedPersonWithFavToolsOrFruitSchema, {
+			firstName: 'Ryan',
+			favoriteToolsOrFruit: [
+				{
+					schemaId: 'versionedFruit',
+					version: '1.0',
+					values: {
+						color: 'green',
+					},
+				},
+				{
+					schemaId: 'versionedFruit',
+					version: '1.0',
+					values: {
+						color: 'yellow',
+					},
+				},
+				{
+					schemaId: 'versionedTool',
+					version: '1.0',
+					values: {
+						name: 'wrench',
+					},
+				},
+				{
+					schemaId: 'versionedTool',
+					version: '2.0',
+					values: {
+						size: 'wrench',
+					},
 				},
 			],
 		})
