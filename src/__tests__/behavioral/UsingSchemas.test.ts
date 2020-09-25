@@ -102,7 +102,6 @@ export default class SchemaTest extends AbstractSpruceTest {
 	}
 
 	@test('Catches missing id', 'id', ['id_missing'])
-	@test('Catches missing name', 'name', ['name_missing'])
 	@test('Catches missing fields', 'fields', [
 		'needs_fields_or_dynamic_key_signature',
 	])

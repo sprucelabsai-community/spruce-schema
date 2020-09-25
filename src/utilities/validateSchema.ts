@@ -13,9 +13,7 @@ export default function validateSchema(schema: any): asserts schema is ISchema {
 			errors.push('id_not_string')
 		}
 
-		if (!schema.name) {
-			errors.push('name_missing')
-		} else if (!(typeof schema.name === 'string')) {
+		if (schema.name && !(typeof schema.name === 'string')) {
 			errors.push('name_not_string')
 		}
 
