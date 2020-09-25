@@ -13,6 +13,10 @@ export default function validateSchema(schema: any): asserts schema is ISchema {
 			errors.push('id_not_string')
 		}
 
+		if (schema.name && !(typeof schema.name === 'string')) {
+			errors.push('name_not_string')
+		}
+
 		if (!schema.fields && !schema.dynamicFieldSignature) {
 			errors.push('needs_fields_or_dynamic_key_signature')
 		}
