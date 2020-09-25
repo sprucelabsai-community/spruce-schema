@@ -1,3 +1,10 @@
+# [12.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v12.1.3...v12.2.0) (2020-09-25)
+
+
+### Features
+
+* name is option ([c7f9888](https://github.com/sprucelabsai/spruce-schema/commit/c7f9888))
+
 ## [12.1.3](https://github.com/sprucelabsai/spruce-schema/compare/v12.1.2...v12.1.3) (2020-09-25)
 
 ## [12.1.2](https://github.com/sprucelabsai/spruce-schema/compare/v12.1.1...v12.1.2) (2020-09-25)
