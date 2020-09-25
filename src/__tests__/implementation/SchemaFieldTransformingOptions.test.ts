@@ -3,58 +3,64 @@ import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import buildSchema from '../../utilities/buildSchema'
 
+const wrenchSchema = buildSchema({
+	id: 'wrench',
+	name: 'Wrench',
+	fields: {
+		wrenchSize: {
+			type: 'number',
+			label: 'Size',
+		},
+	},
+})
+
+const versionedWrench = buildSchema({
+	id: 'wrench',
+	name: 'Wrench',
+	version: '1.0',
+	fields: {
+		wrenchSize: {
+			type: 'number',
+			label: 'Size',
+		},
+	},
+})
+
+const screwdriverSchema = buildSchema({
+	id: 'screwdriver',
+	name: 'Screwdriver',
+	fields: {
+		isFlathead: {
+			type: 'boolean',
+		},
+		screwdriverLength: {
+			type: 'number',
+			label: 'Length',
+		},
+	},
+})
+
+const personSchema = buildSchema({
+	id: 'union-person',
+	name: 'Union Person',
+	fields: {
+		favoriteTool: {
+			type: 'schema',
+			options: {
+				schemas: [wrenchSchema, screwdriverSchema],
+			},
+		},
+		tools: {
+			type: 'schema',
+			isArray: true,
+			options: {
+				schemas: [wrenchSchema, screwdriverSchema],
+			},
+		},
+	},
+})
+
 export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
-	private static wrenchSchema = buildSchema({
-		id: 'wrench',
-		name: 'Wrench',
-		fields: {
-			wrenchSize: {
-				type: 'number',
-				label: 'Size',
-			},
-		},
-	})
-
-	private static screwdriverSchema = buildSchema({
-		id: 'screwdriver',
-		name: 'Screwdriver',
-		fields: {
-			isFlathead: {
-				type: 'boolean',
-			},
-			screwdriverLength: {
-				type: 'number',
-				label: 'Length',
-			},
-		},
-	})
-
-	private static personSchema = buildSchema({
-		id: 'union-person',
-		name: 'Union Person',
-		fields: {
-			favoriteTool: {
-				type: 'schema',
-				options: {
-					schemas: [
-						SchemaFieldTemplateTest.wrenchSchema,
-						SchemaFieldTemplateTest.screwdriverSchema,
-					],
-				},
-			},
-			tools: {
-				type: 'schema',
-				isArray: true,
-				options: {
-					schemas: [
-						SchemaFieldTemplateTest.wrenchSchema,
-						SchemaFieldTemplateTest.screwdriverSchema,
-					],
-				},
-			},
-		},
-	})
-
 	@test('can normalize schemaId to array [schemaId]', { schemaId: 'user' }, [
 		{ id: 'user' },
 	])
@@ -70,71 +76,61 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 	)
 	@test(
 		'can normalize schema to array [schemaId]',
-		{ schema: SchemaFieldTemplateTest.wrenchSchema },
+		{ schema: wrenchSchema },
 		[{ id: 'wrench' }],
-		[SchemaFieldTemplateTest.wrenchSchema]
+		[wrenchSchema]
 	)
 	@test(
 		'can normalize schemas to array [schemaId]',
 		{
-			schemas: [
-				SchemaFieldTemplateTest.wrenchSchema,
-				SchemaFieldTemplateTest.screwdriverSchema,
-			],
+			schemas: [wrenchSchema, screwdriverSchema],
 		},
 		[{ id: 'wrench' }, { id: 'screwdriver' }],
-		[
-			SchemaFieldTemplateTest.wrenchSchema,
-			SchemaFieldTemplateTest.screwdriverSchema,
-		]
+		[wrenchSchema, screwdriverSchema]
 	)
 	@test(
 		'can normalize schema, schemas to array [schemaId]',
 		{
-			schema: SchemaFieldTemplateTest.personSchema,
-			schemas: [
-				SchemaFieldTemplateTest.wrenchSchema,
-				SchemaFieldTemplateTest.screwdriverSchema,
-			],
+			schema: personSchema,
+			schemas: [wrenchSchema, screwdriverSchema],
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
-		[
-			SchemaFieldTemplateTest.personSchema,
-			SchemaFieldTemplateTest.wrenchSchema,
-			SchemaFieldTemplateTest.screwdriverSchema,
-		]
+		[personSchema, wrenchSchema, screwdriverSchema]
 	)
 	@test(
 		'can normalize schemas, schema to array [schemaId]',
 		{
-			schemas: [
-				SchemaFieldTemplateTest.wrenchSchema,
-				SchemaFieldTemplateTest.screwdriverSchema,
-			],
-			schema: SchemaFieldTemplateTest.personSchema,
+			schemas: [wrenchSchema, screwdriverSchema],
+			schema: personSchema,
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
-		[
-			SchemaFieldTemplateTest.personSchema,
-			SchemaFieldTemplateTest.wrenchSchema,
-			SchemaFieldTemplateTest.screwdriverSchema,
-		]
+		[personSchema, wrenchSchema, screwdriverSchema]
 	)
 	@test(
 		'can normalize schemas, schemaId to array [schemaId]',
 		{
-			schemas: [
-				SchemaFieldTemplateTest.wrenchSchema,
-				SchemaFieldTemplateTest.screwdriverSchema,
-			],
+			schemas: [wrenchSchema, screwdriverSchema],
 			schemaId: 'union-person',
 		},
 		[{ id: 'union-person' }, { id: 'wrench' }, { id: 'screwdriver' }],
+		[{ id: 'union-person' }, wrenchSchema, screwdriverSchema]
+	)
+	@test(
+		'can handle versioned and un-versioned',
+		{
+			schemas: [
+				{
+					id: versionedWrench.id,
+					version: versionedWrench.version,
+				},
+				wrenchSchema,
+			],
+		},
 		[
-			{ id: 'union-person' },
-			SchemaFieldTemplateTest.wrenchSchema,
-			SchemaFieldTemplateTest.screwdriverSchema,
-		]
+			{ id: versionedWrench.id, version: versionedWrench.version },
+			{ id: wrenchSchema.id },
+		],
+		[{ id: versionedWrench.id, version: versionedWrench.version }, wrenchSchema]
 	)
 	protected static async testNormalizingOptionsToId(
 		options: ISchemaFieldDefinition['options'],

@@ -8,6 +8,7 @@ import {
 	IFieldTemplateDetails,
 	TemplateRenderAs,
 } from '../types/template.types'
+import isIdWithVersion from '../utilities/isIdWithVersion'
 import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
@@ -42,10 +43,7 @@ export default class SchemaField<
 				return { id: item }
 			}
 
-			if (
-				typeof item.id === 'string' &&
-				typeof (item as any).name === 'undefined'
-			) {
+			if (isIdWithVersion(item)) {
 				return item
 			}
 
@@ -69,10 +67,7 @@ export default class SchemaField<
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
 		const ids: ISchemaIdWithVersion[] = schemasOrIds.map((item) => {
-			if (
-				typeof item.id === 'string' &&
-				typeof (item as any).name === 'undefined'
-			) {
+			if (isIdWithVersion(item)) {
 				return item
 			}
 
