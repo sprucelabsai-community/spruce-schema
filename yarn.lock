@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.344":
-  version "2.2.344"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.344.tgz#be1b45d2ac341d8b0631c4f92f29f1d17e26cb19"
-  integrity sha512-X7cu+6b1q2w0hPSkNvys+OdenRwtwYwqjdvoJ/LiFKc9orwHrp/BIYikF/Kz8HvH4i4q6dAluSXBuxfVLIDdcw==
+"@sprucelabs/error@^2.2.345":
+  version "2.2.345"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.345.tgz#305135deff592f1d62260487ee5fef11278508b2"
+  integrity sha512-9AtQIUDcrW4N2gbb3EFzWMkNbWk9VEAxbfh9l5kGQGOEIAo3WP2d1MSQYj2aSt0/+iTeKVEVbhgSdO37XQbrNQ==
 
-"@sprucelabs/log@^10.2.243":
-  version "10.2.243"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.243.tgz#29f3dbcc3f51f26ee926298b83c0fffe2274f97f"
-  integrity sha512-LC2sOuSf8THSiBrySFxlfIV59lmKn2TMgFHT5cOq70WDhPF/45Re+UqHdlfjMt3qWF3ScED6EG+oZcuJRvEsuQ==
+"@sprucelabs/log@^10.2.244":
+  version "10.2.244"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.244.tgz#d15adce6ebbab7c25c6920f658333f369b0aa63b"
+  integrity sha512-VXWSaRKLQxbkKjstxxIVHjtdUEsM8PmKFj+lwzCTGl1h1dvR99BuhPcmmDS1pc9alxS199Afo1tItWDF0sTAvg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.59":
-  version "7.0.59"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.59.tgz#2ade6f7d90628ec4e9401045bd56f0ccaf9e2ef2"
-  integrity sha512-TibyORW/RzcsvTS3QVkCvB3zkNHn5SzLogd9F7cCFzs/9OkKlkzvl/+z30Fohb/V3O/UYSI0MPWPpP0wcwm1QA==
+"@sprucelabs/test@^7.0.60":
+  version "7.0.60"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.60.tgz#780100546d02bfd284417eb0a07b1b08a7177697"
+  integrity sha512-Hr8FEQSPMHGN1dmMC82eT/8l4/fd/OQTlLxTojYbQkd9U5IsB0OxTcroaFFc8l3WzRHOakw9NhbrTo+q4kZn7A==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3322,9 +3322,9 @@ escodegen@^1.14.1:
     source-map "~0.6.1"
 
 eslint-config-prettier@^6.11.0:
-  version "6.11.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.11.0.tgz#f6d2238c1290d01c859a8b5c1f7d352a0b0da8b1"
-  integrity sha512-oB8cpLWSAjOVFEJhhyMZh6NOEOtBVziaqdDQ86+qhDHFbZXoRTM7pNSvFRfW/W/L/LrQ38C99J5CGuRBBzBsdA==
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.12.0.tgz#9eb2bccff727db1c52104f0b49e87ea46605a0d2"
+  integrity sha512-9jWPlFlgNwRUYVoujvWTQ1aMO8o6648r+K7qU7K5Jmkbyqav1fuEZC0COYpGBxyiAJb65Ra9hrmFx19xRGwXWw==
   dependencies:
     get-stdin "^6.0.0"
 
