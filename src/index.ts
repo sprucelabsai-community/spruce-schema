@@ -28,6 +28,7 @@ export { default as validateSchema } from './utilities/validateSchema'
 export { default as isSchemaValid } from './utilities/isSchemaValid'
 export { default as areSchemasTheSame } from './utilities/areSchemasTheSame'
 export { default as formatPhoneNumber } from './utilities/formatPhoneNumber'
+export { default as isIdWithVersion } from './utilities/isIdWithVersion'
 export * from './utilities/formatPhoneNumber'
 
 export { default as FieldFactory } from './factories/FieldFactory'
