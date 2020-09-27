@@ -14,6 +14,7 @@ export default function normalizeFieldValue<
 	CreateEntityInstances extends boolean
 >(
 	schemaId: string,
+	schemaName?: string,
 	schemasById: ISchemasById,
 	field: F,
 	value: any,

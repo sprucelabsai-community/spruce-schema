@@ -49,6 +49,7 @@ const personSchema = buildSchema({
 	name: 'A test person',
 	fields: {
 		firstName: {
+			label: 'First name',
 			type: 'text',
 			isRequired: true,
 		},
@@ -127,6 +128,10 @@ const versionedToolSchema = buildSchema({
 	fields: {
 		name: {
 			type: 'text',
+			isRequired: true,
+		},
+		age: {
+			type: 'number',
 			isRequired: true,
 		},
 	},
@@ -216,6 +221,7 @@ const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
 	fields: {
 		firstName: {
 			type: 'text',
+			label: 'First name',
 			isRequired: true,
 		},
 		lastName: {
@@ -245,10 +251,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateBasicSchemaValues() {
 		const err = assert.doesThrow(
 			() => validateSchemaValues(personSchema, {}),
-			/firstName is required/gi
+			/'First name' is required/gi
 		)
 
-		assert.isEqual(err.message.substr(0, 14), 'INVALID_FIELD:')
+		assert.isEqual(err.message.substr(0, 12), '3 errors for')
 	}
 
 	@test()
@@ -259,7 +265,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					firstName: 'tay',
 					lastName: 'ro',
 				}),
-			/favoriteColors is required/gi
+			/'favoriteColors' is required/gi
 		)
 	}
 
@@ -342,7 +348,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		assert.doesThrow(
 			//@ts-ignore
 			() => validateSchemaValues(null, {}),
-			/INVALID_SCHEMA_DEFINITION/
+			/Invalid definition/
 		)
 	}
 
@@ -361,7 +367,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 						'profile150@2x': '',
 					},
 				}),
-			/FIELD_NOT_FOUND/
+			/I couldn't find 'taco'/
 		) as SpruceError
 
 		if (err.options.code === 'FIELD_NOT_FOUND') {
@@ -380,7 +386,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					lastName: 'last',
 					favoriteTools: [],
 				}),
-			/INVALID_FIELD/
+			/'favoriteTools' is required/
 		) as SpruceError
 
 		if (err.options.code === 'INVALID_FIELD') {
@@ -405,7 +411,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 						},
 					],
 				}),
-			/INVALID_FIELD/
+			/'name' is required/
 		) as SpruceError
 
 		if (err.options.code === 'INVALID_FIELD') {
@@ -413,10 +419,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			assert.isEqual(
 				err.options.errors[0].code,
 				'invalid_related_schema_values'
-			)
-			assert.isEqual(
-				err.options.errors[0].error?.message.substr(0, 14),
-				'INVALID_FIELD:'
 			)
 		} else {
 			assert.fail(`Expected INVALID_FIELD but got ${err.options.code}`)
@@ -443,7 +445,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					firstName: 'Ryan',
 					favoriteToolsOrFruit: [],
 				}),
-			/favoriteToolsOrFruit is required/gi
+			/'favoriteToolsOrFruit' is required/gi
 		)
 	}
 
@@ -498,6 +500,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					version: '1.0',
 					values: {
 						name: 'wrench',
+						age: 10,
 					},
 				},
 				{
@@ -509,5 +512,49 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				},
 			],
 		})
+	}
+
+	@test()
+	protected static async canValidateArrayOfVersionedUnionValuesAndThrowsReallyHelpfulError() {
+		/*Const err =*/
+		assert.doesThrow(() =>
+			validateSchemaValues(versionedPersonWithFavToolsOrFruitSchema, {
+				favoriteToolsOrFruit: [
+					{
+						schemaId: 'versionedFruit',
+						version: '1.0',
+						values: {
+							color: 'green',
+						},
+					},
+					{
+						schemaId: 'versionedFruit',
+						version: '1.0',
+						values: {
+							color: 'yellow',
+						},
+					},
+					{
+						schemaId: 'versionedTool',
+						version: '1.0',
+						values: {
+							size: 'wrench',
+						},
+					},
+					{
+						schemaId: 'versionedTool',
+						version: '2.0',
+						values: {
+							name: 'wrench',
+						},
+					},
+				],
+			})
+		) as SpruceError
+
+		// NOTE uncomment here and above to see error output
+		// const message = err.friendlyMessage()
+		// console.log(message)
+		// debugger
 	}
 }

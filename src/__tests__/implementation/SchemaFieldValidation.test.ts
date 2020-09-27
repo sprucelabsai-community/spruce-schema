@@ -67,7 +67,7 @@ export default class SchemaFieldTest extends AbstractSpruceTest {
 		}
 		const codes = optionalCarOrTruckField.validate(value)
 
-		assert.doesInclude(codes[0].error?.message, /name is required/)
+		assert.doesInclude(codes[0].error?.message, /'name' is required/)
 	}
 
 	@test()

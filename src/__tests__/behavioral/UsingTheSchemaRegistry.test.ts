@@ -54,7 +54,7 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 		this.registry.forgetSchema(personSchema.id)
 		assert.doesThrow(
 			() => this.registry.getSchema(personSchema.id),
-			/SCHEMA_NOT_FOUND/
+			/Could not find schema "person"/
 		)
 	}
 
@@ -111,7 +111,7 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 		for (const schema of [personSchema, personV1Schema, personV2Schema]) {
 			assert.doesThrow(
 				() => this.registry.getSchema(schema.id, schema.version),
-				/SCHEMA_NOT_FOUND/
+				/Could not find schema "person"/
 			)
 		}
 	}

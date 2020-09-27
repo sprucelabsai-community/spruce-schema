@@ -35,6 +35,10 @@ export default class SchemaEntity<S extends ISchema>
 		return this.schema.id
 	}
 
+	public get name() {
+		return this.schema.name
+	}
+
 	public get version() {
 		return this.schema.version
 	}
@@ -92,6 +96,7 @@ export default class SchemaEntity<S extends ISchema>
 
 		return normalizeFieldValue(
 			this.schemaId,
+			this.name,
 			SchemaEntity.schemasById,
 			field,
 			value,
@@ -158,7 +163,8 @@ export default class SchemaEntity<S extends ISchema>
 		if (errors.length > 0) {
 			throw new SpruceError({
 				code: 'INVALID_FIELD',
-				schemaId: this.schema.id,
+				schemaId: this.schemaId,
+				schemaName: this.name,
 				errors,
 			})
 		}

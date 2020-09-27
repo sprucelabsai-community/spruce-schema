@@ -13,6 +13,7 @@ import {
 
 export interface ISchemaEntity<S extends ISchema> {
 	readonly schemaId: S['id']
+	readonly name: S['name']
 	readonly description?: string
 	readonly version?: string
 

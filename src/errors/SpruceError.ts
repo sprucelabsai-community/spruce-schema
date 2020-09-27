@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { SchemaErrorOptions } from './error.types'
+import { IInvalidFieldErrorOptions, SchemaErrorOptions } from './error.types'
 
 export default class SpruceError extends AbstractSpruceError<
 	SchemaErrorOptions
@@ -21,13 +21,7 @@ export default class SpruceError extends AbstractSpruceError<
 				}"`
 				break
 			case 'INVALID_FIELD':
-				message = `Invalid fields on '${options.schemaId}': `
-				options.errors.forEach((fieldError) => {
-					message += `${
-						fieldError.friendlyMessage ??
-						`${fieldError.name}: ${fieldError.code}`
-					}\n`
-				})
+				message = this.generateNestedErrorMessage(options)
 				break
 			case 'TRANSFORMATION_ERROR':
 				message = ''
@@ -77,7 +71,6 @@ export default class SpruceError extends AbstractSpruceError<
 		}
 
 		// Drop on code and friendly message
-		message = `${options.code}: ${message}`
 		const fullMessage = `${message}${
 			options.friendlyMessage ? `\n\n${options.friendlyMessage}` : ''
 		}`
@@ -91,5 +84,54 @@ export default class SpruceError extends AbstractSpruceError<
 				  )}`
 				: ''
 		}`
+	}
+
+	private generateNestedErrorMessage(
+		options: IInvalidFieldErrorOptions,
+		messageOptions?: { indentDepth: number }
+	) {
+		let { indentDepth = 0 } = messageOptions || {}
+		let indention = this.buildIndention(indentDepth)
+
+		let message = `${indention}${options.errors.length} error${
+			options.errors.length === 1 ? '' : 's'
+		} for '${options.schemaName ?? options.schemaId}'.`
+
+		indentDepth++
+		indention = this.buildIndention(indentDepth)
+
+		options.errors.forEach((fieldError) => {
+			message += `\n${indention}- ${
+				fieldError.friendlyMessage ?? `'${fieldError.name}': ${fieldError.code}`
+			}`
+
+			if (fieldError.error) {
+				if (
+					fieldError.error instanceof SpruceError &&
+					fieldError.error.options.code === 'INVALID_FIELD'
+				) {
+					message +=
+						`\n` +
+						fieldError.error.generateNestedErrorMessage(
+							fieldError.error.options,
+							{ indentDepth: indentDepth + 1 }
+						)
+				} else {
+					message += `\n${this.buildIndention(indentDepth + 1)}${
+						fieldError.error.message
+					}`
+				}
+			}
+		})
+
+		return message
+	}
+
+	private buildIndention(indentDepth: number) {
+		let indention = ''
+		for (let c = 0; c < indentDepth; c++) {
+			indention += `   `
+		}
+		return indention
 	}
 }

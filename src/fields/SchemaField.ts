@@ -303,11 +303,13 @@ export default class SchemaField<
 							code: 'invalid_related_schema_values',
 							error: err,
 							name: this.name,
+							friendlyMessage: `'${this.label ?? this.name}' isn't valid.`,
 						})
 					}
 				}
 			}
 		}
+
 		return errors
 	}
 
