@@ -41,8 +41,8 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.355",
-		"@sprucelabs/log": "^10.2.249",
+		"@sprucelabs/error": "^2.2.356",
+		"@sprucelabs/log": "^10.2.250",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.1",
 		"mime-db": "^1.45.0",
@@ -51,14 +51,14 @@
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.5",
-		"@sprucelabs/test": "^7.0.66",
+		"@sprucelabs/test": "^7.0.67",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
 		"eslint": "^7.10.0",
-		"eslint-config-spruce": "^10.9.64",
+		"eslint-config-spruce": "^10.9.65",
 		"lodash": "^4.17.20",
 		"prettier": "^2.1.2",
 		"ts-node": "^9.0.0",
