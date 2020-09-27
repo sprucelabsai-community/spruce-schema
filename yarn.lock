@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.352":
-  version "2.2.352"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.352.tgz#00461983c16072c4ff67b4aa98c73f093999c3bf"
-  integrity sha512-uAuoWffWvaMVHqwymyWla6h661Hc7vvHmXzUaM1iQyA8J3MOEVeYLX8wvasq/cwxQwKGNStlysvp14CIQgFiwA==
+"@sprucelabs/error@^2.2.353":
+  version "2.2.353"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.353.tgz#95fbb14eca133eb16108b746f6f1ccc9eaf29bbd"
+  integrity sha512-YiSF1NBZXCqm5rzp0pQW2LOmU2nn63ev7jMCZfImxTTh8c7EBGI2WJxDQJLIRpDUdHOtj2ml8Ni4Gr64GazBjQ==
 
-"@sprucelabs/log@^10.2.247":
-  version "10.2.247"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.247.tgz#5b29da77ed4a60640d38e859dacd661c41d258cd"
-  integrity sha512-O+tpHHF0X7v2aJTJz1RNGQPQL3XwlzEg1B7cs3FsTEuIRpTxlFb2vH9mbaoxkmzBtT6O3MOxD/SeO7YUZSfC3Q==
+"@sprucelabs/log@^10.2.248":
+  version "10.2.248"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.248.tgz#6175feeb25971e781a841ac9468fc72323dd04e1"
+  integrity sha512-+q6h50mCVsdwkgpHMfnRVtEsjMTvmW3s0ivzUMP9HcynuMJKxRNFxqDPTGgcw1Al5pP+qG7vKixsvwfpK+9OEQ==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.64":
-  version "7.0.64"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.64.tgz#88a3a466ed3077c9f414d1df5a6e87a725d40eed"
-  integrity sha512-aB1h8tOe7gsW0UJinVQcbpZgrLNy8R1x298BZRlUtK7QUftL2hB82F5l8FBTlu5Bh00vJJNmO6zj7gs8nYzy5w==
+"@sprucelabs/test@^7.0.65":
+  version "7.0.65"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.65.tgz#cd7c5bae0b8406b97849be33eea79fda0e9d307d"
+  integrity sha512-UaD2ROJz1DF+51TEWS6RL5TK07OrfNgj0C5bT/seHddyVkBHI06wQAKSuLa9FkKumvh5UhMUHGHkI5aPXRrFPg==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -7295,9 +7295,9 @@ qs@~6.5.2:
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 query-string@^6.8.2:
-  version "6.13.2"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.2.tgz#3585aa9412c957cbd358fd5eaca7466f05586dda"
-  integrity sha512-BMmDaUiLDFU1hlM38jTFcRt7HYiGP/zt1sRzrIWm5zpeEuO1rkbPS0ELI3uehoLuuhHDCS8u8lhFN3fEN4JzPQ==
+  version "6.13.3"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.3.tgz#57d1c20e828b0e562d66b7f71a4998bd57f84112"
+  integrity sha512-dldo2oHe3sg03iPshlHw/64nkaRUJKdS0FW85kmWQkmCkqUbNdNdgkgtAufJcEpjzrx6Q9EW9Y3xqx/rM9pGhw==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
@@ -8731,9 +8731,9 @@ typescript@~3.9.7:
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@^3.1.4:
-  version "3.10.4"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.10.4.tgz#dd680f5687bc0d7a93b14a3482d16db6eba2bfbb"
-  integrity sha512-kBFT3U4Dcj4/pJ52vfjCSfyLyvG9VYYuGYPmrPvAxRw/i7xHiT4VvCev+uiEMcEEiu6UNB6KgWmGtSUYIWScbw==
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.11.0.tgz#67317658d76c21e0e54d3224aee2df4ee6c3e1dc"
+  integrity sha512-e1KQFRCpOxnrJsJVqDUCjURq+wXvIn7cK2sRAx9XL3HYLL9aezOP4Pb1+Y3/o693EPk111Yj2Q+IUXxcpHlygQ==
 
 uid-number@0.0.6:
   version "0.0.6"
