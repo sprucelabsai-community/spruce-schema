@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.366":
-  version "2.2.366"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.366.tgz#c7cb1b5387fd0be586163b0d1bc0b3c8567a283f"
-  integrity sha512-ftqkyxffbKz7kY7sY0EsiizbqHFyv3TArF7oynCxLuqfuWI/Nx7CrzR9nwqWwT5R8HarEDMXwJXpGT8+/0igiA==
+"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.367":
+  version "2.2.367"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.367.tgz#90474abbeb03d96532820b520b68af85dabe8ba3"
+  integrity sha512-1Fk2TQ9BNKpNpLG6/+xAR1q8vNaZ18YV30M29Ruz5ZjqAkYk3pCkdBeiodbdSZE6oZOb2cIoYwt7kBarFUfzbw==
 
 "@sprucelabs/log@^10.2.253":
   version "10.2.253"
