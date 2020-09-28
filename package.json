@@ -41,7 +41,7 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.360",
+		"@sprucelabs/error": "^2.2.361",
 		"@sprucelabs/log": "^10.2.251",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.1",
@@ -63,7 +63,7 @@
 		"prettier": "^2.1.2",
 		"ts-node": "^9.0.0",
 		"typescript": "^4.0.3",
-		"yarn": "^1.22.7"
+		"yarn": "^1.22.10"
 	},
 	"babel": {
 		"presets": [
