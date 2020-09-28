@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.365":
-  version "2.2.365"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.365.tgz#464a4fec04987848b72f755fe2598ff900413d65"
-  integrity sha512-wvWM7/sCN9PD3LA9Yd17xWqzadNd/63UoUgXWsMHIr8dSIcjsrTfKyiJvmw6S+/X+W7sHlI8euIbGxyE0l+DUg==
+"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.366":
+  version "2.2.366"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.366.tgz#c7cb1b5387fd0be586163b0d1bc0b3c8567a283f"
+  integrity sha512-ftqkyxffbKz7kY7sY0EsiizbqHFyv3TArF7oynCxLuqfuWI/Nx7CrzR9nwqWwT5R8HarEDMXwJXpGT8+/0igiA==
 
 "@sprucelabs/log@^10.2.253":
   version "10.2.253"
@@ -1375,10 +1375,10 @@
     "@sprucelabs/error" "^2.2.363"
     "@sprucelabs/test" "^7.0.70"
 
-"@sprucelabs/test@^7.0.70", "@sprucelabs/test@^7.0.71":
-  version "7.0.71"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.71.tgz#3d3cae23480a1c2f2667b316cb6c3a426005ee81"
-  integrity sha512-Rwentefn/1Ktgv+UEYYzbNeQDlP8rUGPemSyvn0SithT95pjfFWZZTD3QDLdgGMg/riNmHyBWrPEEhzIu6NAbQ==
+"@sprucelabs/test@^7.0.70", "@sprucelabs/test@^7.0.74":
+  version "7.0.74"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.74.tgz#5496dc97cab9329f6584d9a9c62a2228381e9ba2"
+  integrity sha512-dyo2ZssOStazF2OJjOKDqngrmJrDNBi8eD5ZiPl9faG4tsUYUE04+v0dq45b6Z6nvrwI4RHZB+oB+XNWKrnbLw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2925,9 +2925,9 @@ decamelize@^1.1.0, decamelize@^1.1.1, decamelize@^1.2.0:
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
 decimal.js@^10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.2.0.tgz#39466113a9e036111d02f82489b5fd6b0b5ed231"
-  integrity sha512-vDPw+rDgn3bZe1+F/pyEwb1oMG2XTlRVgAa6B4KccTEpYgF8w6eQllVbQcfIJnZyvzFtFpxnpGtx8dd7DJp/Rw==
+  version "10.2.1"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.2.1.tgz#238ae7b0f0c793d3e3cea410108b35a2c01426a3"
+  integrity sha512-KaL7+6Fw6i5A2XSnsbhm/6B+NuEA7TZ4vqxnd5tXz9sbKtrN9Srj8ab4vKVdK8YAqZO9P1kg45Y6YLoduPf+kw==
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
