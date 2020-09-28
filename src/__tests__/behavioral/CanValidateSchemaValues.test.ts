@@ -1,4 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
+import { errorAssertUtil } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
@@ -6,7 +7,6 @@ import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
-
 const profileImagesSchema = buildSchema({
 	id: 'profileImage',
 	name: 'Profile Image Sizes',
@@ -370,11 +370,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/I couldn't find 'taco'/
 		) as SpruceError
 
-		if (err.options.code === 'FIELD_NOT_FOUND') {
-			assert.isEqual(err.options.fields[0], 'taco')
-		} else {
-			assert.fail(`Expected FIELD_NOT_FOUND but got ${err.options.code}`)
-		}
+		errorAssertUtil.assertError(err, 'FIELD_NOT_FOUND', { fields: ['taco'] })
 	}
 
 	@test()
@@ -389,12 +385,9 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'favoriteTools' is required/
 		) as SpruceError
 
-		if (err.options.code === 'INVALID_FIELD') {
-			assert.isLength(err.options.errors, 1)
-			assert.isEqual(err.options.errors[0].code, 'missing_required')
-		} else {
-			assert.fail(`Expected INVALID_FIELD but got ${err.options.code}`)
-		}
+		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
+			'errors[].code': 'missing_required',
+		})
 	}
 
 	@test()
@@ -414,15 +407,9 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'name' is required/
 		) as SpruceError
 
-		if (err.options.code === 'INVALID_FIELD') {
-			assert.isLength(err.options.errors, 1)
-			assert.isEqual(
-				err.options.errors[0].code,
-				'invalid_related_schema_values'
-			)
-		} else {
-			assert.fail(`Expected INVALID_FIELD but got ${err.options.code}`)
-		}
+		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
+			errors: [{ code: 'invalid_related_schema_values' }],
+		})
 	}
 
 	@test()

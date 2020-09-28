@@ -24,7 +24,7 @@ export default function validateSchema(schema: any): asserts schema is ISchema {
 
 	if (errors.length > 0) {
 		throw new SpruceError({
-			code: 'INVALID_SCHEMA_DEFINITION',
+			code: 'INVALID_SCHEMA',
 			schemaId: schema?.id ?? 'ID MISSING',
 			errors,
 		})
