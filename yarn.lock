@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.357":
-  version "2.2.357"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.357.tgz#17a8a7a6735de69991581ea13c9415ec4c1c87e6"
-  integrity sha512-tg927xUwrTmstilj5VSISrMjAU43pc5BHoALmRsXmZzGr7pe+yceIwtSiwYC0cobzA32yz+CVwcGYP0egOTpAg==
+"@sprucelabs/error@^2.2.358":
+  version "2.2.358"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.358.tgz#ed34096b6a39b31872d83d38d6a3b2198c1a5fe9"
+  integrity sha512-anncSL6wDCUL71aGOorVbqwSVEQNxbC99UnDpIud2MO+SAJfot2yOkJKgkNkgKMDzNtFVVoeRbH2W6itVbuZ3w==
 
-"@sprucelabs/log@^10.2.250":
-  version "10.2.250"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.250.tgz#7232d2eb7322a30a8be52cd4d49fcf421448d81c"
-  integrity sha512-5T4746v0mh7X/yDYTzOsRZ9zC2ZbKQqEGT19i/eeO/kG4Hw5r6N/MafuCPuJKQl/H3+tQMBofkI4LyD57OJyHA==
+"@sprucelabs/log@^10.2.251":
+  version "10.2.251"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.251.tgz#048e33084bcbc9aa65569b81969f5d790a173aac"
+  integrity sha512-UdNeFlsCees/U7DnMW1PAiszy/GpoUq/lnerEgIg41WF9QnjJc0hMZNmt9rTuuKZaEJM3qlmbZyha4EeUjWnNA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test@^7.0.67":
-  version "7.0.67"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.67.tgz#da96aba2d85b9f3697a1b5afae27ee97433d0626"
-  integrity sha512-phQTp2YPaHQweoaR/Z26OOqReOzTWUGlf+PrKkZZMsJVA84oTTMqrmaGPcKDV258XU0CZi03Jh2+N90I3VhGSg==
+"@sprucelabs/test@^7.0.68":
+  version "7.0.68"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.68.tgz#d1b41e159875ff9d9ece4925632b44849932ff07"
+  integrity sha512-4dTuDsPDmzwPjsmmB5VVlBO8LflbCqVRFYxZacF6ntBieCTpf6kFS8G5gkfqETeM8GPuBpiDwwhP61d0E5XyGw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -5976,9 +5976,9 @@ marked-terminal@^4.0.0:
     supports-hyperlinks "^2.1.0"
 
 marked@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-1.1.1.tgz#e5d61b69842210d5df57b05856e0c91572703e6a"
-  integrity sha512-mJzT8D2yPxoPh7h0UXkB+dBj4FykPJ2OIfxAWeIHrvoHDkFxukV/29QxoFQoPM6RLEwhIFdJpmKBlqVM3s2ZIw==
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-1.2.0.tgz#7221ce2395fa6cf6d722e6f2871a32d3513c85ca"
+  integrity sha512-tiRxakgbNPBr301ihe/785NntvYyhxlqcL3YaC8CaxJQh7kiaEtrN9B/eK2I2943Yjkh5gw25chYFDQhOMCwMA==
 
 meant@^1.0.2:
   version "1.0.2"
