@@ -1,3 +1,10 @@
+# [12.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v12.2.17...v12.3.0) (2020-09-28)
+
+
+### Features
+
+* much better related schema validation ([b3d8ceb](https://github.com/sprucelabsai/spruce-schema/commit/b3d8ceb))
+
 ## [12.2.17](https://github.com/sprucelabsai/spruce-schema/compare/v12.2.16...v12.2.17) (2020-09-28)
 
 ## [12.2.16](https://github.com/sprucelabsai/spruce-schema/compare/v12.2.15...v12.2.16) (2020-09-28)
