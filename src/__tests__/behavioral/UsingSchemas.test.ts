@@ -1,4 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import SpruceError from '../../errors/SpruceError'
 import SchemaEntity from '../../SchemaEntity'
@@ -124,24 +125,13 @@ export default class SchemaTest extends AbstractSpruceTest {
 
 		unset(schema, fieldToDelete)
 
-		const error: any = assert.doesThrow(() => validateSchema(schema))
+		const error: any = assert.doesThrow(() =>
+			validateSchema(schema)
+		) as SpruceError
 
-		if (
-			error instanceof SpruceError &&
-			error.options.code === 'INVALID_SCHEMA_DEFINITION'
-		) {
-			const {
-				options: { errors },
-			} = error
-
-			assert.isEqualDeep(
-				errors,
-				expectedErrors,
-				'Did not get back the error I expected'
-			)
-		} else {
-			assert.fail('Schema.validateDefinition should return a SpruceError')
-		}
+		errorAssertUtil.assertError(error, 'INVALID_SCHEMA', {
+			errors: expectedErrors,
+		})
 	}
 
 	@test(

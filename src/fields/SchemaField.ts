@@ -52,7 +52,7 @@ export default class SchemaField<
 				return item
 			} catch (err) {
 				throw new SpruceError({
-					code: 'INVALID_SCHEMA_DEFINITION',
+					code: 'INVALID_SCHEMA',
 					schemaId: JSON.stringify(options),
 					originalError: err,
 					errors: ['invalid_schema_field_options'],

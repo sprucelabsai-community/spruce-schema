@@ -54,7 +54,7 @@ export interface ITransformationFailedErrorOptions extends ISpruceErrorOptions {
 export interface IInvalidSchemaDefinitionErrorOptions
 	extends ISpruceErrorOptions {
 	/** * The field could not transform the value */
-	code: 'INVALID_SCHEMA_DEFINITION'
+	code: 'INVALID_SCHEMA'
 	schemaId: string
 	errors: string[]
 }
