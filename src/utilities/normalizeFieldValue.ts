@@ -14,7 +14,7 @@ export default function normalizeFieldValue<
 	CreateEntityInstances extends boolean
 >(
 	schemaId: string,
-	schemaName?: string,
+	schemaName: string | undefined,
 	schemasById: ISchemasById,
 	field: F,
 	value: any,
@@ -47,6 +47,7 @@ export default function normalizeFieldValue<
 			throw new SpruceError({
 				code: 'INVALID_FIELD',
 				schemaId,
+				schemaName,
 				errors: [
 					{
 						name: field.name,
