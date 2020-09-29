@@ -1,3 +1,10 @@
+# [12.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v12.3.13...v12.4.0) (2020-09-29)
+
+
+### Features
+
+* namespace support ([10d7bf4](https://github.com/sprucelabsai/spruce-schema/commit/10d7bf4))
+
 ## [12.3.13](https://github.com/sprucelabsai/spruce-schema/compare/v12.3.12...v12.3.13) (2020-09-29)
 
 ## [12.3.12](https://github.com/sprucelabsai/spruce-schema/compare/v12.3.11...v12.3.12) (2020-09-29)
