@@ -127,4 +127,17 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 			)
 		}
 	}
+
+	@test()
+	protected static canGetAllSchemas() {
+		const {
+			personSchema,
+			personV1Schema,
+			personV2Schema,
+		} = this.buildPersonsAllVersions()
+
+		const pulled = this.registry.getAllSchemas()
+
+		assert.isEqualDeep(pulled, [personSchema, personV1Schema, personV2Schema])
+	}
 }
