@@ -1,3 +1,4 @@
+import flatten from 'lodash/flatten'
 import SpruceError from '../errors/SpruceError'
 import { ISchemasById } from '../fields/field.static.types'
 import { ISchema } from '../schemas.static.types'
@@ -45,6 +46,10 @@ export default class SchemaRegistry {
 		} catch {
 			return false
 		}
+	}
+
+	public getAllSchemas() {
+		return flatten(Object.values(this.schemasById))
 	}
 
 	public getTrackingCount() {
