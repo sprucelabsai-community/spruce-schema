@@ -35,6 +35,10 @@ export default class SchemaEntity<S extends ISchema>
 		return this.schema.id
 	}
 
+	public get namespace() {
+		return this.schema.namespace
+	}
+
 	public get name() {
 		return this.schema.name
 	}

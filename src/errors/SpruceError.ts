@@ -11,14 +11,10 @@ export default class SpruceError extends AbstractSpruceError<
 
 		switch (options?.code) {
 			case 'DUPLICATE_SCHEMA':
-				message = `Duplicate schema${options.version ? ' and version' : ''}: ${
-					options.schemaId
-				}${options.version ? ` ${options.version}` : ''}`
+				message = `Duplicate schema -> '${this.buildSchemaName(options)}'.`
 				break
 			case 'SCHEMA_NOT_FOUND':
-				message = `Could not find schema "${options.schemaId}${
-					options.version ? `(${options.version})` : ''
-				}"`
+				message = `Could not find schema -> '${this.buildSchemaName(options)}'.`
 				break
 			case 'INVALID_FIELD':
 				message = this.generateNestedErrorMessage(options)
@@ -84,6 +80,16 @@ export default class SpruceError extends AbstractSpruceError<
 				  )}`
 				: ''
 		}`
+	}
+
+	private buildSchemaName(options: {
+		schemaId: string
+		version?: string
+		namespace?: string
+	}) {
+		return `${options.namespace ? options.namespace + '.' : ''}${
+			options.schemaId
+		}${options.version ? `(version: ${options.version})` : ''}`
 	}
 
 	private generateNestedErrorMessage(

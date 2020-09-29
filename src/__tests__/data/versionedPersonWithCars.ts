@@ -310,6 +310,7 @@ const buildVersionedPersonWithCars = () => {
 	const truckV1Definition = buildSchema<ITruckV1Definition>({
 		id: 'truck',
 		name: 'Truck',
+		version: 'v1',
 		fields: {
 			name: {
 				type: 'text',

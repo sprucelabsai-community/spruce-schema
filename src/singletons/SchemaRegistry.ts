@@ -21,7 +21,30 @@ export default class SchemaRegistry {
 		if (!this.schemasById[id]) {
 			this.schemasById[id] = []
 		}
+
+		if (this.isTrackingSchema(schema.id, schema.version, schema.namespace)) {
+			throw new SpruceError({
+				code: 'DUPLICATE_SCHEMA',
+				schemaId: schema.id,
+				version: schema.version,
+				namespace: schema.namespace,
+			})
+		}
+
 		this.schemasById[id].push(schema)
+	}
+
+	public isTrackingSchema(
+		id: string,
+		version?: string,
+		namespace?: string
+	): boolean {
+		try {
+			this.getSchema(id, version, namespace)
+			return true
+		} catch {
+			return false
+		}
 	}
 
 	public getTrackingCount() {
@@ -36,24 +59,31 @@ export default class SchemaRegistry {
 		this.schemasById = {}
 	}
 
-	public getSchema(id: string, version?: string): ISchema | undefined {
+	public getSchema(id: string, version?: string, namespace?: string): ISchema {
 		if (!this.schemasById[id]) {
 			throw new SpruceError({
 				code: 'SCHEMA_NOT_FOUND',
 				schemaId: id,
+				namespace,
+				version,
 			})
 		}
 
-		const match = this.schemasById[id].find((d) => d.version === version)
+		const namespaceMatches = namespace
+			? this.schemasById[id].filter((d) => d.namespace === namespace)
+			: this.schemasById[id]
 
-		if (!match) {
+		const versionMatch = namespaceMatches.find((d) => d.version === version)
+
+		if (!versionMatch) {
 			throw new SpruceError({
 				code: 'VERSION_NOT_FOUND',
 				schemaId: id,
+				namespace,
 			})
 		}
 
-		return match
+		return versionMatch
 	}
 
 	public forgetSchema(id: string, version?: string) {
