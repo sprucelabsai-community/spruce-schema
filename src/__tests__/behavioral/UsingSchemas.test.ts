@@ -1,6 +1,7 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
+import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import SchemaEntity from '../../SchemaEntity'
 import {
@@ -88,7 +89,7 @@ const nestedSingleRequiredFieldSchemas = buildSchema({
 	},
 })
 
-export default class SchemaTest extends AbstractSpruceTest {
+export default class SchemaTest extends AbstractSchemaTest {
 	@test()
 	protected static async testBasicValidation() {
 		const schema = {

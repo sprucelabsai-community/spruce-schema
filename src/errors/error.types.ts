@@ -19,6 +19,7 @@ export interface ISchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	code: 'SCHEMA_NOT_FOUND'
 	schemaId: string
 	version?: string
+	namespace?: string
 }
 
 export interface IDuplicateSchemaErrorOptions extends ISpruceErrorOptions {
@@ -26,6 +27,7 @@ export interface IDuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	code: 'DUPLICATE_SCHEMA'
 	schemaId: string
 	version?: string
+	namespace?: string
 }
 export interface IInvalidFieldError {
 	code: string
@@ -87,6 +89,7 @@ export interface IInvalidFieldRegistrationErrorOptions
 export interface IVersionRequiredErrorOptions extends ISpruceErrorOptions {
 	code: 'VERSION_NOT_FOUND'
 	schemaId?: string
+	namespace?: string
 }
 
 export interface IFieldNotFoundErrorOptions extends ISpruceErrorOptions {

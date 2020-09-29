@@ -38,6 +38,10 @@ export default class DynamicSchemaEntity<
 		return this.schema.name
 	}
 
+	public get namespace() {
+		return this.schema.name
+	}
+
 	public get version() {
 		return this.schema.version
 	}

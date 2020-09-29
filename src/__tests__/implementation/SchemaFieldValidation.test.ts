@@ -1,8 +1,9 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { test, assert } from '@sprucelabs/test'
+import AbstractSchemaTest from '../../AbstractSchemaTest'
 import FieldFactory from '../../factories/FieldFactory'
 import buildPersonWithCar, { IPersonSchema } from '../data/personWithCars'
 
-export default class SchemaFieldTest extends AbstractSpruceTest {
+export default class SchemaFieldTest extends AbstractSchemaTest {
 	private static personSchema: IPersonSchema
 
 	protected static async beforeEach() {
@@ -83,6 +84,7 @@ export default class SchemaFieldTest extends AbstractSpruceTest {
 				name: 'great car',
 			},
 		}
+
 		const codes = optionalCarOrTruckField.validate(value)
 
 		assert.isLength(codes, 0)

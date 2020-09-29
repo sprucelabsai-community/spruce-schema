@@ -72,7 +72,7 @@ const personSchema = buildSchema({
 })
 
 const personWithFavColorsSchema = buildSchema({
-	id: 'testPerson',
+	id: 'personWithFavColors',
 	fields: {
 		firstName: {
 			type: 'text',
@@ -194,7 +194,7 @@ const personWithFavToolsSchema = buildSchema({
 })
 
 const personWithFavToolsOrFruitSchema = buildSchema({
-	id: 'personWithFavTools',
+	id: 'personWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
 	fields: {
 		firstName: {
@@ -216,7 +216,7 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 })
 
 const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
-	id: 'versionedPersonWithFavTools',
+	id: 'versionedPersonWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
 	fields: {
 		firstName: {

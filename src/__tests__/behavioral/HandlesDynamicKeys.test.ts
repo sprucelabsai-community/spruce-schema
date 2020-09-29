@@ -23,7 +23,7 @@ const numberDynamicSchema = buildSchema({
 })
 
 const numberRequiredDynamicSchema = buildSchema({
-	id: 'numberDynamic',
+	id: 'numberRequiredDynamic',
 	name: 'Dynamic number based schema',
 	dynamicFieldSignature: {
 		type: 'number',
@@ -33,7 +33,7 @@ const numberRequiredDynamicSchema = buildSchema({
 })
 
 const arrayRequiredDynamicSchema = buildSchema({
-	id: 'numberDynamic',
+	id: 'arrayRequiredDynamic',
 	name: 'Dynamic number based schema',
 	dynamicFieldSignature: {
 		type: 'number',

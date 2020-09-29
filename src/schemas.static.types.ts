@@ -14,6 +14,7 @@ import {
 export interface ISchemaEntity<S extends ISchema> {
 	readonly schemaId: S['id']
 	readonly name: S['name']
+	readonly namespace: S['namespace']
 	readonly description?: string
 	readonly version?: string
 
@@ -102,6 +103,7 @@ export interface ISchema {
 	id: string
 	name?: string
 	version?: string
+	namespace?: string
 	description?: string
 	dynamicFieldSignature?: FieldDefinition & {
 		keyName: string

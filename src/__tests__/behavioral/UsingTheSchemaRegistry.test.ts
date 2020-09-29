@@ -8,12 +8,26 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 
 	protected static async beforeEach() {
 		await super.beforeEach()
+		SchemaRegistry.getInstance().forgetAllSchemas()
 		this.registry = new SchemaRegistry()
 	}
 
 	@test()
 	protected static canAccessRegistryInstance() {
 		assert.isTruthy(this.registry)
+	}
+
+	@test()
+	protected static throwsWhenTrackingTwice() {
+		const { personSchema } = buildPersonWithCars()
+		const { personV1Schema } = buildVersionedPersonWithCars()
+		this.registry.trackSchema(personSchema)
+		this.registry.trackSchema(personV1Schema)
+		assert.doesThrow(() => this.registry.trackSchema(personSchema), /person/i)
+		assert.doesThrow(
+			() => this.registry.trackSchema(personV1Schema),
+			/person\(version: v1\)/
+		)
 	}
 
 	@test()
@@ -52,15 +66,13 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 		this.registry.trackSchema(personSchema)
 
 		this.registry.forgetSchema(personSchema.id)
-		assert.doesThrow(
-			() => this.registry.getSchema(personSchema.id),
-			/Could not find schema "person"/
-		)
+		assert.doesThrow(() => this.registry.getSchema(personSchema.id), /'person'/)
 	}
 
 	private static buildPersonsAllVersions() {
 		const { personSchema } = buildPersonWithCars()
 		const { personV1Schema, personV2Schema } = buildVersionedPersonWithCars()
+
 		this.registry.trackSchema(personSchema)
 		this.registry.trackSchema(personV1Schema)
 		this.registry.trackSchema(personV2Schema)
@@ -111,7 +123,7 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 		for (const schema of [personSchema, personV1Schema, personV2Schema]) {
 			assert.doesThrow(
 				() => this.registry.getSchema(schema.id, schema.version),
-				/Could not find schema "person"/
+				'person'
 			)
 		}
 	}

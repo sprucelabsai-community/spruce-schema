@@ -12,7 +12,7 @@ export default class ResetsSchemasEveryTest extends AbstractSchemaTest {
 	protected static importPersonWithCar() {
 		assert.isEqual(this.registry.getTrackingCount(), 0)
 		buildPersonWithCars()
-		assert.isEqual(this.registry.getTrackingCount(), 6)
+		assert.isEqual(this.registry.getTrackingCount(), 3)
 	}
 
 	@test()
@@ -20,6 +20,6 @@ export default class ResetsSchemasEveryTest extends AbstractSchemaTest {
 		assert.isEqual(this.registry.getTrackingCount(), 0)
 		buildPersonWithCars()
 
-		assert.isEqual(this.registry.getTrackingCount(), 6)
+		assert.isEqual(this.registry.getTrackingCount(), 3)
 	}
 }
