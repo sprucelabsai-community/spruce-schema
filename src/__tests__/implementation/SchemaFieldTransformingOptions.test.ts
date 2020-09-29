@@ -26,6 +26,44 @@ const versionedWrench = buildSchema({
 	},
 })
 
+const namespacedWrench = buildSchema({
+	id: 'wrench',
+	name: 'Wrench',
+	namespace: 'one',
+	fields: {
+		wrenchSize: {
+			type: 'number',
+			label: 'Size',
+		},
+	},
+})
+
+const namespacedVersionedWrench = buildSchema({
+	id: 'wrench',
+	name: 'Wrench',
+	version: '1.0',
+	namespace: 'one',
+	fields: {
+		wrenchSize: {
+			type: 'number',
+			label: 'Size',
+		},
+	},
+})
+
+const namespaced2VersionedWrench = buildSchema({
+	id: 'wrench',
+	name: 'Wrench',
+	version: '1.0',
+	namespace: 'two',
+	fields: {
+		wrenchSize: {
+			type: 'number',
+			label: 'Size',
+		},
+	},
+})
+
 const screwdriverSchema = buildSchema({
 	id: 'screwdriver',
 	name: 'Screwdriver',
@@ -131,6 +169,68 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 			{ id: wrenchSchema.id },
 		],
 		[{ id: versionedWrench.id, version: versionedWrench.version }, wrenchSchema]
+	)
+	@test(
+		'can handle same namespace with different versions',
+		{
+			schemas: [
+				{
+					id: namespacedVersionedWrench.id,
+					version: namespacedVersionedWrench.version,
+					namespace: namespacedVersionedWrench.namespace,
+				},
+				namespacedWrench,
+			],
+		},
+		[
+			{
+				id: namespacedVersionedWrench.id,
+				version: namespacedVersionedWrench.version,
+				namespace: namespacedVersionedWrench.namespace,
+			},
+			{ id: namespacedWrench.id, namespace: namespacedWrench.namespace },
+		],
+		[
+			{
+				id: namespacedVersionedWrench.id,
+				version: namespacedVersionedWrench.version,
+				namespace: namespacedVersionedWrench.namespace,
+			},
+			namespacedWrench,
+		]
+	)
+	@test(
+		'can handle different namespace with same versions and and id',
+		{
+			schemas: [
+				{
+					id: namespacedVersionedWrench.id,
+					version: namespacedVersionedWrench.version,
+					namespace: namespacedVersionedWrench.namespace,
+				},
+				namespaced2VersionedWrench,
+			],
+		},
+		[
+			{
+				id: namespacedVersionedWrench.id,
+				version: namespacedVersionedWrench.version,
+				namespace: namespacedVersionedWrench.namespace,
+			},
+			{
+				id: namespaced2VersionedWrench.id,
+				version: namespaced2VersionedWrench.version,
+				namespace: namespaced2VersionedWrench.namespace,
+			},
+		],
+		[
+			{
+				id: namespacedVersionedWrench.id,
+				version: namespacedVersionedWrench.version,
+				namespace: namespacedVersionedWrench.namespace,
+			},
+			namespaced2VersionedWrench,
+		]
 	)
 	protected static async testNormalizingOptionsToId(
 		options: ISchemaFieldDefinition['options'],
