@@ -1,6 +1,22 @@
 export * from './SchemaEntity'
 
+import addressRegistration from './addons/addressField.addon'
+import booleanRegistration from './addons/booleanField.addon'
+import dateRegistration from './addons/dateField.addon'
+import dateTimeRegistration from './addons/dateTimeField.addon'
+import directoryRegistration from './addons/directoryField.addon'
+import durationRegistration from './addons/durationField.addon'
+import fileRegistration from './addons/fileField.addon'
+import idRegistration from './addons/idField.addon'
+import numberRegistration from './addons/numberField.addon'
+import phoneRegistration from './addons/phoneField.addon'
+import rawRegistration from './addons/rawField.addon'
+import schemaRegistration from './addons/schemaField.addon'
+import selectRegistration from './addons/selectField.addon'
+import textRegistration from './addons/textField.addon'
 import SchemaEntity from './SchemaEntity'
+import { IFieldRegistration } from './utilities/registerFieldType'
+
 export default SchemaEntity
 
 export * from './schemas.static.types'
@@ -35,3 +51,20 @@ export { default as FieldFactory } from './factories/FieldFactory'
 
 export * from './types/template.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
+
+export const fieldRegistrations: IFieldRegistration[] = [
+	addressRegistration,
+	booleanRegistration,
+	dateRegistration,
+	dateTimeRegistration,
+	directoryRegistration,
+	durationRegistration,
+	fileRegistration,
+	idRegistration,
+	numberRegistration,
+	phoneRegistration,
+	rawRegistration,
+	schemaRegistration,
+	selectRegistration,
+	textRegistration,
+]
