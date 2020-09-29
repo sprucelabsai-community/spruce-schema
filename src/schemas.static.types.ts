@@ -370,4 +370,5 @@ export type PickFieldNames<S extends ISchema, T extends FieldType> = {
 export interface ISchemaIdWithVersion {
 	id: string
 	version?: string
+	namespace?: string
 }

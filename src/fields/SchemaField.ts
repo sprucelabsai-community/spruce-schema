@@ -79,6 +79,10 @@ export default class SchemaField<
 				idWithVersion.version = item.version
 			}
 
+			if (item.namespace) {
+				idWithVersion.namespace = item.namespace
+			}
+
 			return idWithVersion
 		})
 
@@ -102,10 +106,16 @@ export default class SchemaField<
 		const unions: { schemaId: string; valueType: string }[] = []
 
 		idsWithVersion.forEach((idWithVersion) => {
-			const { id, version } = idWithVersion
-			const allMatches = templateItems.filter(
+			const { id, version, namespace } = idWithVersion
+			let allMatches = templateItems.filter(
 				(item) => item.id.toLowerCase() === id.toLowerCase()
 			)
+
+			if (namespace) {
+				allMatches = allMatches.filter(
+					(item) => item.namespace.toLowerCase() === namespace.toLowerCase()
+				)
+			}
 
 			let matchedTemplateItem
 
