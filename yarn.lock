@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.369":
-  version "2.2.369"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.369.tgz#ca1e6a29d34262ffb7c5bfdba8c1feb694ade51a"
-  integrity sha512-qB5fky7fZZUEIx1418OWS+Z/pNVMsJTThTM93gaAaaQYFqMbYUkNpoGSxeICwZw50oj5eYe++HboL+WqQjtM5g==
+"@sprucelabs/error@^2.2.363", "@sprucelabs/error@^2.2.370":
+  version "2.2.370"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.370.tgz#d6970f9eed298a538cf64d1f083ceab36bc85fb1"
+  integrity sha512-58Rm1Fj/LR+DUqITL4SSbXpfySCrIs48McjB34+dPLegkO7mVIKarcxxBcrnDdiDPO5xv/k2ePbHpF7stJ+9Iw==
 
 "@sprucelabs/log@^10.2.253":
   version "10.2.253"
@@ -1375,10 +1375,10 @@
     "@sprucelabs/error" "^2.2.363"
     "@sprucelabs/test" "^7.0.70"
 
-"@sprucelabs/test@^7.0.70", "@sprucelabs/test@^7.0.75":
-  version "7.0.75"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.75.tgz#cd470a4ed4518eb18317c85a2df4d4df01adb906"
-  integrity sha512-nScUqatqLf13R1uES1joJBcaAxw8zbN/TH3jwxx3NDCyeiqYmlI79MCgLTwDiNbq5fbLPonoVDmn24k9yYJEjw==
+"@sprucelabs/test@^7.0.70", "@sprucelabs/test@^7.0.76":
+  version "7.0.76"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.76.tgz#403185359648c96c1db5a68b3ef0b708eb7c322b"
+  integrity sha512-/yccGb9kz0NNsEyAXDmYRrnJJtkVP5dHZceCkPfkFkt92ddZ80bV8w/W1nJeclPZGencTTZjeVouge5af/ITdA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1389,7 +1389,7 @@
     jest "^26.4.2"
     lodash "^4.17.20"
     ts-expect "^1.1.0"
-    ts-jest "^26.4.0"
+    ts-jest "^26.4.1"
     typescript "^4.0.3"
 
 "@tootallnate/once@1":
@@ -8601,10 +8601,10 @@ ts-expect@^1.1.0:
   resolved "https://registry.yarnpkg.com/ts-expect/-/ts-expect-1.1.0.tgz#52a280a149e1943ff7473d3dcb2fe17f85f63853"
   integrity sha512-cKoBZ47X85x/Qh7taf30m3BhOJOhtNbb7KFHz9CCuWeRSAh0wzprnmiN9TSOQ0FWp3+qDWS5f2FDnxkY93Kdfw==
 
-ts-jest@^26.4.0:
-  version "26.4.0"
-  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.4.0.tgz#903c7827f3d3bc33efc2f91be294b164400c32e3"
-  integrity sha512-ofBzoCqf6Nv/PoWb/ByV3VNKy2KJSikamOBxvR3E6eVdIw10GwAXoyvMWXXjZJK2s6S27ZE8fI+JBTnGaovl6Q==
+ts-jest@^26.4.1:
+  version "26.4.1"
+  resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-26.4.1.tgz#08ec0d3fc2c3a39e4a46eae5610b69fafa6babd0"
+  integrity sha512-F4aFq01aS6mnAAa0DljNmKr/Kk9y4HVZ1m6/rtJ0ED56cuxINGq3Q9eVAh+z5vcYKe5qnTMvv90vE8vUMFxomg==
   dependencies:
     "@types/jest" "26.x"
     bs-logger "0.x"
