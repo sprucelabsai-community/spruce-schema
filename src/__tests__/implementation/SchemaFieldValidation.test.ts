@@ -85,7 +85,6 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 			},
 		}
 
-		debugger
 		const codes = optionalCarOrTruckField.validate(value)
 
 		assert.isLength(codes, 0)
