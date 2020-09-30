@@ -1347,7 +1347,7 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.376", "@sprucelabs/error@^2.2.377":
+"@sprucelabs/error@^2.2.377":
   version "2.2.377"
   resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.377.tgz#fda48d05d2d2bb8f870bf6206941fe31bacb31eb"
   integrity sha512-GHOJlTptKh98bIRqNvbT9aDuozszYM6QndtGs9n5b/t8ik6DkstGF5dBmjDfFfD0Phpjkai1AZtoAjbAhmDGWQ==
@@ -1367,12 +1367,12 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.24":
-  version "1.1.24"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.24.tgz#3f7b8cc6eb9af993c7c21599a0207c8db75bbf1a"
-  integrity sha512-0aGh66ijGHIlspOrIDOoVgMPD7uMII6gyHquMAjgSptP3cXAVW6THcncEDq9V2kVeKX4x3LjqHIht+X1jTewaw==
+"@sprucelabs/test-utils@^1.1.25":
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.25.tgz#d47f447cad8aeaec71c891fb323ae4ede9b3319f"
+  integrity sha512-ylyKd0AhR2P7fmXUg8Cud4w3+dcbCq/yi6v8m0Jy7Om6euLeMpHq7HiJLS/kxyqbi8/iwnbFjSPtlbhLtk41Ig==
   dependencies:
-    "@sprucelabs/error" "^2.2.376"
+    "@sprucelabs/error" "^2.2.377"
     "@sprucelabs/test" "^7.0.80"
 
 "@sprucelabs/test@^7.0.80":
