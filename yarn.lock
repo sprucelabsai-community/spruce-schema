@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.377", "@sprucelabs/error@^2.2.378":
-  version "2.2.378"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.378.tgz#7b957855cc219068fa7b566be171a4870a9a96cb"
-  integrity sha512-tjASgRcUaw82DCTMTibIwMF+Oe8a49NXSADZ0lWdOlvgOxKtbXatvLFkuCADcOxVs50gnh9xPGXtLaO6BigD+Q==
+"@sprucelabs/error@^2.2.378", "@sprucelabs/error@^2.2.379":
+  version "2.2.379"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.379.tgz#02c0b6e7239d6bda507f830268b03c19b0bf7403"
+  integrity sha512-0+kW4SCzWt6PdrR4P3bZE/c+3AVEIrc9/FS+jRl5bZnOIizzGpgIm9cJA4VOa+R8Xpbdxmbx1WuXeCW5vwmN0A==
 
 "@sprucelabs/log@^10.2.254":
   version "10.2.254"
@@ -1367,15 +1367,15 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.26":
-  version "1.1.26"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.26.tgz#2486d40baa8f6f1e6085553bdcad69101b755cc3"
-  integrity sha512-9yKavGlM7oAKR5u+n/y+/tj3REsJo4hCSJQS0O5qKA7wNYpeAaludQMEgxy7uFV/TIp2YKLSDNpKpfD4h2GiCA==
+"@sprucelabs/test-utils@^1.1.27":
+  version "1.1.27"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.27.tgz#bbacc59684d35985e78a6185baa284e6c6eba183"
+  integrity sha512-lLqAkp6at0ALFbv2LmpDNVecD0FoxgNuEovFLgigiGQZaQPJbj/dYMm2hAcWC5ulk/QRyVl2HybdPjYJxO5N5g==
   dependencies:
-    "@sprucelabs/error" "^2.2.377"
-    "@sprucelabs/test" "^7.0.80"
+    "@sprucelabs/error" "^2.2.378"
+    "@sprucelabs/test" "^7.0.81"
 
-"@sprucelabs/test@^7.0.80", "@sprucelabs/test@^7.0.81":
+"@sprucelabs/test@^7.0.81":
   version "7.0.81"
   resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.81.tgz#4b5fc6c39419aac38f30d3ac622bf50670c64fe8"
   integrity sha512-vkV6gfmx0UGOUBofdHkPXA5y0r9D7uqZ4GLANA1upgMc/EQJjKMSafg6952S0HxHIdVO7+oW5+S9Wwbh2ZqBAw==
@@ -6361,9 +6361,9 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
 normalize-url@^5.0.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-5.2.0.tgz#a7e3e6cd90965e262500cc8a417de7bcb0c7f5af"
-  integrity sha512-7V6qmM0KFWk+W7lwWSVZg16kDxa0/CUhtNpNuEwjpNnbKIdjWm+9TbBTfkH2smnFakLAbZ8sh9cQ5xhcLbkd0g==
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-5.2.1.tgz#492a22a8443e604b13cef4b3a97983d66f08bf65"
+  integrity sha512-bFT2ilr7p37ZPEQ9LO9HP/tdFIAE7Q4UoeojXNKeLjs0vXxZetM+C2K9jdbVS7b6ut66CflVLgk1yqHJVrXmiw==
 
 npm-audit-report@^1.3.3:
   version "1.3.3"
