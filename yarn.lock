@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.383", "@sprucelabs/error@^2.2.384":
-  version "2.2.384"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.384.tgz#a49bd1282659f6fa1ddc85c98a122a2f11af9c8e"
-  integrity sha512-ia0weoAqJv+VGs5nEyrkHTO3L7daBIvouUff/uJSd+DJmKx3SJakDWgAQZw0pgJn7g2yt9bqrNnbH3UhOe96dg==
+"@sprucelabs/error@^2.2.384", "@sprucelabs/error@^2.2.385":
+  version "2.2.385"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.385.tgz#fb708614739c4c157592de6352d383a3d1ba5e3b"
+  integrity sha512-nfRncRFUzNqpkalH+R2+PiCRmhzla56rUkC01AtenWmhYtr9JoSHAzTNLOZKJNOxf3RDN47kjVDK6RSPjB2iUA==
 
 "@sprucelabs/log@^10.2.255":
   version "10.2.255"
@@ -1367,18 +1367,18 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.36":
-  version "1.1.36"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.36.tgz#970f48171ad822d2064dd85d36afb6921b717664"
-  integrity sha512-Xapt66ZZ+83QXiJ4ZLw4NOMQ/NKNDcLMCAvUp6jRVjlS7oX2ukCbw1N8NqtBLesCJgNXkH0xpcoI/Nc2EJ6p2A==
+"@sprucelabs/test-utils@^1.1.37":
+  version "1.1.37"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.37.tgz#b3589aba0db9176ac29914d54de0f55ba8e22674"
+  integrity sha512-2tS5OledlGJjA+DgTCP9/pNoK8sqAxXHrpDWt3iKEKPEboqIY72lj/ruIjh4mG3sDg7sdP9chhpuT1Vrbxd6Cw==
   dependencies:
-    "@sprucelabs/error" "^2.2.383"
-    "@sprucelabs/test" "^7.0.83"
+    "@sprucelabs/error" "^2.2.384"
+    "@sprucelabs/test" "^7.0.85"
 
-"@sprucelabs/test@^7.0.83", "@sprucelabs/test@^7.0.85":
-  version "7.0.85"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.85.tgz#769af3dd2e1a3883bd0a982a7571eac0c9f47e26"
-  integrity sha512-xy2GcVKeXxd7zvQ19ThG8ra7N3Aks/JGvRzvrDvIgzKig2JDM0Zggs/Oq63n9TOvN401i6oIk9SZJr3NqCv5Fg==
+"@sprucelabs/test@^7.0.85", "@sprucelabs/test@^7.0.86":
+  version "7.0.86"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.86.tgz#8ff4cc68c597b125310cbb0b8fd6eb3162accd72"
+  integrity sha512-yaX97aoOoDabtRerYQlHI8cLCekfLL5Er8tjPL0bzmtLkVJO6whGa6BmiqnTUouJoIWWw/BOPadd3NlJiC4OiQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3251,20 +3251,20 @@ es-abstract@^1.17.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.4, es-abstrac
     string.prototype.trimstart "^1.0.1"
 
 es-abstract@^1.18.0-next.0:
-  version "1.18.0-next.0"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.0-next.0.tgz#b302834927e624d8e5837ed48224291f2c66e6fc"
-  integrity sha512-elZXTZXKn51hUBdJjSZGYRujuzilgXo8vSPQzjGYXLvSlGiCo8VO8ZGV3kjo9a0WNJJ57hENagwbtlRuHuzkcQ==
+  version "1.18.0-next.1"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.0-next.1.tgz#6e3a0a4bda717e5023ab3b8e90bec36108d22c68"
+  integrity sha512-I4UGspA0wpZXWENrdA0uHbnhte683t3qT/1VFH9aX2dA5PPSf6QW5HHXf5HImaqPmjXaVeVk4RGWnaylmV7uAA==
   dependencies:
     es-to-primitive "^1.2.1"
     function-bind "^1.1.1"
     has "^1.0.3"
     has-symbols "^1.0.1"
-    is-callable "^1.2.0"
+    is-callable "^1.2.2"
     is-negative-zero "^2.0.0"
     is-regex "^1.1.1"
     object-inspect "^1.8.0"
     object-keys "^1.1.1"
-    object.assign "^4.1.0"
+    object.assign "^4.1.1"
     string.prototype.trimend "^1.0.1"
     string.prototype.trimstart "^1.0.1"
 
@@ -4506,7 +4506,7 @@ is-buffer@^1.1.5:
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
 
-is-callable@^1.1.4, is-callable@^1.2.0:
+is-callable@^1.1.4, is-callable@^1.2.0, is-callable@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.2.tgz#c7c6715cd22d4ddb48d3e19970223aceabb080d9"
   integrity sha512-dnMqspv5nU3LoewK2N/y7KLtxtakvTuaCsU9FU50/QDmdbHNy/4/JuRtMHqRU22o3q+W89YQndQEeCVwK+3qrA==
@@ -6670,7 +6670,7 @@ object-visit@^1.0.0:
   dependencies:
     isobject "^3.0.0"
 
-object.assign@^4.1.0:
+object.assign@^4.1.0, object.assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.1.tgz#303867a666cdd41936ecdedfb1f8f3e32a478cdd"
   integrity sha512-VT/cxmx5yaoHSOTSyrCygIDFco+RsibY2NM0a4RdEeY/4KgqezwFtK1yr3U67xYhqJSlASm2pKhLVzPj2lr4bA==
