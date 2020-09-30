@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.384", "@sprucelabs/error@^2.2.385":
-  version "2.2.385"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.385.tgz#fb708614739c4c157592de6352d383a3d1ba5e3b"
-  integrity sha512-nfRncRFUzNqpkalH+R2+PiCRmhzla56rUkC01AtenWmhYtr9JoSHAzTNLOZKJNOxf3RDN47kjVDK6RSPjB2iUA==
+"@sprucelabs/error@^2.2.385", "@sprucelabs/error@^2.2.386":
+  version "2.2.386"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.386.tgz#3e914bbc5d00f2d48183270f40ce737eb60fd7de"
+  integrity sha512-XZkozIaVVsiHCUr8AWdIBqh8pCUPNP207p3foRDifERfv+6ImWu4JCe5WvpHPHb4J99Mt+UUJhFhiNJ1n3inNw==
 
-"@sprucelabs/log@^10.2.255":
-  version "10.2.255"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.255.tgz#505d08405d1c6d654876272de88189a06909e17e"
-  integrity sha512-b6hEsaoE7hzVCqI+yhueNCCdivoZv32nTQsUwfijcQ0ajp2E+M8eJxr3mZ+LMPL8lc/pwBoN5O5dzw/N9JP12w==
+"@sprucelabs/log@^10.2.256":
+  version "10.2.256"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.256.tgz#86bb9b55cffec6cd0a4baf43667a198576bd12ac"
+  integrity sha512-pJNiulDcGifqdsQB/TRaKMeebhQ9wCZd/gEqfTGrdtS2zGApZ97glVuWq93RhJTWct0a8RDvVaylAySPjbagNg==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,18 +1367,18 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.37":
-  version "1.1.37"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.37.tgz#b3589aba0db9176ac29914d54de0f55ba8e22674"
-  integrity sha512-2tS5OledlGJjA+DgTCP9/pNoK8sqAxXHrpDWt3iKEKPEboqIY72lj/ruIjh4mG3sDg7sdP9chhpuT1Vrbxd6Cw==
+"@sprucelabs/test-utils@^1.1.38":
+  version "1.1.38"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.38.tgz#69e7b2c6e82e1a69c06a616215cf8b27652621e7"
+  integrity sha512-SsoNXH7I7rVQr+k/mw0jxJuHw/AMKqw+M3v0pXICg7lA/CRwIwphVtXsPDQHZtUcQQ7odg5IX/boa30SlNf+Gg==
   dependencies:
-    "@sprucelabs/error" "^2.2.384"
-    "@sprucelabs/test" "^7.0.85"
+    "@sprucelabs/error" "^2.2.385"
+    "@sprucelabs/test" "^7.0.86"
 
-"@sprucelabs/test@^7.0.85", "@sprucelabs/test@^7.0.86":
-  version "7.0.86"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.86.tgz#8ff4cc68c597b125310cbb0b8fd6eb3162accd72"
-  integrity sha512-yaX97aoOoDabtRerYQlHI8cLCekfLL5Er8tjPL0bzmtLkVJO6whGa6BmiqnTUouJoIWWw/BOPadd3NlJiC4OiQ==
+"@sprucelabs/test@^7.0.86", "@sprucelabs/test@^7.0.87":
+  version "7.0.87"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.87.tgz#a2ffaf5767e4900ec2d615b3b287768fc9d0a9a7"
+  integrity sha512-eKPyH3XKwMY6nQkDB+4XVuQEgRfQ0j7HomWcqvDlFghtg2/RfMw4rtVJjTbSlgy1chuWpQoCqBS07fwUSqeHnw==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3234,23 +3234,23 @@ error-ex@^1.2.0, error-ex@^1.3.1:
     is-arrayish "^0.2.1"
 
 es-abstract@^1.17.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.4, es-abstract@^1.17.5:
-  version "1.17.6"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.17.6.tgz#9142071707857b2cacc7b89ecb670316c3e2d52a"
-  integrity sha512-Fr89bON3WFyUi5EvAeI48QTWX0AyekGgLA8H+c+7fbfCkJwRWRMLd8CQedNEyJuoYYhmtEqY92pgte1FAhBlhw==
+  version "1.17.7"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.17.7.tgz#a4de61b2f66989fc7421676c1cb9787573ace54c"
+  integrity sha512-VBl/gnfcJ7OercKA9MVaegWsBHFjV492syMudcnQZvt/Dw8ezpcOHYZXa/J96O8vx+g4x65YKhxOwDUh63aS5g==
   dependencies:
     es-to-primitive "^1.2.1"
     function-bind "^1.1.1"
     has "^1.0.3"
     has-symbols "^1.0.1"
-    is-callable "^1.2.0"
-    is-regex "^1.1.0"
-    object-inspect "^1.7.0"
+    is-callable "^1.2.2"
+    is-regex "^1.1.1"
+    object-inspect "^1.8.0"
     object-keys "^1.1.1"
-    object.assign "^4.1.0"
+    object.assign "^4.1.1"
     string.prototype.trimend "^1.0.1"
     string.prototype.trimstart "^1.0.1"
 
-es-abstract@^1.18.0-next.0:
+es-abstract@^1.18.0-next.0, es-abstract@^1.18.0-next.1:
   version "1.18.0-next.1"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.18.0-next.1.tgz#6e3a0a4bda717e5023ab3b8e90bec36108d22c68"
   integrity sha512-I4UGspA0wpZXWENrdA0uHbnhte683t3qT/1VFH9aX2dA5PPSf6QW5HHXf5HImaqPmjXaVeVk4RGWnaylmV7uAA==
@@ -3336,10 +3336,10 @@ eslint-config-prettier@^6.12.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.67:
-  version "10.9.67"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.67.tgz#b39bd5eef93fe95687ec7c419d23099604a0cd3a"
-  integrity sha512-GsUTvXOTbl0rhNunhch6HrVKUnyeE0zJy/eZldZUmCtcgf02Q/pdmt+/axGERtHhAKHlrK91zEFK6q33lyVwxA==
+eslint-config-spruce@^10.9.68:
+  version "10.9.68"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.68.tgz#34cacc9ca2bb0a2c1b6ecb47210bad44bb2040be"
+  integrity sha512-LTQqhamQKsTHpgVWkvOiUcpIqzOqzkhvOtfqf0XuTKxZVybF3Geu0nNzdvzqfyXovLm3OQhi+UlMVRpbSW3jlA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.3.0"
     "@typescript-eslint/parser" "^4.3.0"
@@ -3349,7 +3349,7 @@ eslint-config-spruce@^10.9.67:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.21.2"
-    eslint-plugin-spruce "^10.9.67"
+    eslint-plugin-spruce "^10.9.68"
 
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
@@ -3427,10 +3427,10 @@ eslint-plugin-react@^7.21.2:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.67:
-  version "10.9.67"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.67.tgz#008ada7da5de75bb55983fcfe88ea37f4616b937"
-  integrity sha512-rf5QoNNc1oTRc/lbRVuL7jNM5X7o1v0Rs8ai3wHKcYl/38+S2dq/xOj+NOr1GfF62/GBRmdLFi5U+2IaV0nMuw==
+eslint-plugin-spruce@^10.9.68:
+  version "10.9.68"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.68.tgz#097c61a06e7bd2f2d0a62d8167db139527cc2c44"
+  integrity sha512-gJTBaDhI5PmWUsEfWT9VW65KnUjoPwvAYN2nYWzdU6Mr/RmE9nGPSE/OyqM1MnPoUOJKlw4+l8M5AadUIfpQdA==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -4506,7 +4506,7 @@ is-buffer@^1.1.5:
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
 
-is-callable@^1.1.4, is-callable@^1.2.0, is-callable@^1.2.2:
+is-callable@^1.1.4, is-callable@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.2.tgz#c7c6715cd22d4ddb48d3e19970223aceabb080d9"
   integrity sha512-dnMqspv5nU3LoewK2N/y7KLtxtakvTuaCsU9FU50/QDmdbHNy/4/JuRtMHqRU22o3q+W89YQndQEeCVwK+3qrA==
@@ -4709,7 +4709,7 @@ is-redirect@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
   integrity sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
 
-is-regex@^1.0.5, is-regex@^1.1.0, is-regex@^1.1.1:
+is-regex@^1.0.5, is-regex@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.1.tgz#c6f98aacc546f6cec5468a07b7b153ab564a57b9"
   integrity sha512-1+QkEcxiLlB7VEyFtyBg94e08OAsvq7FUBgApTq/w2ymCLyKJgDPsybBENVtA7XCQEgEXxKPonG+mvYRxh/LIg==
@@ -6645,18 +6645,18 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-inspect@^1.7.0, object-inspect@^1.8.0:
+object-inspect@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.8.0.tgz#df807e5ecf53a609cc6bfe93eac3cc7be5b3a9d0"
   integrity sha512-jLdtEOB112fORuypAyl/50VRVIBIdVQOSUUGQHzJ4xBSbit81zRarz7GThkEFZy1RceYrWYcPcBFPQwHyAc1gA==
 
 object-is@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.2.tgz#c5d2e87ff9e119f78b7a088441519e2eec1573b6"
-  integrity sha512-5lHCz+0uufF6wZ7CRFWJN3hp8Jqblpgve06U5CMQ3f//6iDjPr2PEo9MWCjEssDsa+UZEL4PkFpr+BMop6aKzQ==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/object-is/-/object-is-1.1.3.tgz#2e3b9e65560137455ee3bd62aec4d90a2ea1cc81"
+  integrity sha512-teyqLvFWzLkq5B9ki8FVWA902UER2qkxmdA4nLf+wjOLAWgxzCWZNCxpDq9MvE8MmhWNr+I8w3BN49Vx36Y6Xg==
   dependencies:
     define-properties "^1.1.3"
-    es-abstract "^1.17.5"
+    es-abstract "^1.18.0-next.1"
 
 object-keys@^1.0.12, object-keys@^1.1.1:
   version "1.1.1"
