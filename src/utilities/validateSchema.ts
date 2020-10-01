@@ -18,7 +18,7 @@ export default function validateSchema(schema: any): asserts schema is ISchema {
 		}
 
 		if (!schema.fields && !schema.dynamicFieldSignature) {
-			errors.push('needs_fields_or_dynamic_key_signature')
+			errors.push('needs_fields_or_dynamic_field_signature')
 		}
 	}
 

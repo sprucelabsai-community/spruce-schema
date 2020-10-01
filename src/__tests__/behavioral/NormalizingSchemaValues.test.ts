@@ -15,6 +15,13 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			age: {
 				type: 'number',
 			},
+			boolean: {
+				type: 'boolean',
+			},
+			privateBooleanField: {
+				type: 'boolean',
+				isPrivate: true,
+			},
 			nestedArraySchema: {
 				type: 'schema',
 				isArray: true,
@@ -50,6 +57,8 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		assert.isEqualDeep(values, {
 			firstName: '12345',
 			age: 10,
+			boolean: undefined,
+			privateBooleanField: undefined,
 			nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
 		})
 	}
@@ -71,11 +80,53 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			{
 				firstName: string
 				age: number | null | undefined
+				boolean: boolean | null | undefined
+				privateBooleanField: boolean | null | undefined
 				nestedArraySchema:
 					| { field1?: string | null | undefined }[]
 					| null
 					| undefined
 			}
 		>(true)
+	}
+
+	@test(
+		'normalizes boolean with string false to false',
+		{ boolean: 'false' },
+		'boolean',
+		false
+	)
+	@test(
+		'normalizes boolean with string true to true',
+		{ boolean: 'true' },
+		'boolean',
+		true
+	)
+	@test(
+		'normalizes private boolean with string false to false',
+		{ privateBooleanField: 'false' },
+		'privateBooleanField',
+		false
+	)
+	@test(
+		'normalizes private boolean with string true to true',
+		{ privateBooleanField: 'true' },
+		'privateBooleanField',
+		true
+	)
+	protected static async normalizeAndCheckField(
+		overrideValues: Record<string, any>,
+		fieldName: string,
+		expected: any
+	) {
+		const values = normalizeSchemaValues(this.personSchema, {
+			firstName: 'tay',
+			age: 0,
+			nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+			...overrideValues,
+		})
+
+		//@ts-ignore
+		assert.isEqual(values[fieldName], expected)
 	}
 }
