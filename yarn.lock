@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.48":
-  version "1.1.48"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.48.tgz#ed55852e4cd4528fe9ea2f02837af06910ca3ba3"
-  integrity sha512-DUf7pzxGHsxmXjyWA8JUxiOiN8ItR8tTdMN4dwG3wRM3A+HOumCzXQsUd3sgqdITK5mrzHc6/8Ije0fTkCaPVQ==
+"@sprucelabs/test-utils@^1.1.49":
+  version "1.1.49"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.49.tgz#06b9bfcdc5c591e2a7c5e4c8194d528b7c32f2c6"
+  integrity sha512-kLcjtpSAP21D1m4H1aH6n2yf5Q43o8pamo4JahXXP8n2GXC06LrkivBD9Y4XRhbyWUdAtc/01uL5Lf0bxuLoMA==
   dependencies:
     "@sprucelabs/error" "^2.2.390"
     "@sprucelabs/test" "^7.0.89"
@@ -5658,10 +5658,10 @@ libnpx@^10.2.4:
     y18n "^4.0.0"
     yargs "^14.2.3"
 
-libphonenumber-js@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.8.1.tgz#2c2bdbb774289cb47932bafb60019b664966b4a2"
-  integrity sha512-P3ND6m7hy4W32+Kk8ajBct9mKQnp+fUp190fwkrUbb/q2eHg5C1VtHEabfv4MYRbqN1hDXW3P9vkcF4P1KXwew==
+libphonenumber-js@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.8.2.tgz#fa0a2ec8181f7494d0832c3ceed90919e01f1a40"
+  integrity sha512-JPE96E3fHg/Jz6purZF1JKV9wgLzHWup06bwMK4XiIgqw6HL0yVh4crn6w7ztRt56ivHdFi5vlUScRJ1n9TsBg==
   dependencies:
     minimist "^1.2.5"
     xml2js "^0.4.17"
