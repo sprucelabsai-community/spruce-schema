@@ -8,6 +8,8 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test('can transform string true to boolean true', 'true', true)
 	@test('can transform gibberish to truthy', 'waka', true)
 	@test('empty string is false', '', false)
+	@test('false is false', false, false)
+	@test('true is true', true, true)
 	protected static async transformTests(value: any, expected: boolean) {
 		const field = FieldFactory.Field('transformTest', {
 			type: 'boolean',

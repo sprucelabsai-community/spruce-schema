@@ -105,7 +105,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test('Catches missing id', 'id', ['id_missing'])
 	@test('Catches missing fields', 'fields', [
-		'needs_fields_or_dynamic_key_signature',
+		'needs_fields_or_dynamic_field_signature',
 	])
 	protected static async testMissingKeys(
 		fieldToDelete: string,
