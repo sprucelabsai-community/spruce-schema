@@ -41,7 +41,7 @@
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "^2.2.393",
+		"@sprucelabs/error": "^2.2.394",
 		"@sprucelabs/log": "^10.2.257",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.2",
@@ -52,7 +52,7 @@
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.5",
 		"@sprucelabs/test": "^7.0.91",
-		"@sprucelabs/test-utils": "^1.1.69",
+		"@sprucelabs/test-utils": "^1.1.70",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
