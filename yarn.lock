@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.401", "@sprucelabs/error@^2.2.402":
-  version "2.2.402"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.402.tgz#ebcf5e6e74a930bda79b17bbf992cf3613909dfa"
-  integrity sha512-bmZe43BgCPGv5xmvOYWdUSy2bfE6E/Sa/vGU91hewJrHr5GZUtCN4qkYj31eMaC3nRxODAGs7SrAwD8E5Fvomg==
+"@sprucelabs/error@^2.2.402", "@sprucelabs/error@^2.2.403":
+  version "2.2.403"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.403.tgz#f7b99ee7831e87f683699fe027046eb98133bc3e"
+  integrity sha512-66fek54k1fe1R8Ftcs5GhN+Xx7cwuvuNnxEglZO6IVufACjKptlwN7wOXk3u/ssNkAoPBeT0ArydcRLJRPr7yA==
 
-"@sprucelabs/log@^10.2.260":
-  version "10.2.260"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.260.tgz#903a2a90c528a68a765f8bd43ade03287cf633aa"
-  integrity sha512-rXW4IDYgtZCCcxZwK+TUgVpBJ+76O6SmiTNExmqu3kscqOW2qHw7WMu3ZgkLzVlcJpWXFIegHHGJu9h08I864g==
+"@sprucelabs/log@^10.2.261":
+  version "10.2.261"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.261.tgz#3d696a3b7430d2c292077f0bb146ea93af779398"
+  integrity sha512-I/lnwOFfaUxWDEqkG1L8uJ7thJUgMkXTX3YGcj4XZagEoDrH0GoeMm7OukNXLK8H7LJNhvJI50UW/aq0EFtTuA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.128":
-  version "1.1.128"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.128.tgz#0c7b62db198a82408f75ef143d46a086c1b16924"
-  integrity sha512-sslbm1vkwcVgWVYKuAxqTEL3iHHNStWTKk+rJVLPnL9TCpHLZIH5DlDH9An3TSYVrZ9rXFeh3+fNHYrd9YNwAQ==
+"@sprucelabs/test-utils@^1.1.129":
+  version "1.1.129"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.129.tgz#1c74b08e7129d36dbb25578ffb31e64a377e0036"
+  integrity sha512-T+e4R6el2vcw/zVMA/zpQ0k/D8fIoZbV9k8t6GhGzEt9R16zlakBss7+ldosSJTa+8zhsLYiRPTF8rJ0Yo9gHg==
   dependencies:
-    "@sprucelabs/error" "^2.2.401"
-    "@sprucelabs/test" "^7.0.95"
+    "@sprucelabs/error" "^2.2.402"
+    "@sprucelabs/test" "^7.0.96"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.95", "@sprucelabs/test@^7.0.96":
-  version "7.0.96"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.96.tgz#129ce3105696b8d8cf6bac2c4a71562bc5538f51"
-  integrity sha512-m4WtyxIAGv4b7cOOqdiWcQ4e5IQxJZgv9ljEQEl6orfNfrEDGp6EDktPttkJlBnr1l3ko5q5CmgiRm5wRMP7JA==
+"@sprucelabs/test@^7.0.96", "@sprucelabs/test@^7.0.97":
+  version "7.0.97"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.97.tgz#af036dfd1bb2024dc42aae15a452b0b26eb0436f"
+  integrity sha512-g8EGAGX/117jaOW/vNa/moDGEeMJA6J74VG0O4Z2z4ubDfzYWJRCpXC+pluYZF0ORn9VQmakssLJpPYa67/+lA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3337,10 +3337,10 @@ eslint-config-prettier@^6.12.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.71:
-  version "10.9.71"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.71.tgz#07cb591868a959918f8380b096c012bf377dfa20"
-  integrity sha512-ZWYy5wYcWA9f4lc3wT8h8QVPi7rQUZFnwipkjpT5UQPMWzcBldD+yRnIeq1hlBX2Q7X6LQCTkXTKW1JpT38EOA==
+eslint-config-spruce@^10.9.72:
+  version "10.9.72"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.72.tgz#1b1a6204b299df85cbcdef02d4801ab9a1351d00"
+  integrity sha512-eHEsFFSUewRF66M7Cxxg0jJyTB1wMnQ+NuLGk2Q1cUrxjzsvnoBv1BMrllBD3kHrEFVMo0yCM+njlQZb8bMy4g==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.3.0"
     "@typescript-eslint/parser" "^4.3.0"
@@ -3350,7 +3350,7 @@ eslint-config-spruce@^10.9.71:
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.21.3"
-    eslint-plugin-spruce "^10.9.71"
+    eslint-plugin-spruce "^10.9.72"
 
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
@@ -3428,10 +3428,10 @@ eslint-plugin-react@^7.21.3:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.71:
-  version "10.9.71"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.71.tgz#698865b1df93f645fd27dcbbd2c900e3c8e0af66"
-  integrity sha512-lkmZ/HMaXjUMPcE/4BDQRsdhbpBBpVfwtxS5rTAJMjpSQKF6cxUS87RVmoUJM+1j8djK0fujQ1grzN64kDVMMg==
+eslint-plugin-spruce@^10.9.72:
+  version "10.9.72"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.72.tgz#daebc6eb884f785b5fbdf54591b76112be57dbfb"
+  integrity sha512-CaIhqTFWFQBy6TUzdfUEKfwYBnQr8t6ZndRny+MQAFf1uMmOO//ixAu6Oglf+7wc3GRjIbZCzpGQEqOp26QKng==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -8740,9 +8740,9 @@ typescript@~3.9.7:
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
 uglify-js@^3.1.4:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.11.0.tgz#67317658d76c21e0e54d3224aee2df4ee6c3e1dc"
-  integrity sha512-e1KQFRCpOxnrJsJVqDUCjURq+wXvIn7cK2sRAx9XL3HYLL9aezOP4Pb1+Y3/o693EPk111Yj2Q+IUXxcpHlygQ==
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.11.1.tgz#32d274fea8aac333293044afd7f81409d5040d38"
+  integrity sha512-OApPSuJcxcnewwjSGGfWOjx3oix5XpmrK9Z2j0fTRlHGoZ49IU6kExfZTM0++fCArOOCet+vIfWwFHbvWqwp6g==
 
 uid-number@0.0.6:
   version "0.0.6"
@@ -8931,9 +8931,9 @@ uuid@^3.3.2, uuid@^3.3.3:
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
 uuid@^8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
-  integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.1.tgz#2ba2e6ca000da60fce5a196954ab241131e05a31"
+  integrity sha512-FOmRr+FmWEIG8uhZv6C2bTgEVXsHk08kE7mPlrBbEe+c3r9pjceVPgupIfNIhc4yx55H69OXANrUaSuu9eInKg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"
