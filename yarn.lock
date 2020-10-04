@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.401":
-  version "2.2.401"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.401.tgz#a2b6108e762641ffae763e84c7f6e0347cb5fc28"
-  integrity sha512-4PV6T7GAJclNqfjzDbQupfWs0/kuibxuAdm8JN33JHd/DqmcdRY2064b0ryZyyCMDxkchyY8nGRJHhVqziCRAg==
+"@sprucelabs/error@^2.2.401", "@sprucelabs/error@^2.2.402":
+  version "2.2.402"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.402.tgz#ebcf5e6e74a930bda79b17bbf992cf3613909dfa"
+  integrity sha512-bmZe43BgCPGv5xmvOYWdUSy2bfE6E/Sa/vGU91hewJrHr5GZUtCN4qkYj31eMaC3nRxODAGs7SrAwD8E5Fvomg==
 
 "@sprucelabs/log@^10.2.260":
   version "10.2.260"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.127":
-  version "1.1.127"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.127.tgz#157d2291485b656dc3daf8ff1149f3c3330d8d55"
-  integrity sha512-QgdGpRytg3fU2/DFjN/sY2bL310Usnb3MvtKGNms7t4KsTGeNFIOB9+xbZvIoFHJHQz9wvBm8h+stFQotwMAvw==
+"@sprucelabs/test-utils@^1.1.128":
+  version "1.1.128"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.128.tgz#0c7b62db198a82408f75ef143d46a086c1b16924"
+  integrity sha512-sslbm1vkwcVgWVYKuAxqTEL3iHHNStWTKk+rJVLPnL9TCpHLZIH5DlDH9An3TSYVrZ9rXFeh3+fNHYrd9YNwAQ==
   dependencies:
     "@sprucelabs/error" "^2.2.401"
     "@sprucelabs/test" "^7.0.95"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.95":
-  version "7.0.95"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.95.tgz#3889dae22b17f01c163ee46a1edb3193663f2857"
-  integrity sha512-+QsGeVUiMALgLUeDYxRAo7ezc+c9y1qQl9COwHDQn35/KpmibXSCchD6tSGrGFi5hZwrtIBK5XI0ZBwzXOBrSA==
+"@sprucelabs/test@^7.0.95", "@sprucelabs/test@^7.0.96":
+  version "7.0.96"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.96.tgz#129ce3105696b8d8cf6bac2c4a71562bc5538f51"
+  integrity sha512-m4WtyxIAGv4b7cOOqdiWcQ4e5IQxJZgv9ljEQEl6orfNfrEDGp6EDktPttkJlBnr1l3ko5q5CmgiRm5wRMP7JA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2086,9 +2086,9 @@ babel-plugin-jest-hoist@^26.2.0:
     "@types/babel__traverse" "^7.0.6"
 
 babel-preset-current-node-syntax@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/babel-preset-current-node-syntax/-/babel-preset-current-node-syntax-0.1.3.tgz#b4b547acddbf963cba555ba9f9cbbb70bfd044da"
-  integrity sha512-uyexu1sVwcdFnyq9o8UQYsXwXflIh8LvrF5+cKrYam93ned1CStffB3+BEcsxGSgagoA3GEyjDqO4a/58hyPYQ==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/babel-preset-current-node-syntax/-/babel-preset-current-node-syntax-0.1.4.tgz#826f1f8e7245ad534714ba001f84f7e906c3b615"
+  integrity sha512-5/INNCYhUGqw7VbVjT/hb3ucjgkVHKXY7lX3ZjlN4gm565VyFmJUrJ/h+h16ECVB38R/9SF6aACydpKMLZ/c9w==
   dependencies:
     "@babel/plugin-syntax-async-generators" "^7.8.4"
     "@babel/plugin-syntax-bigint" "^7.8.3"
