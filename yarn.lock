@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.144":
-  version "1.1.144"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.144.tgz#7d94e147b096289336f6662d7df0384972b79991"
-  integrity sha512-W58Fg5qEch+AFZRmQ8fKS10ZnTQjyhbaPX61TOFMGkkbFK25ERGfTsFluKwYz45nWO04IHmicdISq/cWM9szaw==
+"@sprucelabs/test-utils@^1.1.145":
+  version "1.1.145"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.145.tgz#7b1504a01356e5a1df0f9522a5e80a3451ea8fba"
+  integrity sha512-NHk5MAWNtuvSr0MBsyyY1fqvb6FobF+5jkPwmfBcK1hSPLFIPB4gYHUnzZGSlUbWMA+++KCTEF+KyRBuDs+EqQ==
   dependencies:
     "@sprucelabs/error" "^2.2.408"
     "@sprucelabs/test" "^7.0.100"
@@ -1669,9 +1669,9 @@ acorn-walk@^7.1.1:
   integrity sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==
 
 acorn@^7.1.1, acorn@^7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.0.tgz#e1ad486e6c54501634c6c397c5c121daa383607c"
-  integrity sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
+  integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
