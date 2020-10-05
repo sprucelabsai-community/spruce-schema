@@ -52,7 +52,7 @@
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.5",
 		"@sprucelabs/test": "^7.0.100",
-		"@sprucelabs/test-utils": "^1.1.140",
+		"@sprucelabs/test-utils": "^1.1.141",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
