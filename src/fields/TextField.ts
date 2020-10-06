@@ -52,7 +52,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 					error: new Error(
 						`${JSON.stringify(value)} could not be converted to a string.`
 					),
-					code: 'schema_field_invalid',
+					code: 'invalid_value',
 					name: this.name,
 				},
 			],

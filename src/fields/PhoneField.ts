@@ -35,7 +35,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		try {
 			typeof value !== 'undefined' && formatPhoneNumber(value, false)
 		} catch (err) {
-			errors.push({ code: 'invalid_phone_number', name: this.name })
+			errors.push({ code: 'invalid_value', name: this.name })
 		}
 
 		return errors

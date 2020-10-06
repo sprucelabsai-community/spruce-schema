@@ -41,7 +41,7 @@ export default class SpruceError extends AbstractSpruceError<
 				message = `${options.code}: ${options.instructions}`
 				break
 			case 'INVALID_SCHEMA':
-				message = `Invalid definition with id: ${options.schemaId}. ${
+				message = `Invalid schema with id: ${options.schemaId}. ${
 					options.errors.length > 0
 						? `Errors are: \n\n${options.errors.join('\n')}\n\n`
 						: ``

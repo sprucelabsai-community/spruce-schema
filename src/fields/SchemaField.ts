@@ -230,7 +230,7 @@ export default class SchemaField<
 			} catch (err) {
 				errors.push({
 					error: err,
-					code: 'schema_field_invalid',
+					code: 'invalid_value',
 					name: this.name,
 				})
 			}

@@ -32,7 +32,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 						error: new Error(
 							`${JSON.stringify(value)} could not be converted to a number.`
 						),
-						code: 'schema_field_invalid',
+						code: 'invalid_value',
 						name: this.name,
 					},
 				],

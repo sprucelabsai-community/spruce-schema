@@ -348,7 +348,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		assert.doesThrow(
 			//@ts-ignore
 			() => validateSchemaValues(null, {}),
-			/Invalid definition/
+			/Invalid schema/
 		)
 	}
 
