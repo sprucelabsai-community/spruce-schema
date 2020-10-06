@@ -7,7 +7,6 @@ import {
 	IField,
 	IFieldDefinition,
 } from './fields/field.static.types'
-import SchemaEntity from './SchemaEntity'
 import {
 	DynamicSchemaAllValues,
 	DynamicSchemaPartialValues,
@@ -80,7 +79,7 @@ export default class DynamicSchemaEntity<
 		const localValue = normalizeFieldValue(
 			this.schemaId,
 			this.name,
-			SchemaEntity.schemasById,
+			{},
 			this.dynamicField,
 			value,
 			options
@@ -103,7 +102,7 @@ export default class DynamicSchemaEntity<
 			})
 
 			const fieldErrors = field.validate(value, {
-				schemasById: SchemaEntity.schemasById,
+				schemasById: {},
 			})
 
 			if (fieldErrors.length > 0) {
@@ -138,7 +137,7 @@ export default class DynamicSchemaEntity<
 		return normalizeFieldValue(
 			this.schemaId,
 			this.name,
-			SchemaEntity.schemasById,
+			{},
 			this.dynamicField,
 			value,
 			options || {}

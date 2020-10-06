@@ -1,4 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
+import SchemaEntity from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
@@ -114,7 +115,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		'privateBooleanField',
 		true
 	)
-	protected static async normalizeAndCheckField(
+	protected static normalizeAndCheckField(
 		overrideValues: Record<string, any>,
 		fieldName: string,
 		expected: any
@@ -128,5 +129,69 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 		//@ts-ignore
 		assert.isEqual(values[fieldName], expected)
+	}
+
+	@test()
+	protected static honorsNotMakingSchemaEntitiesWithEntityValues() {
+		const secondLevelSchema = buildSchema({
+			id: 'nested-2nd-level-schema-entity',
+			fields: {
+				boolField: {
+					type: 'boolean',
+				},
+			},
+		})
+
+		const schema = buildSchema({
+			id: 'schema-entities',
+			fields: {
+				related: {
+					type: 'schema',
+					isArray: true,
+					isRequired: true,
+					options: {
+						schema: {
+							id: 'nested-schema-entities',
+							fields: {
+								textField: {
+									type: 'text',
+								},
+								nested: {
+									type: 'schema',
+									options: {
+										schema: secondLevelSchema,
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		})
+
+		const values = normalizeSchemaValues(
+			schema,
+			{
+				related: [
+					{
+						textField: 'hello!',
+						nested: new SchemaEntity(secondLevelSchema, { boolField: true }),
+					},
+				],
+			},
+			{ createEntityInstances: false }
+		)
+
+		assert.isFalse(values.related[0] instanceof SchemaEntity)
+		assert.isFalse(values.related[0].nested instanceof SchemaEntity)
+
+		assert.isEqualDeep(values, {
+			related: [
+				{
+					textField: 'hello!',
+					nested: { boolField: true },
+				},
+			],
+		})
 	}
 }
