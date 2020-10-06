@@ -157,7 +157,6 @@ export default class SchemaEntity<S extends ISchema>
 				})
 
 				if (fieldErrors.length > 0) {
-					debugger
 					errors.push(...fieldErrors)
 				}
 			}

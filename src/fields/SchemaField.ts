@@ -229,7 +229,6 @@ export default class SchemaField<
 				value.validate()
 				return []
 			} catch (err) {
-				debugger
 				errors.push({
 					error: err,
 					code: 'invalid_value',
