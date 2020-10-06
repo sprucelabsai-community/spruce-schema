@@ -1,3 +1,10 @@
+# [13.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v12.4.174...v13.0.0) (2020-10-06)
+
+
+### Breaking Changes
+
+* invalid_value now standard error key for validation errors ([0d663e6](https://github.com/sprucelabsai/spruce-schema/commit/0d663e6))
+
 ## [12.4.174](https://github.com/sprucelabsai/spruce-schema/compare/v12.4.173...v12.4.174) (2020-10-06)
 
 ## [12.4.173](https://github.com/sprucelabsai/spruce-schema/compare/v12.4.172...v12.4.173) (2020-10-06)
