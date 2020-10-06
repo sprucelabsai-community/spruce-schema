@@ -12,13 +12,13 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 	)
 	@test('fails with bad number', '234th2s34th', [
 		{
-			code: 'invalid_phone_number',
+			code: 'invalid_value',
 			name: 'phone',
 		},
 	])
 	@test('fails with bad number with country', '+1 234th2s34th', [
 		{
-			code: 'invalid_phone_number',
+			code: 'invalid_value',
 			name: 'phone',
 		},
 	])
