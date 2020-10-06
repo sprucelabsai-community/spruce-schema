@@ -24,7 +24,7 @@
 		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
 		"build.tsc": "tsc",
 		"build.browser": "tsc --project tsconfig.browser.json",
-		"build.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn build'",
+		"build.watch": "yarn build.tsc -w",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
 		"clean": "rm -rf build/",
 		"lint": "eslint '**/*.ts' --fix && yarn lint.tsc",

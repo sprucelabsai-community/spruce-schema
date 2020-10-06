@@ -226,7 +226,8 @@ export default class SchemaField<
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
 		if (value instanceof SchemaEntity) {
 			try {
-				validateSchema(value)
+				value.validate()
+				return []
 			} catch (err) {
 				errors.push({
 					error: err,
@@ -352,8 +353,11 @@ export default class SchemaField<
 		const isUnion = destinationSchemas.length > 1
 		let instance: SchemaEntity<ISchema> | undefined
 
+		if (value instanceof SchemaEntity) {
+			instance = value
+		}
 		// if we are only pointing 1 one possible definition, then mapping is pretty easy
-		if (!isUnion) {
+		else if (!isUnion) {
 			instance = new SchemaEntity(destinationSchemas[0], value)
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop

@@ -1,7 +1,6 @@
 import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
-import { ISchemasById } from './fields/field.static.types'
 import {
 	ISchema,
 	SchemaPartialValues,
@@ -29,7 +28,6 @@ import normalizeFieldValue, {
 export default class SchemaEntity<S extends ISchema>
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
-	public static schemasById: ISchemasById = {}
 
 	public get schemaId() {
 		return this.schema.id
@@ -101,7 +99,7 @@ export default class SchemaEntity<S extends ISchema>
 		return normalizeFieldValue(
 			this.schemaId,
 			this.name,
-			SchemaEntity.schemasById,
+			{},
 			field,
 			value,
 			overrideOptions
@@ -155,7 +153,7 @@ export default class SchemaEntity<S extends ISchema>
 
 			for (const value of valueArray) {
 				const fieldErrors = field.validate(value, {
-					schemasById: SchemaEntity.schemasById,
+					schemasById: {},
 				})
 
 				if (fieldErrors.length > 0) {
