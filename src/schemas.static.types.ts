@@ -98,13 +98,14 @@ export interface ISchemaFields {
 	[fieldName: string]: FieldDefinition
 }
 
-/** A schema defines the data structure of something */
 export interface ISchema {
 	id: string
 	name?: string
 	version?: string
 	namespace?: string
 	description?: string
+	importsWhenLocal?: string[]
+	importsWhenRemote?: string[]
 	dynamicFieldSignature?: FieldDefinition & {
 		keyName: string
 		keyTypeLiteral?: string
