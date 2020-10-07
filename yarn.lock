@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.431":
-  version "2.2.431"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.431.tgz#6cb8292947fadfbfacada0304935e09eef010501"
-  integrity sha512-wtkkAxRKKSmpJMjIpiSL+O0gIarMyYIQCgALzaq/MLO0u/HJiXngYtMAo3iE2skwSsi0AfRbkuw/0qelv5vCdQ==
+"@sprucelabs/error@^2.2.431", "@sprucelabs/error@^2.2.433":
+  version "2.2.433"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.433.tgz#716502c602e5b610ff57f06a38d4a03b57219195"
+  integrity sha512-+g1lckyAVEwZGpjQ6d/FjUQ0ZhRYLjVcp8SbEglqquaQkg+Z3HfN1SV8gnkcEiJnD6vyGIJDtnxu8gUjCz8giA==
 
 "@sprucelabs/log@^10.2.272":
   version "10.2.272"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.204":
-  version "1.1.204"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.204.tgz#305eae98e5e610f87f74642636fa5b138eab9567"
-  integrity sha512-RpuyJ5wXnOMTJLysiABbpQwBvGkSnp3K5WjjzmOiD7+OwHPmAffgPJFaNA/IyRyBEao2jlhF6vJc1lu3pErINQ==
+"@sprucelabs/test-utils@^1.1.205":
+  version "1.1.205"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.205.tgz#0842af8d0d3008c391a3162d0cf7ba688164cf6a"
+  integrity sha512-lukqSe+/GF6j1lsCgwBseyR7/WpkTVWlJfPcGz7sSWqCxfdszFlKGNZsUULzLGGGam+DYAE71AKMTr0Jq0YRZQ==
   dependencies:
     "@sprucelabs/error" "^2.2.431"
     "@sprucelabs/test" "^7.0.114"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.114":
-  version "7.0.114"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.114.tgz#e8fde44d2845799029a426d6756fe8b52ea684ac"
-  integrity sha512-Hm04TEsvp0wjS+VlJq6n3Gkkdq01Ii7XkPQ116yqJ0VfU0GEqc0uNfjX6wrMxGKIK9+aNyzeyvCL9OzEU2MK8g==
+"@sprucelabs/test@^7.0.114", "@sprucelabs/test@^7.0.115":
+  version "7.0.115"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.115.tgz#070cbd323822a2415f5d115e35029b93bd12f961"
+  integrity sha512-zvy+EhyZUlX1HY/7sAHcyArDs1se4DaNViN/ZpjieXlo2rXEgzuRDIBnrovLhjSGPynSixpZIhLW4BHyHd7/+Q==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
