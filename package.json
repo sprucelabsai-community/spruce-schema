@@ -9,7 +9,7 @@
 	"version": "13.0.31",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
-	"description": "Spruce experience schemas",
+	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
 	"keywords": [
 		"node",
 		"components",
