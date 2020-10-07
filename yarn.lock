@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.194":
-  version "1.1.194"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.194.tgz#a455099941c0e067653367ae47a8d5782a9a4392"
-  integrity sha512-ecaJ9iDbDL/wXOM1K+Xo7joc9z7VE8EXZCWnXeE4ZBUFiIOJBJPWRs29KS4uD5x8pJdciDNa9rsHH4x1+o4Hng==
+"@sprucelabs/test-utils@^1.1.195":
+  version "1.1.195"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.195.tgz#b024a1641d476d112d03e736332b3b2e4c5ba81d"
+  integrity sha512-vpfuq9Tt8K+BiPJ49UUF1M95SoiKxO0isT/pLPEqH4llGDLONjRAAioAX+FxdOFUWKYSrpgr39IeTN2x1KKotg==
   dependencies:
     "@sprucelabs/error" "^2.2.431"
     "@sprucelabs/test" "^7.0.114"
