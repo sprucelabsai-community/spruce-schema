@@ -55,6 +55,8 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 	isNested?: boolean
 	/** Where this schema is going to be written (so other schemas can import it) */
 	destinationDir: string
+	/** Full import statements generated based on importsWhenLocal or importsWhenRemote */
+	imports?: string[]
 }
 
 /** How a field is represented in the template */
