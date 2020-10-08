@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.433", "@sprucelabs/error@^2.2.434":
-  version "2.2.434"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.434.tgz#3ba34fa6ff10ce85baf9977cb1df21c6d9b2660b"
-  integrity sha512-RfAh/4CpwHgM0p1DzUSmN0bYW06HyMPlynL+Q+ziwav3Wx/f9kAMoGEoX5q6ran4nhwc/ESJLv9NtaHzh/o3xQ==
+"@sprucelabs/error@^2.2.434", "@sprucelabs/error@^2.2.435":
+  version "2.2.435"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.435.tgz#076f943682e4a7ef7ea19bcf6aacac5983cba543"
+  integrity sha512-d1bk74dh6SE8JGNn4iSJ3wyNIAEewbfYS1jIJ7q0t1TnhoBos/gZ6i1Tl3O1xjfUZtxFubGZyx4lsXTVN9Rzgw==
 
 "@sprucelabs/log@^10.2.273":
   version "10.2.273"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.215":
-  version "1.1.215"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.215.tgz#82ef8314dd617b5475de9e4f31ece2aa75bdf69f"
-  integrity sha512-lQjBOBHHr4CuY645ydY3YAUj9toUtYjlZijTMI+/Jwx678g8GXzhVmSxlx49HRTKmO+PQbwW0PcjQQSyQcfjgQ==
+"@sprucelabs/test-utils@^1.1.216":
+  version "1.1.216"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.216.tgz#793723ecb99538db5fbee9219d4013179f389e59"
+  integrity sha512-RPK//2hq0xVtwX9o2QzpN0685rqCVuLNEDz/wslfOGoerAPltSbeYrSvWYfy+UMURvyAU6nWJqylQoGIBeqqXw==
   dependencies:
-    "@sprucelabs/error" "^2.2.433"
+    "@sprucelabs/error" "^2.2.434"
     "@sprucelabs/test" "^7.0.115"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.115":
-  version "7.0.115"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.115.tgz#070cbd323822a2415f5d115e35029b93bd12f961"
-  integrity sha512-zvy+EhyZUlX1HY/7sAHcyArDs1se4DaNViN/ZpjieXlo2rXEgzuRDIBnrovLhjSGPynSixpZIhLW4BHyHd7/+Q==
+"@sprucelabs/test@^7.0.115", "@sprucelabs/test@^7.0.116":
+  version "7.0.116"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.116.tgz#d110d259f4818ce0bea3ca65bc3cd61141d92ede"
+  integrity sha512-Kabg9LiUBkw6m9u55MkYydsTL5b8rbMHnL0bgIz6M4HWN2aAdEARhkgN9K7bBVXmCqDelO704j7q1Zbb3EK7hA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -2330,9 +2330,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001135:
-  version "1.0.30001144"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001144.tgz#bca0fffde12f97e1127a351fec3bfc1971aa3b3d"
-  integrity sha512-4GQTEWNMnVZVOFG3BK0xvGeaDAtiPAbG2N8yuMXuXzx/c2Vd4XoMPO8+E918zeXn5IF0FRVtGShBfkfQea2wHQ==
+  version "1.0.30001146"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001146.tgz#c61fcb1474520c1462913689201fb292ba6f447c"
+  integrity sha512-VAy5RHDfTJhpxnDdp2n40GPPLp3KqNrXz1QqFv4J64HvArKs8nuNMOWkB3ICOaBTU/Aj4rYAo/ytdQDDFF/Pug==
 
 capture-exit@^2.0.0:
   version "2.0.0"
