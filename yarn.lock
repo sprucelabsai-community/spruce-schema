@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.433":
-  version "2.2.433"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.433.tgz#716502c602e5b610ff57f06a38d4a03b57219195"
-  integrity sha512-+g1lckyAVEwZGpjQ6d/FjUQ0ZhRYLjVcp8SbEglqquaQkg+Z3HfN1SV8gnkcEiJnD6vyGIJDtnxu8gUjCz8giA==
+"@sprucelabs/error@^2.2.433", "@sprucelabs/error@^2.2.434":
+  version "2.2.434"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.434.tgz#3ba34fa6ff10ce85baf9977cb1df21c6d9b2660b"
+  integrity sha512-RfAh/4CpwHgM0p1DzUSmN0bYW06HyMPlynL+Q+ziwav3Wx/f9kAMoGEoX5q6ran4nhwc/ESJLv9NtaHzh/o3xQ==
 
-"@sprucelabs/log@^10.2.272":
-  version "10.2.272"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.272.tgz#0b91e0b6e11ae4b1a0047f073917eaf93948a6a2"
-  integrity sha512-Bihl/hfZFQcvx8vsd3r2HP5vJMu88q9a0Ar43jSHy/uRYER2T6SXx25AE8Ng3uNi6Z/3MNDqE5UiC2rO+4AXUQ==
+"@sprucelabs/log@^10.2.273":
+  version "10.2.273"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.273.tgz#e585224507f0fc93b2c54896d74bf740ac5f8083"
+  integrity sha512-W9Y2xGsSOnNc7+7Tjz9XB8guPYpmumtk10+BXzTzDrEKlR4xjLyANBJ23+bsDQTf3fsQtErx+hEI9/FOxoPQdA==
 
 "@sprucelabs/semantic-release@^4.0.5":
   version "4.0.5"
@@ -1367,10 +1367,10 @@
     conventional-changelog-sprucelabs "^1.1.0"
     semantic-release "^17.0.4"
 
-"@sprucelabs/test-utils@^1.1.214":
-  version "1.1.214"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.214.tgz#b7a7ce82ca96acaca27bd8b92aff4b6bef984f07"
-  integrity sha512-RWtH5SOU5vRf9NKCfp/3NxtE+mhjfSaCi6dM/t45g/cnKalZUkcKl1FvmSagRf/G0da3XnBstzXmsMajQfcINQ==
+"@sprucelabs/test-utils@^1.1.215":
+  version "1.1.215"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.215.tgz#82ef8314dd617b5475de9e4f31ece2aa75bdf69f"
+  integrity sha512-lQjBOBHHr4CuY645ydY3YAUj9toUtYjlZijTMI+/Jwx678g8GXzhVmSxlx49HRTKmO+PQbwW0PcjQQSyQcfjgQ==
   dependencies:
     "@sprucelabs/error" "^2.2.433"
     "@sprucelabs/test" "^7.0.115"
