@@ -1347,15 +1347,15 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.449":
-  version "2.2.449"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.449.tgz#5b38c4f31d80019b725f392856417cce219f6b94"
-  integrity sha512-KiS85UKKiJPiyTM/E+DPccG9mOmhAEJ63zHflu3U7o7aDvVqj2JpJ/lp8MW4wHouHDva4J8HMDcqvtc1RdgI8A==
+"@sprucelabs/error@^2.2.449", "@sprucelabs/error@^2.2.451":
+  version "2.2.451"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.451.tgz#2b640a67cfa36370c1060b3159d2befb843da10a"
+  integrity sha512-nWhAGYmAuplL14WS16g29PBzYzSyUssA4ePfsOpzlyDDrJRkQvh6p7HiTAab4a/WJHjDUT2Ophpyp9Czsx1OVg==
 
-"@sprucelabs/log@^10.2.281":
-  version "10.2.281"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.281.tgz#31f9e72faac12e8942858f1970aa39d183e28440"
-  integrity sha512-+8PUEmZ2PUrqhBO8X00E2xc/Vn59jE6JJSmedTklbYFFbbguyLy+I/AgjYtZ/3IZ+3YNEKErVYKgkUN50yuQcw==
+"@sprucelabs/log@^10.2.283":
+  version "10.2.283"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/log/-/log-10.2.283.tgz#b4223be9f34e2e1e41a7f272eaf05c963fe8f4d6"
+  integrity sha512-y/ZcaONLM3yrZr2ogPGSLdf6de/CjYXePg6rOw8pE4gX9zYNq8PMTsoTUCORK3IQhefOBxfVjkoSxs39nejWWw==
 
 "@sprucelabs/semantic-release@^4.0.6":
   version "4.0.6"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.2"
     semantic-release "^17.1.2"
 
-"@sprucelabs/test-utils@^1.1.256":
-  version "1.1.256"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.256.tgz#465cba3d93bbeb5e4d1c537f9f8024d5a548ba67"
-  integrity sha512-MXEHX+81ov3cOVVFGW/q7XrpuhCHa0rt40RYRJttxyoUlaH/siPb/1kFyxi92vshHNIElkfPAGyuG5io+8Mhyw==
+"@sprucelabs/test-utils@^1.1.257":
+  version "1.1.257"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.257.tgz#6c003762a32d26d63ceedb57f3102143e1c01ac2"
+  integrity sha512-6qG/31JDxxY7Pkc9eVLLQtbqGWWVw0LsHujX25766L/sIaCCQwZVIEk1y8XFDrpazXTbtkDpoeCaCjAXgX81KA==
   dependencies:
     "@sprucelabs/error" "^2.2.449"
     "@sprucelabs/test" "^7.0.126"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.126":
-  version "7.0.126"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.126.tgz#6f67ab4d992ef5b3f74b9aed3719e12d33184067"
-  integrity sha512-zJ5GxCWmop+n9xAOipjIXjJgbAAY10q1uAs/FYJ5Xdh2B1jHRAJklSsul7iSk/GjYXp9fXAy+LSkj1t/KZ27LA==
+"@sprucelabs/test@^7.0.126", "@sprucelabs/test@^7.0.128":
+  version "7.0.128"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.128.tgz#c958c9304c2099a4085c96f1fe731af4acb17f0e"
+  integrity sha512-MfYcOa+WB/rE9pUw5vXgQjuU1NFwPhQjmlh5327hceYg0cbbmsqITsL19IedrwLWpacJPMfKGFA9DicW1GIe8g==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -3331,10 +3331,10 @@ eslint-config-prettier@^6.12.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-spruce@^10.9.86:
-  version "10.9.86"
-  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.86.tgz#309740c9666344786c5652d5daf5c6c900af1645"
-  integrity sha512-0l71BjzNVUnO7XvNh+RvNxqzn6lYyta4JuD9WRFU2blKAoVfIvajzAsLC5gsVi8ZHhy96/z5leWWE+rtoL6H+Q==
+eslint-config-spruce@^10.9.87:
+  version "10.9.87"
+  resolved "https://registry.yarnpkg.com/eslint-config-spruce/-/eslint-config-spruce-10.9.87.tgz#862c74d15a9d785d24fc3d25016a9b1cec5c263a"
+  integrity sha512-+SUmo1N6CfV2DBxufH2uWbVgJ+CDb2MMJqDpnp5O1dE8uTz9VGRcutalmucgD9plkkmKZT+aK6qMp+MG/wcGKg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.4.0"
     "@typescript-eslint/parser" "^4.4.0"
@@ -3343,8 +3343,8 @@ eslint-config-spruce@^10.9.86:
     eslint-plugin-import "^2.22.1"
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
-    eslint-plugin-react "^7.21.3"
-    eslint-plugin-spruce "^10.9.86"
+    eslint-plugin-react "^7.21.4"
+    eslint-plugin-spruce "^10.9.87"
 
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
@@ -3405,16 +3405,16 @@ eslint-plugin-prettier@^3.1.4:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react@^7.21.3:
-  version "7.21.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.3.tgz#71655d2af5155b19285ec929dd2cdc67a4470b52"
-  integrity sha512-OI4GwTCqyIb4ipaOEGLWdaOHCXZZydStAsBEPB2e1ZfNM37bojpgO1BoOQbFb0eLVz3QLDx7b+6kYcrxCuJfhw==
+eslint-plugin-react@^7.21.4:
+  version "7.21.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.21.4.tgz#31060b2e5ff82b12e24a3cc33edb7d12f904775c"
+  integrity sha512-uHeQ8A0hg0ltNDXFu3qSfFqTNPXm1XithH6/SY318UX76CMj7Q599qWpgmMhVQyvhq36pm7qvoN3pb6/3jsTFg==
   dependencies:
     array-includes "^3.1.1"
     array.prototype.flatmap "^1.2.3"
     doctrine "^2.1.0"
     has "^1.0.3"
-    jsx-ast-utils "^2.4.1"
+    jsx-ast-utils "^2.4.1 || ^3.0.0"
     object.entries "^1.1.2"
     object.fromentries "^2.0.2"
     object.values "^1.1.1"
@@ -3422,10 +3422,10 @@ eslint-plugin-react@^7.21.3:
     resolve "^1.17.0"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-spruce@^10.9.86:
-  version "10.9.86"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.86.tgz#ace7e04d10bb184785bc3708f1d476fe5cb94bab"
-  integrity sha512-+c4jTEPp++NiJHjfiF8F75ELATIa5zMBwmMgN5KctImyuUrFXDmtVyZP7l3wUFxRFrI4APrUQZaDZVSHdLJH3A==
+eslint-plugin-spruce@^10.9.87:
+  version "10.9.87"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-spruce/-/eslint-plugin-spruce-10.9.87.tgz#914489999ba613f54dcbcc7b9c130fa30f1e527a"
+  integrity sha512-HA73YuypjxdeOwHNyZpVSmGUFIn/rcRmYUOyzVD4h0dvW4pvEzeN+L+qgaNufplhFWkBVFFL5HsXVGi8dL5AQA==
   dependencies:
     pascal-case "^3.1.1"
 
@@ -5426,6 +5426,14 @@ jsx-ast-utils@^2.4.1:
   dependencies:
     array-includes "^3.1.1"
     object.assign "^4.1.0"
+
+"jsx-ast-utils@^2.4.1 || ^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-3.0.0.tgz#0f49d5093bafa4b45d3fe02147d8b40ffc6c7438"
+  integrity sha512-sPuicm6EPKYI/UnWpOatvg4pI50qaBo4dSOMGUPutmJ26ttedFKXr0It0XXPk4HKnQ/1X0st4eSS2w2jhFk9Ow==
+  dependencies:
+    array-includes "^3.1.1"
+    object.assign "^4.1.1"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
