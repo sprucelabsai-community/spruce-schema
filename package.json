@@ -44,7 +44,7 @@
 		"@sprucelabs/error": "^2.2.445",
 		"@sprucelabs/log": "^10.2.278",
 		"google-libphonenumber": "^3.2.13",
-		"libphonenumber-js": "^1.8.3",
+		"libphonenumber-js": "^1.8.4",
 		"mime-db": "^1.45.0",
 		"mime-type": "^4.0.0"
 	},
@@ -52,7 +52,7 @@
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.5",
 		"@sprucelabs/test": "^7.0.123",
-		"@sprucelabs/test-utils": "^1.1.247",
+		"@sprucelabs/test-utils": "^1.1.248",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.161",
 		"@types/mime-db": "^1.43.0",
