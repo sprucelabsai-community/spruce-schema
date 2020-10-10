@@ -6,7 +6,7 @@
 	"files": [
 		"build"
 	],
-	"version": "13.0.92",
+	"version": "13.0.93",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
