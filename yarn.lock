@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.454":
-  version "2.2.454"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.454.tgz#355ee4147687368efa993c625e4fb750123a2961"
-  integrity sha512-rRIU4z8uDE7bB7f0TLkixyh9thkU2F9K62i59NB8LUV9628Kwnh9AsYDvk5QxJ7C4axSS6budtdLH/lrPLo5vw==
+"@sprucelabs/error@^2.2.454", "@sprucelabs/error@^2.2.455":
+  version "2.2.455"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.455.tgz#3afe5658f51ae510bc6c93641de39f2b7577ae24"
+  integrity sha512-3baDWO1wWNm9t0oA+SYENtUq+OAQm6w4q9rx1i0k9t+zSzrdZGV/VP0WGodiurozNY8qxPO45OauyV0+gMzAMQ==
 
 "@sprucelabs/log@^10.2.285":
   version "10.2.285"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.2"
     semantic-release "^17.1.2"
 
-"@sprucelabs/test-utils@^1.1.263":
-  version "1.1.263"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.263.tgz#d2f53d88204f77e3f74037e621729e37005173e2"
-  integrity sha512-tRNbFMiUAFnbAjO0BtxRB7ojgajeFWLFlnMDUPf3F+dDypjnP1ujXcXGS0q+bHJ8YOq2nxg8r/gnDacjaQ+4EA==
+"@sprucelabs/test-utils@^1.1.264":
+  version "1.1.264"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.264.tgz#a5b23d6209fc2c28efa15a0e5011c752ef045344"
+  integrity sha512-RB590Uhx/8I9fK4734MXKrnMDPhYyv2yGoCXPeTj81L/AroMYgwg6b2ghigJ4FAyuO2H3o9hen9XhhUCHq4dQw==
   dependencies:
     "@sprucelabs/error" "^2.2.454"
     "@sprucelabs/test" "^7.0.130"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.130":
-  version "7.0.130"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.130.tgz#54d66cf1c41208112ceb24c6dc76fa2e6953bcb7"
-  integrity sha512-IUh0/BsHlF21gU164sZDmJzPbQfFSIgC/resxH47ZFIAWs2r3BzaJ7VrCvW0nFMTfR1zYThtxkUMAzuYdinlqw==
+"@sprucelabs/test@^7.0.130", "@sprucelabs/test@^7.0.131":
+  version "7.0.131"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.131.tgz#6343299fd89e5f3f1f88510dcb1fd67a22958ab4"
+  integrity sha512-iTPGEhjfvCR19B9Xn3HJaWnL+HoXR9JM6yYAdJyKpA/M5PEgFrBms0nuORAVjyhcduA10F7QWNp+jUlGWKPIDQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1536,9 +1536,9 @@
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
 "@types/prettier@^2.0.0":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.1.1.tgz#be148756d5480a84cde100324c03a86ae5739fb5"
-  integrity sha512-2zs+O+UkDsJ1Vcp667pd3f8xearMdopz/z54i99wtRDI5KLmngk7vlrYZD0ZjKHaROR03EznlBbVY9PfAEyJIQ==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.1.2.tgz#4929992f87a0129f4960a110faeb526210562e7b"
+  integrity sha512-IiPhNnenzkqdSdQH3ifk9LoX7oQe61ZlDdDO4+MUv6FyWdPGDPr26gCPVs3oguZEMq//nFZZpwUZcVuNJsG+DQ==
 
 "@types/retry@^0.12.0":
   version "0.12.0"
