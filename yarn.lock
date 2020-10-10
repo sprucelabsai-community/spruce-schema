@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.452", "@sprucelabs/error@^2.2.453":
-  version "2.2.453"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.453.tgz#243448f17299559431401a50bdd6627af32f9f1f"
-  integrity sha512-Q2ksgJt1H4u2fTlUfZEt/rRdhsbw0/dCgLvxRfwIscsGLzbPQs3CZjj3XP/9MzcggNDjuXBZUEbaHj9ErzVnDg==
+"@sprucelabs/error@^2.2.453", "@sprucelabs/error@^2.2.454":
+  version "2.2.454"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.454.tgz#355ee4147687368efa993c625e4fb750123a2961"
+  integrity sha512-rRIU4z8uDE7bB7f0TLkixyh9thkU2F9K62i59NB8LUV9628Kwnh9AsYDvk5QxJ7C4axSS6budtdLH/lrPLo5vw==
 
 "@sprucelabs/log@^10.2.285":
   version "10.2.285"
@@ -1367,16 +1367,16 @@
     conventional-changelog-sprucelabs "^1.1.2"
     semantic-release "^17.1.2"
 
-"@sprucelabs/test-utils@^1.1.259":
-  version "1.1.259"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.259.tgz#cefcc77ce19140464486b5f933194aa8531fa8e2"
-  integrity sha512-zPLQPrVwrDslfqDq2seKSOvMYVwlER67Fs9JVdBBztDzZgob9lzUgk64T+/SttIzc61BMcVR9epNNdosV3XEfA==
+"@sprucelabs/test-utils@^1.1.260":
+  version "1.1.260"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.260.tgz#5601e33a79a25d18cc2415b0e537664c7a61a2c5"
+  integrity sha512-oqioecQ/zaelgJ+/7jdD92p5ZVV42rTZLdqCi3/Poz8B93rRZlK1rPKwyzrPfqQiSsld5RBYHnjQVePbabt6Ow==
   dependencies:
-    "@sprucelabs/error" "^2.2.452"
-    "@sprucelabs/test" "^7.0.129"
+    "@sprucelabs/error" "^2.2.453"
+    "@sprucelabs/test" "^7.0.130"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.129", "@sprucelabs/test@^7.0.130":
+"@sprucelabs/test@^7.0.130":
   version "7.0.130"
   resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.130.tgz#54d66cf1c41208112ceb24c6dc76fa2e6953bcb7"
   integrity sha512-IUh0/BsHlF21gU164sZDmJzPbQfFSIgC/resxH47ZFIAWs2r3BzaJ7VrCvW0nFMTfR1zYThtxkUMAzuYdinlqw==
