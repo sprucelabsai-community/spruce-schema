@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.2"
     semantic-release "^17.1.2"
 
-"@sprucelabs/test-utils@^1.1.285":
-  version "1.1.285"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.285.tgz#88599869e2e881720ad64cde4d37f1f54008f93c"
-  integrity sha512-pZTnekxZpAouLbbZ7cEQL80nW4xnBYifdGjbd/qXPGdtnQM9v6Y3Ld7rwX75IFvjLz1x/ViTlJsmUJS2sObjtw==
+"@sprucelabs/test-utils@^1.1.286":
+  version "1.1.286"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.286.tgz#75a8e2cb749d341930fb1e5b3ddf6bd0a6c178b9"
+  integrity sha512-cNGRzVp8Eq3kx+yN6ibXFnbJhmpRcnaMxc7nFJV5l8Ug/qzeRL/q679KwePKrJrfdQyDO8UnEdiJaozsFJ3X+w==
   dependencies:
     "@sprucelabs/error" "^2.2.458"
     "@sprucelabs/test" "^7.0.132"
     "@types/lodash" "^4.14.161"
 
-"@sprucelabs/test@^7.0.132":
-  version "7.0.132"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.132.tgz#3aa67ef4af88e312ec2fa8f3f5a715ddb4704e3f"
-  integrity sha512-trpjTR3G6CknFHq6oMa7kaYVCi0LI/GVxuipQ27i/5sxXO7as0XSmecUAWORaTxTROc4nk/XUPpN/mfoWjnL7g==
+"@sprucelabs/test@^7.0.132", "@sprucelabs/test@^7.0.133":
+  version "7.0.133"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.133.tgz#a4e3dc3df9f8c6e2863cc059edac27d29189b9e0"
+  integrity sha512-zZXu+JcnBUjxT1L5VllEjmd2eyje6mluDvebIshFaF/ALOqc+Mjk3OoR/3HFWCgPmW8OPa4Y/ZFiQMFkjN6sCA==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1500,10 +1500,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/lodash@^4.14.161":
-  version "4.14.161"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.161.tgz#a21ca0777dabc6e4f44f3d07f37b765f54188b18"
-  integrity sha512-EP6O3Jkr7bXvZZSZYlsgt5DIjiGr0dXP1/jVEwVLTFgg0d+3lWVQkRavYVQszV7dYUwvg0B8R0MBDpcmXg7XIA==
+"@types/lodash@^4.14.161", "@types/lodash@^4.14.162":
+  version "4.14.162"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.162.tgz#65d78c397e0d883f44afbf1f7ba9867022411470"
+  integrity sha512-alvcho1kRUnnD1Gcl4J+hK0eencvzq9rmzvFPRmP5rPHx9VVsJj6bKLTATPVf9ktgv4ujzh7T+XWKp+jhuODig==
 
 "@types/mime-db@^1.43.0":
   version "1.43.0"

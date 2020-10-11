@@ -51,10 +51,10 @@
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
 		"@sprucelabs/semantic-release": "^4.0.6",
-		"@sprucelabs/test": "^7.0.132",
-		"@sprucelabs/test-utils": "^1.1.285",
+		"@sprucelabs/test": "^7.0.133",
+		"@sprucelabs/test-utils": "^1.1.286",
 		"@types/google-libphonenumber": "^7.4.19",
-		"@types/lodash": "^4.14.161",
+		"@types/lodash": "^4.14.162",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
