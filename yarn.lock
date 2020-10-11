@@ -1347,10 +1347,10 @@
     tsconfig-paths "^3.9.0"
     yargs "^16.0.3"
 
-"@sprucelabs/error@^2.2.464", "@sprucelabs/error@^2.2.465":
-  version "2.2.465"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.465.tgz#16419135aa3033e77990506c1a5e1326b8807892"
-  integrity sha512-n0meeUH9L6dEQp/oT4TF2MnNxtDnS3pHw0+hgqSqa2bRrVu+3oDFeOClq02CwdFcRvf2KvupFh9b5UU1jLxcGA==
+"@sprucelabs/error@^2.2.466", "@sprucelabs/error@^2.2.467":
+  version "2.2.467"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/error/-/error-2.2.467.tgz#da44c278cd3be3721ca3643ad175009e3b464c6e"
+  integrity sha512-5OH1T5gIoldE82MHKvcTo0SPLDWU164QjEqAcwKTJxYtmyX/C52ca4Ka+g3T3BsLcTW8z2jZDesa1FNV8VlH/Q==
 
 "@sprucelabs/log@^10.2.289":
   version "10.2.289"
@@ -1367,19 +1367,19 @@
     conventional-changelog-sprucelabs "^1.1.2"
     semantic-release "^17.1.2"
 
-"@sprucelabs/test-utils@^1.1.300":
-  version "1.1.300"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.300.tgz#8af3507372f9a028aa1a19614507cdbd42e0146b"
-  integrity sha512-bjGg6DA87P+k2v2apg7GIh0eC4m3XLv5YTDKDh8A/9JDVVHrULg84Nrr3N50nzXXbwiAoqG9w6Y7sUMQIvF2Tg==
+"@sprucelabs/test-utils@^1.1.302":
+  version "1.1.302"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test-utils/-/test-utils-1.1.302.tgz#1a9200ca20cd9a75df75dcc6c4d6f08b21f3274e"
+  integrity sha512-gYqcb+Ko7KFp2JJnAzba8+gb41XULw/xWVIfx7rVCz2HHUX5829il/9Ej8f5TP1ix/6OvLPmLNVtjoWUuwV1KA==
   dependencies:
-    "@sprucelabs/error" "^2.2.464"
-    "@sprucelabs/test" "^7.0.137"
+    "@sprucelabs/error" "^2.2.466"
+    "@sprucelabs/test" "^7.0.138"
     "@types/lodash" "^4.14.162"
 
-"@sprucelabs/test@^7.0.137":
-  version "7.0.137"
-  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.137.tgz#b810944d7a64c5466dfc69876dfbef36e859bcfc"
-  integrity sha512-CSY+GAB6z7CyR/2ECxbLFFUQF9FgV7io2SSEuMeNMTz0s2yrDEW+e6B5H5z1WCWxXpVocGGON14dB/R70MMl7w==
+"@sprucelabs/test@^7.0.138":
+  version "7.0.138"
+  resolved "https://registry.yarnpkg.com/@sprucelabs/test/-/test-7.0.138.tgz#1d37f0fedb4c61dbc7af32deea8081cc1eb780ec"
+  integrity sha512-rbcJShS7b4RhKiQeSUZYpbI9hVM7IhJC0dqVjQaHQxU5HiVfnGBmL2XYGBESjn4kn3r9DY08sdbLQNoiSRW6vQ==
   dependencies:
     "@babel/core" "^7.11.6"
     "@babel/preset-env" "^7.11.5"
@@ -1387,7 +1387,7 @@
     babel-jest "^26.5.2"
     chalk "^4.1.0"
     deep-equal "^2.0.4"
-    jest "^26.5.2"
+    jest "^26.5.3"
     lodash "^4.17.20"
     ts-expect "^1.1.0"
     ts-jest "^26.4.1"
@@ -5272,7 +5272,7 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jest@^26.5.2:
+jest@^26.5.3:
   version "26.5.3"
   resolved "https://registry.yarnpkg.com/jest/-/jest-26.5.3.tgz#5e7a322d16f558dc565ca97639e85993ef5affe6"
   integrity sha512-uJi3FuVSLmkZrWvaDyaVTZGLL8WcfynbRnFXyAHuEtYiSZ+ijDDIMOw1ytmftK+y/+OdAtsG9QrtbF7WIBmOyA==
