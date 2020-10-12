@@ -8,10 +8,10 @@ import { ISchema, ISchemaFields, PickFieldNames } from '../schemas.static.types'
 export type SelectChoicesToHash<
 	Options extends ISelectFieldDefinitionChoice[]
 > = {
-	[P in Options[number]['label']]: Extract<
+	[P in Options[number]['value']]: Extract<
 		Options[number],
-		{ value: P }
-	>['value']
+		{ label: P }
+	>['label']
 }
 
 /** Pass the select options directly to create a value/label hash */
@@ -20,16 +20,16 @@ export function selectChoicesToHash<
 >(options: Options): SelectChoicesToHash<Options> {
 	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
-	Object.keys(options).forEach((key) => {
-		// @ts-ignore
-		partial[options[key]] = key
+	options.forEach((option) => {
+		//@ts-ignore
+		partial[option.value] = option.label
 	})
 
 	return partial as SelectChoicesToHash<Options>
 }
 
 /** Take a definition and a field name and returns a value/label hash */
-export function definitionChoicesToHash<
+export function schemaChoicesToHash<
 	S extends ISchema,
 	F extends PickFieldNames<S, 'select'>
 >(

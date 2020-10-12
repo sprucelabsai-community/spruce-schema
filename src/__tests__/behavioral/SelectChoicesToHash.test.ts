@@ -3,12 +3,12 @@ import { PickFieldNames } from '../../schemas.static.types'
 import {
 	SelectChoicesToHash,
 	selectChoicesToHash,
-	definitionChoicesToHash,
+	schemaChoicesToHash,
 } from '../../utilities/selectChoicesToHash'
 import buildPersonWithCars from '../data/personWithCars'
 
 export default class SelectOptionsToHashTest extends AbstractSpruceTest {
-	@test('choice hashing')
+	@test()
 	protected static async testCreatingOptionHashes() {
 		const { personSchema } = buildPersonWithCars()
 		const options = personSchema.fields.optionalSelect.options.choices
@@ -17,13 +17,14 @@ export default class SelectOptionsToHashTest extends AbstractSpruceTest {
 		const optionsHash = selectChoicesToHash(options)
 
 		assert.isType<Test>(optionsHash)
-		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash)
+		assert.isType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash)
+		assert.isEqualDeep(optionsHash, { foo: 'Foo', bar: 'Bar' })
 
 		type SelectFields = PickFieldNames<typeof personSchema, 'select'>
 
-		const optionsHash2 = definitionChoicesToHash(personSchema, 'optionalSelect')
+		const optionsHash2 = schemaChoicesToHash(personSchema, 'optionalSelect')
 
-		const optionsHash3 = definitionChoicesToHash(
+		const optionsHash3 = schemaChoicesToHash(
 			personSchema,
 			'optionalSelectWithDefaultValue'
 		)
@@ -38,7 +39,10 @@ export default class SelectOptionsToHashTest extends AbstractSpruceTest {
 			fieldName2
 		)
 
-		assert.isType<{ Foo: 'foo'; Bar: 'bar' }>(optionsHash2)
-		assert.isType<{ world: 'hello'; darling: 'goodbye' }>(optionsHash3)
+		assert.isType<{ foo: 'Foo'; bar: 'Bar' }>(optionsHash2)
+		assert.isEqualDeep(optionsHash2, { foo: 'Foo', bar: 'Bar' })
+
+		assert.isType<{ hello: 'world'; goodbye: 'darling' }>(optionsHash3)
+		assert.isEqualDeep(optionsHash3, { hello: 'world', goodbye: 'darling' })
 	}
 }
