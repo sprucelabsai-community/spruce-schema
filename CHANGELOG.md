@@ -1,3 +1,10 @@
+# [14.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v13.0.137...v14.0.0) (2020-10-12)
+
+
+### Breaking Changes
+
+* select options keys by value and actually works ([7b443fc](https://github.com/sprucelabsai/spruce-schema/commit/7b443fc))
+
 ## [13.0.137](https://github.com/sprucelabsai/spruce-schema/compare/v13.0.136...v13.0.137) (2020-10-12)
 
 ## [13.0.136](https://github.com/sprucelabsai/spruce-schema/compare/v13.0.135...v13.0.136) (2020-10-12)
