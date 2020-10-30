@@ -2,7 +2,7 @@ import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
-	ISchema,
+	Schema,
 	SchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
@@ -25,7 +25,7 @@ import normalizeFieldValue, {
 } from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
-export default class SchemaEntity<S extends ISchema>
+export default class SchemaEntity<S extends Schema>
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
@@ -71,9 +71,9 @@ export default class SchemaEntity<S extends ISchema>
 
 		Object.keys(fieldDefinitions).forEach((name) => {
 			const definition = fieldDefinitions[name]
-			const field = FieldFactory.Field(name, definition)
+			const field = FieldFactory.Field(name, definition as any)
 
-			this.fields[name as SchemaFieldNames<S>] = field as any
+			this.fields[name as SchemaFieldNames<S>] = field
 
 			if (definition.value) {
 				this.set(name as SchemaFieldNames<S>, definition.value)
@@ -140,8 +140,36 @@ export default class SchemaEntity<S extends ISchema>
 		}
 	}
 
+	private pluckExtraFields(values: SchemaPartialValues<S>, schema: S) {
+		const extraFields: string[] = []
+		if (schema.fields) {
+			const passedFields = Object.keys(values)
+			const expectedFields = Object.keys(schema.fields)
+
+			passedFields.forEach((passed) => {
+				if (expectedFields.indexOf(passed) === -1) {
+					extraFields.push(passed)
+				}
+			})
+		}
+		return extraFields
+	}
+
 	public validate(options: ISchemaValidateOptions<S> = {}) {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
+
+		const extraFields: string[] = this.pluckExtraFields(
+			this.values,
+			this.schema
+		)
+
+		if (extraFields.length > 0) {
+			throw new SpruceError({
+				code: 'FIELD_NOT_FOUND',
+				schemaId: this.schemaId,
+				fields: extraFields,
+			})
+		}
 
 		this.getNamedFields(options).forEach((namedField) => {
 			const { name, field } = namedField

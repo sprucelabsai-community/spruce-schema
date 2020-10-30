@@ -215,6 +215,20 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 	},
 })
 
+const personAsConst = {
+	id: 'personWithFavToolsOrFruit',
+	name: 'Person with favorite tools',
+	fields: {
+		firstName: {
+			type: 'text',
+			isRequired: true,
+		},
+		lastName: {
+			type: 'text',
+		},
+	},
+} as const
+
 const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
 	id: 'versionedPersonWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
@@ -397,12 +411,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				validateSchemaValues(personWithFavToolsSchema, {
 					firstName: 'first',
 					lastName: 'last',
-					favoriteTools: [
-						{
-							//@ts-ignore
-							foo: 'bar',
-						},
-					],
+					//@ts-ignore
+					favoriteTools: [{}],
 				}),
 			/'name' is required/
 		) as SpruceError
@@ -543,5 +553,54 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		// const message = err.friendlyMessage()
 		// console.log(message)
 		// debugger
+	}
+
+	@test()
+	protected static throwsWhenAddingExtraFieldAtTopLevel() {
+		assert.doesThrow(
+			() =>
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					doesNotExist: true,
+					favoriteToolsOrFruit: [
+						{
+							schemaId: 'fruit',
+							values: {
+								color: 'green',
+							},
+						},
+					],
+				}),
+			/doesNotExist/
+		)
+	}
+
+	@test()
+	protected static throwsWhenAddingExtraFieldInNestedSchema() {
+		assert.doesThrow(
+			() =>
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					favoriteToolsOrFruit: [
+						{
+							schemaId: 'fruit',
+							values: {
+								doesNotExist: true,
+								color: 'green',
+							},
+						},
+					],
+				}),
+			/doesNotExist/
+		)
+	}
+
+	@test()
+	protected static typesWorkWhenPassingSchemaThatIsCastAsConst() {
+		const values = {
+			firstName: 'Ryan',
+		}
+
+		validateSchemaValues(personAsConst, values)
 	}
 }
