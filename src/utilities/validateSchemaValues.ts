@@ -1,14 +1,14 @@
 import { validateSchema } from '..'
 import SchemaEntity from '../SchemaEntity'
 import {
-	ISchema,
+	Schema,
 	ISchemaValidateOptions,
 	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
 
 export default function validateSchemaValues<
-	S extends ISchema,
+	S extends Schema,
 	V extends SchemaPartialValues<S>
 >(
 	schema: S,

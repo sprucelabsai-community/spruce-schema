@@ -215,7 +215,7 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 	},
 })
 
-const personWithFavToolsOrFruitSchemaAsConst = {
+const personAsConst = {
 	id: 'personWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
 	fields: {
@@ -225,14 +225,6 @@ const personWithFavToolsOrFruitSchemaAsConst = {
 		},
 		lastName: {
 			type: 'text',
-		},
-		favoriteToolsOrFruit: {
-			isRequired: true,
-			type: 'schema',
-			isArray: true,
-			options: {
-				schemas: [toolSchema, fruitSchema],
-			},
 		},
 	},
 } as const
@@ -607,16 +599,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static typesWorkWhenPassingSchemaThatIsCastAsConst() {
 		const values = {
 			firstName: 'Ryan',
-			favoriteToolsOrFruit: [
-				{
-					schemaId: 'fruit',
-					values: {
-						color: 'green',
-					},
-				},
-			],
 		}
 
-		validateSchemaValues(personWithFavToolsOrFruitSchemaAsConst, values)
+		validateSchemaValues(personAsConst, values)
 	}
 }
