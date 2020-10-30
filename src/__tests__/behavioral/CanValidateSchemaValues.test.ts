@@ -215,7 +215,7 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 	},
 })
 
-const personAsConst = {
+const personWithFavToolsOrFruitSchemaAsConst = {
 	id: 'personWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
 	fields: {
@@ -607,6 +607,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			favoriteColors: ['blue'],
 		} as const
 
-		validateSchemaValues(personAsConst, values)
+		validateSchemaValues(personWithFavToolsOrFruitSchemaAsConst, values)
 	}
 }

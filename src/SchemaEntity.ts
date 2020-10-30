@@ -2,7 +2,7 @@ import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
-	Schema,
+	ISchema,
 	SchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
@@ -25,7 +25,7 @@ import normalizeFieldValue, {
 } from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
-export default class SchemaEntity<S extends Schema>
+export default class SchemaEntity<S extends ISchema>
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
@@ -71,9 +71,9 @@ export default class SchemaEntity<S extends Schema>
 
 		Object.keys(fieldDefinitions).forEach((name) => {
 			const definition = fieldDefinitions[name]
-			const field = FieldFactory.Field(name, definition as any)
+			const field = FieldFactory.Field(name, definition)
 
-			this.fields[name as SchemaFieldNames<S>] = field
+			this.fields[name as SchemaFieldNames<S>] = field as any
 
 			if (definition.value) {
 				this.set(name as SchemaFieldNames<S>, definition.value)

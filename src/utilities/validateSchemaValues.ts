@@ -1,15 +1,15 @@
 import { validateSchema } from '..'
 import SchemaEntity from '../SchemaEntity'
 import {
-	Schema,
+	ISchema,
 	ISchemaValidateOptions,
 	SchemaPartialValues,
 	SchemaValues,
-	DeepReadonly,
 } from '../schemas.static.types'
+import { DeepReadonly } from '../types/utilities.types'
 
 export default function validateSchemaValues<
-	S extends Schema,
+	S extends ISchema,
 	V extends SchemaPartialValues<S> | DeepReadonly<SchemaPartialValues<S>>
 >(
 	schema: S,
