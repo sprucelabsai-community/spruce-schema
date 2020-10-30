@@ -5,11 +5,12 @@ import {
 	ISchemaValidateOptions,
 	SchemaPartialValues,
 	SchemaValues,
+	DeepReadonly,
 } from '../schemas.static.types'
 
 export default function validateSchemaValues<
 	S extends Schema,
-	V extends SchemaPartialValues<S>
+	V extends SchemaPartialValues<S> | DeepReadonly<SchemaPartialValues<S>>
 >(
 	schema: S,
 	values: V,
@@ -18,7 +19,7 @@ export default function validateSchemaValues<
 ): asserts values is V & SchemaValues<S> {
 	validateSchema(schema)
 
-	const instance = new SchemaEntity(schema, values)
+	const instance = new SchemaEntity(schema, values as any)
 
 	instance.validate(options)
 }

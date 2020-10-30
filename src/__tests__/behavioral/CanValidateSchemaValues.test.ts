@@ -226,6 +226,11 @@ const personAsConst = {
 		lastName: {
 			type: 'text',
 		},
+		favoriteColors: {
+			type: 'text',
+			isRequired: true,
+			isArray: true,
+		},
 	},
 } as const
 
@@ -599,7 +604,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static typesWorkWhenPassingSchemaThatIsCastAsConst() {
 		const values = {
 			firstName: 'Ryan',
-		}
+			favoriteColors: ['blue'],
+		} as const
 
 		validateSchemaValues(personAsConst, values)
 	}
