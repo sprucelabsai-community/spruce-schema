@@ -11,3 +11,18 @@ export type IsArrayNoUnpack<T, isArray> = isArray extends true ? T[] : T
 export type IsRequired<T, isRequired> = isRequired extends true
 	? T
 	: T | undefined | null
+
+export type DeepReadonly<T> = T extends (infer R)[]
+	? DeepReadonlyArray<R>
+	: // eslint-disable-next-line @typescript-eslint/ban-types
+	T extends Function
+	? T
+	: T extends Record<string, any>
+	? DeepReadonlyObject<T>
+	: T
+
+export interface DeepReadonlyArray<T> extends ReadonlyArray<DeepReadonly<T>> {}
+
+export type DeepReadonlyObject<T> = {
+	readonly [P in keyof T]: DeepReadonly<T[P]>
+}
