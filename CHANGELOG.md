@@ -1,3 +1,10 @@
+# [14.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v14.0.1...v14.1.0) (2020-10-30)
+
+
+### Features
+
+* nested extra field checking, readonly type support ([1507b78](https://github.com/sprucelabsai/spruce-schema/commit/1507b78))
+
 ## [14.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v14.0.0...v14.0.1) (2020-10-21)
 
 # [14.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v13.0.137...v14.0.0) (2020-10-12)
