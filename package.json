@@ -45,9 +45,9 @@
 		"@sprucelabs/log": "^10.2.292",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.5",
+		"lodash": "^4.17.20",
 		"mime-db": "^1.45.0",
-		"mime-type": "^4.0.0",
-		"lodash": "^4.17.20"
+		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "^3.0.15",
