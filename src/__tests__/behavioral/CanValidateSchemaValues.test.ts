@@ -386,10 +386,12 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 						'profile150@2x': '',
 					},
 				}),
-			/I couldn't find 'taco'/
+			/is not a field on/
 		) as SpruceError
 
-		errorAssertUtil.assertError(err, 'FIELD_NOT_FOUND', { fields: ['taco'] })
+		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
+			'errors[0].code': 'unexpected',
+		})
 	}
 
 	@test()

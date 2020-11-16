@@ -164,10 +164,12 @@ export default class SchemaEntity<S extends ISchema>
 		)
 
 		if (extraFields.length > 0) {
-			throw new SpruceError({
-				code: 'FIELD_NOT_FOUND',
-				schemaId: this.schemaId,
-				fields: extraFields,
+			extraFields.forEach((name) => {
+				errors.push({
+					name,
+					code: 'unexpected',
+					friendlyMessage: `\`${name}\` is not a field on \`${this.schemaId}\`.`,
+				})
 			})
 		}
 
