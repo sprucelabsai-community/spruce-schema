@@ -1,3 +1,10 @@
+# [15.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v14.1.5...v15.0.0) (2020-11-16)
+
+
+### Breaking Changes
+
+* FIELD_NOT_FOUND normalized under INVALID_FIELD as unexpected ([f96b9cb](https://github.com/sprucelabsai/spruce-schema/commit/f96b9cb))
+
 ## [14.1.5](https://github.com/sprucelabsai/spruce-schema/compare/v14.1.4...v14.1.5) (2020-11-11)
 
 ## [14.1.4](https://github.com/sprucelabsai/spruce-schema/compare/v14.1.3...v14.1.4) (2020-11-10)
