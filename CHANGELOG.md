@@ -1,3 +1,10 @@
+# [16.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v15.0.0...v16.0.0) (2020-11-18)
+
+
+### Breaking Changes
+
+* dynamic schemas work mixed in with static schemas ([da93d9e](https://github.com/sprucelabsai/spruce-schema/commit/da93d9e))
+
 # [15.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v14.1.5...v15.0.0) (2020-11-16)
 
 
