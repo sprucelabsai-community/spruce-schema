@@ -1,7 +1,11 @@
 import { assert, test } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntity from '../../DynamicSchemaEntity'
-import { DynamicSchemaAllValues, ISchema } from '../../schemas.static.types'
+import {
+	DynamicSchemaAllValues,
+	ISchema,
+	SchemaValues,
+} from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 
 const textDynamicSchema = buildSchema({
@@ -186,5 +190,59 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 			() => entity.set('foo', { hello: 'world' }),
 			/converted to a number/
 		)
+	}
+
+	@test()
+	protected static typesDynamicFieldValues() {
+		const fullSchema = buildSchema({
+			id: 'fullMessageAdapter',
+			fields: {
+				id: {
+					type: 'id',
+					isRequired: true,
+				},
+				dateCreated: {
+					type: 'number',
+					isRequired: true,
+				},
+				adapterName: {
+					type: 'text',
+					isRequired: true,
+				},
+				settings: {
+					type: 'schema',
+					isRequired: true,
+					options: {
+						schema: buildSchema({
+							id: 'messageAdapterSettings',
+							dynamicFieldSignature: {
+								type: 'text',
+								keyName: 'key',
+							},
+						}),
+					},
+				},
+			},
+		})
+
+		type Values = SchemaValues<typeof fullSchema>
+		const values: Values = {
+			id: '1',
+			dateCreated: 2,
+			adapterName: '3',
+			settings: {},
+		}
+
+		values.settings.anything = 'true'
+
+		assert.isExactType<
+			typeof values,
+			{
+				id: string
+				dateCreated: number
+				adapterName: string
+				settings: Record<string, string | null | undefined>
+			}
+		>(true)
 	}
 }

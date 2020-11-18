@@ -175,7 +175,7 @@ export type DynamicSchemaPartialValues<
 		: never
 }>
 
-export type SchemaValues<
+export type SchemaStaticValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false,
 	K extends SchemaOptionalFieldNames<T> = SchemaOptionalFieldNames<T>,
@@ -184,6 +184,17 @@ export type SchemaValues<
 		CreateEntityInstances
 	>
 > = Omit<V, K> & Partial<Pick<V, K>>
+
+export type SchemaValues<
+	S extends ISchema,
+	CreateEntityInstances extends boolean = false
+> = IsDynamicFieldSchema<S> extends true
+	? DynamicSchemaAllValues<S>
+	: SchemaStaticValues<S, CreateEntityInstances>
+
+type IsDynamicFieldSchema<
+	S extends ISchema
+> = S['dynamicFieldSignature'] extends FieldDefinition ? true : false
 
 export type SchemaDefaultValues<
 	S extends ISchema,
