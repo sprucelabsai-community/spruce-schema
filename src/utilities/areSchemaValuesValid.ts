@@ -1,4 +1,4 @@
-import SchemaEntity from '../SchemaEntity'
+import EntityFactory from '../factories/EntityFactory'
 import {
 	ISchema,
 	ISchemaValidateOptions,
@@ -10,6 +10,6 @@ export default function areSchemaValuesValid<S extends ISchema>(
 	values: SchemaPartialValues<S>,
 	options?: ISchemaValidateOptions<S>
 ) {
-	const instance = new SchemaEntity(definition, values)
+	const instance = EntityFactory.Entity(definition, values)
 	return instance.isValid(options)
 }

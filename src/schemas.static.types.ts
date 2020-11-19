@@ -155,7 +155,7 @@ export type SchemaFields<T extends ISchema> = {
 export type SchemaAllValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
-> = IsDynamicFieldSchema<S> extends true
+> = IsDynamicSchema<S> extends true
 	? DynamicSchemaAllValues<S, CreateEntityInstances>
 	: StaticSchemaAllValues<S, CreateEntityInstances>
 
@@ -183,6 +183,13 @@ export type DynamicSchemaAllValues<
 }
 
 export type SchemaPartialValues<
+	S extends ISchema,
+	CreateEntityInstances extends boolean = false
+> = IsDynamicSchema<S> extends true
+	? DynamicSchemaPartialValues<S, CreateEntityInstances>
+	: StaticSchemaPartialValues<S, CreateEntityInstances>
+
+export type StaticSchemaPartialValues<
 	T extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = {
@@ -220,11 +227,11 @@ export type SchemaStaticValues<
 export type SchemaValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
-> = IsDynamicFieldSchema<S> extends true
+> = IsDynamicSchema<S> extends true
 	? DynamicSchemaAllValues<S>
 	: SchemaStaticValues<S, CreateEntityInstances>
 
-type IsDynamicFieldSchema<
+export type IsDynamicSchema<
 	S extends ISchema
 > = S['dynamicFieldSignature'] extends FieldDefinition ? true : false
 

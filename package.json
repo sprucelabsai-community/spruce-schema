@@ -69,29 +69,18 @@
 		"typescript": "^4.0.3",
 		"yarn": "^1.22.10"
 	},
-	"babel": {
-		"presets": [
-			[
-				"@babel/preset-env",
-				{
-					"targets": {
-						"node": "current"
-					}
-				}
-			],
-			"@babel/preset-typescript"
-		]
-	},
 	"jest": {
-		"preset": "ts-jest",
 		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
 			"<rootDir>/tmp/",
-			"<rootDir>/build/",
+			"<rootDir>/src/",
 			"<rootDir>/node_modules/"
 		],
 		"testMatch": [
-			"**/__tests__/**/*.test.ts"
-		]
+			"**/__tests__/**/*.test.js?(x)"
+		],
+		"moduleNameMapper": {
+			"^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
+		}
 	}
 }

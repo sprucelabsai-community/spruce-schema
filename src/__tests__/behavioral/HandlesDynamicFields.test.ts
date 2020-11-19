@@ -7,8 +7,10 @@ import {
 	SchemaAllValues,
 	SchemaValues,
 } from '../../schemas.static.types'
+import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
+import validateSchemaValues from '../../utilities/validateSchemaValues'
 
 const textDynamicSchema = buildSchema({
 	id: 'textDynamic',
@@ -49,9 +51,9 @@ const arrayRequiredDynamicSchema = buildSchema({
 	},
 })
 
-export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
+export default class HandlesDynamicFields extends AbstractSchemaTest {
 	@test()
-	protected static canCreateSchemaEntityWithDynamicKeys() {
+	protected static canCreateSchemaEntityWithDynamicFields() {
 		const entity = new DynamicSchemaEntity(textDynamicSchema)
 		assert.isTruthy(entity)
 	}
@@ -171,6 +173,21 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 		)
 
 		assert.isFalse(entity.isValid())
+	}
+
+	@test()
+	protected static canValidateUsingUtilityFunction() {
+		const values = {
+			foo: { another: 'object' },
+		}
+		assert.doesThrow(
+			//@ts-ignore
+			() => validateSchemaValues(textDynamicSchema, values),
+			/could not be converted to a string/
+		)
+
+		//@ts-ignore
+		assert.isFalse(areSchemaValuesValid(textDynamicSchema, values))
 	}
 
 	@test()

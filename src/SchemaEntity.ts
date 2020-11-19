@@ -4,7 +4,7 @@ import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
 	ISchema,
-	SchemaPartialValues,
+	StaticSchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
 	ISchemaNormalizeOptions,
@@ -32,10 +32,10 @@ export default class SchemaEntity<S extends ISchema>
 	public static enableDuplicateCheckWhenTracking = true
 
 	protected schema: S
-	private values: SchemaPartialValues<S>
+	private values: StaticSchemaPartialValues<S>
 	private fields: SchemaFields<S>
 
-	public constructor(schema: S, values?: SchemaPartialValues<S>) {
+	public constructor(schema: S, values?: StaticSchemaPartialValues<S>) {
 		super(schema)
 
 		this.schema = schema
@@ -124,7 +124,7 @@ export default class SchemaEntity<S extends ISchema>
 		}
 	}
 
-	private pluckExtraFields(values: SchemaPartialValues<S>, schema: S) {
+	private pluckExtraFields(values: StaticSchemaPartialValues<S>, schema: S) {
 		const extraFields: string[] = []
 		if (schema.fields) {
 			const passedFields = Object.keys(values)
@@ -226,7 +226,7 @@ export default class SchemaEntity<S extends ISchema>
 	): IncludePrivateFields extends false
 		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
 		: Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
-		const values: SchemaPartialValues<S, CreateEntityInstances> = {}
+		const values: StaticSchemaPartialValues<S, CreateEntityInstances> = {}
 
 		const { fields = Object.keys(this.fields), includePrivateFields = true } =
 			options || {}
@@ -246,7 +246,7 @@ export default class SchemaEntity<S extends ISchema>
 		return values
 	}
 
-	public setValues(values: SchemaPartialValues<S>): this {
+	public setValues(values: StaticSchemaPartialValues<S>): this {
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
 			const value = values[name]

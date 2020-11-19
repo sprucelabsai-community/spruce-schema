@@ -1,10 +1,15 @@
-import SchemaEntity from '../SchemaEntity'
+import EntityFactory from '../factories/EntityFactory'
 import {
 	ISchema,
 	SchemaPartialValues,
 	ISchemaGetValuesOptions,
 	SchemaFieldNames,
 	SchemaPublicFieldNames,
+	IsDynamicSchema,
+	DynamicSchemaAllValues,
+	SchemaPublicValues,
+	SchemaAllValues,
+	SchemaEntity,
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
@@ -12,7 +17,8 @@ export default function normalizeSchemaValues<
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 	CreateEntityInstances extends boolean = false,
-	IncludePrivateFields extends boolean = true
+	IncludePrivateFields extends boolean = true,
+	IsDynamic extends boolean = IsDynamicSchema<S>
 >(
 	definition: S,
 	values: SchemaPartialValues<S>,
@@ -24,7 +30,7 @@ export default function normalizeSchemaValues<
 		IncludePrivateFields
 	>
 ) {
-	const instance = new SchemaEntity(definition, values)
+	const instance = EntityFactory.Entity<S, IsDynamic>(definition, values)
 
 	const { createEntityInstances = false, ...rest } = options || {}
 	const normalizedOptions = {
@@ -38,5 +44,11 @@ export default function normalizeSchemaValues<
 		IncludePrivateFields
 	>
 
-	return instance.getValues(normalizedOptions)
+	return (instance as SchemaEntity).getValues(
+		normalizedOptions
+	) as IsDynamic extends true
+		? DynamicSchemaAllValues<S, CreateEntityInstances>
+		: IncludePrivateFields extends false
+		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
+		: Pick<SchemaAllValues<S, CreateEntityInstances>, F>
 }
