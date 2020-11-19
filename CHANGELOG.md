@@ -1,3 +1,11 @@
+# [16.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.0.0...v16.1.0) (2020-11-19)
+
+
+### Features
+
+* dynamic schemas validate and normalize like static entities ([a237a46](https://github.com/sprucelabsai/spruce-schema/commit/a237a46))
+* entity factory, id field fix ([0d0eb07](https://github.com/sprucelabsai/spruce-schema/commit/0d0eb07))
+
 # [16.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v15.0.0...v16.0.0) (2020-11-18)
 
 
