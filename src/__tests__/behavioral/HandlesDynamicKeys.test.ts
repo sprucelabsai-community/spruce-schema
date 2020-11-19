@@ -4,9 +4,11 @@ import DynamicSchemaEntity from '../../DynamicSchemaEntity'
 import {
 	DynamicSchemaAllValues,
 	ISchema,
+	SchemaAllValues,
 	SchemaValues,
 } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
+import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 const textDynamicSchema = buildSchema({
 	id: 'textDynamic',
@@ -193,7 +195,7 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 	}
 
 	@test()
-	protected static typesDynamicFieldValues() {
+	protected static typesAndNormalizedRelatedSchemasWithDynamicFields() {
 		const fullSchema = buildSchema({
 			id: 'fullMessageAdapter',
 			fields: {
@@ -226,6 +228,8 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 		})
 
 		type Values = SchemaValues<typeof fullSchema>
+		type AllValues = SchemaAllValues<typeof fullSchema>
+
 		const values: Values = {
 			id: '1',
 			dateCreated: 2,
@@ -244,5 +248,96 @@ export default class CanValidateDynamicKeysTest extends AbstractSchemaTest {
 				settings: Record<string, string | null | undefined>
 			}
 		>(true)
+
+		const allValues: AllValues = {
+			id: '1',
+			dateCreated: 2,
+			adapterName: '3',
+			settings: {
+				first: 'first',
+			},
+		}
+
+		assert.isExactType<
+			typeof allValues,
+			{
+				id: string
+				dateCreated: number
+				adapterName: string
+				settings: Record<string, string | null | undefined>
+			}
+		>(true)
+
+		const normalized = normalizeSchemaValues(
+			fullSchema,
+			{
+				//@ts-ignore
+				id: 1,
+				//@ts-ignore
+				dateCreated: '2',
+				//@ts-ignore
+				adapterName: 4,
+				settings: {
+					first: 'first',
+					//@ts-ignore
+					second: 2,
+				},
+			},
+			{ includePrivateFields: false }
+		)
+
+		assert.isEqualDeep(normalized, {
+			id: '1',
+			dateCreated: 2,
+			adapterName: '4',
+			settings: {
+				first: 'first',
+				second: '2',
+			},
+		})
+	}
+
+	@test()
+	protected static typesAndNormalizesDynamicSchemas() {
+		const fullSchema = buildSchema({
+			id: 'aDynamicSchema',
+			dynamicFieldSignature: {
+				type: 'text',
+				keyName: 'key',
+			},
+		})
+
+		type Values = SchemaValues<typeof fullSchema>
+
+		const values: Values = {
+			id: '1',
+			dateCreated: 'hey',
+			adapterName: '3',
+			settings: 'there',
+		}
+
+		values.anything = 'true'
+
+		assert.isExactType<
+			typeof values,
+			{
+				[key: string]: string | undefined | null
+			}
+		>(true)
+
+		const normalized = normalizeSchemaValues(fullSchema, {
+			//@ts-ignore
+			id: 1,
+			//@ts-ignore
+			dateCreated: '2',
+			//@ts-ignore
+			adapterName: 4,
+		})
+
+		assert.isEqualDeep(normalized, {
+			id: '1',
+			dateCreated: '2',
+			adapterName: '4',
+		})
 	}
 }

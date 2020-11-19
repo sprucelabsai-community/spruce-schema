@@ -11,7 +11,22 @@ import {
 	FieldType,
 } from './fields/field.static.types'
 
-export interface ISchemaEntity<S extends ISchema> {
+export interface SchemaEntity {
+	schemaId: string
+	namespace?: string
+	name?: string
+	version?: string
+	description?: string
+	get(fieldName: string, options?: Record<string, any>): any
+	set(fieldName: string, value: any, options?: Record<string, any>): this
+	getValues(options?: Record<string, any>): Record<string, any>
+	setValues(values: Record<string, any>): this
+	getNamedFields(options?: Record<string, any>): ISchemaNamedField<any>[]
+	validate(options?: Record<string, any>): void
+	isValid(options?: Record<string, any>): boolean
+}
+
+export interface ISchemaEntity<S extends ISchema> extends SchemaEntity {
 	readonly schemaId: S['id']
 	readonly name: S['name']
 	readonly namespace: S['namespace']
@@ -66,10 +81,20 @@ export interface IDynamicSchemaEntity<
 	> = Schema['dynamicFieldSignature'] extends FieldDefinition
 		? IFieldMap[Schema['dynamicFieldSignature']['type']]
 		: any
-> extends Omit<
-		ISchemaEntity<Schema>,
-		'get' | 'set' | 'getValues' | 'setValues' | 'getNamedFields'
-	> {
+> extends SchemaEntity,
+		Omit<
+			ISchemaEntity<Schema>,
+			| 'get'
+			| 'set'
+			| 'getValues'
+			| 'setValues'
+			| 'getNamedFields'
+			| 'schemaId'
+			| 'namespace'
+			| 'name'
+			| 'version'
+			| 'description'
+		> {
 	get<F extends string, CreateEntityInstances extends boolean = true>(
 		fieldName: F,
 		options?: IDynamicSchemaNormalizeOptions<CreateEntityInstances>
@@ -128,6 +153,13 @@ export type SchemaFields<T extends ISchema> = {
 }
 
 export type SchemaAllValues<
+	S extends ISchema,
+	CreateEntityInstances extends boolean = false
+> = IsDynamicFieldSchema<S> extends true
+	? DynamicSchemaAllValues<S, CreateEntityInstances>
+	: StaticSchemaAllValues<S, CreateEntityInstances>
+
+export type StaticSchemaAllValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false
 > = {

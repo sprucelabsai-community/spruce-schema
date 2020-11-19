@@ -1,7 +1,13 @@
+import AbstractEntity from '../AbstractEntity'
+import DynamicSchemaEntity from '../DynamicSchemaEntity'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import SchemaEntity from '../SchemaEntity'
-import { ISchema, ISchemaIdWithVersion } from '../schemas.static.types'
+import StaticSchemaEntity from '../SchemaEntity'
+import {
+	ISchema,
+	ISchemaIdWithVersion,
+	SchemaEntity,
+} from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
 import {
 	IFieldTemplateDetailOptions,
@@ -224,7 +230,7 @@ export default class SchemaField<
 		const errors = super.validate(value, options)
 
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
-		if (value instanceof SchemaEntity) {
+		if (value instanceof AbstractEntity) {
 			try {
 				value.validate()
 				return []
@@ -266,11 +272,11 @@ export default class SchemaField<
 				}
 
 				// if we are validating schemas, we look them all up by id
-				let instance: SchemaEntity<ISchema> | undefined
+				let instance: SchemaEntity | undefined
+
 				if (schemas && schemas.length === 1) {
 					// @ts-ignore warns about infinite recursion, which is true, because relationships between schemas can go forever
-					// because
-					instance = new SchemaEntity(schemas[0], value)
+					instance = this.instantiateSchema(schemas[0], value)
 				} else if (schemas && schemas.length > 0) {
 					const { schemaId, version, values } = value || {}
 
@@ -301,7 +307,7 @@ export default class SchemaField<
 								}.`,
 							})
 						} else {
-							instance = new SchemaEntity(matchSchema, values)
+							instance = this.instantiateSchema(matchSchema, values)
 						}
 					}
 				}
@@ -322,6 +328,12 @@ export default class SchemaField<
 		}
 
 		return errors
+	}
+
+	private instantiateSchema(schema: ISchema, value: any): SchemaEntity {
+		return schema.dynamicFieldSignature
+			? new DynamicSchemaEntity(schema, value)
+			: new StaticSchemaEntity(schema, value)
 	}
 
 	public toValueType<CreateEntityInstances extends boolean>(
@@ -351,14 +363,14 @@ export default class SchemaField<
 		)
 
 		const isUnion = destinationSchemas.length > 1
-		let instance: SchemaEntity<ISchema> | undefined
+		let instance: SchemaEntity | undefined
 
-		if (value instanceof SchemaEntity) {
+		if (value instanceof AbstractEntity) {
 			instance = value
 		}
 		// if we are only pointing 1 one possible definition, then mapping is pretty easy
 		else if (!isUnion) {
-			instance = new SchemaEntity(destinationSchemas[0], value)
+			instance = this.instantiateSchema(destinationSchemas[0], value)
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
@@ -392,7 +404,7 @@ export default class SchemaField<
 				matchedSchema = allMatches[0]
 			}
 
-			instance = new SchemaEntity(matchedSchema, values)
+			instance = this.instantiateSchema(matchedSchema, values)
 		}
 
 		if (createEntityInstances) {

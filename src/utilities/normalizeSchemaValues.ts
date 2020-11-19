@@ -11,7 +11,7 @@ export default function normalizeSchemaValues<
 	S extends ISchema,
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
-	CreateEntityInstances extends boolean = true,
+	CreateEntityInstances extends boolean = false,
 	IncludePrivateFields extends boolean = true
 >(
 	definition: S,
@@ -26,5 +26,17 @@ export default function normalizeSchemaValues<
 ) {
 	const instance = new SchemaEntity(definition, values)
 
-	return instance.getValues(options)
+	const { createEntityInstances = false, ...rest } = options || {}
+	const normalizedOptions = {
+		createEntityInstances,
+		...rest,
+	} as ISchemaGetValuesOptions<
+		S,
+		F,
+		PF,
+		CreateEntityInstances,
+		IncludePrivateFields
+	>
+
+	return instance.getValues(normalizedOptions)
 }
