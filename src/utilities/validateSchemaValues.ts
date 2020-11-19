@@ -1,5 +1,5 @@
 import { validateSchema } from '..'
-import SchemaEntity from '../SchemaEntity'
+import EntityFactory from '../factories/EntityFactory'
 import {
 	ISchema,
 	ISchemaValidateOptions,
@@ -19,7 +19,7 @@ export default function validateSchemaValues<
 ): asserts values is V & SchemaValues<S> {
 	validateSchema(schema)
 
-	const instance = new SchemaEntity(schema, values as any)
+	const instance = EntityFactory.Entity(schema, values as any)
 
 	instance.validate(options)
 }

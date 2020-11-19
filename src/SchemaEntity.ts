@@ -1,9 +1,10 @@
+import AbstractEntity from './AbstractEntity'
 import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
 	ISchema,
-	SchemaPartialValues,
+	StaticSchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
 	ISchemaNormalizeOptions,
@@ -26,34 +27,17 @@ import normalizeFieldValue, {
 
 /** Universal schema class  */
 export default class SchemaEntity<S extends ISchema>
+	extends AbstractEntity
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
-	public get schemaId() {
-		return this.schema.id
-	}
-
-	public get namespace() {
-		return this.schema.namespace
-	}
-
-	public get name() {
-		return this.schema.name
-	}
-
-	public get version() {
-		return this.schema.version
-	}
-
-	public get description() {
-		return this.schema.id
-	}
-
-	private schema: S
-	private values: SchemaPartialValues<S>
+	protected schema: S
+	private values: StaticSchemaPartialValues<S>
 	private fields: SchemaFields<S>
 
-	public constructor(schema: S, values?: SchemaPartialValues<S>) {
+	public constructor(schema: S, values?: StaticSchemaPartialValues<S>) {
+		super(schema)
+
 		this.schema = schema
 		this.values = values ? values : {}
 		this.fields = {} as SchemaFields<S>
@@ -140,7 +124,7 @@ export default class SchemaEntity<S extends ISchema>
 		}
 	}
 
-	private pluckExtraFields(values: SchemaPartialValues<S>, schema: S) {
+	private pluckExtraFields(values: StaticSchemaPartialValues<S>, schema: S) {
 		const extraFields: string[] = []
 		if (schema.fields) {
 			const passedFields = Object.keys(values)
@@ -223,7 +207,7 @@ export default class SchemaEntity<S extends ISchema>
 				)
 			}
 		})
-		return values as Pick<SchemaDefaultValues<S, CreateEntityInstances>, F>
+		return values as any
 	}
 
 	public getValues<
@@ -242,7 +226,7 @@ export default class SchemaEntity<S extends ISchema>
 	): IncludePrivateFields extends false
 		? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
 		: Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
-		const values: SchemaPartialValues<S, CreateEntityInstances> = {}
+		const values: StaticSchemaPartialValues<S, CreateEntityInstances> = {}
 
 		const { fields = Object.keys(this.fields), includePrivateFields = true } =
 			options || {}
@@ -262,7 +246,7 @@ export default class SchemaEntity<S extends ISchema>
 		return values
 	}
 
-	public setValues(values: SchemaPartialValues<S>): this {
+	public setValues(values: StaticSchemaPartialValues<S>): this {
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
 			const value = values[name]

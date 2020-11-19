@@ -1,4 +1,5 @@
 import { IFieldMap } from '#spruce/schemas/fields/fields.types'
+import AbstractEntity from './AbstractEntity'
 import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
@@ -22,48 +23,27 @@ import {
 import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntity<
-	Schema extends ISchema,
-	Field extends IField<
-		any
-	> = Schema['dynamicFieldSignature'] extends IFieldDefinition
-		? IFieldMap[Schema['dynamicFieldSignature']['type']]
-		: any
-> implements IDynamicSchemaEntity<Schema, Field> {
-	public get schemaId() {
-		return this.schema.id
-	}
-
-	public get name() {
-		return this.schema.name
-	}
-
-	public get namespace() {
-		return this.schema.name
-	}
-
-	public get version() {
-		return this.schema.version
-	}
-
-	public get description() {
-		return this.schema.id
-	}
-
-	private schema: Schema
-	private values: DynamicSchemaPartialValues<Schema> = {}
+		S extends ISchema,
+		Field extends IField<
+			any
+		> = S['dynamicFieldSignature'] extends IFieldDefinition
+			? IFieldMap[S['dynamicFieldSignature']['type']]
+			: any
+	>
+	extends AbstractEntity
+	implements IDynamicSchemaEntity<S, Field> {
+	private values: DynamicSchemaPartialValues<S> = {}
 	private dynamicField: Field
 
-	public constructor(
-		schema: Schema,
-		values?: DynamicSchemaPartialValues<Schema>
-	) {
+	public constructor(schema: S, values?: DynamicSchemaPartialValues<S>) {
+		super(schema)
+
 		if (!schema.dynamicFieldSignature) {
 			throw new Error(
 				`DynamicSchemaEntity only works with with schemas with dynamicFieldSignature set.`
 			)
 		}
 
-		this.schema = schema
 		this.values = values || {}
 		this.dynamicField = FieldFactory.Field(
 			'dynamicField',
@@ -131,7 +111,7 @@ export default class DynamicSchemaEntity<
 
 	public get<F extends string, CreateEntityInstances extends boolean = true>(
 		fieldName: F,
-		options?: ISchemaNormalizeOptions<Schema, CreateEntityInstances>
+		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
 	): FieldDefinitionValueType<Field, CreateEntityInstances> {
 		const value = this.values[fieldName]
 		return normalizeFieldValue(
@@ -148,9 +128,9 @@ export default class DynamicSchemaEntity<
 		F extends string,
 		CreateEntityInstances extends boolean = true
 	>(
-		options?: IDynamicSchemaGetValuesOptions<Schema, F, CreateEntityInstances>
-	): DynamicSchemaAllValues<Schema, CreateEntityInstances> {
-		const values: DynamicSchemaPartialValues<Schema> = {}
+		options?: IDynamicSchemaGetValuesOptions<S, F, CreateEntityInstances>
+	): DynamicSchemaAllValues<S, CreateEntityInstances> {
+		const values: DynamicSchemaPartialValues<S> = {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name } = namedField
@@ -159,10 +139,10 @@ export default class DynamicSchemaEntity<
 			values[name] = value
 		})
 
-		return values as DynamicSchemaAllValues<Schema, CreateEntityInstances>
+		return values as DynamicSchemaAllValues<S, CreateEntityInstances>
 	}
 
-	public setValues(values: DynamicSchemaPartialValues<Schema>): this {
+	public setValues(values: DynamicSchemaPartialValues<S>): this {
 		this.values = { ...this.values, ...values }
 		return this
 	}
