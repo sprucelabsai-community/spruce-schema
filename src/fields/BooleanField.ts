@@ -5,9 +5,7 @@ import {
 import AbstractField from './AbstractField'
 import { IBooleanFieldDefinition } from './BooleanField.types'
 
-export default class BooleanField extends AbstractField<
-	IBooleanFieldDefinition
-> {
+export default class BooleanField extends AbstractField<IBooleanFieldDefinition> {
 	public static get description() {
 		return 'A true/false. Converts false string to false, all other strings to true.'
 	}

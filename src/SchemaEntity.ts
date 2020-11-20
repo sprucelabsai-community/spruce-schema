@@ -187,9 +187,7 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	public getDefaultValues<
-		F extends SchemaFieldNamesWithDefaultValue<
-			S
-		> = SchemaFieldNamesWithDefaultValue<S>,
+		F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}

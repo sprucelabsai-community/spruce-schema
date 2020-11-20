@@ -76,9 +76,7 @@ export interface ISchemaEntity<S extends ISchema> extends SchemaEntity {
 
 export interface IDynamicSchemaEntity<
 	Schema extends ISchema,
-	Field extends IField<
-		any
-	> = Schema['dynamicFieldSignature'] extends FieldDefinition
+	Field extends IField<any> = Schema['dynamicFieldSignature'] extends FieldDefinition
 		? IFieldMap[Schema['dynamicFieldSignature']['type']]
 		: any
 > extends SchemaEntity,
@@ -238,9 +236,7 @@ export type IsDynamicSchema<
 export type SchemaDefaultValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	K extends SchemaFieldNamesWithDefaultValue<
-		S
-	> = SchemaFieldNamesWithDefaultValue<S>,
+	K extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
 	V extends SchemaAllValues<S, CreateEntityInstances> = SchemaAllValues<
 		S,
 		CreateEntityInstances
@@ -302,9 +298,7 @@ export type SchemaPublicFieldNames<S extends ISchema> = {
 export type SchemaPublicValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	PublicFieldNames extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<
-		S
-	>,
+	PublicFieldNames extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 	AllValues extends SchemaValues<S, CreateEntityInstances> = SchemaValues<
 		S,
 		CreateEntityInstances
