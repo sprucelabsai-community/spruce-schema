@@ -4,9 +4,7 @@ export interface IDirectoryFieldValue {
 	path: string
 }
 
-export type IDirectoryFieldDefinition = IFieldDefinition<
-	IDirectoryFieldValue
-> & {
+export type IDirectoryFieldDefinition = IFieldDefinition<IDirectoryFieldValue> & {
 	/** * .Directory - select whole directories all at once */
 	type: 'directory'
 	options?: {
