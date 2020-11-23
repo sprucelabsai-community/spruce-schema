@@ -1,3 +1,10 @@
+# [16.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.1.1...v16.2.0) (2020-11-23)
+
+
+### Features
+
+* no more deep read only on types ([e9024a8](https://github.com/sprucelabsai/spruce-schema/commit/e9024a8))
+
 ## [16.1.1](https://github.com/sprucelabsai/spruce-schema/compare/v16.1.0...v16.1.1) (2020-11-20)
 
 # [16.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.0.0...v16.1.0) (2020-11-19)
