@@ -6,11 +6,10 @@ import {
 	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
-import { DeepReadonly } from '../types/utilities.types'
 
 export default function validateSchemaValues<
 	S extends ISchema,
-	V extends SchemaPartialValues<S> | DeepReadonly<SchemaPartialValues<S>>
+	V extends SchemaPartialValues<S>
 >(
 	schema: S,
 	values: V,

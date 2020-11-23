@@ -215,25 +215,6 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 	},
 })
 
-const personWithFavToolsOrFruitSchemaAsConst = {
-	id: 'personWithFavToolsOrFruit',
-	name: 'Person with favorite tools',
-	fields: {
-		firstName: {
-			type: 'text',
-			isRequired: true,
-		},
-		lastName: {
-			type: 'text',
-		},
-		favoriteColors: {
-			type: 'text',
-			isRequired: true,
-			isArray: true,
-		},
-	},
-} as const
-
 const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
 	id: 'versionedPersonWithFavToolsOrFruit',
 	name: 'Person with favorite tools',
@@ -600,15 +581,5 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				}),
 			/doesNotExist/
 		)
-	}
-
-	@test()
-	protected static typesWorkWhenPassingSchemaThatIsCastAsConst() {
-		const values = {
-			firstName: 'Ryan',
-			favoriteColors: ['blue'],
-		} as const
-
-		validateSchemaValues(personWithFavToolsOrFruitSchemaAsConst, values)
 	}
 }

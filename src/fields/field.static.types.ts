@@ -35,9 +35,7 @@ export type ToValueTypeOptions<
 	F extends FieldDefinition,
 	CreateEntityInstances extends boolean = true
 > = {
-	/** All definitions by id for lookups by fields */
 	schemasById?: ISchemasById
-	/** Create and return a new SchemaEntity()  */
 	createEntityInstances?: CreateEntityInstances
 } & Partial<F['options']>
 
@@ -93,9 +91,7 @@ export type FieldDefinitionValueType<
 	: any
 
 export interface IField<F extends FieldDefinition> {
-	/** The definition for this field */
 	readonly definition: F
-	/** The type of field */
 	readonly type: F['type']
 	readonly options: F['options']
 	readonly isRequired: F['isRequired']
@@ -105,7 +101,6 @@ export interface IField<F extends FieldDefinition> {
 	readonly hint: F['hint']
 	readonly name: string
 	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
-	/** Transform any value to the value type of this field. should take anything and return a valid value or blow up. Will never receive undefined */
 	toValueType<CreateEntityInstances extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<F, CreateEntityInstances>
