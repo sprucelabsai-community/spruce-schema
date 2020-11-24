@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import {
-	ISchema,
+	Schema,
 	SchemaDefaultValues,
 	ISchemaEntity,
 	SchemaValues,
@@ -83,7 +83,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 		),
 	})
 	protected static defaultValueTests(
-		definition: ISchema,
+		definition: Schema,
 		expectedDefaultValues: Record<string, any>
 	) {
 		const schema = new StaticSchemaEntityImplementation(definition)

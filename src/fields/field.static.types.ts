@@ -4,18 +4,18 @@ import {
 	IFieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
 import { IInvalidFieldError } from '../errors/error.types'
-import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
+import { Schema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
 export interface ISchemasById {
-	[id: string]: ISchema[]
+	[id: string]: Schema[]
 }
 
 export type SchemaFieldUnion<
-	S extends Array<ISchema>,
+	S extends Array<Schema>,
 	CreateEntityInstances extends boolean = false
 > = {
-	[K in keyof S]: S[K] extends ISchema
+	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
 			? ISchemaEntity<S[K]>
 			: {

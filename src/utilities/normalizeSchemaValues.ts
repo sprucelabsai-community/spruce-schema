@@ -1,6 +1,6 @@
 import EntityFactory from '../factories/EntityFactory'
 import {
-	ISchema,
+	Schema,
 	SchemaPartialValues,
 	SchemaGetValuesOptions,
 	SchemaFieldNames,
@@ -13,7 +13,7 @@ import {
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
-	S extends ISchema,
+	S extends Schema,
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 	CreateEntityInstances extends boolean = false,

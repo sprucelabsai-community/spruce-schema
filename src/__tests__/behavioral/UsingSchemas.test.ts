@@ -3,11 +3,7 @@ import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import {
-	SchemaValues,
-	ISchemaEntity,
-	ISchema,
-} from '../../schemas.static.types'
+import { SchemaValues, ISchemaEntity, Schema } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
@@ -332,7 +328,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGenerics() {
-		interface GenericTestInterface<S extends ISchema = ISchema> {
+		interface GenericTestInterface<S extends Schema = Schema> {
 			payloadSchema: S
 			callback: (payload: SchemaValues<S>) => void
 		}

@@ -3,7 +3,7 @@ import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementat
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
-	ISchema,
+	Schema,
 	SchemaIdWithVersion,
 	SchemaEntity,
 } from '../schemas.static.types'
@@ -34,9 +34,9 @@ export default class SchemaField<
 
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): (SchemaIdWithVersion | ISchema)[] {
+	): (SchemaIdWithVersion | Schema)[] {
 		const { options } = field
-		const schemasOrIds: ({ version?: string; id: string } | ISchema)[] = [
+		const schemasOrIds: ({ version?: string; id: string } | Schema)[] = [
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
@@ -203,7 +203,7 @@ export default class SchemaField<
 	private static mapFieldDefinitionToSchemas(
 		definition: ISchemaFieldDefinition,
 		options?: IFieldDefinitionToSchemaOptions
-	): ISchema[] {
+	): Schema[] {
 		const { schemasById: schemasById = {} } = options || {}
 		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			definition
@@ -251,7 +251,7 @@ export default class SchemaField<
 					friendlyMessage: `${this.label ?? this.name} must be an object`,
 				})
 			} else {
-				let schemas: ISchema[] | undefined
+				let schemas: Schema[] | undefined
 
 				try {
 					// pull schemas out of our own definition
@@ -330,7 +330,7 @@ export default class SchemaField<
 		return errors
 	}
 
-	private instantiateSchema(schema: ISchema, value: any): SchemaEntity {
+	private instantiateSchema(schema: Schema, value: any): SchemaEntity {
 		return schema.dynamicFieldSignature
 			? new DynamicSchemaEntityImplementation(schema, value)
 			: new StaticSchemaEntity(schema, value)
@@ -357,7 +357,7 @@ export default class SchemaField<
 			options || {}
 
 		// try and pull the schema definition from the options and by id
-		const destinationSchemas: ISchema[] = SchemaField.mapFieldDefinitionToSchemas(
+		const destinationSchemas: Schema[] = SchemaField.mapFieldDefinitionToSchemas(
 			this.definition,
 			{ schemasById }
 		)
@@ -375,7 +375,7 @@ export default class SchemaField<
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
 			const allMatches = destinationSchemas.filter((def) => def.id === schemaId)
-			let matchedSchema: ISchema | undefined
+			let matchedSchema: Schema | undefined
 
 			if (allMatches.length === 0) {
 				throw new SpruceError({

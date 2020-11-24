@@ -1,11 +1,11 @@
 import EntityFactory from '../factories/EntityFactory'
 import {
-	ISchema,
+	Schema,
 	SchemaValidateOptions,
 	SchemaPartialValues,
 } from '../schemas.static.types'
 
-export default function areSchemaValuesValid<S extends ISchema>(
+export default function areSchemaValuesValid<S extends Schema>(
 	definition: S,
 	values: SchemaPartialValues<S>,
 	options?: SchemaValidateOptions<S>

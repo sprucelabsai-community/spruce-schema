@@ -14,7 +14,7 @@ import {
 	DynamicSchemaEntityByName,
 	DynamicSchemaGetValuesOptions,
 	DynamicSchemaNamedFieldsOptions,
-	ISchema,
+	Schema,
 	DynamicSchemaNamedField,
 	SchemaNormalizeOptions,
 	DynamicSchemaValidateOptions,
@@ -23,7 +23,7 @@ import {
 import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntityImplementation<
-		S extends ISchema,
+		S extends Schema,
 		Field extends IField<
 			any
 		> = S['dynamicFieldSignature'] extends IFieldDefinition

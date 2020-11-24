@@ -3,7 +3,7 @@ import { IInvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
-	ISchema,
+	Schema,
 	StaticSchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
@@ -26,7 +26,7 @@ import normalizeFieldValue, {
 } from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
-export default class StaticSchemaEntityImplementation<S extends ISchema>
+export default class StaticSchemaEntityImplementation<S extends Schema>
 	extends AbstractEntity
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true

@@ -1,6 +1,6 @@
-import { ISchema, SchemaIdWithVersion } from '../schemas.static.types'
+import { Schema, SchemaIdWithVersion } from '../schemas.static.types'
 
-export default function isIdWithVersion(item: SchemaIdWithVersion | ISchema) {
+export default function isIdWithVersion(item: SchemaIdWithVersion | Schema) {
 	return (
 		typeof item.id === 'string' &&
 		typeof (item as any).fields === 'undefined' &&

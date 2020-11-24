@@ -1,5 +1,5 @@
 import { FieldDefinition } from '../fields'
-import { ISchema } from '../schemas.static.types'
+import { Schema } from '../schemas.static.types'
 
 export interface IFieldTemplateDetails {
 	/** The type of value (string, number) */
@@ -50,7 +50,7 @@ export interface SchemaTemplateItem extends SchemaTemplateNames {
 	/** The schema's id pull out of schema for easy access */
 	id: string
 	/** The full schema's schema */
-	schema: ISchema
+	schema: Schema
 	/** This schema was defined in another schema */
 	isNested?: boolean
 	/** Where this schema is going to be written (so other schemas can import it) */

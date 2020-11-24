@@ -3,7 +3,7 @@ import {
 	ISelectFieldDefinitionChoice,
 } from '../fields/SelectField.types'
 import {
-	ISchema,
+	Schema,
 	SchemaFieldsByName,
 	PickFieldNames,
 } from '../schemas.static.types'
@@ -34,7 +34,7 @@ export function selectChoicesToHash<
 
 /** Take a definition and a field name and returns a value/label hash */
 export function schemaChoicesToHash<
-	S extends ISchema,
+	S extends Schema,
 	F extends PickFieldNames<S, 'select'>
 >(
 	definition: S,

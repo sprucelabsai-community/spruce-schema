@@ -1,11 +1,11 @@
-import { ISchema } from '../../schemas.static.types'
+import { Schema } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
 // turn off duplicate checks because tests all run in the same runtime
 StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-export interface ICarSchema extends ISchema {
+export interface ICarSchema extends Schema {
 	id: 'car'
 	name: 'car'
 	fields: {
@@ -23,7 +23,7 @@ export interface ICarSchema extends ISchema {
 	}
 }
 
-export interface ITruckSchema extends ISchema {
+export interface ITruckSchema extends Schema {
 	id: 'truck'
 	name: 'Truck'
 	fields: {
@@ -37,7 +37,7 @@ export interface ITruckSchema extends ISchema {
 	}
 }
 
-export interface IPersonSchema extends ISchema {
+export interface IPersonSchema extends Schema {
 	id: 'person'
 	name: 'user schema test'
 	fields: {

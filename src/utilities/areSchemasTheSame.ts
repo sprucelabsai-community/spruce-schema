@@ -1,8 +1,8 @@
-import { ISchema } from '../schemas.static.types'
+import { Schema } from '../schemas.static.types'
 
 export default function areSchemasTheSame(
-	left: ISchema,
-	right: ISchema
+	left: Schema,
+	right: Schema
 ): boolean {
 	if (left.id !== right.id) {
 		return false

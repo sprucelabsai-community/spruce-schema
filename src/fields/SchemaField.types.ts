@@ -1,7 +1,7 @@
 import {
 	SchemaIdWithVersion,
 	SchemaFieldValueUnion,
-	ISchema,
+	Schema,
 	ISchemaEntity,
 	SchemaValues,
 } from '../schemas.static.types'
@@ -12,20 +12,20 @@ export interface ISchemaFieldOptions {
 	/** The id of the schema you are relating to */
 	schemaId?: SchemaIdWithVersion
 	/** The actual schema */
-	schema?: ISchema
+	schema?: Schema
 	/** If this needs to be a union of ids */
 	schemaIds?: SchemaIdWithVersion[]
 	/** Actual schemas if more that one, this will make a union */
-	schemas?: ISchema[]
+	schemas?: Schema[]
 	/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */
-	schemasCallback?: () => ISchema[]
+	schemasCallback?: () => Schema[]
 }
 
 export type SchemaFieldUnion<
-	S extends Array<ISchema>,
+	S extends Array<Schema>,
 	CreateEntityInstances extends boolean = false
 > = {
-	[K in keyof S]: S[K] extends ISchema
+	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
 			? ISchemaEntity<S[K]>
 			: {
@@ -39,12 +39,12 @@ export type SchemaFieldUnion<
 export type SchemaFieldValueTypeMapper<
 	F extends ISchemaFieldDefinition,
 	CreateEntityInstances extends boolean = false
-> = F['options']['schemas'] extends Array<ISchema>
+> = F['options']['schemas'] extends Array<Schema>
 	? IsArrayNoUnpack<
 			SchemaFieldUnion<F['options']['schemas'], CreateEntityInstances>[number],
 			F['isArray']
 	  >
-	: F['options']['schema'] extends ISchema
+	: F['options']['schema'] extends Schema
 	? CreateEntityInstances extends true
 		? IsArray<ISchemaEntity<F['options']['schema']>, F['isArray']>
 		: IsArray<SchemaValues<F['options']['schema']>, F['isArray']>

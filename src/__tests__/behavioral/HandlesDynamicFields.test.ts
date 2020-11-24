@@ -3,7 +3,7 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
 import {
 	DynamicSchemaAllValues,
-	ISchema,
+	Schema,
 	SchemaAllValues,
 	SchemaValues,
 } from '../../schemas.static.types'
@@ -148,7 +148,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 		}
 	)
 	protected static getValuesTransformation(
-		schema: ISchema,
+		schema: Schema,
 		values: any,
 		expected: any
 	) {

@@ -1,7 +1,7 @@
 import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
 import {
 	DynamicSchemaPartialValues,
-	ISchema,
+	Schema,
 	IsDynamicSchema,
 	SchemaPartialValues,
 } from '../schemas.static.types'
@@ -9,7 +9,7 @@ import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 
 export default class EntityFactory {
 	public static Entity<
-		S extends ISchema,
+		S extends Schema,
 		IsDynamic extends boolean = IsDynamicSchema<S>
 	>(
 		schema: S,

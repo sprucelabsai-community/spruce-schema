@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import { buildSchema, SchemaRegistry } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import { ISchema } from '../../schemas.static.types'
+import { Schema } from '../../schemas.static.types'
 
 const namespacedUnVersionedPersonSchema = buildSchema({
 	id: 'namespacedUnVersionedPerson',
@@ -138,7 +138,7 @@ export default class UsingTheSchemaRegisteryForNamespacedSchemasTest extends Abs
 		]
 	)
 	protected static canRegisterNamespacedSchema(
-		schemas: ISchema[],
+		schemas: Schema[],
 		lookups: {
 			id: string
 			version?: string
