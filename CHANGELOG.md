@@ -1,3 +1,10 @@
+# [17.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.2.0...v17.0.0) (2020-11-24)
+
+
+### Breaking Changes
+
+* removed I from Schema interfaces ([6935189](https://github.com/sprucelabsai/spruce-schema/commit/6935189))
+
 # [16.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.1.1...v16.2.0) (2020-11-23)
 
 
