@@ -1,6 +1,6 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import { ISchemaEntity } from '../../schemas.static.types'
+import { StaticSchemaEntity } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildVersionedPersonWithCars, {
 	ICarV2Definition,
@@ -100,7 +100,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 				assert.fail('should have resolved to car')
 				break
 			case 'car': {
-				const values = (car as ISchemaEntity<ICarV2Definition>).getValues()
+				const values = (car as StaticSchemaEntity<ICarV2Definition>).getValues()
 				assert.isEqual(values.name, 'version 2')
 			}
 		}

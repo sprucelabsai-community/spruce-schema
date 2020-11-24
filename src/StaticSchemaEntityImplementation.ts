@@ -17,7 +17,7 @@ import {
 	SchemaNamedField,
 	SchemaGetDefaultValuesOptions,
 	SchemaFieldNamesWithDefaultValue,
-	ISchemaEntity,
+	StaticSchemaEntity,
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
@@ -28,7 +28,7 @@ import normalizeFieldValue, {
 /** Universal schema class  */
 export default class StaticSchemaEntityImplementation<S extends Schema>
 	extends AbstractEntity
-	implements ISchemaEntity<S> {
+	implements StaticSchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
 	protected schema: S

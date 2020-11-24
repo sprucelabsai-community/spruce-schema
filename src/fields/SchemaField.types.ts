@@ -2,7 +2,7 @@ import {
 	SchemaIdWithVersion,
 	SchemaFieldValueUnion,
 	Schema,
-	ISchemaEntity,
+	StaticSchemaEntity,
 	SchemaValues,
 } from '../schemas.static.types'
 import { IsArrayNoUnpack, IsArray } from '../types/utilities.types'
@@ -27,7 +27,7 @@ export type SchemaFieldUnion<
 > = {
 	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
-			? ISchemaEntity<S[K]>
+			? StaticSchemaEntity<S[K]>
 			: {
 					schemaId: S[K]['id']
 					version?: S[K]['version']
@@ -46,7 +46,7 @@ export type SchemaFieldValueTypeMapper<
 	  >
 	: F['options']['schema'] extends Schema
 	? CreateEntityInstances extends true
-		? IsArray<ISchemaEntity<F['options']['schema']>, F['isArray']>
+		? IsArray<StaticSchemaEntity<F['options']['schema']>, F['isArray']>
 		: IsArray<SchemaValues<F['options']['schema']>, F['isArray']>
 	: any
 

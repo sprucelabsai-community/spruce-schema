@@ -2,7 +2,7 @@ import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import {
 	Schema,
 	SchemaDefaultValues,
-	ISchemaEntity,
+	StaticSchemaEntity,
 	SchemaValues,
 	SchemaFieldNamesWithDefaultValue,
 } from '../../schemas.static.types'
@@ -21,12 +21,12 @@ interface IPersonExpectedDefaultValues {
 	optionalSelectWithDefaultValue: 'hello' | 'goodbye'
 	optionalTextWithDefaultValue: string
 	optionalIsArrayCarOrTruckWithDefaultValue: (
-		| ISchemaEntity<ICarSchema>
-		| ISchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<ICarSchema>
+		| StaticSchemaEntity<ITruckSchema>
 	)[]
 	optionalCarOrTruckWithDefaultValue:
-		| ISchemaEntity<ICarSchema>
-		| ISchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<ICarSchema>
+		| StaticSchemaEntity<ITruckSchema>
 }
 
 interface IPersonExpectedDefaultValuesWithoutSchema {
@@ -115,7 +115,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 
 		const carEntity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'fast car',
-		}) as ISchemaEntity<ICarSchema>
+		}) as StaticSchemaEntity<ICarSchema>
 
 		assert.isType<IPersonMappedDefaultValues>(defaultValues)
 		assert.isEqualDeep(

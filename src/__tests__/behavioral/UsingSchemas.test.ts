@@ -3,7 +3,11 @@ import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import { SchemaValues, ISchemaEntity, Schema } from '../../schemas.static.types'
+import {
+	SchemaValues,
+	StaticSchemaEntity,
+	Schema,
+} from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
@@ -22,11 +26,11 @@ interface IPersonExpectedValues {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
-		| (ISchemaEntity<ICarSchema> | ISchemaEntity<ITruckSchema>)[]
+		| (StaticSchemaEntity<ICarSchema> | StaticSchemaEntity<ITruckSchema>)[]
 		| null
 	optionalCarOrTruckWithDefaultValue?:
-		| ISchemaEntity<ICarSchema>
-		| ISchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<ICarSchema>
+		| StaticSchemaEntity<ITruckSchema>
 		| null
 }
 
