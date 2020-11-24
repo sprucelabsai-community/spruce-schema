@@ -26,7 +26,7 @@ export interface SchemaEntity {
 	isValid(options?: Record<string, any>): boolean
 }
 
-export interface ISchemaEntity<S extends Schema> extends SchemaEntity {
+export interface StaticSchemaEntity<S extends Schema> extends SchemaEntity {
 	readonly schemaId: S['id']
 	readonly name: S['name']
 	readonly namespace: S['namespace']
@@ -83,7 +83,7 @@ export interface DynamicSchemaEntityByName<
 		: any
 > extends SchemaEntity,
 		Omit<
-			ISchemaEntity<ISchema>,
+			StaticSchemaEntity<ISchema>,
 			| 'get'
 			| 'set'
 			| 'getValues'
