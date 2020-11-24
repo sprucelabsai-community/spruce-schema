@@ -4,7 +4,7 @@ import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	ISchema,
-	ISchemaIdWithVersion,
+	SchemaIdWithVersion,
 	SchemaEntity,
 } from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
@@ -34,7 +34,7 @@ export default class SchemaField<
 
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): (ISchemaIdWithVersion | ISchema)[] {
+	): (SchemaIdWithVersion | ISchema)[] {
 		const { options } = field
 		const schemasOrIds: ({ version?: string; id: string } | ISchema)[] = [
 			...(options.schema ? [options.schema] : []),
@@ -69,15 +69,15 @@ export default class SchemaField<
 
 	public static mapFieldDefinitionToSchemaIdsWithVersion(
 		field: ISchemaFieldDefinition
-	): ISchemaIdWithVersion[] {
+	): SchemaIdWithVersion[] {
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
-		const ids: ISchemaIdWithVersion[] = schemasOrIds.map((item) => {
+		const ids: SchemaIdWithVersion[] = schemasOrIds.map((item) => {
 			if (isIdWithVersion(item)) {
 				return item
 			}
 
-			const idWithVersion: ISchemaIdWithVersion = {
+			const idWithVersion: SchemaIdWithVersion = {
 				id: item.id,
 			}
 

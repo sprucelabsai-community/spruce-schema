@@ -1,7 +1,7 @@
 import {
 	SchemaDefaultValues,
 	ISchema,
-	ISchemaGetDefaultValuesOptions,
+	SchemaGetDefaultValuesOptions,
 	SchemaFieldNamesWithDefaultValue,
 } from '../schemas.static.types'
 import StaticSchemaEntityImplementation from '../StaticSchemaEntityImplementation'
@@ -14,7 +14,7 @@ export default function defaultSchemaValues<
 	CreateEntityInstances extends boolean = true
 >(
 	definition: S,
-	options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
+	options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
 ): SchemaDefaultValues<S> {
 	const instance = new StaticSchemaEntityImplementation(definition)
 

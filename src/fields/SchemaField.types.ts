@@ -1,5 +1,5 @@
 import {
-	ISchemaIdWithVersion,
+	SchemaIdWithVersion,
 	SchemaFieldValueUnion,
 	ISchema,
 	ISchemaEntity,
@@ -10,11 +10,11 @@ import { IFieldDefinition } from './field.static.types'
 
 export interface ISchemaFieldOptions {
 	/** The id of the schema you are relating to */
-	schemaId?: ISchemaIdWithVersion
+	schemaId?: SchemaIdWithVersion
 	/** The actual schema */
 	schema?: ISchema
 	/** If this needs to be a union of ids */
-	schemaIds?: ISchemaIdWithVersion[]
+	schemaIds?: SchemaIdWithVersion[]
 	/** Actual schemas if more that one, this will make a union */
 	schemas?: ISchema[]
 	/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */

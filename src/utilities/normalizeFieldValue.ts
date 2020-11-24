@@ -7,7 +7,7 @@ import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
 import { ISchemasById } from '../fields/field.static.types'
-import { ISchemaNormalizeFieldValueOptions } from '../schemas.static.types'
+import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<
 	F extends Field,
@@ -18,7 +18,7 @@ export default function normalizeFieldValue<
 	schemasById: ISchemasById,
 	field: F,
 	value: any,
-	options: ISchemaNormalizeFieldValueOptions<CreateEntityInstances> &
+	options: SchemaNormalizeFieldValueOptions<CreateEntityInstances> &
 		Partial<IFieldDefinitionMap[F['type']]['options']>
 ) {
 	let localValue = normalizeValueToArray<F, CreateEntityInstances>(value)

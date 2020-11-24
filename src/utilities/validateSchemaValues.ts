@@ -2,7 +2,7 @@ import { validateSchema } from '..'
 import EntityFactory from '../factories/EntityFactory'
 import {
 	ISchema,
-	ISchemaValidateOptions,
+	SchemaValidateOptions,
 	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
@@ -13,7 +13,7 @@ export default function validateSchemaValues<
 >(
 	schema: S,
 	values: V,
-	options?: ISchemaValidateOptions<S>
+	options?: SchemaValidateOptions<S>
 	// eslint-disable-next-line no-undef
 ): asserts values is V & SchemaValues<S> {
 	validateSchema(schema)

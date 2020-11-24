@@ -1,14 +1,14 @@
 import EntityFactory from '../factories/EntityFactory'
 import {
 	ISchema,
-	ISchemaValidateOptions,
+	SchemaValidateOptions,
 	SchemaPartialValues,
 } from '../schemas.static.types'
 
 export default function areSchemaValuesValid<S extends ISchema>(
 	definition: S,
 	values: SchemaPartialValues<S>,
-	options?: ISchemaValidateOptions<S>
+	options?: SchemaValidateOptions<S>
 ) {
 	const instance = EntityFactory.Entity(definition, values)
 	return instance.isValid(options)

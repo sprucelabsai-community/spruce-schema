@@ -12,13 +12,13 @@ import {
 	DynamicSchemaAllValues,
 	DynamicSchemaPartialValues,
 	DynamicSchemaEntityByName,
-	IDynamicSchemaGetValuesOptions,
-	IDynamicSchemaNamedFieldsOptions,
+	DynamicSchemaGetValuesOptions,
+	DynamicSchemaNamedFieldsOptions,
 	ISchema,
-	IDynamicSchemaNamedField,
-	ISchemaNormalizeOptions,
-	IDynamicSchemaValidateOptions,
-	IDynamicSchemaNormalizeOptions,
+	DynamicSchemaNamedField,
+	SchemaNormalizeOptions,
+	DynamicSchemaValidateOptions,
+	DynamicSchemaNormalizeOptions,
 } from './schemas.static.types'
 import normalizeFieldValue from './utilities/normalizeFieldValue'
 
@@ -54,7 +54,7 @@ export default class DynamicSchemaEntityImplementation<
 	public set<F extends string>(
 		fieldName: F,
 		value: FieldDefinitionValueType<Field, false>,
-		options: IDynamicSchemaNormalizeOptions<false> = {}
+		options: DynamicSchemaNormalizeOptions<false> = {}
 	): this {
 		const localValue = normalizeFieldValue(
 			this.schemaId,
@@ -70,7 +70,7 @@ export default class DynamicSchemaEntityImplementation<
 		return this
 	}
 
-	public validate(options: IDynamicSchemaValidateOptions<string> = {}): void {
+	public validate(options: DynamicSchemaValidateOptions<string> = {}): void {
 		const errors: IInvalidFieldErrorOptions['errors'] = []
 
 		this.getNamedFields(options).forEach((namedField) => {
@@ -100,7 +100,7 @@ export default class DynamicSchemaEntityImplementation<
 		}
 	}
 
-	public isValid(options: IDynamicSchemaValidateOptions<string> = {}): boolean {
+	public isValid(options: DynamicSchemaValidateOptions<string> = {}): boolean {
 		try {
 			this.validate(options)
 			return true
@@ -111,7 +111,7 @@ export default class DynamicSchemaEntityImplementation<
 
 	public get<F extends string, CreateEntityInstances extends boolean = true>(
 		fieldName: F,
-		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
+		options?: SchemaNormalizeOptions<S, CreateEntityInstances>
 	): FieldDefinitionValueType<Field, CreateEntityInstances> {
 		const value = this.values[fieldName]
 		return normalizeFieldValue(
@@ -128,7 +128,7 @@ export default class DynamicSchemaEntityImplementation<
 		F extends string,
 		CreateEntityInstances extends boolean = true
 	>(
-		options?: IDynamicSchemaGetValuesOptions<S, F, CreateEntityInstances>
+		options?: DynamicSchemaGetValuesOptions<S, F, CreateEntityInstances>
 	): DynamicSchemaAllValues<S, CreateEntityInstances> {
 		const values: DynamicSchemaPartialValues<S> = {}
 
@@ -148,9 +148,9 @@ export default class DynamicSchemaEntityImplementation<
 	}
 
 	public getNamedFields<F extends string>(
-		options: IDynamicSchemaNamedFieldsOptions<F> = {}
-	): IDynamicSchemaNamedField[] {
-		const namedFields: IDynamicSchemaNamedField[] = []
+		options: DynamicSchemaNamedFieldsOptions<F> = {}
+	): DynamicSchemaNamedField[] {
+		const namedFields: DynamicSchemaNamedField[] = []
 		const { fields = Object.keys(this.values) as F[] } = options
 
 		fields.forEach((name) => {
