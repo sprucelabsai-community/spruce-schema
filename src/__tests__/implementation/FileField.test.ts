@@ -1,7 +1,7 @@
 import path from 'path'
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import { IFileFieldValue } from '../../fields/FileField.types'
+import { FileFieldValue } from '../../fields/FileField.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
@@ -97,8 +97,8 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		}
 	)
 	public static testCompletingFileObject(
-		partial: Partial<IFileFieldValue>,
-		complete: IFileFieldValue
+		partial: Partial<FileFieldValue>,
+		complete: FileFieldValue
 	) {
 		const file = FieldFactory.Field('test', { type: 'file' })
 		const augmented = file.toValueType(partial)
@@ -158,7 +158,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 	public static testInSchema(
 		env: EnvKind,
 		expectedPath: string,
-		setTarget: IFileFieldValue
+		setTarget: FileFieldValue
 	) {
 		if (env === EnvKind.Linux) {
 			// @ts-ignore

@@ -8,7 +8,7 @@ import {
 import { IsArrayNoUnpack, IsArray } from '../types/utilities.types'
 import { FieldDefinition } from './field.static.types'
 
-export interface ISchemaFieldOptions {
+export interface SchemaFieldOptions {
 	/** The id of the schema you are relating to */
 	schemaId?: SchemaIdWithVersion
 	/** The actual schema */
@@ -58,5 +58,5 @@ export type ISchemaFieldDefinition = FieldDefinition<
 > & {
 	/** * .Schema go team! */
 	type: 'schema'
-	options: ISchemaFieldOptions
+	options: SchemaFieldOptions
 }

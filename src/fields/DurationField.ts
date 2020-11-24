@@ -6,16 +6,16 @@ import {
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	IDurationFieldDefinition,
-	IDurationFieldValue,
+	DurationFieldDefinition,
+	DurationFieldValue,
 } from './DurationField.types'
 import { ValidateOptions } from './field.static.types'
 import { ITextFieldDefinition } from './TextField.types'
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(
-	value: string | number | Partial<IDurationFieldValue>
-): IDurationFieldValue {
+	value: string | number | Partial<DurationFieldValue>
+): DurationFieldValue {
 	let totalMs = 0
 
 	if (typeof value === 'string') {
@@ -55,14 +55,14 @@ export function buildDuration(
 }
 
 export default class DurationField extends AbstractField<
-	IDurationFieldDefinition
+	DurationFieldDefinition
 > {
 	public static get description() {
 		return 'A span of time represented in { hours, minutes, seconds, ms }'
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<IDurationFieldDefinition>
+		options: FieldTemplateDetailOptions<DurationFieldDefinition>
 	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IDurationFieldValue${
@@ -90,7 +90,7 @@ export default class DurationField extends AbstractField<
 		return errors
 	}
 
-	public toValueType(value: any): IDurationFieldValue {
+	public toValueType(value: any): DurationFieldValue {
 		return buildDuration(value)
 	}
 }

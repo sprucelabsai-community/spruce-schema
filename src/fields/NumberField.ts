@@ -4,15 +4,15 @@ import {
 	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { INumberFieldDefinition } from './NumberField.types'
+import { NumberFieldDefinition } from './NumberField.types'
 
-export default class NumberField extends AbstractField<INumberFieldDefinition> {
+export default class NumberField extends AbstractField<NumberFieldDefinition> {
 	public static get description() {
 		return 'Handles all types of numbers with min/max and clamp support'
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<INumberFieldDefinition>
+		options: FieldTemplateDetailOptions<NumberFieldDefinition>
 	): FieldTemplateDetails {
 		return {
 			valueType: `number${options.definition.isArray ? '[]' : ''}`,

@@ -3,17 +3,17 @@ import {
 	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { IBooleanFieldDefinition } from './BooleanField.types'
+import { BooleanFieldDefinition } from './BooleanField.types'
 
 export default class BooleanField extends AbstractField<
-	IBooleanFieldDefinition
+	BooleanFieldDefinition
 > {
 	public static get description() {
 		return 'A true/false. Converts false string to false, all other strings to true.'
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<IBooleanFieldDefinition>
+		options: FieldTemplateDetailOptions<BooleanFieldDefinition>
 	): FieldTemplateDetails {
 		return {
 			valueType: `boolean${options.definition.isArray ? '[]' : ''}`,

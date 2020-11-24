@@ -1,7 +1,7 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
 import { buildDuration } from '../../fields'
-import { IDurationFieldValue } from '../../fields/DurationField.types'
+import { DurationFieldValue } from '../../fields/DurationField.types'
 
 export default class DurationFieldTest extends AbstractSpruceTest {
 	@test(
@@ -20,8 +20,8 @@ export default class DurationFieldTest extends AbstractSpruceTest {
 		{ ms: 0, seconds: 12, minutes: 31, hours: 2 }
 	)
 	protected static async testCompletingDurationObject(
-		partial: Partial<IDurationFieldValue>,
-		expected: IDurationFieldValue
+		partial: Partial<DurationFieldValue>,
+		expected: DurationFieldValue
 	) {
 		const field = FieldFactory.Field('test', { type: 'duration' })
 		const value = field.toValueType(partial)

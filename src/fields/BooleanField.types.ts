@@ -1,6 +1,6 @@
 import { FieldDefinition } from './field.static.types'
 
-export type IBooleanFieldDefinition = FieldDefinition<
+export type BooleanFieldDefinition = FieldDefinition<
 	boolean,
 	boolean,
 	boolean[],

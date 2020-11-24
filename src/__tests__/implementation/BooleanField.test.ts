@@ -1,7 +1,7 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
 import { FieldDefinitions } from '../../fields'
-import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
+import { BooleanFieldDefinition } from '../../fields/BooleanField.types'
 
 export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test('can transform string false to boolean false', 'false', false)
@@ -27,7 +27,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 			defaultValue: false,
 		}
 
-		assert.isType<IBooleanFieldDefinition>(def)
+		assert.isType<BooleanFieldDefinition>(def)
 	}
 
 	@test()
@@ -38,6 +38,6 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 			defaultValue: [true],
 		}
 
-		assert.isType<IBooleanFieldDefinition>(def)
+		assert.isType<BooleanFieldDefinition>(def)
 	}
 }

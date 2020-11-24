@@ -5,20 +5,20 @@ import {
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	IDirectoryFieldDefinition,
-	IDirectoryFieldValue,
+	DirectoryFieldDefinition,
+	DirectoryFieldValue,
 } from './DirectoryField.types'
 import { ToValueTypeOptions } from './field.static.types'
 
 export default class DirectoryField extends AbstractField<
-	IDirectoryFieldDefinition
+	DirectoryFieldDefinition
 > {
 	public static get description() {
 		return 'A way to select entire directories once!'
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<IDirectoryFieldDefinition>
+		options: FieldTemplateDetailOptions<DirectoryFieldDefinition>
 	): FieldTemplateDetails {
 		const { definition } = options
 		return {
@@ -30,8 +30,8 @@ export default class DirectoryField extends AbstractField<
 
 	public toValueType<C extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<IDirectoryFieldDefinition, C>
-	): IDirectoryFieldValue {
+		options?: ToValueTypeOptions<DirectoryFieldDefinition, C>
+	): DirectoryFieldValue {
 		const stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
 

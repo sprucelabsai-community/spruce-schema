@@ -1,6 +1,6 @@
 import { FieldDefinition } from './field.static.types'
 
-export type INumberFieldDefinition = FieldDefinition<
+export type NumberFieldDefinition = FieldDefinition<
 	number,
 	number,
 	number[],

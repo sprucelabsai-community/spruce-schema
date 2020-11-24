@@ -1,6 +1,6 @@
 import { FieldDefinition } from './field.static.types'
 
-export type IPhoneFieldDefinition = FieldDefinition<
+export type PhoneFieldDefinition = FieldDefinition<
 	string,
 	string,
 	string[],
