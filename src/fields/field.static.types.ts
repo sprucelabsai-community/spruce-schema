@@ -11,7 +11,7 @@ import {
 } from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
-export interface ISchemasById {
+export interface SchemasById {
 	[id: string]: Schema[]
 }
 
@@ -32,21 +32,21 @@ export type SchemaFieldUnion<
 
 export interface FieldDefinitionToSchemaOptions {
 	/** All definitions we're validating against */
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 }
 
 export type ToValueTypeOptions<
 	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = true
 > = {
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 	createEntityInstances?: CreateEntityInstances
 } & Partial<F['options']>
 
 /** Options passed to validate() */
 export type ValidateOptions<F extends FieldDefinitions> = {
 	/** All schemas we're validating against */
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 } & Partial<F['options']>
 
 export type FieldType = keyof IFieldMap

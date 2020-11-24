@@ -6,7 +6,7 @@ import {
 import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
-import { ISchemasById } from '../fields/field.static.types'
+import { SchemasById } from '../fields/field.static.types'
 import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<
@@ -15,7 +15,7 @@ export default function normalizeFieldValue<
 >(
 	schemaId: string,
 	schemaName: string | undefined,
-	schemasById: ISchemasById,
+	schemasById: SchemasById,
 	field: F,
 	value: any,
 	options: SchemaNormalizeFieldValueOptions<CreateEntityInstances> &

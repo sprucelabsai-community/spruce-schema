@@ -1,11 +1,11 @@
 import flatten from 'lodash/flatten'
 import SpruceError from '../errors/SpruceError'
-import { ISchemasById } from '../fields/field.static.types'
+import { SchemasById } from '../fields/field.static.types'
 import { Schema } from '../schemas.static.types'
 import validateSchema from '../utilities/validateSchema'
 
 export default class SchemaRegistry {
-	private schemasById: ISchemasById = {}
+	private schemasById: SchemasById = {}
 	private static instance: SchemaRegistry
 
 	public static getInstance() {
