@@ -4,12 +4,12 @@ import {
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice,
+	SelectFieldDefinition,
+	SelectFieldDefinitionChoice,
 } from './SelectField.types'
 
 export default class SelectField<
-	T extends ISelectFieldDefinition = ISelectFieldDefinition
+	T extends SelectFieldDefinition = SelectFieldDefinition
 > extends AbstractField<T> {
 	public static get description() {
 		return 'Stored as string, lets user select between available options.'
@@ -30,7 +30,7 @@ export default class SelectField<
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<ISelectFieldDefinition>
+		options: FieldTemplateDetailOptions<SelectFieldDefinition>
 	): FieldTemplateDetails {
 		// Build union of select options
 		const { definition } = options
@@ -45,7 +45,7 @@ export default class SelectField<
 		}
 	}
 
-	public getChoices(): ISelectFieldDefinitionChoice[] {
+	public getChoices(): SelectFieldDefinitionChoice[] {
 		return this.definition.options.choices
 	}
 }

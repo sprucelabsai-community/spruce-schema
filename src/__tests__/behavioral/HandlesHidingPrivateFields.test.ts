@@ -6,21 +6,21 @@ import {
 	SchemaPublicValues,
 } from '../../schemas.static.types'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
-import buildPersonWithCars, { ICarSchema } from '../data/personWithCars'
+import buildPersonWithCars, { CarSchema } from '../data/personWithCars'
 
 const { carSchema } = buildPersonWithCars()
 
 export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 	@test()
 	protected static typeMappingFieldNamesWorks() {
-		let fieldName: SchemaPublicFieldNames<ICarSchema> | undefined
+		let fieldName: SchemaPublicFieldNames<CarSchema> | undefined
 
 		assert.isExactType<typeof fieldName, 'name' | 'onlyOnCar' | undefined>(true)
 	}
 
 	@test()
 	protected static typeMappingValuesWorks() {
-		type WithPublicValues = SchemaPublicValues<ICarSchema>
+		type WithPublicValues = SchemaPublicValues<CarSchema>
 		const person = {
 			name: 'cool car',
 		} as WithPublicValues

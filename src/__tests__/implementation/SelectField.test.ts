@@ -2,7 +2,7 @@ import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
-interface IUserSchema {
+interface UserSchema {
 	id: 'select-union-test'
 	name: 'select union test'
 	fields: {
@@ -41,7 +41,7 @@ interface IUserSchema {
 }
 
 export default class SelectFieldTest extends AbstractSpruceTest {
-	private static userSchema = buildSchema<IUserSchema>({
+	private static userSchema = buildSchema<UserSchema>({
 		id: 'select-union-test',
 		name: 'select union test',
 		fields: {

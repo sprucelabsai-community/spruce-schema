@@ -1,21 +1,21 @@
 import { FieldDefinition } from './field.static.types'
 
-export interface ISelectFieldDefinitionChoice {
+export interface SelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
 	value: string
 	/** Human readable label for when selecting a choice */
 	label: string
 }
 
-export interface ISelectFieldOptions {
-	choices: ISelectFieldDefinitionChoice[]
+export interface SelectFieldOptions {
+	choices: SelectFieldDefinitionChoice[]
 }
 
 export type SelectFieldValueTypeMapper<
-	F extends ISelectFieldDefinition
+	F extends SelectFieldDefinition
 > = F['options']['choices'][number]['value']
 
-export type ISelectFieldDefinition = FieldDefinition<
+export type SelectFieldDefinition = FieldDefinition<
 	string,
 	string,
 	string[],
@@ -23,5 +23,5 @@ export type ISelectFieldDefinition = FieldDefinition<
 > & {
 	/** * .Select - A way to chose between a choices */
 	type: 'select'
-	options: ISelectFieldOptions
+	options: SelectFieldOptions
 }

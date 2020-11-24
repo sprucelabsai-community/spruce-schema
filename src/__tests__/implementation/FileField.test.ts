@@ -5,7 +5,7 @@ import { FileFieldValue } from '../../fields/FileField.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
-interface IFileDetailExpectations {
+interface FileDetailExpectations {
 	expectedName: string
 	expectedType: string
 	expectedExtension: string
@@ -49,7 +49,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 	})
 	public static testGettingFileDetails(
 		filePath: string,
-		expectations: IFileDetailExpectations
+		expectations: FileDetailExpectations
 	) {
 		const field = FieldFactory.Field('test', {
 			type: 'file',

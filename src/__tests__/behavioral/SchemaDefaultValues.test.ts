@@ -8,37 +8,37 @@ import {
 } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildPersonWithCars, {
-	IPersonSchema,
-	ICarSchema,
-	ITruckSchema,
+	PersonSchema,
+	CarSchema,
+	TruckSchema,
 } from '../data/personWithCars'
 
 StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-type IPersonMappedDefaultValues = SchemaDefaultValues<IPersonSchema, true>
+type IPersonMappedDefaultValues = SchemaDefaultValues<PersonSchema, true>
 
-interface IPersonExpectedDefaultValues {
+interface PersonExpectedDefaultValues {
 	optionalSelectWithDefaultValue: 'hello' | 'goodbye'
 	optionalTextWithDefaultValue: string
 	optionalIsArrayCarOrTruckWithDefaultValue: (
-		| StaticSchemaEntity<ICarSchema>
-		| StaticSchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<CarSchema>
+		| StaticSchemaEntity<TruckSchema>
 	)[]
 	optionalCarOrTruckWithDefaultValue:
-		| StaticSchemaEntity<ICarSchema>
-		| StaticSchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<CarSchema>
+		| StaticSchemaEntity<TruckSchema>
 }
 
-interface IPersonExpectedDefaultValuesWithoutSchema {
+interface PersonExpectedDefaultValuesWithoutSchema {
 	optionalSelectWithDefaultValue: 'hello' | 'goodbye'
 	optionalTextWithDefaultValue: string
 	optionalIsArrayCarOrTruckWithDefaultValue: {
 		schemaId: 'car' | 'truck'
-		values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+		values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 	}[]
 	optionalCarOrTruckWithDefaultValue: {
 		schemaId: 'car' | 'truck'
-		values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+		values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 	}
 }
 
@@ -115,7 +115,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 
 		const carEntity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'fast car',
-		}) as StaticSchemaEntity<ICarSchema>
+		}) as StaticSchemaEntity<CarSchema>
 
 		assert.isType<IPersonMappedDefaultValues>(defaultValues)
 		assert.isEqualDeep(
@@ -123,11 +123,11 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 			[carEntity]
 		)
 
-		assert.isType<IPersonExpectedDefaultValuesWithoutSchema>(
+		assert.isType<PersonExpectedDefaultValuesWithoutSchema>(
 			defaultValuesWithoutSchemas
 		)
 
-		assert.isType<IPersonExpectedDefaultValues>(defaultValues)
+		assert.isType<PersonExpectedDefaultValues>(defaultValues)
 	}
 
 	@test()

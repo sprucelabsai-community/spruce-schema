@@ -13,39 +13,39 @@ import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchema from '../../utilities/validateSchema'
 import buildPersonWithCars, {
-	ICarSchema,
-	ITruckSchema,
-	IPersonSchema,
+	CarSchema,
+	TruckSchema,
+	PersonSchema,
 } from '../data/personWithCars'
 
 StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-type IPersonMappedValues = SchemaValues<IPersonSchema, true>
+type PersonMappedValues = SchemaValues<PersonSchema, true>
 
-interface IPersonExpectedValues {
+interface PersonExpectedValues {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
-		| (StaticSchemaEntity<ICarSchema> | StaticSchemaEntity<ITruckSchema>)[]
+		| (StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema>)[]
 		| null
 	optionalCarOrTruckWithDefaultValue?:
-		| StaticSchemaEntity<ICarSchema>
-		| StaticSchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<CarSchema>
+		| StaticSchemaEntity<TruckSchema>
 		| null
 }
 
-interface IPersonExpectedValuesWithoutSchema {
+interface PersonExpectedValuesWithoutSchema {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
 		| {
 				schemaId: 'car' | 'truck'
-				values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+				values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 		  }[]
 		| null
 	optionalCarOrTruckWithDefaultValue?: {
 		schemaId: 'car' | 'truck'
-		values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+		values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 	} | null
 }
 
@@ -296,9 +296,9 @@ export default class SchemaTest extends AbstractSchemaTest {
 			validate: false,
 			createEntityInstances: false,
 		})
-		assert.isType<IPersonExpectedValues>(values)
-		assert.isType<IPersonMappedValues>(values)
-		assert.isType<IPersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
+		assert.isType<PersonExpectedValues>(values)
+		assert.isType<PersonMappedValues>(values)
+		assert.isType<PersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
 	}
 
 	@test()

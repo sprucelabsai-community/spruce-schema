@@ -1,10 +1,10 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import FieldFactory from '../../factories/FieldFactory'
-import buildPersonWithCar, { IPersonSchema } from '../data/personWithCars'
+import buildPersonWithCar, { PersonSchema } from '../data/personWithCars'
 
 export default class SchemaFieldTest extends AbstractSchemaTest {
-	private static personSchema: IPersonSchema
+	private static personSchema: PersonSchema
 
 	protected static async beforeEach() {
 		await super.beforeEach()

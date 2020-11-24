@@ -1,6 +1,6 @@
 import {
-	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice,
+	SelectFieldDefinition,
+	SelectFieldDefinitionChoice,
 } from '../fields/SelectField.types'
 import {
 	Schema,
@@ -10,7 +10,7 @@ import {
 
 /** Turn select options into a key/value pair */
 export type SelectChoicesToHash<
-	Options extends ISelectFieldDefinitionChoice[]
+	Options extends SelectFieldDefinitionChoice[]
 > = {
 	[P in Options[number]['value']]: Extract<
 		Options[number],
@@ -20,7 +20,7 @@ export type SelectChoicesToHash<
 
 /** Pass the select options directly to create a value/label hash */
 export function selectChoicesToHash<
-	Options extends ISelectFieldDefinitionChoice[]
+	Options extends SelectFieldDefinitionChoice[]
 >(options: Options): SelectChoicesToHash<Options> {
 	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
@@ -40,8 +40,8 @@ export function schemaChoicesToHash<
 	definition: S,
 	fieldName: F
 ): S['fields'] extends SchemaFieldsByName
-	? S['fields'][F] extends ISelectFieldDefinition
-		? S['fields'][F]['options'] extends ISelectFieldDefinition['options']
+	? S['fields'][F] extends SelectFieldDefinition
+		? S['fields'][F]['options'] extends SelectFieldDefinition['options']
 			? SelectChoicesToHash<S['fields'][F]['options']['choices']>
 			: never
 		: never

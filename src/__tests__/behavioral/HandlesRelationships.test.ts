@@ -8,9 +8,9 @@ import {
 import { SchemaValues } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildPersonWithCars, {
-	IPersonSchema,
-	ICarSchema,
-	ITruckSchema,
+	PersonSchema,
+	CarSchema,
+	TruckSchema,
 } from '../data/personWithCars'
 
 const { personSchema, carSchema } = buildPersonWithCars()
@@ -18,7 +18,7 @@ const { personSchema, carSchema } = buildPersonWithCars()
 export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 	@test()
 	protected static async canDefineBasicRelationshipUsingTypes() {
-		const user: SchemaValues<IPersonSchema> = {
+		const user: SchemaValues<PersonSchema> = {
 			name: 'go team',
 			requiredCar: { name: 'go cart' },
 			requiredIsArrayCars: [{ name: 'car 1' }, { name: 'car 2' }],
@@ -109,7 +109,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		const testSingleSchemaField: SchemaFieldValueTypeMapper<{
 			type: 'schema'
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}> = {
 			schemaId: 'car',
@@ -124,7 +124,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			type: 'schema'
 			isArray: true
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}>
 		const testArraySchemaField: ManyType = [

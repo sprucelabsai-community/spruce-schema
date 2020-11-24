@@ -1,6 +1,6 @@
 import { FieldDefinition } from './field.static.types'
 
-export type ITextFieldDefinition = FieldDefinition<
+export type TextFieldDefinition = FieldDefinition<
 	string,
 	string,
 	string[],

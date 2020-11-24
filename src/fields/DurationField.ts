@@ -10,7 +10,7 @@ import {
 	DurationFieldValue,
 } from './DurationField.types'
 import { ValidateOptions } from './field.static.types'
-import { ITextFieldDefinition } from './TextField.types'
+import { TextFieldDefinition } from './TextField.types'
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(
@@ -73,7 +73,7 @@ export default class DurationField extends AbstractField<
 
 	public validate(
 		value: any,
-		_?: ValidateOptions<ITextFieldDefinition>
+		_?: ValidateOptions<TextFieldDefinition>
 	): InvalidFieldError[] {
 		const errors: InvalidFieldError[] = []
 		try {

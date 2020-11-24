@@ -15,17 +15,17 @@ import {
 	SchemaFieldValueTypeMapper,
 } from '../../../fields/SchemaField.types'
 import {
-	ISelectFieldDefinition,
+	SelectFieldDefinition,
 	SelectFieldValueTypeMapper,
 } from '../../../fields/SelectField.types'
-import { ITextFieldDefinition } from '../../../fields/TextField.types'
+import { TextFieldDefinition } from '../../../fields/TextField.types'
 
 export type FieldDefinitions =
 	| BooleanFieldDefinition
-	| ISelectFieldDefinition
+	| SelectFieldDefinition
 	| DurationFieldDefinition
 	| IdFieldDefinition
-	| ITextFieldDefinition
+	| TextFieldDefinition
 	| AddressFieldDefinition
 	| PhoneFieldDefinition
 	| SchemaFieldFieldDefinition
@@ -38,10 +38,10 @@ export type FieldDefinitions =
 
 export type Fields =
 	| Field<BooleanFieldDefinition>
-	| Field<ISelectFieldDefinition>
+	| Field<SelectFieldDefinition>
 	| Field<DurationFieldDefinition>
 	| Field<IdFieldDefinition>
-	| Field<ITextFieldDefinition>
+	| Field<TextFieldDefinition>
 	| Field<AddressFieldDefinition>
 	| Field<PhoneFieldDefinition>
 	| Field<SchemaFieldFieldDefinition>
@@ -54,10 +54,10 @@ export type Fields =
 
 export interface FieldDefinitionMap {
 	['boolean']: BooleanFieldDefinition
-	['select']: ISelectFieldDefinition
+	['select']: SelectFieldDefinition
 	['duration']: DurationFieldDefinition
 	['id']: IdFieldDefinition
-	['text']: ITextFieldDefinition
+	['text']: TextFieldDefinition
 	['address']: AddressFieldDefinition
 	['phone']: PhoneFieldDefinition
 	['schema']: SchemaFieldFieldDefinition
@@ -75,11 +75,11 @@ export interface FieldValueTypeGeneratorMap<
 > {
 	['boolean']: BooleanFieldDefinition['value']
 	['select']: SelectFieldValueTypeMapper<
-		F extends ISelectFieldDefinition ? F : ISelectFieldDefinition
+		F extends SelectFieldDefinition ? F : SelectFieldDefinition
 	>
 	['duration']: DurationFieldDefinition['value']
 	['id']: IdFieldDefinition['value']
-	['text']: ITextFieldDefinition['value']
+	['text']: TextFieldDefinition['value']
 	['address']: AddressFieldDefinition['value']
 	['phone']: PhoneFieldDefinition['value']
 	['schema']: SchemaFieldValueTypeMapper<
@@ -96,10 +96,10 @@ export interface FieldValueTypeGeneratorMap<
 
 export interface FieldMap {
 	['boolean']: Field<BooleanFieldDefinition>
-	['select']: Field<ISelectFieldDefinition>
+	['select']: Field<SelectFieldDefinition>
 	['duration']: Field<DurationFieldDefinition>
 	['id']: Field<IdFieldDefinition>
-	['text']: Field<ITextFieldDefinition>
+	['text']: Field<TextFieldDefinition>
 	['address']: Field<AddressFieldDefinition>
 	['phone']: Field<PhoneFieldDefinition>
 	['schema']: Field<SchemaFieldFieldDefinition>
