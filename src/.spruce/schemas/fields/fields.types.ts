@@ -20,7 +20,7 @@ import {
 } from '../../../fields/SelectField.types'
 import { ITextFieldDefinition } from '../../../fields/TextField.types'
 
-export type FieldDefinition =
+export type FieldDefinitions =
 	| IBooleanFieldDefinition
 	| ISelectFieldDefinition
 	| IDurationFieldDefinition
@@ -70,7 +70,7 @@ export interface IFieldDefinitionMap {
 }
 
 export interface IFieldValueTypeGeneratorMap<
-	F extends FieldDefinition,
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean
 > {
 	['boolean']: IBooleanFieldDefinition['value']

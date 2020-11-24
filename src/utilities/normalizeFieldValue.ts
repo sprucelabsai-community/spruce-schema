@@ -1,6 +1,6 @@
 import {
 	Field,
-	FieldDefinition,
+	FieldDefinitions,
 	IFieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
 import { InvalidFieldError } from '../errors/error.types'
@@ -82,7 +82,7 @@ export default function normalizeFieldValue<
 		localValue = localValue.map((value) =>
 			typeof value === 'undefined'
 				? undefined
-				: (field as IField<FieldDefinition>).toValueType(value, {
+				: (field as IField<FieldDefinitions>).toValueType(value, {
 						createEntityInstances,
 						...baseOptions,
 				  })

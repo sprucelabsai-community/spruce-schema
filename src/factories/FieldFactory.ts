@@ -1,8 +1,8 @@
-import { FieldDefinition, IFieldMap, fieldClassMap } from '../fields'
+import { FieldDefinitions, IFieldMap, fieldClassMap } from '../fields'
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */
-	public static Field<F extends FieldDefinition>(
+	public static Field<F extends FieldDefinitions>(
 		name: string,
 		definition: F
 	): IFieldMap[F['type']] {

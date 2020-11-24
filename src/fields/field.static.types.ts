@@ -1,5 +1,5 @@
 import {
-	FieldDefinition,
+	FieldDefinitions,
 	IFieldMap,
 	IFieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
@@ -36,7 +36,7 @@ export interface FieldDefinitionToSchemaOptions {
 }
 
 export type ToValueTypeOptions<
-	F extends FieldDefinition,
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = true
 > = {
 	schemasById?: ISchemasById
@@ -44,7 +44,7 @@ export type ToValueTypeOptions<
 } & Partial<F['options']>
 
 /** Options passed to validate() */
-export type ValidateOptions<F extends FieldDefinition> = {
+export type ValidateOptions<F extends FieldDefinitions> = {
 	/** All schemas we're validating against */
 	schemasById?: ISchemasById
 } & Partial<F['options']>
@@ -80,9 +80,9 @@ export type IFieldDefinition<
 )
 
 export type FieldDefinitionValueType<
-	F extends FieldDefinition,
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = false
-> = F extends FieldDefinition
+> = F extends FieldDefinitions
 	? IsRequired<
 			IsArray<
 				NonNullable<
@@ -94,7 +94,7 @@ export type FieldDefinitionValueType<
 	  >
 	: any
 
-export interface IField<F extends FieldDefinition> {
+export interface IField<F extends FieldDefinitions> {
 	readonly definition: F
 	readonly type: F['type']
 	readonly options: F['options']
@@ -116,7 +116,7 @@ export interface IField<F extends FieldDefinition> {
 	>
 }
 
-export type FieldSubclass<F extends FieldDefinition> = new (
+export type FieldSubclass<F extends FieldDefinitions> = new (
 	name: string,
 	definition: F
 ) => IField<F>

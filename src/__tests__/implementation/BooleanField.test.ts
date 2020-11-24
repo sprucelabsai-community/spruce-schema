@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import { FieldDefinition } from '../../fields'
+import { FieldDefinitions } from '../../fields'
 import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
 
 export default class BooleanFieldTest extends AbstractSpruceTest {
@@ -20,7 +20,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canHandleDefaultValue() {
-		const def: FieldDefinition = {
+		const def: FieldDefinitions = {
 			label: 'Public',
 			type: 'boolean',
 			hint: 'Is this location viewable by guests?',
@@ -32,7 +32,7 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canHandleArrayDefaultValue() {
-		const def: FieldDefinition = {
+		const def: FieldDefinitions = {
 			type: 'boolean',
 			isArray: true,
 			defaultValue: [true],

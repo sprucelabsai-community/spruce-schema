@@ -1,4 +1,4 @@
-import { FieldDefinition } from '../fields'
+import { FieldDefinitions } from '../fields'
 import { Schema } from '../schemas.static.types'
 
 export interface FieldTemplateDetails {
@@ -17,7 +17,7 @@ export enum TemplateRenderAs {
 }
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */
-export interface FieldTemplateDetailOptions<T extends FieldDefinition> {
+export interface FieldTemplateDetailOptions<T extends FieldDefinitions> {
 	/** The language we're generating to, only TS for now */
 	language: 'ts'
 	/** All other schemas schemas being rendered */
@@ -75,6 +75,6 @@ export interface FieldTemplateItem extends SchemaTemplateNames {
 	isLocal: boolean
 	/** Exactly what it says */
 	description: string
-	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
+	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinitions becomes string */
 	valueTypeMapper?: string
 }

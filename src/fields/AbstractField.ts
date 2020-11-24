@@ -1,4 +1,4 @@
-import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
+import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
 import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import log from '../singletons/log'
@@ -8,7 +8,7 @@ import {
 } from '../types/template.types'
 import { ValidateOptions, IField } from './field.static.types'
 
-export default abstract class AbstractField<F extends FieldDefinition>
+export default abstract class AbstractField<F extends FieldDefinitions>
 	implements IField<F> {
 	/** The definition for this field */
 	public definition: F

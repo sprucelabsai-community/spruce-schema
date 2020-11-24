@@ -1,5 +1,5 @@
 import {
-	FieldDefinition,
+	FieldDefinitions as FieldDefinition,
 	Field,
 	IFieldDefinitionMap,
 	IFieldMap,
