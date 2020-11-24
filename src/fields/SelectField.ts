@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
@@ -31,7 +31,7 @@ export default class SelectField<
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<ISelectFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		// Build union of select options
 		const { definition } = options
 		const {

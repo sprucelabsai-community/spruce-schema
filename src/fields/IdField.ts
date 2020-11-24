@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { IIdFieldDefinition } from './IdField.types'
@@ -12,7 +12,7 @@ export default class IdField extends AbstractField<IIdFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IIdFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}

@@ -30,7 +30,7 @@ export type SchemaFieldUnion<
 		: any
 }
 
-export interface IFieldDefinitionToSchemaOptions {
+export interface FieldDefinitionToSchemaOptions {
 	/** All definitions we're validating against */
 	schemasById?: ISchemasById
 }

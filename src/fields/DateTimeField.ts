@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { IDateTimeFieldDefinition } from './DateTimeField.types'
@@ -13,7 +13,7 @@ export default class DateTimeField extends AbstractField<
 	}
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IDateTimeFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IDateTimeFieldValue${
 				options.definition.isArray ? '[]' : ''

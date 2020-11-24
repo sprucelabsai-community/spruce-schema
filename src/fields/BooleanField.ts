@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { IBooleanFieldDefinition } from './BooleanField.types'
@@ -14,7 +14,7 @@ export default class BooleanField extends AbstractField<
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IBooleanFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `boolean${options.definition.isArray ? '[]' : ''}`,
 		}

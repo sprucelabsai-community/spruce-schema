@@ -4,7 +4,7 @@ import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
@@ -24,7 +24,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IFileFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IFileFieldValue${
 				options.definition.isArray ? '[]' : ''

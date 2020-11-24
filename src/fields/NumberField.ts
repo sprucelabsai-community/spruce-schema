@@ -1,7 +1,7 @@
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { INumberFieldDefinition } from './NumberField.types'
@@ -13,7 +13,7 @@ export default class NumberField extends AbstractField<INumberFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<INumberFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `number${options.definition.isArray ? '[]' : ''}`,
 		}

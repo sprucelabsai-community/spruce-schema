@@ -1,6 +1,6 @@
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
@@ -14,7 +14,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<ITextFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		const { definition } = options
 		return {
 			valueType: `string${definition.isArray ? '[]' : ''}`,

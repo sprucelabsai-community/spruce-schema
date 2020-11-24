@@ -3,7 +3,7 @@ import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import log from '../singletons/log'
 import {
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
 } from '../types/template.types'
 import { ValidateOptions, IField } from './field.static.types'
@@ -49,7 +49,7 @@ public static get description() {
 	/** Details needed for generating templates */
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<any>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		log.info(options)
 		throw new SpruceError({
 			code: 'NOT_IMPLEMENTED',

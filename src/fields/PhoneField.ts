@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import formatPhoneNumber from '../utilities/formatPhoneNumber'
 import AbstractField from './AbstractField'
@@ -14,7 +14,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IPhoneFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}

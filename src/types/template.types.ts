@@ -1,7 +1,7 @@
 import { FieldDefinition } from '../fields'
 import { Schema } from '../schemas.static.types'
 
-export interface IFieldTemplateDetails {
+export interface FieldTemplateDetails {
 	/** The type of value (string, number) */
 	valueType: string
 }

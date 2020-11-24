@@ -1,7 +1,7 @@
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
@@ -19,7 +19,7 @@ export default class DirectoryField extends AbstractField<
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IDirectoryFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		const { definition } = options
 		return {
 			valueType: `${options.importAs}.IDirectoryFieldValue${

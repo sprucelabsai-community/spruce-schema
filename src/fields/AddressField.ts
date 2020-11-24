@@ -1,6 +1,6 @@
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { IAddressFieldDefinition } from './AddressField.types'
@@ -13,7 +13,7 @@ export default class AddressField extends AbstractField<
 	}
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IAddressFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IAddressFieldValue${
 				options.definition.isArray ? '[]' : ''

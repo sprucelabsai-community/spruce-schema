@@ -11,14 +11,14 @@ import SchemaRegistry from '../singletons/SchemaRegistry'
 import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 	TemplateRenderAs,
 } from '../types/template.types'
 import isIdWithVersion from '../utilities/isIdWithVersion'
 import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
-	IFieldDefinitionToSchemaOptions,
+	FieldDefinitionToSchemaOptions,
 	ValidateOptions,
 	ToValueTypeOptions,
 	FieldDefinitionValueType,
@@ -104,7 +104,7 @@ export default class SchemaField<
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<ISchemaFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			definition
@@ -202,7 +202,7 @@ export default class SchemaField<
 
 	private static mapFieldDefinitionToSchemas(
 		definition: ISchemaFieldDefinition,
-		options?: IFieldDefinitionToSchemaOptions
+		options?: FieldDefinitionToSchemaOptions
 	): Schema[] {
 		const { schemasById: schemasById = {} } = options || {}
 		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(

@@ -2,7 +2,7 @@ import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
@@ -63,7 +63,7 @@ export default class DurationField extends AbstractField<
 
 	public static generateTemplateDetails(
 		options: FieldTemplateDetailOptions<IDurationFieldDefinition>
-	): IFieldTemplateDetails {
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IDurationFieldValue${
 				options.definition.isArray ? '[]' : ''
