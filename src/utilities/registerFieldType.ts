@@ -1,7 +1,7 @@
 import SpruceError from '../errors/SpruceError'
 import { FieldSubclass } from '../fields/field.static.types'
 
-export interface IFieldRegistration {
+export interface FieldRegistration {
 	/** The type that is used as the key to the enum */
 	type: string
 	/** The package that defined this field */
@@ -16,7 +16,7 @@ export interface IFieldRegistration {
 	valueTypeMapper?: string
 }
 
-export interface IFieldRegistrationOptions {
+export interface FieldRegistrationOptions {
 	/** The package that defined this field, like @sprucelabs/schema */
 	package: string
 
@@ -31,12 +31,12 @@ export interface IFieldRegistrationOptions {
 }
 
 export function validateFieldRegistration(
-	registration: IFieldRegistration
+	registration: FieldRegistration
 	// eslint-disable-next-line no-undef
-): asserts registration is IFieldRegistration {
+): asserts registration is FieldRegistration {
 	const errors: string[] = []
 
-	const builtRegistration: IFieldRegistration = {
+	const builtRegistration: FieldRegistration = {
 		package: '***missing***',
 		className: '***missing***',
 		type: '***missing***',
@@ -48,7 +48,7 @@ export function validateFieldRegistration(
 		errors.push('field_registration_must_be_object')
 	} else {
 		Object.keys(builtRegistration).forEach((untypedKey) => {
-			const key = untypedKey as keyof IFieldRegistration
+			const key = untypedKey as keyof FieldRegistration
 			if (typeof registration[key] !== 'string') {
 				errors.push(`${key}_must_be_string`)
 			} else {
@@ -68,8 +68,8 @@ export function validateFieldRegistration(
 
 /** Register a new type of field */
 export default function registerFieldType(
-	options: IFieldRegistrationOptions
-): IFieldRegistration {
+	options: FieldRegistrationOptions
+): FieldRegistration {
 	const registration = {
 		package: options.package,
 		className: options.class.name,

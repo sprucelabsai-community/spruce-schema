@@ -15,7 +15,7 @@ import schemaRegistration from './addons/schemaField.addon'
 import selectRegistration from './addons/selectField.addon'
 import textRegistration from './addons/textField.addon'
 import StaticSchemaEntityImplementation from './StaticSchemaEntityImplementation'
-import { IFieldRegistration } from './utilities/registerFieldType'
+import { FieldRegistration } from './utilities/registerFieldType'
 
 export default StaticSchemaEntityImplementation
 
@@ -52,7 +52,7 @@ export { default as FieldFactory } from './factories/FieldFactory'
 export * from './types/template.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
 
-export const fieldRegistrations: IFieldRegistration[] = [
+export const fieldRegistrations: FieldRegistration[] = [
 	addressRegistration,
 	booleanRegistration,
 	dateRegistration,

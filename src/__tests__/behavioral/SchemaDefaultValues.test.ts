@@ -15,7 +15,7 @@ import buildPersonWithCars, {
 
 StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-type IPersonMappedDefaultValues = SchemaDefaultValues<PersonSchema, true>
+type PersonMappedDefaultValues = SchemaDefaultValues<PersonSchema, true>
 
 interface PersonExpectedDefaultValues {
 	optionalSelectWithDefaultValue: 'hello' | 'goodbye'
@@ -117,7 +117,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 			name: 'fast car',
 		}) as StaticSchemaEntity<CarSchema>
 
-		assert.isType<IPersonMappedDefaultValues>(defaultValues)
+		assert.isType<PersonMappedDefaultValues>(defaultValues)
 		assert.isEqualDeep(
 			defaultValues.optionalIsArrayCarOrTruckWithDefaultValue,
 			[carEntity]

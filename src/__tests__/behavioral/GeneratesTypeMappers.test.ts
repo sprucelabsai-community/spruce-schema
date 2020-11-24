@@ -7,12 +7,12 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 	@test(
 		'Select field',
 		SelectField,
-		'SelectFieldValueTypeMapper<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>'
+		'SelectFieldValueTypeMapper<F extends SelectFieldDefinition ? F: SelectFieldDefinition>'
 	)
 	@test(
 		'Schema field',
 		SchemaField,
-		'SchemaFieldValueTypeMapper<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>'
+		'SchemaFieldValueTypeMapper<F extends SchemaFieldFieldDefinition? F : SchemaFieldFieldDefinition, CreateEntityInstances>'
 	)
 	protected static async testValueGeneratorType(
 		Field: typeof AbstractField,
