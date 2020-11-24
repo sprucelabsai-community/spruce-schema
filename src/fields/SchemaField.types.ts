@@ -6,7 +6,7 @@ import {
 	SchemaValues,
 } from '../schemas.static.types'
 import { IsArrayNoUnpack, IsArray } from '../types/utilities.types'
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
 export interface ISchemaFieldOptions {
 	/** The id of the schema you are relating to */
@@ -50,7 +50,7 @@ export type SchemaFieldValueTypeMapper<
 		: IsArray<SchemaValues<F['options']['schema']>, F['isArray']>
 	: any
 
-export type ISchemaFieldDefinition = IFieldDefinition<
+export type ISchemaFieldDefinition = FieldDefinition<
 	Record<string, any>,
 	Record<string, any>,
 	SchemaFieldValueUnion[],

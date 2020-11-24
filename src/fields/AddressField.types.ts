@@ -1,4 +1,4 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
 export interface AddressFieldValue {
 	street1: string
@@ -9,7 +9,7 @@ export interface AddressFieldValue {
 	zip: string
 }
 
-export type IAddressFieldDefinition = IFieldDefinition<AddressFieldValue> & {
+export type IAddressFieldDefinition = FieldDefinition<AddressFieldValue> & {
 	/** * An address with street, city, province, country, and zip details */
 	type: 'address'
 	// eslint-disable-next-line @typescript-eslint/ban-types

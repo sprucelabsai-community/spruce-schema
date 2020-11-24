@@ -1,6 +1,6 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export type INumberFieldDefinition = IFieldDefinition<
+export type INumberFieldDefinition = FieldDefinition<
 	number,
 	number,
 	number[],

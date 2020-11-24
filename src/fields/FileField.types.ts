@@ -1,4 +1,4 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
 export interface IFileFieldValue {
 	/** Date last modified */
@@ -15,7 +15,7 @@ export interface IFileFieldValue {
 	ext?: string
 }
 
-export type IFileFieldDefinition = IFieldDefinition<IFileFieldValue> & {
+export type IFileFieldDefinition = FieldDefinition<IFileFieldValue> & {
 	/** * .File - a great way to deal with file management */
 	type: 'file'
 	options?: {

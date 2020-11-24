@@ -52,7 +52,7 @@ export type ValidateOptions<F extends FieldDefinitions> = {
 export type FieldType = keyof IFieldMap
 
 // if it's not going to change, put it in here
-export type IFieldDefinition<
+export type FieldDefinition<
 	Value = any,
 	DefaultValue = Partial<Value>,
 	ArrayValue = Value[],

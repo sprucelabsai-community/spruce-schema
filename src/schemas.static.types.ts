@@ -5,7 +5,7 @@ import {
 	IFieldMap,
 } from '#spruce/schemas/fields/fields.types'
 import {
-	IFieldDefinition,
+	FieldDefinition,
 	FieldDefinitionValueType,
 	IField,
 	FieldType,
@@ -147,7 +147,7 @@ export interface SchemaFieldValueUnion<
 }
 
 export type SchemaFields<T extends Schema> = {
-	[F in SchemaFieldNames<T>]: T['fields'][F] extends IFieldDefinition
+	[F in SchemaFieldNames<T>]: T['fields'][F] extends FieldDefinition
 		? IFieldMap[T['fields'][F]['type']]
 		: never
 }
@@ -348,7 +348,7 @@ export interface SchemaNormalizeOptions<
 > extends SchemaNormalizeFieldValueOptions<CreateEntityInstances> {
 	/** Options passed to each field that conforms to the field definition's options */
 	byField?: {
-		[K in SchemaFieldNames<S>]?: S['fields'][K] extends IFieldDefinition
+		[K in SchemaFieldNames<S>]?: S['fields'][K] extends FieldDefinition
 			? Partial<IFieldDefinitionMap[S['fields'][K]['type']]['options']>
 			: never
 	}

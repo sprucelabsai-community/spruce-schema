@@ -1,6 +1,6 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export type IRawFieldDefinition = IFieldDefinition<any> & {
+export type IRawFieldDefinition = FieldDefinition<any> & {
 	type: 'raw'
 	options: {
 		valueType: string

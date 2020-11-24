@@ -1,4 +1,4 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
 /** A duration value object */
 export interface IDurationFieldValue {
@@ -8,7 +8,7 @@ export interface IDurationFieldValue {
 	ms: number
 }
 
-export type IDurationFieldDefinition = IFieldDefinition<IDurationFieldValue> & {
+export type IDurationFieldDefinition = FieldDefinition<IDurationFieldValue> & {
 	/** * .Duration - a span of time  */
 	type: 'duration'
 	options?: {

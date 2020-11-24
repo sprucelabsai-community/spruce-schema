@@ -6,7 +6,7 @@ import FieldFactory from './factories/FieldFactory'
 import {
 	FieldDefinitionValueType,
 	IField,
-	IFieldDefinition,
+	FieldDefinition,
 } from './fields/field.static.types'
 import {
 	DynamicSchemaAllValues,
@@ -26,7 +26,7 @@ export default class DynamicSchemaEntityImplementation<
 		S extends Schema,
 		Field extends IField<
 			any
-		> = S['dynamicFieldSignature'] extends IFieldDefinition
+		> = S['dynamicFieldSignature'] extends FieldDefinition
 			? IFieldMap[S['dynamicFieldSignature']['type']]
 			: any
 	>

@@ -1,4 +1,4 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
 export interface ISelectFieldDefinitionChoice {
 	/**  Machine readable way to identify this choice */
@@ -15,7 +15,7 @@ export type SelectFieldValueTypeMapper<
 	F extends ISelectFieldDefinition
 > = F['options']['choices'][number]['value']
 
-export type ISelectFieldDefinition = IFieldDefinition<
+export type ISelectFieldDefinition = FieldDefinition<
 	string,
 	string,
 	string[],
