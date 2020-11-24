@@ -23,17 +23,17 @@ import {
 	ToValueTypeOptions,
 	FieldDefinitionValueType,
 } from './field.static.types'
-import { ISchemaFieldDefinition } from './SchemaField.types'
+import { SchemaFieldFieldDefinition } from './SchemaField.types'
 
 export default class SchemaField<
-	F extends ISchemaFieldDefinition = ISchemaFieldDefinition
+	F extends SchemaFieldFieldDefinition = SchemaFieldFieldDefinition
 > extends AbstractField<F> {
 	public static get description() {
 		return 'A way to map relationships.'
 	}
 
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
-		field: ISchemaFieldDefinition
+		field: SchemaFieldFieldDefinition
 	): (SchemaIdWithVersion | Schema)[] {
 		const { options } = field
 		const schemasOrIds: ({ version?: string; id: string } | Schema)[] = [
@@ -68,7 +68,7 @@ export default class SchemaField<
 	}
 
 	public static mapFieldDefinitionToSchemaIdsWithVersion(
-		field: ISchemaFieldDefinition
+		field: SchemaFieldFieldDefinition
 	): SchemaIdWithVersion[] {
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
@@ -98,12 +98,12 @@ export default class SchemaField<
 	public static generateTypeDetails() {
 		return {
 			valueTypeMapper:
-				'SchemaFieldValueTypeMapper<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>',
+				'SchemaFieldValueTypeMapper<F extends SchemaFieldFieldDefinition? F : SchemaFieldFieldDefinition, CreateEntityInstances>',
 		}
 	}
 
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<ISchemaFieldDefinition>
+		options: FieldTemplateDetailOptions<SchemaFieldFieldDefinition>
 	): FieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
@@ -201,7 +201,7 @@ export default class SchemaField<
 	}
 
 	private static mapFieldDefinitionToSchemas(
-		definition: ISchemaFieldDefinition,
+		definition: SchemaFieldFieldDefinition,
 		options?: FieldDefinitionToSchemaOptions
 	): Schema[] {
 		const { schemasById: schemasById = {} } = options || {}
@@ -225,7 +225,7 @@ export default class SchemaField<
 
 	public validate(
 		value: any,
-		options?: ValidateOptions<ISchemaFieldDefinition>
+		options?: ValidateOptions<SchemaFieldFieldDefinition>
 	): InvalidFieldError[] {
 		const errors = super.validate(value, options)
 
@@ -338,7 +338,10 @@ export default class SchemaField<
 
 	public toValueType<CreateEntityInstances extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateEntityInstances>
+		options?: ToValueTypeOptions<
+			SchemaFieldFieldDefinition,
+			CreateEntityInstances
+		>
 	): FieldDefinitionValueType<F, CreateEntityInstances> {
 		const errors = this.validate(value, options)
 

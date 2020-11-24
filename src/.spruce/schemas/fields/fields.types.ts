@@ -11,7 +11,7 @@ import { NumberFieldDefinition } from '../../../fields/NumberField.types'
 import { PhoneFieldDefinition } from '../../../fields/PhoneField.types'
 import { RawFieldDefinition } from '../../../fields/RawField.types'
 import {
-	ISchemaFieldDefinition,
+	SchemaFieldFieldDefinition,
 	SchemaFieldValueTypeMapper,
 } from '../../../fields/SchemaField.types'
 import {
@@ -28,7 +28,7 @@ export type FieldDefinitions =
 	| ITextFieldDefinition
 	| AddressFieldDefinition
 	| PhoneFieldDefinition
-	| ISchemaFieldDefinition
+	| SchemaFieldFieldDefinition
 	| RawFieldDefinition
 	| NumberFieldDefinition
 	| DateTimeFieldDefinition
@@ -44,7 +44,7 @@ export type Fields =
 	| Field<ITextFieldDefinition>
 	| Field<AddressFieldDefinition>
 	| Field<PhoneFieldDefinition>
-	| Field<ISchemaFieldDefinition>
+	| Field<SchemaFieldFieldDefinition>
 	| Field<RawFieldDefinition>
 	| Field<NumberFieldDefinition>
 	| Field<DateTimeFieldDefinition>
@@ -60,7 +60,7 @@ export interface FieldDefinitionMap {
 	['text']: ITextFieldDefinition
 	['address']: AddressFieldDefinition
 	['phone']: PhoneFieldDefinition
-	['schema']: ISchemaFieldDefinition
+	['schema']: SchemaFieldFieldDefinition
 	['raw']: RawFieldDefinition
 	['number']: NumberFieldDefinition
 	['dateTime']: DateTimeFieldDefinition
@@ -83,7 +83,7 @@ export interface FieldValueTypeGeneratorMap<
 	['address']: AddressFieldDefinition['value']
 	['phone']: PhoneFieldDefinition['value']
 	['schema']: SchemaFieldValueTypeMapper<
-		F extends ISchemaFieldDefinition ? F : ISchemaFieldDefinition,
+		F extends SchemaFieldFieldDefinition ? F : SchemaFieldFieldDefinition,
 		CreateEntityInstances
 	>
 	['raw']: RawFieldDefinition['value']
@@ -102,7 +102,7 @@ export interface FieldMap {
 	['text']: Field<ITextFieldDefinition>
 	['address']: Field<AddressFieldDefinition>
 	['phone']: Field<PhoneFieldDefinition>
-	['schema']: Field<ISchemaFieldDefinition>
+	['schema']: Field<SchemaFieldFieldDefinition>
 	['raw']: Field<RawFieldDefinition>
 	['number']: Field<NumberFieldDefinition>
 	['dateTime']: Field<DateTimeFieldDefinition>

@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import SchemaField from '../../fields/SchemaField'
-import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
+import { SchemaFieldFieldDefinition } from '../../fields/SchemaField.types'
 import {
 	FieldTemplateDetailOptions,
 	SchemaTemplateItem,
@@ -126,12 +126,12 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		'(SpruceSchemas.Core.IUnionPersonSchema | SpruceSchemas.Core.IWrenchSchema)[]'
 	)
 	protected static async testTemplateDetails(
-		definition: ISchemaFieldDefinition,
+		definition: SchemaFieldFieldDefinition,
 		renderAsValue: string,
 		renderAsType: string,
 		renderAsSchemaType: string
 	) {
-		const templateOptions: FieldTemplateDetailOptions<ISchemaFieldDefinition> = {
+		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> = {
 			language: 'ts',
 			globalNamespace: 'SpruceSchemas',
 			importAs: 'generated_test',

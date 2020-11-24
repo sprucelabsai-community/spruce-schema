@@ -37,7 +37,7 @@ export type SchemaFieldUnion<
 }
 
 export type SchemaFieldValueTypeMapper<
-	F extends ISchemaFieldDefinition,
+	F extends SchemaFieldFieldDefinition,
 	CreateEntityInstances extends boolean = false
 > = F['options']['schemas'] extends Array<Schema>
 	? IsArrayNoUnpack<
@@ -50,7 +50,7 @@ export type SchemaFieldValueTypeMapper<
 		: IsArray<SchemaValues<F['options']['schema']>, F['isArray']>
 	: any
 
-export type ISchemaFieldDefinition = FieldDefinition<
+export type SchemaFieldFieldDefinition = FieldDefinition<
 	Record<string, any>,
 	Record<string, any>,
 	SchemaFieldValueUnion[],

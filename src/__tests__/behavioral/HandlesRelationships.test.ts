@@ -2,7 +2,7 @@ import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField from '../../fields/SchemaField'
 import {
-	ISchemaFieldDefinition,
+	SchemaFieldFieldDefinition,
 	SchemaFieldValueTypeMapper,
 } from '../../fields/SchemaField.types'
 import { SchemaValues } from '../../schemas.static.types'
@@ -199,7 +199,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		}
 
 		const ids = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
-			carField.field.definition as ISchemaFieldDefinition
+			carField.field.definition as SchemaFieldFieldDefinition
 		)
 
 		assert.isEqualDeep(ids, [{ id: carSchema.id }])
