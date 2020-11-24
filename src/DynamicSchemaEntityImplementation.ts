@@ -22,9 +22,11 @@ import {
 } from './schemas.static.types'
 import normalizeFieldValue from './utilities/normalizeFieldValue'
 
-export default class DynamicSchemaEntity<
+export default class DynamicSchemaEntityImplementation<
 		S extends ISchema,
-		Field extends IField<any> = S['dynamicFieldSignature'] extends IFieldDefinition
+		Field extends IField<
+			any
+		> = S['dynamicFieldSignature'] extends IFieldDefinition
 			? IFieldMap[S['dynamicFieldSignature']['type']]
 			: any
 	>

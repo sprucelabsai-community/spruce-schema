@@ -26,7 +26,7 @@ import normalizeFieldValue, {
 } from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
-export default class SchemaEntity<S extends ISchema>
+export default class StaticSchemaEntityImplementation<S extends ISchema>
 	extends AbstractEntity
 	implements ISchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
@@ -187,7 +187,9 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	public getDefaultValues<
-		F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+		F extends SchemaFieldNamesWithDefaultValue<
+			S
+		> = SchemaFieldNamesWithDefaultValue<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}

@@ -3,12 +3,12 @@ import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import SchemaEntity from '../../SchemaEntity'
 import {
 	SchemaValues,
 	ISchemaEntity,
 	ISchema,
 } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchema from '../../utilities/validateSchema'
@@ -18,7 +18,7 @@ import buildPersonWithCars, {
 	IPersonSchema,
 } from '../data/personWithCars'
 
-SchemaEntity.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
 type IPersonMappedValues = SchemaValues<IPersonSchema, true>
 
@@ -180,7 +180,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static getSetArrays() {
-		const entity = new SchemaEntity({
+		const entity = new StaticSchemaEntityImplementation({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -240,7 +240,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testTransformingValuesToValueTypes() {
-		const schema = new SchemaEntity({
+		const schema = new StaticSchemaEntityImplementation({
 			id: 'is-array-transform',
 			name: 'transform tests',
 			fields: {
@@ -290,7 +290,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testFullValuesTypes() {
-		const personEntity = new SchemaEntity(personSchema)
+		const personEntity = new StaticSchemaEntityImplementation(personSchema)
 		const values = personEntity.getValues({ validate: false })
 		const valuesWithoutInstances = personEntity.getValues({
 			validate: false,
@@ -303,7 +303,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGettingOptionsByField() {
-		const entity = new SchemaEntity(personSchema)
+		const entity = new StaticSchemaEntityImplementation(personSchema)
 		entity.set('name', 'a really long name that should get truncated')
 		const name = entity.get('name', { byField: { name: { maxLength: 10 } } })
 		assert.isEqual(name, 'a really l')
@@ -337,9 +337,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 			callback: (payload: SchemaValues<S>) => void
 		}
 
-		const testObj: GenericTestInterface<
-			typeof nestedSingleRequiredFieldSchemas
-		> = {
+		const testObj: GenericTestInterface<typeof nestedSingleRequiredFieldSchemas> = {
 			payloadSchema: nestedSingleRequiredFieldSchemas,
 			callback: (payload) => {
 				const { requiredArrayField } = payload.contract

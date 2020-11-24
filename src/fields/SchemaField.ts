@@ -1,14 +1,14 @@
 import AbstractEntity from '../AbstractEntity'
-import DynamicSchemaEntity from '../DynamicSchemaEntity'
+import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import StaticSchemaEntity from '../SchemaEntity'
 import {
 	ISchema,
 	ISchemaIdWithVersion,
 	SchemaEntity,
 } from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
+import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 import {
 	IFieldTemplateDetailOptions,
 	IFieldTemplateDetails,
@@ -332,7 +332,7 @@ export default class SchemaField<
 
 	private instantiateSchema(schema: ISchema, value: any): SchemaEntity {
 		return schema.dynamicFieldSignature
-			? new DynamicSchemaEntity(schema, value)
+			? new DynamicSchemaEntityImplementation(schema, value)
 			: new StaticSchemaEntity(schema, value)
 	}
 

@@ -1,5 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
-import SchemaEntity from '../..'
+import StaticSchemaEntityImplementation from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import {
 	SchemaPublicFieldNames,
@@ -31,7 +31,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanDropPrivateFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 		})
@@ -45,7 +45,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanKeepPrivateFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 		})
@@ -64,7 +64,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanDropPrivateFieldsWhenSelectingFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 			onlyOnCar: 'yay',

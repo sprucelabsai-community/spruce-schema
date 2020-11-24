@@ -1,5 +1,4 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import SchemaEntity from '../../SchemaEntity'
 import {
 	ISchema,
 	SchemaDefaultValues,
@@ -7,13 +6,14 @@ import {
 	SchemaValues,
 	SchemaFieldNamesWithDefaultValue,
 } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildPersonWithCars, {
 	IPersonSchema,
 	ICarSchema,
 	ITruckSchema,
 } from '../data/personWithCars'
 
-SchemaEntity.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
 type IPersonMappedDefaultValues = SchemaDefaultValues<IPersonSchema, true>
 
@@ -64,30 +64,36 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 	}
 
 	@test('Gets default values while creating schema instances', personSchema, {
-		optionalCarWithDefaultValue: new SchemaEntity(carSchema, {
-			name: 'fast car',
-		}),
+		optionalCarWithDefaultValue: new StaticSchemaEntityImplementation(
+			carSchema,
+			{
+				name: 'fast car',
+			}
+		),
 		optionalSelectWithDefaultValue: 'hello',
 		optionalTextWithDefaultValue: 'world',
 		optionalIsArrayCarOrTruckWithDefaultValue: [
-			new SchemaEntity(carSchema, { name: 'fast car' }),
+			new StaticSchemaEntityImplementation(carSchema, { name: 'fast car' }),
 		],
-		optionalCarOrTruckWithDefaultValue: new SchemaEntity(carSchema, {
-			name: 'fast car',
-		}),
+		optionalCarOrTruckWithDefaultValue: new StaticSchemaEntityImplementation(
+			carSchema,
+			{
+				name: 'fast car',
+			}
+		),
 	})
 	protected static defaultValueTests(
 		definition: ISchema,
 		expectedDefaultValues: Record<string, any>
 	) {
-		const schema = new SchemaEntity(definition)
+		const schema = new StaticSchemaEntityImplementation(definition)
 		const defaultValues = schema.getDefaultValues()
 		assert.isEqualDeep(defaultValues, expectedDefaultValues)
 	}
 
 	@test('Can get default typed correctly (test will pass, lint will fail)')
 	protected static defaultValueTypeTests() {
-		const schema = new SchemaEntity(personSchema)
+		const schema = new StaticSchemaEntityImplementation(personSchema)
 		const defaultValues = schema.getDefaultValues()
 		const defaultValuesWithoutSchemas = schema.getDefaultValues({
 			createEntityInstances: false,
@@ -107,7 +113,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 			'fast car'
 		)
 
-		const carEntity = new SchemaEntity(carSchema, {
+		const carEntity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'fast car',
 		}) as ISchemaEntity<ICarSchema>
 
@@ -126,7 +132,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canGetDefaultValuesForUnionFields() {
-		const schema = new SchemaEntity(personSchema)
+		const schema = new StaticSchemaEntityImplementation(personSchema)
 		const {
 			optionalIsArrayCarOrTruckWithDefaultValue,
 			optionalCarOrTruckWithDefaultValue,

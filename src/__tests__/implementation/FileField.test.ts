@@ -2,7 +2,7 @@ import path from 'path'
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
 import { IFileFieldValue } from '../../fields/FileField.types'
-import SchemaEntity from '../../SchemaEntity'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
 interface IFileDetailExpectations {
@@ -167,7 +167,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 			// @ts-ignore
 			path.sep = '\\'
 		}
-		const schema = new SchemaEntity(this.fileDefinition)
+		const schema = new StaticSchemaEntityImplementation(this.fileDefinition)
 
 		schema.set('target', setTarget)
 
@@ -196,7 +196,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		relativeTo: string,
 		expectedPath: string
 	) {
-		const schema = new SchemaEntity(this.fileDefinition)
+		const schema = new StaticSchemaEntityImplementation(this.fileDefinition)
 		schema.set('target', { path, name: 'app.ts' })
 		const target = schema.get('target', { byField: { target: { relativeTo } } })
 		assert.isEqual(target.path, expectedPath)
