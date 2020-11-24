@@ -5,7 +5,7 @@ import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
 	FieldDefinitionValueType,
-	IField,
+	Field,
 	FieldDefinition,
 } from './fields/field.static.types'
 import {
@@ -24,16 +24,16 @@ import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntityImplementation<
 		S extends Schema,
-		Field extends IField<
+		OurField extends Field<
 			any
 		> = S['dynamicFieldSignature'] extends FieldDefinition
 			? FieldMap[S['dynamicFieldSignature']['type']]
 			: any
 	>
 	extends AbstractEntity
-	implements DynamicSchemaEntityByName<S, Field> {
+	implements DynamicSchemaEntityByName<S, OurField> {
 	private values: DynamicSchemaPartialValues<S> = {}
-	private dynamicField: Field
+	private dynamicField: OurField
 
 	public constructor(schema: S, values?: DynamicSchemaPartialValues<S>) {
 		super(schema)
@@ -48,12 +48,12 @@ export default class DynamicSchemaEntityImplementation<
 		this.dynamicField = FieldFactory.Field(
 			'dynamicField',
 			schema.dynamicFieldSignature
-		) as Field
+		) as OurField
 	}
 
 	public set<F extends string>(
 		fieldName: F,
-		value: FieldDefinitionValueType<Field, false>,
+		value: FieldDefinitionValueType<OurField, false>,
 		options: DynamicSchemaNormalizeOptions<false> = {}
 	): this {
 		const localValue = normalizeFieldValue(
@@ -112,7 +112,7 @@ export default class DynamicSchemaEntityImplementation<
 	public get<F extends string, CreateEntityInstances extends boolean = true>(
 		fieldName: F,
 		options?: SchemaNormalizeOptions<S, CreateEntityInstances>
-	): FieldDefinitionValueType<Field, CreateEntityInstances> {
+	): FieldDefinitionValueType<OurField, CreateEntityInstances> {
 		const value = this.values[fieldName]
 		return normalizeFieldValue(
 			this.schemaId,

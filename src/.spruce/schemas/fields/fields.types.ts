@@ -1,10 +1,10 @@
-import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
+import { AddressFieldDefinition } from '../../../fields/AddressField.types'
 import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
 import { IDateFieldDefinition } from '../../../fields/DateField.types'
 import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
 import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
 import { IDurationFieldDefinition } from '../../../fields/DurationField.types'
-import { IField } from '../../../fields/field.static.types'
+import { Field } from '../../../fields/field.static.types'
 import { IFileFieldDefinition } from '../../../fields/FileField.types'
 import { IIdFieldDefinition } from '../../../fields/IdField.types'
 import { INumberFieldDefinition } from '../../../fields/NumberField.types'
@@ -26,7 +26,7 @@ export type FieldDefinitions =
 	| IDurationFieldDefinition
 	| IIdFieldDefinition
 	| ITextFieldDefinition
-	| IAddressFieldDefinition
+	| AddressFieldDefinition
 	| IPhoneFieldDefinition
 	| ISchemaFieldDefinition
 	| IRawFieldDefinition
@@ -37,20 +37,20 @@ export type FieldDefinitions =
 	| IDirectoryFieldDefinition
 
 export type Fields =
-	| IField<IBooleanFieldDefinition>
-	| IField<ISelectFieldDefinition>
-	| IField<IDurationFieldDefinition>
-	| IField<IIdFieldDefinition>
-	| IField<ITextFieldDefinition>
-	| IField<IAddressFieldDefinition>
-	| IField<IPhoneFieldDefinition>
-	| IField<ISchemaFieldDefinition>
-	| IField<IRawFieldDefinition>
-	| IField<INumberFieldDefinition>
-	| IField<IDateTimeFieldDefinition>
-	| IField<IFileFieldDefinition>
-	| IField<IDateFieldDefinition>
-	| IField<IDirectoryFieldDefinition>
+	| Field<IBooleanFieldDefinition>
+	| Field<ISelectFieldDefinition>
+	| Field<IDurationFieldDefinition>
+	| Field<IIdFieldDefinition>
+	| Field<ITextFieldDefinition>
+	| Field<AddressFieldDefinition>
+	| Field<IPhoneFieldDefinition>
+	| Field<ISchemaFieldDefinition>
+	| Field<IRawFieldDefinition>
+	| Field<INumberFieldDefinition>
+	| Field<IDateTimeFieldDefinition>
+	| Field<IFileFieldDefinition>
+	| Field<IDateFieldDefinition>
+	| Field<IDirectoryFieldDefinition>
 
 export interface FieldDefinitionMap {
 	['boolean']: IBooleanFieldDefinition
@@ -58,7 +58,7 @@ export interface FieldDefinitionMap {
 	['duration']: IDurationFieldDefinition
 	['id']: IIdFieldDefinition
 	['text']: ITextFieldDefinition
-	['address']: IAddressFieldDefinition
+	['address']: AddressFieldDefinition
 	['phone']: IPhoneFieldDefinition
 	['schema']: ISchemaFieldDefinition
 	['raw']: IRawFieldDefinition
@@ -80,7 +80,7 @@ export interface FieldValueTypeGeneratorMap<
 	['duration']: IDurationFieldDefinition['value']
 	['id']: IIdFieldDefinition['value']
 	['text']: ITextFieldDefinition['value']
-	['address']: IAddressFieldDefinition['value']
+	['address']: AddressFieldDefinition['value']
 	['phone']: IPhoneFieldDefinition['value']
 	['schema']: SchemaFieldValueTypeMapper<
 		F extends ISchemaFieldDefinition ? F : ISchemaFieldDefinition,
@@ -95,18 +95,18 @@ export interface FieldValueTypeGeneratorMap<
 }
 
 export interface FieldMap {
-	['boolean']: IField<IBooleanFieldDefinition>
-	['select']: IField<ISelectFieldDefinition>
-	['duration']: IField<IDurationFieldDefinition>
-	['id']: IField<IIdFieldDefinition>
-	['text']: IField<ITextFieldDefinition>
-	['address']: IField<IAddressFieldDefinition>
-	['phone']: IField<IPhoneFieldDefinition>
-	['schema']: IField<ISchemaFieldDefinition>
-	['raw']: IField<IRawFieldDefinition>
-	['number']: IField<INumberFieldDefinition>
-	['dateTime']: IField<IDateTimeFieldDefinition>
-	['file']: IField<IFileFieldDefinition>
-	['date']: IField<IDateFieldDefinition>
-	['directory']: IField<IDirectoryFieldDefinition>
+	['boolean']: Field<IBooleanFieldDefinition>
+	['select']: Field<ISelectFieldDefinition>
+	['duration']: Field<IDurationFieldDefinition>
+	['id']: Field<IIdFieldDefinition>
+	['text']: Field<ITextFieldDefinition>
+	['address']: Field<AddressFieldDefinition>
+	['phone']: Field<IPhoneFieldDefinition>
+	['schema']: Field<ISchemaFieldDefinition>
+	['raw']: Field<IRawFieldDefinition>
+	['number']: Field<INumberFieldDefinition>
+	['dateTime']: Field<IDateTimeFieldDefinition>
+	['file']: Field<IFileFieldDefinition>
+	['date']: Field<IDateFieldDefinition>
+	['directory']: Field<IDirectoryFieldDefinition>
 }

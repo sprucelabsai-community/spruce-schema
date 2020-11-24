@@ -6,10 +6,10 @@ import {
 	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
 } from '../types/template.types'
-import { ValidateOptions, IField } from './field.static.types'
+import { ValidateOptions, Field } from './field.static.types'
 
 export default abstract class AbstractField<F extends FieldDefinitions>
-	implements IField<F> {
+	implements Field<F> {
 	/** The definition for this field */
 	public definition: F
 

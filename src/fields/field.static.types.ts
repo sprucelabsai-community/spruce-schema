@@ -94,7 +94,7 @@ export type FieldDefinitionValueType<
 	  >
 	: any
 
-export interface IField<F extends FieldDefinitions> {
+export interface Field<F extends FieldDefinitions> {
 	readonly definition: F
 	readonly type: F['type']
 	readonly options: F['options']
@@ -119,4 +119,4 @@ export interface IField<F extends FieldDefinitions> {
 export type FieldSubclass<F extends FieldDefinitions> = new (
 	name: string,
 	definition: F
-) => IField<F>
+) => Field<F>

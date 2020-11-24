@@ -46,5 +46,5 @@ export { default as fieldClassMap } from '../.spruce/schemas/fields/fieldClassMa
 export {
 	FieldDefinition as IFieldDefinition,
 	FieldDefinitionValueType,
-	IField,
+	Field as IField,
 } from './field.static.types'

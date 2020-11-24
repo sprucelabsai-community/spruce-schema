@@ -3,16 +3,16 @@ import {
 	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { IAddressFieldDefinition } from './AddressField.types'
+import { AddressFieldDefinition } from './AddressField.types'
 
 export default class AddressField extends AbstractField<
-	IAddressFieldDefinition
+	AddressFieldDefinition
 > {
 	public static get description() {
 		return 'An address with geocoding ability *coming soon*'
 	}
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<IAddressFieldDefinition>
+		options: FieldTemplateDetailOptions<AddressFieldDefinition>
 	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IAddressFieldValue${

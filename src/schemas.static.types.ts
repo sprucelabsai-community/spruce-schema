@@ -7,7 +7,7 @@ import {
 import {
 	FieldDefinition,
 	FieldDefinitionValueType,
-	IField,
+	Field,
 	FieldType,
 } from './fields/field.static.types'
 
@@ -76,7 +76,7 @@ export interface StaticSchemaEntity<S extends Schema> extends SchemaEntity {
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
-	Field extends IField<
+	OurField extends Field<
 		any
 	> = ISchema['dynamicFieldSignature'] extends FieldDefinitions
 		? FieldMap[ISchema['dynamicFieldSignature']['type']]
@@ -98,11 +98,11 @@ export interface DynamicSchemaEntityByName<
 	get<F extends string, CreateEntityInstances extends boolean = true>(
 		fieldName: F,
 		options?: DynamicSchemaNormalizeOptions<CreateEntityInstances>
-	): FieldDefinitionValueType<Field, CreateEntityInstances>
+	): FieldDefinitionValueType<OurField, CreateEntityInstances>
 
 	set<F extends string>(
 		fieldName: F,
-		value: FieldDefinitionValueType<Field>,
+		value: FieldDefinitionValueType<OurField>,
 		options?: DynamicSchemaNormalizeOptions<false>
 	): this
 
