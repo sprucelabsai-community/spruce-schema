@@ -1,4 +1,4 @@
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -74,8 +74,8 @@ export default class DurationField extends AbstractField<
 	public validate(
 		value: any,
 		_?: ValidateOptions<ITextFieldDefinition>
-	): IInvalidFieldError[] {
-		const errors: IInvalidFieldError[] = []
+	): InvalidFieldError[] {
+		const errors: InvalidFieldError[] = []
 		try {
 			buildDuration(value)
 		} catch (err) {

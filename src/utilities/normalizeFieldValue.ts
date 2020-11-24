@@ -3,7 +3,7 @@ import {
 	FieldDefinition,
 	IFieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
 import { ISchemasById } from '../fields/field.static.types'
@@ -58,7 +58,7 @@ export default function normalizeFieldValue<
 		}
 	}
 
-	let errors: IInvalidFieldError[] = []
+	let errors: InvalidFieldError[] = []
 	if (validate) {
 		localValue.forEach((value) => {
 			errors = [

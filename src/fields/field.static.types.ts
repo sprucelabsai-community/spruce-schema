@@ -3,7 +3,7 @@ import {
 	IFieldMap,
 	IFieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import {
 	Schema,
 	SchemaValues,
@@ -104,7 +104,7 @@ export interface IField<F extends FieldDefinition> {
 	readonly label: F['label']
 	readonly hint: F['hint']
 	readonly name: string
-	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
+	validate(value: any, options?: ValidateOptions<F>): InvalidFieldError[]
 	toValueType<CreateEntityInstances extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<F, CreateEntityInstances>

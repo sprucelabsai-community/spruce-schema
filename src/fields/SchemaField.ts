@@ -1,6 +1,6 @@
 import AbstractEntity from '../AbstractEntity'
 import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	Schema,
@@ -226,7 +226,7 @@ export default class SchemaField<
 	public validate(
 		value: any,
 		options?: ValidateOptions<ISchemaFieldDefinition>
-	): IInvalidFieldError[] {
+	): InvalidFieldError[] {
 		const errors = super.validate(value, options)
 
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to

@@ -1,5 +1,5 @@
 import AbstractEntity from './AbstractEntity'
-import { IInvalidFieldErrorOptions } from './errors/error.types'
+import { InvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -140,7 +140,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	}
 
 	public validate(options: SchemaValidateOptions<S> = {}) {
-		const errors: IInvalidFieldErrorOptions['errors'] = []
+		const errors: InvalidFieldErrorOptions['errors'] = []
 
 		const extraFields: string[] = this.pluckExtraFields(
 			this.values,

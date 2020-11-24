@@ -1,6 +1,6 @@
 import mimeDb from 'mime-db'
 import Mime from 'mime-type'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -35,8 +35,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	public validate(
 		value: any,
 		_?: ValidateOptions<IFileFieldDefinition>
-	): IInvalidFieldError[] {
-		const errors: IInvalidFieldError[] = []
+	): InvalidFieldError[] {
+		const errors: InvalidFieldError[] = []
 		try {
 			const file = this.toValueType(value)
 			if (!file.ext && file.path) {

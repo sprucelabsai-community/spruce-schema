@@ -1,7 +1,9 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { IInvalidFieldErrorOptions, SchemaErrorOptions } from './error.types'
+import { InvalidFieldErrorOptions, SchemaErrorOptions } from './error.types'
 
-export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {
+export default class SpruceError extends AbstractSpruceError<
+	SchemaErrorOptions
+> {
 	public friendlyMessage(): string {
 		const { options } = this
 
@@ -84,7 +86,7 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 	}
 
 	private generateNestedErrorMessage(
-		options: IInvalidFieldErrorOptions,
+		options: InvalidFieldErrorOptions,
 		messageOptions?: { indentDepth: number }
 	) {
 		let { indentDepth = 0 } = messageOptions || {}
