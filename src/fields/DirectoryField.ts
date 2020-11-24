@@ -10,9 +10,7 @@ import {
 } from './DirectoryField.types'
 import { ToValueTypeOptions } from './field.static.types'
 
-export default class DirectoryField extends AbstractField<
-	DirectoryFieldDefinition
-> {
+export default class DirectoryField extends AbstractField<DirectoryFieldDefinition> {
 	public static get description() {
 		return 'A way to select entire directories once!'
 	}

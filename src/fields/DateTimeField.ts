@@ -5,9 +5,7 @@ import {
 import AbstractField from './AbstractField'
 import { DateTimeFieldDefinition } from './DateTimeField.types'
 
-export default class DateTimeField extends AbstractField<
-	DateTimeFieldDefinition
-> {
+export default class DateTimeField extends AbstractField<DateTimeFieldDefinition> {
 	public static get description() {
 		return 'Date and time support.'
 	}
