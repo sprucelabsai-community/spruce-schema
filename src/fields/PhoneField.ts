@@ -1,20 +1,20 @@
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import formatPhoneNumber from '../utilities/formatPhoneNumber'
 import AbstractField from './AbstractField'
 import { ValidateOptions } from './field.static.types'
-import { IPhoneFieldDefinition } from './PhoneField.types'
+import { PhoneFieldDefinition } from './PhoneField.types'
 
-export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
+export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 	public static get description() {
 		return 'Takes anything close to a phone number and formats it. Also great at validating numbers.'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IPhoneFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<PhoneFieldDefinition>
+	): FieldTemplateDetails {
 		return {
 			valueType: `string${options.definition.isArray ? '[]' : ''}`,
 		}
@@ -26,10 +26,7 @@ export default class PhoneField extends AbstractField<IPhoneFieldDefinition> {
 		return phoneNumber
 	}
 
-	public validate(
-		value: any,
-		options?: ValidateOptions<IPhoneFieldDefinition>
-	) {
+	public validate(value: any, options?: ValidateOptions<PhoneFieldDefinition>) {
 		const errors = super.validate(value, options)
 
 		try {

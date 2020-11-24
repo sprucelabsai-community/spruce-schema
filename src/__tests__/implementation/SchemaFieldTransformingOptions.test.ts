@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import SchemaField from '../../fields/SchemaField'
-import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
+import { SchemaFieldFieldDefinition } from '../../fields/SchemaField.types'
 import buildSchema from '../../utilities/buildSchema'
 
 const wrenchSchema = buildSchema({
@@ -233,7 +233,7 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 		]
 	)
 	protected static async testNormalizingOptionsToId(
-		options: ISchemaFieldDefinition['options'],
+		options: SchemaFieldFieldDefinition['options'],
 		toSchemaIdExpected: any,
 		toSchemaOrIdExpected?: any
 	) {

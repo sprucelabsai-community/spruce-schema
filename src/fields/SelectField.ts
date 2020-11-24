@@ -1,15 +1,15 @@
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice,
+	SelectFieldDefinition,
+	SelectFieldDefinitionChoice,
 } from './SelectField.types'
 
 export default class SelectField<
-	T extends ISelectFieldDefinition = ISelectFieldDefinition
+	T extends SelectFieldDefinition = SelectFieldDefinition
 > extends AbstractField<T> {
 	public static get description() {
 		return 'Stored as string, lets user select between available options.'
@@ -25,13 +25,13 @@ export default class SelectField<
 	public static generateTypeDetails() {
 		return {
 			valueTypeMapper:
-				'SelectFieldValueTypeMapper<F extends ISelectFieldDefinition ? F: ISelectFieldDefinition>',
+				'SelectFieldValueTypeMapper<F extends SelectFieldDefinition ? F: SelectFieldDefinition>',
 		}
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<ISelectFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<SelectFieldDefinition>
+	): FieldTemplateDetails {
 		// Build union of select options
 		const { definition } = options
 		const {
@@ -45,7 +45,7 @@ export default class SelectField<
 		}
 	}
 
-	public getChoices(): ISelectFieldDefinitionChoice[] {
+	public getChoices(): SelectFieldDefinitionChoice[] {
 		return this.definition.options.choices
 	}
 }

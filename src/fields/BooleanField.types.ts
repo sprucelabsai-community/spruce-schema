@@ -1,6 +1,6 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export type IBooleanFieldDefinition = IFieldDefinition<
+export type BooleanFieldDefinition = FieldDefinition<
 	boolean,
 	boolean,
 	boolean[],

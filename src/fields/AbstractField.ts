@@ -1,15 +1,15 @@
-import { FieldDefinition } from '#spruce/schemas/fields/fields.types'
-import { IInvalidFieldError } from '../errors/error.types'
+import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import log from '../singletons/log'
 import {
-	IFieldTemplateDetails,
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetails,
+	FieldTemplateDetailOptions,
 } from '../types/template.types'
-import { ValidateOptions, IField } from './field.static.types'
+import { ValidateOptions, Field } from './field.static.types'
 
-export default abstract class AbstractField<F extends FieldDefinition>
-	implements IField<F> {
+export default abstract class AbstractField<F extends FieldDefinitions>
+	implements Field<F> {
 	/** The definition for this field */
 	public definition: F
 
@@ -48,8 +48,8 @@ public static get description() {
 
 	/** Details needed for generating templates */
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<any>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<any>
+	): FieldTemplateDetails {
 		log.info(options)
 		throw new SpruceError({
 			code: 'NOT_IMPLEMENTED',
@@ -90,8 +90,8 @@ public static generateTemplateDetails(
 		return this.definition.hint
 	}
 
-	public validate(value: any, _?: ValidateOptions<F>): IInvalidFieldError[] {
-		const errors: IInvalidFieldError[] = []
+	public validate(value: any, _?: ValidateOptions<F>): InvalidFieldError[] {
+		const errors: InvalidFieldError[] = []
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
 			errors.push({
 				code: 'missing_required',

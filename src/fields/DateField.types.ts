@@ -1,8 +1,8 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export interface IDateFieldValue extends Date {}
+export interface DateFieldValue extends Date {}
 
-export type IDateFieldDefinition = IFieldDefinition<IDateFieldValue> & {
+export type DateFieldDefinition = FieldDefinition<DateFieldValue> & {
 	/** * A date/time field that stores everything in GMT and handles all the timezone */
 	type: 'date'
 	options?: { DateFormat?: string }

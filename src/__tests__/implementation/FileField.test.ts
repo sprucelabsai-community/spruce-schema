@@ -1,11 +1,11 @@
 import path from 'path'
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import { IFileFieldValue } from '../../fields/FileField.types'
-import SchemaEntity from '../../SchemaEntity'
+import { FileFieldValue } from '../../fields/FileField.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
-interface IFileDetailExpectations {
+interface FileDetailExpectations {
 	expectedName: string
 	expectedType: string
 	expectedExtension: string
@@ -49,7 +49,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 	})
 	public static testGettingFileDetails(
 		filePath: string,
-		expectations: IFileDetailExpectations
+		expectations: FileDetailExpectations
 	) {
 		const field = FieldFactory.Field('test', {
 			type: 'file',
@@ -97,8 +97,8 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		}
 	)
 	public static testCompletingFileObject(
-		partial: Partial<IFileFieldValue>,
-		complete: IFileFieldValue
+		partial: Partial<FileFieldValue>,
+		complete: FileFieldValue
 	) {
 		const file = FieldFactory.Field('test', { type: 'file' })
 		const augmented = file.toValueType(partial)
@@ -158,7 +158,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 	public static testInSchema(
 		env: EnvKind,
 		expectedPath: string,
-		setTarget: IFileFieldValue
+		setTarget: FileFieldValue
 	) {
 		if (env === EnvKind.Linux) {
 			// @ts-ignore
@@ -167,7 +167,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 			// @ts-ignore
 			path.sep = '\\'
 		}
-		const schema = new SchemaEntity(this.fileDefinition)
+		const schema = new StaticSchemaEntityImplementation(this.fileDefinition)
 
 		schema.set('target', setTarget)
 
@@ -196,7 +196,7 @@ export default class FileFieldTest extends AbstractSpruceTest {
 		relativeTo: string,
 		expectedPath: string
 	) {
-		const schema = new SchemaEntity(this.fileDefinition)
+		const schema = new StaticSchemaEntityImplementation(this.fileDefinition)
 		schema.set('target', { path, name: 'app.ts' })
 		const target = schema.get('target', { byField: { target: { relativeTo } } })
 		assert.isEqual(target.path, expectedPath)

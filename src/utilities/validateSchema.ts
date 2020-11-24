@@ -1,7 +1,7 @@
 import SpruceError from '../errors/SpruceError'
-import { ISchema } from '../schemas.static.types'
+import { Schema } from '../schemas.static.types'
 
-export default function validateSchema(schema: any): asserts schema is ISchema {
+export default function validateSchema(schema: any): asserts schema is Schema {
 	const errors: string[] = []
 
 	if (!schema) {

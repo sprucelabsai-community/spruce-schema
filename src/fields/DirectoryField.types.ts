@@ -1,10 +1,10 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export interface IDirectoryFieldValue {
+export interface DirectoryFieldValue {
 	path: string
 }
 
-export type IDirectoryFieldDefinition = IFieldDefinition<IDirectoryFieldValue> & {
+export type DirectoryFieldDefinition = FieldDefinition<DirectoryFieldValue> & {
 	/** * .Directory - select whole directories all at once */
 	type: 'directory'
 	options?: {

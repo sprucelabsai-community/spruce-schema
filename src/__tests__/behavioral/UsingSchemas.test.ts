@@ -3,49 +3,49 @@ import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
-import SchemaEntity from '../../SchemaEntity'
 import {
 	SchemaValues,
-	ISchemaEntity,
-	ISchema,
+	StaticSchemaEntity,
+	Schema,
 } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchema from '../../utilities/validateSchema'
 import buildPersonWithCars, {
-	ICarSchema,
-	ITruckSchema,
-	IPersonSchema,
+	CarSchema,
+	TruckSchema,
+	PersonSchema,
 } from '../data/personWithCars'
 
-SchemaEntity.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-type IPersonMappedValues = SchemaValues<IPersonSchema, true>
+type PersonMappedValues = SchemaValues<PersonSchema, true>
 
-interface IPersonExpectedValues {
+interface PersonExpectedValues {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
-		| (ISchemaEntity<ICarSchema> | ISchemaEntity<ITruckSchema>)[]
+		| (StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema>)[]
 		| null
 	optionalCarOrTruckWithDefaultValue?:
-		| ISchemaEntity<ICarSchema>
-		| ISchemaEntity<ITruckSchema>
+		| StaticSchemaEntity<CarSchema>
+		| StaticSchemaEntity<TruckSchema>
 		| null
 }
 
-interface IPersonExpectedValuesWithoutSchema {
+interface PersonExpectedValuesWithoutSchema {
 	optionalSelectWithDefaultValue?: 'hello' | 'goodbye' | null
 	optionalTextWithDefaultValue?: string | null
 	optionalIsArrayCarOrTruckWithDefaultValue?:
 		| {
 				schemaId: 'car' | 'truck'
-				values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+				values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 		  }[]
 		| null
 	optionalCarOrTruckWithDefaultValue?: {
 		schemaId: 'car' | 'truck'
-		values: SchemaValues<ICarSchema> | SchemaValues<ITruckSchema>
+		values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
 	} | null
 }
 
@@ -180,7 +180,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static getSetArrays() {
-		const entity = new SchemaEntity({
+		const entity = new StaticSchemaEntityImplementation({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -240,7 +240,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testTransformingValuesToValueTypes() {
-		const schema = new SchemaEntity({
+		const schema = new StaticSchemaEntityImplementation({
 			id: 'is-array-transform',
 			name: 'transform tests',
 			fields: {
@@ -290,20 +290,20 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testFullValuesTypes() {
-		const personEntity = new SchemaEntity(personSchema)
+		const personEntity = new StaticSchemaEntityImplementation(personSchema)
 		const values = personEntity.getValues({ validate: false })
 		const valuesWithoutInstances = personEntity.getValues({
 			validate: false,
 			createEntityInstances: false,
 		})
-		assert.isType<IPersonExpectedValues>(values)
-		assert.isType<IPersonMappedValues>(values)
-		assert.isType<IPersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
+		assert.isType<PersonExpectedValues>(values)
+		assert.isType<PersonMappedValues>(values)
+		assert.isType<PersonExpectedValuesWithoutSchema>(valuesWithoutInstances)
 	}
 
 	@test()
 	protected static testGettingOptionsByField() {
-		const entity = new SchemaEntity(personSchema)
+		const entity = new StaticSchemaEntityImplementation(personSchema)
 		entity.set('name', 'a really long name that should get truncated')
 		const name = entity.get('name', { byField: { name: { maxLength: 10 } } })
 		assert.isEqual(name, 'a really l')
@@ -332,14 +332,12 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGenerics() {
-		interface GenericTestInterface<S extends ISchema = ISchema> {
+		interface GenericTestInterface<S extends Schema = Schema> {
 			payloadSchema: S
 			callback: (payload: SchemaValues<S>) => void
 		}
 
-		const testObj: GenericTestInterface<
-			typeof nestedSingleRequiredFieldSchemas
-		> = {
+		const testObj: GenericTestInterface<typeof nestedSingleRequiredFieldSchemas> = {
 			payloadSchema: nestedSingleRequiredFieldSchemas,
 			callback: (payload) => {
 				const { requiredArrayField } = payload.contract

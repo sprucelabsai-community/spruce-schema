@@ -1,23 +1,27 @@
 import {
-	FieldDefinition,
-	IFieldMap,
-	IFieldValueTypeGeneratorMap,
+	FieldDefinitions,
+	FieldMap,
+	FieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
-import { IInvalidFieldError } from '../errors/error.types'
-import { ISchema, SchemaValues, ISchemaEntity } from '../schemas.static.types'
+import { InvalidFieldError } from '../errors/error.types'
+import {
+	Schema,
+	SchemaValues,
+	StaticSchemaEntity,
+} from '../schemas.static.types'
 import { Unpack, IsArray, IsRequired } from '../types/utilities.types'
 
-export interface ISchemasById {
-	[id: string]: ISchema[]
+export interface SchemasById {
+	[id: string]: Schema[]
 }
 
 export type SchemaFieldUnion<
-	S extends Array<ISchema>,
+	S extends Array<Schema>,
 	CreateEntityInstances extends boolean = false
 > = {
-	[K in keyof S]: S[K] extends ISchema
+	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
-			? ISchemaEntity<S[K]>
+			? StaticSchemaEntity<S[K]>
 			: {
 					schemaId: S[K]['id']
 					version?: S[K]['version']
@@ -26,29 +30,29 @@ export type SchemaFieldUnion<
 		: any
 }
 
-export interface IFieldDefinitionToSchemaOptions {
+export interface FieldDefinitionToSchemaOptions {
 	/** All definitions we're validating against */
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 }
 
 export type ToValueTypeOptions<
-	F extends FieldDefinition,
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = true
 > = {
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 	createEntityInstances?: CreateEntityInstances
 } & Partial<F['options']>
 
 /** Options passed to validate() */
-export type ValidateOptions<F extends FieldDefinition> = {
+export type ValidateOptions<F extends FieldDefinitions> = {
 	/** All schemas we're validating against */
-	schemasById?: ISchemasById
+	schemasById?: SchemasById
 } & Partial<F['options']>
 
-export type FieldType = keyof IFieldMap
+export type FieldType = keyof FieldMap
 
 // if it's not going to change, put it in here
-export type IFieldDefinition<
+export type FieldDefinition<
 	Value = any,
 	DefaultValue = Partial<Value>,
 	ArrayValue = Value[],
@@ -76,13 +80,13 @@ export type IFieldDefinition<
 )
 
 export type FieldDefinitionValueType<
-	F extends FieldDefinition,
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = false
-> = F extends FieldDefinition
+> = F extends FieldDefinitions
 	? IsRequired<
 			IsArray<
 				NonNullable<
-					IFieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
+					FieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
 				>,
 				F['isArray']
 			>,
@@ -90,7 +94,7 @@ export type FieldDefinitionValueType<
 	  >
 	: any
 
-export interface IField<F extends FieldDefinition> {
+export interface Field<F extends FieldDefinitions> {
 	readonly definition: F
 	readonly type: F['type']
 	readonly options: F['options']
@@ -100,7 +104,7 @@ export interface IField<F extends FieldDefinition> {
 	readonly label: F['label']
 	readonly hint: F['hint']
 	readonly name: string
-	validate(value: any, options?: ValidateOptions<F>): IInvalidFieldError[]
+	validate(value: any, options?: ValidateOptions<F>): InvalidFieldError[]
 	toValueType<CreateEntityInstances extends boolean>(
 		value: any,
 		options?: ToValueTypeOptions<F, CreateEntityInstances>
@@ -112,7 +116,7 @@ export interface IField<F extends FieldDefinition> {
 	>
 }
 
-export type FieldSubclass<F extends FieldDefinition> = new (
+export type FieldSubclass<F extends FieldDefinitions> = new (
 	name: string,
 	definition: F
-) => IField<F>
+) => Field<F>

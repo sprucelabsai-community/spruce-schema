@@ -1,12 +1,16 @@
 import {
-	ISelectFieldDefinition,
-	ISelectFieldDefinitionChoice,
+	SelectFieldDefinition,
+	SelectFieldDefinitionChoice,
 } from '../fields/SelectField.types'
-import { ISchema, ISchemaFields, PickFieldNames } from '../schemas.static.types'
+import {
+	Schema,
+	SchemaFieldsByName,
+	PickFieldNames,
+} from '../schemas.static.types'
 
 /** Turn select options into a key/value pair */
 export type SelectChoicesToHash<
-	Options extends ISelectFieldDefinitionChoice[]
+	Options extends SelectFieldDefinitionChoice[]
 > = {
 	[P in Options[number]['value']]: Extract<
 		Options[number],
@@ -16,7 +20,7 @@ export type SelectChoicesToHash<
 
 /** Pass the select options directly to create a value/label hash */
 export function selectChoicesToHash<
-	Options extends ISelectFieldDefinitionChoice[]
+	Options extends SelectFieldDefinitionChoice[]
 >(options: Options): SelectChoicesToHash<Options> {
 	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
@@ -30,14 +34,14 @@ export function selectChoicesToHash<
 
 /** Take a definition and a field name and returns a value/label hash */
 export function schemaChoicesToHash<
-	S extends ISchema,
+	S extends Schema,
 	F extends PickFieldNames<S, 'select'>
 >(
 	definition: S,
 	fieldName: F
-): S['fields'] extends ISchemaFields
-	? S['fields'][F] extends ISelectFieldDefinition
-		? S['fields'][F]['options'] extends ISelectFieldDefinition['options']
+): S['fields'] extends SchemaFieldsByName
+	? S['fields'][F] extends SelectFieldDefinition
+		? S['fields'][F]['options'] extends SelectFieldDefinition['options']
 			? SelectChoicesToHash<S['fields'][F]['options']['choices']>
 			: never
 		: never

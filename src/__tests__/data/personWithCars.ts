@@ -1,11 +1,11 @@
-import SchemaEntity from '../../SchemaEntity'
-import { ISchema } from '../../schemas.static.types'
+import { Schema } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
 // turn off duplicate checks because tests all run in the same runtime
-SchemaEntity.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
 
-export interface ICarSchema extends ISchema {
+export interface CarSchema extends Schema {
 	id: 'car'
 	name: 'car'
 	fields: {
@@ -23,7 +23,7 @@ export interface ICarSchema extends ISchema {
 	}
 }
 
-export interface ITruckSchema extends ISchema {
+export interface TruckSchema extends Schema {
 	id: 'truck'
 	name: 'Truck'
 	fields: {
@@ -37,7 +37,7 @@ export interface ITruckSchema extends ISchema {
 	}
 }
 
-export interface IPersonSchema extends ISchema {
+export interface PersonSchema extends Schema {
 	id: 'person'
 	name: 'user schema test'
 	fields: {
@@ -50,26 +50,26 @@ export interface IPersonSchema extends ISchema {
 			type: 'schema'
 			isRequired: true
 			options: {
-				schema: ICarSchema
+				schema: CarSchema
 			}
 		}
 		optionalCar: {
 			type: 'schema'
 			options: {
-				schema: ICarSchema
+				schema: CarSchema
 			}
 		}
 		optionalCarWithCallback: {
 			type: 'schema'
 			options: {
-				schemasCallback: () => [ICarSchema]
+				schemasCallback: () => [CarSchema]
 			}
 		}
 		optionalIsArrayCars: {
 			type: 'schema'
 			isArray: true
 			options: {
-				schema: ICarSchema
+				schema: CarSchema
 			}
 		}
 		requiredIsArrayCars: {
@@ -77,20 +77,20 @@ export interface IPersonSchema extends ISchema {
 			isArray: true
 			isRequired: true
 			options: {
-				schema: ICarSchema
+				schema: CarSchema
 			}
 		}
 		optionalCarOrTruck: {
 			type: 'schema'
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}
 		optionalIsArrayCarOrTruck: {
 			type: 'schema'
 			isArray: true
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}
 		requiredIsArrayCarOrTruck: {
@@ -98,7 +98,7 @@ export interface IPersonSchema extends ISchema {
 			isArray: true
 			isRequired: true
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}
 		optionalSelect: {
@@ -138,7 +138,7 @@ export interface IPersonSchema extends ISchema {
 			type: 'schema'
 			defaultValue: { name: 'fast car' }
 			options: {
-				schema: ICarSchema
+				schema: CarSchema
 			}
 		}
 		optionalIsArrayCarOrTruckWithDefaultValue: {
@@ -146,21 +146,21 @@ export interface IPersonSchema extends ISchema {
 			isArray: true
 			defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}
 		optionalCarOrTruckWithDefaultValue: {
 			type: 'schema'
 			defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}
 	}
 }
 
 const buildPersonWithCars = () => {
-	const carSchema = buildSchema<ICarSchema>({
+	const carSchema = buildSchema<CarSchema>({
 		id: 'car',
 		name: 'car',
 		fields: {
@@ -178,7 +178,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const truckSchema = buildSchema<ITruckSchema>({
+	const truckSchema = buildSchema<TruckSchema>({
 		id: 'truck',
 		name: 'Truck',
 		fields: {
@@ -192,7 +192,7 @@ const buildPersonWithCars = () => {
 		},
 	})
 
-	const personSchema = buildSchema<IPersonSchema>({
+	const personSchema = buildSchema<PersonSchema>({
 		id: 'person',
 		name: 'user schema test',
 		fields: {

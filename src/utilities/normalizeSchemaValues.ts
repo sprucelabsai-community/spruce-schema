@@ -1,8 +1,8 @@
 import EntityFactory from '../factories/EntityFactory'
 import {
-	ISchema,
+	Schema,
 	SchemaPartialValues,
-	ISchemaGetValuesOptions,
+	SchemaGetValuesOptions,
 	SchemaFieldNames,
 	SchemaPublicFieldNames,
 	IsDynamicSchema,
@@ -13,7 +13,7 @@ import {
 } from '../schemas.static.types'
 
 export default function normalizeSchemaValues<
-	S extends ISchema,
+	S extends Schema,
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 	CreateEntityInstances extends boolean = false,
@@ -22,7 +22,7 @@ export default function normalizeSchemaValues<
 >(
 	definition: S,
 	values: SchemaPartialValues<S>,
-	options?: ISchemaGetValuesOptions<
+	options?: SchemaGetValuesOptions<
 		S,
 		F,
 		PF,
@@ -36,7 +36,7 @@ export default function normalizeSchemaValues<
 	const normalizedOptions = {
 		createEntityInstances,
 		...rest,
-	} as ISchemaGetValuesOptions<
+	} as SchemaGetValuesOptions<
 		S,
 		F,
 		PF,

@@ -1,14 +1,14 @@
 import mimeDb from 'mime-db'
 import Mime from 'mime-type'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
-import { IFileFieldDefinition, IFileFieldValue } from './FileField.types'
+import { FileFieldDefinition, FileFieldValue } from './FileField.types'
 
 // @ts-ignore
 const mime = new Mime(mimeDb, 2)
@@ -17,14 +17,14 @@ mime.define('application/typescript', {
 	extensions: ['ts', 'tsx'],
 })
 
-export default class FileField extends AbstractField<IFileFieldDefinition> {
+export default class FileField extends AbstractField<FileFieldDefinition> {
 	public static get description() {
 		return 'A way to handle files. Supports mime-type lookups.'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<FileFieldDefinition>
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IFileFieldValue${
 				options.definition.isArray ? '[]' : ''
@@ -34,9 +34,9 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 
 	public validate(
 		value: any,
-		_?: ValidateOptions<IFileFieldDefinition>
-	): IInvalidFieldError[] {
-		const errors: IInvalidFieldError[] = []
+		_?: ValidateOptions<FileFieldDefinition>
+	): InvalidFieldError[] {
+		const errors: InvalidFieldError[] = []
 		try {
 			const file = this.toValueType(value)
 			if (!file.ext && file.path) {
@@ -61,8 +61,8 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	/** Take a range of possible values and transform it into a IFileFieldValue */
 	public toValueType<C extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<IFileFieldDefinition, C>
-	): IFileFieldValue {
+		options?: ToValueTypeOptions<FileFieldDefinition, C>
+	): FileFieldValue {
 		let stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
 

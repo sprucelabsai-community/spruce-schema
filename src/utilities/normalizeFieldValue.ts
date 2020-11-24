@@ -1,25 +1,25 @@
 import {
-	Field,
-	FieldDefinition,
-	IFieldDefinitionMap,
+	Fields,
+	FieldDefinitions,
+	FieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
-import { ISchemasById } from '../fields/field.static.types'
-import { ISchemaNormalizeFieldValueOptions } from '../schemas.static.types'
+import { SchemasById } from '../fields/field.static.types'
+import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<
-	F extends Field,
+	F extends Fields,
 	CreateEntityInstances extends boolean
 >(
 	schemaId: string,
 	schemaName: string | undefined,
-	schemasById: ISchemasById,
+	schemasById: SchemasById,
 	field: F,
 	value: any,
-	options: ISchemaNormalizeFieldValueOptions<CreateEntityInstances> &
-		Partial<IFieldDefinitionMap[F['type']]['options']>
+	options: SchemaNormalizeFieldValueOptions<CreateEntityInstances> &
+		Partial<FieldDefinitionMap[F['type']]['options']>
 ) {
 	let localValue = normalizeValueToArray<F, CreateEntityInstances>(value)
 
@@ -58,7 +58,7 @@ export default function normalizeFieldValue<
 		}
 	}
 
-	let errors: IInvalidFieldError[] = []
+	let errors: InvalidFieldError[] = []
 	if (validate) {
 		localValue.forEach((value) => {
 			errors = [
@@ -82,7 +82,7 @@ export default function normalizeFieldValue<
 		localValue = localValue.map((value) =>
 			typeof value === 'undefined'
 				? undefined
-				: (field as IField<FieldDefinition>).toValueType(value, {
+				: (field as IField<FieldDefinitions>).toValueType(value, {
 						createEntityInstances,
 						...baseOptions,
 				  })
@@ -95,7 +95,7 @@ export default function normalizeFieldValue<
 }
 
 export function normalizeValueToArray<
-	F extends Field,
+	F extends Fields,
 	CreateEntityInstances extends boolean
 >(value: any) {
 	return value === null || typeof value === 'undefined'

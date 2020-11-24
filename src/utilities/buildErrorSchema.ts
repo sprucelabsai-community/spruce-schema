@@ -1,6 +1,6 @@
-import { ISchema } from '../schemas.static.types'
+import { Schema } from '../schemas.static.types'
 
 /** Build error schema */
-export default function buildErrorSchema<T extends ISchema>(schema: T): T {
+export default function buildErrorSchema<T extends Schema>(schema: T): T {
 	return schema
 }

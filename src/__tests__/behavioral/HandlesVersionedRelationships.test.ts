@@ -1,9 +1,9 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import SchemaEntity from '../../SchemaEntity'
-import { ISchemaEntity } from '../../schemas.static.types'
+import { StaticSchemaEntity } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildVersionedPersonWithCars, {
-	ICarV2Definition,
+	CarV2Definition,
 } from '../data/versionedPersonWithCars'
 
 export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTest {
@@ -35,8 +35,10 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 			carV2Schema,
 		} = buildVersionedPersonWithCars()
 
-		const carV1 = new SchemaEntity(carV1Schema, { name: 'version 1' })
-		const carV2 = new SchemaEntity(carV2Schema, {
+		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
+			name: 'version 1',
+		})
+		const carV2 = new StaticSchemaEntityImplementation(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -44,7 +46,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new SchemaEntity(personV2Schema, {
+		const person = new StaticSchemaEntityImplementation(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: { schemaId: 'car', values: carV1.getValues() },
 			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() },
@@ -61,8 +63,10 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 			carV2Schema,
 		} = buildVersionedPersonWithCars()
 
-		const carV1 = new SchemaEntity(carV1Schema, { name: 'version 1' })
-		const carV2 = new SchemaEntity(carV2Schema, {
+		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
+			name: 'version 1',
+		})
+		const carV2 = new StaticSchemaEntityImplementation(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -70,7 +74,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new SchemaEntity(personV2Schema, {
+		const person = new StaticSchemaEntityImplementation(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: {
 				schemaId: 'car',
@@ -96,7 +100,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 				assert.fail('should have resolved to car')
 				break
 			case 'car': {
-				const values = (car as ISchemaEntity<ICarV2Definition>).getValues()
+				const values = (car as StaticSchemaEntity<CarV2Definition>).getValues()
 				assert.isEqual(values.name, 'version 2')
 			}
 		}

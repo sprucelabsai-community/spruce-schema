@@ -1,4 +1,4 @@
-import { ISchemaNamedField, SchemaEntity } from './schemas.static.types'
+import { SchemaNamedField, SchemaEntity } from './schemas.static.types'
 
 export default abstract class AbstractEntity implements SchemaEntity {
 	protected schema: any
@@ -37,7 +37,7 @@ export default abstract class AbstractEntity implements SchemaEntity {
 	public abstract setValues(values: Record<string, any>): this
 	public abstract getNamedFields(
 		options?: Record<string, any>
-	): ISchemaNamedField<any>[]
+	): SchemaNamedField<any>[]
 	public abstract validate(options?: Record<string, any>): void
 	public abstract isValid(options?: Record<string, any>): boolean
 }

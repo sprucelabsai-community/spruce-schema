@@ -1,42 +1,42 @@
 import AbstractEntity from '../AbstractEntity'
-import DynamicSchemaEntity from '../DynamicSchemaEntity'
-import { IInvalidFieldError } from '../errors/error.types'
+import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import StaticSchemaEntity from '../SchemaEntity'
 import {
-	ISchema,
-	ISchemaIdWithVersion,
+	Schema,
+	SchemaIdWithVersion,
 	SchemaEntity,
 } from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
+import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 	TemplateRenderAs,
 } from '../types/template.types'
 import isIdWithVersion from '../utilities/isIdWithVersion'
 import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
-	IFieldDefinitionToSchemaOptions,
+	FieldDefinitionToSchemaOptions,
 	ValidateOptions,
 	ToValueTypeOptions,
 	FieldDefinitionValueType,
 } from './field.static.types'
-import { ISchemaFieldDefinition } from './SchemaField.types'
+import { SchemaFieldFieldDefinition } from './SchemaField.types'
 
 export default class SchemaField<
-	F extends ISchemaFieldDefinition = ISchemaFieldDefinition
+	F extends SchemaFieldFieldDefinition = SchemaFieldFieldDefinition
 > extends AbstractField<F> {
 	public static get description() {
 		return 'A way to map relationships.'
 	}
 
 	public static mapFieldDefinitionToSchemasOrIdsWithVersion(
-		field: ISchemaFieldDefinition
-	): (ISchemaIdWithVersion | ISchema)[] {
+		field: SchemaFieldFieldDefinition
+	): (SchemaIdWithVersion | Schema)[] {
 		const { options } = field
-		const schemasOrIds: ({ version?: string; id: string } | ISchema)[] = [
+		const schemasOrIds: ({ version?: string; id: string } | Schema)[] = [
 			...(options.schema ? [options.schema] : []),
 			...(options.schemaId ? [options.schemaId] : []),
 			...(options.schemas || []),
@@ -68,16 +68,16 @@ export default class SchemaField<
 	}
 
 	public static mapFieldDefinitionToSchemaIdsWithVersion(
-		field: ISchemaFieldDefinition
-	): ISchemaIdWithVersion[] {
+		field: SchemaFieldFieldDefinition
+	): SchemaIdWithVersion[] {
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
-		const ids: ISchemaIdWithVersion[] = schemasOrIds.map((item) => {
+		const ids: SchemaIdWithVersion[] = schemasOrIds.map((item) => {
 			if (isIdWithVersion(item)) {
 				return item
 			}
 
-			const idWithVersion: ISchemaIdWithVersion = {
+			const idWithVersion: SchemaIdWithVersion = {
 				id: item.id,
 			}
 
@@ -98,13 +98,13 @@ export default class SchemaField<
 	public static generateTypeDetails() {
 		return {
 			valueTypeMapper:
-				'SchemaFieldValueTypeMapper<F extends ISchemaFieldDefinition? F : ISchemaFieldDefinition, CreateEntityInstances>',
+				'SchemaFieldValueTypeMapper<F extends SchemaFieldFieldDefinition? F : SchemaFieldFieldDefinition, CreateEntityInstances>',
 		}
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<SchemaFieldFieldDefinition>
+	): FieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			definition
@@ -201,9 +201,9 @@ export default class SchemaField<
 	}
 
 	private static mapFieldDefinitionToSchemas(
-		definition: ISchemaFieldDefinition,
-		options?: IFieldDefinitionToSchemaOptions
-	): ISchema[] {
+		definition: SchemaFieldFieldDefinition,
+		options?: FieldDefinitionToSchemaOptions
+	): Schema[] {
 		const { schemasById: schemasById = {} } = options || {}
 		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
 			definition
@@ -225,8 +225,8 @@ export default class SchemaField<
 
 	public validate(
 		value: any,
-		options?: ValidateOptions<ISchemaFieldDefinition>
-	): IInvalidFieldError[] {
+		options?: ValidateOptions<SchemaFieldFieldDefinition>
+	): InvalidFieldError[] {
 		const errors = super.validate(value, options)
 
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
@@ -251,7 +251,7 @@ export default class SchemaField<
 					friendlyMessage: `${this.label ?? this.name} must be an object`,
 				})
 			} else {
-				let schemas: ISchema[] | undefined
+				let schemas: Schema[] | undefined
 
 				try {
 					// pull schemas out of our own definition
@@ -330,15 +330,18 @@ export default class SchemaField<
 		return errors
 	}
 
-	private instantiateSchema(schema: ISchema, value: any): SchemaEntity {
+	private instantiateSchema(schema: Schema, value: any): SchemaEntity {
 		return schema.dynamicFieldSignature
-			? new DynamicSchemaEntity(schema, value)
+			? new DynamicSchemaEntityImplementation(schema, value)
 			: new StaticSchemaEntity(schema, value)
 	}
 
 	public toValueType<CreateEntityInstances extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<ISchemaFieldDefinition, CreateEntityInstances>
+		options?: ToValueTypeOptions<
+			SchemaFieldFieldDefinition,
+			CreateEntityInstances
+		>
 	): FieldDefinitionValueType<F, CreateEntityInstances> {
 		const errors = this.validate(value, options)
 
@@ -357,7 +360,7 @@ export default class SchemaField<
 			options || {}
 
 		// try and pull the schema definition from the options and by id
-		const destinationSchemas: ISchema[] = SchemaField.mapFieldDefinitionToSchemas(
+		const destinationSchemas: Schema[] = SchemaField.mapFieldDefinitionToSchemas(
 			this.definition,
 			{ schemasById }
 		)
@@ -375,7 +378,7 @@ export default class SchemaField<
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
 			const allMatches = destinationSchemas.filter((def) => def.id === schemaId)
-			let matchedSchema: ISchema | undefined
+			let matchedSchema: Schema | undefined
 
 			if (allMatches.length === 0) {
 				throw new SpruceError({

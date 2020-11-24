@@ -1,6 +1,6 @@
-import { IFieldDefinition } from './field.static.types'
+import { FieldDefinition } from './field.static.types'
 
-export type IPhoneFieldDefinition = IFieldDefinition<
+export type PhoneFieldDefinition = FieldDefinition<
 	string,
 	string,
 	string[],

@@ -1,6 +1,6 @@
 // TODO figure out how to get schema field mixins working from buildSchema (SchemaDefinitionValues fails)
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { ISchema } from '../../schemas.static.types'
+import { Schema } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 
 export default class BuildSchemaTest extends AbstractSpruceTest {
@@ -41,7 +41,7 @@ export default class BuildSchemaTest extends AbstractSpruceTest {
 		})
 
 		type TestType = typeof schema
-		const test = <T extends ISchema>(def: T): T => def
+		const test = <T extends Schema>(def: T): T => def
 
 		test<typeof schema>(schema)
 		test<TestType>(schema)

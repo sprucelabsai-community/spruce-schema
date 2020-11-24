@@ -1,21 +1,21 @@
-import { IInvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	IDurationFieldDefinition,
-	IDurationFieldValue,
+	DurationFieldDefinition,
+	DurationFieldValue,
 } from './DurationField.types'
 import { ValidateOptions } from './field.static.types'
-import { ITextFieldDefinition } from './TextField.types'
+import { TextFieldDefinition } from './TextField.types'
 
 /** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(
-	value: string | number | Partial<IDurationFieldValue>
-): IDurationFieldValue {
+	value: string | number | Partial<DurationFieldValue>
+): DurationFieldValue {
 	let totalMs = 0
 
 	if (typeof value === 'string') {
@@ -54,14 +54,16 @@ export function buildDuration(
 	return { hours, minutes, seconds, ms }
 }
 
-export default class DurationField extends AbstractField<IDurationFieldDefinition> {
+export default class DurationField extends AbstractField<
+	DurationFieldDefinition
+> {
 	public static get description() {
 		return 'A span of time represented in { hours, minutes, seconds, ms }'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IDurationFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<DurationFieldDefinition>
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IDurationFieldValue${
 				options.definition.isArray ? '[]' : ''
@@ -71,9 +73,9 @@ export default class DurationField extends AbstractField<IDurationFieldDefinitio
 
 	public validate(
 		value: any,
-		_?: ValidateOptions<ITextFieldDefinition>
-	): IInvalidFieldError[] {
-		const errors: IInvalidFieldError[] = []
+		_?: ValidateOptions<TextFieldDefinition>
+	): InvalidFieldError[] {
+		const errors: InvalidFieldError[] = []
 		try {
 			buildDuration(value)
 		} catch (err) {
@@ -88,7 +90,7 @@ export default class DurationField extends AbstractField<IDurationFieldDefinitio
 		return errors
 	}
 
-	public toValueType(value: any): IDurationFieldValue {
+	public toValueType(value: any): DurationFieldValue {
 		return buildDuration(value)
 	}
 }

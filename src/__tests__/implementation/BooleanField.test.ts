@@ -1,7 +1,7 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import { FieldDefinition } from '../../fields'
-import { IBooleanFieldDefinition } from '../../fields/BooleanField.types'
+import { FieldDefinitions } from '../../fields'
+import { BooleanFieldDefinition } from '../../fields/BooleanField.types'
 
 export default class BooleanFieldTest extends AbstractSpruceTest {
 	@test('can transform string false to boolean false', 'false', false)
@@ -20,24 +20,24 @@ export default class BooleanFieldTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canHandleDefaultValue() {
-		const def: FieldDefinition = {
+		const def: FieldDefinitions = {
 			label: 'Public',
 			type: 'boolean',
 			hint: 'Is this location viewable by guests?',
 			defaultValue: false,
 		}
 
-		assert.isType<IBooleanFieldDefinition>(def)
+		assert.isType<BooleanFieldDefinition>(def)
 	}
 
 	@test()
 	protected static canHandleArrayDefaultValue() {
-		const def: FieldDefinition = {
+		const def: FieldDefinitions = {
 			type: 'boolean',
 			isArray: true,
 			defaultValue: [true],
 		}
 
-		assert.isType<IBooleanFieldDefinition>(def)
+		assert.isType<BooleanFieldDefinition>(def)
 	}
 }

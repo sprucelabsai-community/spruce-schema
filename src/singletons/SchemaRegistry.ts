@@ -1,11 +1,11 @@
 import flatten from 'lodash/flatten'
 import SpruceError from '../errors/SpruceError'
-import { ISchemasById } from '../fields/field.static.types'
-import { ISchema } from '../schemas.static.types'
+import { SchemasById } from '../fields/field.static.types'
+import { Schema } from '../schemas.static.types'
 import validateSchema from '../utilities/validateSchema'
 
 export default class SchemaRegistry {
-	private schemasById: ISchemasById = {}
+	private schemasById: SchemasById = {}
 	private static instance: SchemaRegistry
 
 	public static getInstance() {
@@ -15,7 +15,7 @@ export default class SchemaRegistry {
 		return this.instance
 	}
 
-	public trackSchema(schema: ISchema) {
+	public trackSchema(schema: Schema) {
 		validateSchema(schema)
 
 		const id = schema.id
@@ -64,7 +64,7 @@ export default class SchemaRegistry {
 		this.schemasById = {}
 	}
 
-	public getSchema(id: string, version?: string, namespace?: string): ISchema {
+	public getSchema(id: string, version?: string, namespace?: string): Schema {
 		if (!this.schemasById[id]) {
 			throw new SpruceError({
 				code: 'SCHEMA_NOT_FOUND',

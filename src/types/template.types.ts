@@ -1,7 +1,7 @@
-import { FieldDefinition } from '../fields'
-import { ISchema } from '../schemas.static.types'
+import { FieldDefinitions } from '../fields'
+import { Schema } from '../schemas.static.types'
 
-export interface IFieldTemplateDetails {
+export interface FieldTemplateDetails {
 	/** The type of value (string, number) */
 	valueType: string
 }
@@ -17,11 +17,11 @@ export enum TemplateRenderAs {
 }
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */
-export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
+export interface FieldTemplateDetailOptions<T extends FieldDefinitions> {
 	/** The language we're generating to, only TS for now */
 	language: 'ts'
 	/** All other schemas schemas being rendered */
-	templateItems: ISchemaTemplateItem[]
+	templateItems: SchemaTemplateItem[]
 	/** The global namespace to access items */
 	globalNamespace: string
 	/** The options for this field */
@@ -34,7 +34,7 @@ export interface IFieldTemplateDetailOptions<T extends FieldDefinition> {
 
 // TODO THE NEXT INTERFACES MAY NOT BELONG HERE
 /** The different names that a schema needs to generate all it's templates */
-export interface ISchemaTemplateNames {
+export interface SchemaTemplateNames {
 	/** A name in the form of FullName */
 	namePascal: string
 	/** A name in the form of fullName */
@@ -44,13 +44,13 @@ export interface ISchemaTemplateNames {
 }
 
 /** A schema about to be rendered into a template  (all schemas are in this shape before rendering) */
-export interface ISchemaTemplateItem extends ISchemaTemplateNames {
+export interface SchemaTemplateItem extends SchemaTemplateNames {
 	/** The namespace that owns this schema */
 	namespace: string
 	/** The schema's id pull out of schema for easy access */
 	id: string
 	/** The full schema's schema */
-	schema: ISchema
+	schema: Schema
 	/** This schema was defined in another schema */
 	isNested?: boolean
 	/** Where this schema is going to be written (so other schemas can import it) */
@@ -60,7 +60,7 @@ export interface ISchemaTemplateItem extends ISchemaTemplateNames {
 }
 
 /** How a field is represented in the template */
-export interface IFieldTemplateItem extends ISchemaTemplateNames {
+export interface FieldTemplateItem extends SchemaTemplateNames {
 	/** The name of the field class itself */
 	className: string
 	/** There package where the field definition lives */
@@ -75,6 +75,6 @@ export interface IFieldTemplateItem extends ISchemaTemplateNames {
 	isLocal: boolean
 	/** Exactly what it says */
 	description: string
-	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinition becomes string */
+	/** A typescript type that maps a field definition to it's value type, so ITextFieldDefinitions becomes string */
 	valueTypeMapper?: string
 }

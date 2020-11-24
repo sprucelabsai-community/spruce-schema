@@ -1,26 +1,31 @@
-import DynamicSchemaEntity from '../DynamicSchemaEntity'
-import StaticSchemaEntity from '../SchemaEntity'
+import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
 import {
 	DynamicSchemaPartialValues,
-	ISchema,
+	Schema,
 	IsDynamicSchema,
 	SchemaPartialValues,
 } from '../schemas.static.types'
+import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 
 export default class EntityFactory {
 	public static Entity<
-		S extends ISchema,
+		S extends Schema,
 		IsDynamic extends boolean = IsDynamicSchema<S>
 	>(
 		schema: S,
 		values?: SchemaPartialValues<S>
-	): IsDynamic extends true ? DynamicSchemaEntity<S> : StaticSchemaEntity<S> {
+	): IsDynamic extends true
+		? DynamicSchemaEntityImplementation<S>
+		: StaticSchemaEntity<S> {
 		const instance = schema.dynamicFieldSignature
-			? new DynamicSchemaEntity(schema, values as DynamicSchemaPartialValues<S>)
+			? new DynamicSchemaEntityImplementation(
+					schema,
+					values as DynamicSchemaPartialValues<S>
+			  )
 			: new StaticSchemaEntity(schema, values)
 
 		return instance as IsDynamic extends true
-			? DynamicSchemaEntity<S>
+			? DynamicSchemaEntityImplementation<S>
 			: StaticSchemaEntity<S>
 	}
 }

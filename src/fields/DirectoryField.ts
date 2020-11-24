@@ -1,23 +1,25 @@
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
-	IDirectoryFieldDefinition,
-	IDirectoryFieldValue,
+	DirectoryFieldDefinition,
+	DirectoryFieldValue,
 } from './DirectoryField.types'
 import { ToValueTypeOptions } from './field.static.types'
 
-export default class DirectoryField extends AbstractField<IDirectoryFieldDefinition> {
+export default class DirectoryField extends AbstractField<
+	DirectoryFieldDefinition
+> {
 	public static get description() {
 		return 'A way to select entire directories once!'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IDirectoryFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<DirectoryFieldDefinition>
+	): FieldTemplateDetails {
 		const { definition } = options
 		return {
 			valueType: `${options.importAs}.IDirectoryFieldValue${
@@ -28,8 +30,8 @@ export default class DirectoryField extends AbstractField<IDirectoryFieldDefinit
 
 	public toValueType<C extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<IDirectoryFieldDefinition, C>
-	): IDirectoryFieldValue {
+		options?: ToValueTypeOptions<DirectoryFieldDefinition, C>
+	): DirectoryFieldValue {
 		const stringValue =
 			typeof value === 'string' || value.toString ? value.toString() : undefined
 

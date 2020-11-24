@@ -1,112 +1,112 @@
-import { IAddressFieldDefinition } from '../../../fields/AddressField.types'
-import { IBooleanFieldDefinition } from '../../../fields/BooleanField.types'
-import { IDateFieldDefinition } from '../../../fields/DateField.types'
-import { IDateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
-import { IDirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
-import { IDurationFieldDefinition } from '../../../fields/DurationField.types'
-import { IField } from '../../../fields/field.static.types'
-import { IFileFieldDefinition } from '../../../fields/FileField.types'
-import { IIdFieldDefinition } from '../../../fields/IdField.types'
-import { INumberFieldDefinition } from '../../../fields/NumberField.types'
-import { IPhoneFieldDefinition } from '../../../fields/PhoneField.types'
-import { IRawFieldDefinition } from '../../../fields/RawField.types'
+import { AddressFieldDefinition } from '../../../fields/AddressField.types'
+import { BooleanFieldDefinition } from '../../../fields/BooleanField.types'
+import { DateFieldDefinition } from '../../../fields/DateField.types'
+import { DateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
+import { DirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
+import { DurationFieldDefinition } from '../../../fields/DurationField.types'
+import { Field } from '../../../fields/field.static.types'
+import { FileFieldDefinition } from '../../../fields/FileField.types'
+import { IdFieldDefinition } from '../../../fields/IdField.types'
+import { NumberFieldDefinition } from '../../../fields/NumberField.types'
+import { PhoneFieldDefinition } from '../../../fields/PhoneField.types'
+import { RawFieldDefinition } from '../../../fields/RawField.types'
 import {
-	ISchemaFieldDefinition,
+	SchemaFieldFieldDefinition,
 	SchemaFieldValueTypeMapper,
 } from '../../../fields/SchemaField.types'
 import {
-	ISelectFieldDefinition,
+	SelectFieldDefinition,
 	SelectFieldValueTypeMapper,
 } from '../../../fields/SelectField.types'
-import { ITextFieldDefinition } from '../../../fields/TextField.types'
+import { TextFieldDefinition } from '../../../fields/TextField.types'
 
-export type FieldDefinition =
-	| IBooleanFieldDefinition
-	| ISelectFieldDefinition
-	| IDurationFieldDefinition
-	| IIdFieldDefinition
-	| ITextFieldDefinition
-	| IAddressFieldDefinition
-	| IPhoneFieldDefinition
-	| ISchemaFieldDefinition
-	| IRawFieldDefinition
-	| INumberFieldDefinition
-	| IDateTimeFieldDefinition
-	| IFileFieldDefinition
-	| IDateFieldDefinition
-	| IDirectoryFieldDefinition
+export type FieldDefinitions =
+	| BooleanFieldDefinition
+	| SelectFieldDefinition
+	| DurationFieldDefinition
+	| IdFieldDefinition
+	| TextFieldDefinition
+	| AddressFieldDefinition
+	| PhoneFieldDefinition
+	| SchemaFieldFieldDefinition
+	| RawFieldDefinition
+	| NumberFieldDefinition
+	| DateTimeFieldDefinition
+	| FileFieldDefinition
+	| DateFieldDefinition
+	| DirectoryFieldDefinition
 
-export type Field =
-	| IField<IBooleanFieldDefinition>
-	| IField<ISelectFieldDefinition>
-	| IField<IDurationFieldDefinition>
-	| IField<IIdFieldDefinition>
-	| IField<ITextFieldDefinition>
-	| IField<IAddressFieldDefinition>
-	| IField<IPhoneFieldDefinition>
-	| IField<ISchemaFieldDefinition>
-	| IField<IRawFieldDefinition>
-	| IField<INumberFieldDefinition>
-	| IField<IDateTimeFieldDefinition>
-	| IField<IFileFieldDefinition>
-	| IField<IDateFieldDefinition>
-	| IField<IDirectoryFieldDefinition>
+export type Fields =
+	| Field<BooleanFieldDefinition>
+	| Field<SelectFieldDefinition>
+	| Field<DurationFieldDefinition>
+	| Field<IdFieldDefinition>
+	| Field<TextFieldDefinition>
+	| Field<AddressFieldDefinition>
+	| Field<PhoneFieldDefinition>
+	| Field<SchemaFieldFieldDefinition>
+	| Field<RawFieldDefinition>
+	| Field<NumberFieldDefinition>
+	| Field<DateTimeFieldDefinition>
+	| Field<FileFieldDefinition>
+	| Field<DateFieldDefinition>
+	| Field<DirectoryFieldDefinition>
 
-export interface IFieldDefinitionMap {
-	['boolean']: IBooleanFieldDefinition
-	['select']: ISelectFieldDefinition
-	['duration']: IDurationFieldDefinition
-	['id']: IIdFieldDefinition
-	['text']: ITextFieldDefinition
-	['address']: IAddressFieldDefinition
-	['phone']: IPhoneFieldDefinition
-	['schema']: ISchemaFieldDefinition
-	['raw']: IRawFieldDefinition
-	['number']: INumberFieldDefinition
-	['dateTime']: IDateTimeFieldDefinition
-	['file']: IFileFieldDefinition
-	['date']: IDateFieldDefinition
-	['directory']: IDirectoryFieldDefinition
+export interface FieldDefinitionMap {
+	['boolean']: BooleanFieldDefinition
+	['select']: SelectFieldDefinition
+	['duration']: DurationFieldDefinition
+	['id']: IdFieldDefinition
+	['text']: TextFieldDefinition
+	['address']: AddressFieldDefinition
+	['phone']: PhoneFieldDefinition
+	['schema']: SchemaFieldFieldDefinition
+	['raw']: RawFieldDefinition
+	['number']: NumberFieldDefinition
+	['dateTime']: DateTimeFieldDefinition
+	['file']: FileFieldDefinition
+	['date']: DateFieldDefinition
+	['directory']: DirectoryFieldDefinition
 }
 
-export interface IFieldValueTypeGeneratorMap<
-	F extends FieldDefinition,
+export interface FieldValueTypeGeneratorMap<
+	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean
 > {
-	['boolean']: IBooleanFieldDefinition['value']
+	['boolean']: BooleanFieldDefinition['value']
 	['select']: SelectFieldValueTypeMapper<
-		F extends ISelectFieldDefinition ? F : ISelectFieldDefinition
+		F extends SelectFieldDefinition ? F : SelectFieldDefinition
 	>
-	['duration']: IDurationFieldDefinition['value']
-	['id']: IIdFieldDefinition['value']
-	['text']: ITextFieldDefinition['value']
-	['address']: IAddressFieldDefinition['value']
-	['phone']: IPhoneFieldDefinition['value']
+	['duration']: DurationFieldDefinition['value']
+	['id']: IdFieldDefinition['value']
+	['text']: TextFieldDefinition['value']
+	['address']: AddressFieldDefinition['value']
+	['phone']: PhoneFieldDefinition['value']
 	['schema']: SchemaFieldValueTypeMapper<
-		F extends ISchemaFieldDefinition ? F : ISchemaFieldDefinition,
+		F extends SchemaFieldFieldDefinition ? F : SchemaFieldFieldDefinition,
 		CreateEntityInstances
 	>
-	['raw']: IRawFieldDefinition['value']
-	['number']: INumberFieldDefinition['value']
-	['dateTime']: IDateTimeFieldDefinition['value']
-	['file']: IFileFieldDefinition['value']
-	['date']: IDateFieldDefinition['value']
-	['directory']: IDirectoryFieldDefinition['value']
+	['raw']: RawFieldDefinition['value']
+	['number']: NumberFieldDefinition['value']
+	['dateTime']: DateTimeFieldDefinition['value']
+	['file']: FileFieldDefinition['value']
+	['date']: DateFieldDefinition['value']
+	['directory']: DirectoryFieldDefinition['value']
 }
 
-export interface IFieldMap {
-	['boolean']: IField<IBooleanFieldDefinition>
-	['select']: IField<ISelectFieldDefinition>
-	['duration']: IField<IDurationFieldDefinition>
-	['id']: IField<IIdFieldDefinition>
-	['text']: IField<ITextFieldDefinition>
-	['address']: IField<IAddressFieldDefinition>
-	['phone']: IField<IPhoneFieldDefinition>
-	['schema']: IField<ISchemaFieldDefinition>
-	['raw']: IField<IRawFieldDefinition>
-	['number']: IField<INumberFieldDefinition>
-	['dateTime']: IField<IDateTimeFieldDefinition>
-	['file']: IField<IFileFieldDefinition>
-	['date']: IField<IDateFieldDefinition>
-	['directory']: IField<IDirectoryFieldDefinition>
+export interface FieldMap {
+	['boolean']: Field<BooleanFieldDefinition>
+	['select']: Field<SelectFieldDefinition>
+	['duration']: Field<DurationFieldDefinition>
+	['id']: Field<IdFieldDefinition>
+	['text']: Field<TextFieldDefinition>
+	['address']: Field<AddressFieldDefinition>
+	['phone']: Field<PhoneFieldDefinition>
+	['schema']: Field<SchemaFieldFieldDefinition>
+	['raw']: Field<RawFieldDefinition>
+	['number']: Field<NumberFieldDefinition>
+	['dateTime']: Field<DateTimeFieldDefinition>
+	['file']: Field<FileFieldDefinition>
+	['date']: Field<DateFieldDefinition>
+	['directory']: Field<DirectoryFieldDefinition>
 }

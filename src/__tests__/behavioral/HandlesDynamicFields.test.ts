@@ -1,9 +1,9 @@
 import { assert, test } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import DynamicSchemaEntity from '../../DynamicSchemaEntity'
+import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
 import {
 	DynamicSchemaAllValues,
-	ISchema,
+	Schema,
 	SchemaAllValues,
 	SchemaValues,
 } from '../../schemas.static.types'
@@ -54,7 +54,7 @@ const arrayRequiredDynamicSchema = buildSchema({
 export default class HandlesDynamicFields extends AbstractSchemaTest {
 	@test()
 	protected static canCreateSchemaEntityWithDynamicFields() {
-		const entity = new DynamicSchemaEntity(textDynamicSchema)
+		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
 		assert.isTruthy(entity)
 	}
 
@@ -79,7 +79,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static typesStringValuesProperly() {
-		const entity = new DynamicSchemaEntity(textDynamicSchema, {
+		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema, {
 			anything: 'foo',
 			anythingElse: 'bar',
 		})
@@ -91,7 +91,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static typesNumbersValuesProperly() {
-		const entity = new DynamicSchemaEntity(numberDynamicSchema, {
+		const entity = new DynamicSchemaEntityImplementation(numberDynamicSchema, {
 			anything: 1,
 			anythingElse: 3,
 		})
@@ -103,10 +103,13 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static typesRequiredNumbersValuesProperly() {
-		const entity = new DynamicSchemaEntity(numberRequiredDynamicSchema, {
-			anything: 1,
-			anythingElse: 3,
-		})
+		const entity = new DynamicSchemaEntityImplementation(
+			numberRequiredDynamicSchema,
+			{
+				anything: 1,
+				anythingElse: 3,
+			}
+		)
 
 		const values = entity.getValues()
 
@@ -145,16 +148,16 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 		}
 	)
 	protected static getValuesTransformation(
-		schema: ISchema,
+		schema: Schema,
 		values: any,
 		expected: any
 	) {
-		const entity = new DynamicSchemaEntity(schema, values)
+		const entity = new DynamicSchemaEntityImplementation(schema, values)
 		const actual = entity.getValues()
 
 		assert.isEqualDeep(actual, expected)
 
-		const entity2 = new DynamicSchemaEntity(schema)
+		const entity2 = new DynamicSchemaEntityImplementation(schema)
 		entity2.setValues(values)
 		const actual2 = entity.getValues()
 		assert.isEqualDeep(actual2, expected)
@@ -162,7 +165,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static canValidate() {
-		const entity = new DynamicSchemaEntity(textDynamicSchema, {
+		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema, {
 			//@ts-ignore
 			foo: { another: 'object' },
 		})
@@ -192,7 +195,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static getsSets() {
-		const entity = new DynamicSchemaEntity(textDynamicSchema)
+		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
 		entity.set('foo', 'bar')
 		assert.isEqual(entity.get('foo'), 'bar')
 
@@ -203,7 +206,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
 	@test()
 	protected static throwsOnBadSet() {
-		const entity = new DynamicSchemaEntity(numberDynamicSchema)
+		const entity = new DynamicSchemaEntityImplementation(numberDynamicSchema)
 		assert.doesThrow(
 			//@ts-ignore
 			() => entity.set('foo', { hello: 'world' }),

@@ -1,23 +1,23 @@
 import AbstractEntity from './AbstractEntity'
-import { IInvalidFieldErrorOptions } from './errors/error.types'
+import { InvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
-	ISchema,
+	Schema,
 	StaticSchemaPartialValues,
 	SchemaFields,
 	SchemaFieldNames,
-	ISchemaNormalizeOptions,
+	SchemaNormalizeOptions,
 	SchemaFieldValueType,
-	ISchemaValidateOptions,
+	SchemaValidateOptions,
 	SchemaDefaultValues,
-	ISchemaGetValuesOptions,
+	SchemaGetValuesOptions,
 	SchemaAllValues,
-	ISchemaNamedFieldsOptions,
-	ISchemaNamedField,
-	ISchemaGetDefaultValuesOptions,
+	SchemaNamedFieldsOptions,
+	SchemaNamedField,
+	SchemaGetDefaultValuesOptions,
 	SchemaFieldNamesWithDefaultValue,
-	ISchemaEntity,
+	StaticSchemaEntity,
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
@@ -26,9 +26,9 @@ import normalizeFieldValue, {
 } from './utilities/normalizeFieldValue'
 
 /** Universal schema class  */
-export default class SchemaEntity<S extends ISchema>
+export default class StaticSchemaEntityImplementation<S extends Schema>
 	extends AbstractEntity
-	implements ISchemaEntity<S> {
+	implements StaticSchemaEntity<S> {
 	public static enableDuplicateCheckWhenTracking = true
 
 	protected schema: S
@@ -71,7 +71,7 @@ export default class SchemaEntity<S extends ISchema>
 	>(
 		forField: F,
 		value: any,
-		options?: ISchemaNormalizeOptions<S, CreateEntityInstances>
+		options?: SchemaNormalizeOptions<S, CreateEntityInstances>
 	): SchemaFieldValueType<S, F, CreateEntityInstances> {
 		const field = this.fields[forField]
 
@@ -95,7 +95,7 @@ export default class SchemaEntity<S extends ISchema>
 		CreateEntityInstances extends boolean = true
 	>(
 		fieldName: F,
-		options: ISchemaNormalizeOptions<S, CreateEntityInstances> = {}
+		options: SchemaNormalizeOptions<S, CreateEntityInstances> = {}
 	): SchemaFieldValueType<S, F, CreateEntityInstances> {
 		const value: SchemaFieldValueType<S, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
@@ -106,7 +106,7 @@ export default class SchemaEntity<S extends ISchema>
 	public set<F extends SchemaFieldNames<S>>(
 		fieldName: F,
 		value: SchemaFieldValueType<S, F>,
-		options: ISchemaNormalizeOptions<S, false> = {}
+		options: SchemaNormalizeOptions<S, false> = {}
 	): this {
 		const localValue = this.normalizeValue(fieldName, value, options)
 
@@ -115,7 +115,7 @@ export default class SchemaEntity<S extends ISchema>
 		return this
 	}
 
-	public isValid(options: ISchemaValidateOptions<S> = {}) {
+	public isValid(options: SchemaValidateOptions<S> = {}) {
 		try {
 			this.validate(options)
 			return true
@@ -139,8 +139,8 @@ export default class SchemaEntity<S extends ISchema>
 		return extraFields
 	}
 
-	public validate(options: ISchemaValidateOptions<S> = {}) {
-		const errors: IInvalidFieldErrorOptions['errors'] = []
+	public validate(options: SchemaValidateOptions<S> = {}) {
+		const errors: InvalidFieldErrorOptions['errors'] = []
 
 		const extraFields: string[] = this.pluckExtraFields(
 			this.values,
@@ -187,10 +187,12 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	public getDefaultValues<
-		F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+		F extends SchemaFieldNamesWithDefaultValue<
+			S
+		> = SchemaFieldNamesWithDefaultValue<S>,
 		CreateEntityInstances extends boolean = true
 	>(
-		options: ISchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
+		options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
 	): Pick<SchemaDefaultValues<S, CreateEntityInstances>, F> {
 		const values: Partial<SchemaDefaultValues<S>> = {}
 
@@ -214,7 +216,7 @@ export default class SchemaEntity<S extends ISchema>
 		CreateEntityInstances extends boolean = true,
 		IncludePrivateFields extends boolean = true
 	>(
-		options?: ISchemaGetValuesOptions<
+		options?: SchemaGetValuesOptions<
 			S,
 			F,
 			PF,
@@ -257,9 +259,9 @@ export default class SchemaEntity<S extends ISchema>
 	}
 
 	public getNamedFields<F extends SchemaFieldNames<S>>(
-		options: ISchemaNamedFieldsOptions<S, F> = {}
-	): ISchemaNamedField<S>[] {
-		const namedFields: ISchemaNamedField<S>[] = []
+		options: SchemaNamedFieldsOptions<S, F> = {}
+	): SchemaNamedField<S>[] {
+		const namedFields: SchemaNamedField<S>[] = []
 		const { fields = Object.keys(this.fields) as F[] } = options
 
 		fields.forEach((name) => {

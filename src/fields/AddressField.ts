@@ -1,17 +1,19 @@
 import {
-	IFieldTemplateDetailOptions,
-	IFieldTemplateDetails,
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { IAddressFieldDefinition } from './AddressField.types'
+import { AddressFieldDefinition } from './AddressField.types'
 
-export default class AddressField extends AbstractField<IAddressFieldDefinition> {
+export default class AddressField extends AbstractField<
+	AddressFieldDefinition
+> {
 	public static get description() {
 		return 'An address with geocoding ability *coming soon*'
 	}
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IAddressFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<AddressFieldDefinition>
+	): FieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IAddressFieldValue${
 				options.definition.isArray ? '[]' : ''

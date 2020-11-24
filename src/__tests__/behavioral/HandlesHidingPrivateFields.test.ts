@@ -1,26 +1,26 @@
 import { test, assert } from '@sprucelabs/test'
-import SchemaEntity from '../..'
+import StaticSchemaEntityImplementation from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import {
 	SchemaPublicFieldNames,
 	SchemaPublicValues,
 } from '../../schemas.static.types'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
-import buildPersonWithCars, { ICarSchema } from '../data/personWithCars'
+import buildPersonWithCars, { CarSchema } from '../data/personWithCars'
 
 const { carSchema } = buildPersonWithCars()
 
 export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 	@test()
 	protected static typeMappingFieldNamesWorks() {
-		let fieldName: SchemaPublicFieldNames<ICarSchema> | undefined
+		let fieldName: SchemaPublicFieldNames<CarSchema> | undefined
 
 		assert.isExactType<typeof fieldName, 'name' | 'onlyOnCar' | undefined>(true)
 	}
 
 	@test()
 	protected static typeMappingValuesWorks() {
-		type WithPublicValues = SchemaPublicValues<ICarSchema>
+		type WithPublicValues = SchemaPublicValues<CarSchema>
 		const person = {
 			name: 'cool car',
 		} as WithPublicValues
@@ -31,7 +31,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanDropPrivateFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 		})
@@ -45,7 +45,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanKeepPrivateFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 		})
@@ -64,7 +64,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async schemaCanDropPrivateFieldsWhenSelectingFields() {
-		const entity = new SchemaEntity(carSchema, {
+		const entity = new StaticSchemaEntityImplementation(carSchema, {
 			name: 'cool car',
 			privateField: 'Go away!',
 			onlyOnCar: 'yay',

@@ -1,20 +1,20 @@
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetails,
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetails,
+	FieldTemplateDetailOptions,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions } from './field.static.types'
-import { ITextFieldDefinition } from './TextField.types'
+import { TextFieldDefinition } from './TextField.types'
 
-export default class TextField extends AbstractField<ITextFieldDefinition> {
+export default class TextField extends AbstractField<TextFieldDefinition> {
 	public static get description() {
 		return 'A text field. Converts non-strings into strings by calling toString(). Size set by options.'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<ITextFieldDefinition>
-	): IFieldTemplateDetails {
+		options: FieldTemplateDetailOptions<TextFieldDefinition>
+	): FieldTemplateDetails {
 		const { definition } = options
 		return {
 			valueType: `string${definition.isArray ? '[]' : ''}`,
@@ -23,7 +23,7 @@ export default class TextField extends AbstractField<ITextFieldDefinition> {
 
 	public toValueType<C extends boolean>(
 		value: any,
-		options?: ToValueTypeOptions<ITextFieldDefinition, C>
+		options?: ToValueTypeOptions<TextFieldDefinition, C>
 	): string {
 		let transformed =
 			typeof value === 'string'

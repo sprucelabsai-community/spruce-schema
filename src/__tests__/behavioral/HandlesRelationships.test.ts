@@ -2,15 +2,15 @@ import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SchemaField from '../../fields/SchemaField'
 import {
-	ISchemaFieldDefinition,
+	SchemaFieldFieldDefinition,
 	SchemaFieldValueTypeMapper,
 } from '../../fields/SchemaField.types'
-import SchemaEntity from '../../SchemaEntity'
 import { SchemaValues } from '../../schemas.static.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildPersonWithCars, {
-	IPersonSchema,
-	ICarSchema,
-	ITruckSchema,
+	PersonSchema,
+	CarSchema,
+	TruckSchema,
 } from '../data/personWithCars'
 
 const { personSchema, carSchema } = buildPersonWithCars()
@@ -18,7 +18,7 @@ const { personSchema, carSchema } = buildPersonWithCars()
 export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 	@test()
 	protected static async canDefineBasicRelationshipUsingTypes() {
-		const user: SchemaValues<IPersonSchema> = {
+		const user: SchemaValues<PersonSchema> = {
 			name: 'go team',
 			requiredCar: { name: 'go cart' },
 			requiredIsArrayCars: [{ name: 'car 1' }, { name: 'car 2' }],
@@ -44,7 +44,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGettingValueReturnsSchema() {
-		const person = new SchemaEntity(personSchema, {
+		const person = new StaticSchemaEntityImplementation(personSchema, {
 			requiredCar: { name: 'car', onlyOnCar: 'only on car!' },
 			requiredIsArrayCars: [],
 			requiredIsArrayCarOrTruck: [],
@@ -57,7 +57,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testIsArray() {
-		const user = new SchemaEntity(personSchema, {
+		const user = new StaticSchemaEntityImplementation(personSchema, {
 			name: 'tay',
 			requiredCar: { name: 'dirty car' },
 			requiredIsArrayCarOrTruck: [],
@@ -109,7 +109,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		const testSingleSchemaField: SchemaFieldValueTypeMapper<{
 			type: 'schema'
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}> = {
 			schemaId: 'car',
@@ -124,7 +124,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 			type: 'schema'
 			isArray: true
 			options: {
-				schemas: [ICarSchema, ITruckSchema]
+				schemas: [CarSchema, TruckSchema]
 			}
 		}>
 		const testArraySchemaField: ManyType = [
@@ -144,7 +144,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testUnionResolutionCreatingSchemas() {
-		const person = new SchemaEntity(personSchema, {
+		const person = new StaticSchemaEntityImplementation(personSchema, {
 			requiredCar: { name: 'required name' },
 			requiredIsArrayCars: [],
 			requiredIsArrayCarOrTruck: [
@@ -182,8 +182,10 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testFieldWithCallback() {
-		const person = new SchemaEntity(personSchema)
-		const car = new SchemaEntity(carSchema, { name: 'fast' })
+		const person = new StaticSchemaEntityImplementation(personSchema)
+		const car = new StaticSchemaEntityImplementation(carSchema, {
+			name: 'fast',
+		})
 		person.set('optionalCarWithCallback', car.getValues())
 
 		const carField = person
@@ -197,7 +199,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		}
 
 		const ids = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
-			carField.field.definition as ISchemaFieldDefinition
+			carField.field.definition as SchemaFieldFieldDefinition
 		)
 
 		assert.isEqualDeep(ids, [{ id: carSchema.id }])
