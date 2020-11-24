@@ -2,8 +2,8 @@ import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import SchemaField from '../../fields/SchemaField'
 import { ISchemaFieldDefinition } from '../../fields/SchemaField.types'
 import {
-	IFieldTemplateDetailOptions,
-	ISchemaTemplateItem,
+	FieldTemplateDetailOptions,
+	SchemaTemplateItem,
 	TemplateRenderAs,
 } from '../../types/template.types'
 import buildSchema from '../../utilities/buildSchema'
@@ -61,7 +61,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 	})
 
 	// the global template items[]
-	private static templateItems: ISchemaTemplateItem[] = [
+	private static templateItems: SchemaTemplateItem[] = [
 		{
 			namePascal: 'UnionPerson',
 			nameCamel: 'unionPerson',
@@ -131,7 +131,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		renderAsType: string,
 		renderAsSchemaType: string
 	) {
-		const templateOptions: IFieldTemplateDetailOptions<ISchemaFieldDefinition> = {
+		const templateOptions: FieldTemplateDetailOptions<ISchemaFieldDefinition> = {
 			language: 'ts',
 			globalNamespace: 'SpruceSchemas',
 			importAs: 'generated_test',

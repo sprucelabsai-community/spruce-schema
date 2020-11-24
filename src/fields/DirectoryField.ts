@@ -1,6 +1,6 @@
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
@@ -10,13 +10,15 @@ import {
 } from './DirectoryField.types'
 import { ToValueTypeOptions } from './field.static.types'
 
-export default class DirectoryField extends AbstractField<IDirectoryFieldDefinition> {
+export default class DirectoryField extends AbstractField<
+	IDirectoryFieldDefinition
+> {
 	public static get description() {
 		return 'A way to select entire directories once!'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IDirectoryFieldDefinition>
+		options: FieldTemplateDetailOptions<IDirectoryFieldDefinition>
 	): IFieldTemplateDetails {
 		const { definition } = options
 		return {

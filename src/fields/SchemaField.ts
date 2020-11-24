@@ -10,7 +10,7 @@ import {
 import SchemaRegistry from '../singletons/SchemaRegistry'
 import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 import {
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 	TemplateRenderAs,
 } from '../types/template.types'
@@ -103,7 +103,7 @@ export default class SchemaField<
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<ISchemaFieldDefinition>
+		options: FieldTemplateDetailOptions<ISchemaFieldDefinition>
 	): IFieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(

@@ -3,7 +3,7 @@ import Mime from 'mime-type'
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
@@ -23,7 +23,7 @@ export default class FileField extends AbstractField<IFileFieldDefinition> {
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IFileFieldDefinition>
+		options: FieldTemplateDetailOptions<IFileFieldDefinition>
 	): IFieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IFileFieldValue${

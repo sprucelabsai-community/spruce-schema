@@ -1,5 +1,5 @@
 import {
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
@@ -10,7 +10,7 @@ export default class RawField extends AbstractField<IRawFieldDefinition> {
 		return 'Set an interface directly.'
 	}
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IRawFieldDefinition>
+		options: FieldTemplateDetailOptions<IRawFieldDefinition>
 	): IFieldTemplateDetails {
 		return {
 			valueType: `(${options.definition.options.valueType})${

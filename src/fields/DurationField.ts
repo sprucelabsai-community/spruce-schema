@@ -1,7 +1,7 @@
 import { IInvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
-	IFieldTemplateDetailOptions,
+	FieldTemplateDetailOptions,
 	IFieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
@@ -54,13 +54,15 @@ export function buildDuration(
 	return { hours, minutes, seconds, ms }
 }
 
-export default class DurationField extends AbstractField<IDurationFieldDefinition> {
+export default class DurationField extends AbstractField<
+	IDurationFieldDefinition
+> {
 	public static get description() {
 		return 'A span of time represented in { hours, minutes, seconds, ms }'
 	}
 
 	public static generateTemplateDetails(
-		options: IFieldTemplateDetailOptions<IDurationFieldDefinition>
+		options: FieldTemplateDetailOptions<IDurationFieldDefinition>
 	): IFieldTemplateDetails {
 		return {
 			valueType: `${options.importAs}.IDurationFieldValue${
