@@ -1,6 +1,6 @@
 import {
 	ISchemaIdWithVersion,
-	ISchemaFieldValueUnion,
+	SchemaFieldValueUnion,
 	ISchema,
 	ISchemaEntity,
 	SchemaValues,
@@ -53,8 +53,8 @@ export type SchemaFieldValueTypeMapper<
 export type ISchemaFieldDefinition = IFieldDefinition<
 	Record<string, any>,
 	Record<string, any>,
-	ISchemaFieldValueUnion[],
-	ISchemaFieldValueUnion[]
+	SchemaFieldValueUnion[],
+	SchemaFieldValueUnion[]
 > & {
 	/** * .Schema go team! */
 	type: 'schema'

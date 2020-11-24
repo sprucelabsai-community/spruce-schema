@@ -11,7 +11,7 @@ import {
 import {
 	DynamicSchemaAllValues,
 	DynamicSchemaPartialValues,
-	IDynamicSchemaEntity,
+	DynamicSchemaEntityByName,
 	IDynamicSchemaGetValuesOptions,
 	IDynamicSchemaNamedFieldsOptions,
 	ISchema,
@@ -31,7 +31,7 @@ export default class DynamicSchemaEntityImplementation<
 			: any
 	>
 	extends AbstractEntity
-	implements IDynamicSchemaEntity<S, Field> {
+	implements DynamicSchemaEntityByName<S, Field> {
 	private values: DynamicSchemaPartialValues<S> = {}
 	private dynamicField: Field
 

@@ -1,12 +1,12 @@
-import { ISchemaFields } from '../schemas.static.types'
+import { SchemaFieldsByName } from '../schemas.static.types'
 
-type FieldName<F extends ISchemaFields> = Extract<keyof F, string>
-type MakeFieldsOptional<F extends ISchemaFields> = {
+type FieldName<F extends SchemaFieldsByName> = Extract<keyof F, string>
+type MakeFieldsOptional<F extends SchemaFieldsByName> = {
 	[K in keyof F]: { isRequired: false } & Omit<F[K], 'isRequired'>
 }
 
 export default function makeFieldsOptional<
-	F extends ISchemaFields,
+	F extends SchemaFieldsByName,
 	// eslint-disable-next-line
 	D extends FieldName<F>
 >(fields: F): MakeFieldsOptional<F> {

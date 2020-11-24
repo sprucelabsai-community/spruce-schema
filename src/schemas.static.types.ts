@@ -74,9 +74,11 @@ export interface ISchemaEntity<S extends ISchema> extends SchemaEntity {
 	isValid(options?: ISchemaValidateOptions<S>): boolean
 }
 
-export interface IDynamicSchemaEntity<
+export interface DynamicSchemaEntityByName<
 	Schema extends ISchema,
-	Field extends IField<any> = Schema['dynamicFieldSignature'] extends FieldDefinition
+	Field extends IField<
+		any
+	> = Schema['dynamicFieldSignature'] extends FieldDefinition
 		? IFieldMap[Schema['dynamicFieldSignature']['type']]
 		: any
 > extends SchemaEntity,
@@ -117,7 +119,7 @@ export interface IDynamicSchemaEntity<
 	isValid(options?: IDynamicSchemaValidateOptions): boolean
 }
 
-export interface ISchemaFields {
+export interface SchemaFieldsByName {
 	[fieldName: string]: FieldDefinition
 }
 
@@ -133,10 +135,10 @@ export interface ISchema {
 		keyName: string
 		keyTypeLiteral?: string
 	}
-	fields?: ISchemaFields
+	fields?: SchemaFieldsByName
 }
 
-export interface ISchemaFieldValueUnion<
+export interface SchemaFieldValueUnion<
 	V extends Record<string, any> = Record<string, any>
 > {
 	schemaId: string
@@ -236,7 +238,9 @@ export type IsDynamicSchema<
 export type SchemaDefaultValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	K extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+	K extends SchemaFieldNamesWithDefaultValue<
+		S
+	> = SchemaFieldNamesWithDefaultValue<S>,
 	V extends SchemaAllValues<S, CreateEntityInstances> = SchemaAllValues<
 		S,
 		CreateEntityInstances
@@ -298,12 +302,14 @@ export type SchemaPublicFieldNames<S extends ISchema> = {
 export type SchemaPublicValues<
 	S extends ISchema,
 	CreateEntityInstances extends boolean = false,
-	PublicFieldNames extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
+	PublicFieldNames extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<
+		S
+	>,
 	AllValues extends SchemaValues<S, CreateEntityInstances> = SchemaValues<
 		S,
 		CreateEntityInstances
 	>
-> = S['fields'] extends ISchemaFields
+> = S['fields'] extends SchemaFieldsByName
 	? Exclude<Pick<AllValues, PublicFieldNames>, never>
 	: never
 
