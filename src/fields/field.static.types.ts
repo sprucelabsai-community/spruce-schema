@@ -1,7 +1,7 @@
 import {
 	FieldDefinitions,
-	IFieldMap,
-	IFieldValueTypeGeneratorMap,
+	FieldMap,
+	FieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
 import { InvalidFieldError } from '../errors/error.types'
 import {
@@ -49,7 +49,7 @@ export type ValidateOptions<F extends FieldDefinitions> = {
 	schemasById?: SchemasById
 } & Partial<F['options']>
 
-export type FieldType = keyof IFieldMap
+export type FieldType = keyof FieldMap
 
 // if it's not going to change, put it in here
 export type FieldDefinition<
@@ -86,7 +86,7 @@ export type FieldDefinitionValueType<
 	? IsRequired<
 			IsArray<
 				NonNullable<
-					IFieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
+					FieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
 				>,
 				F['isArray']
 			>,

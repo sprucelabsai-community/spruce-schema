@@ -52,7 +52,7 @@ export type Field =
 	| IField<IDateFieldDefinition>
 	| IField<IDirectoryFieldDefinition>
 
-export interface IFieldDefinitionMap {
+export interface FieldDefinitionMap {
 	['boolean']: IBooleanFieldDefinition
 	['select']: ISelectFieldDefinition
 	['duration']: IDurationFieldDefinition
@@ -69,7 +69,7 @@ export interface IFieldDefinitionMap {
 	['directory']: IDirectoryFieldDefinition
 }
 
-export interface IFieldValueTypeGeneratorMap<
+export interface FieldValueTypeGeneratorMap<
 	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean
 > {
@@ -94,7 +94,7 @@ export interface IFieldValueTypeGeneratorMap<
 	['directory']: IDirectoryFieldDefinition['value']
 }
 
-export interface IFieldMap {
+export interface FieldMap {
 	['boolean']: IField<IBooleanFieldDefinition>
 	['select']: IField<ISelectFieldDefinition>
 	['duration']: IField<IDurationFieldDefinition>

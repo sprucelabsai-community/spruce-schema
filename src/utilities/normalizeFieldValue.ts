@@ -1,7 +1,7 @@
 import {
 	Field,
 	FieldDefinitions,
-	IFieldDefinitionMap,
+	FieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
 import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
@@ -19,7 +19,7 @@ export default function normalizeFieldValue<
 	field: F,
 	value: any,
 	options: SchemaNormalizeFieldValueOptions<CreateEntityInstances> &
-		Partial<IFieldDefinitionMap[F['type']]['options']>
+		Partial<FieldDefinitionMap[F['type']]['options']>
 ) {
 	let localValue = normalizeValueToArray<F, CreateEntityInstances>(value)
 

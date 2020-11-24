@@ -1,4 +1,4 @@
-import { IFieldMap } from '#spruce/schemas/fields/fields.types'
+import { FieldMap } from '#spruce/schemas/fields/fields.types'
 import AbstractEntity from './AbstractEntity'
 import { InvalidFieldErrorOptions } from './errors/error.types'
 import SpruceError from './errors/SpruceError'
@@ -27,7 +27,7 @@ export default class DynamicSchemaEntityImplementation<
 		Field extends IField<
 			any
 		> = S['dynamicFieldSignature'] extends FieldDefinition
-			? IFieldMap[S['dynamicFieldSignature']['type']]
+			? FieldMap[S['dynamicFieldSignature']['type']]
 			: any
 	>
 	extends AbstractEntity

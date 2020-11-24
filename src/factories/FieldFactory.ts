@@ -1,11 +1,11 @@
-import { FieldDefinitions, IFieldMap, fieldClassMap } from '../fields'
+import { FieldDefinitions, FieldMap, fieldClassMap } from '../fields'
 
 export default class FieldFactory {
 	/** Factory for creating a new field from a definition */
 	public static Field<F extends FieldDefinitions>(
 		name: string,
 		definition: F
-	): IFieldMap[F['type']] {
+	): FieldMap[F['type']] {
 		const fieldClass = fieldClassMap[definition.type]
 
 		if (!fieldClass) {

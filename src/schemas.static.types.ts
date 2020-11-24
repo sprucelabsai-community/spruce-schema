@@ -1,8 +1,8 @@
 import {
 	FieldDefinitions,
 	Field,
-	IFieldDefinitionMap,
-	IFieldMap,
+	FieldDefinitionMap,
+	FieldMap,
 } from '#spruce/schemas/fields/fields.types'
 import {
 	FieldDefinition,
@@ -79,7 +79,7 @@ export interface DynamicSchemaEntityByName<
 	Field extends IField<
 		any
 	> = ISchema['dynamicFieldSignature'] extends FieldDefinitions
-		? IFieldMap[ISchema['dynamicFieldSignature']['type']]
+		? FieldMap[ISchema['dynamicFieldSignature']['type']]
 		: any
 > extends SchemaEntity,
 		Omit<
@@ -148,7 +148,7 @@ export interface SchemaFieldValueUnion<
 
 export type SchemaFields<T extends Schema> = {
 	[F in SchemaFieldNames<T>]: T['fields'][F] extends FieldDefinition
-		? IFieldMap[T['fields'][F]['type']]
+		? FieldMap[T['fields'][F]['type']]
 		: never
 }
 
@@ -349,7 +349,7 @@ export interface SchemaNormalizeOptions<
 	/** Options passed to each field that conforms to the field definition's options */
 	byField?: {
 		[K in SchemaFieldNames<S>]?: S['fields'][K] extends FieldDefinition
-			? Partial<IFieldDefinitionMap[S['fields'][K]['type']]['options']>
+			? Partial<FieldDefinitionMap[S['fields'][K]['type']]['options']>
 			: never
 	}
 }
