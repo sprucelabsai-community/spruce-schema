@@ -1,5 +1,5 @@
 import {
-	Field,
+	Fields,
 	FieldDefinitions,
 	FieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
@@ -10,7 +10,7 @@ import { SchemasById } from '../fields/field.static.types'
 import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<
-	F extends Field,
+	F extends Fields,
 	CreateEntityInstances extends boolean
 >(
 	schemaId: string,
@@ -95,7 +95,7 @@ export default function normalizeFieldValue<
 }
 
 export function normalizeValueToArray<
-	F extends Field,
+	F extends Fields,
 	CreateEntityInstances extends boolean
 >(value: any) {
 	return value === null || typeof value === 'undefined'

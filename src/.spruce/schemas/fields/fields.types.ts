@@ -36,7 +36,7 @@ export type FieldDefinitions =
 	| IDateFieldDefinition
 	| IDirectoryFieldDefinition
 
-export type Field =
+export type Fields =
 	| IField<IBooleanFieldDefinition>
 	| IField<ISelectFieldDefinition>
 	| IField<IDurationFieldDefinition>

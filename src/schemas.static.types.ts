@@ -1,6 +1,6 @@
 import {
 	FieldDefinitions,
-	Field,
+	Fields,
 	FieldDefinitionMap,
 	FieldMap,
 } from '#spruce/schemas/fields/fields.types'
@@ -325,12 +325,12 @@ export type SchemaFieldType<
 
 export interface SchemaNamedField<T extends Schema> {
 	name: SchemaFieldNames<T>
-	field: Field
+	field: Fields
 }
 
 export interface DynamicSchemaNamedField {
 	name: string
-	field: Field
+	field: Fields
 }
 
 export interface SchemaNormalizeFieldValueOptions<
