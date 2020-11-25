@@ -1,4 +1,4 @@
-import EntityFactory from '../factories/EntityFactory'
+import EntityFactory from '../factories/SchemaEntityFactory'
 import {
 	Schema,
 	SchemaPartialValues,

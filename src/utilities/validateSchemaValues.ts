@@ -1,5 +1,5 @@
 import { validateSchema } from '..'
-import EntityFactory from '../factories/EntityFactory'
+import EntityFactory from '../factories/SchemaEntityFactory'
 import {
 	Schema,
 	SchemaValidateOptions,
