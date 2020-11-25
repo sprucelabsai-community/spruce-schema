@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
-import EntityFactory from '../../factories/EntityFactory'
+import EntityFactory from '../../factories/SchemaEntityFactory'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 
 export default class CreatingEntityInstancesTest extends AbstractSchemaTest {

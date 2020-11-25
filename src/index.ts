@@ -48,6 +48,7 @@ export { default as isIdWithVersion } from './utilities/isIdWithVersion'
 export * from './utilities/formatPhoneNumber'
 
 export { default as FieldFactory } from './factories/FieldFactory'
+export { default as SchemaEntityFactory } from './factories/SchemaEntityFactory'
 
 export * from './types/template.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'

@@ -7,7 +7,7 @@ import {
 } from '../schemas.static.types'
 import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 
-export default class EntityFactory {
+export default class SchemaEntityFactory {
 	public static Entity<
 		S extends Schema,
 		IsDynamic extends boolean = IsDynamicSchema<S>
