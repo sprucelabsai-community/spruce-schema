@@ -1,3 +1,10 @@
+# [17.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v17.0.1...v17.1.0) (2020-11-25)
+
+
+### Features
+
+* export schemaEntityFactory ([816db70](https://github.com/sprucelabsai/spruce-schema/commit/816db70))
+
 ## [17.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v17.0.0...v17.0.1) (2020-11-24)
 
 # [17.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v16.2.0...v17.0.0) (2020-11-24)
