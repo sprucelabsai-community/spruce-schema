@@ -1,4 +1,7 @@
-import { SpruceErrorOptions, ISpruceErrorOptions } from '@sprucelabs/error'
+import {
+	SpruceErrorOptions,
+	ErrorOptions as ISpruceErrorOptions,
+} from '@sprucelabs/error'
 import { FieldType } from '../fields/field.static.types'
 
 export type SchemaErrorOptions =
