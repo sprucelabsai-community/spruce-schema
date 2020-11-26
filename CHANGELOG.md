@@ -1,3 +1,10 @@
+# [18.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v17.1.0...v18.0.0) (2020-11-26)
+
+
+### Breaking Changes
+
+* remove I prefix in generateTemplateDetails ([132cb91](https://github.com/sprucelabsai/spruce-schema/commit/132cb91))
+
 # [17.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v17.0.1...v17.1.0) (2020-11-25)
 
 
