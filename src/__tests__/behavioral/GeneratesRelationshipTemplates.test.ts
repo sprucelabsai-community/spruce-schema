@@ -95,15 +95,15 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		'schemaId',
 		{ isArray: false, options: { schemaId: { id: 'union-person' } } },
 		'unionPersonSchema',
-		'SpruceSchemas.Core.IUnionPerson',
-		'SpruceSchemas.Core.IUnionPersonSchema'
+		'SpruceSchemas.Core.UnionPerson',
+		'SpruceSchemas.Core.UnionPersonSchema'
 	)
 	@test(
 		'schemaId isArray',
 		{ isArray: true, options: { schemaId: { id: 'union-person' } } },
 		'unionPersonSchema',
-		'SpruceSchemas.Core.IUnionPerson[]',
-		'SpruceSchemas.Core.IUnionPersonSchema'
+		'SpruceSchemas.Core.UnionPerson[]',
+		'SpruceSchemas.Core.UnionPersonSchema'
 	)
 	@test(
 		'schemaIds',
@@ -112,8 +112,8 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] },
 		},
 		'[unionPersonSchema, wrenchSchema]',
-		"{ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench }",
-		'(SpruceSchemas.Core.IUnionPersonSchema | SpruceSchemas.Core.IWrenchSchema)[]'
+		"{ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.Wrench }",
+		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.WrenchSchema)[]'
 	)
 	@test(
 		'schemaIds isArray',
@@ -122,8 +122,8 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			options: { schemaIds: [{ id: 'union-person' }, { id: 'wrench' }] },
 		},
 		'[unionPersonSchema, wrenchSchema]',
-		"({ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.IWrench })[]",
-		'(SpruceSchemas.Core.IUnionPersonSchema | SpruceSchemas.Core.IWrenchSchema)[]'
+		"({ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', values: SpruceSchemas.Core.Wrench })[]",
+		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.WrenchSchema)[]'
 	)
 	protected static async testTemplateDetails(
 		definition: SchemaFieldFieldDefinition,

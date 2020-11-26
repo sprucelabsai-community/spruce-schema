@@ -149,8 +149,8 @@ export default class SchemaField<
 						version ? `.${version}` : ''
 					}${
 						renderAs === TemplateRenderAs.Type
-							? `.I${matchedTemplateItem.namePascal}`
-							: `.I${matchedTemplateItem.namePascal}Schema`
+							? `.${matchedTemplateItem.namePascal}`
+							: `.${matchedTemplateItem.namePascal}Schema`
 					}`
 
 					if (renderAs === TemplateRenderAs.Type && idsWithVersion.length > 1) {

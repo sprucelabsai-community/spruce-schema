@@ -124,8 +124,8 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			},
 		},
 		'[unionPersonSchema, wrenchSchema]',
-		"{ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', version: 'v2', values: SpruceSchemas.Core.v2.IWrench }",
-		'(SpruceSchemas.Core.IUnionPersonSchema | SpruceSchemas.Core.v2.IWrenchSchema)[]'
+		"{ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', version: 'v2', values: SpruceSchemas.Core.v2.Wrench }",
+		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.v2.WrenchSchema)[]'
 	)
 	@test(
 		'is array',
@@ -136,8 +136,8 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 			},
 		},
 		'[unionPersonSchema, wrenchSchema]',
-		"({ schemaId: 'union-person', values: SpruceSchemas.Core.IUnionPerson } | { schemaId: 'wrench', version: 'v1', values: SpruceSchemas.Core.v1.IWrench })[]",
-		'(SpruceSchemas.Core.IUnionPersonSchema | SpruceSchemas.Core.v1.IWrenchSchema)[]'
+		"({ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', version: 'v1', values: SpruceSchemas.Core.v1.Wrench })[]",
+		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.v1.WrenchSchema)[]'
 	)
 	protected static async testTemplateDetails(
 		definition: SchemaFieldFieldDefinition,
