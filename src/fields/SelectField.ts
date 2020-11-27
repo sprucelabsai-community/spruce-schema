@@ -1,7 +1,9 @@
+import { InvalidFieldError } from '../errors/error.types'
 import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
 } from '../types/template.types'
+import { selectChoicesToHash } from '../utilities/selectChoicesToHash'
 import AbstractField from './AbstractField'
 import {
 	SelectFieldDefinition,
@@ -27,6 +29,21 @@ export default class SelectField<
 			valueTypeMapper:
 				'SelectFieldValueTypeMapper<F extends SelectFieldDefinition ? F: SelectFieldDefinition>',
 		}
+	}
+
+	public validate(value: any): InvalidFieldError[] {
+		const validchoices = selectChoicesToHash(this.definition.options.choices)
+
+		const errors = super.validate(value)
+
+		if (!validchoices[value]) {
+			errors.push({
+				code: 'invalid_value',
+				name: this.name,
+			})
+		}
+
+		return errors
 	}
 
 	public static generateTemplateDetails(
