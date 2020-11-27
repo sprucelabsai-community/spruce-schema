@@ -1,4 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { FieldFactory } from '../..'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import buildSchema from '../../utilities/buildSchema'
 
@@ -89,5 +90,23 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 
 		assert.isType<'blue' | 'red' | undefined | null>(favColor)
 		assert.isType<'blue' | 'red'>(favoriteColorRequired)
+	}
+
+	@test()
+	protected static catchesBadChoice() {
+		const field = FieldFactory.Field('test', {
+			type: 'select',
+			options: {
+				choices: [
+					{ label: 'good', value: 'good' },
+					{ label: 'bad', value: 'bad' },
+					{ label: 'ugly', value: 'ugly' },
+				],
+			},
+		})
+
+		const results = field.validate('cheese')
+		assert.isLength(results, 1)
+		assert.isEqual(results[0].code, 'invalid_value')
 	}
 }
