@@ -109,4 +109,40 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 		assert.isLength(results, 1)
 		assert.isEqual(results[0].code, 'invalid_value')
 	}
+
+	@test()
+	protected static validationHandlesUndefinedForOptional() {
+		const field = FieldFactory.Field('test', {
+			type: 'select',
+			options: {
+				choices: [
+					{ label: 'good', value: 'good' },
+					{ label: 'bad', value: 'bad' },
+					{ label: 'ugly', value: 'ugly' },
+				],
+			},
+		})
+
+		const results = field.validate(undefined)
+		assert.isLength(results, 0)
+	}
+
+	@test()
+	protected static validationHandlesRequired() {
+		const field = FieldFactory.Field('test', {
+			type: 'select',
+			isRequired: true,
+			options: {
+				choices: [
+					{ label: 'good', value: 'good' },
+					{ label: 'bad', value: 'bad' },
+					{ label: 'ugly', value: 'ugly' },
+				],
+			},
+		})
+
+		const results = field.validate(undefined)
+		assert.isLength(results, 1)
+		assert.isEqual(results[0].code, 'missing_required')
+	}
 }
