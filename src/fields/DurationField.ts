@@ -54,7 +54,9 @@ export function buildDuration(
 	return { hours, minutes, seconds, ms }
 }
 
-export default class DurationField extends AbstractField<DurationFieldDefinition> {
+export default class DurationField extends AbstractField<
+	DurationFieldDefinition
+> {
 	public static get description() {
 		return 'A span of time represented in { hours, minutes, seconds, ms }'
 	}
