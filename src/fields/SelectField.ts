@@ -36,7 +36,7 @@ export default class SelectField<
 
 		const errors = super.validate(value)
 
-		if (!validchoices[value]) {
+		if (value && !validchoices[value]) {
 			errors.push({
 				code: 'invalid_value',
 				name: this.name,

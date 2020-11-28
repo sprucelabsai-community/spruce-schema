@@ -187,7 +187,9 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	}
 
 	public getDefaultValues<
-		F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+		F extends SchemaFieldNamesWithDefaultValue<
+			S
+		> = SchemaFieldNamesWithDefaultValue<S>,
 		CreateEntityInstances extends boolean = true
 	>(
 		options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
