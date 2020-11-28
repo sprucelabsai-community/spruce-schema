@@ -24,9 +24,7 @@ import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntityImplementation<
 		S extends Schema,
-		OurField extends Field<
-			any
-		> = S['dynamicFieldSignature'] extends FieldDefinition
+		OurField extends Field<any> = S['dynamicFieldSignature'] extends FieldDefinition
 			? FieldMap[S['dynamicFieldSignature']['type']]
 			: any
 	>
