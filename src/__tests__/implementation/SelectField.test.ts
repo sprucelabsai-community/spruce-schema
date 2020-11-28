@@ -142,6 +142,7 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 		})
 
 		const results = field.validate(undefined)
+
 		assert.isLength(results, 1)
 		assert.isEqual(results[0].code, 'missing_required')
 	}
