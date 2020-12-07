@@ -1,3 +1,10 @@
+# [18.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.1.0...v18.2.0) (2020-12-07)
+
+
+### Features
+
+* isCoreSchema part of schematemplateitem ([8452e35](https://github.com/sprucelabsai/spruce-schema/commit/8452e35))
+
 # [18.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.0.4...v18.1.0) (2020-12-07)
 
 
