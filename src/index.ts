@@ -45,6 +45,7 @@ export { default as isSchemaValid } from './utilities/isSchemaValid'
 export { default as areSchemasTheSame } from './utilities/areSchemasTheSame'
 export { default as formatPhoneNumber } from './utilities/formatPhoneNumber'
 export { default as isIdWithVersion } from './utilities/isIdWithVersion'
+export { default as normalizeSchemaToIdWithVersion } from './utilities/normalizeSchemaToIdWithVersion'
 export * from './utilities/formatPhoneNumber'
 
 export { default as FieldFactory } from './factories/FieldFactory'
