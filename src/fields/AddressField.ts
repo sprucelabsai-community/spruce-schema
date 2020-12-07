@@ -5,7 +5,9 @@ import {
 import AbstractField from './AbstractField'
 import { AddressFieldDefinition } from './AddressField.types'
 
-export default class AddressField extends AbstractField<AddressFieldDefinition> {
+export default class AddressField extends AbstractField<
+	AddressFieldDefinition
+> {
 	public static get description() {
 		return 'An address with geocoding ability *coming soon*'
 	}
@@ -13,7 +15,7 @@ export default class AddressField extends AbstractField<AddressFieldDefinition> 
 		options: FieldTemplateDetailOptions<AddressFieldDefinition>
 	): FieldTemplateDetails {
 		return {
-			valueType: `${options.importAs}.IAddressFieldValue${
+			valueType: `${options.importAs}.AddressFieldValue${
 				options.definition.isArray ? '[]' : ''
 			}`,
 		}
