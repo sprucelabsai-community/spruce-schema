@@ -1,3 +1,10 @@
+# [18.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.0.4...v18.1.0) (2020-12-07)
+
+
+### Features
+
+* normalizeSchemaToIdWithVersion utility function ([fa6b6ef](https://github.com/sprucelabsai/spruce-schema/commit/fa6b6ef))
+
 ## [18.0.4](https://github.com/sprucelabsai/spruce-schema/compare/v18.0.3...v18.0.4) (2020-11-28)
 
 ## [18.0.3](https://github.com/sprucelabsai/spruce-schema/compare/v18.0.2...v18.0.3) (2020-11-28)
