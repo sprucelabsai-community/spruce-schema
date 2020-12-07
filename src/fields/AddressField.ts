@@ -5,9 +5,7 @@ import {
 import AbstractField from './AbstractField'
 import { AddressFieldDefinition } from './AddressField.types'
 
-export default class AddressField extends AbstractField<
-	AddressFieldDefinition
-> {
+export default class AddressField extends AbstractField<AddressFieldDefinition> {
 	public static get description() {
 		return 'An address with geocoding ability *coming soon*'
 	}
