@@ -15,6 +15,7 @@ import {
 	TemplateRenderAs,
 } from '../types/template.types'
 import isIdWithVersion from '../utilities/isIdWithVersion'
+import normaizeSchemaToIdWithVersion from '../utilities/normalizeSchemaToIdWithVersion'
 import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
@@ -72,25 +73,9 @@ export default class SchemaField<
 	): SchemaIdWithVersion[] {
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
-		const ids: SchemaIdWithVersion[] = schemasOrIds.map((item) => {
-			if (isIdWithVersion(item)) {
-				return item
-			}
-
-			const idWithVersion: SchemaIdWithVersion = {
-				id: item.id,
-			}
-
-			if (item.version) {
-				idWithVersion.version = item.version
-			}
-
-			if (item.namespace) {
-				idWithVersion.namespace = item.namespace
-			}
-
-			return idWithVersion
-		})
+		const ids: SchemaIdWithVersion[] = schemasOrIds.map((item) =>
+			normaizeSchemaToIdWithVersion(item)
+		)
 
 		return ids
 	}
