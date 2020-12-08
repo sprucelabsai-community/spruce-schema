@@ -54,7 +54,7 @@ export interface SchemaTemplateItem extends SchemaTemplateNames {
 	/** This schema was defined in another schema */
 	isNested?: boolean
 	/** This schema is being imported from a node module */
-	importFrom?: boolean
+	importFrom?: string
 	/** Where this schema is going to be written (so other schemas can import it) */
 	destinationDir: string
 	/** Full import statements generated based on importsWhenLocal or importsWhenRemote */
