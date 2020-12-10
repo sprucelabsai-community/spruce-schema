@@ -20,7 +20,7 @@ export default function normalizeSchemaValues<
 	IncludePrivateFields extends boolean = true,
 	IsDynamic extends boolean = IsDynamicSchema<S>
 >(
-	definition: S,
+	schema: S,
 	values: SchemaPartialValues<S>,
 	options?: SchemaGetValuesOptions<
 		S,
@@ -30,7 +30,7 @@ export default function normalizeSchemaValues<
 		IncludePrivateFields
 	>
 ) {
-	const instance = EntityFactory.Entity<S, IsDynamic>(definition, values)
+	const instance = EntityFactory.Entity<S, IsDynamic>(schema, values)
 
 	const { createEntityInstances = false, ...rest } = options || {}
 	const normalizedOptions = {
