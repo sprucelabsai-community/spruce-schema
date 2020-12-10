@@ -1,3 +1,10 @@
+# [18.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.2.4...v18.3.0) (2020-12-10)
+
+
+### Features
+
+* definition -> schema ([c05035f](https://github.com/sprucelabsai/spruce-schema/commit/c05035f))
+
 ## [18.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v18.2.3...v18.2.4) (2020-12-08)
 
 ## [18.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v18.2.2...v18.2.3) (2020-12-08)
