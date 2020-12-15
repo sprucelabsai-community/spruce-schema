@@ -1,3 +1,10 @@
+# [19.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.3.0...v19.0.0) (2020-12-15)
+
+
+### Breaking Changes
+
+* change SelectFieldDefinitionChoice -> SelectChoice ([ca352cd](https://github.com/sprucelabsai/spruce-schema/commit/ca352cd))
+
 # [18.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v18.2.4...v18.3.0) (2020-12-10)
 
 
