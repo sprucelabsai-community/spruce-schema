@@ -1,6 +1,6 @@
 import { FieldDefinition } from './field.static.types'
 
-export interface SelectFieldDefinitionChoice {
+export interface SelectChoice {
 	/**  Machine readable way to identify this choice */
 	value: string
 	/** Human readable label for when selecting a choice */
@@ -8,7 +8,7 @@ export interface SelectFieldDefinitionChoice {
 }
 
 export interface SelectFieldOptions {
-	choices: SelectFieldDefinitionChoice[]
+	choices: SelectChoice[]
 }
 
 export type SelectFieldValueTypeMapper<
