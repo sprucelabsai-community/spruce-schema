@@ -1,6 +1,6 @@
 import {
 	SelectFieldDefinition,
-	SelectFieldDefinitionChoice,
+	SelectChoice,
 } from '../fields/SelectField.types'
 import {
 	Schema,
@@ -9,9 +9,7 @@ import {
 } from '../schemas.static.types'
 
 /** Turn select options into a key/value pair */
-export type SelectChoicesToHash<
-	Options extends SelectFieldDefinitionChoice[]
-> = {
+export type SelectChoicesToHash<Options extends SelectChoice[]> = {
 	[P in Options[number]['value']]: Extract<
 		Options[number],
 		{ label: P }
@@ -19,9 +17,9 @@ export type SelectChoicesToHash<
 }
 
 /** Pass the select options directly to create a value/label hash */
-export function selectChoicesToHash<
-	Options extends SelectFieldDefinitionChoice[]
->(options: Options): SelectChoicesToHash<Options> {
+export function selectChoicesToHash<Options extends SelectChoice[]>(
+	options: Options
+): SelectChoicesToHash<Options> {
 	const partial: Partial<SelectChoicesToHash<Options>> = {}
 
 	options.forEach((option) => {

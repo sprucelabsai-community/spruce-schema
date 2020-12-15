@@ -1,8 +1,8 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
-import { SelectFieldDefinitionChoice } from '../../fields/SelectField.types'
+import { SelectChoice } from '../../fields/SelectField.types'
 
-const choices: SelectFieldDefinitionChoice[] = [
+const choices: SelectChoice[] = [
 	{ value: 'foo', label: 'Foo' },
 	{ value: 'bar', label: 'Bar' },
 ]

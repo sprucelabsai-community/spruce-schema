@@ -5,10 +5,7 @@ import {
 } from '../types/template.types'
 import { selectChoicesToHash } from '../utilities/selectChoicesToHash'
 import AbstractField from './AbstractField'
-import {
-	SelectFieldDefinition,
-	SelectFieldDefinitionChoice,
-} from './SelectField.types'
+import { SelectFieldDefinition, SelectChoice } from './SelectField.types'
 
 export default class SelectField<
 	T extends SelectFieldDefinition = SelectFieldDefinition
@@ -62,7 +59,7 @@ export default class SelectField<
 		}
 	}
 
-	public getChoices(): SelectFieldDefinitionChoice[] {
+	public getChoices(): SelectChoice[] {
 		return this.definition.options.choices
 	}
 }
