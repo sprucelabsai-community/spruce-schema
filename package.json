@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": ">=3.1.2",
-		"@sprucelabs/jest-json-reporter": "^5.1.2",
+		"@sprucelabs/jest-json-reporter": "^5.1.4",
 		"@sprucelabs/semantic-release": ">=4.0.6",
 		"@sprucelabs/test": "^7.2.0",
 		"@sprucelabs/test-utils": ">=2.0.210",
