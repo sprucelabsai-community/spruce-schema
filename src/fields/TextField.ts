@@ -1,10 +1,11 @@
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { ToValueTypeOptions } from './field.static.types'
+import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<TextFieldDefinition> {
@@ -19,6 +20,25 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 		return {
 			valueType: `string${definition.isArray ? '[]' : ''}`,
 		}
+	}
+
+	public validate(
+		value: any,
+		options: ValidateOptions<F>
+	): InvalidFieldError[] {
+		const errors = super.validate(value, options)
+
+		if (errors.length === 0) {
+			if (this.isRequired && `${value}`.length === 0) {
+				errors.push({
+					code: 'missing_required',
+					friendlyMessage: `${this.label ?? this.name} can't be empty!`,
+					name: this.name,
+				})
+			}
+		}
+
+		return errors
 	}
 
 	public toValueType<C extends boolean>(

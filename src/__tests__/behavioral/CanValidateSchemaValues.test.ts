@@ -275,10 +275,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			firstName: 'Bob',
 			lastName: 'Bob',
 			profileImages: {
-				profile60: '',
-				profile150: '',
-				'profile60@2x': '',
-				'profile150@2x': '',
+				profile60: '@',
+				profile150: '@',
+				'profile60@2x': '@',
+				'profile150@2x': '@',
 			},
 		}
 		validateSchemaValues(personSchema, values)
@@ -333,10 +333,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			firstName: 'firstName',
 			lastName: 'lastName',
 			profileImages: {
-				profile60: '',
-				profile150: '',
-				'profile60@2x': '',
-				'profile150@2x': '',
+				profile60: '@',
+				profile150: '@',
+				'profile60@2x': '@',
+				'profile150@2x': '@',
 			},
 		}
 
@@ -361,10 +361,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					firstName: 'first',
 					lastName: 'last',
 					profileImages: {
-						profile60: '',
-						profile150: '',
-						'profile60@2x': '',
-						'profile150@2x': '',
+						profile60: '@',
+						profile150: '@',
+						'profile60@2x': '@',
+						'profile150@2x': '@',
 					},
 				}),
 			/is not a field on/
