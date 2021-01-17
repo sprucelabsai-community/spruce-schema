@@ -1,0 +1,101 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "watch.build",
+            "group": "build",
+            "label": "watch.build",
+            "isBackground": true,
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "promptOnClose": false,
+            "presentation": {
+                "panel": "dedicated",
+                "focus": false,
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "test.file",
+            "command": "spruce",
+            "args": [
+                "test",
+                "--inspect",
+                "5200",
+                "--pattern",
+                "${fileBasenameNoExtension}",
+                "--shouldWatch"
+            ],
+            "promptOnClose": false,
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "test.reporter",
+            "command": "spruce",
+            "args": [
+                "test",
+                "--shouldHoldAtStart",
+                "true",
+                "--shouldWatch"
+            ],
+            "promptOnClose": false,
+            "group": "test",
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "presentation": {
+                "panel": "shared",
+                "focus": true,
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "spruce",
+            "type": "shell",
+            "command": "spruce ${input:spruceCommand}",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "clear": false
+            }
+        },
+        {
+            "label": "yarn",
+            "type": "shell",
+            "command": "yarn ${input:yarnCommand}",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "clear": false
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "spruceCommand",
+            "description": "spruce command",
+            "default": "create.test",
+            "type": "promptString"
+        },
+        {
+            "id": "yarnCommand",
+            "description": "yarn command",
+            "default": "add",
+            "type": "promptString"
+        }
+    ]
+}
