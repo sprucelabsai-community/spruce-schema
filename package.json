@@ -6,7 +6,7 @@
 	"files": [
 		"build"
 	],
-	"version": "19.0.1",
+	"version": "19.0.2",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
@@ -38,7 +38,7 @@
 		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
 		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn lint.fix | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
-		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test" 
+		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "latest",
@@ -85,15 +85,15 @@
 		}
 	},
 	"yarn-upgrade-all": {
-	  "ignore": [
-		"@sprucelabs/babel-plugin-schema",
-		"@sprucelabs/error",
-		"@sprucelabs/log",
-		"@sprucelabs/jest-json-reporter",
-		"@sprucelabs/semantic-release",
-		"@sprucelabs/test",
-		"@sprucelabs/test-utils",
-		"eslint-config-spruce"
-	  ]
+		"ignore": [
+			"@sprucelabs/babel-plugin-schema",
+			"@sprucelabs/error",
+			"@sprucelabs/log",
+			"@sprucelabs/jest-json-reporter",
+			"@sprucelabs/semantic-release",
+			"@sprucelabs/test",
+			"@sprucelabs/test-utils",
+			"eslint-config-spruce"
+		]
 	}
 }
