@@ -36,13 +36,13 @@
 		"release": "semantic-release",
 		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
 		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
-		"upgrade.packages": "yarn upgrade --latest && rm yarn.lock | true && yarn | true && yarn lint.fix | true",
+		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn lint.fix | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
-		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
+		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test" 
 	},
 	"dependencies": {
-		"@sprucelabs/error": ">=4.0.0",
-		"@sprucelabs/log": ">=10.2.294",
+		"@sprucelabs/error": "latest",
+		"@sprucelabs/log": "latest",
 		"google-libphonenumber": "^3.2.13",
 		"libphonenumber-js": "^1.8.5",
 		"lodash": "^4.17.20",
@@ -50,24 +50,25 @@
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
-		"@sprucelabs/babel-plugin-schema": ">=3.1.2",
-		"@sprucelabs/jest-json-reporter": "^5.1.2",
-		"@sprucelabs/semantic-release": ">=4.0.6",
-		"@sprucelabs/test": "^7.2.0",
-		"@sprucelabs/test-utils": ">=2.0.210",
+		"@sprucelabs/babel-plugin-schema": "latest",
+		"@sprucelabs/jest-json-reporter": "latest",
+		"@sprucelabs/semantic-release": "latest",
+		"@sprucelabs/test": "latest",
+		"@sprucelabs/test-utils": "latest",
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.162",
 		"@types/mime-db": "^1.43.0",
 		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
 		"eslint": "^7.11.0",
-		"eslint-config-spruce": "^10.9.91",
+		"eslint-config-spruce": "latest",
 		"jest": "^26.6.3",
 		"jest-circus": "^26.6.3",
 		"prettier": "^2.1.2",
 		"ts-node": "^9.0.0",
 		"typescript": "^4.0.3",
-		"yarn": "^1.22.10"
+		"yarn": "^1.22.10",
+		"yarn-upgrade-all": "^0.5.4"
 	},
 	"jest": {
 		"testEnvironment": "node",
@@ -82,5 +83,17 @@
 		"moduleNameMapper": {
 			"^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
 		}
+	},
+	"yarn-upgrade-all": {
+	  "ignore": [
+		"@sprucelabs/babel-plugin-schema",
+		"@sprucelabs/error",
+		"@sprucelabs/log",
+		"@sprucelabs/jest-json-reporter",
+		"@sprucelabs/semantic-release",
+		"@sprucelabs/test",
+		"@sprucelabs/test-utils",
+		"eslint-config-spruce"
+	  ]
 	}
 }

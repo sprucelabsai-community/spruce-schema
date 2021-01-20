@@ -24,7 +24,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 
 	public validate(
 		value: any,
-		options: ValidateOptions<F>
+		options: ValidateOptions<TextFieldDefinition>
 	): InvalidFieldError[] {
 		const errors = super.validate(value, options)
 

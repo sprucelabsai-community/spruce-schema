@@ -337,9 +337,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 			callback: (payload: SchemaValues<S>) => void
 		}
 
-		const testObj: GenericTestInterface<
-			typeof nestedSingleRequiredFieldSchemas
-		> = {
+		const testObj: GenericTestInterface<typeof nestedSingleRequiredFieldSchemas> = {
 			payloadSchema: nestedSingleRequiredFieldSchemas,
 			callback: (payload) => {
 				const { requiredArrayField } = payload.contract

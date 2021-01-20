@@ -8,7 +8,9 @@ import StaticSchemaEntityImplementation from '../StaticSchemaEntityImplementatio
 
 export default function defaultSchemaValues<
 	S extends Schema,
-	F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+	F extends SchemaFieldNamesWithDefaultValue<
+		S
+	> = SchemaFieldNamesWithDefaultValue<S>,
 	CreateEntityInstances extends boolean = true
 >(
 	definition: S,
