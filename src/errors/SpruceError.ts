@@ -1,9 +1,7 @@
 import AbstractSpruceError from '@sprucelabs/error'
 import { InvalidFieldErrorOptions, SchemaErrorOptions } from './error.types'
 
-export default class SpruceError extends AbstractSpruceError<
-	SchemaErrorOptions
-> {
+export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {
 	public friendlyMessage(): string {
 		const { options } = this
 
