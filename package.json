@@ -21,24 +21,24 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
+		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
+		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
 		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
 		"build.tsc": "tsc",
 		"build.browser": "tsc --project tsconfig.browser.json",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
 		"clean": "rm -rf build/",
+		"fix.lint": "eslint --fix '**/*.ts'",
 		"lint": "eslint '**/*.ts' --fix && yarn lint.tsc",
-		"watch.lint": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn lint'",
 		"lint.tsc": "tsc -p . --noEmit",
-		"lint.fix": "eslint --fix '**/*.ts'",
-		"test": "jest",
-		"watch.build": "yarn build.tsc -w",
-		"watch.tests": "jest --watch",
 		"release": "semantic-release",
-		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
-		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
-		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn lint.fix | true",
+		"test": "jest",
+		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
-		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test"
+		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test",
+		"watch.build": "yarn build.tsc -w",
+		"watch.lint": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn lint'",
+		"watch.tests": "jest --watch"
 	},
 	"dependencies": {
 		"@sprucelabs/error": "latest",
