@@ -44,7 +44,7 @@
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/log": "latest",
 		"google-libphonenumber": "^3.2.16",
-		"libphonenumber-js": "^1.9.8",
+		"libphonenumber-js": "^1.9.9",
 		"lodash": "^4.17.20",
 		"mime-db": "^1.45.0",
 		"mime-type": "^4.0.0"
