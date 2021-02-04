@@ -54,9 +54,9 @@ export type FieldType = keyof FieldMap
 // if it's not going to change, put it in here
 export type FieldDefinition<
 	Value = any,
-	DefaultValue = Partial<Value>,
+	DefaultValue = Value,
 	ArrayValue = Value[],
-	DefaultArrayValue = Partial<Value>[]
+	DefaultArrayValue = Value[]
 > = {
 	type: FieldType
 	/** Default options are empty */
