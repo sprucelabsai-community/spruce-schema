@@ -45,6 +45,7 @@
 	"dependencies": {
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/log": "latest",
+		"email-validator": "^2.0.4",
 		"google-libphonenumber": "^3.2.16",
 		"libphonenumber-js": "^1.9.10",
 		"lodash": "^4.17.20",

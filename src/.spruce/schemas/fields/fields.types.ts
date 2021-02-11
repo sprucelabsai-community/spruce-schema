@@ -4,6 +4,7 @@ import { DateFieldDefinition } from '../../../fields/DateField.types'
 import { DateTimeFieldDefinition } from '../../../fields/DateTimeField.types'
 import { DirectoryFieldDefinition } from '../../../fields/DirectoryField.types'
 import { DurationFieldDefinition } from '../../../fields/DurationField.types'
+import { EmailFieldDefinition } from '../../../fields/EmailField.types'
 import { Field } from '../../../fields/field.static.types'
 import { FileFieldDefinition } from '../../../fields/FileField.types'
 import { IdFieldDefinition } from '../../../fields/IdField.types'
@@ -34,7 +35,8 @@ export type FieldDefinitions =
 	| DateTimeFieldDefinition
 	| FileFieldDefinition
 	| DateFieldDefinition
-	| DirectoryFieldDefinition
+	| DirectoryFieldDefinition 
+	| EmailFieldDefinition
 
 export type Fields =
 	| Field<BooleanFieldDefinition>
@@ -50,7 +52,8 @@ export type Fields =
 	| Field<DateTimeFieldDefinition>
 	| Field<FileFieldDefinition>
 	| Field<DateFieldDefinition>
-	| Field<DirectoryFieldDefinition>
+	| Field<DirectoryFieldDefinition> 
+	| Field<EmailFieldDefinition>
 
 export interface FieldDefinitionMap {
 	['boolean']: BooleanFieldDefinition
@@ -67,12 +70,13 @@ export interface FieldDefinitionMap {
 	['file']: FileFieldDefinition
 	['date']: DateFieldDefinition
 	['directory']: DirectoryFieldDefinition
+	['email']: EmailFieldDefinition
 }
 
 export interface FieldValueTypeGeneratorMap<
 	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean
-> {
+	> {
 	['boolean']: BooleanFieldDefinition['value']
 	['select']: SelectFieldValueTypeMapper<
 		F extends SelectFieldDefinition ? F : SelectFieldDefinition
@@ -92,6 +96,7 @@ export interface FieldValueTypeGeneratorMap<
 	['file']: FileFieldDefinition['value']
 	['date']: DateFieldDefinition['value']
 	['directory']: DirectoryFieldDefinition['value']
+	['email']: EmailFieldDefinition['value']
 }
 
 export interface FieldMap {
@@ -109,4 +114,5 @@ export interface FieldMap {
 	['file']: Field<FileFieldDefinition>
 	['date']: Field<DateFieldDefinition>
 	['directory']: Field<DirectoryFieldDefinition>
+	['email']: Field<EmailFieldDefinition>
 }

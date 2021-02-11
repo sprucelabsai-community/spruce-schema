@@ -12,6 +12,7 @@ import RawField from '../../../fields/RawField'
 import SchemaField from '../../../fields/SchemaField'
 import SelectField from '../../../fields/SelectField'
 import TextField from '../../../fields/TextField'
+import EmailField from '../../../fields/EmailField'
 
 const fieldClassMap = {
 	['boolean']: BooleanField,
@@ -28,6 +29,7 @@ const fieldClassMap = {
 	['file']: FileField,
 	['date']: DateField,
 	['directory']: DirectoryField,
+	['email']: EmailField
 } as const
 
 export default fieldClassMap
