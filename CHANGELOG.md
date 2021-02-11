@@ -1,3 +1,10 @@
+# [19.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.0.10...v19.1.0) (2021-02-11)
+
+
+### Features
+
+* email field ([79eccdc](https://github.com/sprucelabsai/spruce-schema/commit/79eccdc))
+
 ## [19.0.10](https://github.com/sprucelabsai/spruce-schema/compare/v19.0.9...v19.0.10) (2021-02-10)
 
 ## [19.0.9](https://github.com/sprucelabsai/spruce-schema/compare/v19.0.8...v19.0.9) (2021-02-09)
