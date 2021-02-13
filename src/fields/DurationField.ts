@@ -62,7 +62,7 @@ export default class DurationField extends AbstractField<DurationFieldDefinition
 		options: FieldTemplateDetailOptions<DurationFieldDefinition>
 	): FieldTemplateDetails {
 		return {
-			valueType: `${options.importAs}.IDurationFieldValue${
+			valueType: `${options.importAs}.DurationFieldValue${
 				options.definition.isArray ? '[]' : ''
 			}`,
 		}
