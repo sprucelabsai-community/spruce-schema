@@ -1,3 +1,10 @@
+# [19.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.1.5...v19.2.0) (2021-02-13)
+
+
+### Features
+
+* duration reducer ([40c6855](https://github.com/sprucelabsai/spruce-schema/commit/40c6855))
+
 ## [19.1.5](https://github.com/sprucelabsai/spruce-schema/compare/v19.1.4...v19.1.5) (2021-02-13)
 
 ## [19.1.4](https://github.com/sprucelabsai/spruce-schema/compare/v19.1.3...v19.1.4) (2021-02-13)
