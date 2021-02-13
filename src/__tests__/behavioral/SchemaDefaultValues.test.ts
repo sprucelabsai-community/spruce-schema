@@ -7,6 +7,8 @@ import {
 	SchemaFieldNamesWithDefaultValue,
 } from '../../schemas.static.types'
 import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import buildSchema from '../../utilities/buildSchema'
+import defaultSchemaValues from '../../utilities/defaultSchemaValues'
 import buildPersonWithCars, {
 	PersonSchema,
 	CarSchema,
@@ -128,6 +130,67 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 		)
 
 		assert.isType<PersonExpectedDefaultValues>(defaultValues)
+	}
+
+	@test()
+	protected static canGetDefaultValuesFromSchemaWithRequiredFields() {
+		const avatar = buildSchema({
+			id: 'sprucebotAvatar',
+			name: 'Sprucebot avatar',
+			description: '',
+			fields: {
+				size: {
+					type: 'select',
+					label: 'Size',
+					isRequired: true,
+					defaultValue: 'medium',
+					options: {
+						choices: [
+							{
+								value: 'small',
+								label: 'Small',
+							},
+							{
+								value: 'medium',
+								label: 'Medium',
+							},
+							{
+								value: 'large',
+								label: 'Large',
+							},
+						],
+					},
+				},
+				stateOfMind: {
+					type: 'select',
+					label: 'State of mind',
+					isRequired: true,
+					defaultValue: 'chill',
+					options: {
+						choices: [
+							{
+								value: 'chill',
+								label:
+									'Chill - Sprucebot is saying something informative or a salutation',
+							},
+							{
+								value: 'contemplative',
+								label: 'Contemplative - Sprucebot is loading or sending data',
+							},
+							{
+								value: 'accomplished',
+								label:
+									'Accomplished - Sprucebot is celebrating because a process has finished',
+							},
+						],
+					},
+				},
+			},
+		})
+
+		const defaults = defaultSchemaValues(avatar)
+
+		assert.isEqualDeep(defaults, { size: 'medium', stateOfMind: 'chill' })
 	}
 
 	@test()

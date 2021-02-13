@@ -12,7 +12,6 @@ import {
 import { ValidateOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
-/** Build a duration object by sending a number (treated as ms) or an object with  */
 export function buildDuration(
 	value: string | number | Partial<DurationFieldValue>
 ): DurationFieldValue {

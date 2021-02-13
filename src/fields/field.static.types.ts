@@ -56,7 +56,7 @@ export type FieldDefinition<
 	Value = any,
 	DefaultValue = Value,
 	ArrayValue = Value[],
-	DefaultArrayValue = Value[]
+	DefaultArrayValue = DefaultValue[]
 > = {
 	type: FieldType
 	/** Default options are empty */
