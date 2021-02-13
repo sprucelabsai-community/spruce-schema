@@ -12,6 +12,19 @@ import {
 import { ValidateOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
+export function reduceDurationToMs(duration: Partial<DurationFieldValue>) {
+	const d = buildDuration(duration)
+
+	let ms = 0
+
+	ms += d.ms
+	ms += d.seconds * 1000
+	ms += d.minutes * 60 * 1000
+	ms += d.hours * 60 * 60 * 1000
+
+	return ms
+}
+
 export function buildDuration(
 	value: string | number | Partial<DurationFieldValue>
 ): DurationFieldValue {
