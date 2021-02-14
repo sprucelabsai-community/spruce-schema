@@ -6,6 +6,7 @@ import dateRegistration from './addons/dateField.addon'
 import dateTimeRegistration from './addons/dateTimeField.addon'
 import directoryRegistration from './addons/directoryField.addon'
 import durationRegistration from './addons/durationField.addon'
+import emailRegisteration from './addons/emailField.addon'
 import fileRegistration from './addons/fileField.addon'
 import idRegistration from './addons/idField.addon'
 import numberRegistration from './addons/numberField.addon'
@@ -69,4 +70,5 @@ export const fieldRegistrations: FieldRegistration[] = [
 	schemaRegistration,
 	selectRegistration,
 	textRegistration,
+	emailRegisteration,
 ]
