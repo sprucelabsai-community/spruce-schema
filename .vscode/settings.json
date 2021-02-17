@@ -7,10 +7,12 @@
 		"**/.git/objects/**": true,
 		"**/.git/subtree-cache/**": true,
 		"**/build/**": true,
+		"**/esm/**": true,
 		"**/node_modules/**": true,
 	},
 	"search.exclude": {
 		"**/build/**": true,
+		"**/esm/**": true,
 		"**/node_modules/**": true,
 		"**/.next/**": true
 	},
@@ -53,6 +55,7 @@
 		"**/package-lock.json",
 		"**/node_modules/**",
 		"**/build/**",
+		"**/esm/**",
 		"**/vscode-extension/**",
 		"**/.git/objects/**",
 		".vscode",

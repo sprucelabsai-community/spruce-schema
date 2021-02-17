@@ -33,6 +33,7 @@
 	"exclude": [
 		"**/node_modules/*",
 		"build/*",
+		"esm/*",
 		"src/__tests__",
 		"src/addons",
 		"src/AbstractSchemaTest.ts"
