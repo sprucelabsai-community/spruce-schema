@@ -25,7 +25,7 @@
 		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
 		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
 		"build.tsc": "tsc",
-		"build.browser": "tsc --project tsconfig.browser.json",
+		"build.dist": "tsc --project tsconfig.dist.json && yarn build.resolve-paths",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
 		"clean": "rm -rf build/",
 		"clean.all": "yarn clean && rm yarn.lock | true && rm -rf node_modules/",

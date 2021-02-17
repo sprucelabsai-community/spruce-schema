@@ -2,7 +2,10 @@
 	"compilerOptions": {
 		"module": "es2015",
 		"target": "es5",
-		"lib": ["es2015", "dom"],
+		"lib": [
+			"es2015",
+			"dom"
+		],
 		"esModuleInterop": true,
 		"moduleResolution": "node",
 		"declaration": true,
@@ -15,12 +18,23 @@
 		"sourceMap": true,
 		"outDir": "build",
 		"baseUrl": "src",
-		"experimentalDecorators": true
+		"experimentalDecorators": true,
+		"paths": {
+			"#spruce/*": [
+				".spruce/*"
+			]
+		}
 	},
 	"include": [
-		"./*.ts",
-		"./**/*.ts",
-		"src/.spruce/schemas/fields/fieldClassMap.ts"
+		"./src/*.ts",
+		"./src/**/*.ts",
+		"src/.spruce/**/*.ts"
 	],
-	"exclude": ["**/node_modules/*", "build/*"]
+	"exclude": [
+		"**/node_modules/*",
+		"build/*",
+		"src/__tests__",
+		"src/addons",
+		"src/AbstractSchemaTest.ts"
+	]
 }

@@ -19,7 +19,7 @@ jobs:
               circleci-agent step halt
             fi
       - run: yarn install
-      - run: yarn build
+      - run: yarn build.dist
       - run: yarn lint
       - run: yarn test -w 1
       - run:
