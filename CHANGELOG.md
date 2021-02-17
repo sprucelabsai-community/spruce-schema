@@ -1,3 +1,16 @@
+# [19.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.2.4...v19.3.0) (2021-02-17)
+
+
+### Bug Fixes
+
+* esm export, include esm files ([964fb0b](https://github.com/sprucelabsai/spruce-schema/commit/964fb0b))
+* lint ignore esm, watcher exclude esm ([0a925b5](https://github.com/sprucelabsai/spruce-schema/commit/0a925b5))
+
+
+### Features
+
+* esm export ([14df0cf](https://github.com/sprucelabsai/spruce-schema/commit/14df0cf))
+
 ## [19.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v19.2.3...v19.2.4) (2021-02-17)
 
 ## [19.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v19.2.2...v19.2.3) (2021-02-17)
