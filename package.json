@@ -12,9 +12,9 @@
 	"types": "./build/index.d.ts",
 	"exports": {
 		".": {
-		  "require":  "./build/index.js",
-		  "default": "./esm/index.js",
-		  "esm": "./esm/index.js"
+			"require": "./build/index.js",
+			"default": "./esm/index.js",
+			"esm": "./esm/index.js"
 		}
 	},
 	"type": "module",
