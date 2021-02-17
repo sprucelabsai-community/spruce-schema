@@ -7,13 +7,18 @@
 		"build",
 		"esm"
 	],
-	"version": "19.2.4",
+	"version": "19.3.0",
 	"main": "./build/index.js",
-	"module": "./esm/index.js",
-	"exports": {
-		"./esm": "./esm/index.js"
-	},
 	"types": "./build/index.d.ts",
+	"exports": {
+		".": {
+		  "require":  "./build/index.js",
+		  "default": "./esm/index.js",
+		  "esm": "./esm/index.js"
+		}
+	},
+	"type": "module",
+	"module": "./esm/index.js",
 	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
 	"keywords": [
 		"node",
@@ -29,7 +34,7 @@
 		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
 		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
 		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths && yarn build.dist",
-		"build.tsc": "tsc",
+		"build.tsc": "tsc && cp commonjs-package.json build/package.json",
 		"build.dist": "tsc --project tsconfig.dist.json && yarn build.dist.resolve-paths",
 		"build.dist.resolve-paths": "resolve-path-aliases --target esm --patterns **/*.js,**/*.d.ts",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
