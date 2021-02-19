@@ -1,3 +1,10 @@
+# [19.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.3.1...v19.4.0) (2021-02-19)
+
+
+### Features
+
+* schema suffix on schema ([7035716](https://github.com/sprucelabsai/spruce-schema/commit/7035716))
+
 # [19.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.2.4...v19.3.0) (2021-02-17)
 
 
