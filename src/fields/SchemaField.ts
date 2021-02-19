@@ -91,6 +91,8 @@ export default class SchemaField<
 		options: FieldTemplateDetailOptions<SchemaFieldFieldDefinition>
 	): FieldTemplateDetails {
 		const { templateItems, renderAs, definition, globalNamespace } = options
+		const { typeSuffix = '' } = definition.options
+
 		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
 			definition
 		)
@@ -134,7 +136,7 @@ export default class SchemaField<
 						version ? `.${version}` : ''
 					}${
 						renderAs === TemplateRenderAs.Type
-							? `.${matchedTemplateItem.namePascal}`
+							? `.${matchedTemplateItem.namePascal + typeSuffix}`
 							: `.${matchedTemplateItem.namePascal}Schema`
 					}`
 

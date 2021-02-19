@@ -129,6 +129,7 @@ export interface Schema {
 	description?: string
 	importsWhenLocal?: string[]
 	importsWhenRemote?: string[]
+	typeSuffix?: string
 	dynamicFieldSignature?: FieldDefinitions & {
 		keyName: string
 		keyTypeLiteral?: string

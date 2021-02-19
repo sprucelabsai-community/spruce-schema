@@ -19,6 +19,8 @@ export interface SchemaFieldOptions {
 	schemas?: Schema[]
 	/** Set a callback to return schema definitions (Do not use if you plan on sharing your definitions) */
 	schemasCallback?: () => Schema[]
+	/** Dropped in after the type. Used to generate generics, like <T> */
+	typeSuffix?: string
 }
 
 export type SchemaFieldUnion<
