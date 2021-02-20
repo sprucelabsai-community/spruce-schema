@@ -59,7 +59,7 @@
 		"email-validator": "^2.0.4",
 		"google-libphonenumber": "^3.2.17",
 		"libphonenumber-js": "^1.9.11",
-		"lodash": "^4.17.20",
+		"lodash": "^4.17.21",
 		"mime-db": "^1.46.0",
 		"mime-type": "^4.0.0"
 	},
