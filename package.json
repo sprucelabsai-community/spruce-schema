@@ -7,7 +7,7 @@
 		"build",
 		"esm"
 	],
-	"version": "19.4.0",
+	"version": "19.4.1",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"exports": {
