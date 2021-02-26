@@ -13,8 +13,8 @@
 	"exports": {
 		".": {
 			"require": "./build/index.js",
-			"default": "./esm/index.js",
-			"esm": "./esm/index.js"
+			"esm": "./esm/index.js",
+			"default": "./esm/index.js"
 		}
 	},
 	"type": "module",
@@ -31,8 +31,6 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
-		"arkit": "arkit -f src/index.ts -o docs/images/arkit.svg",
-		"arkit.watch": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'arkit -f src/index.ts -o docs/images/arkit.svg'",
 		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths && yarn build.dist",
 		"build.tsc": "tsc && cp commonjs-package.json build/package.json",
 		"build.dist": "tsc --project tsconfig.dist.json && yarn build.dist.resolve-paths",
