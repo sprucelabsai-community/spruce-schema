@@ -1,3 +1,10 @@
+## [19.4.4](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.3...v19.4.4) (2021-02-26)
+
+
+### Bug Fixes
+
+* default should be last ([1db5cd5](https://github.com/sprucelabsai/spruce-schema/commit/1db5cd5))
+
 ## [19.4.3](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.2...v19.4.3) (2021-02-23)
 
 ## [19.4.2](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.1...v19.4.2) (2021-02-23)
