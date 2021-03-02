@@ -19,7 +19,7 @@ jobs:
               circleci-agent step halt
             fi
       - run: yarn install
-      - run: yarn build
+      - run: yarn build.dev
       - run: yarn lint
       - run: yarn test -w 1
       - run:
@@ -55,7 +55,7 @@ jobs:
               circleci-agent step halt
             fi
       - run: yarn install
-      - run: yarn run build
+      - run: yarn run build.dist
       - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
       - run: git config --global user.name "$GIT_AUTHOR_NAME"
       - run: yarn run release

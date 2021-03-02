@@ -5,6 +5,7 @@
 	},
 	"files": [
 		"build",
+		"!build/__tests__",
 		"esm"
 	],
 	"version": "19.4.8",
@@ -31,9 +32,9 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
-		"build": "yarn clean && yarn build.tsc && yarn build.resolve-paths && yarn build.dist",
-		"build.tsc": "tsc && cp commonjs-package.json build/package.json",
-		"build.dist": "tsc --project tsconfig.dist.json && yarn build.dist.resolve-paths && yarn build.esm-postbuild",
+		"build.dev": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
+		"build.tsc": "tsc",
+		"build.dist": "yarn build.tsc && yarn build.resolve-paths && tsc --project tsconfig.dist.json && yarn build.dist.resolve-paths && yarn build.esm-postbuild && cp commonjs-package.json build/package.json ",
 		"build.dist.resolve-paths": "resolve-path-aliases --target esm --patterns **/*.js,**/*.d.ts",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
 		"build.esm-postbuild": "esm-postbuild --target esm --patterns '**/*.js'",
@@ -42,13 +43,13 @@
 		"fix.lint": "eslint --fix '**/*.ts'",
 		"lint": "eslint '**/*.ts' --fix && yarn lint.tsc",
 		"lint.tsc": "tsc -p . --noEmit",
-		"rebuild": "yarn clean.all && yarn && yarn build",
+		"rebuild": "yarn clean.all && yarn && yarn build.dev",
 		"release": "semantic-release",
 		"test": "jest",
 		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
-		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build && yarn test",
-		"watch.build": "yarn build.tsc -w",
+		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build.dev && yarn test",
+		"watch.build.dev": "yarn build.tsc -w",
 		"watch.lint": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn lint'"
 	},
 	"dependencies": {
@@ -63,7 +64,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "latest",
-		"@sprucelabs/esm-postbuild": "^1.0.1",
+		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
@@ -71,7 +72,6 @@
 		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.168",
 		"@types/mime-db": "^1.43.0",
-		"arkit": "^1.6.4",
 		"chokidar-cli": "^2.1.0",
 		"eslint": "^7.21.0",
 		"eslint-config-spruce": "latest",
@@ -80,7 +80,6 @@
 		"prettier": "^2.2.1",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.2.2",
-		"yarn": "^1.22.10",
 		"yarn-upgrade-all": "^0.5.4"
 	},
 	"jest": {
@@ -101,6 +100,7 @@
 		"ignore": [
 			"@sprucelabs/babel-plugin-schema",
 			"@sprucelabs/error",
+			"@sprucelabs/esm-postbuild",
 			"@sprucelabs/log",
 			"@sprucelabs/jest-json-reporter",
 			"@sprucelabs/semantic-release",
