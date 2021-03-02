@@ -63,7 +63,7 @@
 	},
 	"devDependencies": {
 		"@sprucelabs/babel-plugin-schema": "latest",
-		"@sprucelabs/esm-postbuild": "^1.0.0",
+		"@sprucelabs/esm-postbuild": "^1.0.1",
 		"@sprucelabs/jest-json-reporter": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
