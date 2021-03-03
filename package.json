@@ -56,7 +56,7 @@
 		"@sprucelabs/error": "latest",
 		"@sprucelabs/log": "latest",
 		"email-validator": "^2.0.4",
-		"google-libphonenumber": "^3.2.17",
+		"google-libphonenumber": "^3.2.18",
 		"libphonenumber-js": "^1.9.11",
 		"lodash": "^4.17.21",
 		"mime-db": "^1.46.0",
