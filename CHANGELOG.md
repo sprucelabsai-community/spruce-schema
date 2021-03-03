@@ -1,3 +1,10 @@
+## [19.4.11](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.10...v19.4.11) (2021-03-03)
+
+
+### Bug Fixes
+
+* added sideEffects: false ([55d5c1a](https://github.com/sprucelabsai/spruce-schema/commit/55d5c1a))
+
 ## [19.4.10](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.9...v19.4.10) (2021-03-03)
 
 ## [19.4.9](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.8...v19.4.9) (2021-03-02)

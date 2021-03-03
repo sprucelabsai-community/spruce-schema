@@ -8,7 +8,7 @@
 		"!build/__tests__",
 		"esm"
 	],
-	"version": "19.4.10",
+	"version": "19.4.11",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"exports": {
