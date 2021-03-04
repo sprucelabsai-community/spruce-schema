@@ -1,5 +1,3 @@
-// Import logger from '@sprucelabs/log'
-
 import libPhoneNumber from 'google-libphonenumber'
 import { isValidNumber } from 'libphonenumber-js'
 
