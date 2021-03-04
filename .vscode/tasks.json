@@ -3,9 +3,9 @@
     "tasks": [
         {
             "type": "npm",
-            "script": "watch.build",
+            "script": "watch.build.dev",
             "group": "build",
-            "label": "watch.build",
+            "label": "watch.build.dev",
             "isBackground": true,
             "runOptions": {
                 "runOn": "folderOpen"

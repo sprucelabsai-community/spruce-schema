@@ -55,7 +55,6 @@
 	},
 	"dependencies": {
 		"@sprucelabs/error": "latest",
-		"@sprucelabs/log": "latest",
 		"email-validator": "^2.0.4",
 		"google-libphonenumber": "^3.2.17",
 		"libphonenumber-js": "^1.9.11",
@@ -102,7 +101,6 @@
 		"ignore": [
 			"@sprucelabs/babel-plugin-schema",
 			"@sprucelabs/error",
-			"@sprucelabs/log",
 			"@sprucelabs/jest-json-reporter",
 			"@sprucelabs/semantic-release",
 			"@sprucelabs/test",

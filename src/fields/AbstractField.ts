@@ -1,7 +1,6 @@
 import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
 import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
-import log from '../singletons/log'
 import {
 	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
@@ -48,9 +47,8 @@ public static get description() {
 
 	/** Details needed for generating templates */
 	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<any>
+		_options: FieldTemplateDetailOptions<any>
 	): FieldTemplateDetails {
-		log.info(options)
 		throw new SpruceError({
 			code: 'NOT_IMPLEMENTED',
 			instructions: `Copy and paste this into ${this.name}:
