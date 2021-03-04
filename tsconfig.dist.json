@@ -16,7 +16,7 @@
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"sourceMap": true,
-		"outDir": "esm",
+		"outDir": "./build/esm",
 		"baseUrl": "src",
 		"experimentalDecorators": true,
 		"paths": {
@@ -28,14 +28,10 @@
 	"include": [
 		"./src/*.ts",
 		"./src/**/*.ts",
-		"src/.spruce/**/*.ts"
+		"./src/.spruce/**/*.ts"
 	],
 	"exclude": [
 		"**/node_modules/*",
-		"build/*",
-		"esm/*",
-		"src/__tests__",
-		"src/addons",
-		"src/AbstractSchemaTest.ts"
+		"./build/*"
 	]
 }

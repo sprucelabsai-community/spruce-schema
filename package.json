@@ -13,13 +13,13 @@
 	"types": "./build/index.d.ts",
 	"exports": {
 		".": {
+			"node": "./build/index.js",
 			"require": "./build/index.js",
-			"esm": "./esm/index.js",
-			"default": "./esm/index.js"
+			"import": "./build/esm/index.js",
+			"default": "./build/esm/index.js"
 		}
 	},
-	"type": "module",
-	"module": "./esm/index.js",
+	"module": "./build/esm/index.js",
 	"sideEffects": false,
 	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
 	"keywords": [
@@ -35,10 +35,9 @@
 	"scripts": {
 		"build.dev": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
 		"build.tsc": "tsc",
-		"build.dist": "yarn build.tsc && yarn build.resolve-paths && tsc --project tsconfig.dist.json && yarn build.dist.resolve-paths && yarn build.esm-postbuild && cp commonjs-package.json build/package.json ",
-		"build.dist.resolve-paths": "resolve-path-aliases --target esm --patterns **/*.js,**/*.d.ts",
+		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.resolve-paths && yarn build.esm-postbuild",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
-		"build.esm-postbuild": "esm-postbuild --target esm --patterns '**/*.js'",
+		"build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
 		"clean": "rm -rf build/ esm/",
 		"clean.all": "rm -rf node_modules/ yarn.lock ; yarn clean",
 		"fix.lint": "eslint --fix '**/*.ts'",
