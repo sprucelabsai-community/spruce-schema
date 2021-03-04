@@ -11,14 +11,6 @@
 	"version": "19.4.15",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
-	"exports": {
-		".": {
-			"node": "./build/index.js",
-			"require": "./build/index.js",
-			"import": "./build/esm/index.js",
-			"default": "./build/esm/index.js"
-		}
-	},
 	"module": "./build/esm/index.js",
 	"sideEffects": false,
 	"description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
