@@ -1,3 +1,47 @@
+## [19.4.11](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.10...v19.4.11) (2021-03-03)
+
+
+### Bug Fixes
+
+* added sideEffects: false ([55d5c1a](https://github.com/sprucelabsai/spruce-schema/commit/55d5c1a))
+
+## [19.4.10](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.9...v19.4.10) (2021-03-03)
+
+## [19.4.9](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.8...v19.4.9) (2021-03-02)
+
+## [19.4.8](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.7...v19.4.8) (2021-03-02)
+
+## [19.4.7](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.6...v19.4.7) (2021-03-02)
+
+## [19.4.6](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.5...v19.4.6) (2021-03-02)
+
+## [19.4.5](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.4...v19.4.5) (2021-02-27)
+
+## [19.4.4](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.3...v19.4.4) (2021-02-26)
+
+
+### Bug Fixes
+
+* default should be last ([1db5cd5](https://github.com/sprucelabsai/spruce-schema/commit/1db5cd5))
+
+## [19.4.3](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.2...v19.4.3) (2021-02-23)
+
+## [19.4.2](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.1...v19.4.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* target is es6 ([854082f](https://github.com/sprucelabsai/spruce-schema/commit/854082f))
+
+## [19.4.1](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.0...v19.4.1) (2021-02-20)
+
+# [19.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.3.1...v19.4.0) (2021-02-19)
+
+
+### Features
+
+* schema suffix on schema ([7035716](https://github.com/sprucelabsai/spruce-schema/commit/7035716))
+
 # [19.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.2.4...v19.3.0) (2021-02-17)
 
 
