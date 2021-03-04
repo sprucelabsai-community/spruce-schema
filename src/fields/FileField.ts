@@ -1,5 +1,3 @@
-import mimeDb from 'mime-db'
-import Mime from 'mime-type'
 import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
@@ -10,12 +8,21 @@ import AbstractField from './AbstractField'
 import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { FileFieldDefinition, FileFieldValue } from './FileField.types'
 
-// @ts-ignore
-const mime = new Mime(mimeDb, 2)
-mime.define('application/typescript', {
-	source: 'spruce',
-	extensions: ['ts', 'tsx'],
-})
+let mimeInstance: any
+
+function mime() {
+	if (!mimeInstance) {
+		const mimeDb = require('mime-db')
+		const Mime = require('mime-type').default
+		mimeInstance = new Mime(mimeDb, 2)
+		mimeInstance.define('application/typescript', {
+			source: 'spruce',
+			extensions: ['ts', 'tsx'],
+		})
+	}
+
+	return mimeInstance
+}
 
 export default class FileField extends AbstractField<FileFieldDefinition> {
 	public static get description() {
@@ -118,7 +125,8 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 		ext = ext ?? pathUtil.extname(name)
 
 		if (!type) {
-			const lookupResults = mime.lookup(name)
+			const m = mime()
+			const lookupResults = m.lookup(name)
 
 			if (Array.isArray(lookupResults)) {
 				type = lookupResults.pop()

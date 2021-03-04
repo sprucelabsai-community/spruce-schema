@@ -56,8 +56,6 @@
 	"dependencies": {
 		"@sprucelabs/error": "latest",
 		"email-validator": "^2.0.4",
-		"google-libphonenumber": "^3.2.18",
-		"libphonenumber-js": "^1.9.11",
 		"lodash": "^4.17.21",
 		"mime-db": "^1.46.0",
 		"mime-type": "^4.0.0"
@@ -69,7 +67,6 @@
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
-		"@types/google-libphonenumber": "^7.4.19",
 		"@types/lodash": "^4.14.168",
 		"@types/mime-db": "^1.43.0",
 		"chokidar-cli": "^2.1.0",

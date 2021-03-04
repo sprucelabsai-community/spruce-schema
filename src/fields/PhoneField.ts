@@ -2,7 +2,9 @@ import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
 } from '../types/template.types'
-import formatPhoneNumber from '../utilities/formatPhoneNumber'
+import formatPhoneNumber, {
+	isValidNumber,
+} from '../utilities/formatPhoneNumber'
 import AbstractField from './AbstractField'
 import { ValidateOptions } from './field.static.types'
 import { PhoneFieldDefinition } from './PhoneField.types'
@@ -29,9 +31,7 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 	public validate(value: any, options?: ValidateOptions<PhoneFieldDefinition>) {
 		const errors = super.validate(value, options)
 
-		try {
-			typeof value !== 'undefined' && formatPhoneNumber(value, false)
-		} catch (err) {
+		if (!isValidNumber(value)) {
 			errors.push({ code: 'invalid_value', name: this.name })
 		}
 

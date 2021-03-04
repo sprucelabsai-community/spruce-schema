@@ -1,5 +1,6 @@
 import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
 import FieldFactory from '../../factories/FieldFactory'
+import formatPhoneNumber from '../../utilities/formatPhoneNumber'
 
 export class PhoneFieldTest extends AbstractSpruceTest {
 	@test('can handle dummy number', '1-555-555-5555', [])
@@ -30,12 +31,39 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 		'+1-720-253-5555',
 		[]
 	)
-	protected static phoneFieldNumberChecks(phone: string, expected: any) {
+	protected static validate(phone: string, expected: any) {
 		const field = FieldFactory.Field('phone', {
 			type: 'phone',
 		})
 
 		const errors = field.validate(phone)
 		assert.isEqualDeep(errors, expected)
+	}
+
+	@test('formats 720-233-2355', '720-233-2355', '+1 720-233-2355')
+	@test('formats 7202332355', '7202332355', '+1 720-233-2355')
+	@test('formats 720 233 2355', '720 233 2355', '+1 720-233-2355')
+	@test('formats 1720 233 2355', '1720 233 2355', '+1 720-233-2355')
+	@test('formats +1-720-233-2355', '+1-720-233-2355', '+1 720-233-2355')
+	protected static format(phone: string, expected: string) {
+		const field = FieldFactory.Field('phone', {
+			type: 'phone',
+		})
+
+		const actual = field.toValueType(phone)
+		assert.isEqual(actual, expected)
+	}
+
+	@test()
+	protected static failingFormattingWithFailSilentReturnsOriginalNumber() {
+		const formatted = formatPhoneNumber('aoeuaoue', true)
+		assert.isEqual(formatted, 'aoeuaoue')
+	}
+
+	@test()
+	protected static failSilentlyFalseThrows() {
+		const err = assert.doesThrow(() => formatPhoneNumber('aoeuaoue', false))
+		assert.isTruthy(err)
+		assert.isTruthy(err.message, 'INVALID_PHONE_NUMBER')
 	}
 }
