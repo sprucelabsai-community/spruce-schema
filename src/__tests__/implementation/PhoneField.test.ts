@@ -4,6 +4,8 @@ import formatPhoneNumber from '../../utilities/formatPhoneNumber'
 
 export class PhoneFieldTest extends AbstractSpruceTest {
 	@test('can handle dummy number', '1-555-555-5555', [])
+	@test('optional handles null phone', null, [])
+	@test('optional handles undefined phone', undefined, [])
 	@test('can handle dummy number without country code', '555-555-5555', [])
 	@test('can handle dummy number with country code +', '+1 555-555-5555', [])
 	@test(

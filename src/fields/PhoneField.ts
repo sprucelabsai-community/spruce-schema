@@ -31,7 +31,7 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 	public validate(value: any, options?: ValidateOptions<PhoneFieldDefinition>) {
 		const errors = super.validate(value, options)
 
-		if (!isValidNumber(value)) {
+		if (value && !isValidNumber(value)) {
 			errors.push({ code: 'invalid_value', name: this.name })
 		}
 
