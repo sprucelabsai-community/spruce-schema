@@ -92,7 +92,7 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 
 		let message = `${indention}${options.errors.length} error${
 			options.errors.length === 1 ? '' : 's'
-		} for '${options.schemaName ?? options.schemaId}'.`
+		} for '${options.schemaId}'.`
 
 		indentDepth++
 		indention = this.buildIndention(indentDepth)
