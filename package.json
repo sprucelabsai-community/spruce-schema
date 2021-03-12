@@ -61,7 +61,7 @@
 		"@types/lodash": "^4.14.168",
 		"@types/mime-db": "^1.43.0",
 		"chokidar-cli": "^2.1.0",
-		"eslint": "^7.21.0",
+		"eslint": "^7.22.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^26.6.3",
 		"jest-circus": "^26.6.3",
