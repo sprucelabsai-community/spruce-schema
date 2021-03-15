@@ -31,8 +31,16 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 	public validate(value: any, options?: ValidateOptions<PhoneFieldDefinition>) {
 		const errors = super.validate(value, options)
 
-		if (value && !isValidNumber(value)) {
-			errors.push({ code: 'invalid_value', name: this.name })
+		if (errors.length === 0) {
+			if (this.isRequired && `${value}`.length === 0) {
+				errors.push({
+					code: 'missing_required',
+					friendlyMessage: `${this.label ?? this.name} can't be empty!`,
+					name: this.name,
+				})
+			} else if (value && !isValidNumber(value)) {
+				errors.push({ code: 'invalid_value', name: this.name })
+			}
 		}
 
 		return errors

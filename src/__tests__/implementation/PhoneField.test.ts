@@ -25,6 +25,12 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 			name: 'phone',
 		},
 	])
+	@test(
+		'required fails with empty string for a number',
+		'',
+		[{ code: 'missing_required', name: 'phone' }],
+		true
+	)
 	@test('passes with good number', '720-253-5555', [])
 	@test('passes with good number with country', '+1720-253-5555', [])
 	@test('passes with good number with country formatted', '+1 720-253-5555', [])
@@ -33,13 +39,14 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 		'+1-720-253-5555',
 		[]
 	)
-	protected static validate(phone: string, expected: any) {
+	protected static validate(phone: string, expected: any, isRequired = false) {
 		const field = FieldFactory.Field('phone', {
 			type: 'phone',
+			isRequired,
 		})
 
 		const errors = field.validate(phone)
-		assert.isEqualDeep(errors, expected)
+		assert.doesInclude(errors, expected)
 	}
 
 	@test('formats 720-233-2355', '720-233-2355', '+1 720-233-2355')
