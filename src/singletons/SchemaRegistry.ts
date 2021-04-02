@@ -40,12 +40,13 @@ export default class SchemaRegistry {
 		version?: string,
 		namespace?: string
 	): boolean {
-		try {
-			this.getSchema(id, version, namespace)
-			return true
-		} catch {
+		if (
+			!this.isTrackedById(id) ||
+			!this.getSchemaNotThrowing(id, namespace, version)
+		) {
 			return false
 		}
+		return true
 	}
 
 	public getAllSchemas() {
@@ -65,7 +66,7 @@ export default class SchemaRegistry {
 	}
 
 	public getSchema(id: string, version?: string, namespace?: string): Schema {
-		if (!this.schemasById[id]) {
+		if (!this.isTrackedById(id)) {
 			throw new SpruceError({
 				code: 'SCHEMA_NOT_FOUND',
 				schemaId: id,
@@ -74,11 +75,7 @@ export default class SchemaRegistry {
 			})
 		}
 
-		const namespaceMatches = namespace
-			? this.schemasById[id].filter((d) => d.namespace === namespace)
-			: this.schemasById[id]
-
-		const versionMatch = namespaceMatches.find((d) => d.version === version)
+		const versionMatch = this.getSchemaNotThrowing(id, namespace, version)
 
 		if (!versionMatch) {
 			throw new SpruceError({
@@ -89,6 +86,26 @@ export default class SchemaRegistry {
 		}
 
 		return versionMatch
+	}
+
+	private getSchemaNotThrowing(
+		id: string,
+		namespace: string | undefined,
+		version: string | undefined
+	) {
+		const namespaceMatches = namespace
+			? this.schemasById[id].filter((d) => d.namespace === namespace)
+			: this.schemasById[id]
+
+		const versionMatch = namespaceMatches.find((d) => d.version === version)
+		return versionMatch
+	}
+
+	private isTrackedById(id: string) {
+		if (!this.schemasById[id]) {
+			return false
+		}
+		return true
 	}
 
 	public forgetSchema(id: string, version?: string) {
