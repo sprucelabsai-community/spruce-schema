@@ -1,3 +1,10 @@
+# [20.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.23...v20.0.0) (2021-04-02)
+
+
+### Breaking Changes
+
+* schema validation errors are mapped to parameter errors by default ([20846ae](https://github.com/sprucelabsai/spruce-schema/commit/20846ae))
+
 ## [19.4.23](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.22...v19.4.23) (2021-04-01)
 
 ## [19.4.22](https://github.com/sprucelabsai/spruce-schema/compare/v19.4.21...v19.4.22) (2021-03-26)
