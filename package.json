@@ -8,7 +8,7 @@
 		"!build/__tests__",
 		"esm"
 	],
-	"version": "19.4.20",
+	"version": "19.4.23",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"module": "./build/esm/index.js",
@@ -48,7 +48,7 @@
 		"@sprucelabs/error": "latest",
 		"email-validator": "^2.0.4",
 		"lodash": "^4.17.21",
-		"mime-db": "^1.46.0",
+		"mime-db": "^1.47.0",
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
@@ -61,7 +61,7 @@
 		"@types/lodash": "^4.14.168",
 		"@types/mime-db": "^1.43.0",
 		"chokidar-cli": "^2.1.0",
-		"eslint": "^7.22.0",
+		"eslint": "^7.23.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^26.6.3",
 		"jest-circus": "^26.6.3",
