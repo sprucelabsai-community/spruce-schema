@@ -1,12 +1,12 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
 import SpruceError from '../../errors/SpruceError'
-import mapToParameterErrors from '../../utilities/mapErrorsToParameterErrors'
+import mapSchemaErrorsToParameterErrors from '../../utilities/mapSchemaErrorsToParameterErrors'
 
 export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	@test()
 	protected static async canCreateErrorMapUtil() {
-		assert.isFunction(mapToParameterErrors)
+		assert.isFunction(mapSchemaErrorsToParameterErrors)
 	}
 
 	@test()
@@ -19,7 +19,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapToParameterErrors(err)
+		const errors = mapSchemaErrorsToParameterErrors(err)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
@@ -41,7 +41,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapToParameterErrors(err)
+		const errors = mapSchemaErrorsToParameterErrors(err)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
@@ -58,7 +58,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapToParameterErrors(err)
+		const errors = mapSchemaErrorsToParameterErrors(err)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'INVALID_PARAMETERS', {
@@ -75,7 +75,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapToParameterErrors(err)
+		const errors = mapSchemaErrorsToParameterErrors(err)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'UNEXPECTED_PARAMETERS', {
@@ -101,7 +101,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapToParameterErrors(err)
+		const errors = mapSchemaErrorsToParameterErrors(err)
 
 		assert.isLength(errors, 3)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {

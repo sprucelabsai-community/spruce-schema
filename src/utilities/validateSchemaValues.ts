@@ -7,7 +7,7 @@ import {
 	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
-import mapToParameterErrors from './mapErrorsToParameterErrors'
+import mapSchemaErrorsToParameterErrors from './mapSchemaErrorsToParameterErrors'
 
 export default function validateSchemaValues<
 	S extends Schema,
@@ -27,7 +27,7 @@ export default function validateSchemaValues<
 		instance.validate(opts)
 	} catch (err) {
 		if (shouldMapToParameterErrors) {
-			const errors = mapToParameterErrors(err) as any
+			const errors = mapSchemaErrorsToParameterErrors(err) as any
 			throw new SpruceError({
 				code: 'VALIDATION_FAILED',
 				errors,

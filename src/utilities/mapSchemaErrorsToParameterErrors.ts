@@ -1,7 +1,7 @@
 import AbstractSpruceError from '@sprucelabs/error'
 import SpruceError from '../errors/SpruceError'
 
-export default function mapToParameterErrors(
+export default function mapSchemaErrorsToParameterErrors(
 	err: SpruceError | Error | Record<string, any>,
 	fallbackErrorWhenUnableToMapToSpruceError?: SpruceError
 ): SpruceError[] {
