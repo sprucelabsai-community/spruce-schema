@@ -27,7 +27,7 @@ export default function validateSchemaValues<
 		instance.validate(opts)
 	} catch (err) {
 		if (shouldMapToParameterErrors) {
-			const errors = mapToParameterErrors(err)
+			const errors = mapToParameterErrors(err) as any
 			throw new SpruceError({
 				code: 'VALIDATION_FAILED',
 				errors,
