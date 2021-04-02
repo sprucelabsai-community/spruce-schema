@@ -247,10 +247,12 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		await super.beforeEach()
 	}
 
+	private static validateOptions = { shouldMapToParameterErrors: false }
+
 	@test()
 	protected static async canValidateBasicSchemaValues() {
 		const err = assert.doesThrow(
-			() => validateSchemaValues(personSchema, {}),
+			() => validateSchemaValues(personSchema, {}, this.validateOptions),
 			/'First name' is required/gi
 		)
 
@@ -261,10 +263,14 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateSchemaWithArrayValues() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavColorsSchema, {
-					firstName: 'tay',
-					lastName: 'ro',
-				}),
+				validateSchemaValues(
+					personWithFavColorsSchema,
+					{
+						firstName: 'tay',
+						lastName: 'ro',
+					},
+					this.validateOptions
+				),
 			/'favoriteColors' is required/gi
 		)
 	}
@@ -356,17 +362,21 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async failsWhenValidatingFieldsNotOnSchema() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(personSchema, {
-					taco: 'bravo',
-					firstName: 'first',
-					lastName: 'last',
-					profileImages: {
-						profile60: '@',
-						profile150: '@',
-						'profile60@2x': '@',
-						'profile150@2x': '@',
+				validateSchemaValues(
+					personSchema,
+					{
+						taco: 'bravo',
+						firstName: 'first',
+						lastName: 'last',
+						profileImages: {
+							profile60: '@',
+							profile150: '@',
+							'profile60@2x': '@',
+							'profile150@2x': '@',
+						},
 					},
-				}),
+					this.validateOptions
+				),
 			/is not a field on/
 		) as SpruceError
 
@@ -379,11 +389,15 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async givesInvalidFieldErrorWhenValidatingEmptyArrayNestedSchemas() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavToolsSchema, {
-					firstName: 'first',
-					lastName: 'last',
-					favoriteTools: [],
-				}),
+				validateSchemaValues(
+					personWithFavToolsSchema,
+					{
+						firstName: 'first',
+						lastName: 'last',
+						favoriteTools: [],
+					},
+					this.validateOptions
+				),
 			/'favoriteTools' is required/
 		) as SpruceError
 
@@ -396,12 +410,16 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async givesInvalidFieldErrorWhenValidatingNestedSchemas() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavToolsSchema, {
-					firstName: 'first',
-					lastName: 'last',
-					//@ts-ignore
-					favoriteTools: [{}],
-				}),
+				validateSchemaValues(
+					personWithFavToolsSchema,
+					{
+						firstName: 'first',
+						lastName: 'last',
+						//@ts-ignore
+						favoriteTools: [{}],
+					},
+					this.validateOptions
+				),
 			/'name' is required/
 		) as SpruceError
 
@@ -426,10 +444,14 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateArrayOfUnionValuesMissingRequired() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavToolsOrFruitSchema, {
-					firstName: 'Ryan',
-					favoriteToolsOrFruit: [],
-				}),
+				validateSchemaValues(
+					personWithFavToolsOrFruitSchema,
+					{
+						firstName: 'Ryan',
+						favoriteToolsOrFruit: [],
+					},
+					this.validateOptions
+				),
 			/'favoriteToolsOrFruit' is required/gi
 		)
 	}
@@ -503,38 +525,42 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateArrayOfVersionedUnionValuesAndThrowsReallyHelpfulError() {
 		/*Const err =*/
 		assert.doesThrow(() =>
-			validateSchemaValues(versionedPersonWithFavToolsOrFruitSchema, {
-				favoriteToolsOrFruit: [
-					{
-						schemaId: 'versionedFruit',
-						version: '1.0',
-						values: {
-							color: 'green',
+			validateSchemaValues(
+				versionedPersonWithFavToolsOrFruitSchema,
+				{
+					favoriteToolsOrFruit: [
+						{
+							schemaId: 'versionedFruit',
+							version: '1.0',
+							values: {
+								color: 'green',
+							},
 						},
-					},
-					{
-						schemaId: 'versionedFruit',
-						version: '1.0',
-						values: {
-							color: 'yellow',
+						{
+							schemaId: 'versionedFruit',
+							version: '1.0',
+							values: {
+								color: 'yellow',
+							},
 						},
-					},
-					{
-						schemaId: 'versionedTool',
-						version: '1.0',
-						values: {
-							size: 'wrench',
+						{
+							schemaId: 'versionedTool',
+							version: '1.0',
+							values: {
+								size: 'wrench',
+							},
 						},
-					},
-					{
-						schemaId: 'versionedTool',
-						version: '2.0',
-						values: {
-							name: 'wrench',
+						{
+							schemaId: 'versionedTool',
+							version: '2.0',
+							values: {
+								name: 'wrench',
+							},
 						},
-					},
-				],
-			})
+					],
+				},
+				this.validateOptions
+			)
 		) as SpruceError
 
 		// NOTE uncomment here and above to see error output
@@ -547,18 +573,22 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static throwsWhenAddingExtraFieldAtTopLevel() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavToolsOrFruitSchema, {
-					firstName: 'Ryan',
-					doesNotExist: true,
-					favoriteToolsOrFruit: [
-						{
-							schemaId: 'fruit',
-							values: {
-								color: 'green',
+				validateSchemaValues(
+					personWithFavToolsOrFruitSchema,
+					{
+						firstName: 'Ryan',
+						doesNotExist: true,
+						favoriteToolsOrFruit: [
+							{
+								schemaId: 'fruit',
+								values: {
+									color: 'green',
+								},
 							},
-						},
-					],
-				}),
+						],
+					},
+					this.validateOptions
+				),
 			/doesNotExist/
 		)
 	}
@@ -567,19 +597,67 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static throwsWhenAddingExtraFieldInNestedSchema() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(personWithFavToolsOrFruitSchema, {
-					firstName: 'Ryan',
-					favoriteToolsOrFruit: [
-						{
-							schemaId: 'fruit',
-							values: {
-								doesNotExist: true,
-								color: 'green',
+				validateSchemaValues(
+					personWithFavToolsOrFruitSchema,
+					{
+						firstName: 'Ryan',
+						favoriteToolsOrFruit: [
+							{
+								schemaId: 'fruit',
+								values: {
+									doesNotExist: true,
+									color: 'green',
+								},
 							},
-						},
-					],
-				}),
+						],
+					},
+					this.validateOptions
+				),
 			/doesNotExist/
 		)
+	}
+
+	@test()
+	protected static mapsToParameterErrorsByDefault() {
+		const err = assert.doesThrow(() =>
+			validateSchemaValues(personWithFavToolsOrFruitSchema, {
+				firstName: 'Ryan',
+				favoriteToolsOrFruit: [],
+			})
+		)
+
+		errorAssertUtil.assertError(err, 'VALIDATION_FAILED')
+
+		//@ts-ignore
+		assert.isLength(err.options.errors, 1)
+
+		//@ts-ignore
+		errorAssertUtil.assertError(err.options.errors[0], 'MISSING_PARAMETERS', {
+			parameters: ['favoriteToolsOrFruit'],
+		})
+	}
+
+	@test('validation errors are typed (will always pass, lint will fail)')
+	protected static validationErrorsAreTyped() {
+		try {
+			validateSchemaValues(personWithFavToolsOrFruitSchema, {
+				firstName: 'Ryan',
+				favoriteToolsOrFruit: [],
+			})
+		} catch (err) {
+			if (err instanceof SpruceError) {
+				if (err.options.code === 'VALIDATION_FAILED') {
+					const first = err.options.errors[0].options.code
+					assert.isExactType<
+						typeof first,
+						| 'MISSING_PARAMETERS'
+						| 'INVALID_PARAMETERS'
+						| 'UNEXPECTED_PARAMETERS'
+					>(true)
+				}
+			} else {
+				assert.fail('Bad error returned')
+			}
+		}
 	}
 }

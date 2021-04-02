@@ -1,4 +1,4 @@
-import {
+import AbstractSpruceError, {
 	SpruceErrorOptions,
 	ErrorOptions as ISpruceErrorOptions,
 } from '@sprucelabs/error'
@@ -15,6 +15,10 @@ export type SchemaErrorOptions =
 	| InvalidFieldRegistrationErrorOptions
 	| VersionRequiredErrorOptions
 	| SpruceErrorOptions
+	| MissingParametersOptions
+	| InvalidParametersOptions
+	| UnexpectedParametersOptions
+	| ValidationFailedErrorOptions
 
 export interface SchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	/** * Could not find a schema by id */
@@ -92,4 +96,28 @@ export interface VersionRequiredErrorOptions extends ISpruceErrorOptions {
 	code: 'VERSION_NOT_FOUND'
 	schemaId?: string
 	namespace?: string
+}
+
+export interface MissingParametersOptions extends ISpruceErrorOptions {
+	code: 'MISSING_PARAMETERS'
+	parameters: string[]
+}
+
+export interface InvalidParametersOptions extends ISpruceErrorOptions {
+	code: 'INVALID_PARAMETERS'
+	parameters: string[]
+}
+
+export interface UnexpectedParametersOptions extends ISpruceErrorOptions {
+	code: 'UNEXPECTED_PARAMETERS'
+	parameters: string[]
+}
+
+export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
+	code: 'VALIDATION_FAILED'
+	errors: AbstractSpruceError<
+		| MissingParametersOptions
+		| InvalidParametersOptions
+		| UnexpectedParametersOptions
+	>[]
 }

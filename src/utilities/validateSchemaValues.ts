@@ -1,4 +1,5 @@
 import { validateSchema } from '..'
+import SpruceError from '../errors/SpruceError'
 import EntityFactory from '../factories/SchemaEntityFactory'
 import {
 	Schema,
@@ -6,6 +7,7 @@ import {
 	SchemaPartialValues,
 	SchemaValues,
 } from '../schemas.static.types'
+import mapToParameterErrors from './mapErrorsToParameterErrors'
 
 export default function validateSchemaValues<
 	S extends Schema,
@@ -16,9 +18,22 @@ export default function validateSchemaValues<
 	options?: SchemaValidateOptions<S>
 	// eslint-disable-next-line no-undef
 ): asserts values is V & SchemaValues<S> {
+	const { shouldMapToParameterErrors = true, ...opts } = options ?? {}
 	validateSchema(schema)
 
-	const instance = EntityFactory.Entity(schema, values as any)
+	try {
+		const instance = EntityFactory.Entity(schema, values as any)
 
-	instance.validate(options)
+		instance.validate(opts)
+	} catch (err) {
+		if (shouldMapToParameterErrors) {
+			const errors = mapToParameterErrors(err)
+			throw new SpruceError({
+				code: 'VALIDATION_FAILED',
+				errors,
+			})
+		} else {
+			throw err
+		}
+	}
 }

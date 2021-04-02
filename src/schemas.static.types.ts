@@ -403,7 +403,9 @@ export interface DynamicSchemaNamedFieldsOptions<F extends string> {
 export interface SchemaValidateOptions<
 	T extends Schema,
 	F extends SchemaFieldNames<T> = SchemaFieldNames<T>
-> extends SchemaNamedFieldsOptions<T, F> {}
+> extends SchemaNamedFieldsOptions<T, F> {
+	shouldMapToParameterErrors?: boolean
+}
 
 export type PickFieldNames<S extends Schema, T extends FieldType> = {
 	[F in keyof S['fields']]: S['fields'][F] extends FieldDefinitions
