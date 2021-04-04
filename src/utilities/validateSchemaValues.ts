@@ -30,6 +30,7 @@ export default function validateSchemaValues<
 			const errors = mapSchemaErrorsToParameterErrors(err) as any
 			throw new SpruceError({
 				code: 'VALIDATION_FAILED',
+				schemaId: schema.id,
 				errors,
 			})
 		} else {

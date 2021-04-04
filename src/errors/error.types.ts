@@ -115,6 +115,7 @@ export interface UnexpectedParametersOptions extends ISpruceErrorOptions {
 
 export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
 	code: 'VALIDATION_FAILED'
+	schemaId: string
 	errors: AbstractSpruceError<
 		| MissingParametersOptions
 		| InvalidParametersOptions

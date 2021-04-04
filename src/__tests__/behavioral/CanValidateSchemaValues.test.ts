@@ -201,6 +201,9 @@ const personWithFavToolsOrFruitSchema = buildSchema({
 			type: 'text',
 			isRequired: true,
 		},
+		phone: {
+			type: 'phone',
+		},
 		lastName: {
 			type: 'text',
 		},
@@ -658,6 +661,20 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			} else {
 				assert.fail('Bad error returned')
 			}
+		}
+	}
+
+	@test.skip('pretty print of validation test (skip to pass tests)')
+	protected static printsSoPretty() {
+		try {
+			validateSchemaValues(personWithFavToolsOrFruitSchema, {
+				//@ts-ignore
+				taco: [],
+				phone: 'satnoehusntah',
+				favoriteToolsOrFruit: [{ schemaId: 'tool', values: { cheba: 'hut' } }],
+			})
+		} catch (err) {
+			this.log(err.message)
 		}
 	}
 }

@@ -1,5 +1,9 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { InvalidFieldErrorOptions, SchemaErrorOptions } from './error.types'
+import {
+	InvalidFieldErrorOptions,
+	SchemaErrorOptions,
+	ValidationFailedErrorOptions,
+} from './error.types'
 
 export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {
 	public friendlyMessage(): string {
@@ -53,6 +57,31 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 					: `\n\n${JSON.stringify(options.options, null, 2).substr(0, 2000)}`
 				break
 
+			case 'VALIDATION_FAILED':
+				message = this.buildValidationFailedErrorMessage(options)
+
+				break
+
+			case 'MISSING_PARAMETERS':
+				message = `${this.renderParamsPretty(options.parameters)} ${
+					options.parameters.length === 1 ? 'is' : 'are'
+				} missing!`
+				break
+
+			case 'UNEXPECTED_PARAMETERS':
+				message = `You set ${this.renderParamsPretty(
+					options.parameters
+				)}, but ${
+					options.parameters.length === 1 ? `it doesn't` : `they don't`
+				} exist.`
+				break
+
+			case 'INVALID_PARAMETERS':
+				message = `${this.renderParamsPretty(options.parameters)} ${
+					options.parameters.length === 1 ? 'is' : 'are'
+				} invalid.`
+				break
+
 			default:
 				message = this.message
 		}
@@ -71,6 +100,28 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				  )}`
 				: ''
 		}`
+	}
+	private renderParamsPretty(parameters: string[]) {
+		const str = '`' + parameters.join('`, `') + '`'
+
+		return str
+	}
+
+	private buildValidationFailedErrorMessage(
+		options: ValidationFailedErrorOptions
+	): string {
+		const totalErrors = options.errors.length
+
+		let message = `Validating \`${
+			options.schemaId
+		}\` failed with ${totalErrors} error${totalErrors === 1 ? '' : 's'}.\n\n`
+
+		let c = 0
+		for (const err of options.errors) {
+			message += `${++c}. ${err.friendlyMessage()}\n`
+		}
+
+		return message
 	}
 
 	private buildSchemaName(options: {
