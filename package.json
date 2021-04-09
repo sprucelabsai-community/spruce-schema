@@ -55,7 +55,7 @@
 		"@sprucelabs/babel-plugin-schema": "latest",
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
-		"@sprucelabs/jest-sheets-reporter": "^1.2.19",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.20",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
