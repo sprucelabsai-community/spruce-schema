@@ -69,11 +69,13 @@ export type FieldDefinition<
 } & (
 	| {
 			isArray: true
+			minArrayLength?: number
 			defaultValue?: DefaultArrayValue | null
 			value?: ArrayValue | null
 	  }
 	| {
 			isArray?: false | undefined
+			minArrayLength?: never
 			defaultValue?: DefaultValue | null
 			value?: Value | null
 	  }

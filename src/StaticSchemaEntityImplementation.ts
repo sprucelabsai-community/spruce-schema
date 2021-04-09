@@ -161,17 +161,23 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 			const { name, field } = namedField
 			let valueArray = normalizeValueToArray(this.values[name])
 
-			if (valueArray.length === 0) {
-				valueArray = [undefined]
-			}
-
-			for (const value of valueArray) {
-				const fieldErrors = field.validate(value, {
-					schemasById: {},
+			if (field.isRequired && valueArray.length < field.minArrayLength) {
+				errors.push({
+					code: 'missing_required',
+					name,
+					friendlyMessage: `'${field.label ?? field.name}' must have at least ${
+						field.minArrayLength
+					} values. I only found ${valueArray.length}!`,
 				})
+			} else {
+				for (const value of valueArray) {
+					const fieldErrors = field.validate(value, {
+						schemasById: {},
+					})
 
-				if (fieldErrors.length > 0) {
-					errors.push(...fieldErrors)
+					if (fieldErrors.length > 0) {
+						errors.push(...fieldErrors)
+					}
 				}
 			}
 		})

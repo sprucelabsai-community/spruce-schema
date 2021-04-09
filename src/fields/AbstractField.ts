@@ -88,6 +88,10 @@ public static generateTemplateDetails(
 		return this.definition.hint
 	}
 
+	public get minArrayLength() {
+		return this.definition.minArrayLength ?? 1
+	}
+
 	public validate(value: any, _?: ValidateOptions<F>): InvalidFieldError[] {
 		const errors: InvalidFieldError[] = []
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
