@@ -66,8 +66,9 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 			schemaId: 'car',
 			values: {},
 		}
+		debugger
 		const codes = optionalCarOrTruckField.validate(value)
-
+		debugger
 		assert.doesInclude(codes[0].error?.message, /'name' is required/)
 	}
 

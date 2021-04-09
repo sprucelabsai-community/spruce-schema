@@ -96,18 +96,18 @@
 					}
 				}
 			]
-		],
-		"yarn-upgrade-all": {
-			"ignore": [
-				"@sprucelabs/babel-plugin-schema",
-				"@sprucelabs/error",
-				"@sprucelabs/esm-postbuild",
-				"@sprucelabs/jest-json-reporter",
-				"@sprucelabs/semantic-release",
-				"@sprucelabs/test",
-				"@sprucelabs/test-utils",
-				"eslint-config-spruce"
-			]
-		}
+		]
+	},
+	"yarn-upgrade-all": {
+		"ignore": [
+			"@sprucelabs/babel-plugin-schema",
+			"@sprucelabs/error",
+			"@sprucelabs/esm-postbuild",
+			"@sprucelabs/jest-json-reporter",
+			"@sprucelabs/semantic-release",
+			"@sprucelabs/test",
+			"@sprucelabs/test-utils",
+			"eslint-config-spruce"
+		]
 	}
 }

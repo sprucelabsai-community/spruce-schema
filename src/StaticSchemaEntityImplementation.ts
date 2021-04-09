@@ -163,7 +163,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 
 			if (
 				field.isRequired &&
-				!field.isArray &&
+				field.isArray &&
 				valueArray.length < (field.minArrayLength ?? 1)
 			) {
 				errors.push({
@@ -171,9 +171,16 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 					name,
 					friendlyMessage: `'${field.label ?? field.name}' must have at least ${
 						field.minArrayLength
-					} values. I only found ${valueArray.length}!`,
+					} values. I found ${valueArray.length}!`,
 				})
 			} else {
+				if (
+					(!field.isArray || (field.minArrayLength ?? 0) > 0) &&
+					valueArray.length === 0
+				) {
+					valueArray = [undefined]
+				}
+
 				for (const value of valueArray) {
 					const fieldErrors = field.validate(value, {
 						schemasById: {},

@@ -274,7 +274,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					},
 					this.validateOptions
 				),
-			/'favoriteColors' is required/gi
+			/'favoriteColors' must have/gi
 		)
 	}
 
@@ -401,7 +401,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					},
 					this.validateOptions
 				),
-			/'favoriteTools' is required/
+			/'favoriteTools' must have at least 1/
 		) as SpruceError
 
 		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
@@ -455,7 +455,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					},
 					this.validateOptions
 				),
-			/'favoriteToolsOrFruit' is required/gi
+			/'favoriteToolsOrFruit' must have at least 1/gi
 		)
 	}
 
