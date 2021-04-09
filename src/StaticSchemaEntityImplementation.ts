@@ -161,7 +161,11 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 			const { name, field } = namedField
 			let valueArray = normalizeValueToArray(this.values[name])
 
-			if (field.isRequired && valueArray.length < field.minArrayLength) {
+			if (
+				field.isRequired &&
+				!field.isArray &&
+				valueArray.length < (field.minArrayLength ?? 1)
+			) {
 				errors.push({
 					code: 'missing_required',
 					name,

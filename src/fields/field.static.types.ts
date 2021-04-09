@@ -66,16 +66,15 @@ export type FieldDefinition<
 	label?: string
 	hint?: string
 	isRequired?: boolean
+	minArrayLength?: number
 } & (
 	| {
 			isArray: true
-			minArrayLength?: number
 			defaultValue?: DefaultArrayValue | null
 			value?: ArrayValue | null
 	  }
 	| {
 			isArray?: false | undefined
-			minArrayLength?: never
 			defaultValue?: DefaultValue | null
 			value?: Value | null
 	  }
@@ -103,9 +102,7 @@ export interface Field<F extends FieldDefinitions> {
 	readonly isRequired: F['isRequired']
 	readonly isPrivate: F['isPrivate']
 	readonly isArray: F['isArray']
-	readonly minArrayLength: F['minArrayLength'] extends number
-		? F['minArrayLength']
-		: 1
+	readonly minArrayLength: F['minArrayLength']
 	readonly label: F['label']
 	readonly hint: F['hint']
 	readonly name: string
