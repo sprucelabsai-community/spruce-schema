@@ -55,6 +55,7 @@
 		"@sprucelabs/babel-plugin-schema": "latest",
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.19",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
@@ -82,18 +83,31 @@
 		],
 		"moduleNameMapper": {
 			"^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
+		},
+		"reporters": [
+			"default",
+			[
+				"@sprucelabs/jest-sheets-reporter",
+				{
+					"sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
+					"worksheetId": 843037832,
+					"testMap": {
+						"passesWithMoreThanMin": "I80"
+					}
+				}
+			]
+		],
+		"yarn-upgrade-all": {
+			"ignore": [
+				"@sprucelabs/babel-plugin-schema",
+				"@sprucelabs/error",
+				"@sprucelabs/esm-postbuild",
+				"@sprucelabs/jest-json-reporter",
+				"@sprucelabs/semantic-release",
+				"@sprucelabs/test",
+				"@sprucelabs/test-utils",
+				"eslint-config-spruce"
+			]
 		}
-	},
-	"yarn-upgrade-all": {
-		"ignore": [
-			"@sprucelabs/babel-plugin-schema",
-			"@sprucelabs/error",
-			"@sprucelabs/esm-postbuild",
-			"@sprucelabs/jest-json-reporter",
-			"@sprucelabs/semantic-release",
-			"@sprucelabs/test",
-			"@sprucelabs/test-utils",
-			"eslint-config-spruce"
-		]
 	}
 }

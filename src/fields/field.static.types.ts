@@ -103,6 +103,9 @@ export interface Field<F extends FieldDefinitions> {
 	readonly isRequired: F['isRequired']
 	readonly isPrivate: F['isPrivate']
 	readonly isArray: F['isArray']
+	readonly minArrayLength: F['minArrayLength'] extends number
+		? F['minArrayLength']
+		: 1
 	readonly label: F['label']
 	readonly hint: F['hint']
 	readonly name: string
