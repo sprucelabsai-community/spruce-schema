@@ -18,6 +18,10 @@ jobs:
               echo "[npm-publish] detected. No publish necessary 👊"
               circleci-agent step halt
             fi
+      - run:
+          name: "ENV file creation"
+          command: |
+            [ -n "$BASE64_ENV" ] && echo $BASE64_ENV | base64 --decode > .env
       - run: yarn install
       - run: yarn build.dev
       - run: yarn lint
