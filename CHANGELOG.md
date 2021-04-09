@@ -1,3 +1,10 @@
+# [20.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v20.0.4...v20.1.0) (2021-04-09)
+
+
+### Features
+
+* array fields have min length option, defaults to 1 ([ac49c2e](https://github.com/sprucelabsai/spruce-schema/commit/ac49c2e))
+
 ## [20.0.4](https://github.com/sprucelabsai/spruce-schema/compare/v20.0.3...v20.0.4) (2021-04-07)
 
 ## [20.0.3](https://github.com/sprucelabsai/spruce-schema/compare/v20.0.2...v20.0.3) (2021-04-04)
