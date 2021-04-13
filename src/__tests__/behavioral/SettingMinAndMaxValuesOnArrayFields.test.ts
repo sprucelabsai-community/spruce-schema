@@ -39,9 +39,25 @@ const twoMinValuesSchema = buildSchema({
 	},
 })
 
+const zeroMinTwoRequiredFields = buildSchema({
+	id: 'zeroMinTwoRequiredFields',
+	fields: {
+		name: {
+			type: 'text',
+			isRequired: true,
+		},
+		favoriteColors: {
+			type: 'text',
+			isArray: true,
+			isRequired: true,
+			minArrayLength: 0,
+		},
+	},
+})
+
 export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSchemaTest {
 	@test()
-	protected static async defaultsToOneValueRequired() {
+	protected static defaultsToOneValueRequired() {
 		const err = assert.doesThrow(() =>
 			validateSchemaValues(noMinOrMaxSchema, { favoriteColors: [] })
 		)
@@ -50,17 +66,28 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 	}
 
 	@test()
-	protected static async defaultOneValueRequiredPassesWithOneValue() {
+	protected static failsWhenMissing() {
+		const err = assert.doesThrow(() =>
+			validateSchemaValues(zeroMinTwoRequiredFields, {})
+		)
+
+		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
+			'errors[0].options.parameters': ['name', 'favoriteColors'],
+		})
+	}
+
+	@test()
+	protected static defaultOneValueRequiredPassesWithOneValue() {
 		validateSchemaValues(noMinOrMaxSchema, { favoriteColors: ['pink'] })
 	}
 
 	@test()
-	protected static async minArrayLengthZero() {
+	protected static minArrayLengthZero() {
 		validateSchemaValues(zeroMinValuesSchema, { favoriteColors: [] })
 	}
 
 	@test()
-	protected static async minArrayLength2ThrowsWithLessThan() {
+	protected static minArrayLength2ThrowsWithLessThan() {
 		const err = assert.doesThrow(() =>
 			validateSchemaValues(twoMinValuesSchema, { favoriteColors: ['purple'] })
 		)
@@ -69,7 +96,7 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 	}
 
 	@test()
-	protected static async passesWithMoreThanMin() {
+	protected static passesWithMoreThanMin() {
 		validateSchemaValues(twoMinValuesSchema, {
 			favoriteColors: ['pink', 'purple'],
 		})

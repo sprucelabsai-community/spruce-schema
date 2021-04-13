@@ -164,7 +164,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 			if (
 				field.isRequired &&
 				field.isArray &&
-				valueArray.length < (field.minArrayLength ?? 1)
+				(!this.values[name] || valueArray.length < (field.minArrayLength ?? 1))
 			) {
 				errors.push({
 					code: 'missing_required',
