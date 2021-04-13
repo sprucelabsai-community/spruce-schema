@@ -65,7 +65,7 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 		errorAssertUtil.assertError(err, 'VALIDATION_FAILED')
 	}
 
-	@test()
+	@test.only()
 	protected static failsWhenMissing() {
 		const err = assert.doesThrow(() =>
 			validateSchemaValues(zeroMinTwoRequiredFields, {})

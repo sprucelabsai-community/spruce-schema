@@ -274,7 +274,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					},
 					this.validateOptions
 				),
-			/'favoriteColors' must have/gi
+			/'favoriteColors' is required/gi
 		)
 	}
 

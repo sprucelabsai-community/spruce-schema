@@ -169,9 +169,11 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 				errors.push({
 					code: 'missing_required',
 					name,
-					friendlyMessage: `'${field.label ?? field.name}' must have at least ${
-						field.minArrayLength
-					} values. I found ${valueArray.length}!`,
+					friendlyMessage: !this.values[name]
+						? `'${field.label ?? field.name}' is required!`
+						: `'${field.label ?? field.name}' must have at least ${
+								field.minArrayLength
+						  } values. I found ${valueArray.length}!`,
 				})
 			} else {
 				if (
