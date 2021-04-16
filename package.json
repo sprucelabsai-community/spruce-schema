@@ -28,7 +28,7 @@
 		"build.dev": "yarn clean && yarn build.tsc && yarn build.resolve-paths",
 		"build.tsc": "tsc",
 		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.resolve-paths && yarn build.esm-postbuild",
-		"build.resolve-paths": "resolve-path-aliases --target build --patterns **/*.js,**/*.d.ts",
+		"build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
 		"build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
 		"clean": "rm -rf build/ esm/",
 		"clean.all": "rm -rf node_modules/ yarn.lock ; yarn clean",
