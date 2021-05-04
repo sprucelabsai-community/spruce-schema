@@ -44,13 +44,13 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "debug.boot",
+			"name": "boot",
 			"runtimeExecutable": "yarn",
 			"runtimeArgs": [
 				"run",
 				"--inspect-brk",
 				"--trace-warnings",
-				"boot.local"
+				"boot"
 			],
 			"port": 9229,
 			"cwd": "${workspaceFolder}",
