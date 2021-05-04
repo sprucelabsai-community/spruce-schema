@@ -1,17 +1,17 @@
 function formatUsNumber(phoneNumberString: string) {
+	if (phoneNumberString.match(/[a-zA-Z]/g)) {
+		return null
+	}
+
 	let cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-	let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/)
+	let match = cleaned.match(/^(1|)?(\d{3})(\d{0,3})(\d{0,4})$/)
 
 	if (match) {
 		let intlCode = match[1] ? '+1 ' : '+1 '
 
-		const number = [intlCode, '', match[2], '-', match[3], '-', match[4]].join(
-			''
-		)
-
-		if (number.length !== 15) {
-			return null
-		}
+		const number = [intlCode, '', match[2], '-', match[3], '-', match[4]]
+			.join('')
+			.replace(/-+$/, '')
 
 		return number
 	}
