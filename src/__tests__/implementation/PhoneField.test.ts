@@ -49,6 +49,9 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 		assert.doesInclude(errors, expected)
 	}
 
+	@test('formats 720', '720', '+1 720')
+	@test('formats 720233', '720233', '+1 720-233')
+	@test('formats 72023323', '72023323', '+1 720-233-23')
 	@test('formats 720-233-2355', '720-233-2355', '+1 720-233-2355')
 	@test('formats 7202332355', '7202332355', '+1 720-233-2355')
 	@test('formats 720 233 2355', '720 233 2355', '+1 720-233-2355')

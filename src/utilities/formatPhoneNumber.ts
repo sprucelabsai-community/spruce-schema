@@ -24,12 +24,12 @@ export function isValidNumber(number: string) {
 
 export default function formatPhoneNumber(
 	val: string,
-	failSilently = true
+	shouldFailSilently = true
 ): string {
 	const formatted = formatUsNumber(val)
 
 	if (!formatted) {
-		if (!failSilently) {
+		if (!shouldFailSilently) {
 			throw new Error('INVALID_PHONE_NUMBER')
 		} else {
 			return val
