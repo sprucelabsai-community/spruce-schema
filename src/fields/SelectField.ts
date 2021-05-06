@@ -49,13 +49,14 @@ export default class SelectField<
 		// Build union of select options
 		const { definition } = options
 		const {
+			isArray,
 			options: { choices },
 		} = definition
 
 		return {
 			valueType: `(${choices
 				.map((choice) => `"${choice.value}"`)
-				.join(' | ')})`,
+				.join(' | ')})${isArray ? '[]' : ''}`,
 		}
 	}
 
