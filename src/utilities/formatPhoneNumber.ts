@@ -19,7 +19,8 @@ function formatUsNumber(phoneNumberString: string) {
 }
 
 export function isValidNumber(number: string) {
-	return !!formatUsNumber(number)
+	const formatted = formatUsNumber(number)?.replace(/[^0-9]/g, '')
+	return formatted?.length === 11
 }
 
 export default function formatPhoneNumber(
