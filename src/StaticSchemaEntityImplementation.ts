@@ -28,7 +28,8 @@ import normalizeFieldValue, {
 /** Universal schema class  */
 export default class StaticSchemaEntityImplementation<S extends Schema>
 	extends AbstractEntity
-	implements StaticSchemaEntity<S> {
+	implements StaticSchemaEntity<S>
+{
 	public static enableDuplicateCheckWhenTracking = true
 
 	protected schema: S

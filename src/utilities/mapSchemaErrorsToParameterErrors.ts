@@ -7,11 +7,8 @@ export default function mapSchemaErrorsToParameterErrors(
 ): SpruceError[] {
 	if (err instanceof AbstractSpruceError) {
 		if (err.options.code === 'INVALID_FIELD') {
-			const {
-				missingParameters,
-				invalidParameters,
-				unexpectedParamaters,
-			} = pullParamaterIssues(err)
+			const { missingParameters, invalidParameters, unexpectedParamaters } =
+				pullParamaterIssues(err)
 
 			let foundParameterIssues =
 				missingParameters.length > 0 ||

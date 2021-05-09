@@ -29,7 +29,8 @@ export default class DynamicSchemaEntityImplementation<
 			: any
 	>
 	extends AbstractEntity
-	implements DynamicSchemaEntityByName<S, OurField> {
+	implements DynamicSchemaEntityByName<S, OurField>
+{
 	private values: DynamicSchemaPartialValues<S> = {}
 	private dynamicField: OurField
 

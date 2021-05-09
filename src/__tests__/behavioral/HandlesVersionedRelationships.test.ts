@@ -9,12 +9,8 @@ import buildVersionedPersonWithCars, {
 export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTest {
 	@test()
 	protected static async canGetV1AndV2OfARelatedField() {
-		const {
-			personV1Schema,
-			personV2Schema,
-			carV1Schema,
-			carV2Schema,
-		} = buildVersionedPersonWithCars()
+		const { personV1Schema, personV2Schema, carV1Schema, carV2Schema } =
+			buildVersionedPersonWithCars()
 
 		assert.isEqual(personV1Schema.id, personV2Schema.id)
 
@@ -29,11 +25,8 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 
 	@test()
 	protected static async throwsWhenMissingVersionInUnionFields() {
-		const {
-			personV2Schema,
-			carV1Schema,
-			carV2Schema,
-		} = buildVersionedPersonWithCars()
+		const { personV2Schema, carV1Schema, carV2Schema } =
+			buildVersionedPersonWithCars()
 
 		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
 			name: 'version 1',
@@ -57,11 +50,8 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 
 	@test()
 	protected static async canSetSchemaFieldToOneOfAFewVersions() {
-		const {
-			personV2Schema,
-			carV1Schema,
-			carV2Schema,
-		} = buildVersionedPersonWithCars()
+		const { personV2Schema, carV1Schema, carV2Schema } =
+			buildVersionedPersonWithCars()
 
 		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
 			name: 'version 1',

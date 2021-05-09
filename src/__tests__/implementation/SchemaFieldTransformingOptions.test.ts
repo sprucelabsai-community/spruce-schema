@@ -245,12 +245,11 @@ export default class SchemaFieldTemplateTest extends AbstractSpruceTest {
 		)
 		assert.isEqualDeep(idsWithVersion, toSchemaIdExpected)
 
-		const schemasOrIdsWithVersion = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
-			{
+		const schemasOrIdsWithVersion =
+			SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion({
 				type: 'schema',
 				options,
-			}
-		)
+			})
 		assert.isEqualDeep(
 			schemasOrIdsWithVersion,
 			toSchemaOrIdExpected ?? toSchemaIdExpected

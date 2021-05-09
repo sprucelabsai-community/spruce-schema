@@ -145,17 +145,18 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 		renderAsType: string,
 		renderAsSchemaType: string
 	) {
-		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> = {
-			language: 'ts',
-			globalNamespace: 'SpruceSchemas',
-			importAs: 'generated_test',
-			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
-			definition: {
-				...definition,
-				type: 'schema',
-			},
-			renderAs: TemplateRenderAs.Type, // is overwritten below
-		}
+		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> =
+			{
+				language: 'ts',
+				globalNamespace: 'SpruceSchemas',
+				importAs: 'generated_test',
+				templateItems: GeneratesRelationshipTemplatesTest.templateItems,
+				definition: {
+					...definition,
+					type: 'schema',
+				},
+				renderAs: TemplateRenderAs.Type, // is overwritten below
+			}
 
 		const expected = {
 			renderAsValue,
@@ -189,17 +190,18 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 	protected static async throwsMissingVersion(
 		definition: SchemaFieldFieldDefinition
 	) {
-		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> = {
-			language: 'ts',
-			globalNamespace: 'SpruceSchemas',
-			importAs: 'generated_test',
-			templateItems: GeneratesRelationshipTemplatesTest.templateItems,
-			definition: {
-				...definition,
-				type: 'schema',
-			},
-			renderAs: TemplateRenderAs.Type, // is overwritten below
-		}
+		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> =
+			{
+				language: 'ts',
+				globalNamespace: 'SpruceSchemas',
+				importAs: 'generated_test',
+				templateItems: GeneratesRelationshipTemplatesTest.templateItems,
+				definition: {
+					...definition,
+					type: 'schema',
+				},
+				renderAs: TemplateRenderAs.Type, // is overwritten below
+			}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)
 

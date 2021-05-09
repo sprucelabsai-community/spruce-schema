@@ -31,8 +31,11 @@ export default function normalizeFieldValue<
 		})
 	}
 
-	const { validate = true, createEntityInstances = true, ...extraOptions } =
-		options ?? {}
+	const {
+		validate = true,
+		createEntityInstances = true,
+		...extraOptions
+	} = options ?? {}
 
 	const baseOptions = {
 		schemasById,
@@ -89,9 +92,9 @@ export default function normalizeFieldValue<
 		)
 	}
 
-	return (field.isArray
-		? localValue
-		: localValue[0]) as FieldDefinitionValueType<F, CreateEntityInstances>
+	return (
+		field.isArray ? localValue : localValue[0]
+	) as FieldDefinitionValueType<F, CreateEntityInstances>
 }
 
 export function normalizeValueToArray<

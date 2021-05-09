@@ -82,11 +82,8 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 
 	@test()
 	protected static versionedSchemasAreForgotten() {
-		const {
-			personSchema,
-			personV1Schema,
-			personV2Schema,
-		} = this.buildPersonsAllVersions()
+		const { personSchema, personV1Schema, personV2Schema } =
+			this.buildPersonsAllVersions()
 		this.registry.forgetSchema(personSchema.id)
 		assert.doesThrow(
 			() => this.registry.getSchema(personSchema.id),
@@ -112,11 +109,8 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canForgetAllSchemas() {
-		const {
-			personSchema,
-			personV1Schema,
-			personV2Schema,
-		} = this.buildPersonsAllVersions()
+		const { personSchema, personV1Schema, personV2Schema } =
+			this.buildPersonsAllVersions()
 
 		this.registry.forgetAllSchemas()
 
@@ -130,11 +124,8 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
 
 	@test()
 	protected static canGetAllSchemas() {
-		const {
-			personSchema,
-			personV1Schema,
-			personV2Schema,
-		} = this.buildPersonsAllVersions()
+		const { personSchema, personV1Schema, personV2Schema } =
+			this.buildPersonsAllVersions()
 
 		const pulled = this.registry.getAllSchemas()
 

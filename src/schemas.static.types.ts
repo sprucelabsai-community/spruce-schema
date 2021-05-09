@@ -230,9 +230,8 @@ export type SchemaValues<
 	? DynamicSchemaAllValues<S>
 	: SchemaStaticValues<S, CreateEntityInstances>
 
-export type IsDynamicSchema<
-	S extends Schema
-> = S['dynamicFieldSignature'] extends FieldDefinitions ? true : false
+export type IsDynamicSchema<S extends Schema> =
+	S['dynamicFieldSignature'] extends FieldDefinitions ? true : false
 
 export type SchemaDefaultValues<
 	S extends Schema,
@@ -313,10 +312,8 @@ export type SchemaFieldDefinition<
 	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
 
-export type SchemaFieldType<
-	T extends Schema,
-	K extends SchemaFieldNames<T>
-> = T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
+export type SchemaFieldType<T extends Schema, K extends SchemaFieldNames<T>> =
+	T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
 
 export interface SchemaNamedField<T extends Schema> {
 	name: SchemaFieldNames<T>
