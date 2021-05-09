@@ -11,9 +11,8 @@ export interface SelectFieldOptions {
 	choices: SelectChoice[]
 }
 
-export type SelectFieldValueTypeMapper<
-	F extends SelectFieldDefinition
-> = F['options']['choices'][number]['value']
+export type SelectFieldValueTypeMapper<F extends SelectFieldDefinition> =
+	F['options']['choices'][number]['value']
 
 export type SelectFieldDefinition = FieldDefinition<
 	string,

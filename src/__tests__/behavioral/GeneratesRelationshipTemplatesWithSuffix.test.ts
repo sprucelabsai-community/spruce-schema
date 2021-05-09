@@ -133,17 +133,18 @@ export default class GeneratesRelationshipTemplatesWithSuffixTest extends Abstra
 		renderAsType: string,
 		renderAsSchemaType: string
 	) {
-		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> = {
-			language: 'ts',
-			globalNamespace: 'SpruceSchemas',
-			importAs: 'generated_test',
-			templateItems,
-			definition: {
-				...definition,
-				type: 'schema',
-			},
-			renderAs: TemplateRenderAs.Type, // is overwritten below
-		}
+		const templateOptions: FieldTemplateDetailOptions<SchemaFieldFieldDefinition> =
+			{
+				language: 'ts',
+				globalNamespace: 'SpruceSchemas',
+				importAs: 'generated_test',
+				templateItems,
+				definition: {
+					...definition,
+					type: 'schema',
+				},
+				renderAs: TemplateRenderAs.Type, // is overwritten below
+			}
 
 		const expected = {
 			renderAsValue,
