@@ -1,5 +1,5 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import SpruceError from '../../errors/SpruceError'
 import mapSchemaErrorsToParameterErrors from '../../utilities/mapSchemaErrorsToParameterErrors'
 
