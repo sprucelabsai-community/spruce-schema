@@ -1,5 +1,5 @@
-import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { test, assert } from '@sprucelabs/test'
+import { errorAssertUtil } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
