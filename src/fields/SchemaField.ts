@@ -93,9 +93,8 @@ export default class SchemaField<
 		const { templateItems, renderAs, definition, globalNamespace } = options
 		const { typeSuffix = '' } = definition.options
 
-		const idsWithVersion = SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(
-			definition
-		)
+		const idsWithVersion =
+			SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(definition)
 		const unions: { schemaId: string; valueType: string }[] = []
 
 		idsWithVersion.forEach((idWithVersion) => {
@@ -192,9 +191,8 @@ export default class SchemaField<
 		options?: FieldDefinitionToSchemaOptions
 	): Schema[] {
 		const { schemasById: schemasById = {} } = options || {}
-		const schemasOrIds = SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(
-			definition
-		)
+		const schemasOrIds =
+			SchemaField.mapFieldDefinitionToSchemasOrIdsWithVersion(definition)
 
 		const schemas = schemasOrIds.map((schemaOrId) => {
 			const schema =
@@ -347,10 +345,8 @@ export default class SchemaField<
 			options || {}
 
 		// try and pull the schema definition from the options and by id
-		const destinationSchemas: Schema[] = SchemaField.mapFieldDefinitionToSchemas(
-			this.definition,
-			{ schemasById }
-		)
+		const destinationSchemas: Schema[] =
+			SchemaField.mapFieldDefinitionToSchemas(this.definition, { schemasById })
 
 		const isUnion = destinationSchemas.length > 1
 		let instance: SchemaEntity | undefined

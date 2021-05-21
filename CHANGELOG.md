@@ -1,3 +1,17 @@
+## [20.1.18](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.17...v20.1.18) (2021-05-21)
+
+## [20.1.17](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.16...v20.1.17) (2021-05-15)
+
+## [20.1.16](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.15...v20.1.16) (2021-05-14)
+
+## [20.1.15](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.14...v20.1.15) (2021-05-12)
+
+## [20.1.14](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.13...v20.1.14) (2021-05-09)
+
+## [20.1.13](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.12...v20.1.13) (2021-05-08)
+
+## [20.1.12](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.11...v20.1.12) (2021-05-07)
+
 ## [20.1.11](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.10...v20.1.11) (2021-05-06)
 
 ## [20.1.10](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.9...v20.1.10) (2021-05-04)
