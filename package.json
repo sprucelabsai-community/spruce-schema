@@ -60,7 +60,7 @@
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
-		"@types/lodash": "^4.14.169",
+		"@types/lodash": "^4.14.170",
 		"@types/mime-db": "^1.43.0",
 		"chokidar-cli": "^2.1.0",
 		"eslint": "^7.26.0",
