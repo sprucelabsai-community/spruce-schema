@@ -1,3 +1,4 @@
+import { InvalidFieldError } from '../errors/error.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -28,18 +29,36 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 				incomingTypeof: typeof value,
 				incomingValue: value,
 				errors: [
-					{
-						error: new Error(
-							`${JSON.stringify(value)} could not be converted to a number.`
-						),
-						code: 'invalid_value',
-						name: this.name,
-					},
+					this.buildNaNError(
+						`${JSON.stringify(value)} could not be converted to a number.`
+					),
 				],
 				name: this.name,
 			})
 		}
 
 		return numberValue
+	}
+
+	private buildNaNError(msg: string): InvalidFieldError {
+		return {
+			error: new Error(msg),
+			code: 'invalid_value',
+			name: this.name,
+		}
+	}
+
+	public validate(value: any, options: any) {
+		const errors = super.validate(value, options)
+
+		if (errors.length === 0) {
+			if (isNaN(value)) {
+				errors.push(
+					this.buildNaNError(`"${JSON.stringify(value)}" is not a number!`)
+				)
+			}
+		}
+
+		return errors
 	}
 }

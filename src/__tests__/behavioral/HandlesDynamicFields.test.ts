@@ -213,7 +213,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 		assert.doesThrow(
 			//@ts-ignore
 			() => entity.set('foo', { hello: 'world' }),
-			/converted to a number/
+			/not a number/
 		)
 	}
 
