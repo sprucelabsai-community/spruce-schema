@@ -7,6 +7,7 @@ export default class NumberFieldTest extends AbstractSchemaTest {
 	@test('number passes', 4, true)
 	@test('string as number passes', '4', true)
 	@test('null passes when not required', null, true)
+	@test('undefined passes when not required', undefined, true)
 	protected static async numberFieldErrorsWhenValueNaN(
 		input: string,
 		shouldPass: boolean

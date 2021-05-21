@@ -22,7 +22,7 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 
 	public toValueType(value: any): number {
 		const numberValue = +value
-		if (isNaN(numberValue)) {
+		if (!this.isNumber(numberValue)) {
 			throw new SpruceError({
 				code: 'TRANSFORMATION_ERROR',
 				fieldType: 'number',
@@ -52,7 +52,7 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 		const errors = super.validate(value, options)
 
 		if (errors.length === 0) {
-			if (isNaN(value)) {
+			if (!this.isNumber(value)) {
 				errors.push(
 					this.buildNaNError(`"${JSON.stringify(value)}" is not a number!`)
 				)
@@ -60,5 +60,9 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 		}
 
 		return errors
+	}
+
+	private isNumber(value: any) {
+		return typeof value === 'undefined' || value === null || !isNaN(value)
 	}
 }
