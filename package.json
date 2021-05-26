@@ -53,10 +53,10 @@
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
-		"@sprucelabs/babel-plugin-schema": "latest",
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
 		"@sprucelabs/jest-sheets-reporter": "^1.2.38",
+		"@sprucelabs/resolve-path-aliases": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
@@ -101,10 +101,10 @@
 	},
 	"yarn-upgrade-all": {
 		"ignore": [
-			"@sprucelabs/babel-plugin-schema",
 			"@sprucelabs/error",
 			"@sprucelabs/esm-postbuild",
 			"@sprucelabs/jest-json-reporter",
+			"@sprucelabs/resolve-path-aliases",
 			"@sprucelabs/semantic-release",
 			"@sprucelabs/test",
 			"@sprucelabs/test-utils",
