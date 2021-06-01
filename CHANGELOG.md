@@ -1,3 +1,10 @@
+# [21.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.29...v21.0.0) (2021-06-01)
+
+
+### Breaking Changes
+
+* version in value type ([cc4b8b9](https://github.com/sprucelabsai/spruce-schema/commit/cc4b8b9))
+
 ## [20.1.29](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.28...v20.1.29) (2021-05-31)
 
 ## [20.1.28](https://github.com/sprucelabsai/spruce-schema/compare/v20.1.27...v20.1.28) (2021-05-29)
