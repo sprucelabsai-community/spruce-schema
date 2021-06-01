@@ -129,7 +129,11 @@ export default class SchemaField<
 			if (matchedTemplateItem) {
 				let valueType: string | undefined
 				if (renderAs === TemplateRenderAs.Value) {
-					valueType = `${matchedTemplateItem.nameCamel}Schema`
+					valueType = `${matchedTemplateItem.nameCamel}Schema${
+						matchedTemplateItem.schema.version
+							? `_${matchedTemplateItem.schema.version}`
+							: ''
+					}`
 				} else {
 					valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
 						version ? `.${version}` : ''

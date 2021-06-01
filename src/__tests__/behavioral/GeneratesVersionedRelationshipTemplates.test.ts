@@ -123,7 +123,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v2' }],
 			},
 		},
-		'[unionPersonSchema, wrenchSchema]',
+		'[unionPersonSchema, wrenchSchema_v2]',
 		"{ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', version: 'v2', values: SpruceSchemas.Core.v2.Wrench }",
 		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.v2.WrenchSchema)[]'
 	)
@@ -135,7 +135,7 @@ export default class GeneratesRelationshipTemplatesTest extends AbstractSpruceTe
 				schemaIds: [{ id: 'union-person' }, { id: 'wrench', version: 'v1' }],
 			},
 		},
-		'[unionPersonSchema, wrenchSchema]',
+		'[unionPersonSchema, wrenchSchema_v1]',
 		"({ schemaId: 'union-person', values: SpruceSchemas.Core.UnionPerson } | { schemaId: 'wrench', version: 'v1', values: SpruceSchemas.Core.v1.Wrench })[]",
 		'(SpruceSchemas.Core.UnionPersonSchema | SpruceSchemas.Core.v1.WrenchSchema)[]'
 	)
