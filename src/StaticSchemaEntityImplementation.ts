@@ -152,8 +152,8 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 			extraFields.forEach((name) => {
 				errors.push({
 					name,
-					code: 'unexpected',
-					friendlyMessage: `\`${name}\` is not a field on \`${this.schemaId}\`.`,
+					code: 'unexpected_value',
+					friendlyMessage: `\`${name}\` does not exist.`,
 				})
 			})
 		}

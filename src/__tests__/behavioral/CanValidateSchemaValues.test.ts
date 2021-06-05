@@ -245,6 +245,17 @@ const versionedPersonWithFavToolsOrFruitSchema = buildSchema({
 	},
 })
 
+const dynamicFieldSchema = buildSchema({
+	id: 'dynamicSchemaValuesTest',
+	dynamicFieldSignature: {
+		type: 'schema',
+		keyName: 'eventName',
+		options: {
+			schema: personSchema,
+		},
+	},
+})
+
 export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async beforeEach() {
 		await super.beforeEach()
@@ -380,7 +391,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					},
 					this.validateOptions
 				),
-			/is not a field on/
+			/does not exist/
 		) as SpruceError
 
 		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
@@ -427,7 +438,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		) as SpruceError
 
 		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
-			errors: [{ code: 'invalid_related_schema_values' }],
+			errors: [{ code: 'invalid_value' }],
 		})
 	}
 
@@ -676,5 +687,20 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		} catch (err) {
 			this.log(err.message)
 		}
+	}
+
+	@test()
+	protected static dynamicSchemasHaveFieldNameInError() {
+		const err = assert.doesThrow(() =>
+			validateSchemaValues(dynamicFieldSchema, {
+				//@ts-ignore
+				taco: {
+					//@ts-ignore
+					hey: 'there',
+				},
+			})
+		)
+
+		assert.doesInclude(err.message, 'taco')
 	}
 }

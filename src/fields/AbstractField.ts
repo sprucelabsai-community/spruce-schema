@@ -17,7 +17,7 @@ export default abstract class AbstractField<F extends FieldDefinitions>
 	public readonly type: F['type']
 
 	/** The name of this field (camel case) */
-	public readonly name: string
+	public name: string
 
 	public constructor(name: string, definition: F) {
 		this.definition = definition

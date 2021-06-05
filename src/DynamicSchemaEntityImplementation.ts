@@ -72,14 +72,14 @@ export default class DynamicSchemaEntityImplementation<
 	public validate(options: DynamicSchemaValidateOptions<string> = {}): void {
 		const errors: InvalidFieldErrorOptions['errors'] = []
 
+		const originalName = this.dynamicField.name
+
 		this.getNamedFields(options).forEach((namedField) => {
 			const { name, field } = namedField
 
-			const value = this.get(name, {
-				validate: false,
-				createEntityInstances: false,
-			})
+			const value = this.values[name]
 
+			field.name = name
 			const fieldErrors = field.validate(value, {
 				schemasById: {},
 			})
@@ -88,6 +88,8 @@ export default class DynamicSchemaEntityImplementation<
 				errors.push(...fieldErrors)
 			}
 		})
+
+		this.dynamicField.name = originalName
 
 		if (errors.length > 0) {
 			throw new SpruceError({
@@ -113,6 +115,7 @@ export default class DynamicSchemaEntityImplementation<
 		options?: SchemaNormalizeOptions<S, CreateEntityInstances>
 	): FieldDefinitionValueType<OurField, CreateEntityInstances> {
 		const value = this.values[fieldName]
+
 		return normalizeFieldValue(
 			this.schemaId,
 			this.name,

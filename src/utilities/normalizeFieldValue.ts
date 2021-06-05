@@ -27,7 +27,13 @@ export default function normalizeFieldValue<
 		throw new SpruceError({
 			code: 'INVALID_FIELD',
 			schemaId,
-			errors: [{ name: field.name, code: 'value_cannot_normalize_to_array' }],
+			errors: [
+				{
+					name: field.name,
+					code: 'invalid_value',
+					friendlyMessage: `I was expecting an array for ${field.name}.`,
+				},
+			],
 		})
 	}
 
@@ -54,7 +60,7 @@ export default function normalizeFieldValue<
 				errors: [
 					{
 						name: field.name,
-						code: !field ? 'field_not_found' : 'missing_required',
+						code: !field ? 'unexpected_value' : 'missing_required',
 					},
 				],
 			})

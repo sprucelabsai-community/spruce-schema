@@ -105,7 +105,7 @@ export interface Field<F extends FieldDefinitions> {
 	readonly minArrayLength: F['minArrayLength']
 	readonly label: F['label']
 	readonly hint: F['hint']
-	readonly name: string
+	name: string
 	validate(value: any, options?: ValidateOptions<F>): InvalidFieldError[]
 	toValueType<CreateEntityInstances extends boolean>(
 		value: any,

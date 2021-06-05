@@ -23,7 +23,6 @@ export default function validateSchemaValues<
 
 	try {
 		const instance = EntityFactory.Entity(schema, values as any)
-
 		instance.validate(opts)
 	} catch (err) {
 		if (shouldMapToParameterErrors) {

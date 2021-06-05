@@ -12,14 +12,14 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 		this.personSchema = personSchema
 	}
 
-	@test('fails on non-object', true, ['value_must_be_object'])
+	@test('fails on non-object', true, ['invalid_value'])
 	@test(
 		'passes because everything has name and a string is good',
 		{ name: 'cheese!' },
 		[]
 	)
 	@test("knows it's missing the name and name is required", { taco: true }, [
-		'invalid_related_schema_values',
+		'invalid_value',
 	])
 	protected static async testNonUnionValidation(
 		value: any,

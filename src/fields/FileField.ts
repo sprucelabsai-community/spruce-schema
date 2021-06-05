@@ -55,11 +55,15 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 					fsUtil.lstatSync(file.path).isDirectory()
 
 				if (isDirExists) {
-					errors.push({ code: 'is_directory_not_file', name: this.name })
+					errors.push({
+						code: 'invalid_value',
+						friendlyMessage: `${file.path} is not a directory!`,
+						name: this.name,
+					})
 				}
 			}
 		} catch (err) {
-			errors.push({ code: 'invalid_file', name: this.name })
+			errors.push({ code: 'invalid_value', error: err, name: this.name })
 		}
 
 		return errors

@@ -48,7 +48,7 @@ export function buildDuration(
 			schemaId: 'na',
 			errors: [
 				{
-					code: 'failed_to_parse_to_date',
+					code: 'invalid_value',
 					name: 'na',
 					friendlyMessage: `Could not turn ${value} into IDurationFieldValue`,
 				},

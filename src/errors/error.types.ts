@@ -36,7 +36,7 @@ export interface DuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	namespace?: string
 }
 export interface InvalidFieldError {
-	code: string
+	code: 'missing_required' | 'invalid_value' | 'unexpected_value'
 	error?: Error
 	friendlyMessage?: string
 	name: string

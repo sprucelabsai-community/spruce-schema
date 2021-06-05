@@ -235,7 +235,7 @@ export default class SchemaField<
 		if (errors.length === 0 && value) {
 			if (typeof value !== 'object') {
 				errors.push({
-					code: 'value_must_be_object',
+					code: 'invalid_value',
 					name: this.name,
 					friendlyMessage: `${this.label ?? this.name} must be an object`,
 				})
@@ -250,14 +250,14 @@ export default class SchemaField<
 					)
 				} catch (err) {
 					errors.push({
-						code: 'related_schema_id_not_valid',
+						code: 'invalid_value',
 						name: this.name,
 						error: err,
 					})
 				}
 
 				if (schemas && schemas.length === 0) {
-					errors.push({ code: 'related_schemas_missing', name: this.name })
+					errors.push({ code: 'missing_required', name: this.name })
 				}
 
 				// if we are validating schemas, we look them all up by id
@@ -272,14 +272,14 @@ export default class SchemaField<
 					if (!values) {
 						errors.push({
 							name: this.name,
-							code: 'schema_union_missing_values',
+							code: 'invalid_value',
 							friendlyMessage:
 								'You need to add `values` to the value of ' + this.name,
 						})
 					} else if (!schemaId) {
 						errors.push({
 							name: this.name,
-							code: 'schema_union_missing_schema_id',
+							code: 'invalid_value',
 							friendlyMessage:
 								'You need to add `schemaId` to the value of ' + this.name,
 						})
@@ -290,7 +290,7 @@ export default class SchemaField<
 						if (!matchSchema) {
 							errors.push({
 								name: this.name,
-								code: 'related_schema_not_found',
+								code: 'invalid_value',
 								friendlyMessage: `Could not find a schema by id '${schemaId}'${
 									version ? ` and version '${version}'` : ' with no version'
 								}.`,
@@ -306,7 +306,7 @@ export default class SchemaField<
 						instance.validate()
 					} catch (err) {
 						errors.push({
-							code: 'invalid_related_schema_values',
+							code: 'invalid_value',
 							error: err,
 							name: this.name,
 							friendlyMessage: `'${this.label ?? this.name}' isn't valid.`,

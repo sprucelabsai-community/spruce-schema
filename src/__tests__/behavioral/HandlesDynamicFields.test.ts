@@ -170,10 +170,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 			foo: { another: 'object' },
 		})
 
-		assert.doesThrow(
-			() => entity.validate(),
-			/could not be converted to a string/
-		)
+		assert.doesThrow(() => entity.validate(), /should be a string/)
 
 		assert.isFalse(entity.isValid())
 	}
@@ -189,7 +186,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 				validateSchemaValues(textDynamicSchema, values, {
 					shouldMapToParameterErrors: false,
 				}),
-			/could not be converted to a string/
+			/should be a string/
 		)
 
 		//@ts-ignore

@@ -29,10 +29,17 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 		const errors = super.validate(value, options)
 
 		if (errors.length === 0) {
+			if (value && typeof this.convertToString(value) !== 'string') {
+				errors.push({
+					code: 'invalid_value',
+					name: this.name,
+					friendlyMessage: `${this.name} should be a string!`,
+				})
+			}
 			if (this.isRequired && `${value}`.length === 0) {
 				errors.push({
 					code: 'missing_required',
-					friendlyMessage: `${this.label ?? this.name} can't be empty!`,
+					friendlyMessage: `${this.name} can't be empty!`,
 					name: this.name,
 				})
 			}
@@ -45,13 +52,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 		value: any,
 		options?: ToValueTypeOptions<TextFieldDefinition, C>
 	): string {
-		let transformed =
-			typeof value === 'string'
-				? value
-				: typeof value === 'number' &&
-				  value &&
-				  value.toString &&
-				  value.toString()
+		let transformed = this.convertToString(value)
 
 		if (typeof transformed === 'string') {
 			const maxLength = options?.maxLength ?? 0
@@ -78,5 +79,11 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 			],
 			name: this.name,
 		})
+	}
+
+	private convertToString(value: any) {
+		return typeof value === 'string'
+			? value
+			: typeof value === 'number' && value && value.toString && value.toString()
 	}
 }
