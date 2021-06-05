@@ -312,8 +312,10 @@ export type SchemaFieldDefinition<
 	K extends SchemaFieldNames<T>
 > = T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
 
-export type SchemaFieldType<T extends Schema, K extends SchemaFieldNames<T>> =
-	T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
+export type SchemaFieldType<
+	T extends Schema,
+	K extends SchemaFieldNames<T>
+> = T['fields'][K] extends FieldDefinitions ? T['fields'][K]['type'] : never
 
 export interface SchemaNamedField<T extends Schema> {
 	name: SchemaFieldNames<T>
