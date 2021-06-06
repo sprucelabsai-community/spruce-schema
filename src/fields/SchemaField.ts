@@ -237,7 +237,7 @@ export default class SchemaField<
 				errors.push({
 					code: 'invalid_value',
 					name: this.name,
-					friendlyMessage: `${this.label ?? this.name} must be an object`,
+					friendlyMessage: `${this.label ?? this.name} must be an object!`,
 				})
 			} else {
 				let schemas: Schema[] | undefined

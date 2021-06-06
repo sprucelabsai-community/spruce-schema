@@ -71,7 +71,6 @@ export default class DynamicSchemaEntityImplementation<
 
 	public validate(options: DynamicSchemaValidateOptions<string> = {}): void {
 		const errors: InvalidFieldErrorOptions['errors'] = []
-
 		const originalName = this.dynamicField.name
 
 		this.getNamedFields(options).forEach((namedField) => {
@@ -80,6 +79,7 @@ export default class DynamicSchemaEntityImplementation<
 			const value = this.values[name]
 
 			field.name = name
+
 			const fieldErrors = field.validate(value, {
 				schemasById: {},
 			})

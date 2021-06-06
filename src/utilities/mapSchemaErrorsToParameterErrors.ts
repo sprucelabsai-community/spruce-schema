@@ -85,7 +85,18 @@ function pullParamaterIssues(
 
 	err.options?.errors?.forEach((fieldError: any) => {
 		const fieldName = prefix ? `${prefix}.${fieldError.name}` : fieldError.name
-		if (fieldError.code === 'missing_required') {
+
+		if (fieldError.error?.options?.code === 'INVALID_FIELD') {
+			const {
+				missingParameters: missing,
+				invalidParameters: invalid,
+				unexpectedParamaters: unexpected,
+			} = pullParamaterIssues(fieldError.error, fieldName)
+
+			missingParameters.push(...missing)
+			invalidParameters.push(...invalid)
+			unexpectedParamaters.push(...unexpected)
+		} else if (fieldError.code === 'missing_required') {
 			missingParameters.push(fieldName)
 		} else if (fieldError.code === 'invalid_value') {
 			invalidParameters.push(fieldName)
