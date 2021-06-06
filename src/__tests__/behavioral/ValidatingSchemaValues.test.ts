@@ -703,7 +703,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			})
 		)
 
-		process.stderr.write(err.message)
 		assert.doesInclude(err.message, 'taco')
 		assert.doesInclude(err.message, 'hey')
 	}
