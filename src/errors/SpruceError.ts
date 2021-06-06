@@ -141,17 +141,20 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 		let { indentDepth = 0 } = messageOptions || {}
 		let indention = this.buildIndention(indentDepth)
 
-		let message = `${indention}${options.errors.length} error${
-			options.errors.length === 1 ? '' : 's'
-		} for '${options.schemaId}'.`
+		let message =
+			indentDepth === 0
+				? `${indention}${options.errors.length} error${
+						options.errors.length === 1 ? '' : 's'
+				  } for '${options.schemaId}'.\n`
+				: ``
 
 		indentDepth++
 		indention = this.buildIndention(indentDepth)
 
 		options.errors.forEach((fieldError) => {
-			message += `\n${indention}- ${
+			message += `${indention}- ${
 				fieldError.friendlyMessage ?? `'${fieldError.name}': ${fieldError.code}`
-			}`
+			}\n`
 
 			if (fieldError.error) {
 				if (
@@ -159,20 +162,19 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 					fieldError.error.options.code === 'INVALID_FIELD'
 				) {
 					message +=
-						`\n` +
 						fieldError.error.generateNestedErrorMessage(
 							fieldError.error.options,
 							{ indentDepth: indentDepth + 1 }
-						)
+						) + '\n'
 				} else {
-					message += `\n${this.buildIndention(indentDepth + 1)}${
+					message += `${this.buildIndention(indentDepth + 1)}${
 						fieldError.error.message
-					}`
+					}\n`
 				}
 			}
 		})
 
-		return message
+		return message.trim()
 	}
 
 	private buildIndention(indentDepth: number) {

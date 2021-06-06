@@ -20,6 +20,11 @@ export type SchemaErrorOptions =
 	| UnexpectedParametersOptions
 	| ValidationFailedErrorOptions
 
+export type FieldErrorCodes =
+	| 'missing_required'
+	| 'invalid_value'
+	| 'unexpected_value'
+
 export interface SchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	/** * Could not find a schema by id */
 	code: 'SCHEMA_NOT_FOUND'
@@ -36,7 +41,7 @@ export interface DuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	namespace?: string
 }
 export interface InvalidFieldError {
-	code: 'missing_required' | 'invalid_value' | 'unexpected_value'
+	code: FieldErrorCodes
 	error?: Error
 	friendlyMessage?: string
 	name: string

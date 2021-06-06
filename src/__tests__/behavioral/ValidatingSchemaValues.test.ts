@@ -395,8 +395,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		) as SpruceError
 
 		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
-			'errors[0].code': 'unexpected',
+			'errors[0].code': 'unexpected_value',
 		})
+
+		assert.doesInclude(err.message, 'taco')
 	}
 
 	@test()

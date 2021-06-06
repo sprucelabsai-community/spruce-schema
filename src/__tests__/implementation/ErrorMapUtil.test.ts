@@ -70,7 +70,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsUnexpectedParameters() {
 		const err = this.Error([
 			{
-				code: 'unexpected',
+				code: 'unexpected_value',
 				name: 'phone',
 			},
 		])
@@ -87,7 +87,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsAll() {
 		const err = this.Error([
 			{
-				code: 'unexpected',
+				code: 'unexpected_value',
 				name: 'phone',
 			},
 			{

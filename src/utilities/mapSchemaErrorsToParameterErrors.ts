@@ -89,17 +89,8 @@ function pullParamaterIssues(
 			missingParameters.push(fieldName)
 		} else if (fieldError.code === 'invalid_value') {
 			invalidParameters.push(fieldName)
-		} else if (fieldError.code === 'unexpected') {
+		} else if (fieldError.code === 'unexpected_value') {
 			unexpectedParamaters.push(fieldName)
-		} else if (fieldError.code === 'invalid_related_schema_values') {
-			const {
-				missingParameters: missing,
-				invalidParameters: invalid,
-				unexpectedParamaters: unexpected,
-			} = pullParamaterIssues(fieldError.error, fieldName)
-			missingParameters.push(...missing)
-			invalidParameters.push(...invalid)
-			unexpectedParamaters.push(...unexpected)
 		}
 	})
 	return { missingParameters, invalidParameters, unexpectedParamaters }
