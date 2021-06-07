@@ -33,7 +33,7 @@
 		"clean": "rm -rf build/ esm/",
 		"clean.all": "rm -rf node_modules/ yarn.lock ; yarn clean",
 		"fix.lint": "eslint --fix '**/*.ts'",
-		"lint": "eslint '**/*.ts' --fix && yarn lint.tsc",
+		"lint": "eslint --cache '**/*.ts' --fix && yarn lint.tsc",
 		"lint.tsc": "tsc -p . --noEmit",
 		"rebuild": "yarn clean.all && yarn && yarn build.dev",
 		"release": "semantic-release",

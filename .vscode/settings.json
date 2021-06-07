@@ -39,13 +39,15 @@
 	"[handlebars]": {
 		"editor.formatOnSave": false
 	},
+	"eslint.lintTask.options": "--cache",
 	"eslint.options": {
 		"extensions": [
 			".js",
 			".jsx",
 			".ts",
 			".tsx"
-		]
+		],
+		"cache": true
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {
