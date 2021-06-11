@@ -23,7 +23,7 @@ jobs:
           command: |
             [ -n "$BASE64_ENV" ] && echo $BASE64_ENV | base64 --decode > .env
       - run: yarn install
-      - run: yarn build.dev
+      - run: yarn build.ci
       - run: yarn lint
       - run: yarn test -w 1
       - run:
