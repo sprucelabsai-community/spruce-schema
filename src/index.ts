@@ -56,6 +56,8 @@ export { default as SchemaEntityFactory } from './factories/SchemaEntityFactory'
 export * from './types/template.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
 
+export { default as SpruceError } from './errors/SpruceError'
+
 export const fieldRegistrations: FieldRegistration[] = [
 	addressRegistration,
 	booleanRegistration,
