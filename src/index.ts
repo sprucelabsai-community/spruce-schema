@@ -54,6 +54,8 @@ export { default as FieldFactory } from './factories/FieldFactory'
 export { default as SchemaEntityFactory } from './factories/SchemaEntityFactory'
 
 export * from './types/template.types'
+export * from './types/utilities.types'
+
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
 
 export { default as SpruceError } from './errors/SpruceError'
