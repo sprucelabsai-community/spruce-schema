@@ -1,3 +1,10 @@
+# [21.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.0.26...v21.1.0) (2021-06-29)
+
+
+### Features
+
+* are any fields required utility type ([430bce8](https://github.com/sprucelabsai/spruce-schema/commit/430bce8))
+
 ## [21.0.26](https://github.com/sprucelabsai/spruce-schema/compare/v21.0.25...v21.0.26) (2021-06-28)
 
 ## [21.0.25](https://github.com/sprucelabsai/spruce-schema/compare/v21.0.24...v21.0.25) (2021-06-27)
