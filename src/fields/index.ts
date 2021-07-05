@@ -47,4 +47,5 @@ export {
 	FieldDefinition as IFieldDefinition,
 	FieldDefinitionValueType,
 	Field as IField,
+	FieldType,
 } from './field.static.types'
