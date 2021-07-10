@@ -1,3 +1,16 @@
+## [21.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.2...v21.2.3) (2021-07-09)
+
+## [21.2.2](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.1...v21.2.2) (2021-07-08)
+
+## [21.2.1](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.0...v21.2.1) (2021-07-06)
+
+# [21.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.1.4...v21.2.0) (2021-07-05)
+
+
+### Features
+
+* export FieldType type ([cca9222](https://github.com/sprucelabsai/spruce-schema/commit/cca9222))
+
 ## [21.1.4](https://github.com/sprucelabsai/spruce-schema/compare/v21.1.3...v21.1.4) (2021-07-03)
 
 ## [21.1.3](https://github.com/sprucelabsai/spruce-schema/compare/v21.1.2...v21.1.3) (2021-07-02)
