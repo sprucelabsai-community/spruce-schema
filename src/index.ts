@@ -77,3 +77,5 @@ export const fieldRegistrations: FieldRegistration[] = [
 	textRegistration,
 	emailRegisteration,
 ]
+
+export { default as assertOptions } from './utilities/assertOptions'
