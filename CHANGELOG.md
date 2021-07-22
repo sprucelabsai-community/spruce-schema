@@ -1,3 +1,10 @@
+# [21.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.3.1...v21.4.0) (2021-07-22)
+
+
+### Features
+
+* assertOptions ([f694c10](https://github.com/sprucelabsai/spruce-schema/commit/f694c10))
+
 ## [21.3.1](https://github.com/sprucelabsai/spruce-schema/compare/v21.3.0...v21.3.1) (2021-07-17)
 
 # [21.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.3...v21.3.0) (2021-07-10)
