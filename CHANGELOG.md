@@ -1,3 +1,12 @@
+## [21.3.1](https://github.com/sprucelabsai/spruce-schema/compare/v21.3.0...v21.3.1) (2021-07-17)
+
+# [21.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.3...v21.3.0) (2021-07-10)
+
+
+### Features
+
+* moduleToImportFromWhenRemote added to type ([e55c0e2](https://github.com/sprucelabsai/spruce-schema/commit/e55c0e2))
+
 ## [21.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.2...v21.2.3) (2021-07-09)
 
 ## [21.2.2](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.1...v21.2.2) (2021-07-08)

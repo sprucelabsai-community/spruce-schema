@@ -8,7 +8,7 @@
 		"!build/__tests__",
 		"esm"
 	],
-	"version": "21.2.3",
+	"version": "21.3.1",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"module": "./build/esm/index.js",
@@ -59,7 +59,7 @@
 	"devDependencies": {
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
-		"@sprucelabs/jest-sheets-reporter": "^1.2.56",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.57",
 		"@sprucelabs/resolve-path-aliases": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
@@ -67,7 +67,7 @@
 		"@types/lodash": "^4.14.171",
 		"@types/mime-db": "^1.43.1",
 		"chokidar-cli": "^2.1.0",
-		"eslint": "^7.30.0",
+		"eslint": "^7.31.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^27.0.6",
 		"jest-circus": "^27.0.6",
