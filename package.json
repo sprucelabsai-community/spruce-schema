@@ -66,7 +66,7 @@
 		"@sprucelabs/test-utils": "latest",
 		"@types/lodash": "^4.14.171",
 		"@types/mime-db": "^1.43.1",
-		"chokidar-cli": "^2.1.0",
+		"chokidar-cli": "^3.0.0",
 		"eslint": "^7.31.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^27.0.6",
