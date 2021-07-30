@@ -59,7 +59,7 @@
 	"devDependencies": {
 		"@sprucelabs/esm-postbuild": "latest",
 		"@sprucelabs/jest-json-reporter": "latest",
-		"@sprucelabs/jest-sheets-reporter": "^1.2.58",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.59",
 		"@sprucelabs/resolve-path-aliases": "latest",
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
@@ -67,7 +67,7 @@
 		"@types/lodash": "^4.14.171",
 		"@types/mime-db": "^1.43.1",
 		"chokidar-cli": "^3.0.0",
-		"eslint": "^7.31.0",
+		"eslint": "^7.32.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^27.0.6",
 		"jest-circus": "^27.0.6",
