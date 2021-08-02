@@ -15,7 +15,7 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
-		"sourceMap": true,
+		"sourceMap": false,
 		"outDir": "./build/esm",
 		"baseUrl": "src",
 		"experimentalDecorators": true,

@@ -14,7 +14,7 @@
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"moduleResolution": "node",
-		"sourceMap": true,
+		"sourceMap": false,
 		"outDir": "build",
 		"baseUrl": "src",
 		"experimentalDecorators": true,
