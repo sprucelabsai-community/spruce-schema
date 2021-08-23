@@ -74,7 +74,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 		})
 
 		let carsFlat = user.get('requiredIsArrayCars', {
-			createEntityInstances: false,
+			shouldCreateEntityInstances: false,
 		})
 
 		assert.isEqualDeep(carsFlat, [

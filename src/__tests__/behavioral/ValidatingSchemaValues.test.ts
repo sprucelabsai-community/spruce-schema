@@ -266,9 +266,9 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		const err = assert.doesThrow(() => validateSchemaValues(personSchema, {}))
 
 		assert.doesInclude(err.message, '3 errors')
-		assert.doesInclude(err.message, `1. 'First name' is required!`)
-		assert.doesInclude(err.message, `2. 'lastName' is required!`)
-		assert.doesInclude(err.message, `3. 'profileImages' is required!`)
+		assert.doesInclude(err.message, `1. 'firstName' is required`)
+		assert.doesInclude(err.message, `2. 'lastName' is required`)
+		assert.doesInclude(err.message, `3. 'profileImages' is required`)
 	}
 
 	@test()
@@ -279,7 +279,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					firstName: 'tay',
 					lastName: 'ro',
 				}),
-			/`favoriteColors` is missing/gi
+			/'favoriteColors' is required/gi
 		)
 	}
 
@@ -381,7 +381,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 						'profile150@2x': '@',
 					},
 				}),
-			/doesn't exist/
+			/does not exist/
 		)
 
 		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
@@ -418,11 +418,11 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 					//@ts-ignore
 					favoriteTools: [{}],
 				}),
-			/'name' is required/
+			/'favoriteTools.name' is required/
 		)
 
-		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
-			errors: [{ code: 'invalid_value' }],
+		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
+			'errors[].options.code': 'INVALID_PARAMETERS',
 		})
 	}
 
@@ -614,7 +614,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		assert.isLength(err.options.errors, 1)
 
 		//@ts-ignore
-		errorAssertUtil.assertError(err.options.errors[0], 'MISSING_PARAMETERS', {
+		errorAssertUtil.assertError(err.options.errors[0], 'INVALID_PARAMETERS', {
 			parameters: ['favoriteToolsOrFruit'],
 		})
 	}
@@ -681,6 +681,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			})
 		)
 
-		assert.doesInclude(err.message, 'US numbers')
+		assert.doesInclude(err.message, 'US phone number')
 	}
 }

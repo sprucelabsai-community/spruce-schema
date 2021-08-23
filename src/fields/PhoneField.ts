@@ -41,7 +41,8 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 			errors.push({
 				code: 'invalid_value',
 				name: this.name,
-				friendlyMessage: 'Right now I only support US phone numbers.',
+				label: this.label,
+				friendlyMessage: `'${this.name}' needs to be a valid US phone number.`,
 			})
 		}
 

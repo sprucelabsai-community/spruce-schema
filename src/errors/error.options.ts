@@ -6,7 +6,6 @@ import { FieldType } from '../fields/field.static.types'
 export type SchemaErrorOptions =
 	| DuplicateSchemaErrorOptions
 	| SchemaErrorOptionsNotFound
-	| InvalidFieldErrorOptions
 	| TransformationFailedErrorOptions
 	| InvalidSchemaDefinitionErrorOptions
 	| NotImplementedErrorOptions
@@ -17,7 +16,7 @@ export type SchemaErrorOptions =
 	| UnexpectedParametersOptions
 	| ValidationFailedErrorOptions
 
-export type FieldErrorCodes =
+export type FieldErrorCode =
 	| 'missing_required'
 	| 'invalid_value'
 	| 'unexpected_value'
@@ -38,17 +37,11 @@ export interface DuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	namespace?: string
 }
 export interface InvalidFieldError {
-	code: FieldErrorCodes
+	code: FieldErrorCode
 	error?: Error
 	friendlyMessage?: string
 	name: string
 	label?: string
-}
-export interface InvalidFieldErrorOptions extends ISpruceErrorOptions {
-	code: 'INVALID_FIELD'
-	schemaId: string
-	schemaName?: string
-	errors: InvalidFieldError[]
 }
 
 export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {

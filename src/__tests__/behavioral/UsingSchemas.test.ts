@@ -291,10 +291,10 @@ export default class SchemaTest extends AbstractSchemaTest {
 	@test()
 	protected static testFullValuesTypes() {
 		const personEntity = new StaticSchemaEntityImplementation(personSchema)
-		const values = personEntity.getValues({ validate: false })
+		const values = personEntity.getValues({ shouldValidate: false })
 		const valuesWithoutInstances = personEntity.getValues({
-			validate: false,
-			createEntityInstances: false,
+			shouldValidate: false,
+			shouldCreateEntityInstances: false,
 		})
 		assert.isType<PersonExpectedValues>(values)
 		assert.isType<PersonMappedValues>(values)

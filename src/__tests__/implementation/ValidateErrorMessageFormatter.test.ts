@@ -1,78 +1,12 @@
-import AbstractSpruceError from '@sprucelabs/error'
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { ValidationFailedErrorOptions } from '../../errors/error.options'
 import SpruceError from '../../errors/SpruceError'
+import {
+	RenderOptions,
+	ValidateErrorMessageFormatter,
+} from '../../errors/ValidateErrorMessageFormatter'
 import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
-
-interface RenderOptions {
-	shouldUseReadableNames?: boolean
-}
-
-class ValidateErrorMessageFormatter {
-	private error: AbstractSpruceError<ValidationFailedErrorOptions>
-
-	public constructor(error: AbstractSpruceError<ValidationFailedErrorOptions>) {
-		if (!error) {
-			throw new SpruceError({
-				code: 'MISSING_PARAMETERS',
-				parameters: ['error'],
-			})
-		} else if (error.options?.code !== 'VALIDATION_FAILED') {
-			throw new SpruceError({
-				code: 'INVALID_PARAMETERS',
-				parameters: ['error'],
-				friendlyMessage:
-					'Must pass a SpruceError with code of `VALIDATION_FAILED`.',
-			})
-		}
-
-		this.error = error
-	}
-
-	public render(options?: RenderOptions) {
-		const totalErrors = this.getTotalErrors()
-
-		let message = `'${this.renderSchemaName(
-			options?.shouldUseReadableNames
-		)}' has ${totalErrors} error${totalErrors === 1 ? '' : 's'}!\n\n`
-
-		const errors = this.error.options.errors
-		let count = 0
-		for (const error of errors) {
-			const name = error.options.errors?.[0]?.name
-			message += `${count}. '${name}' is invalid!\n`
-			count++
-		}
-
-		return message
-	}
-
-	private getTotalErrors() {
-		let count = 0
-
-		for (const error of this.error.options.errors) {
-			const fieldErrors = error.options.errors ?? []
-			for (const fieldError of fieldErrors) {
-				const subError = fieldError.error
-				if (subError) {
-					const formatter = new ValidateErrorMessageFormatter(subError as any)
-					count += formatter.getTotalErrors()
-				} else {
-					count += 1
-				}
-			}
-		}
-
-		return count
-	}
-
-	private renderSchemaName(shouldUseReadableNames = false) {
-		return shouldUseReadableNames
-			? this.error.options.schemaName ?? this.error.options.schemaId
-			: this.error.options.schemaId
-	}
-}
 
 export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTest {
 	@test()
@@ -207,6 +141,7 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 
 		assert.doesInclude(msg, new RegExp(`${name1}.*is.*invalid`, `gis`))
 		assert.doesInclude(msg, new RegExp(`${name2}.*is.*required`, `gis`))
+		assert.doesInclude(msg, new RegExp(`rgb.*is.*required`, `gis`))
 	}
 
 	@test()
@@ -235,8 +170,27 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 			]),
 		})
 
-		assert.doesInclude(msg, new RegExp(`${name1}.*is.*invalid`, `gis`))
-		assert.doesInclude(msg, new RegExp(`${name2}.*is.*required`, `gis`))
+		assert.doesNotInclude(msg, new RegExp(`${name1}.*is.*invalid`, `gis`))
+		assert.doesInclude(
+			msg,
+			new RegExp(`${name1}.${name2}.*is.*required`, `gis`)
+		)
+		assert.doesNotInclude(msg, new RegExp(`${name1}.*has 2 errors`, `gis`))
+	}
+
+	@test()
+	protected static rendersFriendlyMessageIfItExists() {
+		const msg = this.renderError({
+			errors: mapFieldErrorsToParameterErrors([
+				{
+					code: 'invalid_value',
+					name: 'firstName',
+					friendlyMessage: 'This is crazy!',
+				},
+			]),
+		})
+
+		assert.doesInclude(msg, '1. This is crazy!')
 	}
 
 	private static renderError(

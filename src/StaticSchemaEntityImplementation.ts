@@ -1,5 +1,5 @@
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldErrorOptions } from './errors/error.options'
+import { InvalidFieldError } from './errors/error.options'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -142,7 +142,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	}
 
 	public validate(options: SchemaValidateOptions<S> = {}) {
-		const errors: InvalidFieldErrorOptions['errors'] = []
+		const errors: InvalidFieldError[] = []
 
 		const extraFields: string[] = this.pluckExtraFields(
 			this.values,
@@ -249,8 +249,10 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		: Pick<SchemaAllValues<S, CreateEntityInstances>, F> {
 		const values: StaticSchemaPartialValues<S, CreateEntityInstances> = {}
 
-		const { fields = Object.keys(this.fields), includePrivateFields = true } =
-			options || {}
+		const {
+			fields = Object.keys(this.fields),
+			shouldIncludePrivateFields: includePrivateFields = true,
+		} = options || {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField

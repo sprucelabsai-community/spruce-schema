@@ -1,9 +1,6 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import {
-	InvalidFieldErrorOptions,
-	SchemaErrorOptions,
-	ValidationFailedErrorOptions,
-} from './error.options'
+import { SchemaErrorOptions } from './error.options'
+import { ValidateErrorMessageFormatter } from './ValidateErrorMessageFormatter'
 
 export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {
 	public friendlyMessage(): string {
@@ -21,9 +18,6 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				break
 			case 'SCHEMA_NOT_FOUND':
 				message = `Could not find schema -> '${this.buildSchemaName(options)}'.`
-				break
-			case 'INVALID_FIELD':
-				message = this.generateNestedErrorMessage(options)
 				break
 			case 'TRANSFORMATION_ERROR':
 				message = ''
@@ -55,10 +49,12 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 
 				break
 
-			case 'VALIDATION_FAILED':
-				message = this.buildValidationFailedErrorMessage(options)
+			case 'VALIDATION_FAILED': {
+				const formatter = new ValidateErrorMessageFormatter(this as any)
+				message = formatter.render()
 
 				break
+			}
 
 			case 'MISSING_PARAMETERS':
 			case 'UNEXPECTED_PARAMETERS':
@@ -92,23 +88,6 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 		return friendly
 	}
 
-	private buildValidationFailedErrorMessage(
-		options: ValidationFailedErrorOptions
-	): string {
-		const totalErrors = this.countErrors(options)
-
-		let message = `Validating \`${
-			options.schemaName ?? options.schemaId
-		}\` failed with ${totalErrors} error${totalErrors === 1 ? '' : 's'}.\n\n`
-
-		let c = 0
-		for (const err of options.errors) {
-			message += `${++c}. ${err.message}\n`
-		}
-
-		return message
-	}
-
 	private buildSchemaName(options: {
 		schemaId: string
 		version?: string
@@ -117,62 +96,5 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 		return `${options.namespace ? options.namespace + '.' : ''}${
 			options.schemaId
 		}${options.version ? `(version: ${options.version})` : ''}`
-	}
-
-	private generateNestedErrorMessage(
-		options: InvalidFieldErrorOptions,
-		messageOptions?: { indentDepth: number }
-	) {
-		let { indentDepth = 0 } = messageOptions || {}
-		let indention = this.buildIndention(indentDepth)
-
-		let message =
-			indentDepth === 0
-				? `${indention}${this.countErrors(options)} error${
-						this.countErrors(options) === 1 ? '' : 's'
-				  } for '${options.schemaId}'.\n`
-				: ``
-
-		indentDepth++
-		indention = this.buildIndention(indentDepth)
-
-		options.errors.forEach((fieldError) => {
-			message += `${indention}- ${
-				fieldError.friendlyMessage ?? `'${fieldError.name}': ${fieldError.code}`
-			}\n`
-
-			if (fieldError.error) {
-				if (
-					fieldError.error instanceof SpruceError &&
-					fieldError.error.options.code === 'INVALID_FIELD'
-				) {
-					message +=
-						fieldError.error.generateNestedErrorMessage(
-							fieldError.error.options,
-							{ indentDepth: indentDepth + 1 }
-						) + '\n'
-				} else {
-					message += `${this.buildIndention(indentDepth + 1)}${
-						fieldError.error.message
-					}\n`
-				}
-			}
-		})
-
-		return message.trim()
-	}
-
-	private countErrors(
-		options: InvalidFieldErrorOptions | ValidationFailedErrorOptions
-	) {
-		return 3
-	}
-
-	private buildIndention(indentDepth: number) {
-		let indention = ''
-		for (let c = 0; c < indentDepth; c++) {
-			indention += `   `
-		}
-		return indention
 	}
 }

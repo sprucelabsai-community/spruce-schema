@@ -32,9 +32,12 @@ export default function normalizeSchemaValues<
 ) {
 	const instance = EntityFactory.Entity<S, IsDynamic>(schema, values)
 
-	const { createEntityInstances = false, ...rest } = options || {}
+	const {
+		shouldCreateEntityInstances: createEntityInstances = false,
+		...rest
+	} = options || {}
 	const normalizedOptions = {
-		createEntityInstances,
+		shouldCreateEntityInstances: createEntityInstances,
 		...rest,
 	} as SchemaGetValuesOptions<
 		S,

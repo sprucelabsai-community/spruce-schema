@@ -42,7 +42,7 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 
 	private buildNaNError(msg: string): InvalidFieldError {
 		return {
-			error: new Error(msg),
+			friendlyMessage: msg,
 			code: 'invalid_value',
 			name: this.name,
 		}

@@ -303,7 +303,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 					second: 2,
 				},
 			},
-			{ includePrivateFields: false }
+			{ shouldIncludePrivateFields: false }
 		)
 
 		assert.isEqualDeep(normalized, {

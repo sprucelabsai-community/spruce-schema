@@ -98,7 +98,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 		const schema = new StaticSchemaEntityImplementation(personSchema)
 		const defaultValues = schema.getDefaultValues()
 		const defaultValuesWithoutSchemas = schema.getDefaultValues({
-			createEntityInstances: false,
+			shouldCreateEntityInstances: false,
 		})
 
 		assert.isFunction(

@@ -332,9 +332,9 @@ export interface SchemaNormalizeFieldValueOptions<
 	CreateEntityInstances extends boolean
 > {
 	/** Should i validate any values passed through */
-	validate?: boolean
+	shouldValidate?: boolean
 	/** Should I create schema instances for schema fields (defaults to true) */
-	createEntityInstances?: CreateEntityInstances
+	shouldCreateEntityInstances?: CreateEntityInstances
 }
 
 export interface SchemaNormalizeOptions<
@@ -362,11 +362,11 @@ export type SchemaGetValuesOptions<
 > = SchemaNormalizeOptions<T, CreateEntityInstances> &
 	(IncludePrivateFields extends false
 		? {
-				includePrivateFields: IncludePrivateFields
+				shouldIncludePrivateFields: IncludePrivateFields
 				fields?: PF[]
 		  }
 		: {
-				includePrivateFields?: IncludePrivateFields
+				shouldIncludePrivateFields?: IncludePrivateFields
 				fields?: F[]
 		  })
 

@@ -52,7 +52,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				age: '10',
 				nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
 			},
-			{ createEntityInstances: false }
+			{ shouldCreateEntityInstances: false }
 		)
 
 		assert.isEqualDeep(values, {
@@ -73,7 +73,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				age: 0,
 				nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
 			},
-			{ createEntityInstances: false }
+			{ shouldCreateEntityInstances: false }
 		)
 
 		assert.isExactType<
@@ -181,7 +181,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 					},
 				],
 			},
-			{ createEntityInstances: false }
+			{ shouldCreateEntityInstances: false }
 		)
 
 		assert.isFalse(

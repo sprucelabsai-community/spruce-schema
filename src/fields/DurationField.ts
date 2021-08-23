@@ -44,15 +44,9 @@ export function buildDuration(
 
 	if (typeof totalMs !== 'number') {
 		throw new SpruceError({
-			code: 'INVALID_FIELD',
-			schemaId: 'na',
-			errors: [
-				{
-					code: 'invalid_value',
-					name: 'na',
-					friendlyMessage: `Could not turn ${value} into IDurationFieldValue`,
-				},
-			],
+			code: 'INVALID_PARAMETERS',
+			parameters: ['na'],
+			friendlyMessage: `\`${value}\` is not a valid duration!`,
 		})
 	}
 

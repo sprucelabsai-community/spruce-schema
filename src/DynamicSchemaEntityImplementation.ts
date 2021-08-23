@@ -1,6 +1,6 @@
 import { FieldMap } from '#spruce/schemas/fields/fields.types'
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldErrorOptions } from './errors/error.options'
+import { InvalidFieldError } from './errors/error.options'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -71,7 +71,7 @@ export default class DynamicSchemaEntityImplementation<
 	}
 
 	public validate(options: DynamicSchemaValidateOptions<string> = {}): void {
-		const errors: InvalidFieldErrorOptions['errors'] = []
+		const errors: InvalidFieldError[] = []
 		const originalName = this.dynamicField.name
 
 		this.getNamedFields(options).forEach((namedField) => {

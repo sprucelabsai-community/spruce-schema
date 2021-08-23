@@ -8,6 +8,7 @@ import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
 import { SchemasById } from '../fields/field.static.types'
 import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
+import mapFieldErrorsToParameterErrors from './mapFieldErrorsToParameterErrors'
 
 export default function normalizeFieldValue<
 	F extends Fields,
@@ -25,21 +26,15 @@ export default function normalizeFieldValue<
 
 	if (!Array.isArray(localValue)) {
 		throw new SpruceError({
-			code: 'INVALID_FIELD',
-			schemaId,
-			errors: [
-				{
-					name: field.name,
-					code: 'invalid_value',
-					friendlyMessage: `I was expecting an array for ${field.name}.`,
-				},
-			],
+			code: 'INVALID_PARAMETERS',
+			parameters: [field.name],
+			friendlyMessages: [`I was expecting an array for ${field.name}.`],
 		})
 	}
 
 	const {
-		validate = true,
-		createEntityInstances = true,
+		shouldValidate: validate = true,
+		shouldCreateEntityInstances: createEntityInstances = true,
 		...extraOptions
 	} = options ?? {}
 
@@ -54,15 +49,9 @@ export default function normalizeFieldValue<
 			return value
 		} else {
 			throw new SpruceError({
-				code: 'INVALID_FIELD',
+				code: !field ? 'UNEXPECTED_PARAMETERS' : 'MISSING_PARAMETERS',
 				schemaId,
-				schemaName,
-				errors: [
-					{
-						name: field.name,
-						code: !field ? 'unexpected_value' : 'missing_required',
-					},
-				],
+				parameters: [field.name],
 			})
 		}
 	}
@@ -81,9 +70,10 @@ export default function normalizeFieldValue<
 
 	if (errors.length > 0) {
 		throw new SpruceError({
-			code: 'INVALID_FIELD',
+			code: 'VALIDATION_FAILED',
 			schemaId,
-			errors,
+			errors: mapFieldErrorsToParameterErrors(errors),
+			schemaName,
 		})
 	}
 

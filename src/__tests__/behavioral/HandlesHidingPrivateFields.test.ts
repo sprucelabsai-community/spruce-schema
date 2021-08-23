@@ -36,7 +36,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 			privateField: 'Go away!',
 		})
 
-		const values = entity.getValues({ includePrivateFields: false })
+		const values = entity.getValues({ shouldIncludePrivateFields: false })
 
 		//@ts-ignore
 		assert.isFalsy(values.privateField)
@@ -50,7 +50,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 			privateField: 'Go away!',
 		})
 
-		const values = entity.getValues({ includePrivateFields: true })
+		const values = entity.getValues({ shouldIncludePrivateFields: true })
 
 		assert.isExactType<
 			typeof values,
@@ -71,7 +71,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		})
 
 		const values = entity.getValues({
-			includePrivateFields: false,
+			shouldIncludePrivateFields: false,
 			fields: ['onlyOnCar'],
 		})
 
@@ -88,7 +88,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		const values = normalizeSchemaValues(
 			carSchema,
 			{ name: 'sweet!', privateField: 'go away' },
-			{ includePrivateFields: false }
+			{ shouldIncludePrivateFields: false }
 		)
 
 		//@ts-ignore
@@ -104,7 +104,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		const values = normalizeSchemaValues(
 			carSchema,
 			{ name: 'sweet!', privateField: 'go away' },
-			{ includePrivateFields: true }
+			{ shouldIncludePrivateFields: true }
 		)
 
 		assert.isEqual(values.privateField, 'go away')
@@ -123,7 +123,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		const values = normalizeSchemaValues(
 			carSchema,
 			{ name: 'sweet!', privateField: 'go away', onlyOnCar: 'vroom' },
-			{ includePrivateFields: false, fields: ['onlyOnCar'] }
+			{ shouldIncludePrivateFields: false, fields: ['onlyOnCar'] }
 		)
 
 		assert.isExactType<

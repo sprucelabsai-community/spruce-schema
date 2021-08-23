@@ -18,7 +18,7 @@ export default function defaultSchemaValues<
 
 	// @ts-ignore
 	return instance.getDefaultValues({
-		createEntityInstances: false,
+		shouldCreateEntityInstances: false,
 		...options,
 	})
 }
