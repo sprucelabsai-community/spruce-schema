@@ -3,7 +3,7 @@ import {
 	FieldMap,
 	FieldValueTypeGeneratorMap,
 } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.options'
 import {
 	Schema,
 	SchemaValues,

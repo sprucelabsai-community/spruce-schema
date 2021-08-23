@@ -3,7 +3,7 @@ import {
 	FieldDefinitions,
 	FieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.options'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
 import { SchemasById } from '../fields/field.static.types'

@@ -1,5 +1,5 @@
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldErrorOptions } from './errors/error.types'
+import { InvalidFieldErrorOptions } from './errors/error.options'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -21,6 +21,7 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
+import mapFieldErrorsToParameterErrors from './utilities/mapFieldErrorsToParameterErrors'
 import normalizeFieldValue, {
 	normalizeValueToArray,
 } from './utilities/normalizeFieldValue'
@@ -168,13 +169,15 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 				(!this.values[name] || valueArray.length < (field.minArrayLength ?? 1))
 			) {
 				errors.push({
-					code: 'missing_required',
+					code: !this.values[name] ? 'missing_required' : 'invalid_value',
 					name,
 					friendlyMessage: !this.values[name]
 						? `'${field.label ?? field.name}' is required!`
 						: `'${field.label ?? field.name}' must have at least ${
 								field.minArrayLength
-						  } values. I found ${valueArray.length}!`,
+						  } value${field.minArrayLength === 1 ? '' : 's'}. I found ${
+								valueArray.length
+						  }!`,
 				})
 			} else {
 				if (
@@ -198,10 +201,10 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 
 		if (errors.length > 0) {
 			throw new SpruceError({
-				code: 'INVALID_FIELD',
+				code: 'VALIDATION_FAILED',
 				schemaId: this.schemaId,
 				schemaName: this.name,
-				errors,
+				errors: mapFieldErrorsToParameterErrors(errors),
 			})
 		}
 	}

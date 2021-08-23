@@ -24,7 +24,7 @@ export * from './schemas.static.types'
 
 export * from './fields'
 
-export * from './errors/error.types'
+export * from './errors/error.options'
 export { default as SchemaError } from './errors/SpruceError'
 
 export { default as buildErrorSchema } from './utilities/buildErrorSchema'
@@ -34,7 +34,6 @@ export * from './utilities/optional.types'
 export * from './utilities/selectChoicesToHash'
 export * from './utilities/registerFieldType'
 export { default as registerFieldType } from './utilities/registerFieldType'
-export { default as mapSchemaErrorsToParameterErrors } from './utilities/mapSchemaErrorsToParameterErrors'
 export { default as defaultSchemaValues } from './utilities/defaultSchemaValues'
 export { default as validateSchemaValues } from './utilities/validateSchemaValues'
 export { default as normalizeSchemaValues } from './utilities/normalizeSchemaValues'
@@ -57,8 +56,6 @@ export * from './types/template.types'
 export * from './types/utilities.types'
 
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
-
-export { default as SpruceError } from './errors/SpruceError'
 
 export const fieldRegistrations: FieldRegistration[] = [
 	addressRegistration,

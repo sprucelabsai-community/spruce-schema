@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.options'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,
@@ -33,13 +33,14 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 				errors.push({
 					code: 'invalid_value',
 					name: this.name,
+					label: this.label,
 					friendlyMessage: `${this.name} should be a string!`,
 				})
 			}
 			if (this.isRequired && `${value}`.length === 0) {
 				errors.push({
 					code: 'missing_required',
-					friendlyMessage: `${this.name} can't be empty!`,
+					label: this.label,
 					name: this.name,
 				})
 			}

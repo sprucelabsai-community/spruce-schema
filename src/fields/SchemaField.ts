@@ -1,6 +1,6 @@
 import AbstractEntity from '../AbstractEntity'
 import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
-import { InvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.options'
 import SpruceError from '../errors/SpruceError'
 import {
 	Schema,
@@ -272,6 +272,7 @@ export default class SchemaField<
 					if (!values) {
 						errors.push({
 							name: this.name,
+							label: this.label,
 							code: 'invalid_value',
 							friendlyMessage:
 								'You need to add `values` to the value of ' + this.name,
@@ -279,6 +280,7 @@ export default class SchemaField<
 					} else if (!schemaId) {
 						errors.push({
 							name: this.name,
+							label: this.label,
 							code: 'invalid_value',
 							friendlyMessage:
 								'You need to add `schemaId` to the value of ' + this.name,
@@ -290,6 +292,7 @@ export default class SchemaField<
 						if (!matchSchema) {
 							errors.push({
 								name: this.name,
+								label: this.label,
 								code: 'invalid_value',
 								friendlyMessage: `Could not find a schema by id '${schemaId}'${
 									version ? ` and version '${version}'` : ' with no version'
@@ -309,7 +312,7 @@ export default class SchemaField<
 							code: 'invalid_value',
 							error: err,
 							name: this.name,
-							friendlyMessage: `'${this.label ?? this.name}' isn't valid.`,
+							label: this.label,
 						})
 					}
 				}

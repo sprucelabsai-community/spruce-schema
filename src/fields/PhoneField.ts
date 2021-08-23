@@ -31,16 +31,18 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 	public validate(value: any, options?: ValidateOptions<PhoneFieldDefinition>) {
 		const errors = super.validate(value, options)
 
-		if (errors.length === 0) {
-			if (this.isRequired && `${value}`.length === 0) {
-				errors.push({
-					code: 'missing_required',
-					friendlyMessage: `${this.label ?? this.name} can't be empty!`,
-					name: this.name,
-				})
-			} else if (value && !isValidNumber(value)) {
-				errors.push({ code: 'invalid_value', name: this.name })
-			}
+		if (errors.length === 0 && this.isRequired && `${value}`.length === 0) {
+			errors.push({
+				code: 'missing_required',
+				label: this.label,
+				name: this.name,
+			})
+		} else if (errors.length === 0 && value && !isValidNumber(value)) {
+			errors.push({
+				code: 'invalid_value',
+				name: this.name,
+				friendlyMessage: 'Right now I only support US phone numbers.',
+			})
 		}
 
 		return errors

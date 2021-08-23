@@ -1,17 +1,17 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
-import SpruceError from '../../errors/SpruceError'
-import mapSchemaErrorsToParameterErrors from '../../utilities/mapSchemaErrorsToParameterErrors'
+import { InvalidFieldError } from '../../errors/error.options'
+import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
 
 export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	@test()
 	protected static async canCreateErrorMapUtil() {
-		assert.isFunction(mapSchemaErrorsToParameterErrors)
+		assert.isFunction(mapFieldErrorsToParameterErrors)
 	}
 
 	@test()
 	protected static async mapsMissingField() {
-		const err = this.Error([
+		const errs = this.Error([
 			{
 				code: 'missing_required',
 				friendlyMessage: "'First name' is required!",
@@ -19,7 +19,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapSchemaErrorsToParameterErrors(err)
+		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
@@ -29,7 +29,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async maps2MissingFields() {
-		const err = this.Error([
+		const errs = this.Error([
 			{
 				code: 'missing_required',
 				friendlyMessage: "'First name' is required!",
@@ -41,7 +41,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapSchemaErrorsToParameterErrors(err)
+		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
@@ -51,14 +51,14 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async mapsInvalidParameters() {
-		const err = this.Error([
+		const errs = this.Error([
 			{
 				code: 'invalid_value',
 				name: 'phone',
 			},
 		])
 
-		const errors = mapSchemaErrorsToParameterErrors(err)
+		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'INVALID_PARAMETERS', {
@@ -68,14 +68,14 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async mapsUnexpectedParameters() {
-		const err = this.Error([
+		const errs = this.Error([
 			{
 				code: 'unexpected_value',
 				name: 'phone',
 			},
 		])
 
-		const errors = mapSchemaErrorsToParameterErrors(err)
+		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
 		errorAssertUtil.assertError(errors[0], 'UNEXPECTED_PARAMETERS', {
@@ -85,7 +85,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 
 	@test()
 	protected static async mapsAll() {
-		const err = this.Error([
+		const errs = this.Error([
 			{
 				code: 'unexpected_value',
 				name: 'phone',
@@ -101,7 +101,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 			},
 		])
 
-		const errors = mapSchemaErrorsToParameterErrors(err)
+		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 3)
 		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
@@ -117,11 +117,6 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	}
 
 	private static Error(errors: any[]) {
-		return new SpruceError({
-			code: 'INVALID_FIELD',
-			schemaId: 'testPerson',
-			schemaName: 'A test person',
-			errors,
-		})
+		return errors as InvalidFieldError[]
 	}
 }

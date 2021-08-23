@@ -1,5 +1,5 @@
 import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/error.types'
+import { InvalidFieldError } from '../errors/error.options'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,
@@ -98,8 +98,8 @@ public static generateTemplateDetails(
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
 			errors.push({
 				code: 'missing_required',
-				friendlyMessage: `'${this.label ?? this.name}' is required!`,
 				name: this.name,
+				label: this.label,
 			})
 		}
 

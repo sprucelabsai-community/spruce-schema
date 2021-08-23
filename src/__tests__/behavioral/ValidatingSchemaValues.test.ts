@@ -261,31 +261,25 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		await super.beforeEach()
 	}
 
-	private static validateOptions = { shouldMapToParameterErrors: false }
-
 	@test()
 	protected static async canValidateBasicSchemaValues() {
-		const err = assert.doesThrow(
-			() => validateSchemaValues(personSchema, {}, this.validateOptions),
-			/'First name' is required/gi
-		)
+		const err = assert.doesThrow(() => validateSchemaValues(personSchema, {}))
 
-		assert.isEqual(err.message.substr(0, 12), '3 errors for')
+		assert.doesInclude(err.message, '3 errors')
+		assert.doesInclude(err.message, `1. 'First name' is required!`)
+		assert.doesInclude(err.message, `2. 'lastName' is required!`)
+		assert.doesInclude(err.message, `3. 'profileImages' is required!`)
 	}
 
 	@test()
 	protected static async canValidateSchemaWithArrayValues() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavColorsSchema,
-					{
-						firstName: 'tay',
-						lastName: 'ro',
-					},
-					this.validateOptions
-				),
-			/'favoriteColors' is required/gi
+				validateSchemaValues(personWithFavColorsSchema, {
+					firstName: 'tay',
+					lastName: 'ro',
+				}),
+			/`favoriteColors` is missing/gi
 		)
 	}
 
@@ -376,26 +370,22 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async failsWhenValidatingFieldsNotOnSchema() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personSchema,
-					{
-						taco: 'bravo',
-						firstName: 'first',
-						lastName: 'last',
-						profileImages: {
-							profile60: '@',
-							profile150: '@',
-							'profile60@2x': '@',
-							'profile150@2x': '@',
-						},
+				validateSchemaValues(personSchema, {
+					taco: 'bravo',
+					firstName: 'first',
+					lastName: 'last',
+					profileImages: {
+						profile60: '@',
+						profile150: '@',
+						'profile60@2x': '@',
+						'profile150@2x': '@',
 					},
-					this.validateOptions
-				),
-			/does not exist/
-		) as SpruceError
+				}),
+			/doesn't exist/
+		)
 
-		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
-			'errors[0].code': 'unexpected_value',
+		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
+			'errors[0].options.code': 'UNEXPECTED_PARAMETERS',
 		})
 
 		assert.doesInclude(err.message, 'taco')
@@ -405,20 +395,16 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async givesInvalidFieldErrorWhenValidatingEmptyArrayNestedSchemas() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavToolsSchema,
-					{
-						firstName: 'first',
-						lastName: 'last',
-						favoriteTools: [],
-					},
-					this.validateOptions
-				),
+				validateSchemaValues(personWithFavToolsSchema, {
+					firstName: 'first',
+					lastName: 'last',
+					favoriteTools: [],
+				}),
 			/'favoriteTools' must have at least 1/
-		) as SpruceError
+		)
 
-		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
-			'errors[].code': 'missing_required',
+		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
+			'errors[0].options.code': 'INVALID_PARAMETERS',
 		})
 	}
 
@@ -426,18 +412,14 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async givesInvalidFieldErrorWhenValidatingNestedSchemas() {
 		const err = assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavToolsSchema,
-					{
-						firstName: 'first',
-						lastName: 'last',
-						//@ts-ignore
-						favoriteTools: [{}],
-					},
-					this.validateOptions
-				),
+				validateSchemaValues(personWithFavToolsSchema, {
+					firstName: 'first',
+					lastName: 'last',
+					//@ts-ignore
+					favoriteTools: [{}],
+				}),
 			/'name' is required/
-		) as SpruceError
+		)
 
 		errorAssertUtil.assertError(err, 'INVALID_FIELD', {
 			errors: [{ code: 'invalid_value' }],
@@ -460,14 +442,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateArrayOfUnionValuesMissingRequired() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavToolsOrFruitSchema,
-					{
-						firstName: 'Ryan',
-						favoriteToolsOrFruit: [],
-					},
-					this.validateOptions
-				),
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					favoriteToolsOrFruit: [],
+				}),
 			/'favoriteToolsOrFruit' must have at least 1/gi
 		)
 	}
@@ -541,43 +519,39 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static async canValidateArrayOfVersionedUnionValuesAndThrowsReallyHelpfulError() {
 		/*Const err =*/
 		assert.doesThrow(() =>
-			validateSchemaValues(
-				versionedPersonWithFavToolsOrFruitSchema,
-				{
-					favoriteToolsOrFruit: [
-						{
-							schemaId: 'versionedFruit',
-							version: '1.0',
-							values: {
-								color: 'green',
-							},
+			validateSchemaValues(versionedPersonWithFavToolsOrFruitSchema, {
+				favoriteToolsOrFruit: [
+					{
+						schemaId: 'versionedFruit',
+						version: '1.0',
+						values: {
+							color: 'green',
 						},
-						{
-							schemaId: 'versionedFruit',
-							version: '1.0',
-							values: {
-								color: 'yellow',
-							},
+					},
+					{
+						schemaId: 'versionedFruit',
+						version: '1.0',
+						values: {
+							color: 'yellow',
 						},
-						{
-							schemaId: 'versionedTool',
-							version: '1.0',
-							values: {
-								size: 'wrench',
-							},
+					},
+					{
+						schemaId: 'versionedTool',
+						version: '1.0',
+						values: {
+							size: 'wrench',
 						},
-						{
-							schemaId: 'versionedTool',
-							version: '2.0',
-							values: {
-								name: 'wrench',
-							},
+					},
+					{
+						schemaId: 'versionedTool',
+						version: '2.0',
+						values: {
+							name: 'wrench',
 						},
-					],
-				},
-				this.validateOptions
-			)
-		) as SpruceError
+					},
+				],
+			})
+		)
 
 		// NOTE uncomment here and above to see error output
 		// const message = err.friendlyMessage()
@@ -589,22 +563,18 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static throwsWhenAddingExtraFieldAtTopLevel() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavToolsOrFruitSchema,
-					{
-						firstName: 'Ryan',
-						doesNotExist: true,
-						favoriteToolsOrFruit: [
-							{
-								schemaId: 'fruit',
-								values: {
-									color: 'green',
-								},
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					doesNotExist: true,
+					favoriteToolsOrFruit: [
+						{
+							schemaId: 'fruit',
+							values: {
+								color: 'green',
 							},
-						],
-					},
-					this.validateOptions
-				),
+						},
+					],
+				}),
 			/doesNotExist/
 		)
 	}
@@ -613,22 +583,18 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 	protected static throwsWhenAddingExtraFieldInNestedSchema() {
 		assert.doesThrow(
 			() =>
-				validateSchemaValues(
-					personWithFavToolsOrFruitSchema,
-					{
-						firstName: 'Ryan',
-						favoriteToolsOrFruit: [
-							{
-								schemaId: 'fruit',
-								values: {
-									doesNotExist: true,
-									color: 'green',
-								},
+				validateSchemaValues(personWithFavToolsOrFruitSchema, {
+					firstName: 'Ryan',
+					favoriteToolsOrFruit: [
+						{
+							schemaId: 'fruit',
+							values: {
+								doesNotExist: true,
+								color: 'green',
 							},
-						],
-					},
-					this.validateOptions
-				),
+						},
+					],
+				}),
 			/doesNotExist/
 		)
 	}
@@ -705,5 +671,16 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 		assert.doesInclude(err.message, 'taco')
 		assert.doesInclude(err.message, 'hey')
+	}
+
+	@test()
+	protected static invalidFieldsGiveDescriptionsOnWhySomethingIsInvalid() {
+		const err = assert.doesThrow(() =>
+			validateSchemaValues(personWithFavToolsOrFruitSchema, {
+				phone: 'cheesy',
+			})
+		)
+
+		assert.doesInclude(err.message, 'US numbers')
 	}
 }

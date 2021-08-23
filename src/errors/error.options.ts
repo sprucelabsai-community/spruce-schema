@@ -1,5 +1,4 @@
 import AbstractSpruceError, {
-	SpruceErrorOptions,
 	ErrorOptions as ISpruceErrorOptions,
 } from '@sprucelabs/error'
 import { FieldType } from '../fields/field.static.types'
@@ -11,10 +10,8 @@ export type SchemaErrorOptions =
 	| TransformationFailedErrorOptions
 	| InvalidSchemaDefinitionErrorOptions
 	| NotImplementedErrorOptions
-	| InvalidFieldOptionsErrorOptions
 	| InvalidFieldRegistrationErrorOptions
 	| VersionRequiredErrorOptions
-	| SpruceErrorOptions
 	| MissingParametersOptions
 	| InvalidParametersOptions
 	| UnexpectedParametersOptions
@@ -45,9 +42,9 @@ export interface InvalidFieldError {
 	error?: Error
 	friendlyMessage?: string
 	name: string
+	label?: string
 }
 export interface InvalidFieldErrorOptions extends ISpruceErrorOptions {
-	/** * The field did not pass validation */
 	code: 'INVALID_FIELD'
 	schemaId: string
 	schemaName?: string
@@ -55,7 +52,6 @@ export interface InvalidFieldErrorOptions extends ISpruceErrorOptions {
 }
 
 export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {
-	/** * The field could not transform the value */
 	code: 'TRANSFORMATION_ERROR'
 	fieldType: FieldType
 	incomingTypeof: string
@@ -66,29 +62,18 @@ export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {
 
 export interface InvalidSchemaDefinitionErrorOptions
 	extends ISpruceErrorOptions {
-	/** * The field could not transform the value */
 	code: 'INVALID_SCHEMA'
 	schemaId: string
 	errors: string[]
 }
 
 export interface NotImplementedErrorOptions extends ISpruceErrorOptions {
-	/** * The field could not transform the value */
 	code: 'NOT_IMPLEMENTED'
 	instructions: string
 }
 
-export interface InvalidFieldOptionsErrorOptions extends ISpruceErrorOptions {
-	/** * The field could not transform the value */
-	code: 'INVALID_FIELD_OPTIONS'
-	schemaId?: string
-	fieldName?: string
-	options: Record<string, any>
-}
-
 export interface InvalidFieldRegistrationErrorOptions
 	extends ISpruceErrorOptions {
-	/** * The field could not transform the value */
 	code: 'INVALID_FIELD_REGISTRATION'
 	package: string
 	className: string
@@ -103,27 +88,33 @@ export interface VersionRequiredErrorOptions extends ISpruceErrorOptions {
 	namespace?: string
 }
 
-export interface MissingParametersOptions extends ISpruceErrorOptions {
+interface ParamaterOptions extends ISpruceErrorOptions {
+	parameters: string[]
+	friendlyMessages?: string[]
+	errors?: InvalidFieldError[]
+}
+
+export interface MissingParametersOptions extends ParamaterOptions {
 	code: 'MISSING_PARAMETERS'
-	parameters: string[]
 }
 
-export interface InvalidParametersOptions extends ISpruceErrorOptions {
+export interface InvalidParametersOptions extends ParamaterOptions {
 	code: 'INVALID_PARAMETERS'
-	parameters: string[]
 }
 
-export interface UnexpectedParametersOptions extends ISpruceErrorOptions {
+export interface UnexpectedParametersOptions extends ParamaterOptions {
 	code: 'UNEXPECTED_PARAMETERS'
-	parameters: string[]
 }
+
+export type ValidationError = AbstractSpruceError<
+	| MissingParametersOptions
+	| InvalidParametersOptions
+	| UnexpectedParametersOptions
+>
 
 export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
 	code: 'VALIDATION_FAILED'
 	schemaId: string
-	errors: AbstractSpruceError<
-		| MissingParametersOptions
-		| InvalidParametersOptions
-		| UnexpectedParametersOptions
-	>[]
+	schemaName?: string
+	errors: ValidationError[]
 }

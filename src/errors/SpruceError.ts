@@ -3,11 +3,15 @@ import {
 	InvalidFieldErrorOptions,
 	SchemaErrorOptions,
 	ValidationFailedErrorOptions,
-} from './error.types'
+} from './error.options'
 
 export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {
 	public friendlyMessage(): string {
 		const { options } = this
+
+		if (options.friendlyMessage) {
+			return options.friendlyMessage
+		}
 
 		let message: string | undefined
 
@@ -50,12 +54,6 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				}`
 
 				break
-			case 'INVALID_FIELD_OPTIONS':
-				message = `Invalid field options for schemaId: "${options.schemaId}", fieldName: "${options.fieldName}"`
-				message += !options.options
-					? ' - **missing options**'
-					: `\n\n${JSON.stringify(options.options, null, 2).substr(0, 2000)}`
-				break
 
 			case 'VALIDATION_FAILED':
 				message = this.buildValidationFailedErrorMessage(options)
@@ -63,62 +61,49 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				break
 
 			case 'MISSING_PARAMETERS':
-				message = `${this.renderParamsPretty(options.parameters)} ${
-					options.parameters.length === 1 ? 'is' : 'are'
-				} missing!`
-				break
-
 			case 'UNEXPECTED_PARAMETERS':
-				message = `You set ${this.renderParamsPretty(
-					options.parameters
-				)}, but ${
-					options.parameters.length === 1 ? `it doesn't` : `they don't`
-				} exist.`
-				break
-
 			case 'INVALID_PARAMETERS':
-				message = `${this.renderParamsPretty(options.parameters)} ${
-					options.parameters.length === 1 ? 'is' : 'are'
-				} invalid.`
+				message = this.renderParametersWithFriendlyMessages(
+					options.parameters,
+					options.friendlyMessages
+				)
 				break
 
 			default:
 				message = this.message
 		}
 
-		// Drop on code and friendly message
-		const fullMessage = `${message}${
-			options.friendlyMessage ? `\n\n${options.friendlyMessage}` : ''
-		}`
-
-		// Handle repeating text from original message by remove it
-		return `${fullMessage}${
-			this.originalError && this.originalError.message !== fullMessage
-				? `\n\nOriginal error: ${this.originalError.message.replace(
-						message,
-						''
-				  )}`
-				: ''
-		}`
+		return message
 	}
-	private renderParamsPretty(parameters: string[]) {
-		const str = '`' + parameters.join('`, `') + '`'
 
-		return str
+	private renderParametersWithFriendlyMessages(
+		parameters: string[],
+		friendlyMessages?: string[]
+	) {
+		const friendly = (friendlyMessages ?? parameters)
+			.filter((m) => !!m)
+			.map((m) => `${m}`)
+			.join('\n')
+
+		if (!friendly) {
+			return ''
+		}
+
+		return friendly
 	}
 
 	private buildValidationFailedErrorMessage(
 		options: ValidationFailedErrorOptions
 	): string {
-		const totalErrors = options.errors.length
+		const totalErrors = this.countErrors(options)
 
 		let message = `Validating \`${
-			options.schemaId
+			options.schemaName ?? options.schemaId
 		}\` failed with ${totalErrors} error${totalErrors === 1 ? '' : 's'}.\n\n`
 
 		let c = 0
 		for (const err of options.errors) {
-			message += `${++c}. ${err.friendlyMessage()}\n`
+			message += `${++c}. ${err.message}\n`
 		}
 
 		return message
@@ -143,8 +128,8 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 
 		let message =
 			indentDepth === 0
-				? `${indention}${options.errors.length} error${
-						options.errors.length === 1 ? '' : 's'
+				? `${indention}${this.countErrors(options)} error${
+						this.countErrors(options) === 1 ? '' : 's'
 				  } for '${options.schemaId}'.\n`
 				: ``
 
@@ -175,6 +160,12 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 		})
 
 		return message.trim()
+	}
+
+	private countErrors(
+		options: InvalidFieldErrorOptions | ValidationFailedErrorOptions
+	) {
+		return 3
 	}
 
 	private buildIndention(indentDepth: number) {
