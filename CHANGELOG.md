@@ -1,3 +1,28 @@
+## [21.4.9](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.8...v21.4.9) (2021-08-18)
+
+## [21.4.8](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.7...v21.4.8) (2021-08-09)
+
+## [21.4.7](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.6...v21.4.7) (2021-08-03)
+
+## [21.4.6](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.5...v21.4.6) (2021-08-03)
+
+## [21.4.5](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.4...v21.4.5) (2021-08-02)
+
+## [21.4.4](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.3...v21.4.4) (2021-07-30)
+
+## [21.4.3](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.2...v21.4.3) (2021-07-29)
+
+## [21.4.2](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.1...v21.4.2) (2021-07-28)
+
+## [21.4.1](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.0...v21.4.1) (2021-07-26)
+
+# [21.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.3.1...v21.4.0) (2021-07-22)
+
+
+### Features
+
+* assertOptions ([f694c10](https://github.com/sprucelabsai/spruce-schema/commit/f694c10))
+
 ## [21.3.1](https://github.com/sprucelabsai/spruce-schema/compare/v21.3.0...v21.3.1) (2021-07-17)
 
 # [21.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.2.3...v21.3.0) (2021-07-10)

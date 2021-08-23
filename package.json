@@ -8,7 +8,7 @@
 		"!build/__tests__",
 		"esm"
 	],
-	"version": "21.3.1",
+	"version": "21.4.9",
 	"main": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"module": "./build/esm/index.js",
@@ -26,7 +26,7 @@
 	},
 	"scripts": {
 		"build.ci": "yarn build.tsc && yarn build.resolve-paths",
-		"build.dev": "yarn clean && yarn build.tsc ; yarn build.resolve-paths",
+		"build.dev": "yarn clean && yarn build.tsc --sourceMap ; yarn build.resolve-paths",
 		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.resolve-paths && yarn build.esm-postbuild",
 		"build.tsc": "tsc",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
@@ -45,7 +45,7 @@
 		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint | true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build.dev && yarn test",
-		"watch.build.dev": "yarn build.tsc -w",
+		"watch.build.dev": "yarn build.tsc -w --sourceMap",
 		"watch.lint": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn lint'",
 		"watch.tsc": "tsc -w"
 	},
@@ -53,7 +53,7 @@
 		"@sprucelabs/error": "latest",
 		"email-validator": "^2.0.4",
 		"lodash": "^4.17.21",
-		"mime-db": "^1.48.0",
+		"mime-db": "^1.49.0",
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
@@ -64,15 +64,15 @@
 		"@sprucelabs/semantic-release": "latest",
 		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
-		"@types/lodash": "^4.14.171",
+		"@types/lodash": "^4.14.172",
 		"@types/mime-db": "^1.43.1",
-		"chokidar-cli": "^2.1.0",
-		"eslint": "^7.31.0",
+		"chokidar-cli": "^3.0.0",
+		"eslint": "^7.32.0",
 		"eslint-config-spruce": "latest",
 		"jest": "^27.0.6",
 		"jest-circus": "^27.0.6",
 		"prettier": "^2.3.2",
-		"ts-node": "^10.1.0",
+		"ts-node": "^10.2.1",
 		"typescript": "^4.3.5",
 		"yarn-upgrade-all": "^0.5.4"
 	},
