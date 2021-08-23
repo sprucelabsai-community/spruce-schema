@@ -1,3 +1,15 @@
+# [22.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.9...v22.0.0) (2021-08-23)
+
+
+### Breaking Changes
+
+* enhanced error reporting and standardization ([cf3fc91](https://github.com/sprucelabsai/spruce-schema/commit/cf3fc91))
+
+
+### Features
+
+* error reporting changes ([67a050b](https://github.com/sprucelabsai/spruce-schema/commit/67a050b))
+
 ## [21.4.9](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.8...v21.4.9) (2021-08-18)
 
 ## [21.4.8](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.7...v21.4.8) (2021-08-09)
