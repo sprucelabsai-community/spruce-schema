@@ -1,3 +1,10 @@
+# [23.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v22.0.0...v23.0.0) (2021-08-24)
+
+
+### Breaking Changes
+
+* no more exporting error options ([9f0bee7](https://github.com/sprucelabsai/spruce-schema/commit/9f0bee7))
+
 # [22.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v21.4.9...v22.0.0) (2021-08-23)
 
 
