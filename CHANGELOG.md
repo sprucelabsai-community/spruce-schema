@@ -1,3 +1,11 @@
+# [23.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v23.0.0...v23.1.0) (2021-08-24)
+
+
+### Features
+
+* all error types exported ([7574c37](https://github.com/sprucelabsai/spruce-schema/commit/7574c37))
+* invalid field error restored ([74753b5](https://github.com/sprucelabsai/spruce-schema/commit/74753b5))
+
 # [23.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v22.0.0...v23.0.0) (2021-08-24)
 
 
