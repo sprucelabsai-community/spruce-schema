@@ -24,7 +24,6 @@ export * from './schemas.static.types'
 
 export * from './fields'
 
-export * from './errors/error.options'
 export { default as SchemaError } from './errors/SpruceError'
 
 export { default as buildErrorSchema } from './utilities/buildErrorSchema'
