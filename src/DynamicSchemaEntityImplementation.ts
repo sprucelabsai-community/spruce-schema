@@ -1,6 +1,6 @@
 import { FieldMap } from '#spruce/schemas/fields/fields.types'
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldError } from './errors/error.options'
+import { InvalidFieldError } from './errors/options.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {

@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
-import { InvalidFieldError } from '../../errors/error.options'
+import { InvalidFieldError } from '../../errors/options.types'
 import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
 
 export default class ErrorMapUtilTest extends AbstractSpruceTest {

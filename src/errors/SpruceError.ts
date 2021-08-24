@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { SchemaErrorOptions } from './error.options'
+import { SchemaErrorOptions } from './options.types'
 import { ValidateErrorMessageFormatter } from './ValidateErrorMessageFormatter'
 
 export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions> {

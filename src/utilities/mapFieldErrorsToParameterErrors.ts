@@ -1,4 +1,4 @@
-import { InvalidFieldError, ValidationError } from '../errors/error.options'
+import { InvalidFieldError, ValidationError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 
 export default function mapFieldErrorsToParameterErrors(

@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
-import { ValidationFailedErrorOptions } from '../../errors/error.options'
+import { ValidationFailedErrorOptions } from '../../errors/options.types'
 import SpruceError from '../../errors/SpruceError'
 import {
 	RenderOptions,

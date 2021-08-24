@@ -1,5 +1,5 @@
 import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/error.options'
+import { InvalidFieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,

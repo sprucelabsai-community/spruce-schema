@@ -1,6 +1,6 @@
 import AbstractEntity from '../AbstractEntity'
 import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
-import { InvalidFieldError } from '../errors/error.options'
+import { InvalidFieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	Schema,

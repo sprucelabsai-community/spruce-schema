@@ -3,7 +3,7 @@ import {
 	FieldErrorCode,
 	InvalidFieldError,
 	ValidationFailedErrorOptions,
-} from './error.options'
+} from './options.types'
 import SpruceError from './SpruceError'
 
 export interface RenderOptions {

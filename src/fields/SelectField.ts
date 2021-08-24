@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/error.options'
+import { InvalidFieldError } from '../errors/options.types'
 import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
