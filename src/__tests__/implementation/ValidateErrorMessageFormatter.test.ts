@@ -190,7 +190,7 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 			]),
 		})
 
-		assert.doesInclude(msg, '1. This is crazy!')
+		assert.doesInclude(msg, '1. (firstName) This is crazy!')
 	}
 
 	private static renderError(
