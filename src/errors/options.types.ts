@@ -21,6 +21,14 @@ export type FieldErrorCode =
 	| 'invalid_value'
 	| 'unexpected_value'
 
+export interface InvalidFieldError {
+	code: FieldErrorCode
+	error?: Error
+	friendlyMessage?: string
+	name: string
+	label?: string
+}
+
 export interface SchemaErrorOptionsNotFound extends ISpruceErrorOptions {
 	/** * Could not find a schema by id */
 	code: 'SCHEMA_NOT_FOUND'
@@ -35,13 +43,6 @@ export interface DuplicateSchemaErrorOptions extends ISpruceErrorOptions {
 	schemaId: string
 	version?: string
 	namespace?: string
-}
-export interface InvalidFieldError {
-	code: FieldErrorCode
-	error?: Error
-	friendlyMessage?: string
-	name: string
-	label?: string
 }
 
 export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {
@@ -84,7 +85,7 @@ export interface VersionRequiredErrorOptions extends ISpruceErrorOptions {
 interface ParamaterOptions extends ISpruceErrorOptions {
 	parameters: string[]
 	friendlyMessages?: string[]
-	errors?: InvalidFieldError[]
+	fieldErrors?: InvalidFieldError[]
 }
 
 export interface MissingParametersOptions extends ParamaterOptions {

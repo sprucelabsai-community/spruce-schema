@@ -14,7 +14,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'MISSING_PARAMETERS',
 				parameters: missingParameters.map((p) => p.name),
-				errors: missingParameters,
+				fieldErrors: missingParameters,
 			}) as ValidationError
 		)
 	}
@@ -24,7 +24,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'INVALID_PARAMETERS',
 				parameters: invalidParameters.map((p) => p.name),
-				errors: invalidParameters,
+				fieldErrors: invalidParameters,
 			}) as ValidationError
 		)
 	}
@@ -34,7 +34,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'UNEXPECTED_PARAMETERS',
 				parameters: unexpectedParamaters.map((p) => p.name),
-				errors: unexpectedParamaters,
+				fieldErrors: unexpectedParamaters,
 			}) as ValidationError
 		)
 	}

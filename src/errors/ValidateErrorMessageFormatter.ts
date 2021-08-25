@@ -53,7 +53,7 @@ export class ValidateErrorMessageFormatter {
 			lines.push(formatter.render({ shouldRenderHeadline: false }))
 		} else {
 			const msg = fieldError.friendlyMessage
-				? `${count}. ${fieldError.friendlyMessage}`
+				? `${count}. (${name}) ${fieldError.friendlyMessage}`
 				: `${count}. '${name}' is ${this.fieldErrorCodeToFriendly(
 						fieldError.code
 				  )}.`
@@ -84,7 +84,7 @@ export class ValidateErrorMessageFormatter {
 		let count = 0
 
 		for (const error of this.error.options.errors) {
-			const fieldErrors = error.options.errors ?? []
+			const fieldErrors = error.options.fieldErrors ?? []
 			for (const fieldError of fieldErrors) {
 				const subError = fieldError.error
 				if (subError) {
@@ -119,7 +119,7 @@ export class ValidateErrorMessageFormatter {
 		let count = 1
 		const lines: string[] = []
 		for (const error of errors) {
-			for (const fieldError of error.options.errors ?? []) {
+			for (const fieldError of error.options.fieldErrors ?? []) {
 				lines.push(this.renderError({ fieldError, count }))
 				count++
 			}
