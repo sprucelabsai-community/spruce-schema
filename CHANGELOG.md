@@ -1,3 +1,10 @@
+# [24.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v23.1.0...v24.0.0) (2021-08-25)
+
+
+### Breaking Changes
+
+* fieldError key change ([ab4197f](https://github.com/sprucelabsai/spruce-schema/commit/ab4197f))
+
 # [23.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v23.0.0...v23.1.0) (2021-08-24)
 
 
