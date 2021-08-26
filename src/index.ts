@@ -20,6 +20,8 @@ import { FieldRegistration } from './utilities/registerFieldType'
 
 export default StaticSchemaEntityImplementation
 
+export { default as validationErrorAssertUtil } from './tests/validationErrorAssert.utility'
+
 export * from './schemas.static.types'
 
 export * from './fields'

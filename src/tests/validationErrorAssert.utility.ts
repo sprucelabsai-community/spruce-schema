@@ -12,6 +12,7 @@ type ValidationErrorAssertOptions = {
 	invalid?: string[]
 	unexpected?: string[]
 }
+
 export type ValidationErrorAssertOptionsKey = keyof ValidationErrorAssertOptions
 function buildFailMessage(key: string, missing: string): string | undefined {
 	return `Expected to be ${key} '${missing}', but I found it!`
