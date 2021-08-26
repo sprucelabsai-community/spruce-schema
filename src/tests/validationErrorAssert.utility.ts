@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { assert } from '@sprucelabs/test'
+import { assert, assertUtil } from '@sprucelabs/test'
 import {
 	FieldErrorCode,
 	SchemaErrorOptions,
@@ -14,9 +14,21 @@ type ValidationErrorAssertOptions = {
 }
 
 export type ValidationErrorAssertOptionsKey = keyof ValidationErrorAssertOptions
-function buildFailMessage(key: string, missing: string): string | undefined {
-	return `Expected to be ${key} '${missing}', but I found it!`
+function buildFailMessage(
+	code: FieldErrorCode,
+	name: string,
+	options: Record<string, any>
+): string | undefined {
+	const templates: Record<FieldErrorCode, string> = {
+		INVALID_PARAMETER: `Expected '${name}' to be invalid. But it appears it is.`,
+		MISSING_PARAMETER: `I found '${name}' even though it should be reported as missing.`,
+		UNEXPECTED_PARAMETER: `I was expecting to unexpectedly find '${name}', but I didn't.`,
+	}
+	return `${templates[code]}\n\nHere is the error I got: ${assertUtil.stringify(
+		options
+	)}`
 }
+
 function flattenFields(
 	fieldErrors: FieldError[],
 	flattened: Record<string, any>,
@@ -84,7 +96,7 @@ const validationErrorAssertUtil = {
 			for (const lookup of options?.[key] ?? []) {
 				const match = flattened[lookup] === code
 				if (!match) {
-					assert.fail(buildFailMessage(key, lookup))
+					assert.fail(buildFailMessage(code, lookup, error.options))
 				}
 			}
 		}

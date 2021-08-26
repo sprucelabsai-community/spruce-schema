@@ -129,7 +129,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 						missing: ['cheesy'],
 					}
 				),
-			/missing.*?cheesy/gis
+			/missing|cheesy/gis
 		)
 	}
 
@@ -137,13 +137,13 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 		'fails when matches only 1 missing',
 		'MISSING_PARAMETER',
 		'missing',
-		/missing.*?cheesy/
+		/missing|cheesy/
 	)
 	@test(
 		'fails when matches only 1 invalid',
 		'INVALID_PARAMETER',
 		'invalid',
-		/invalid.*?cheesy/
+		/invalid|cheesy/
 	)
 	@test(
 		'fails when matches only 1 unexpected',
