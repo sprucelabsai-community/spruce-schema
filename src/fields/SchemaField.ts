@@ -1,6 +1,6 @@
 import AbstractEntity from '../AbstractEntity'
 import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	Schema,
@@ -215,7 +215,7 @@ export default class SchemaField<
 	public validate(
 		value: any,
 		options?: ValidateOptions<SchemaFieldFieldDefinition>
-	): InvalidFieldError[] {
+	): FieldError[] {
 		const errors = super.validate(value, options)
 
 		// do not validate schemas by default, very heavy and only needed when explicitly asked to
@@ -225,8 +225,9 @@ export default class SchemaField<
 				return []
 			} catch (err) {
 				errors.push({
-					error: err,
-					code: 'invalid_value',
+					originalError: err,
+					errors: err.options.errors,
+					code: 'INVALID_PARAMETER',
 					name: this.name,
 				})
 			}
@@ -235,7 +236,7 @@ export default class SchemaField<
 		if (errors.length === 0 && value) {
 			if (typeof value !== 'object') {
 				errors.push({
-					code: 'invalid_value',
+					code: 'INVALID_PARAMETER',
 					name: this.name,
 					friendlyMessage: `${this.label ?? this.name} must be an object!`,
 				})
@@ -250,14 +251,15 @@ export default class SchemaField<
 					)
 				} catch (err) {
 					errors.push({
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						name: this.name,
-						error: err,
+						originalError: err,
+						friendlyMessage: err.message,
 					})
 				}
 
 				if (schemas && schemas.length === 0) {
-					errors.push({ code: 'missing_required', name: this.name })
+					errors.push({ code: 'MISSING_PARAMETER', name: this.name })
 				}
 
 				// if we are validating schemas, we look them all up by id
@@ -273,7 +275,7 @@ export default class SchemaField<
 						errors.push({
 							name: this.name,
 							label: this.label,
-							code: 'invalid_value',
+							code: 'INVALID_PARAMETER',
 							friendlyMessage:
 								'You need to add `values` to the value of ' + this.name,
 						})
@@ -281,7 +283,7 @@ export default class SchemaField<
 						errors.push({
 							name: this.name,
 							label: this.label,
-							code: 'invalid_value',
+							code: 'INVALID_PARAMETER',
 							friendlyMessage:
 								'You need to add `schemaId` to the value of ' + this.name,
 						})
@@ -293,7 +295,7 @@ export default class SchemaField<
 							errors.push({
 								name: this.name,
 								label: this.label,
-								code: 'invalid_value',
+								code: 'INVALID_PARAMETER',
 								friendlyMessage: `Could not find a schema by id '${schemaId}'${
 									version ? ` and version '${version}'` : ' with no version'
 								}.`,
@@ -309,9 +311,10 @@ export default class SchemaField<
 						instance.validate()
 					} catch (err) {
 						errors.push({
-							code: 'invalid_value',
-							error: err,
+							code: 'INVALID_PARAMETER',
+							errors: err.options.errors,
 							name: this.name,
+							originalError: err,
 							label: this.label,
 						})
 					}

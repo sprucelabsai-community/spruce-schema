@@ -1,6 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import validationErrorAssertUtil from '../../tests/validationErrorAssert.utility'
 import buildSchema from '../../utilities/buildSchema'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
 
@@ -71,8 +72,8 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 			validateSchemaValues(zeroMinTwoRequiredFields, {})
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
-			'errors[0].options.parameters': ['name', 'favoriteColors'],
+		validationErrorAssertUtil.assertError(err, {
+			missing: ['name', 'favoriteColors'],
 		})
 	}
 

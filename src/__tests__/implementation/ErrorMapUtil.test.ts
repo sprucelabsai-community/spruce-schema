@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
-import { InvalidFieldError } from '../../errors/options.types'
+import { FieldError } from '../../errors/options.types'
 import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
 
 export default class ErrorMapUtilTest extends AbstractSpruceTest {
@@ -53,7 +53,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsInvalidParameters() {
 		const errs = this.Error([
 			{
-				code: 'invalid_value',
+				code: 'INVALID_PARAMETER',
 				name: 'phone',
 			},
 		])
@@ -91,7 +91,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 				name: 'phone',
 			},
 			{
-				code: 'invalid_value',
+				code: 'INVALID_PARAMETER',
 				name: 'email',
 			},
 			{
@@ -117,6 +117,6 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	}
 
 	private static Error(errors: any[]) {
-		return errors as InvalidFieldError[]
+		return errors as FieldError[]
 	}
 }

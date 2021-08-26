@@ -1,8 +1,8 @@
-import { InvalidFieldError, ValidationError } from '../errors/options.types'
+import { FieldError, ValidationError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 
 export default function mapFieldErrorsToParameterErrors(
-	fieldErrors: InvalidFieldError[]
+	fieldErrors: FieldError[]
 ): ValidationError[] {
 	const { missingParameters, invalidParameters, unexpectedParamaters } =
 		pullParamaterIssues(fieldErrors)
@@ -14,7 +14,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'MISSING_PARAMETERS',
 				parameters: missingParameters.map((p) => p.name),
-				fieldErrors: missingParameters,
+				errors: missingParameters,
 			}) as ValidationError
 		)
 	}
@@ -24,7 +24,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'INVALID_PARAMETERS',
 				parameters: invalidParameters.map((p) => p.name),
-				fieldErrors: invalidParameters,
+				errors: invalidParameters,
 			}) as ValidationError
 		)
 	}
@@ -34,7 +34,7 @@ export default function mapFieldErrorsToParameterErrors(
 			new SpruceError({
 				code: 'UNEXPECTED_PARAMETERS',
 				parameters: unexpectedParamaters.map((p) => p.name),
-				fieldErrors: unexpectedParamaters,
+				errors: unexpectedParamaters,
 			}) as ValidationError
 		)
 	}
@@ -43,16 +43,16 @@ export default function mapFieldErrorsToParameterErrors(
 }
 
 function pullParamaterIssues(
-	errors: InvalidFieldError[],
+	errors: FieldError[],
 	prefix = ''
 ): {
-	missingParameters: InvalidFieldError[]
-	invalidParameters: InvalidFieldError[]
-	unexpectedParamaters: InvalidFieldError[]
+	missingParameters: FieldError[]
+	invalidParameters: FieldError[]
+	unexpectedParamaters: FieldError[]
 } {
-	const missingParameters: InvalidFieldError[] = []
-	const invalidParameters: InvalidFieldError[] = []
-	const unexpectedParamaters: InvalidFieldError[] = []
+	const missingParameters: FieldError[] = []
+	const invalidParameters: FieldError[] = []
+	const unexpectedParamaters: FieldError[] = []
 
 	errors.forEach((fieldError: any) => {
 		const fieldName = prefix ? `${prefix}.${fieldError.name}` : fieldError.name
@@ -62,7 +62,7 @@ function pullParamaterIssues(
 				parameter: fieldName,
 				...fieldError,
 			})
-		} else if (fieldError.code === 'invalid_value') {
+		} else if (fieldError.code === 'INVALID_PARAMETER') {
 			invalidParameters.push({
 				parameter: fieldName,
 				...fieldError,

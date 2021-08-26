@@ -13,6 +13,6 @@ export default class TextFieldTest extends AbstractSchemaTest {
 		const errors = field.validate('')
 
 		assert.isAbove(errors.length, 0)
-		assert.isEqual(errors[0].code, 'missing_required')
+		assert.isEqual(errors[0].code, 'MISSING_PARAMETER')
 	}
 }

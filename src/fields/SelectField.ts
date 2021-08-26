@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
@@ -28,15 +28,18 @@ export default class SelectField<
 		}
 	}
 
-	public validate(value: any): InvalidFieldError[] {
-		const validchoices = selectChoicesToHash(this.definition.options.choices)
+	public validate(value: any): FieldError[] {
+		const validChoices = selectChoicesToHash(this.definition.options.choices)
 
 		const errors = super.validate(value)
 
-		if (value && !validchoices[value]) {
+		if (value && !validChoices[value]) {
 			errors.push({
-				code: 'invalid_value',
+				code: 'INVALID_PARAMETER',
 				name: this.name,
+				friendlyMessage: `Valid choices are: '${Object.keys(validChoices).join(
+					"','"
+				)}'`,
 			})
 		}
 

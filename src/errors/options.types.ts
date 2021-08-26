@@ -17,14 +17,15 @@ export type SchemaErrorOptions =
 	| ValidationFailedErrorOptions
 
 export type FieldErrorCode =
-	| 'missing_required'
-	| 'invalid_value'
-	| 'unexpected_value'
+	| 'MISSING_PARAMETER'
+	| 'INVALID_PARAMETER'
+	| 'UNEXPECTED_PARAMETER'
 
-export interface InvalidFieldError {
+export interface FieldError {
 	code: FieldErrorCode
-	error?: Error
+	errors?: FieldError[]
 	friendlyMessage?: string
+	originalError?: Error
 	name: string
 	label?: string
 }
@@ -50,7 +51,7 @@ export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {
 	fieldType: FieldType
 	incomingTypeof: string
 	incomingValue: string
-	errors?: InvalidFieldError[]
+	errors?: FieldError[]
 	name: string
 }
 
@@ -85,7 +86,7 @@ export interface VersionRequiredErrorOptions extends ISpruceErrorOptions {
 interface ParamaterOptions extends ISpruceErrorOptions {
 	parameters: string[]
 	friendlyMessages?: string[]
-	fieldErrors?: InvalidFieldError[]
+	errors?: FieldError[]
 }
 
 export interface MissingParametersOptions extends ParamaterOptions {
@@ -100,15 +101,15 @@ export interface UnexpectedParametersOptions extends ParamaterOptions {
 	code: 'UNEXPECTED_PARAMETERS'
 }
 
+export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
+	code: 'VALIDATION_FAILED'
+	schemaId: string
+	schemaName?: string
+	errors: FieldError[]
+}
+
 export type ValidationError = AbstractSpruceError<
 	| MissingParametersOptions
 	| InvalidParametersOptions
 	| UnexpectedParametersOptions
 >
-
-export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
-	code: 'VALIDATION_FAILED'
-	schemaId: string
-	schemaName?: string
-	errors: ValidationError[]
-}

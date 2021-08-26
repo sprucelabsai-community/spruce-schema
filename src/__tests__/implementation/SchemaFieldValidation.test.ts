@@ -12,14 +12,14 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 		this.personSchema = personSchema
 	}
 
-	@test('fails on non-object', true, ['invalid_value'])
+	@test('fails on non-object', true, ['INVALID_PARAMETER'])
 	@test(
 		'passes because everything has name and a string is good',
 		{ name: 'cheese!' },
 		[]
 	)
 	@test("knows it's missing the name and name is required", { taco: true }, [
-		'invalid_value',
+		'INVALID_PARAMETER',
 	])
 	protected static async testNonUnionValidation(
 		value: any,
@@ -67,9 +67,11 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 			values: {},
 		}
 
-		const codes = optionalCarOrTruckField.validate(value)
+		const errors = optionalCarOrTruckField.validate(value)
 
-		assert.doesInclude(codes[0].error?.message, /'name' is required/)
+		assert.isEqual(errors[0].code, 'INVALID_PARAMETER')
+		assert.isEqual(errors[0].errors?.[0]?.code, 'MISSING_PARAMETER')
+		assert.isEqual(errors[0].errors?.[0]?.name, 'name')
 	}
 
 	@test()

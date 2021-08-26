@@ -1,5 +1,5 @@
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldError } from './errors/options.types'
+import { FieldError } from './errors/options.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -21,7 +21,6 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
-import mapFieldErrorsToParameterErrors from './utilities/mapFieldErrorsToParameterErrors'
 import normalizeFieldValue, {
 	normalizeValueToArray,
 } from './utilities/normalizeFieldValue'
@@ -142,7 +141,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	}
 
 	public validate(options: SchemaValidateOptions<S> = {}) {
-		const errors: InvalidFieldError[] = []
+		const errors: FieldError[] = []
 
 		const extraFields: string[] = this.pluckExtraFields(
 			this.values,
@@ -153,7 +152,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 			extraFields.forEach((name) => {
 				errors.push({
 					name,
-					code: 'unexpected_value',
+					code: 'UNEXPECTED_PARAMETER',
 					friendlyMessage: `\`${name}\` does not exist.`,
 				})
 			})
@@ -169,7 +168,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 				(!this.values[name] || valueArray.length < (field.minArrayLength ?? 1))
 			) {
 				errors.push({
-					code: !this.values[name] ? 'missing_required' : 'invalid_value',
+					code: !this.values[name] ? 'MISSING_PARAMETER' : 'INVALID_PARAMETER',
 					name,
 					friendlyMessage: !this.values[name]
 						? `'${field.label ?? field.name}' is required!`
@@ -204,7 +203,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 				code: 'VALIDATION_FAILED',
 				schemaId: this.schemaId,
 				schemaName: this.name,
-				errors: mapFieldErrorsToParameterErrors(errors),
+				errors,
 			})
 		}
 	}

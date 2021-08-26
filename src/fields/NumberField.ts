@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -40,10 +40,10 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
 		return numberValue
 	}
 
-	private buildNaNError(msg: string): InvalidFieldError {
+	private buildNaNError(msg: string): FieldError {
 		return {
 			friendlyMessage: msg,
-			code: 'invalid_value',
+			code: 'INVALID_PARAMETER',
 			name: this.name,
 		}
 	}

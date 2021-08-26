@@ -3,10 +3,10 @@ import FieldFactory from '../../factories/FieldFactory'
 
 export default class EmailFieldTest extends AbstractSpruceTest {
 	@test('fails with obviously bad email', 'email', [
-		{ code: 'invalid_value', name: 'testField' },
+		{ code: 'INVALID_PARAMETER', name: 'testField' },
 	])
 	@test('fails with barely bad email', 'email@email', [
-		{ code: 'invalid_value', name: 'testField' },
+		{ code: 'INVALID_PARAMETER', name: 'testField' },
 	])
 	@test('passes with .com email', 'email@email.com', [])
 	@test('passes with .ai email', 'email@email.ai', [])

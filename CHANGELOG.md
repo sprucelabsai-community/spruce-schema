@@ -769,7 +769,7 @@
 
 ### Breaking Changes
 
-* invalid_value now standard error key for validation errors ([0d663e6](https://github.com/sprucelabsai/spruce-schema/commit/0d663e6))
+* INVALID_PARAMETER now standard error key for validation errors ([0d663e6](https://github.com/sprucelabsai/spruce-schema/commit/0d663e6))
 
 ## [12.4.174](https://github.com/sprucelabsai/spruce-schema/compare/v12.4.173...v12.4.174) (2020-10-06)
 

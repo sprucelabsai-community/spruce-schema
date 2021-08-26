@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -42,8 +42,8 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 	public validate(
 		value: any,
 		_?: ValidateOptions<FileFieldDefinition>
-	): InvalidFieldError[] {
-		const errors: InvalidFieldError[] = []
+	): FieldError[] {
+		const errors: FieldError[] = []
 		try {
 			const file = this.toValueType(value)
 			if (!file.ext && file.path) {
@@ -56,14 +56,19 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 
 				if (isDirExists) {
 					errors.push({
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						friendlyMessage: `${file.path} is not a directory!`,
 						name: this.name,
 					})
 				}
 			}
 		} catch (err) {
-			errors.push({ code: 'invalid_value', error: err, name: this.name })
+			errors.push({
+				code: 'INVALID_PARAMETER',
+				originalError: err,
+				name: this.name,
+				friendlyMessage: err.message,
+			})
 		}
 
 		return errors

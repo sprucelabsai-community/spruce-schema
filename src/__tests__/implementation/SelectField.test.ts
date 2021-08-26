@@ -107,7 +107,7 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 
 		const results = field.validate('cheese')
 		assert.isLength(results, 1)
-		assert.isEqual(results[0].code, 'invalid_value')
+		assert.isEqual(results[0].code, 'INVALID_PARAMETER')
 	}
 
 	@test()
@@ -144,6 +144,6 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 		const results = field.validate(undefined)
 
 		assert.isLength(results, 1)
-		assert.isEqual(results[0].code, 'missing_required')
+		assert.isEqual(results[0].code, 'MISSING_PARAMETER')
 	}
 }

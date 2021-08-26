@@ -33,16 +33,16 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
 
 		if (errors.length === 0 && this.isRequired && `${value}`.length === 0) {
 			errors.push({
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				label: this.label,
 				name: this.name,
 			})
 		} else if (errors.length === 0 && value && !isValidNumber(value)) {
 			errors.push({
-				code: 'invalid_value',
+				code: 'INVALID_PARAMETER',
 				name: this.name,
 				label: this.label,
-				friendlyMessage: `'${this.name}' needs to be a valid US phone number.`,
+				friendlyMessage: `Phone numbers needs to be a valid US numbers.`,
 			})
 		}
 

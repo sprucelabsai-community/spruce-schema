@@ -1,7 +1,7 @@
 import AbstractSpruceError from '@sprucelabs/error'
 import {
 	FieldErrorCode,
-	InvalidFieldError,
+	FieldError,
 	ValidationFailedErrorOptions,
 } from './options.types'
 import SpruceError from './SpruceError'
@@ -12,12 +12,8 @@ export interface RenderOptions {
 }
 export class ValidateErrorMessageFormatter {
 	private error: AbstractSpruceError<ValidationFailedErrorOptions>
-	private namePrefix?: string
 
-	public constructor(
-		error: AbstractSpruceError<ValidationFailedErrorOptions>,
-		options?: { namePrefix?: string }
-	) {
+	public constructor(error: AbstractSpruceError<ValidationFailedErrorOptions>) {
 		if (!error) {
 			throw new SpruceError({
 				code: 'MISSING_PARAMETERS',
@@ -32,25 +28,28 @@ export class ValidateErrorMessageFormatter {
 			})
 		}
 
-		this.namePrefix = options?.namePrefix
 		this.error = error
 	}
 
 	private renderError(options: {
-		fieldError: InvalidFieldError
+		fieldError: FieldError
 		count: number
+		namePrefix?: string
 	}) {
-		const { fieldError, count } = options
+		const { fieldError, count: countOption, namePrefix } = options
+		let count = countOption
+
 		const lines: string[] = []
 
-		const name = this.renderFieldName(fieldError)
+		const name = this.renderFieldName(fieldError, namePrefix)
 
-		if (fieldError?.error) {
-			const formatter = new ValidateErrorMessageFormatter(
-				fieldError.error as any,
-				{ namePrefix: name }
-			)
-			lines.push(formatter.render({ shouldRenderHeadline: false }))
+		if (fieldError?.errors) {
+			for (const error of fieldError.errors) {
+				lines.push(
+					this.renderError({ fieldError: error, count, namePrefix: name })
+				)
+				count++
+			}
 		} else {
 			const msg = fieldError.friendlyMessage
 				? `${count}. (${name}) ${fieldError.friendlyMessage}`
@@ -64,38 +63,36 @@ export class ValidateErrorMessageFormatter {
 		return lines.join('\n')
 	}
 
-	private renderFieldName(fieldError: InvalidFieldError) {
-		return this.namePrefix
-			? `${this.namePrefix}.${fieldError.name}`
-			: fieldError.name
+	private renderFieldName(fieldError: FieldError, namePrefix?: string) {
+		return namePrefix ? `${namePrefix}.${fieldError.name}` : fieldError.name
 	}
 
 	private fieldErrorCodeToFriendly(code: FieldErrorCode) {
 		const map: Record<FieldErrorCode, string> = {
-			invalid_value: 'invalid',
-			missing_required: 'required',
-			unexpected_value: 'does not exist',
+			INVALID_PARAMETER: 'invalid',
+			MISSING_PARAMETER: 'required',
+			UNEXPECTED_PARAMETER: 'does not exist',
 		}
 
 		return map[code]
 	}
 
 	private getTotalErrors() {
-		let count = 0
+		const errors = this.error.options.errors
+		const count = this.countErrors(errors)
 
-		for (const error of this.error.options.errors) {
-			const fieldErrors = error.options.fieldErrors ?? []
-			for (const fieldError of fieldErrors) {
-				const subError = fieldError.error
-				if (subError) {
-					const formatter = new ValidateErrorMessageFormatter(subError as any)
-					count += formatter.getTotalErrors()
-				} else {
-					count += 1
-				}
+		return count
+	}
+
+	private countErrors(errors: FieldError[]) {
+		let count = 0
+		for (const error of errors) {
+			if (error.errors) {
+				count += this.countErrors(error.errors)
+			} else {
+				count += 1
 			}
 		}
-
 		return count
 	}
 
@@ -119,10 +116,8 @@ export class ValidateErrorMessageFormatter {
 		let count = 1
 		const lines: string[] = []
 		for (const error of errors) {
-			for (const fieldError of error.options.fieldErrors ?? []) {
-				lines.push(this.renderError({ fieldError, count }))
-				count++
-			}
+			lines.push(this.renderError({ fieldError: error, count }))
+			count++
 		}
 
 		message += lines.join('\n')

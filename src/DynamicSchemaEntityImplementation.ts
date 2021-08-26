@@ -1,6 +1,6 @@
 import { FieldMap } from '#spruce/schemas/fields/fields.types'
 import AbstractEntity from './AbstractEntity'
-import { InvalidFieldError } from './errors/options.types'
+import { FieldError } from './errors/options.types'
 import SpruceError from './errors/SpruceError'
 import FieldFactory from './factories/FieldFactory'
 import {
@@ -20,7 +20,6 @@ import {
 	DynamicSchemaValidateOptions,
 	DynamicSchemaNormalizeOptions,
 } from './schemas.static.types'
-import mapFieldErrorsToParameterErrors from './utilities/mapFieldErrorsToParameterErrors'
 import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntityImplementation<
@@ -71,7 +70,7 @@ export default class DynamicSchemaEntityImplementation<
 	}
 
 	public validate(options: DynamicSchemaValidateOptions<string> = {}): void {
-		const errors: InvalidFieldError[] = []
+		const errors: FieldError[] = []
 		const originalName = this.dynamicField.name
 
 		this.getNamedFields(options).forEach((namedField) => {
@@ -97,7 +96,7 @@ export default class DynamicSchemaEntityImplementation<
 				code: 'VALIDATION_FAILED',
 				schemaId: this.schemaId,
 				schemaName: this.name,
-				errors: mapFieldErrorsToParameterErrors(errors),
+				errors,
 			})
 		}
 	}

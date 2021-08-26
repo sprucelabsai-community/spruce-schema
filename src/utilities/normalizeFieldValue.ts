@@ -3,12 +3,11 @@ import {
 	FieldDefinitions,
 	FieldDefinitionMap,
 } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import { FieldDefinitionValueType, IField } from '../fields'
 import { SchemasById } from '../fields/field.static.types'
 import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
-import mapFieldErrorsToParameterErrors from './mapFieldErrorsToParameterErrors'
 
 export default function normalizeFieldValue<
 	F extends Fields,
@@ -56,7 +55,7 @@ export default function normalizeFieldValue<
 		}
 	}
 
-	let errors: InvalidFieldError[] = []
+	let errors: FieldError[] = []
 	if (validate) {
 		localValue.forEach((value) => {
 			errors = [
@@ -72,7 +71,7 @@ export default function normalizeFieldValue<
 		throw new SpruceError({
 			code: 'VALIDATION_FAILED',
 			schemaId,
-			errors: mapFieldErrorsToParameterErrors(errors),
+			errors,
 			schemaName,
 		})
 	}

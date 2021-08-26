@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,
@@ -25,13 +25,13 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 	public validate(
 		value: any,
 		options: ValidateOptions<TextFieldDefinition>
-	): InvalidFieldError[] {
+	): FieldError[] {
 		const errors = super.validate(value, options)
 
 		if (errors.length === 0) {
 			if (value && typeof this.convertToString(value) !== 'string') {
 				errors.push({
-					code: 'invalid_value',
+					code: 'INVALID_PARAMETER',
 					name: this.name,
 					label: this.label,
 					friendlyMessage: `${this.name} should be a string!`,
@@ -39,7 +39,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 			}
 			if (this.isRequired && `${value}`.length === 0) {
 				errors.push({
-					code: 'missing_required',
+					code: 'MISSING_PARAMETER',
 					label: this.label,
 					name: this.name,
 				})
@@ -71,10 +71,10 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
 			incomingValue: value,
 			errors: [
 				{
-					error: new Error(
-						`${JSON.stringify(value)} could not be converted to a string.`
-					),
-					code: 'invalid_value',
+					friendlyMessage: `${JSON.stringify(
+						value
+					)} could not be converted to a string.`,
+					code: 'INVALID_PARAMETER',
 					name: this.name,
 				},
 			],

@@ -6,7 +6,6 @@ import {
 	RenderOptions,
 	ValidateErrorMessageFormatter,
 } from '../../errors/ValidateErrorMessageFormatter'
-import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
 
 export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTest {
 	@test()
@@ -64,27 +63,27 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 		assert.doesInclude(this.renderError({ errors: [] }), '0 errors')
 		assert.doesInclude(
 			this.renderError({
-				errors: mapFieldErrorsToParameterErrors([
+				errors: [
 					{
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						name: 'firstName',
 					},
-				]),
+				],
 			}),
 			'1 error!'
 		)
 		assert.doesInclude(
 			this.renderError({
-				errors: mapFieldErrorsToParameterErrors([
+				errors: [
 					{
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						name: 'firstName',
 					},
 					{
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						name: 'lastName',
 					},
-				]),
+				],
 			}),
 			'2 errors!'
 		)
@@ -94,24 +93,22 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 	protected static async canCountNestedErrors() {
 		assert.doesInclude(
 			this.renderError({
-				errors: mapFieldErrorsToParameterErrors([
+				errors: [
 					{
-						code: 'invalid_value',
+						code: 'INVALID_PARAMETER',
 						name: 'favoriteColor',
-						error: this.ValidationError({
-							errors: mapFieldErrorsToParameterErrors([
-								{
-									code: 'missing_required',
-									name: 'name',
-								},
-								{
-									code: 'missing_required',
-									name: 'rgb',
-								},
-							]),
-						}),
+						errors: [
+							{
+								code: 'MISSING_PARAMETER',
+								name: 'name',
+							},
+							{
+								code: 'MISSING_PARAMETER',
+								name: 'rgb',
+							},
+						],
 					},
-				]),
+				],
 			}),
 			'2 errors'
 		)
@@ -123,20 +120,20 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 		const name2 = `${new Date().getTime() * 2}`
 
 		const msg = this.renderError({
-			errors: mapFieldErrorsToParameterErrors([
+			errors: [
 				{
-					code: 'invalid_value',
+					code: 'INVALID_PARAMETER',
 					name: name1,
 				},
 				{
-					code: 'missing_required',
+					code: 'MISSING_PARAMETER',
 					name: name2,
 				},
 				{
-					code: 'missing_required',
+					code: 'MISSING_PARAMETER',
 					name: 'rgb',
 				},
-			]),
+			],
 		})
 
 		assert.doesInclude(msg, new RegExp(`${name1}.*is.*invalid`, `gis`))
@@ -150,24 +147,22 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 		const name2 = `${new Date().getTime() * 2}`
 
 		const msg = this.renderError({
-			errors: mapFieldErrorsToParameterErrors([
+			errors: [
 				{
-					code: 'invalid_value',
+					code: 'INVALID_PARAMETER',
 					name: name1,
-					error: this.ValidationError({
-						errors: mapFieldErrorsToParameterErrors([
-							{
-								code: 'missing_required',
-								name: name2,
-							},
-							{
-								code: 'missing_required',
-								name: 'rgb',
-							},
-						]),
-					}),
+					errors: [
+						{
+							code: 'MISSING_PARAMETER',
+							name: name2,
+						},
+						{
+							code: 'MISSING_PARAMETER',
+							name: 'rgb',
+						},
+					],
 				},
-			]),
+			],
 		})
 
 		assert.doesNotInclude(msg, new RegExp(`${name1}.*is.*invalid`, `gis`))
@@ -181,13 +176,13 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 	@test()
 	protected static rendersFriendlyMessageIfItExists() {
 		const msg = this.renderError({
-			errors: mapFieldErrorsToParameterErrors([
+			errors: [
 				{
-					code: 'invalid_value',
+					code: 'INVALID_PARAMETER',
 					name: 'firstName',
 					friendlyMessage: 'This is crazy!',
 				},
-			]),
+			],
 		})
 
 		assert.doesInclude(msg, '1. (firstName) This is crazy!')

@@ -1,8 +1,8 @@
 import { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
+import validationErrorAssertUtil from '../../tests/validationErrorAssert.utility'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
@@ -384,8 +384,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/does not exist/
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
-			'errors[0].options.code': 'UNEXPECTED_PARAMETERS',
+		validationErrorAssertUtil.assertError(err, {
+			unexpected: ['taco'],
 		})
 
 		assert.doesInclude(err.message, 'taco')
@@ -403,8 +403,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'favoriteTools' must have at least 1/
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
-			'errors[0].options.code': 'INVALID_PARAMETERS',
+		validationErrorAssertUtil.assertError(err, {
+			invalid: ['favoriteTools'],
 		})
 	}
 
@@ -421,8 +421,8 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'favoriteTools.name' is required/
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED', {
-			'errors[].options.code': 'INVALID_PARAMETERS',
+		validationErrorAssertUtil.assertError(err, {
+			missing: ['favoriteTools.name'],
 		})
 	}
 
@@ -599,26 +599,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		)
 	}
 
-	@test()
-	protected static mapsToParameterErrorsByDefault() {
-		const err = assert.doesThrow(() =>
-			validateSchemaValues(personWithFavToolsOrFruitSchema, {
-				firstName: 'Ryan',
-				favoriteToolsOrFruit: [],
-			})
-		)
-
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED')
-
-		//@ts-ignore
-		assert.isLength(err.options.errors, 1)
-
-		//@ts-ignore
-		errorAssertUtil.assertError(err.options.errors[0], 'INVALID_PARAMETERS', {
-			parameters: ['favoriteToolsOrFruit'],
-		})
-	}
-
 	@test('validation errors are typed (will always pass, lint will fail)')
 	protected static validationErrorsAreTyped() {
 		try {
@@ -629,12 +609,10 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 		} catch (err) {
 			if (err instanceof SpruceError) {
 				if (err.options.code === 'VALIDATION_FAILED') {
-					const first = err.options.errors[0].options.code
+					const first = err.options.errors[0].code
 					assert.isExactType<
 						typeof first,
-						| 'MISSING_PARAMETERS'
-						| 'INVALID_PARAMETERS'
-						| 'UNEXPECTED_PARAMETERS'
+						'MISSING_PARAMETER' | 'INVALID_PARAMETER' | 'UNEXPECTED_PARAMETER'
 					>(true)
 				}
 			} else {
@@ -681,6 +659,6 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			})
 		)
 
-		assert.doesInclude(err.message, 'US phone number')
+		assert.doesInclude(err.message, 'US number')
 	}
 }

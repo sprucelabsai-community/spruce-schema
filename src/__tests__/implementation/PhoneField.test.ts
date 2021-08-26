@@ -15,26 +15,26 @@ export class PhoneFieldTest extends AbstractSpruceTest {
 	)
 	@test('fails with bad number', '234th2s34th', [
 		{
-			code: 'invalid_value',
+			code: 'INVALID_PARAMETER',
 			name: 'phone',
 		},
 	])
 	@test('fails with partial number', '720253', [
 		{
-			code: 'invalid_value',
+			code: 'INVALID_PARAMETER',
 			name: 'phone',
 		},
 	])
 	@test('fails with bad number with country', '+1 234th2s34th', [
 		{
-			code: 'invalid_value',
+			code: 'INVALID_PARAMETER',
 			name: 'phone',
 		},
 	])
 	@test(
 		'required fails with empty string for a number',
 		'',
-		[{ code: 'missing_required', name: 'phone' }],
+		[{ code: 'MISSING_PARAMETER', name: 'phone' }],
 		true
 	)
 	@test('passes with good number', '720-253-5555', [])

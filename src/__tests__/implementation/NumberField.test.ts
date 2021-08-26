@@ -22,7 +22,7 @@ export default class NumberFieldTest extends AbstractSchemaTest {
 			assert.isEqual(errs.length, 0)
 		} else {
 			assert.isAbove(errs.length, 0)
-			assert.doesInclude(errs[0], { code: 'invalid_value' })
+			assert.doesInclude(errs[0], { code: 'INVALID_PARAMETER' })
 		}
 	}
 

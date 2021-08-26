@@ -1,5 +1,5 @@
 import { FieldDefinitions } from '#spruce/schemas/fields/fields.types'
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetails,
@@ -93,11 +93,11 @@ public static generateTemplateDetails(
 		return this.definition.minArrayLength ?? 1
 	}
 
-	public validate(value: any, _?: ValidateOptions<F>): InvalidFieldError[] {
-		const errors: InvalidFieldError[] = []
+	public validate(value: any, _?: ValidateOptions<F>): FieldError[] {
+		const errors: FieldError[] = []
 		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
 			errors.push({
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				name: this.name,
 				label: this.label,
 			})

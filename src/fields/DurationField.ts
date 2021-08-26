@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '../errors/options.types'
+import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
 	FieldTemplateDetailOptions,
@@ -78,15 +78,15 @@ export default class DurationField extends AbstractField<DurationFieldDefinition
 	public validate(
 		value: any,
 		_?: ValidateOptions<TextFieldDefinition>
-	): InvalidFieldError[] {
-		const errors: InvalidFieldError[] = []
+	): FieldError[] {
+		const errors: FieldError[] = []
 		try {
 			buildDuration(value)
 		} catch (err) {
 			errors.push({
-				code: err.options?.code || 'failed_to_parse_to_date',
+				code: 'INVALID_PARAMETER',
 				name: this.name,
-				error: err,
+				originalError: err,
 				friendlyMessage: err.options?.friendlyMessage,
 			})
 		}

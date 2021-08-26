@@ -23,8 +23,8 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				message = ''
 				options.errors?.forEach((error) => {
 					message += `Error on ${error.name}:\n`
-					if (error.error) {
-						message += `  ${error.error?.message}`
+					if (error.originalError) {
+						message += `  ${error.originalError.message}`
 					}
 				})
 
