@@ -1,3 +1,10 @@
+# [25.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.0.0...v25.1.0) (2021-08-26)
+
+
+### Features
+
+* validationErrorAssertUtil exported ([49e42e2](https://github.com/sprucelabsai/spruce-schema/commit/49e42e2))
+
 # [25.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v24.0.0...v25.0.0) (2021-08-26)
 
 
