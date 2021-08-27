@@ -54,7 +54,8 @@
 		"email-validator": "^2.0.4",
 		"lodash": "^4.17.21",
 		"mime-db": "^1.49.0",
-		"mime-type": "^4.0.0"
+		"mime-type": "^4.0.0",
+		"@sprucelabs/test": "latest"
 	},
 	"devDependencies": {
 		"@sprucelabs/esm-postbuild": "latest",
@@ -62,7 +63,6 @@
 		"@sprucelabs/jest-sheets-reporter": "latest",
 		"@sprucelabs/resolve-path-aliases": "latest",
 		"@sprucelabs/semantic-release": "latest",
-		"@sprucelabs/test": "latest",
 		"@sprucelabs/test-utils": "latest",
 		"@types/lodash": "^4.14.172",
 		"@types/mime-db": "^1.43.1",
