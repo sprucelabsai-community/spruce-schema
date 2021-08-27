@@ -630,7 +630,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 				phone: 'satnoehusntah',
 				favoriteToolsOrFruit: [{ schemaId: 'tool', values: { cheba: 'hut' } }],
 			})
-		} catch (err) {
+		} catch (err: any) {
 			this.log(err.message)
 		}
 	}

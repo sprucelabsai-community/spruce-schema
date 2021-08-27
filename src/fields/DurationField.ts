@@ -82,7 +82,7 @@ export default class DurationField extends AbstractField<DurationFieldDefinition
 		const errors: FieldError[] = []
 		try {
 			buildDuration(value)
-		} catch (err) {
+		} catch (err: any) {
 			errors.push({
 				code: 'INVALID_PARAMETER',
 				name: this.name,

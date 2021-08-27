@@ -62,7 +62,7 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 					})
 				}
 			}
-		} catch (err) {
+		} catch (err: any) {
 			errors.push({
 				code: 'INVALID_PARAMETER',
 				originalError: err,

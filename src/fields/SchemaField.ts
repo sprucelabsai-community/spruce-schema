@@ -57,7 +57,7 @@ export default class SchemaField<
 			try {
 				validateSchema(item)
 				return item
-			} catch (err) {
+			} catch (err: any) {
 				throw new SpruceError({
 					code: 'INVALID_SCHEMA',
 					schemaId: JSON.stringify(options),
@@ -223,7 +223,7 @@ export default class SchemaField<
 			try {
 				value.validate()
 				return []
-			} catch (err) {
+			} catch (err: any) {
 				errors.push({
 					originalError: err,
 					errors: err.options.errors,
@@ -249,7 +249,7 @@ export default class SchemaField<
 						this.definition,
 						options
 					)
-				} catch (err) {
+				} catch (err: any) {
 					errors.push({
 						code: 'INVALID_PARAMETER',
 						name: this.name,
@@ -309,7 +309,7 @@ export default class SchemaField<
 				if (instance) {
 					try {
 						instance.validate()
-					} catch (err) {
+					} catch (err: any) {
 						errors.push({
 							code: 'INVALID_PARAMETER',
 							errors: err.options.errors,
