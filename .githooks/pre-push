@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CMD="yarn fix.lint"
+protected_branch='master'
+
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+eval $CMD
+RESULT=$?
+
+if [[ $current_branch = $protected_branch ]]; then
+    if [ $RESULT -ne 0 ]; then
+        echo "failed $CMD"
+        exit 1
+    fi
+fi
+exit 0
