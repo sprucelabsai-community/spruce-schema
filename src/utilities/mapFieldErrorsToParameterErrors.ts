@@ -54,23 +54,23 @@ function pullParamaterIssues(
 	const invalidParameters: FieldError[] = []
 	const unexpectedParamaters: FieldError[] = []
 
-	errors.forEach((fieldError: any) => {
+	errors.forEach((fieldError: FieldError) => {
 		const fieldName = prefix ? `${prefix}.${fieldError.name}` : fieldError.name
 
-		if (fieldError.code === 'missing_required') {
+		if (fieldError.code === 'MISSING_PARAMETER') {
 			missingParameters.push({
-				parameter: fieldName,
 				...fieldError,
+				name: fieldName,
 			})
 		} else if (fieldError.code === 'INVALID_PARAMETER') {
 			invalidParameters.push({
-				parameter: fieldName,
 				...fieldError,
+				name: fieldName,
 			})
-		} else if (fieldError.code === 'unexpected_value') {
+		} else if (fieldError.code === 'UNEXPECTED_PARAMETER') {
 			unexpectedParamaters.push({
-				parameter: fieldName,
 				...fieldError,
+				name: fieldName,
 			})
 		}
 	})

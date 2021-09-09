@@ -13,7 +13,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsMissingField() {
 		const errs = this.Error([
 			{
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				friendlyMessage: "'First name' is required!",
 				name: 'firstName',
 			},
@@ -31,12 +31,12 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async maps2MissingFields() {
 		const errs = this.Error([
 			{
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				friendlyMessage: "'First name' is required!",
 				name: 'firstName',
 			},
 			{
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				name: 'lastName',
 			},
 		])
@@ -70,7 +70,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsUnexpectedParameters() {
 		const errs = this.Error([
 			{
-				code: 'unexpected_value',
+				code: 'UNEXPECTED_PARAMETER',
 				name: 'phone',
 			},
 		])
@@ -87,7 +87,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 	protected static async mapsAll() {
 		const errs = this.Error([
 			{
-				code: 'unexpected_value',
+				code: 'UNEXPECTED_PARAMETER',
 				name: 'phone',
 			},
 			{
@@ -95,7 +95,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 				name: 'email',
 			},
 			{
-				code: 'missing_required',
+				code: 'MISSING_PARAMETER',
 				friendlyMessage: "'First name' is required!",
 				name: 'firstName',
 			},
@@ -116,7 +116,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		})
 	}
 
-	private static Error(errors: any[]) {
+	private static Error(errors: FieldError[]) {
 		return errors as FieldError[]
 	}
 }
