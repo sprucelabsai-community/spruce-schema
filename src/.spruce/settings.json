@@ -6,6 +6,9 @@
     "skill"
   ],
   "scriptUpdater": {
-    "skipped": []
+    "skipped": [
+      "build.tsc",
+      "post.watch.build"
+    ]
   }
 }
