@@ -57,7 +57,17 @@ function pullParamaterIssues(
 	errors.forEach((fieldError: FieldError) => {
 		const fieldName = prefix ? `${prefix}.${fieldError.name}` : fieldError.name
 
-		if (fieldError.code === 'MISSING_PARAMETER') {
+		if (fieldError.errors) {
+			const {
+				missingParameters: m,
+				invalidParameters: i,
+				unexpectedParamaters: u,
+			} = pullParamaterIssues(fieldError.errors, fieldName)
+
+			missingParameters.push(...m)
+			invalidParameters.push(...i)
+			unexpectedParamaters.push(...u)
+		} else if (fieldError.code === 'MISSING_PARAMETER') {
 			missingParameters.push({
 				...fieldError,
 				name: fieldName,

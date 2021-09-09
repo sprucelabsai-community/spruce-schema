@@ -116,6 +116,42 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		})
 	}
 
+	@test()
+	protected static mapsSubErrors() {
+		const errs = this.Error([
+			{
+				code: 'UNEXPECTED_PARAMETER',
+				name: 'phone',
+			},
+			{
+				code: 'INVALID_PARAMETER',
+				name: 'address',
+				errors: [
+					{
+						code: 'MISSING_PARAMETER',
+						name: 'street1',
+					},
+				],
+			},
+			{
+				code: 'MISSING_PARAMETER',
+				friendlyMessage: "'First name' is required!",
+				name: 'firstName',
+			},
+		])
+
+		const errors = mapFieldErrorsToParameterErrors(errs)
+
+		assert.isLength(errors, 2)
+		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
+			parameters: ['address.street1', 'firstName'],
+		})
+
+		errorAssertUtil.assertError(errors[1], 'UNEXPECTED_PARAMETERS', {
+			parameters: ['phone'],
+		})
+	}
+
 	private static Error(errors: FieldError[]) {
 		return errors as FieldError[]
 	}

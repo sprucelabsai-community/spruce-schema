@@ -25,54 +25,62 @@
 		"url": "https://github.com/sprucelabsai/spruce-schema/issues"
 	},
 	"scripts": {
-		"build.ci": "yarn build.tsc && yarn build.resolve-paths",
-		"build.dev": "yarn clean && yarn build.tsc --sourceMap ; yarn build.resolve-paths",
+		"build.ci": "yarn build.tsc && yarn build.resolve-paths && yarn lint",
+		"build.dev": "yarn build.tsc --sourceMap ; yarn resolve-paths.lint",
 		"build.dist": "yarn build.tsc && tsc --project tsconfig.dist.json && yarn build.resolve-paths && yarn build.esm-postbuild",
-		"build.tsc": "tsc",
+		"build.tsc": "yarn build.copy-files && tsc",
 		"build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
 		"build.esm-postbuild": "esm-postbuild --target build/esm --patterns '**/*.js'",
 		"clean": "yarn clean.build",
 		"clean.all": "yarn clean.dependencies && yarn clean.build",
 		"clean.build": "rm -rf build/",
 		"clean.dependencies": "rm -rf node_modules/ package-lock.json yarn.lock",
-		"fix.lint": "eslint --fix '**/*.ts'",
-		"lint": "eslint --cache '**/*.ts' --fix && yarn lint.tsc",
+		"fix.lint": "eslint --fix --cache '**/*.ts'",
+		"lint": "eslint --cache '**/*.ts'",
 		"lint.tsc": "tsc -p . --noEmit",
 		"rebuild": "yarn clean.all && yarn && yarn build.dev",
 		"release": "semantic-release",
 		"test": "jest",
 		"update.dependencies": "yarn clean.dependencies && yarn",
-		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint | true",
+		"upgrade.packages": "yarn-upgrade-all && rm -f yarn.lock ; yarn ; yarn fix.lint ; true",
 		"upgrade.packages.all": "yarn install && yarn upgrade.packages",
 		"upgrade.packages.test": "yarn upgrade.packages.all && yarn lint && yarn build.dev && yarn test",
-		"watch.build.dev": "yarn build.tsc -w --sourceMap",
-		"watch.lint": "chokidar 'index.ts' 'src/**/*.(js|jsx|ts|tsx)' -c 'yarn lint'",
-		"watch.tsc": "tsc -w"
+		"watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn post.watch.build'",
+		"watch.lint": "concurrently 'yarn lint' \"chokidar 'src/**/*' -c 'yarn lint.tsc'\"",
+		"watch.tsc": "tsc -w",
+		"build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
+		"post.watch.build": "yarn build.copy-files && yarn build.resolve-paths",
+		"resolve-paths.lint": "yarn build.resolve-paths ; yarn lint",
+		"watch.rebuild": "yarn clean.all && yarn && yarn watch.build.dev"
 	},
 	"dependencies": {
-		"@sprucelabs/error": "latest",
-		"@sprucelabs/test": "latest",
+		"@sprucelabs/error": "^5.0.3",
+		"@sprucelabs/test": "^7.7.58",
 		"email-validator": "^2.0.4",
 		"lodash": "^4.17.21",
 		"mime-db": "^1.49.0",
 		"mime-type": "^4.0.0"
 	},
 	"devDependencies": {
-		"@sprucelabs/esm-postbuild": "latest",
-		"@sprucelabs/jest-json-reporter": "latest",
-		"@sprucelabs/jest-sheets-reporter": "latest",
-		"@sprucelabs/resolve-path-aliases": "latest",
-		"@sprucelabs/semantic-release": "latest",
-		"@sprucelabs/test-utils": "latest",
+		"@sprucelabs/esm-postbuild": "^1.0.37",
+		"@sprucelabs/jest-json-reporter": "^6.0.31",
+		"@sprucelabs/jest-sheets-reporter": "^1.2.64",
+		"@sprucelabs/resolve-path-aliases": "^1.0.71",
+		"@sprucelabs/semantic-release": "^4.0.6",
+		"@sprucelabs/spruce-test-fixtures": "^5.4.43",
+		"@sprucelabs/test-utils": "^3.0.54",
 		"@types/lodash": "^4.14.172",
 		"@types/mime-db": "^1.43.1",
 		"chokidar-cli": "^3.0.0",
+		"concurrently": "^6.2.1",
 		"eslint": "^7.32.0",
-		"eslint-config-spruce": "latest",
-		"jest": "^27.1.0",
-		"jest-circus": "^27.1.0",
-		"prettier": "^2.3.2",
+		"eslint-config-spruce": "^10.10.10",
+		"jest": "^27.1.1",
+		"jest-circus": "^27.1.1",
+		"prettier": "^2.4.0",
 		"ts-node": "^10.2.1",
+		"tsc-watch": "^4.5.0",
+		"tsconfig-paths": "^3.11.0",
 		"typescript": "^4.4.2"
 	},
 	"jest": {
@@ -101,19 +109,6 @@
 					}
 				}
 			]
-		]
-	},
-	"yarn-upgrade-all": {
-		"ignore": [
-			"@sprucelabs/error",
-			"@sprucelabs/esm-postbuild",
-			"@sprucelabs/jest-json-reporter",
-			"@sprucelabs/resolve-path-aliases",
-			"@sprucelabs/semantic-release",
-			"@sprucelabs/test",
-			"@sprucelabs/test-utils",
-			"eslint-config-spruce",
-			"@sprucelabs/jest-sheets-reporter"
 		]
 	}
 }

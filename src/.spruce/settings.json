@@ -4,5 +4,8 @@
   ],
   "skipped": [
     "skill"
-  ]
+  ],
+  "scriptUpdater": {
+    "skipped": []
+  }
 }
