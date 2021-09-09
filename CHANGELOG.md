@@ -1,3 +1,10 @@
+# [25.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.2.0...v25.3.0) (2021-09-09)
+
+
+### Features
+
+* mapFieldErrorsToParameterErrors ([2fd5464](https://github.com/sprucelabsai/spruce-schema/commit/2fd5464))
+
 # [25.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.1.7...v25.2.0) (2021-09-09)
 
 
