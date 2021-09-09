@@ -79,3 +79,4 @@ export const fieldRegistrations: FieldRegistration[] = [
 ]
 
 export { default as assertOptions } from './utilities/assertOptions'
+export { default as mapFieldErrorsToParameterErrors } from './utilities/mapFieldErrorsToParameterErrors'
