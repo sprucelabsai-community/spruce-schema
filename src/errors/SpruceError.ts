@@ -58,12 +58,26 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 
 			case 'MISSING_PARAMETERS':
 			case 'UNEXPECTED_PARAMETERS':
-			case 'INVALID_PARAMETERS':
-				message = this.renderParametersWithFriendlyMessages(
+			case 'INVALID_PARAMETERS': {
+				const map = {
+					MISSING_PARAMETERS: `Missing ${options.parameters.length} parameter${
+						options.parameters.length === 1 ? '' : 's'
+					}`,
+					UNEXPECTED_PARAMETERS: `Found ${
+						options.parameters.length
+					} unexpected parameter${options.parameters.length === 1 ? '' : 's'}`,
+					INVALID_PARAMETERS: `${options.parameters.length} parameter${
+						options.parameters.length === 1 ? '' : 's'
+					} alr invalid`,
+				}
+				message = `${
+					map[options.code]
+				}:\n\n${this.renderParametersWithFriendlyMessages(
 					options.parameters,
 					options.friendlyMessages
-				)
+				)}`
 				break
+			}
 
 			default:
 				message = this.message
