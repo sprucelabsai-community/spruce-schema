@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^5.0.8",
-    "@sprucelabs/test": "^7.7.62",
+    "@sprucelabs/test": "^7.7.63",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
     "mime-db": "^1.50.0",
@@ -74,7 +74,7 @@
     "@sprucelabs/resolve-path-aliases": "^1.0.79",
     "@sprucelabs/semantic-release": "^4.0.6",
     "@sprucelabs/spruce-test-fixtures": "^5.4.54",
-    "@sprucelabs/test-utils": "^3.0.55",
+    "@sprucelabs/test-utils": "^3.0.56",
     "@types/lodash": "^4.14.173",
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
