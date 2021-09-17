@@ -93,10 +93,6 @@ jobs:
               echo "No modifications detected.  No push/PR necessary 👊"
               circleci-agent step halt
             fi
-            if [[ ! -f yarn.lock  ]]; then
-              echo "Upgrade errored and removed the yarn.lock. Likely due to a package version missing"
-              circleci-agent step halt
-            fi
       - run:
           name: "Check for only newline diff"
           command: |
