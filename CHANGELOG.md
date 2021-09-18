@@ -1,3 +1,5 @@
+## [25.3.19](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.18...v25.3.19) (2021-09-18)
+
 ## [25.3.18](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.17...v25.3.18) (2021-09-18)
 
 ## [25.3.17](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.16...v25.3.17) (2021-09-18)
