@@ -96,7 +96,7 @@ const validationErrorAssertUtil = {
 			for (const lookup of options?.[key] ?? []) {
 				const match = flattened[lookup] === code
 				if (!match) {
-					assert.fail(buildFailMessage(code, lookup, error.options))
+					assert.fail(buildFailMessage(code, lookup, flattened))
 				}
 			}
 		}
