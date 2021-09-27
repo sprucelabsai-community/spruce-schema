@@ -73,7 +73,7 @@
     "@sprucelabs/jest-sheets-reporter": "^1.2.91",
     "@sprucelabs/resolve-path-aliases": "^1.0.89",
     "@sprucelabs/semantic-release": "^4.0.7",
-    "@sprucelabs/spruce-test-fixtures": "^5.4.98",
+    "@sprucelabs/spruce-test-fixtures": "^5.4.99",
     "@sprucelabs/test-utils": "^3.0.56",
     "@types/lodash": "^4.14.174",
     "@types/mime-db": "^1.43.1",
