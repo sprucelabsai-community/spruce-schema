@@ -61,14 +61,14 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^5.0.86",
-    "@sprucelabs/test": "^7.7.70",
+    "@sprucelabs/test": "^7.7.71",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
     "mime-db": "^1.50.0",
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.126",
+    "@sprucelabs/esm-postbuild": "^1.0.127",
     "@sprucelabs/jest-json-reporter": "^6.0.67",
     "@sprucelabs/jest-sheets-reporter": "^1.2.95",
     "@sprucelabs/resolve-path-aliases": "^1.0.92",
@@ -81,8 +81,8 @@
     "concurrently": "^6.2.2",
     "eslint": "^7.32.0",
     "eslint-config-spruce": "^10.10.11",
-    "jest": "^27.2.2",
-    "jest-circus": "^27.2.2",
+    "jest": "^27.2.3",
+    "jest-circus": "^27.2.3",
     "prettier": "^2.4.1",
     "ts-node": "^10.2.1",
     "tsc-watch": "^4.5.0",
