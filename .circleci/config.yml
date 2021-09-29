@@ -38,7 +38,7 @@ jobs:
             git config --global user.email "$GIT_AUTHOR_EMAIL"
             git config --global user.name "$GIT_AUTHOR_NAME"
             git fetch --all
-            git checkout master
+            git checkout -f master
             git reset --hard origin/master
             git merge --no-ff ${CIRCLE_BRANCH} -m "chore(auto-upgrade): Upgrade Tests Passed [auto-merge]"
             git push origin
