@@ -69,8 +69,8 @@
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.251",
-    "@sprucelabs/jest-json-reporter": "^6.0.187",
-    "@sprucelabs/jest-sheets-reporter": "^1.2.196",
+    "@sprucelabs/jest-json-reporter": "^6.0.188",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.197",
     "@sprucelabs/resolve-path-aliases": "^1.0.208",
     "@sprucelabs/semantic-release": "^4.0.7",
     "@sprucelabs/spruce-test-fixtures": "^5.4.129",
