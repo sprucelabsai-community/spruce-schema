@@ -79,7 +79,7 @@
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^6.3.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-config-spruce": "^10.10.13",
     "jest": "^27.2.5",
     "jest-circus": "^27.2.5",
