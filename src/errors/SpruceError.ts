@@ -68,7 +68,7 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 					} unexpected parameter${options.parameters.length === 1 ? '' : 's'}`,
 					INVALID_PARAMETERS: `${options.parameters.length} parameter${
 						options.parameters.length === 1 ? '' : 's'
-					} alr invalid`,
+					} ${options.parameters.length === 1 ? 'is' : 'are'} invalid`,
 				}
 				message = `${
 					map[options.code]
