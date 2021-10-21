@@ -73,7 +73,7 @@
     "@sprucelabs/jest-sheets-reporter": "^1.2.222",
     "@sprucelabs/resolve-path-aliases": "^1.0.217",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/spruce-test-fixtures": "^5.5.14",
+    "@sprucelabs/spruce-test-fixtures": "^5.5.15",
     "@sprucelabs/test-utils": "^3.0.221",
     "@types/lodash": "^4.14.176",
     "@types/mime-db": "^1.43.1",
@@ -84,7 +84,7 @@
     "jest": "^27.3.1",
     "jest-circus": "^27.3.1",
     "prettier": "^2.4.1",
-    "ts-node": "^10.3.0",
+    "ts-node": "^10.3.1",
     "tsc-watch": "^4.5.0",
     "tsconfig-paths": "^3.11.0",
     "typescript": "^4.4.4"
