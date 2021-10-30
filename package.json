@@ -60,7 +60,7 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.264",
+    "@sprucelabs/error": "^5.0.265",
     "@sprucelabs/test": "^7.7.214",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
@@ -73,8 +73,8 @@
     "@sprucelabs/jest-sheets-reporter": "^1.2.232",
     "@sprucelabs/resolve-path-aliases": "^1.0.221",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/spruce-test-fixtures": "^7.0.15",
-    "@sprucelabs/test-utils": "^3.0.238",
+    "@sprucelabs/spruce-test-fixtures": "^7.0.16",
+    "@sprucelabs/test-utils": "^3.0.239",
     "@types/lodash": "^4.14.176",
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
