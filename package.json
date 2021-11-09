@@ -64,7 +64,7 @@
     "@sprucelabs/test": "^7.7.219",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
-    "mime-db": "^1.50.0",
+    "mime-db": "^1.51.0",
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
