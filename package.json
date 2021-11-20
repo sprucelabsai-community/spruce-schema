@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^5.0.285",
-    "@sprucelabs/test": "^7.7.225",
+    "@sprucelabs/test": "^7.7.226",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
     "mime-db": "^1.51.0",
@@ -70,7 +70,7 @@
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.284",
     "@sprucelabs/jest-json-reporter": "^6.0.242",
-    "@sprucelabs/jest-sheets-reporter": "^1.2.247",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.248",
     "@sprucelabs/resolve-path-aliases": "^1.0.225",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/spruce-test-fixtures": "^14.0.3",
@@ -86,7 +86,7 @@
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",
     "tsc-watch": "^4.5.0",
-    "tsconfig-paths": "^3.11.0",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.2"
   },
   "jest": {
