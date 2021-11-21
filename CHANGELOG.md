@@ -1,3 +1,10 @@
+# [25.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.535...v25.4.0) (2021-11-21)
+
+
+### Features
+
+* Devs can now test that selects have options! ([47c35ee](https://github.com/sprucelabsai/spruce-schema/commit/47c35ee))
+
 ## [25.3.535](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.534...v25.3.535) (2021-11-21)
 
 ## [25.3.534](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.533...v25.3.534) (2021-11-21)
