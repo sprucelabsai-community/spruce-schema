@@ -67,6 +67,12 @@ jobs:
     docker:
       - image: circleci/node:16
     steps:
+      - run:
+          name: "Check for auto upgrade"
+          command: |
+            if [[ -z "$SKIP_DNS_CHECK" ]]; then
+              getent hosts autoupgrade.continuoustesting.ai || circleci-agent step halt
+            fi
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"

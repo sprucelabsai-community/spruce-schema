@@ -1,3 +1,76 @@
+## [25.4.33](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.32...v25.4.33) (2021-11-26)
+
+## [25.4.32](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.31...v25.4.32) (2021-11-26)
+
+## [25.4.31](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.30...v25.4.31) (2021-11-26)
+
+## [25.4.30](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.29...v25.4.30) (2021-11-26)
+
+## [25.4.29](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.28...v25.4.29) (2021-11-26)
+
+## [25.4.28](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.27...v25.4.28) (2021-11-26)
+
+## [25.4.27](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.26...v25.4.27) (2021-11-26)
+
+## [25.4.26](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.25...v25.4.26) (2021-11-25)
+
+## [25.4.25](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.24...v25.4.25) (2021-11-25)
+
+## [25.4.24](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.23...v25.4.24) (2021-11-25)
+
+## [25.4.23](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.22...v25.4.23) (2021-11-25)
+
+## [25.4.22](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.21...v25.4.22) (2021-11-25)
+
+## [25.4.21](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.20...v25.4.21) (2021-11-25)
+
+## [25.4.20](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.19...v25.4.20) (2021-11-25)
+
+## [25.4.19](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.18...v25.4.19) (2021-11-25)
+
+## [25.4.18](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.17...v25.4.18) (2021-11-25)
+
+## [25.4.17](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.16...v25.4.17) (2021-11-25)
+
+## [25.4.16](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.15...v25.4.16) (2021-11-25)
+
+## [25.4.15](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.14...v25.4.15) (2021-11-25)
+
+## [25.4.14](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.13...v25.4.14) (2021-11-25)
+
+## [25.4.13](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.12...v25.4.13) (2021-11-24)
+
+## [25.4.12](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.11...v25.4.12) (2021-11-24)
+
+## [25.4.11](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.10...v25.4.11) (2021-11-24)
+
+## [25.4.10](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.9...v25.4.10) (2021-11-23)
+
+## [25.4.9](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.8...v25.4.9) (2021-11-23)
+
+## [25.4.8](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.7...v25.4.8) (2021-11-23)
+
+## [25.4.7](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.6...v25.4.7) (2021-11-23)
+
+## [25.4.6](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.5...v25.4.6) (2021-11-23)
+
+## [25.4.5](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.4...v25.4.5) (2021-11-23)
+
+## [25.4.4](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.3...v25.4.4) (2021-11-23)
+
+## [25.4.3](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.2...v25.4.3) (2021-11-23)
+
+## [25.4.2](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.1...v25.4.2) (2021-11-22)
+
+## [25.4.1](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.0...v25.4.1) (2021-11-22)
+
+# [25.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.535...v25.4.0) (2021-11-21)
+
+
+### Features
+
+* Devs can now test that selects have options! ([47c35ee](https://github.com/sprucelabsai/spruce-schema/commit/47c35ee))
+
 ## [25.3.535](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.534...v25.3.535) (2021-11-21)
 
 ## [25.3.534](https://github.com/sprucelabsai/spruce-schema/compare/v25.3.533...v25.3.534) (2021-11-21)
