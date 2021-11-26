@@ -60,18 +60,18 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.301",
-    "@sprucelabs/test": "^7.7.235",
+    "@sprucelabs/error": "^5.0.302",
+    "@sprucelabs/test": "^7.7.237",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
     "mime-db": "^1.51.0",
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.290",
-    "@sprucelabs/jest-json-reporter": "^6.0.253",
+    "@sprucelabs/esm-postbuild": "^1.0.291",
+    "@sprucelabs/jest-json-reporter": "^6.0.254",
     "@sprucelabs/jest-sheets-reporter": "^1.2.260",
-    "@sprucelabs/resolve-path-aliases": "^1.0.230",
+    "@sprucelabs/resolve-path-aliases": "^1.0.231",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/spruce-test-fixtures": "^14.1.11",
     "@sprucelabs/test-utils": "^3.0.283",
