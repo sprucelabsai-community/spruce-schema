@@ -71,7 +71,7 @@ export class ValidateErrorMessageFormatter {
 		const map: Record<FieldErrorCode, string> = {
 			INVALID_PARAMETER: 'invalid',
 			MISSING_PARAMETER: 'required',
-			UNEXPECTED_PARAMETER: 'does not exist',
+			UNEXPECTED_PARAMETER: 'was send but does not exist',
 		}
 
 		return map[code]
