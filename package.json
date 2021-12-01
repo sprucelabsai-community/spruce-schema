@@ -60,18 +60,18 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.308",
-    "@sprucelabs/test": "^7.7.242",
+    "@sprucelabs/error": "^5.0.309",
+    "@sprucelabs/test": "^7.7.243",
     "email-validator": "^2.0.4",
     "lodash": "^4.17.21",
     "mime-db": "^1.51.0",
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.293",
-    "@sprucelabs/jest-json-reporter": "^6.0.259",
-    "@sprucelabs/jest-sheets-reporter": "^1.2.264",
-    "@sprucelabs/resolve-path-aliases": "^1.0.233",
+    "@sprucelabs/esm-postbuild": "^1.0.294",
+    "@sprucelabs/jest-json-reporter": "^6.0.260",
+    "@sprucelabs/jest-sheets-reporter": "^1.2.265",
+    "@sprucelabs/resolve-path-aliases": "^1.0.234",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/spruce-test-fixtures": "^15.1.0",
     "@sprucelabs/test-utils": "^3.0.291",
@@ -81,7 +81,7 @@
     "concurrently": "^6.4.0",
     "eslint": "^8.3.0",
     "eslint-config-spruce": "^10.10.16",
-    "jest": "^27.4.2",
+    "jest": "^27.4.3",
     "jest-circus": "^27.4.2",
     "prettier": "^2.5.0",
     "ts-node": "^10.4.0",
