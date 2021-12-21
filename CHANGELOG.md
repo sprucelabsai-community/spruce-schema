@@ -1,3 +1,10 @@
+# [25.5.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.151...v25.5.0) (2021-12-21)
+
+
+### Features
+
+* Devs can use the new getFields utility to get fields off a schema, making designing api's even easier! ([7ba6ff8](https://github.com/sprucelabsai/spruce-schema/commit/7ba6ff8))
+
 ## [25.4.151](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.150...v25.4.151) (2021-12-21)
 
 ## [25.4.150](https://github.com/sprucelabsai/spruce-schema/compare/v25.4.149...v25.4.150) (2021-12-21)
