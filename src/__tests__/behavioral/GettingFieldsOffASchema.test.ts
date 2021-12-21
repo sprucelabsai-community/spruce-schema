@@ -19,7 +19,7 @@ const withFieldsSchema = buildSchema({
 })
 
 const withManyFieldsSchema = buildSchema({
-	id: 'withField',
+	id: 'withManyField',
 	fields: {
 		firstName: {
 			type: 'text',
