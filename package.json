@@ -68,12 +68,12 @@
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.312",
+    "@sprucelabs/esm-postbuild": "^1.0.313",
     "@sprucelabs/jest-json-reporter": "^6.0.294",
     "@sprucelabs/jest-sheets-reporter": "^1.2.291",
-    "@sprucelabs/resolve-path-aliases": "^1.0.246",
+    "@sprucelabs/resolve-path-aliases": "^1.0.247",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/spruce-test-fixtures": "^19.2.9",
+    "@sprucelabs/spruce-test-fixtures": "^19.3.0",
     "@sprucelabs/test-utils": "^3.0.351",
     "@types/lodash": "^4.14.178",
     "@types/mime-db": "^1.43.1",
