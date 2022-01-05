@@ -8,7 +8,7 @@ const assertOptions = function (
 
 	for (const check of toCheck) {
 		//@ts-ignore
-		if (!options[check]) {
+		if (!options?.[check]) {
 			missing.push(check)
 		}
 	}
