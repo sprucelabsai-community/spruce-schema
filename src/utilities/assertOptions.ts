@@ -1,9 +1,9 @@
 import SpruceError from '../errors/SpruceError'
 
-const assertOptions = function (
-	options: Record<string, any>,
+const assertOptions = function <O extends Record<string, any>>(
+	options: O,
 	toCheck: string[]
-) {
+): 0 {
 	const missing: string[] = []
 
 	for (const check of toCheck) {
@@ -19,6 +19,8 @@ const assertOptions = function (
 			parameters: missing,
 		})
 	}
+
+	return options
 }
 
 export default assertOptions
