@@ -16,7 +16,7 @@
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"sourceMap": false,
-		"outDir": "./build/esm",
+		"outDir": "./build",
 		"baseUrl": "src",
 		"experimentalDecorators": true,
 		"paths": {
@@ -32,6 +32,7 @@
 	],
 	"exclude": [
 		"**/node_modules/*",
-		"./build/*"
+		"./build/*",
+		"./esm/*"
 	]
 }
