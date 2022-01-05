@@ -33,6 +33,7 @@
 		"./src/.spruce/**/*"
 	],
 	"exclude": [
-		"build"
+		"build",
+		"esm"
 	]
 }

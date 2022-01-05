@@ -17,6 +17,8 @@ yarn-debug.log*
 yarn-error.log*
 
 build/
+esm/
+
 mercury.min.*
 .eslintcache
 .env
