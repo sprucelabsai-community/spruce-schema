@@ -2,13 +2,13 @@ import SpruceError from '../errors/SpruceError'
 
 const assertOptions = function <Options extends Record<string, any>>(
 	options: Options,
-	toCheck: string[]
+	toCheck: (keyof Options)[]
 ): Options {
-	const missing: string[] = []
+	const missing: (keyof Options)[] = []
 
 	for (const check of toCheck) {
 		//@ts-ignore
-		if (!options?.[check]) {
+		if (typeof options?.[check] === 'undefined') {
 			missing.push(check)
 		}
 	}
@@ -16,7 +16,7 @@ const assertOptions = function <Options extends Record<string, any>>(
 	if (missing.length > 0) {
 		throw new SpruceError({
 			code: 'MISSING_PARAMETERS',
-			parameters: missing,
+			parameters: missing as string[],
 		})
 	}
 
