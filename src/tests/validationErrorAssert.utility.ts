@@ -43,7 +43,7 @@ function flattenFields(
 	})
 }
 
-const validationErrorAssertUtil = {
+const validationErrorAssert = {
 	assertError(error: any, options: ValidationErrorAssertOptions) {
 		const missing: string[] = []
 
@@ -103,4 +103,4 @@ const validationErrorAssertUtil = {
 	},
 }
 
-export default validationErrorAssertUtil
+export default validationErrorAssert

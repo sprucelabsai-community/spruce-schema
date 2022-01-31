@@ -2,7 +2,7 @@ import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
-import validationErrorAssertUtil from '../../tests/validationErrorAssert.utility'
+import validationErrorAssert from '../../tests/validationErrorAssert.utility'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
@@ -384,7 +384,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/does not exist/
 		)
 
-		validationErrorAssertUtil.assertError(err, {
+		validationErrorAssert.assertError(err, {
 			unexpected: ['taco'],
 		})
 
@@ -403,7 +403,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'favoriteTools' must have at least 1/
 		)
 
-		validationErrorAssertUtil.assertError(err, {
+		validationErrorAssert.assertError(err, {
 			invalid: ['favoriteTools'],
 		})
 	}
@@ -421,7 +421,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 			/'favoriteTools.name' is required/
 		)
 
-		validationErrorAssertUtil.assertError(err, {
+		validationErrorAssert.assertError(err, {
 			missing: ['favoriteTools.name'],
 		})
 	}

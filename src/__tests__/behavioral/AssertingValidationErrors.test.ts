@@ -2,21 +2,21 @@ import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { errorAssertUtil } from '@sprucelabs/test-utils'
 import { FieldErrorCode } from '../../errors/options.types'
 import SpruceError from '../../errors/SpruceError'
-import validationErrorAssertUtil, {
+import validationErrorAssert, {
 	ValidationErrorAssertOptionsKey,
 } from '../../tests/validationErrorAssert.utility'
 
 export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	@test()
 	protected static canCreateAssertingValidationErrors() {
-		assert.isFunction(validationErrorAssertUtil.assertError)
+		assert.isFunction(validationErrorAssert.assertError)
 	}
 
 	@test()
 	protected static throwsWhenMissingErrorAndOptions() {
 		const err = assert.doesThrow(
 			//@ts-ignore
-			() => validationErrorAssertUtil.assertError()
+			() => validationErrorAssert.assertError()
 		)
 
 		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
@@ -28,7 +28,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	protected static throwsWhenMissingOptions() {
 		const err = assert.doesThrow(
 			//@ts-ignore
-			() => validationErrorAssertUtil.assertError(new Error('test'))
+			() => validationErrorAssert.assertError(new Error('test'))
 		)
 
 		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
@@ -40,7 +40,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	protected static throwsWhenNotGettingSpruceError() {
 		const err = assert.doesThrow(() =>
 			//@ts-ignore
-			validationErrorAssertUtil.assertError(new Error('test'), {
+			validationErrorAssert.assertError(new Error('test'), {
 				missing: [],
 			})
 		)
@@ -52,7 +52,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 
 	@test()
 	protected static passesWhenJustReturnedError() {
-		validationErrorAssertUtil.assertError(
+		validationErrorAssert.assertError(
 			new SpruceError({
 				code: 'VALIDATION_FAILED',
 				schemaId: 'person',
@@ -73,7 +73,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	protected static failsWhenMissingNotFound() {
 		assert.doesThrow(
 			() =>
-				validationErrorAssertUtil.assertError(
+				validationErrorAssert.assertError(
 					new SpruceError({
 						code: 'VALIDATION_FAILED',
 						schemaId: 'person',
@@ -91,7 +91,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	protected static failsWhenMissingNotFoundWithOtherErrors() {
 		assert.doesThrow(
 			() =>
-				validationErrorAssertUtil.assertError(
+				validationErrorAssert.assertError(
 					new SpruceError({
 						code: 'VALIDATION_FAILED',
 						schemaId: 'person',
@@ -114,7 +114,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	protected static failsWhenMissingIsNamedDifferently() {
 		assert.doesThrow(
 			() =>
-				validationErrorAssertUtil.assertError(
+				validationErrorAssert.assertError(
 					new SpruceError({
 						code: 'VALIDATION_FAILED',
 						schemaId: 'person',
@@ -158,7 +158,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	) {
 		assert.doesThrow(
 			() =>
-				validationErrorAssertUtil.assertError(
+				validationErrorAssert.assertError(
 					new SpruceError({
 						code: 'VALIDATION_FAILED',
 						schemaId: 'person',
@@ -184,7 +184,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 		code: FieldErrorCode,
 		key: ValidationErrorAssertOptionsKey
 	) {
-		validationErrorAssertUtil.assertError(
+		validationErrorAssert.assertError(
 			new SpruceError({
 				code: 'VALIDATION_FAILED',
 				schemaId: 'person',
@@ -204,7 +204,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	@test()
 	protected static throwsWhenCodeMissmatches() {
 		assert.doesThrow(() =>
-			validationErrorAssertUtil.assertError(
+			validationErrorAssert.assertError(
 				new SpruceError({
 					code: 'VALIDATION_FAILED',
 					schemaId: 'person',
@@ -224,7 +224,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 
 	@test()
 	protected static matchesNestedParameters() {
-		validationErrorAssertUtil.assertError(
+		validationErrorAssert.assertError(
 			new SpruceError({
 				code: 'VALIDATION_FAILED',
 				schemaId: 'person',
@@ -250,7 +250,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 	@test()
 	protected static throwWhenMissingOnNested() {
 		assert.doesThrow(() =>
-			validationErrorAssertUtil.assertError(
+			validationErrorAssert.assertError(
 				new SpruceError({
 					code: 'VALIDATION_FAILED',
 					schemaId: 'person',

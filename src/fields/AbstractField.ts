@@ -5,6 +5,7 @@ import {
 	FieldTemplateDetails,
 	FieldTemplateDetailOptions,
 } from '../types/template.types'
+import isUndefinedOrNull from '../utilities/isUndefinedOrNull'
 import { ValidateOptions, Field } from './field.static.types'
 
 export default abstract class AbstractField<F extends FieldDefinitions>
@@ -95,7 +96,7 @@ public static generateTemplateDetails(
 
 	public validate(value: any, _?: ValidateOptions<F>): FieldError[] {
 		const errors: FieldError[] = []
-		if ((typeof value === 'undefined' || value === null) && this.isRequired) {
+		if (isUndefinedOrNull(value) && this.isRequired) {
 			errors.push({
 				code: 'MISSING_PARAMETER',
 				name: this.name,
@@ -111,4 +112,3 @@ public static generateTemplateDetails(
 		return value
 	}
 }
-/** A field that comprises a schema */

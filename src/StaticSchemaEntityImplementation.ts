@@ -160,12 +160,13 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 
 		this.getNamedFields(options).forEach((namedField) => {
 			const { name, field } = namedField
-			let valueArray = normalizeValueToArray(this.values[name])
+			let valueAsArray = normalizeValueToArray(this.values[name])
 
 			if (
 				field.isRequired &&
 				field.isArray &&
-				(!this.values[name] || valueArray.length < (field.minArrayLength ?? 1))
+				(!this.values[name] ||
+					valueAsArray.length < (field.minArrayLength ?? 1))
 			) {
 				errors.push({
 					code: !this.values[name] ? 'MISSING_PARAMETER' : 'INVALID_PARAMETER',
@@ -175,18 +176,18 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 						: `'${field.label ?? field.name}' must have at least ${
 								field.minArrayLength
 						  } value${field.minArrayLength === 1 ? '' : 's'}. I found ${
-								valueArray.length
+								valueAsArray.length
 						  }!`,
 				})
 			} else {
 				if (
 					(!field.isArray || (field.minArrayLength ?? 0) > 0) &&
-					valueArray.length === 0
+					valueAsArray.length === 0
 				) {
-					valueArray = [undefined]
+					valueAsArray = [undefined]
 				}
 
-				for (const value of valueArray) {
+				for (const value of valueAsArray) {
 					const fieldErrors = field.validate(value, {
 						schemasById: {},
 					})
