@@ -1,3 +1,10 @@
+# [26.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v25.6.125...v26.0.0) (2022-01-31)
+
+
+### Breaking Changes
+
+* validator update and date+dateTime fields ([4bc1a51](https://github.com/sprucelabsai/spruce-schema/commit/4bc1a51))
+
 ## [25.6.125](https://github.com/sprucelabsai/spruce-schema/compare/v25.6.124...v25.6.125) (2022-01-30)
 
 ## [25.6.124](https://github.com/sprucelabsai/spruce-schema/compare/v25.6.123...v25.6.124) (2022-01-29)
