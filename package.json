@@ -75,7 +75,7 @@
     "@sprucelabs/resolve-path-aliases": "^1.0.256",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/spruce-test-fixtures": "^24.0.5",
-    "@sprucelabs/test-utils": "^3.0.396",
+    "@sprucelabs/test-utils": "^3.0.397",
     "@types/lodash": "^4.14.178",
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
