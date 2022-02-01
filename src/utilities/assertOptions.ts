@@ -7,8 +7,10 @@ const assertOptions = function <Options extends Record<string, any>>(
 	const missing: (keyof Options)[] = []
 
 	for (const check of toCheck) {
+		const value = options?.[check]
+
 		//@ts-ignore
-		if (typeof options?.[check] === 'undefined') {
+		if (value === null || typeof value === 'undefined') {
 			missing.push(check)
 		}
 	}
