@@ -62,6 +62,7 @@ export function validateDateValue(options: {
 			{
 				name,
 				code: 'INVALID_PARAMETER',
+				friendlyMessage: `This doesn't look like a date to me!`,
 			},
 		]
 	}
