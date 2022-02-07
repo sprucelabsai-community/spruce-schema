@@ -17,7 +17,7 @@ export default class DateField extends AbstractField<DateFieldDefinition> {
 		options: FieldTemplateDetailOptions<DateFieldDefinition>
 	): FieldTemplateDetails {
 		return {
-			valueType: `${options.importAs}.IDateFieldValue${
+			valueType: `${options.importAs}.DateFieldValue${
 				options.definition.isArray ? '[]' : ''
 			}`,
 		}
