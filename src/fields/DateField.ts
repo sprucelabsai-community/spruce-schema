@@ -40,7 +40,7 @@ export default class DateField extends AbstractField<DateFieldDefinition> {
 	}
 
 	public toValueType(value: any) {
-		return getStartOfDay(value)
+		return value ? getStartOfDay(+value) : value
 	}
 }
 

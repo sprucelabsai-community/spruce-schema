@@ -1,5 +1,9 @@
 import { test, assert } from '@sprucelabs/test'
-import StaticSchemaEntityImplementation, { buildSchema } from '../..'
+import StaticSchemaEntityImplementation, {
+	buildSchema,
+	DateTimeField,
+	FieldFactory,
+} from '../..'
 import AbstractDateFieldTest from '../../tests/AbstractDateFieldTest'
 
 const schema = buildSchema({
@@ -23,6 +27,14 @@ type Schema = typeof schema
 export default class DateFieldTest extends AbstractDateFieldTest {
 	protected static schema = schema
 	protected static entity: StaticSchemaEntityImplementation<Schema>
+	private static field: DateTimeField
+
+	protected static async beforeEach() {
+		await super.beforeEach()
+		this.field = FieldFactory.Field('optionalBirthday', {
+			type: 'dateTime',
+		}) as any
+	}
 
 	@test()
 	protected static canSetDateAsDateObject() {
@@ -45,5 +57,16 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 
 		//@ts-ignore
 		assert.isEqual(this.entity.get('optionalAnniversary'), date.getTime())
+	}
+
+	@test()
+	protected static nullAndUndefinedPersist() {
+		assert.isNull(this.field.toValueType(null))
+	}
+
+	@test()
+	protected static convertsStringsToNumbers() {
+		assert.isEqual(this.field.toValueType('10'), 10)
+		assert.isEqual(this.field.toValueType('20'), 20)
 	}
 }

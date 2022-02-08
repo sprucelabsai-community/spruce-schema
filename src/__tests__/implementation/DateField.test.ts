@@ -1,5 +1,9 @@
 import { test, assert } from '@sprucelabs/test'
-import StaticSchemaEntityImplementation, { buildSchema } from '../..'
+import StaticSchemaEntityImplementation, {
+	buildSchema,
+	DateField,
+	FieldFactory,
+} from '../..'
 import AbstractDateFieldTest from '../../tests/AbstractDateFieldTest'
 import getStartOfDay from '../../utilities/getStartOfDay'
 
@@ -24,6 +28,14 @@ type Schema = typeof schema
 export default class DateFieldTest extends AbstractDateFieldTest {
 	protected static entity: StaticSchemaEntityImplementation<Schema>
 	protected static schema = schema
+	private static field: DateField
+
+	protected static async beforeEach(): Promise<void> {
+		await super.beforeEach()
+		this.field = FieldFactory.Field('optionalBirthday', {
+			type: 'date',
+		}) as any
+	}
 
 	@test()
 	protected static canSetDateAsDateObject() {
@@ -48,7 +60,30 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 	}
 
 	@test()
+	protected static undefinedStatsUndefined() {
+		this.entity.set('optionalBirthday', undefined)
+		const value = this.entity.get('optionalBirthday')
+		assert.isUndefined(value)
+
+		assert.isUndefined(this.field.toValueType(undefined))
+		assert.isNull(this.field.toValueType(null))
+	}
+
+	@test()
+	protected static nullStaysNull() {
+		this.entity.set('optionalBirthday', null)
+		const value = this.entity.get('optionalBirthday')
+		assert.isNull(value)
+	}
+
+	@test()
 	protected static honorsRequired() {
 		super.honorsRequired()
+	}
+
+	@test()
+	protected static convertsStringsToNumbers() {
+		assert.isEqual(this.field.toValueType('10'), 0)
+		assert.isEqual(this.field.toValueType('86400100'), 86400000)
 	}
 }

@@ -44,6 +44,6 @@ export default class DateTimeField extends AbstractField<DateTimeFieldDefinition
 			return value.getTime()
 		}
 
-		return value
+		return value ? +value : value
 	}
 }
