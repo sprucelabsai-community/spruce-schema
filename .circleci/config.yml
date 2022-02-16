@@ -1,139 +1,49 @@
 version: 2.1
 orbs:
-  hub: yasuhiroki/hub@0.0.2
+  spruce: sprucelabsai/orb@1
 jobs:
   test:
     docker:
       - image: circleci/node:16
+    working_directory: /mnt/ramdisk
     steps:
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
-      - run:
-          name: "Check and skip if npm-publish"
-          command: |
-            COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
-            if [[ $COMMIT_MSG == *"[npm-publish]"* ]]; then
-              echo "[npm-publish] detected. No publish necessary 👊"
-              circleci-agent step halt
-            fi
-      - run:
-          name: "ENV file creation"
-          command: |
-            [ -n "$BASE64_ENV" ] && echo $BASE64_ENV | base64 --decode > .env
-      - run: yarn install
-      - run: yarn build.ci
-      - run: yarn lint
-      - run: yarn test -w 1
-      - run:
-          name: Check branch for auto-upgrade
-          command: |
-            if [[ ${CIRCLE_BRANCH} != "upgrade-"* ]]; then
-              circleci-agent step halt
-            fi
-      - run:
-          name: Merge auto-upgrade into master
-          command: |
-            git config --global user.email "$GIT_AUTHOR_EMAIL"
-            git config --global user.name "$GIT_AUTHOR_NAME"
-            git fetch --all
-            git checkout -f master
-            git reset --hard origin/master
-            git merge --no-ff ${CIRCLE_BRANCH} -m "chore(auto-upgrade): Upgrade Tests Passed [auto-merge]"
-            git push origin
+      - spruce/check_and_skip_if_npm_publish
+      - spruce/create_env_from_base64_env
+      - spruce/install_deps_build_ci_test
+      - spruce/exit_if_not_auto_upgrade
+      - spruce/merge_auto_upgrade
   npm_publish:
     docker:
       - image: circleci/node:16
+    working_directory: /mnt/ramdisk
     steps:
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
-      - run:
-          name: "Check and skip if npm-publish"
-          command: |
-            COMMIT_MSG=$(git log --format=oneline -n 1 $CIRCLE_SHA1)
-            if [[ $COMMIT_MSG == *"[npm-publish]"* ]]; then
-              echo "[npm-publish] detected. No publish necessary 👊"
-              circleci-agent step halt
-            fi
-      - run: yarn install
-      - run: yarn run build.dist
-      - run: git config --global user.email "$GIT_AUTHOR_EMAIL"
-      - run: git config --global user.name "$GIT_AUTHOR_NAME"
-      - run: yarn run release
+      - spruce/check_and_skip_if_npm_publish
+      - spruce/install_deps_build_dist_release
   upgrade:
     docker:
       - image: circleci/node:16
+    working_directory: /mnt/ramdisk
     steps:
-      - run:
-          name: "Check for auto upgrade"
-          command: |
-            if [[ -z "$SKIP_DNS_CHECK" ]]; then
-              getent hosts autoupgrade.continuoustesting.ai || circleci-agent step halt
-            fi
+      - spruce/check_for_autoupgrade_dns
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
-      - run:
-          name: "Check for SSH_KEYS env"
-          command: |
-            if [[ -n "$SSH_KEYS" ]]; then
-              cd ~
-              echo $SSH_KEYS | base64 --decode | tar zxf - 
-            fi
-      - run:
-          name: "npm cache"
-          command: |
-            if [[ -n "$NPM_ENV" ]]; then
-              HOSTIP=`/sbin/ip route|awk '/default/ { print $3 }'`
-              echo $HOSTIP npmcache.continuoustesting.ai | sudo tee -a /etc/hosts
-              npm config set registry http://npmcache.continuoustesting.ai:28080
-              npm config set @sprucelabs:registry https://registry.npmjs.org
-              npm config set strict-ssl false
-            fi
+      - spruce/check_for_ssh_keys_env
+      - spruce/setup_ct_npm_cache
       - checkout
-      - hub/install
-      - run:
-          name: "Set TARGETBRANCH env variable"
-          command: |
-            TARGETBRANCH=upgrade-$(date '+%Y-%m-%d')
-            echo "export TARGETBRANCH=$TARGETBRANCH" >> $BASH_ENV
-      - run:
-          name: "Install Spruce CLI"
-          command: |
-            yarn global add @sprucelabs/spruce-cli
-      - run:
-          name: "Try to upgrade"
-          command: |
-            git checkout -b $TARGETBRANCH || git checkout $TARGETBRANCH
-            git reset --hard master
-            git config --global user.email "$GIT_AUTHOR_EMAIL"
-            git config --global user.name "$GIT_AUTHOR_NAME"
-            ~/.yarn/bin/spruce upgrade
-            if [[ $(git status) != *"modified"* ]]; then 
-              echo "No modifications detected.  No push/PR necessary 👊"
-              circleci-agent step halt
-            fi
-      - run:
-          name: "Check for only newline diff"
-          command: |
-            if [[ $(git status --porcelain | awk '{print $2}' | wc -l) -eq 1 ]]; then
-              if [[ $(git status --porcelain | awk '{print $2}' | grep package.json | wc -l ) -eq 1 ]]; then
-                if [[ $(git diff -w package.json | wc -l) -eq 0 ]]; then
-                  circleci-agent step halt
-                fi
-              fi
-            fi
-
-      - run:
-          name: "Create PR"
-          command: |
-            git commit -a -m "chore(auto-upgrade): upgraded packages [upgrade-all]"
-            git push --force origin $TARGETBRANCH
-            git push --set-upstream origin $TARGETBRANCH
-            echo "$(hub pull-request --base master --head $TARGETBRANCH -m 'Automated Package Upgrade' 2>&1)" |egrep "/pull/|already exists"
+      - spruce/set_target_branch_env
+      - spruce/install_cli
+      - spruce/upgrade_check_for_major
+      - spruce/check_for_newline_only_diff
+      - spruce/create_pr
 workflows:
   version: 2.1
   do_build:
