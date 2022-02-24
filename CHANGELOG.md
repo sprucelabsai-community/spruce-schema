@@ -1,3 +1,10 @@
+# [27.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v26.0.140...v27.0.0) (2022-02-24)
+
+
+### Breaking Changes
+
+* better error reporting and export rename ([fed24eb](https://github.com/sprucelabsai/spruce-schema/commit/fed24eb))
+
 ## [26.0.140](https://github.com/sprucelabsai/spruce-schema/compare/v26.0.139...v26.0.140) (2022-02-24)
 
 ## [26.0.139](https://github.com/sprucelabsai/spruce-schema/compare/v26.0.138...v26.0.139) (2022-02-24)
