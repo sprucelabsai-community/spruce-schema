@@ -30,4 +30,31 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
 
 		errorAssert.assertError(err, 'INVALID_SCHEMA_REFERENCE')
 	}
+
+	@test()
+	protected static async templateItemIdNamespaceThrowsHelpfulMessage() {
+		const err = assert.doesThrow(() =>
+			SchemaField.generateTemplateDetails({
+				templateItems: [
+					{
+						nameCamel: 'test',
+						destinationDir: '',
+						namespace: 'whatever',
+					} as any,
+				],
+				definition: {
+					type: 'schema',
+					options: {
+						schema: {
+							id: 'test',
+							version: 'test',
+							namespace: 'lotto',
+						},
+					},
+				},
+			} as any)
+		)
+
+		errorAssert.assertError(err, 'INVALID_SCHEMA_REFERENCE')
+	}
 }

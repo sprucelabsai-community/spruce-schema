@@ -12,6 +12,7 @@ import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
+	SchemaTemplateItem,
 	TemplateRenderAs,
 } from '../types/template.types'
 import isIdWithVersion from '../utilities/isIdWithVersion'
@@ -99,21 +100,17 @@ export default class SchemaField<
 
 		idsWithVersion.forEach((idWithVersion) => {
 			const { id, version, namespace } = idWithVersion
-			let allMatches = templateItems.filter(
-				(item) => item.id.toLowerCase() === id.toLowerCase()
-			)
+			let allMatches = templateItems.filter((item) => {
+				if (!item.id) {
+					throwInvalidReferenceError(item)
+				}
+				return item.id.toLowerCase() === id.toLowerCase()
+			})
 
 			if (namespace) {
 				allMatches = allMatches.filter((item) => {
 					if (!item.namespace) {
-						throw new SpruceError({
-							code: 'INVALID_SCHEMA_REFERENCE',
-							friendlyMessage: `Generating template failed because one of your schema references (the schema a field with 'type=schema' points to) is missing a namespace. Look through your builders for a field pointing to something like:\n\n${JSON.stringify(
-								item,
-								null,
-								2
-							)}`,
-						})
+						throwInvalidReferenceError(item)
 					}
 					return item.namespace.toLowerCase() === namespace.toLowerCase()
 				})
@@ -430,4 +427,14 @@ export default class SchemaField<
 			createEntityInstances,
 		}) as FieldDefinitionValueType<F, CreateEntityInstances>
 	}
+}
+function throwInvalidReferenceError(item: SchemaTemplateItem) {
+	throw new SpruceError({
+		code: 'INVALID_SCHEMA_REFERENCE',
+		friendlyMessage: `Generating template failed because one of your schema references (the schema a field with 'type=schema' points to) is missing a namespace. Look through your builders for a field pointing to something like:\n\n${JSON.stringify(
+			item,
+			null,
+			2
+		)}`,
+	})
 }
