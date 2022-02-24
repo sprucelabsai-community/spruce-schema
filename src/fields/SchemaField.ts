@@ -15,7 +15,7 @@ import {
 	TemplateRenderAs,
 } from '../types/template.types'
 import isIdWithVersion from '../utilities/isIdWithVersion'
-import normaizeSchemaToIdWithVersion from '../utilities/normalizeSchemaToIdWithVersion'
+import normalizeSchemaToIdWithVersion from '../utilities/normalizeSchemaToIdWithVersion'
 import validateSchema from '../utilities/validateSchema'
 import AbstractField from './AbstractField'
 import {
@@ -74,7 +74,7 @@ export default class SchemaField<
 		const schemasOrIds = this.mapFieldDefinitionToSchemasOrIdsWithVersion(field)
 
 		const ids: SchemaIdWithVersion[] = schemasOrIds.map((item) =>
-			normaizeSchemaToIdWithVersion(item)
+			normalizeSchemaToIdWithVersion(item)
 		)
 
 		return ids
@@ -104,9 +104,19 @@ export default class SchemaField<
 			)
 
 			if (namespace) {
-				allMatches = allMatches.filter(
-					(item) => item.namespace.toLowerCase() === namespace.toLowerCase()
-				)
+				allMatches = allMatches.filter((item) => {
+					if (!item.namespace) {
+						throw new SpruceError({
+							code: 'INVALID_SCHEMA_REFERENCE',
+							friendlyMessage: `Generating template failed because one of your schema references (the schema a field with 'type=schema' points to) is missing a namespace. Look through your builders for a field pointing to something like:\n\n${JSON.stringify(
+								item,
+								null,
+								2
+							)}`,
+						})
+					}
+					return item.namespace.toLowerCase() === namespace.toLowerCase()
+				})
 			}
 
 			let matchedTemplateItem
@@ -158,8 +168,9 @@ export default class SchemaField<
 				throw new SpruceError({
 					code: 'SCHEMA_NOT_FOUND',
 					schemaId: id,
-					friendlyMessage:
-						'Failed during generation of value type on the Schema field. This can happen if schema id "${schemaId}" is not in "templateItems" (which should hold every schema in your skill).',
+					friendlyMessage: `Template generation failed. I could not find a schema that was being referenced. I was looking for a schema with the id of '${id}' and namespace '${
+						namespace ?? '**missing**'
+					}'.`,
 				})
 			}
 		})

@@ -1,7 +1,7 @@
 import { Schema, SchemaIdWithVersion } from '../schemas.static.types'
 import isIdWithVersion from './isIdWithVersion'
 
-export default function normaizeSchemaToIdWithVersion(
+export default function normalizeSchemaToIdWithVersion(
 	schemaOrIdWithVersion: Schema | SchemaIdWithVersion
 ) {
 	if (isIdWithVersion(schemaOrIdWithVersion)) {
