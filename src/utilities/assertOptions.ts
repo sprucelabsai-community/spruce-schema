@@ -2,7 +2,8 @@ import SpruceError from '../errors/SpruceError'
 
 const assertOptions = function <Options extends Record<string, any>>(
 	options: Options,
-	toCheck: (keyof Options)[]
+	toCheck: (keyof Options)[],
+	friendlyMessage?: string
 ): Options {
 	const missing: (keyof Options)[] = []
 
@@ -19,6 +20,7 @@ const assertOptions = function <Options extends Record<string, any>>(
 		throw new SpruceError({
 			code: 'MISSING_PARAMETERS',
 			parameters: missing as string[],
+			friendlyMessage,
 		})
 	}
 

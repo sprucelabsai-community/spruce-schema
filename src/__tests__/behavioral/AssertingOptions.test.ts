@@ -18,4 +18,11 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 	protected static failsWithNull() {
 		assert.doesThrow(() => assertOptions({ hello: null }, ['hello']))
 	}
+
+	@test('can pass through message 1', 'what the')
+	@test('can pass through message 2', 'so much more')
+	protected static passesThroughErrorMessage(msg: string) {
+		//@ts-ignore
+		assert.doesThrow(() => assertOptions({}, ['waka'], msg), msg)
+	}
 }
