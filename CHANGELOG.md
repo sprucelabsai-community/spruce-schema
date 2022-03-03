@@ -1,3 +1,21 @@
+## [27.0.10](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.9...v27.0.10) (2022-03-01)
+
+## [27.0.9](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.8...v27.0.9) (2022-03-01)
+
+## [27.0.8](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.7...v27.0.8) (2022-03-01)
+
+## [27.0.7](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.6...v27.0.7) (2022-03-01)
+
+## [27.0.6](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.5...v27.0.6) (2022-03-01)
+
+## [27.0.5](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.4...v27.0.5) (2022-02-26)
+
+## [27.0.4](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.3...v27.0.4) (2022-02-26)
+
+## [27.0.3](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.2...v27.0.3) (2022-02-26)
+
+## [27.0.2](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.1...v27.0.2) (2022-02-25)
+
 ## [27.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.0...v27.0.1) (2022-02-24)
 
 # [27.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v26.0.140...v27.0.0) (2022-02-24)
