@@ -1,3 +1,10 @@
+# [27.1.0](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.10...v27.1.0) (2022-03-03)
+
+
+### Features
+
+* devs can now pass custom error messages when asserting options ([634de01](https://github.com/sprucelabsai/spruce-schema/commit/634de01))
+
 ## [27.0.10](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.9...v27.0.10) (2022-03-01)
 
 ## [27.0.9](https://github.com/sprucelabsai/spruce-schema/compare/v27.0.8...v27.0.9) (2022-03-01)
