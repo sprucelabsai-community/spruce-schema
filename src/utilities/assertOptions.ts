@@ -1,10 +1,13 @@
 import SpruceError from '../errors/SpruceError'
 
-const assertOptions = function <Options extends Record<string, any>>(
+const assertOptions = function <
+	Options extends Record<string, any>,
+	Keys extends keyof Options = keyof Options
+>(
 	options: Options,
-	toCheck: (keyof Options)[],
+	toCheck: Keys[],
 	friendlyMessage?: string
-): Options {
+): Options & Required<Pick<Options, Keys>> {
 	const missing: (keyof Options)[] = []
 
 	for (const check of toCheck) {
@@ -24,7 +27,7 @@ const assertOptions = function <Options extends Record<string, any>>(
 		})
 	}
 
-	return options
+	return options as any
 }
 
 export default assertOptions

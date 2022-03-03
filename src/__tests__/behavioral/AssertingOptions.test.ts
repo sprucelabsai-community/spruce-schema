@@ -25,4 +25,22 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 		//@ts-ignore
 		assert.doesThrow(() => assertOptions({}, ['waka'], msg), msg)
 	}
+
+	@test()
+	protected static typesResultsAsNonNullable() {
+		type TestOptions = {
+			passed?: boolean
+			stillOptional?: boolean
+		}
+
+		const options: TestOptions = {
+			passed: true,
+			stillOptional: false,
+		}
+
+		const { passed, stillOptional } = assertOptions(options, ['passed'])
+
+		assert.isExactType<boolean, typeof passed>(true)
+		assert.isExactType<boolean | undefined, typeof stillOptional>(true)
+	}
 }
