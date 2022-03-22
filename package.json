@@ -70,12 +70,12 @@
     "mime-type": "^4.0.0"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^1.0.422",
-    "@sprucelabs/jest-json-reporter": "^6.0.343",
-    "@sprucelabs/jest-sheets-reporter": "^1.3.27",
-    "@sprucelabs/resolve-path-aliases": "^1.1.13",
+    "@sprucelabs/esm-postbuild": "^1.0.423",
+    "@sprucelabs/jest-json-reporter": "^6.0.344",
+    "@sprucelabs/jest-sheets-reporter": "^1.3.28",
+    "@sprucelabs/resolve-path-aliases": "^1.1.14",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test-utils": "^3.0.501",
+    "@sprucelabs/test-utils": "^3.0.502",
     "@types/lodash": "^4.14.180",
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
