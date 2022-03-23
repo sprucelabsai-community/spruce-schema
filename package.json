@@ -24,7 +24,11 @@
     "namespace": "spruce-schema",
     "upgradeIgnoreList": [
       "@sprucelabs/spruce-test-fixtures",
-      "@types/node"
+      "@types/node",
+      "@sprucelabs/esm-postbuild",
+      "@sprucelabs/jest-json-reporter",
+      "@sprucelabs/jest-sheets-reporter",
+      "@sprucelabs/resolve-path-aliases"
     ]
   },
   "homepage": "https://github.com/sprucelabsai/spruce-schema",
