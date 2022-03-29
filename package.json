@@ -80,7 +80,7 @@
     "@sprucelabs/resolve-path-aliases": "^1.1.14",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test-utils": "^3.0.508",
-    "@types/lodash": "^4.14.180",
+    "@types/lodash": "^4.14.181",
     "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.0.0",
