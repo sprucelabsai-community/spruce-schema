@@ -69,9 +69,7 @@
     "@sprucelabs/error": "^5.0.451",
     "@sprucelabs/test": "^7.7.312",
     "email-validator": "^2.0.4",
-    "lodash": "^4.17.21",
-    "mime-db": "^1.52.0",
-    "mime-type": "^4.0.0"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.424",
@@ -81,7 +79,6 @@
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test-utils": "^3.0.540",
     "@types/lodash": "^4.14.182",
-    "@types/mime-db": "^1.43.1",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.1.0",
     "eslint": "^8.14.0",
