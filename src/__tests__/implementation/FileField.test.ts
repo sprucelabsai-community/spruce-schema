@@ -1,13 +1,12 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import { FieldError } from '../../errors/options.types'
 import FieldFactory from '../../factories/FieldFactory'
 import {
-	FieldDefinitions,
 	FileField,
 	FileFieldDefinition,
 	FileFieldValue,
 	SupportedFileType,
 } from '../../fields'
-import buildSchema from '../../utilities/buildSchema'
 
 export default class FileFieldTest extends AbstractSpruceTest {
 	private static field: FileField
@@ -48,24 +47,42 @@ export default class FileFieldTest extends AbstractSpruceTest {
 
 	@test()
 	protected static matchesWhenAcceptableMatchIsNotFirst() {
-		this.field = this.Field({
-			options: {
-				acceptableTypes: ['image/png', 'application/pdf'],
-			},
-		})
-
+		this.setTypes(['image/png', 'application/pdf'])
 		this.assertNoErrorWithPdf()
 	}
 
+	@test()
+	protected static async base64DoesNotThrow() {
+		this.setTypes(['image/png', 'application/pdf'])
+		this.assertNoError({
+			base64: 'waka',
+		})
+	}
+
+	private static setTypes(types: SupportedFileType[]) {
+		this.field = this.Field({
+			options: {
+				acceptableTypes: types,
+			},
+		})
+	}
+
 	private static assertNoErrorWithPdf() {
-		assert.isLength(
-			this.field.validate({
-				name: 'yes',
-				type: 'application/pdf',
-				uri: 'uoaue',
-			}),
-			0
-		)
+		this.assertNoError({
+			name: 'yes',
+			type: 'application/pdf',
+			uri: 'uoaue',
+		})
+	}
+
+	private static assertNoError(value: Partial<FileFieldValue>) {
+		assert.isLength(this.validate({ name: 'test', ...value }), 0)
+	}
+
+	private static validate(
+		value: FileFieldValue
+	): FieldError[] | null | undefined {
+		return this.field.validate(value)
 	}
 
 	private static RequiredField() {

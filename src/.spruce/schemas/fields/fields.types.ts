@@ -8,6 +8,7 @@ import { EmailFieldDefinition } from '../../../fields/EmailField.types'
 import { Field } from '../../../fields/field.static.types'
 import { FileFieldDefinition } from '../../../fields/FileField.types'
 import { IdFieldDefinition } from '../../../fields/IdField.types'
+import { ImageFieldDefinition } from '../../../fields/ImageField.types'
 import { NumberFieldDefinition } from '../../../fields/NumberField.types'
 import { PhoneFieldDefinition } from '../../../fields/PhoneField.types'
 import { RawFieldDefinition } from '../../../fields/RawField.types'
@@ -36,7 +37,8 @@ export type FieldDefinitions =
 	| FileFieldDefinition
 	| DateFieldDefinition
 	| DirectoryFieldDefinition 
-	| EmailFieldDefinition
+	| EmailFieldDefinition 
+	| ImageFieldDefinition
 
 export type Fields =
 	| Field<BooleanFieldDefinition>
@@ -54,65 +56,69 @@ export type Fields =
 	| Field<DateFieldDefinition>
 	| Field<DirectoryFieldDefinition> 
 	| Field<EmailFieldDefinition>
+	| Field<ImageFieldDefinition>
 
 export interface FieldDefinitionMap {
-	['boolean']: BooleanFieldDefinition
-	['select']: SelectFieldDefinition
-	['duration']: DurationFieldDefinition
-	['id']: IdFieldDefinition
-	['text']: TextFieldDefinition
-	['address']: AddressFieldDefinition
-	['phone']: PhoneFieldDefinition
-	['schema']: SchemaFieldFieldDefinition
-	['raw']: RawFieldDefinition
-	['number']: NumberFieldDefinition
-	['dateTime']: DateTimeFieldDefinition
-	['file']: FileFieldDefinition
-	['date']: DateFieldDefinition
-	['directory']: DirectoryFieldDefinition
-	['email']: EmailFieldDefinition
+	boolean: BooleanFieldDefinition
+	select: SelectFieldDefinition
+	duration: DurationFieldDefinition
+	id: IdFieldDefinition
+	text: TextFieldDefinition
+	address: AddressFieldDefinition
+	phone: PhoneFieldDefinition
+	schema: SchemaFieldFieldDefinition
+	raw: RawFieldDefinition
+	number: NumberFieldDefinition
+	dateTime: DateTimeFieldDefinition
+	file: FileFieldDefinition
+	date: DateFieldDefinition
+	directory: DirectoryFieldDefinition
+	email: EmailFieldDefinition
+	image: ImageFieldDefinition
 }
 
 export interface FieldValueTypeGeneratorMap<
 	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean
 	> {
-	['boolean']: BooleanFieldDefinition['value']
-	['select']: SelectFieldValueTypeMapper<
+	boolean: BooleanFieldDefinition['value']
+	select: SelectFieldValueTypeMapper<
 		F extends SelectFieldDefinition ? F : SelectFieldDefinition
 	>
-	['duration']: DurationFieldDefinition['value']
-	['id']: IdFieldDefinition['value']
-	['text']: TextFieldDefinition['value']
-	['address']: AddressFieldDefinition['value']
-	['phone']: PhoneFieldDefinition['value']
-	['schema']: SchemaFieldValueTypeMapper<
+	duration: DurationFieldDefinition['value']
+	id: IdFieldDefinition['value']
+	text: TextFieldDefinition['value']
+	address: AddressFieldDefinition['value']
+	phone: PhoneFieldDefinition['value']
+	schema: SchemaFieldValueTypeMapper<
 		F extends SchemaFieldFieldDefinition ? F : SchemaFieldFieldDefinition,
 		CreateEntityInstances
 	>
-	['raw']: RawFieldDefinition['value']
-	['number']: NumberFieldDefinition['value']
-	['dateTime']: DateTimeFieldDefinition['value']
-	['file']: FileFieldDefinition['value']
-	['date']: DateFieldDefinition['value']
-	['directory']: DirectoryFieldDefinition['value']
-	['email']: EmailFieldDefinition['value']
+	raw: RawFieldDefinition['value']
+	number: NumberFieldDefinition['value']
+	dateTime: DateTimeFieldDefinition['value']
+	file: FileFieldDefinition['value']
+	date: DateFieldDefinition['value']
+	directory: DirectoryFieldDefinition['value']
+	email: EmailFieldDefinition['value']
+	image: ImageFieldDefinition['value']
 }
 
 export interface FieldMap {
-	['boolean']: Field<BooleanFieldDefinition>
-	['select']: Field<SelectFieldDefinition>
-	['duration']: Field<DurationFieldDefinition>
-	['id']: Field<IdFieldDefinition>
-	['text']: Field<TextFieldDefinition>
-	['address']: Field<AddressFieldDefinition>
-	['phone']: Field<PhoneFieldDefinition>
-	['schema']: Field<SchemaFieldFieldDefinition>
-	['raw']: Field<RawFieldDefinition>
-	['number']: Field<NumberFieldDefinition>
-	['dateTime']: Field<DateTimeFieldDefinition>
-	['file']: Field<FileFieldDefinition>
-	['date']: Field<DateFieldDefinition>
-	['directory']: Field<DirectoryFieldDefinition>
-	['email']: Field<EmailFieldDefinition>
+	boolean: Field<BooleanFieldDefinition>
+	select: Field<SelectFieldDefinition>
+	duration: Field<DurationFieldDefinition>
+	id: Field<IdFieldDefinition>
+	text: Field<TextFieldDefinition>
+	address: Field<AddressFieldDefinition>
+	phone: Field<PhoneFieldDefinition>
+	schema: Field<SchemaFieldFieldDefinition>
+	raw: Field<RawFieldDefinition>
+	number: Field<NumberFieldDefinition>
+	dateTime: Field<DateTimeFieldDefinition>
+	file: Field<FileFieldDefinition>
+	date: Field<DateFieldDefinition>
+	directory: Field<DirectoryFieldDefinition>
+	email: Field<EmailFieldDefinition>
+	image: Field<ImageFieldDefinition>
 }

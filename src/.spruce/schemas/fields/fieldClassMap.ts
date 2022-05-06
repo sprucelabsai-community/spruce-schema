@@ -13,23 +13,25 @@ import SchemaField from '../../../fields/SchemaField'
 import SelectField from '../../../fields/SelectField'
 import TextField from '../../../fields/TextField'
 import EmailField from '../../../fields/EmailField'
+import ImageField from '../../../fields/ImageField'
 
 const fieldClassMap = {
-	['boolean']: BooleanField,
-	['select']: SelectField,
-	['duration']: DurationField,
-	['id']: IdField,
-	['address']: AddressField,
-	['phone']: PhoneField,
-	['schema']: SchemaField,
-	['raw']: RawField,
-	['number']: NumberField,
-	['dateTime']: DateTimeField,
-	['text']: TextField,
-	['file']: FileField,
-	['date']: DateField,
-	['directory']: DirectoryField,
-	['email']: EmailField
+	boolean: BooleanField,
+	select: SelectField,
+	duration: DurationField,
+	id: IdField,
+	address: AddressField,
+	phone: PhoneField,
+	schema: SchemaField,
+	raw: RawField,
+	number: NumberField,
+	dateTime: DateTimeField,
+	text: TextField,
+	file: FileField,
+	date: DateField,
+	directory: DirectoryField,
+	email: EmailField,
+	image: ImageField
 } as const
 
 export default fieldClassMap

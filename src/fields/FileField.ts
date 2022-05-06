@@ -27,11 +27,11 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 		_?: ValidateOptions<FileFieldDefinition>
 	): FieldError[] {
 		const errors: FieldError[] = super.validate(value)
-
 		const acceptableTypes = this.definition.options?.acceptableTypes ?? []
 
 		if (
 			value &&
+			!value.base64 &&
 			acceptableTypes[0] !== '*' &&
 			acceptableTypes.indexOf(value.type!) === -1
 		) {
