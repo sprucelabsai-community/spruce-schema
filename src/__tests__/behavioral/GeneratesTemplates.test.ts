@@ -1,6 +1,7 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
 import { SelectField } from '../../fields'
 import { FieldDefinition } from '../../fields/field.static.types'
+import ImageField from '../../fields/ImageField'
 import {
 	FieldTemplateDetailOptions,
 	TemplateRenderAs,
@@ -19,8 +20,6 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
 				],
 			},
 		},
-		'("one" | "two")',
-		'("one" | "two")',
 		'("one" | "two")'
 	)
 	@test(
@@ -36,21 +35,41 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
 				],
 			},
 		},
-		'("one" | "two")[]',
-		'("one" | "two")[]',
 		'("one" | "two")[]'
+	)
+	@test(
+		'image',
+		ImageField,
+		{
+			type: 'image',
+			options: {
+				requiredSizes: [],
+			},
+		},
+		'generated_test.ImageFieldValue'
+	)
+	@test(
+		'image',
+		ImageField,
+		{
+			type: 'image',
+			options: {
+				requiredSizes: [],
+			},
+		},
+		'taco.ImageFieldValue',
+		'taco'
 	)
 	protected static async testTemplateDetails(
 		Field: any,
 		definition: FieldDefinition,
 		renderAsValue: string,
-		renderAsType: string,
-		renderAsSchemaType: string
+		importAs = 'generated_test'
 	) {
 		const templateOptions: FieldTemplateDetailOptions<any> = {
 			language: 'ts',
 			globalNamespace: 'SpruceSchemas',
-			importAs: 'generated_test',
+			importAs,
 			templateItems: [],
 			definition: {
 				...definition,
@@ -60,8 +79,8 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
 
 		const expected = {
 			renderAsValue,
-			renderAsType,
-			renderAsSchemaType,
+			renderAsType: renderAsValue,
+			renderAsSchemaType: renderAsValue,
 		}
 
 		const rendersAs = Object.getOwnPropertyNames(TemplateRenderAs)

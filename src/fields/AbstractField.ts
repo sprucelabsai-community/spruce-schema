@@ -56,7 +56,7 @@ public static get description() {
 			instructions: `Copy and paste this into ${this.name}:
 			
 public static generateTemplateDetails(
-	options: IFieldTemplateDetailOptions<I{{YourFieldName}}Definition>
+	options: FieldTemplateDetailOptions<{{YourFieldName}}Definition>
 ): IFieldTemplateDetails {
 	const { definition } = options
 	return {

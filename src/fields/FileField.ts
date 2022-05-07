@@ -16,7 +16,7 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
 		options: FieldTemplateDetailOptions<FileFieldDefinition>
 	): FieldTemplateDetails {
 		return {
-			valueType: `${options.importAs}.IFileFieldValue${
+			valueType: `${options.importAs}.FileFieldValue${
 				options.definition.isArray ? '[]' : ''
 			}`,
 		}

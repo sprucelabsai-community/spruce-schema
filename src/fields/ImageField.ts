@@ -1,3 +1,7 @@
+import {
+	FieldTemplateDetailOptions,
+	FieldTemplateDetails,
+} from '../types/template.types'
 import AbstractField from './AbstractField'
 import {
 	ImageFieldDefinition,
@@ -6,6 +10,15 @@ import {
 } from './ImageField.types'
 
 export default class ImageField extends AbstractField<ImageFieldDefinition> {
+	public static generateTemplateDetails(
+		options: FieldTemplateDetailOptions<ImageFieldDefinition>
+	): FieldTemplateDetails {
+		const { definition, importAs } = options
+		return {
+			valueType: `${importAs}.ImageFieldValue${definition.isArray ? '[]' : ''}`,
+		}
+	}
+
 	public validate(value: ImageFieldValue) {
 		const errors = super.validate(value)
 
