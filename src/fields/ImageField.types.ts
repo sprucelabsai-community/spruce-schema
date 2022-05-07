@@ -1,28 +1,24 @@
 import { FieldDefinition } from './field.static.types'
 
-export const requiredImageSizes = [
-	'xxs',
-	'xs',
-	's',
-	'm',
-	'l',
-	'xl',
-	'xxl',
-	'*',
-] as const
+/**
+ * Min dimension for each size
+	xl: 1024
+	l: 500
+	m: 60
+	s: 30
+*/
+
+export const requiredImageSizes = ['s', 'm', 'l', 'xl', '*'] as const
 
 export type RequiredImageSize = typeof requiredImageSizes[number]
 
 export interface ImageFieldValue {
 	name: string
 	base64?: string
-	xxsUri?: string
-	xsUri?: string
 	sUri?: string
 	mUri?: string
 	lUri?: string
 	xlUri?: string
-	xxlUri?: string
 }
 
 export type ImageFieldDefinition = FieldDefinition<ImageFieldValue> & {
