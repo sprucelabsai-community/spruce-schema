@@ -9,6 +9,7 @@ import durationRegistration from './addons/durationField.addon'
 import emailRegistration from './addons/emailField.addon'
 import fileRegistration from './addons/fileField.addon'
 import idRegistration from './addons/idField.addon'
+import imageRegistration from './addons/imageField.addon'
 import numberRegistration from './addons/numberField.addon'
 import phoneRegistration from './addons/phoneField.addon'
 import rawRegistration from './addons/rawField.addon'
@@ -78,6 +79,7 @@ export const fieldRegistrations: FieldRegistration[] = [
 	selectRegistration,
 	textRegistration,
 	emailRegistration,
+	imageRegistration,
 ]
 
 export { default as assertOptions } from './utilities/assertOptions'

@@ -19,6 +19,10 @@ export default class ImageField extends AbstractField<ImageFieldDefinition> {
 		}
 	}
 
+	public static get description() {
+		return 'Images of various sizes!'
+	}
+
 	public validate(value: ImageFieldValue) {
 		const errors = super.validate(value)
 
