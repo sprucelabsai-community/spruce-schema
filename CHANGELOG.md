@@ -1,3 +1,13 @@
+## [28.0.1](https://github.com/sprucelabsai/spruce-schema/compare/v28.0.0...v28.0.1) (2022-05-06)
+
+# [28.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v27.1.71...v28.0.0) (2022-05-06)
+
+
+### Breaking Changes
+
+* file field revamp and new image field for solving 92.8% of the world's problems. ([d04069d](https://github.com/sprucelabsai/spruce-schema/commit/d04069d))
+* file field upgrades to make working with files even EASIER! ([49252e1](https://github.com/sprucelabsai/spruce-schema/commit/49252e1))
+
 ## [27.1.71](https://github.com/sprucelabsai/spruce-schema/compare/v27.1.70...v27.1.71) (2022-05-06)
 
 ## [27.1.70](https://github.com/sprucelabsai/spruce-schema/compare/v27.1.69...v27.1.70) (2022-05-06)
