@@ -3,11 +3,7 @@ import {
 	FieldTemplateDetails,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import {
-	ImageFieldDefinition,
-	ImageFieldValue,
-	requiredImageSizes,
-} from './ImageField.types'
+import { ImageFieldDefinition, requiredImageSizes } from './ImageField.types'
 
 export default class ImageField extends AbstractField<ImageFieldDefinition> {
 	public static generateTemplateDetails(
@@ -23,10 +19,10 @@ export default class ImageField extends AbstractField<ImageFieldDefinition> {
 		return 'Images of various sizes!'
 	}
 
-	public validate(value: ImageFieldValue) {
+	public validate(value: any) {
 		const errors = super.validate(value)
 
-		if (errors.length === 0 && !value.base64) {
+		if (value && errors.length === 0 && !value.base64) {
 			let sizes = this.getRequiredSizes()
 
 			const missing: string[] = []

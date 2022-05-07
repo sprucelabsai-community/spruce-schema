@@ -60,13 +60,14 @@ export default class ImageFieldTest extends AbstractSpruceTest {
 	}
 
 	@test()
-	protected static passesWithBase64() {
+	protected static passesWithAcceptableValues() {
 		this.assertNoErrors({
 			base64: 'waka',
 		})
+		this.assertNoErrors(null)
 	}
 
-	private static assertNoErrors(value: Partial<ImageFieldValue>) {
+	private static assertNoErrors(value: Partial<ImageFieldValue> | null) {
 		const errs = this.validate(value)
 		assert.isLength(errs, 0)
 	}
@@ -85,7 +86,7 @@ export default class ImageFieldTest extends AbstractSpruceTest {
 		assert.isEqual(errs[0].name, this.field.name)
 	}
 
-	private static validate(value: Partial<ImageFieldValue>) {
+	private static validate(value: Partial<ImageFieldValue> | null) {
 		return this.field.validate(value ? { name: 'avatar.png', ...value } : value)
 	}
 
