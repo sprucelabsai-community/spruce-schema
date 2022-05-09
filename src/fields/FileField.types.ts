@@ -1,13 +1,13 @@
 import { FieldDefinition } from './field.static.types'
 
-const supportedTypes = [
+export const supportedFileTypes = [
 	'image/png',
 	'image/jpeg',
 	'application/pdf',
 	'*',
 ] as const
 
-export type SupportedFileType = typeof supportedTypes[number]
+export type SupportedFileType = typeof supportedFileTypes[number]
 
 export interface FileFieldValue {
 	name: string
