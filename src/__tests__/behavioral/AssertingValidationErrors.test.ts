@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import { FieldErrorCode } from '../../errors/options.types'
 import SpruceError from '../../errors/SpruceError'
 import validationErrorAssert, {
@@ -19,7 +19,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 			() => validationErrorAssert.assertError()
 		)
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['error', 'options'],
 		})
 	}
@@ -31,7 +31,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 			() => validationErrorAssert.assertError(new Error('test'))
 		)
 
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['options'],
 		})
 	}
@@ -45,7 +45,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
 			})
 		)
 
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['error'],
 		})
 	}

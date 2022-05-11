@@ -1,6 +1,6 @@
+import { FieldName } from '../fields/field.static.types'
 import { SchemaFieldsByName } from '../schemas.static.types'
 
-type FieldName<F extends SchemaFieldsByName> = Extract<keyof F, string>
 type MakeFieldsOptional<F extends SchemaFieldsByName> = {
 	[K in keyof F]: { isRequired: false } & Omit<F[K], 'isRequired'>
 }

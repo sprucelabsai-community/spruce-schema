@@ -1,5 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
@@ -130,7 +130,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 			validateSchema(schema)
 		) as SpruceError
 
-		errorAssertUtil.assertError(error, 'INVALID_SCHEMA', {
+		errorAssert.assertError(error, 'INVALID_SCHEMA', {
 			errors: expectedErrors,
 		})
 	}

@@ -1,5 +1,5 @@
+import { FieldName } from '../fields/field.static.types'
 import { SchemaFieldsByName } from '../schemas.static.types'
-type FieldName<F extends SchemaFieldsByName> = Extract<keyof F, string>
 
 export default function dropFields<
 	F extends SchemaFieldsByName,

@@ -6,6 +6,7 @@ import {
 import { FieldError } from '../errors/options.types'
 import {
 	Schema,
+	SchemaFieldsByName,
 	SchemaValues,
 	StaticSchemaEntity,
 } from '../schemas.static.types'
@@ -50,6 +51,7 @@ export type ValidateOptions<F extends FieldDefinitions> = {
 } & Partial<F['options']>
 
 export type FieldType = keyof FieldMap
+export type FieldName<F extends SchemaFieldsByName> = Extract<keyof F, string>
 
 // if it's not going to change, put it in here
 export type FieldDefinition<

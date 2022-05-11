@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import { ValidationFailedErrorOptions } from '../../errors/options.types'
 import SpruceError from '../../errors/SpruceError'
 import {
@@ -12,7 +12,7 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 	protected static async throwsWhenMissingValidateError() {
 		//@ts-ignore
 		const err = assert.doesThrow(() => this.Formatter())
-		errorAssertUtil.assertError(err, 'MISSING_PARAMETERS', {
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['error'],
 		})
 	}
@@ -25,7 +25,7 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 				new SpruceError({ code: 'MISSING_PARAMETERS', parameters: [] })
 			)
 		)
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['error'],
 		})
 	}
@@ -36,7 +36,7 @@ export default class ValidateErrorMessageFormatterTest extends AbstractSpruceTes
 			//@ts-ignore
 			() => this.Formatter(new Error('yay'))
 		)
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['error'],
 		})
 	}

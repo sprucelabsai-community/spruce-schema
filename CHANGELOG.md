@@ -2299,14 +2299,14 @@
 
 ### Features
 
-* validationErrorAssertUtil exported ([49e42e2](https://github.com/sprucelabsai/spruce-schema/commit/49e42e2))
+* validationerrorAssert exported ([49e42e2](https://github.com/sprucelabsai/spruce-schema/commit/49e42e2))
 
 # [25.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v24.0.0...v25.0.0) (2021-08-26)
 
 
 ### Breaking Changes
 
-* validation error changed again! validationErrorAssertUtil now in place ([3b9761b](https://github.com/sprucelabsai/spruce-schema/commit/3b9761b))
+* validation error changed again! validationerrorAssert now in place ([3b9761b](https://github.com/sprucelabsai/spruce-schema/commit/3b9761b))
 
 # [24.0.0](https://github.com/sprucelabsai/spruce-schema/compare/v23.1.0...v24.0.0) (2021-08-25)
 

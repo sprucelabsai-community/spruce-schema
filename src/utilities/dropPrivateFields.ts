@@ -1,9 +1,9 @@
+import { FieldName } from '../fields/field.static.types'
 import { SchemaFieldsByName } from '../schemas.static.types'
-type FieldNames<F extends SchemaFieldsByName> = Extract<keyof F, string>
 
 type PrivateFieldNames<F extends SchemaFieldsByName> = {
-	[K in FieldNames<F>]: F[K]['isPrivate'] extends true ? K : never
-}[FieldNames<F>]
+	[K in FieldName<F>]: F[K]['isPrivate'] extends true ? K : never
+}[FieldName<F>]
 
 export default function dropPrivateFields<
 	F extends SchemaFieldsByName,

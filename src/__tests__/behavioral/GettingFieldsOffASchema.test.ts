@@ -1,5 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import { buildSchema } from '../..'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import getFields from '../../utilities/getFields'
@@ -35,7 +35,7 @@ export default class GettingFieldsOffASchemaTest extends AbstractSchemaTest {
 	protected static async throwsWithNothingPassed() {
 		//@ts-ignore
 		const err = assert.doesThrow(() => getFields())
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['schema'],
 		})
 	}
@@ -43,7 +43,7 @@ export default class GettingFieldsOffASchemaTest extends AbstractSchemaTest {
 	@test()
 	protected static async noFieldsThrows() {
 		const err = assert.doesThrow(() => getFields(noFieldsSchema))
-		errorAssertUtil.assertError(err, 'INVALID_PARAMETERS', {
+		errorAssert.assertError(err, 'INVALID_PARAMETERS', {
 			parameters: ['schema'],
 		})
 	}

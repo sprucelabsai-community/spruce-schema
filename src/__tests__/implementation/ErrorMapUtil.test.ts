@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import { FieldError } from '../../errors/options.types'
 import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'
 
@@ -22,7 +22,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
-		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'MISSING_PARAMETERS', {
 			parameters: ['firstName'],
 		})
 	}
@@ -44,7 +44,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
-		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'MISSING_PARAMETERS', {
 			parameters: ['firstName', 'lastName'],
 		})
 	}
@@ -61,7 +61,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
-		errorAssertUtil.assertError(errors[0], 'INVALID_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'INVALID_PARAMETERS', {
 			parameters: ['phone'],
 		})
 	}
@@ -78,7 +78,7 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 1)
-		errorAssertUtil.assertError(errors[0], 'UNEXPECTED_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'UNEXPECTED_PARAMETERS', {
 			parameters: ['phone'],
 		})
 	}
@@ -104,14 +104,14 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 3)
-		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'MISSING_PARAMETERS', {
 			parameters: ['firstName'],
 		})
-		errorAssertUtil.assertError(errors[1], 'INVALID_PARAMETERS', {
+		errorAssert.assertError(errors[1], 'INVALID_PARAMETERS', {
 			parameters: ['email'],
 		})
 
-		errorAssertUtil.assertError(errors[2], 'UNEXPECTED_PARAMETERS', {
+		errorAssert.assertError(errors[2], 'UNEXPECTED_PARAMETERS', {
 			parameters: ['phone'],
 		})
 	}
@@ -143,11 +143,11 @@ export default class ErrorMapUtilTest extends AbstractSpruceTest {
 		const errors = mapFieldErrorsToParameterErrors(errs)
 
 		assert.isLength(errors, 2)
-		errorAssertUtil.assertError(errors[0], 'MISSING_PARAMETERS', {
+		errorAssert.assertError(errors[0], 'MISSING_PARAMETERS', {
 			parameters: ['address.street1', 'firstName'],
 		})
 
-		errorAssertUtil.assertError(errors[1], 'UNEXPECTED_PARAMETERS', {
+		errorAssert.assertError(errors[1], 'UNEXPECTED_PARAMETERS', {
 			parameters: ['phone'],
 		})
 	}

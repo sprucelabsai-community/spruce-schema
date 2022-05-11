@@ -1,5 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
-import { errorAssertUtil } from '@sprucelabs/test-utils'
+import { errorAssert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import validationErrorAssert from '../../tests/validationErrorAssert.utility'
 import buildSchema from '../../utilities/buildSchema'
@@ -63,7 +63,7 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 			validateSchemaValues(noMinOrMaxSchema, { favoriteColors: [] })
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED')
+		errorAssert.assertError(err, 'VALIDATION_FAILED')
 	}
 
 	@test()
@@ -93,7 +93,7 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
 			validateSchemaValues(twoMinValuesSchema, { favoriteColors: ['purple'] })
 		)
 
-		errorAssertUtil.assertError(err, 'VALIDATION_FAILED')
+		errorAssert.assertError(err, 'VALIDATION_FAILED')
 	}
 
 	@test()
