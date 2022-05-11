@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import buildSchema from '../../utilities/buildSchema'
-import { pickFields } from '../../utilities/pickFields'
+import pickFields from '../../utilities/pickFields'
 
 export default class PickingFieldsTest extends AbstractSchemaTest {
 	@test()

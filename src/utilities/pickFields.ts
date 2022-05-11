@@ -1,7 +1,7 @@
 import { FieldName } from '../fields/field.static.types'
 import { SchemaFieldsByName } from '../schemas.static.types'
 
-export function pickFields<
+export default function pickFields<
 	F extends SchemaFieldsByName,
 	Name extends FieldName<F>
 >(fields: F, names: Name[]): Pick<F, Name> {
