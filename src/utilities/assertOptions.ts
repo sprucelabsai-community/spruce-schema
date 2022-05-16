@@ -1,15 +1,13 @@
 import get from 'just-safe-get'
 import SpruceError from '../errors/SpruceError'
 
-//@ts-ignore
-type ForceRequired<Options, Key extends Paths<Options>> = Required<
-	//@ts-ignore
-	Pick<Options, Extract<Key, keyof Options>>
->
+type ForceRequired<
+	Options extends Record<string, any>,
+	P = Paths<Options>
+> = Required<Pick<Options, Extract<P, keyof Options>>>
 
-//@ts-ignore
 export default function assertOptions<
-	Options,
+	Options extends Record<string, any>,
 	Key extends Paths<Options> = Paths<Options>
 >(
 	options: Options,
