@@ -1,6 +1,13 @@
 import get from 'just-safe-get'
 import SpruceError from '../errors/SpruceError'
 
+//@ts-ignore
+type ForceRequired<Options, Key extends Paths<Options>> = Required<
+	//@ts-ignore
+	Pick<Options, Extract<Key, keyof Options>>
+>
+
+//@ts-ignore
 export default function assertOptions<
 	Options,
 	Key extends Paths<Options> = Paths<Options>
@@ -8,7 +15,7 @@ export default function assertOptions<
 	options: Options,
 	toCheck: Key[],
 	friendlyMessage?: string
-): Options & Required<Pick<Options, Key>> {
+): Options & ForceRequired<Options, Key> {
 	const missing: Key[] = []
 
 	for (const check of toCheck) {
