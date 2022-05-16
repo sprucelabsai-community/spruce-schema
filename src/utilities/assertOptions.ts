@@ -1,11 +1,6 @@
 import get from 'just-safe-get'
 import SpruceError from '../errors/SpruceError'
 
-type ForceRequired<
-	Options extends Record<string, any>,
-	P = Paths<Options>
-> = Required<Pick<Options, Extract<P, keyof Options>>>
-
 export default function assertOptions<
 	Options extends Record<string, any>,
 	Path extends Paths<Options> = Paths<Options>
