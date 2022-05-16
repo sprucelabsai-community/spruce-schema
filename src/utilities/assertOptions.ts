@@ -2,17 +2,14 @@ import get from 'just-safe-get'
 import SpruceError from '../errors/SpruceError'
 
 export default function assertOptions<
-	Options extends Record<string, any>,
-	Key extends Join<PathsToStringProps<Options>, '.'> = Join<
-		PathsToStringProps<Options>,
-		'.'
-	>
+	Options,
+	Key extends Paths<Options> = Paths<Options>
 >(
 	options: Options,
 	toCheck: Key[],
 	friendlyMessage?: string
 ): Options & Required<Pick<Options, Key>> {
-	const missing: (keyof Options)[] = []
+	const missing: Key[] = []
 
 	for (const check of toCheck) {
 		const value = get(options ?? {}, check as string)
@@ -34,18 +31,44 @@ export default function assertOptions<
 	return options as any
 }
 
-export type PathsToStringProps<T> = T extends Record<string, any>
-	? {
-			[K in keyof T]: [K, ...PathsToStringProps<T[K]>]
-	  }[keyof T]
-	: []
-
-type Join<T extends string[], D extends string> = T extends []
-	? never
-	: T extends [infer F]
-	? F
-	: T extends [infer F, ...infer R]
-	? F extends string
-		? `${F}${D}${Join<Extract<R, string[]>, D>}`
+type Join<K, P> = K extends string | number
+	? P extends string | number
+		? `${K}${'' extends P ? '' : '.'}${P}`
 		: never
-	: string
+	: never
+
+type Prev = [
+	never,
+	0,
+	1,
+	2,
+	3,
+	4,
+	5,
+	6,
+	7,
+	8,
+	9,
+	10,
+	11,
+	12,
+	13,
+	14,
+	15,
+	16,
+	17,
+	18,
+	19,
+	20,
+	...0[]
+]
+
+type Paths<T, D extends number = 10> = [D] extends [never]
+	? never
+	: T extends object
+	? {
+			[K in keyof T]-?: K extends string | number
+				? `${K}` | Join<K, Paths<T[K], Prev[D]>>
+				: never
+	  }[keyof T]
+	: ''

@@ -33,7 +33,7 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 			passed?: boolean
 			stillOptional?: boolean
 			nested?: {
-				hey?: boolean
+				hey?: string
 			}
 		}
 
@@ -41,14 +41,18 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 			passed: true,
 			stillOptional: false,
 			nested: {
-				hey: true,
+				hey: 'true',
 			},
 		}
 
-		const { passed, stillOptional } = assertOptions(options, ['passed'])
+		const { passed, stillOptional, nested } = assertOptions(options, [
+			'passed',
+			'nested.hey',
+		])
 
 		assert.isExactType<boolean, typeof passed>(true)
 		assert.isExactType<boolean | undefined, typeof stillOptional>(true)
+		assert.isExactType<string, typeof nested>(true)
 	}
 
 	@test(
