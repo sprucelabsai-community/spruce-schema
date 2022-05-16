@@ -1,6 +1,7 @@
 import { test, assert } from '@sprucelabs/test'
-import { assertOptions } from '../..'
+import { errorAssert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import assertOptions from '../../utilities/assertOptions'
 
 export default class AssertingOptionsTest extends AbstractSchemaTest {
 	@test()
@@ -31,16 +32,61 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 		type TestOptions = {
 			passed?: boolean
 			stillOptional?: boolean
+			nested?: {
+				hey?: boolean
+			}
 		}
 
 		const options: TestOptions = {
 			passed: true,
 			stillOptional: false,
+			nested: {
+				hey: true,
+			},
 		}
 
 		const { passed, stillOptional } = assertOptions(options, ['passed'])
 
 		assert.isExactType<boolean, typeof passed>(true)
 		assert.isExactType<boolean | undefined, typeof stillOptional>(true)
+	}
+
+	@test(
+		'finds nested 1',
+		{
+			HELLO: 'world',
+		},
+		['env.HELLO']
+	)
+	@test(
+		'finds nested 2',
+		{
+			WHAT: 'the?',
+		},
+		['env.WHAT']
+	)
+	protected static passesWhenFindingNestedItems(
+		expected: Record<string, any>,
+		keys: string[]
+	) {
+		const options = {
+			env: expected,
+		}
+
+		const actual = assertOptions(options, keys as any)
+
+		assert.isEqualDeep(actual, options)
+	}
+
+	@test()
+	protected static failsWithDotSyntaxedParams() {
+		const err = assert.doesThrow(() =>
+			//@ts-ignore
+			assertOptions({ nested: { NO_GO: true } }, ['nested.YES_GO'])
+		)
+
+		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
+			parameters: ['nested.YES_GO'],
+		})
 	}
 }

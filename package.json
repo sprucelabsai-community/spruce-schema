@@ -69,6 +69,7 @@
     "@sprucelabs/error": "^5.0.454",
     "@sprucelabs/test": "^7.7.314",
     "email-validator": "^2.0.4",
+    "just-safe-get": "^4.0.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
