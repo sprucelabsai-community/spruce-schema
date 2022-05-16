@@ -1,3 +1,10 @@
+# [28.2.0](https://github.com/sprucelabsai/spruce-schema/compare/v28.1.5...v28.2.0) (2022-05-16)
+
+
+### Features
+
+* dot support (without typing) ([75d948a](https://github.com/sprucelabsai/spruce-schema/commit/75d948a))
+
 ## [28.1.5](https://github.com/sprucelabsai/spruce-schema/compare/v28.1.4...v28.1.5) (2022-05-15)
 
 ## [28.1.4](https://github.com/sprucelabsai/spruce-schema/compare/v28.1.3...v28.1.4) (2022-05-15)
