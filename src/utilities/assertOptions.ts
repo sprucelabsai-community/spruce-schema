@@ -8,13 +8,13 @@ type ForceRequired<
 
 export default function assertOptions<
 	Options extends Record<string, any>,
-	Key extends Paths<Options> = Paths<Options>
+	Path extends Paths<Options> = Paths<Options>
 >(
 	options: Options,
-	toCheck: Key[],
+	toCheck: Path[],
 	friendlyMessage?: string
-): Options & ForceRequired<Options, Key> {
-	const missing: Key[] = []
+): Options & Required<Pick<Options, Path>> {
+	const missing: Path[] = []
 
 	for (const check of toCheck) {
 		const value = get(options ?? {}, check as string)
