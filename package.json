@@ -79,7 +79,7 @@
     "@sprucelabs/jest-sheets-reporter": "^1.3.29",
     "@sprucelabs/resolve-path-aliases": "^1.1.14",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test-utils": "^3.0.552",
+    "@sprucelabs/test-utils": "^3.0.553",
     "@types/lodash": "^4.14.182",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.2.0",
@@ -88,7 +88,7 @@
     "jest": "^28.1.0",
     "jest-circus": "^28.1.0",
     "prettier": "^2.6.2",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tsc-watch": "^5.0.3",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.6.4"
