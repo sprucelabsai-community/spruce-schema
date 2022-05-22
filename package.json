@@ -82,7 +82,7 @@
     "@sprucelabs/test-utils": "^3.0.553",
     "@types/lodash": "^4.14.182",
     "chokidar-cli": "^3.0.0",
-    "concurrently": "^7.2.0",
+    "concurrently": "^7.2.1",
     "eslint": "^8.16.0",
     "eslint-config-spruce": "^10.11.2",
     "jest": "^28.1.0",
