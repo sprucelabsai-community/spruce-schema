@@ -66,7 +66,7 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.457",
+    "@sprucelabs/error": "^5.0.458",
     "@sprucelabs/test": "^7.7.316",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.0.1",
