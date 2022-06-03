@@ -28,18 +28,27 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 	}
 
 	@test()
-	protected static typesResultsAsNonNullable() {
-		type TestOptions = {
+	protected static typesResultsAsNonNullable<
+		Context extends Record<string, any> = Record<string, any>
+	>() {
+		type TestOptions<
+			Context extends Record<string, any> = Record<string, any>
+		> = {
 			passed?: boolean
 			stillOptional?: boolean
+			context: Partial<Context>
 			nested?: {
 				hey?: string
+				deep?: TestOptions<Context>
+				test?: TestClass1
+				context?: Partial<Context>
 			}
 		}
 
-		const options: TestOptions = {
+		const options: TestOptions<Context> = {
 			passed: true,
 			stillOptional: false,
+			context: {},
 			nested: {
 				hey: 'true',
 			},
@@ -92,4 +101,13 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 			parameters: ['nested.YES_GO'],
 		})
 	}
+}
+
+class TestClass1<Context extends Record<string, any> = Record<string, any>> {
+	public reference?: TestClass2
+	public context?: Partial<Context>
+}
+
+class TestClass2 {
+	public reference?: TestClass1
 }

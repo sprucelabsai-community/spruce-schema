@@ -1,10 +1,10 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
-import selectAssertUtil from '../../tests/selectAssert.utility'
+import selectAssert from '../../tests/selectAssert.utility'
 
 export default class AssertingSelectOptionsTest extends AbstractSpruceTest {
 	@test()
 	protected static canCreateAssertSelectOptions() {
-		assert.isFunction(selectAssertUtil.assertSelectChoicesMatch)
+		assert.isFunction(selectAssert.assertSelectChoicesMatch)
 	}
 
 	@test(
@@ -47,7 +47,7 @@ export default class AssertingSelectOptionsTest extends AbstractSpruceTest {
 	)
 	protected static knowsIfChoicesDontMatch(choices: any, expected: any) {
 		assert.doesThrow(() =>
-			selectAssertUtil.assertSelectChoicesMatch(choices, expected)
+			selectAssert.assertSelectChoicesMatch(choices, expected)
 		)
 	}
 
@@ -90,12 +90,12 @@ export default class AssertingSelectOptionsTest extends AbstractSpruceTest {
 		['no', 'hello']
 	)
 	protected static knowsIfSingeOptionMatches(options: any, expected: any) {
-		selectAssertUtil.assertSelectChoicesMatch(options, expected)
+		selectAssert.assertSelectChoicesMatch(options, expected)
 	}
 
 	@test('is typed correctly (will always pass)')
 	protected static canType() {
-		selectAssertUtil.assertSelectChoicesMatch(
+		selectAssert.assertSelectChoicesMatch(
 			[
 				{
 					value: 'hello',

@@ -1,7 +1,7 @@
 import { assert } from '@sprucelabs/test'
 import { SelectChoice } from '../fields/SelectField.types'
 
-const selectAssertUtil = {
+const selectAssert = {
 	assertSelectChoicesMatch<
 		Choice extends SelectChoice,
 		Values extends Choice['value'][number] = Choice['value'][number]
@@ -25,4 +25,4 @@ const selectAssertUtil = {
 	},
 }
 
-export default selectAssertUtil
+export default selectAssert

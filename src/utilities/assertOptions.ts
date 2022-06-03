@@ -63,7 +63,7 @@ type Prev = [
 	...0[]
 ]
 
-type Paths<T, D extends number = 10> = [D] extends [never]
+type Paths<T, D extends number = 3> = [D] extends [never]
 	? never
 	: T extends object
 	? {
