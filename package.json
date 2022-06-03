@@ -66,8 +66,8 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.462",
-    "@sprucelabs/test": "^7.7.320",
+    "@sprucelabs/error": "^5.0.463",
+    "@sprucelabs/test": "^7.7.321",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.0.1",
     "lodash": "^4.17.21",
@@ -88,10 +88,10 @@
     "jest": "^28.1.0",
     "jest-circus": "^28.1.0",
     "prettier": "^2.6.2",
-    "ts-node": "^10.8.0",
+    "ts-node": "^10.8.1",
     "tsc-watch": "^5.0.3",
     "tsconfig-paths": "^4.0.0",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   },
   "jest": {
     "testEnvironment": "node",
