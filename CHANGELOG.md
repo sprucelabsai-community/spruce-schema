@@ -1,3 +1,45 @@
+## [28.2.24](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.23...v28.2.24) (2022-06-03)
+
+## [28.2.23](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.22...v28.2.23) (2022-06-02)
+
+## [28.2.22](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.21...v28.2.22) (2022-06-02)
+
+## [28.2.21](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.20...v28.2.21) (2022-06-02)
+
+## [28.2.20](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.19...v28.2.20) (2022-06-01)
+
+## [28.2.19](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.18...v28.2.19) (2022-06-01)
+
+## [28.2.18](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.17...v28.2.18) (2022-05-31)
+
+## [28.2.17](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.16...v28.2.17) (2022-05-28)
+
+## [28.2.16](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.15...v28.2.16) (2022-05-24)
+
+## [28.2.15](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.14...v28.2.15) (2022-05-24)
+
+## [28.2.14](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.13...v28.2.14) (2022-05-23)
+
+## [28.2.13](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.12...v28.2.13) (2022-05-23)
+
+## [28.2.12](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.11...v28.2.12) (2022-05-23)
+
+## [28.2.11](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.10...v28.2.11) (2022-05-22)
+
+## [28.2.10](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.9...v28.2.10) (2022-05-21)
+
+## [28.2.9](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.8...v28.2.9) (2022-05-21)
+
+## [28.2.8](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.7...v28.2.8) (2022-05-21)
+
+## [28.2.7](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.6...v28.2.7) (2022-05-19)
+
+## [28.2.6](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.5...v28.2.6) (2022-05-18)
+
+## [28.2.5](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.4...v28.2.5) (2022-05-17)
+
+## [28.2.4](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.3...v28.2.4) (2022-05-17)
+
 ## [28.2.3](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.2...v28.2.3) (2022-05-16)
 
 ## [28.2.2](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.1...v28.2.2) (2022-05-16)
