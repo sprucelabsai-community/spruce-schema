@@ -8,7 +8,7 @@ export default function assertOptions<
 	options: Options,
 	toCheck: Path[],
 	friendlyMessage?: string
-): Options & Required<Pick<Options, Path>> {
+): Options & { [P in Path]: NonNullable<Options[P]> } {
 	const missing: Path[] = []
 
 	for (const check of toCheck) {

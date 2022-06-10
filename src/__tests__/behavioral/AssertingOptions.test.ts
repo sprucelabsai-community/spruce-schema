@@ -4,6 +4,7 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import assertOptions from '../../utilities/assertOptions'
 
 export default class AssertingOptionsTest extends AbstractSchemaTest {
+	private static optionalField: string | undefined = 'test'
 	@test()
 	protected static throwsWhenNotFound() {
 		//@ts-ignore
@@ -100,6 +101,16 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 		errorAssert.assertError(err, 'MISSING_PARAMETERS', {
 			parameters: ['nested.YES_GO'],
 		})
+	}
+
+	@test()
+	protected static typesOnObjectLiteralReferencingOptional() {
+		const { organizationId } = assertOptions(
+			{ organizationId: this.optionalField },
+			['organizationId']
+		)
+
+		assert.isExactType<string, typeof organizationId>(true)
 	}
 }
 
