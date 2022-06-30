@@ -78,4 +78,24 @@ export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
 			{ [key: string]: boolean | undefined | null }
 		>(true)
 	}
+
+	@test()
+	protected static async valuesSetToEntityOverwriteValuesInSchema() {
+		const i = EntityFactory.Entity(
+			{
+				id: 'testPerson',
+				fields: {
+					firstName: {
+						type: 'text',
+						value: 'hey!',
+					},
+				},
+			},
+			{
+				firstName: 'banana',
+			}
+		)
+
+		assert.isEqual(i.get('firstName'), 'banana')
+	}
 }

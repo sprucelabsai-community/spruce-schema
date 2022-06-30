@@ -33,17 +33,19 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	public static enableDuplicateCheckWhenTracking = true
 
 	protected schema: S
-	private values: StaticSchemaPartialValues<S>
+	private values: StaticSchemaPartialValues<S> = {}
 	private fields: SchemaFields<S>
 
 	public constructor(schema: S, values?: StaticSchemaPartialValues<S>) {
 		super(schema)
 
 		this.schema = schema
-		this.values = values ? values : {}
 		this.fields = {} as SchemaFields<S>
-
 		this.buildFields()
+		this.values = {
+			...this.values,
+			...values,
+		}
 	}
 
 	private buildFields() {
