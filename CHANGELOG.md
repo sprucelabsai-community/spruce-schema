@@ -1,3 +1,39 @@
+## [28.2.54](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.53...v28.2.54) (2022-06-29)
+
+## [28.2.53](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.52...v28.2.53) (2022-06-21)
+
+## [28.2.52](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.51...v28.2.52) (2022-06-21)
+
+## [28.2.51](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.50...v28.2.51) (2022-06-18)
+
+## [28.2.50](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.49...v28.2.50) (2022-06-17)
+
+## [28.2.49](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.48...v28.2.49) (2022-06-17)
+
+## [28.2.48](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.47...v28.2.48) (2022-06-17)
+
+## [28.2.47](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.46...v28.2.47) (2022-06-16)
+
+## [28.2.46](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.45...v28.2.46) (2022-06-16)
+
+## [28.2.45](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.44...v28.2.45) (2022-06-16)
+
+## [28.2.44](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.43...v28.2.44) (2022-06-15)
+
+## [28.2.43](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.42...v28.2.43) (2022-06-15)
+
+## [28.2.42](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.41...v28.2.42) (2022-06-14)
+
+## [28.2.41](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.40...v28.2.41) (2022-06-14)
+
+## [28.2.40](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.39...v28.2.40) (2022-06-14)
+
+## [28.2.39](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.38...v28.2.39) (2022-06-14)
+
+## [28.2.38](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.37...v28.2.38) (2022-06-11)
+
+## [28.2.37](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.36...v28.2.37) (2022-06-10)
+
 ## [28.2.36](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.35...v28.2.36) (2022-06-10)
 
 ## [28.2.35](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.34...v28.2.35) (2022-06-10)
