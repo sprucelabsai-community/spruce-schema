@@ -1,3 +1,10 @@
+# [28.3.0](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.66...v28.3.0) (2022-07-12)
+
+
+### Features
+
+* image fields now have optional type for better rendering support ([a76b307](https://github.com/sprucelabsai/spruce-schema/commit/a76b307))
+
 ## [28.2.66](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.65...v28.2.66) (2022-07-06)
 
 ## [28.2.65](https://github.com/sprucelabsai/spruce-schema/compare/v28.2.64...v28.2.65) (2022-07-06)
