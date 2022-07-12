@@ -1,4 +1,5 @@
 import { FieldDefinition } from './field.static.types'
+import { SupportedFileType } from './FileField.types'
 
 /**
  * Min dimension for each size
@@ -15,6 +16,7 @@ export type RequiredImageSize = typeof requiredImageSizes[number]
 export interface ImageFieldValue {
 	name: string
 	base64?: string
+	type?: SupportedFileType
 	sUri?: string
 	mUri?: string
 	lUri?: string

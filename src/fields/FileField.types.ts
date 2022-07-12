@@ -2,6 +2,7 @@ import { FieldDefinition } from './field.static.types'
 
 export const supportedFileTypes = [
 	'image/png',
+	'image/svg+xml',
 	'image/jpeg',
 	'application/pdf',
 	'*',
