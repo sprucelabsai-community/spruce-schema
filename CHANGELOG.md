@@ -1,3 +1,11 @@
+# [28.4.0](https://github.com/sprucelabsai/spruce-schema/compare/v28.3.20...v28.4.0) (2022-07-31)
+
+
+### Features
+
+* can clone values preserving instances ([5e597d8](https://github.com/sprucelabsai/spruce-schema/commit/5e597d8))
+* you can now validate values using dot syntax ([6e783bf](https://github.com/sprucelabsai/spruce-schema/commit/6e783bf))
+
 ## [28.3.20](https://github.com/sprucelabsai/spruce-schema/compare/v28.3.19...v28.3.20) (2022-07-31)
 
 ## [28.3.19](https://github.com/sprucelabsai/spruce-schema/compare/v28.3.18...v28.3.19) (2022-07-28)
