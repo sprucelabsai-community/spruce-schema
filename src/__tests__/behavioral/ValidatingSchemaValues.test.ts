@@ -661,4 +661,46 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
 
 		assert.doesInclude(err.message, 'US number')
 	}
+
+	@test()
+	protected static validateValuesWithDotSyntax() {
+		const nestedSchema = buildSchema({
+			id: 'nested-tested',
+			fields: {
+				nested1: {
+					type: 'schema',
+					options: {
+						schema: buildSchema({
+							id: 'nested-tested-nested',
+							fields: {
+								field1: {
+									type: 'text',
+								},
+								field2: {
+									type: 'text',
+								},
+							},
+						}),
+					},
+				},
+			},
+		})
+
+		validateSchemaValues(nestedSchema, {
+			//@ts-ignore
+			'nested1.field1': 'go!',
+		})
+
+		validateSchemaValues(nestedSchema, {
+			//@ts-ignore
+			'nested1.field2': 'go!',
+		})
+
+		assert.doesThrow(() =>
+			validateSchemaValues(nestedSchema, {
+				//@ts-ignore
+				'nested1.field3': 'oh no!',
+			})
+		)
+	}
 }

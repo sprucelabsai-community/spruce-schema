@@ -1,3 +1,4 @@
+import set from 'just-safe-set'
 import { validateSchema } from '..'
 import EntityFactory from '../factories/SchemaEntityFactory'
 import {
@@ -19,6 +20,12 @@ export default function validateSchemaValues<
 	const { ...opts } = options ?? {}
 	validateSchema(schema)
 
-	const instance = EntityFactory.Entity(schema, values as any)
+	const mapped = Object.keys(values).reduce((mapped, key) => {
+		//@ts-ignore
+		set(mapped, key, values[key])
+		return mapped
+	}, {})
+
+	const instance = EntityFactory.Entity(schema, mapped as any)
 	instance.validate(opts)
 }

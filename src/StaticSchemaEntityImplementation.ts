@@ -1,3 +1,4 @@
+import clone from 'just-clone'
 import AbstractEntity from './AbstractEntity'
 import { FieldError } from './errors/options.types'
 import SpruceError from './errors/SpruceError'
@@ -42,10 +43,10 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		this.schema = schema
 		this.fields = {} as SchemaFields<S>
 		this.buildFields()
-		this.values = {
+		this.values = clone({
 			...this.values,
 			...values,
-		}
+		})
 	}
 
 	private buildFields() {

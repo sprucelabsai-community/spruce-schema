@@ -350,4 +350,15 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 		assert.isTruthy(testObj)
 	}
+
+	@test()
+	protected static async clonesValues() {
+		const { personSchema } = buildPersonWithCars()
+		const values: any = {
+			requiredCar: {},
+		}
+		const s = new StaticSchemaEntityImplementation(personSchema, values)
+		//@ts-ignore
+		assert.isNotEqual(s.values.requiredCar, values.requiredCar)
+	}
 }
