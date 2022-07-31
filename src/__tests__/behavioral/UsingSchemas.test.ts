@@ -1,6 +1,5 @@
 import { test, assert } from '@sprucelabs/test'
 import { errorAssert } from '@sprucelabs/test-utils'
-import { unset } from 'lodash'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import {
@@ -124,7 +123,8 @@ export default class SchemaTest extends AbstractSchemaTest {
 			},
 		})
 
-		unset(schema, fieldToDelete)
+		//@ts-ignore
+		delete schema[fieldToDelete]
 
 		const error: any = assert.doesThrow(() =>
 			validateSchema(schema)
@@ -353,12 +353,19 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static async clonesValues() {
-		const { personSchema } = buildPersonWithCars()
+		const { personSchema, carSchema } = buildPersonWithCars()
+
 		const values: any = {
 			requiredCar: {},
+			optionalCar: new StaticSchemaEntityImplementation(carSchema),
 		}
+
 		const s = new StaticSchemaEntityImplementation(personSchema, values)
+
 		//@ts-ignore
 		assert.isNotEqual(s.values.requiredCar, values.requiredCar)
+
+		//@ts-ignore
+		assert.isEqual(s.values.optionalCar, values.optionalCar)
 	}
 }

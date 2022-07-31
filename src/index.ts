@@ -23,12 +23,12 @@ export default StaticSchemaEntityImplementation
 
 export { default as validationErrorAssert } from './tests/validationErrorAssert.utility'
 export { default as selectAssert } from './tests/selectAssert.utility'
+export { default as cloneDeep } from './utilities/cloneDeep'
+export { default as cloneDeepPreservingInstances } from './utilities/cloneDeepPreservingInstances'
 export { default as selectAssertUtil } from './tests/selectAssert.deprecated'
 
 export * from './schemas.static.types'
-
 export * from './fields'
-
 export * from './errors/options.types'
 
 export { default as SchemaError } from './errors/SpruceError'

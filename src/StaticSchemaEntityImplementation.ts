@@ -1,4 +1,3 @@
-import clone from 'just-clone'
 import AbstractEntity from './AbstractEntity'
 import { FieldError } from './errors/options.types'
 import SpruceError from './errors/SpruceError'
@@ -22,6 +21,7 @@ import {
 	SchemaPublicValues,
 	SchemaPublicFieldNames,
 } from './schemas.static.types'
+import cloneDeepPreservingInstances from './utilities/cloneDeepPreservingInstances'
 import normalizeFieldValue, {
 	normalizeValueToArray,
 } from './utilities/normalizeFieldValue'
@@ -43,10 +43,12 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		this.schema = schema
 		this.fields = {} as SchemaFields<S>
 		this.buildFields()
-		this.values = clone({
+
+		const v = {
 			...this.values,
 			...values,
-		})
+		}
+		this.values = cloneDeepPreservingInstances(v)
 	}
 
 	private buildFields() {
