@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^5.0.490",
-    "@sprucelabs/test": "^7.7.340",
+    "@sprucelabs/test": "^7.7.341",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.0.1",
     "just-safe-set": "^4.0.2"
@@ -88,7 +88,7 @@
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tsc-watch": "^5.0.3",
-    "tsconfig-paths": "^4.0.0",
+    "tsconfig-paths": "^4.1.0",
     "typescript": "^4.7.4"
   },
   "jest": {
