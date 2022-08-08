@@ -69,8 +69,8 @@
     "@sprucelabs/error": "^5.0.491",
     "@sprucelabs/test": "^7.7.341",
     "email-validator": "^2.0.4",
-    "just-safe-get": "^4.1.0",
-    "just-safe-set": "^4.1.0"
+    "just-safe-get": "^4.1.1",
+    "just-safe-set": "^4.1.1"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^1.0.424",
