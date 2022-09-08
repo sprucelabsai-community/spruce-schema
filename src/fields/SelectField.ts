@@ -37,9 +37,9 @@ export default class SelectField<
 			errors.push({
 				code: 'INVALID_PARAMETER',
 				name: this.name,
-				friendlyMessage: `Valid choices are: '${Object.keys(validChoices).join(
-					"','"
-				)}'`,
+				friendlyMessage: `'${value}' is not valid! Valid choices are: '${Object.keys(
+					validChoices
+				).join("','")}'`,
 			})
 		}
 
