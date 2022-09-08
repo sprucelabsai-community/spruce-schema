@@ -2,33 +2,10 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "problem.watcher",
-            "command": "yarn",
-            "group": "build",
-            "args": [
-                "watch.tsc",
-                "--noEmit",
-                "--project",
-                "tsconfig.json"
-            ],
-            "runOptions": {
-                "runOn": "folderOpen"
-            },
-            "isBackground": true,
-            "presentation": {
-                "reveal": "never",
-                "focus": false
-            },
-            "problemMatcher": {
-                "base": "$tsc-watch",
-                "applyTo": "allDocuments"
-            }
-        },
-        {
             "type": "npm",
             "script": "watch.build.dev",
             "group": "build",
-            "label": "watch.build.dev",
+            "label": "watch.build.dev & problem.watcher",
             "isBackground": true,
             "runOptions": {
                 "runOn": "folderOpen"
@@ -37,7 +14,11 @@
             "presentation": {
                 "panel": "dedicated",
                 "focus": false,
-                "reveal": "silent"
+                "reveal": "never"
+            },
+            "problemMatcher": {
+                "base": "$tsc-watch",
+                "applyTo": "allDocuments"
             }
         },
         {
