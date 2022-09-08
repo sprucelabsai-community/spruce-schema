@@ -1,3 +1,10 @@
+# [28.5.0](https://github.com/sprucelabsai/spruce-schema/compare/v28.4.38...v28.5.0) (2022-09-08)
+
+
+### Features
+
+* new text/csv file type 'text/csv' ([4c64d95](https://github.com/sprucelabsai/spruce-schema/commit/4c64d95))
+
 ## [28.4.38](https://github.com/sprucelabsai/spruce-schema/compare/v28.4.37...v28.4.38) (2022-09-08)
 
 ## [28.4.37](https://github.com/sprucelabsai/spruce-schema/compare/v28.4.36...v28.4.37) (2022-09-07)
