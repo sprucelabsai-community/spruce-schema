@@ -1,5 +1,5 @@
 // TODO figure out how to get schema field mixins working from buildSchema (SchemaDefinitionValues fails)
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import { Schema } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 

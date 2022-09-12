@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import SchemaField from '../../fields/SchemaField'
 import { SchemaFieldFieldDefinition } from '../../fields/SchemaField.types'
 import {

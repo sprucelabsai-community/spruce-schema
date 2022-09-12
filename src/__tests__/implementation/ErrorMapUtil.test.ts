@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
 import { FieldError } from '../../errors/options.types'
 import mapFieldErrorsToParameterErrors from '../../utilities/mapFieldErrorsToParameterErrors'

@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import selectAssert from '../../tests/selectAssert.utility'
 
 export default class AssertingSelectOptionsTest extends AbstractSpruceTest {

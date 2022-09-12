@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import FieldFactory from '../../factories/FieldFactory'
 import { FieldDefinitions } from '../../fields'
 import { BooleanFieldDefinition } from '../../fields/BooleanField.types'

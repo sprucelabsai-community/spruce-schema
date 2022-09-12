@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
+import AbstractSpruceTest, { assert, test } from '@sprucelabs/test-utils'
 import SchemaRegistry from '../../singletons/SchemaRegistry'
 import buildPersonWithCars from '../data/personWithCars'
 import buildVersionedPersonWithCars from '../data/versionedPersonWithCars'

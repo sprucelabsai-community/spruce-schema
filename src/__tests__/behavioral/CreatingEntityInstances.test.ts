@@ -1,4 +1,4 @@
-import { test, assert } from '@sprucelabs/test'
+import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
 import EntityFactory from '../../factories/SchemaEntityFactory'

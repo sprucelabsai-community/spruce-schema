@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
+import AbstractSpruceTest, { assert, test } from '@sprucelabs/test-utils'
 import FieldFactory from '../../factories/FieldFactory'
 import formatPhoneNumber from '../../utilities/formatPhoneNumber'
 

@@ -1,4 +1,4 @@
-import AbstractSpruceTest from '@sprucelabs/test'
+import AbstractSpruceTest from '@sprucelabs/test-utils'
 import { SchemaRegistry } from '.'
 
 export default class AbstractSchemaTest extends AbstractSpruceTest {

@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import isIdWithVersion from '../../utilities/isIdWithVersion'
 
 export default class IsIdWithVersionTest extends AbstractSpruceTest {

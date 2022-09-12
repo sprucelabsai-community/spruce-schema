@@ -1,5 +1,5 @@
 import AbstractSpruceError from '@sprucelabs/error'
-import { assert, assertUtil } from '@sprucelabs/test'
+import { assert, assertUtil } from '@sprucelabs/test-utils'
 import {
 	FieldErrorCode,
 	SchemaErrorOptions,

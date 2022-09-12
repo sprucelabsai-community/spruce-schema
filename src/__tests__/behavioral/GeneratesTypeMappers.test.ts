@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { assert, test } from '@sprucelabs/test'
+import AbstractSpruceTest, { assert, test } from '@sprucelabs/test-utils'
 import { BooleanField, SelectField, SchemaField } from '../../fields'
 import AbstractField from '../../fields/AbstractField'
 

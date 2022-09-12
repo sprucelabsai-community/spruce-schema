@@ -1,4 +1,4 @@
-import { assert } from '@sprucelabs/test'
+import { assert } from '@sprucelabs/test-utils'
 import StaticSchemaEntityImplementation, { validationErrorAssert } from '..'
 import AbstractSchemaTest from '../AbstractSchemaTest'
 import SchemaEntityFactory from '../factories/SchemaEntityFactory'

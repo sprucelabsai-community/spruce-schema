@@ -1,4 +1,4 @@
-import { assert } from '@sprucelabs/test'
+import { assert } from '@sprucelabs/test-utils'
 import { SelectChoice } from '../fields/SelectField.types'
 
 const selectAssert = {

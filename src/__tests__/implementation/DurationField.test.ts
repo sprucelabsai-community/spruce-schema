@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import FieldFactory from '../../factories/FieldFactory'
 import { buildDuration, reduceDurationToMs } from '../../fields'
 import { DurationFieldValue } from '../../fields/DurationField.types'

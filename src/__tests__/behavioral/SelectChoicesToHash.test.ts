@@ -1,4 +1,4 @@
-import AbstractSpruceTest, { test, assert } from '@sprucelabs/test'
+import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import { PickFieldNames } from '../../schemas.static.types'
 import {
 	SelectChoicesToHash,
