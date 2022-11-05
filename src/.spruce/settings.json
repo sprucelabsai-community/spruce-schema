@@ -10,5 +10,10 @@
       "build.tsc",
       "post.watch.build"
     ]
+  },
+  "writer": {
+    "skipped": [
+      ".nvmrc"
+    ]
   }
 }
