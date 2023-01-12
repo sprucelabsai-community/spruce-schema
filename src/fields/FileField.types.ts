@@ -9,7 +9,7 @@ export const supportedFileTypes = [
 	'*',
 ] as const
 
-export type SupportedFileType = typeof supportedFileTypes[number]
+export type SupportedFileType = (typeof supportedFileTypes)[number]
 
 export interface FileFieldValue {
 	name: string

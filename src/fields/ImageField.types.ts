@@ -11,7 +11,7 @@ import { SupportedFileType } from './FileField.types'
 
 export const requiredImageSizes = ['s', 'm', 'l', 'xl', '*'] as const
 
-export type RequiredImageSize = typeof requiredImageSizes[number]
+export type RequiredImageSize = (typeof requiredImageSizes)[number]
 
 export interface ImageFieldValue {
 	name: string

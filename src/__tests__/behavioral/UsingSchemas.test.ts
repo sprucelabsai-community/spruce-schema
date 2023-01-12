@@ -325,9 +325,10 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 		testFunc(requiredArrayField[0])
 
-		assert.isExactType<typeof requiredArrayField[0], { fieldOnNested: string }>(
-			true
-		)
+		assert.isExactType<
+			(typeof requiredArrayField)[0],
+			{ fieldOnNested: string }
+		>(true)
 	}
 
 	@test()
