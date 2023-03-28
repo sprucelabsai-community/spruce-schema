@@ -131,7 +131,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		assert.isEqual(values[fieldName], expected)
 	}
 
-	@test.only()
+	@test()
 	protected static honorsNotMakingSchemaEntitiesWithEntityValues() {
 		const secondLevelSchema = buildSchema({
 			id: 'nested-2nd-level-schema-entity',
