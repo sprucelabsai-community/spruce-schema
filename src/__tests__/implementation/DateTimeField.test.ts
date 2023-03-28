@@ -77,6 +77,7 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 		const date = new Date()
 
 		assert.isEqual(this.field.toValueType(date), date.toISOString())
+		assert.isEqual(this.field.toValueType(date.getTime()), date.toISOString())
 	}
 
 	private static Field(
