@@ -41,6 +41,9 @@ export default class DateTimeField extends AbstractField<DateTimeFieldDefinition
 
 	public toValueType(value: any) {
 		if (value instanceof Date) {
+			if (this.options?.dateTimeFormat === 'iso_8601') {
+				return value.toISOString()
+			}
 			return value.getTime()
 		}
 

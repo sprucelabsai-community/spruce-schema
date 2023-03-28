@@ -1,10 +1,10 @@
 import { test, assert } from '@sprucelabs/test-utils'
-import StaticSchemaEntityImplementation, {
-	buildSchema,
-	DateTimeField,
-	FieldFactory,
-} from '../..'
+import FieldFactory from '../../factories/FieldFactory'
+import DateTimeField from '../../fields/DateTimeField'
+import { DateTimeFieldDefinition } from '../../fields/DateTimeField.types'
+import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
 import AbstractDateFieldTest from '../../tests/AbstractDateFieldTest'
+import buildSchema from '../../utilities/buildSchema'
 
 const schema = buildSchema({
 	id: 'dateTest',
@@ -31,9 +31,7 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 
 	protected static async beforeEach() {
 		await super.beforeEach()
-		this.field = FieldFactory.Field('optionalBirthday', {
-			type: 'dateTime',
-		}) as any
+		this.field = DateFieldTest.Field()
 	}
 
 	@test()
@@ -68,5 +66,25 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 	protected static convertsStringsToNumbers() {
 		assert.isEqual(this.field.toValueType('10'), 10)
 		assert.isEqual(this.field.toValueType('20'), 20)
+	}
+
+	@test()
+	protected static async canSetToKeepDates() {
+		this.field = this.Field({
+			dateTimeFormat: 'iso_8601',
+		})
+
+		const date = new Date()
+
+		assert.isEqual(this.field.toValueType(date), date.toISOString())
+	}
+
+	private static Field(
+		options?: DateTimeFieldDefinition['options']
+	): DateTimeField {
+		return FieldFactory.Field('optionalBirthday', {
+			type: 'dateTime',
+			options,
+		}) as DateTimeField
 	}
 }

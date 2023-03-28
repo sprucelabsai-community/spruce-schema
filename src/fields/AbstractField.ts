@@ -67,7 +67,7 @@ public static generateTemplateDetails(
 	}
 
 	public get options() {
-		return this.definition.options
+		return this.definition.options as F['options']
 	}
 
 	public get isRequired() {
