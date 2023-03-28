@@ -1,3 +1,10 @@
+# [28.6.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.5.159...v28.6.0) (2023-03-28)
+
+
+### Features
+
+* dateTime format ([8ddf572](https://github.com/sprucelabsai-community/spruce-schema/commit/8ddf572))
+
 ## [28.5.159](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.5.158...v28.5.159) (2023-03-27)
 
 ## [28.5.158](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.5.157...v28.5.158) (2023-03-26)
