@@ -8,7 +8,7 @@
     "!build/__tests__",
     "esm"
   ],
-  "version": "28.5.144",
+  "version": "28.5.159",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "module": "./build/esm/index.js",
@@ -66,8 +66,8 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.0.586",
-    "@sprucelabs/test-utils": "^3.4.16",
+    "@sprucelabs/error": "^5.0.595",
+    "@sprucelabs/test-utils": "^3.4.30",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
@@ -78,18 +78,18 @@
     "@sprucelabs/jest-sheets-reporter": "^2.0.20",
     "@sprucelabs/resolve-path-aliases": "^1.1.122",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^7.7.425",
+    "@sprucelabs/test": "^7.7.434",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^7.6.0",
     "eslint": "^8.36.0",
     "eslint-config-spruce": "^10.12.0",
     "jest": "^29.5.0",
     "jest-circus": "^29.5.0",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
     "tsc-watch": "^6.0.0",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "jest": {
     "testEnvironment": "node",
