@@ -8,7 +8,7 @@
     "!build/__tests__",
     "esm"
   ],
-  "version": "28.6.39",
+  "version": "28.6.44",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "module": "./build/esm/index.js",
@@ -66,8 +66,8 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.1.8",
-    "@sprucelabs/test-utils": "^3.4.67",
+    "@sprucelabs/error": "^5.1.9",
+    "@sprucelabs/test-utils": "^3.4.71",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
@@ -80,7 +80,7 @@
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^7.7.452",
     "chokidar-cli": "^3.0.0",
-    "concurrently": "^8.1.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
     "eslint-config-spruce": "^10.12.0",
     "jest": "^29.5.0",
