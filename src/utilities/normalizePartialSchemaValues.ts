@@ -32,7 +32,7 @@ export default function normalizePartialSchemaValues<
 ) {
 	const normalized = normalizeSchemaValues(schema, values, {
 		...options,
-		shouldOnlyIncludeFieldsWithValues: true,
+		shouldIncludeOnlyFieldsWithValues: true,
 	} as any)
 
 	return normalized as unknown as Required<

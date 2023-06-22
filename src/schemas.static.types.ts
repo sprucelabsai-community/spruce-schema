@@ -348,7 +348,8 @@ export interface SchemaNormalizeOptions<
 			: never
 	}
 
-	shouldOnlyIncludeFieldsWithValues?: boolean
+	shouldIncludeOnlyFieldsWithValues?: boolean
+	shouldStripUndefinedAndNullValues?: boolean
 }
 
 export interface DynamicSchemaNormalizeOptions<

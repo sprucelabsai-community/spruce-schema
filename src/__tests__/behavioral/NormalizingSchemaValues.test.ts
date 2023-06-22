@@ -227,6 +227,62 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		this.assertPartialNormalizesTo(values, values)
 	}
 
+	@test()
+	protected static async canNormalizeValuesStrippingUndefinedAndNull() {
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				age: null,
+				boolean: true,
+				firstName: 'test',
+				nestedArraySchema: null,
+			},
+			{
+				shouldStripUndefinedAndNullValues: true,
+			}
+		)
+
+		assert.isEqualDeep(values as any, {
+			boolean: true,
+			firstName: 'test',
+		})
+	}
+
+	@test()
+	protected static async canStripUndefinedAndNullValuesFromNested() {
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				firstName: 'test',
+				nestedArraySchema: [
+					{
+						field1: 'first',
+						field2: null,
+					},
+					{
+						field1: undefined,
+						field2: 'second',
+					},
+				],
+			},
+			{
+				shouldStripUndefinedAndNullValues: true,
+			}
+		)
+
+		assert.isEqualDeep(values as any, {
+			firstName: 'test',
+			nestedArraySchema: [
+				{
+					field1: 'first',
+				},
+				{
+					field2: 'second',
+				},
+			],
+		})
+	}
+
 	private static assertPartialNormalizesTo(
 		values: Record<string, any>,
 		expected: Partial<TestPerson>

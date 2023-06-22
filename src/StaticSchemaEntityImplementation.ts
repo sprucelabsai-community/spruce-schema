@@ -257,13 +257,20 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		const {
 			fields = Object.keys(this.fields),
 			shouldIncludePrivateFields: includePrivateFields = true,
-			shouldOnlyIncludeFieldsWithValues,
+			shouldIncludeOnlyFieldsWithValues,
+			shouldStripUndefinedAndNullValues = false,
 		} = options || {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 
-			if (shouldOnlyIncludeFieldsWithValues && !(name in this.values)) {
+			const shouldSkipBecauseNotSet =
+				shouldIncludeOnlyFieldsWithValues && !(name in this.values)
+			const shouldSkipBecauseUndefinedOrNull =
+				shouldStripUndefinedAndNullValues &&
+				(this.values[name] === undefined || this.values[name] === null)
+
+			if (shouldSkipBecauseNotSet || shouldSkipBecauseUndefinedOrNull) {
 				return
 			}
 			if (
