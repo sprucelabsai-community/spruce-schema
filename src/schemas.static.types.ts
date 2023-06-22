@@ -347,6 +347,8 @@ export interface SchemaNormalizeOptions<
 			? Partial<FieldDefinitionMap[S['fields'][K]['type']]['options']>
 			: never
 	}
+
+	shouldOnlyIncludeFieldsWithValues?: boolean
 }
 
 export interface DynamicSchemaNormalizeOptions<

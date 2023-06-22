@@ -257,10 +257,15 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		const {
 			fields = Object.keys(this.fields),
 			shouldIncludePrivateFields: includePrivateFields = true,
+			shouldOnlyIncludeFieldsWithValues,
 		} = options || {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
+
+			if (shouldOnlyIncludeFieldsWithValues && !(name in this.values)) {
+				return
+			}
 			if (
 				fields.indexOf(name) > -1 &&
 				(includePrivateFields || !field.isPrivate)
