@@ -1,3 +1,10 @@
+# [28.7.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.6.49...v28.7.0) (2023-06-22)
+
+
+### Features
+
+* can normalize partial values ([c5dd5d7](https://github.com/sprucelabsai-community/spruce-schema/commit/c5dd5d7))
+
 ## [28.6.49](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.6.48...v28.6.49) (2023-06-17)
 
 ## [28.6.48](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.6.47...v28.6.48) (2023-06-17)
