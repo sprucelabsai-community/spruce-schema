@@ -415,7 +415,7 @@ export default class SchemaField<
 			return instance as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
-		const getValueOptions = { validate: false, ...options }
+		const getValueOptions = { validate: false, ...options, fields: undefined }
 
 		if (isUnion) {
 			return {

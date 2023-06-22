@@ -283,6 +283,42 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		})
 	}
 
+	@test()
+	protected static async nestedFieldsDontGetSkippedByIncludeFields() {
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				firstName: 'test',
+				nestedArraySchema: [
+					{
+						field1: 'first',
+						field2: null,
+					},
+					{
+						field1: undefined,
+						field2: 'second',
+					},
+				],
+			},
+			{
+				fields: ['nestedArraySchema'],
+			}
+		)
+
+		assert.isEqualDeep(values as any, {
+			nestedArraySchema: [
+				{
+					field1: 'first',
+					field2: null,
+				},
+				{
+					field1: undefined,
+					field2: 'second',
+				},
+			],
+		})
+	}
+
 	private static assertPartialNormalizesTo(
 		values: Record<string, any>,
 		expected: Partial<TestPerson>
