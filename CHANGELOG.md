@@ -1,3 +1,10 @@
+# [28.8.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.7.1...v28.8.0) (2023-06-22)
+
+
+### Features
+
+* can strip nulls and undefineds from values when normalizing ([bd314dc](https://github.com/sprucelabsai-community/spruce-schema/commit/bd314dc))
+
 ## [28.7.1](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.7.0...v28.7.1) (2023-06-22)
 
 # [28.7.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.6.49...v28.7.0) (2023-06-22)
