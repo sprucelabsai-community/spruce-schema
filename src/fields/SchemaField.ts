@@ -275,7 +275,7 @@ export default class SchemaField<
 
 				if (schemas && schemas.length === 1) {
 					// @ts-ignore warns about infinite recursion, which is true, because relationships between schemas can go forever
-					instance = this.instantiateSchema(schemas[0], value)
+					instance = this.Schema(schemas[0], value)
 				} else if (schemas && schemas.length > 0) {
 					const { schemaId, version, values } = value || {}
 
@@ -309,7 +309,7 @@ export default class SchemaField<
 								}.`,
 							})
 						} else {
-							instance = this.instantiateSchema(matchSchema, values)
+							instance = this.Schema(matchSchema, values)
 						}
 					}
 				}
@@ -333,7 +333,7 @@ export default class SchemaField<
 		return errors
 	}
 
-	private instantiateSchema(schema: Schema, value: any): SchemaEntity {
+	private Schema(schema: Schema, value: any): SchemaEntity {
 		return schema.dynamicFieldSignature
 			? new DynamicSchemaEntityImplementation(schema, value)
 			: new StaticSchemaEntity(schema, value)
@@ -374,7 +374,7 @@ export default class SchemaField<
 		}
 		// if we are only pointing 1 one possible definition, then mapping is pretty easy
 		else if (!isUnion) {
-			instance = this.instantiateSchema(destinationSchemas[0], value)
+			instance = this.Schema(destinationSchemas[0], value)
 		} else {
 			// this could be one of a few types, lets check the "schemaId" prop
 			const { schemaId, values } = value
@@ -408,24 +408,26 @@ export default class SchemaField<
 				matchedSchema = allMatches[0]
 			}
 
-			instance = this.instantiateSchema(matchedSchema, values)
+			instance = this.Schema(matchedSchema, values)
 		}
 
 		if (createEntityInstances) {
 			return instance as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
+		const getValueOptions = { validate: false, ...options }
+
 		if (isUnion) {
 			return {
 				schemaId: instance.schemaId,
-				values: instance.getValues({ validate: false, createEntityInstances }),
+				values: instance.getValues(getValueOptions),
 			} as FieldDefinitionValueType<F, CreateEntityInstances>
 		}
 
-		return instance.getValues({
-			validate: false,
-			createEntityInstances,
-		}) as FieldDefinitionValueType<F, CreateEntityInstances>
+		return instance.getValues(getValueOptions) as FieldDefinitionValueType<
+			F,
+			CreateEntityInstances
+		>
 	}
 }
 function throwInvalidReferenceError(item: SchemaTemplateItem) {

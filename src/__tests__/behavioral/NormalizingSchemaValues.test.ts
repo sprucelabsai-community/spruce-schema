@@ -30,7 +30,10 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			age: 10,
 			boolean: undefined,
 			privateBooleanField: undefined,
-			nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+			nestedArraySchema: [
+				{ field1: 'first', field2: undefined },
+				{ field1: 'second', field2: undefined },
+			],
 		})
 	}
 
@@ -185,17 +188,16 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 	@test()
 	protected static async normalizePartialNormalizesValues() {
-		const expected: Partial<TestPerson> = {
-			age: 10,
-			boolean: false,
-		}
-
-		const normalized = this.normalizePartial({
-			age: '10' as any,
-			boolean: false,
-		})
-
-		assert.isEqualDeep(normalized, expected)
+		this.assertPartialNormalizesTo(
+			{
+				age: '10' as any,
+				boolean: false,
+			},
+			{
+				age: 10,
+				boolean: false,
+			}
+		)
 	}
 
 	@test()
@@ -210,6 +212,27 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				age: number | null
 			}
 		>(true)
+	}
+
+	@test()
+	protected static async partialNormalizesNestedSchemaValues() {
+		const values: Partial<TestPerson> = {
+			nestedArraySchema: [
+				{
+					field1: 'first',
+				},
+			],
+		}
+
+		this.assertPartialNormalizesTo(values, values)
+	}
+
+	private static assertPartialNormalizesTo(
+		values: Record<string, any>,
+		expected: Partial<TestPerson>
+	) {
+		const normalized = this.normalizePartial(values)
+		assert.isEqualDeep(normalized, expected)
 	}
 
 	private static assertPartialNormalizesToWhatIsPassed(
@@ -251,6 +274,9 @@ const testPersonSchema = buildSchema({
 					name: 'Nested',
 					fields: {
 						field1: {
+							type: 'text',
+						},
+						field2: {
 							type: 'text',
 						},
 					},
