@@ -64,6 +64,36 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		>(true)
 	}
 
+	@test()
+	protected static normalizeTypesAsExpectedWithPartial() {
+		const values = normalizeSchemaValues(
+			this.personSchema,
+			{
+				firstName: 'tay',
+				age: 0,
+				nestedArraySchema: [{ field1: 'first' }, { field1: 'second' }],
+			},
+			{
+				shouldCreateEntityInstances: false,
+				shouldIncludeNullAndUndefinedFields: false,
+			}
+		)
+
+		assert.isExactType<
+			typeof values,
+			{
+				firstName: string
+				age?: number | null | undefined
+				boolean?: boolean | null | undefined
+				privateBooleanField?: boolean | null | undefined
+				nestedArraySchema?:
+					| { field1?: string | null | undefined }[]
+					| null
+					| undefined
+			}
+		>(true)
+	}
+
 	@test(
 		'normalizes boolean with string false to false',
 		{ boolean: 'false' },
@@ -150,7 +180,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 						textField: 'hello!',
 						nested: new StaticSchemaEntityImplementation(secondLevelSchema, {
 							boolField: true,
-						}),
+						}) as any,
 					},
 				],
 			},
@@ -238,7 +268,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				nestedArraySchema: null,
 			},
 			{
-				shouldStripUndefinedAndNullValues: true,
+				shouldIncludeNullAndUndefinedFields: false,
 			}
 		)
 
@@ -266,7 +296,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				],
 			},
 			{
-				shouldStripUndefinedAndNullValues: true,
+				shouldIncludeNullAndUndefinedFields: false,
 			}
 		)
 
@@ -285,27 +315,24 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
 	@test()
 	protected static async nestedFieldsDontGetSkippedByIncludeFields() {
-		const values = normalizeSchemaValues(
-			this.personSchema,
-			{
-				firstName: 'test',
-				nestedArraySchema: [
-					{
-						field1: 'first',
-						field2: null,
-					},
-					{
-						field1: undefined,
-						field2: 'second',
-					},
-				],
-			},
-			{
-				fields: ['nestedArraySchema'],
-			}
-		)
+		const values = {
+			firstName: 'test',
+			nestedArraySchema: [
+				{
+					field1: 'first',
+					field2: null,
+				},
+				{
+					field1: undefined,
+					field2: 'second',
+				},
+			],
+		}
+		const person = normalizeSchemaValues(this.personSchema, values, {
+			fields: ['nestedArraySchema'],
+		})
 
-		assert.isEqualDeep(values as any, {
+		assert.isEqualDeep(person as any, {
 			nestedArraySchema: [
 				{
 					field1: 'first',

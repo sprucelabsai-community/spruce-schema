@@ -32,13 +32,13 @@ export default function normalizePartialSchemaValues<
 ) {
 	const normalized = normalizeSchemaValues(schema, values, {
 		...options,
-		shouldIncludeOnlyFieldsWithValues: true,
+		shouldIncludeNullAndUndefinedFields: false,
 	} as any)
 
 	return normalized as unknown as Required<
 		Pick<
 			SchemaValues<S, CreateEntityInstances>,
-			//@ts-ignore
+			/** @ts-ignore */
 			Fields
 		>
 	>

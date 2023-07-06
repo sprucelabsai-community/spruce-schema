@@ -74,6 +74,24 @@ export interface StaticSchemaEntity<S extends Schema> extends SchemaEntity {
 	isValid(options?: SchemaValidateOptions<S>): boolean
 }
 
+export type SchemaValues<
+	S extends Schema,
+	CreateEntityInstances extends boolean = false,
+	IncludePrivateFields extends boolean = true,
+	ShouldIncludeNullAndUndefinedFields extends boolean = false,
+	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
+	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>
+> = IsDynamicSchema<S> extends true
+	? DynamicSchemaAllValues<S>
+	: IncludePrivateFields extends false
+	? ShouldIncludeNullAndUndefinedFields extends true
+		? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
+		: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
+	: ShouldIncludeNullAndUndefinedFields extends true
+	? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+	: /** @ts-ignore */
+	  Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
 	OurField extends Field<any> = ISchema['dynamicFieldSignature'] extends FieldDefinitions
@@ -224,7 +242,7 @@ export type SchemaStaticValues<
 	>
 > = Omit<V, K> & Partial<Pick<V, K>>
 
-export type SchemaValues<
+export type SchemaValues_OLD<
 	S extends Schema,
 	CreateEntityInstances extends boolean = false
 > = IsDynamicSchema<S> extends true
@@ -278,9 +296,14 @@ export type SchemaFieldNamesWithDefaultValue<T extends Schema> = {
 export type SchemaFieldValueType<
 	S extends Schema,
 	K extends SchemaFieldNames<S>,
-	CreateEntityInstances extends boolean = false
+	CreateEntityInstances extends boolean = false,
+	ShouldIncludeNullAndUndefinedFieldsInSchemas extends boolean = false
 > = S['fields'][K] extends FieldDefinitions
-	? FieldDefinitionValueType<S['fields'][K], CreateEntityInstances>
+	? FieldDefinitionValueType<
+			S['fields'][K],
+			CreateEntityInstances,
+			ShouldIncludeNullAndUndefinedFieldsInSchemas
+	  >
 	: never
 
 export type SchemaFieldNames<T extends Schema> = Extract<
@@ -339,7 +362,8 @@ export interface SchemaNormalizeFieldValueOptions<
 
 export interface SchemaNormalizeOptions<
 	S extends Schema,
-	CreateEntityInstances extends boolean
+	CreateEntityInstances extends boolean,
+	ShouldIncludeNullAndUndefinedFields extends boolean = true
 > extends SchemaNormalizeFieldValueOptions<CreateEntityInstances> {
 	/** Options passed to each field that conforms to the field definition's options */
 	byField?: {
@@ -348,8 +372,7 @@ export interface SchemaNormalizeOptions<
 			: never
 	}
 
-	shouldIncludeOnlyFieldsWithValues?: boolean
-	shouldStripUndefinedAndNullValues?: boolean
+	shouldIncludeNullAndUndefinedFields?: ShouldIncludeNullAndUndefinedFields
 }
 
 export interface DynamicSchemaNormalizeOptions<
@@ -361,8 +384,13 @@ export type SchemaGetValuesOptions<
 	F extends SchemaFieldNames<T>,
 	PF extends SchemaPublicFieldNames<T>,
 	CreateEntityInstances extends boolean,
-	IncludePrivateFields extends boolean
-> = SchemaNormalizeOptions<T, CreateEntityInstances> &
+	IncludePrivateFields extends boolean,
+	ShouldIncludeNullAndUndefinedFields extends boolean = true
+> = SchemaNormalizeOptions<
+	T,
+	CreateEntityInstances,
+	ShouldIncludeNullAndUndefinedFields
+> &
 	(IncludePrivateFields extends false
 		? {
 				shouldIncludePrivateFields: IncludePrivateFields

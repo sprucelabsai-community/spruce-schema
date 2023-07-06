@@ -26,7 +26,6 @@ import normalizeFieldValue, {
 	normalizeValueToArray,
 } from './utilities/normalizeFieldValue'
 
-/** Universal schema class  */
 export default class StaticSchemaEntityImplementation<S extends Schema>
 	extends AbstractEntity
 	implements StaticSchemaEntity<S>
@@ -102,7 +101,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	>(
 		fieldName: F,
 		options: SchemaNormalizeOptions<S, CreateEntityInstances> = {}
-	): SchemaFieldValueType<S, F, CreateEntityInstances> {
+	): SchemaFieldValueType<S, F, CreateEntityInstances, true> {
 		const value: SchemaFieldValueType<S, F> | undefined | null =
 			this.values[fieldName] !== undefined ? this.values[fieldName] : undefined
 
@@ -257,22 +256,23 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		const {
 			fields = Object.keys(this.fields),
 			shouldIncludePrivateFields: includePrivateFields = true,
-			shouldIncludeOnlyFieldsWithValues,
-			shouldStripUndefinedAndNullValues = false,
+			shouldIncludeNullAndUndefinedFields = true,
 		} = options || {}
 
 		this.getNamedFields().forEach((namedField) => {
 			const { name, field } = namedField
 
 			const shouldSkipBecauseNotSet =
-				shouldIncludeOnlyFieldsWithValues && !(name in this.values)
+				!shouldIncludeNullAndUndefinedFields && !(name in this.values)
+
 			const shouldSkipBecauseUndefinedOrNull =
-				shouldStripUndefinedAndNullValues &&
+				!shouldIncludeNullAndUndefinedFields &&
 				(this.values[name] === undefined || this.values[name] === null)
 
 			if (shouldSkipBecauseNotSet || shouldSkipBecauseUndefinedOrNull) {
 				return
 			}
+
 			if (
 				fields.indexOf(name) > -1 &&
 				(includePrivateFields || !field.isPrivate)

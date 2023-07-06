@@ -84,12 +84,17 @@ export type FieldDefinition<
 
 export type FieldDefinitionValueType<
 	F extends FieldDefinitions,
-	CreateEntityInstances extends boolean = false
+	CreateEntityInstances extends boolean = false,
+	ShouldIncludeNullAndUndefinedFields extends boolean = false
 > = F extends FieldDefinitions
 	? IsRequired<
 			IsArray<
 				NonNullable<
-					FieldValueTypeGeneratorMap<F, CreateEntityInstances>[F['type']]
+					FieldValueTypeGeneratorMap<
+						F,
+						CreateEntityInstances,
+						ShouldIncludeNullAndUndefinedFields
+					>[F['type']]
 				>,
 				F['isArray']
 			>,

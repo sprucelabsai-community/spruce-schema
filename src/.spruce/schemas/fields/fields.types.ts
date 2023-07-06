@@ -79,7 +79,8 @@ export interface FieldDefinitionMap {
 
 export interface FieldValueTypeGeneratorMap<
 	F extends FieldDefinitions,
-	CreateEntityInstances extends boolean
+	CreateEntityInstances extends boolean,
+	ShouldIncludeNullAndUndefinedFieldsInSchemas extends boolean = false
 	> {
 	boolean: BooleanFieldDefinition['value']
 	select: SelectFieldValueTypeMapper<
@@ -92,7 +93,8 @@ export interface FieldValueTypeGeneratorMap<
 	phone: PhoneFieldDefinition['value']
 	schema: SchemaFieldValueTypeMapper<
 		F extends SchemaFieldFieldDefinition ? F : SchemaFieldFieldDefinition,
-		CreateEntityInstances
+		CreateEntityInstances,
+		ShouldIncludeNullAndUndefinedFieldsInSchemas
 	>
 	raw: RawFieldDefinition['value']
 	number: NumberFieldDefinition['value']

@@ -93,9 +93,10 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
 		//@ts-ignore
 		assert.isFalsy(values.privateField)
+
 		assert.isExactType<
 			typeof values,
-			{ name: string; onlyOnCar?: string | undefined | null }
+			{ name: string; onlyOnCar: string | undefined | null }
 		>(true)
 	}
 
@@ -108,6 +109,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 		)
 
 		assert.isEqual(values.privateField, 'go away')
+
 		assert.isExactType<
 			typeof values,
 			{
@@ -126,9 +128,8 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 			{ shouldIncludePrivateFields: false, fields: ['onlyOnCar'] }
 		)
 
-		assert.isExactType<
-			typeof values,
-			{ onlyOnCar?: string | null | undefined }
-		>(true)
+		assert.isExactType<typeof values, { onlyOnCar: string | null | undefined }>(
+			true
+		)
 	}
 }
