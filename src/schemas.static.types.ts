@@ -74,6 +74,7 @@ export interface StaticSchemaEntity<S extends Schema> extends SchemaEntity {
 	isValid(options?: SchemaValidateOptions<S>): boolean
 }
 
+/** @ts-ignore */
 export type SchemaValues<
 	S extends Schema,
 	CreateEntityInstances extends boolean = false,
@@ -89,8 +90,7 @@ export type SchemaValues<
 		: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
 	: ShouldIncludeNullAndUndefinedFields extends true
 	? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
-	: /** @ts-ignore */
-	  Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+	: Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
