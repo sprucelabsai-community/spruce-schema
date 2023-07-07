@@ -90,7 +90,8 @@ export type SchemaValues<
 		: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
 	: ShouldIncludeNullAndUndefinedFields extends true
 	? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
-	: Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+	: /** @ts-ignore */
+	  Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
