@@ -1,3 +1,5 @@
+## [29.0.1](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.0.0...v29.0.1) (2023-07-07)
+
 # [29.0.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v28.8.1...v29.0.0) (2023-07-06)
 
 
