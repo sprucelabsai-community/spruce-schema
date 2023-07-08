@@ -65,7 +65,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 	}
 
 	@test()
-	protected static normalizeTypesAsExpectedWithPartial() {
+	protected static normalizeTypesAsExpectedNotIncludingNullAndUndefined() {
 		const values = normalizeSchemaValues(
 			this.personSchema,
 			{
@@ -262,7 +262,6 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		const values = normalizeSchemaValues(
 			this.personSchema,
 			{
-				age: null,
 				boolean: true,
 				firstName: 'test',
 				nestedArraySchema: null,
