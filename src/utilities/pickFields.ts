@@ -3,7 +3,7 @@ import { SchemaFieldsByName } from '../schemas.static.types'
 
 export default function pickFields<
 	F extends SchemaFieldsByName,
-	Name extends FieldName<F>
+	Name extends FieldName<F>,
 >(fields: F, names: Name[]): Pick<F, Name> {
 	const final: any = {}
 

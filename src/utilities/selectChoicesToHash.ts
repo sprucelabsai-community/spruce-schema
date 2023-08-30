@@ -33,7 +33,7 @@ export function selectChoicesToHash<Options extends SelectChoice[]>(
 /** Take a definition and a field name and returns a value/label hash */
 export function schemaChoicesToHash<
 	S extends Schema,
-	F extends PickFieldNames<S, 'select'>
+	F extends PickFieldNames<S, 'select'>,
 >(
 	definition: S,
 	fieldName: F

@@ -72,7 +72,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 
 	private normalizeValue<
 		F extends SchemaFieldNames<S>,
-		CreateEntityInstances extends boolean = true
+		CreateEntityInstances extends boolean = true,
 	>(
 		forField: F,
 		value: any,
@@ -97,7 +97,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 
 	public get<
 		F extends SchemaFieldNames<S>,
-		CreateEntityInstances extends boolean = true
+		CreateEntityInstances extends boolean = true,
 	>(
 		fieldName: F,
 		options: SchemaNormalizeOptions<S, CreateEntityInstances> = {}
@@ -214,8 +214,9 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 	}
 
 	public getDefaultValues<
-		F extends SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
-		CreateEntityInstances extends boolean = true
+		F extends
+			SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+		CreateEntityInstances extends boolean = true,
 	>(
 		options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
 	): Pick<SchemaDefaultValues<S, CreateEntityInstances>, F> {
@@ -239,7 +240,7 @@ export default class StaticSchemaEntityImplementation<S extends Schema>
 		F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 		PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
 		CreateEntityInstances extends boolean = true,
-		IncludePrivateFields extends boolean = true
+		IncludePrivateFields extends boolean = true,
 	>(
 		options?: SchemaGetValuesOptions<
 			S,

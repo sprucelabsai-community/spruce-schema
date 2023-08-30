@@ -18,7 +18,7 @@ export interface SchemasById {
 
 export type SchemaFieldUnion<
 	S extends Array<Schema>,
-	CreateEntityInstances extends boolean = false
+	CreateEntityInstances extends boolean = false,
 > = {
 	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
@@ -38,7 +38,7 @@ export interface FieldDefinitionToSchemaOptions {
 
 export type ToValueTypeOptions<
 	F extends FieldDefinitions,
-	CreateEntityInstances extends boolean = true
+	CreateEntityInstances extends boolean = true,
 > = {
 	schemasById?: SchemasById
 	createEntityInstances?: CreateEntityInstances
@@ -58,7 +58,7 @@ export type FieldDefinition<
 	Value = any,
 	DefaultValue = Value,
 	ArrayValue = Value[],
-	DefaultArrayValue = DefaultValue[]
+	DefaultArrayValue = DefaultValue[],
 > = {
 	type: FieldType
 	/** Default options are empty */
@@ -85,7 +85,7 @@ export type FieldDefinition<
 export type FieldDefinitionValueType<
 	F extends FieldDefinitions,
 	CreateEntityInstances extends boolean = false,
-	ShouldIncludeNullAndUndefinedFields extends boolean = false
+	ShouldIncludeNullAndUndefinedFields extends boolean = false,
 > = F extends FieldDefinitions
 	? IsRequired<
 			IsArray<

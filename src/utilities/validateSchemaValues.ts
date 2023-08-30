@@ -10,7 +10,7 @@ import {
 
 export default function validateSchemaValues<
 	S extends Schema,
-	V extends SchemaPartialValues<S>
+	V extends SchemaPartialValues<S>,
 >(
 	schema: S,
 	values: V,

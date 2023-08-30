@@ -18,7 +18,7 @@ export default function normalizeSchemaValues<
 	CreateEntityInstances extends boolean = false,
 	IncludePrivateFields extends boolean = true,
 	IsDynamic extends boolean = IsDynamicSchema<S>,
-	ShouldIncludeNullAndUndefinedFields extends boolean = true
+	ShouldIncludeNullAndUndefinedFields extends boolean = true,
 >(
 	schema: S,
 	values: SchemaPartialValues<S>,

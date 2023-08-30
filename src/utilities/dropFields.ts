@@ -3,7 +3,7 @@ import { SchemaFieldsByName } from '../schemas.static.types'
 
 export default function dropFields<
 	F extends SchemaFieldsByName,
-	D extends FieldName<F>
+	D extends FieldName<F>,
 >(fields: F, dropFields: D[]): Omit<F, D> {
 	const optionalFields: Record<string, any> = {}
 

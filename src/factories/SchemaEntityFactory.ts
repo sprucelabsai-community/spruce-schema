@@ -10,7 +10,7 @@ import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
 export default class SchemaEntityFactory {
 	public static Entity<
 		S extends Schema,
-		IsDynamic extends boolean = IsDynamicSchema<S>
+		IsDynamic extends boolean = IsDynamicSchema<S>,
 	>(
 		schema: S,
 		values?: SchemaPartialValues<S>

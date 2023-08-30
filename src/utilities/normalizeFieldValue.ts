@@ -11,7 +11,7 @@ import { SchemaNormalizeFieldValueOptions } from '../schemas.static.types'
 
 export default function normalizeFieldValue<
 	F extends Fields,
-	CreateEntityInstances extends boolean
+	CreateEntityInstances extends boolean,
 >(
 	schemaId: string,
 	schemaName: string | undefined,
@@ -94,7 +94,7 @@ export default function normalizeFieldValue<
 
 export function normalizeValueToArray<
 	F extends Fields,
-	CreateEntityInstances extends boolean
+	CreateEntityInstances extends boolean,
 >(value: any) {
 	return value === null || typeof value === 'undefined'
 		? ([] as FieldDefinitionValueType<F, CreateEntityInstances>)

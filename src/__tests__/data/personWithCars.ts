@@ -106,7 +106,7 @@ export interface PersonSchema extends Schema {
 			options: {
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
-					{ value: 'bar'; label: 'Bar' }
+					{ value: 'bar'; label: 'Bar' },
 				]
 			}
 		}
@@ -116,7 +116,7 @@ export interface PersonSchema extends Schema {
 				isRequired: true
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
-					{ value: 'bar'; label: 'Bar' }
+					{ value: 'bar'; label: 'Bar' },
 				]
 			}
 		}
@@ -126,7 +126,7 @@ export interface PersonSchema extends Schema {
 			options: {
 				choices: [
 					{ value: 'hello'; label: 'world' },
-					{ value: 'goodbye'; label: 'darling' }
+					{ value: 'goodbye'; label: 'darling' },
 				]
 			}
 		}

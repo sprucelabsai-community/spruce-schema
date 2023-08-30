@@ -25,7 +25,7 @@ export interface SchemaFieldOptions {
 
 export type SchemaFieldUnion<
 	S extends Array<Schema>,
-	CreateEntityInstances extends boolean = false
+	CreateEntityInstances extends boolean = false,
 > = {
 	[K in keyof S]: S[K] extends Schema
 		? CreateEntityInstances extends true
@@ -41,7 +41,7 @@ export type SchemaFieldUnion<
 export type SchemaFieldValueTypeMapper<
 	F extends SchemaFieldFieldDefinition,
 	CreateEntityInstances extends boolean = false,
-	ShouldIncludeNullAndUndefinedFields extends boolean = false
+	ShouldIncludeNullAndUndefinedFields extends boolean = false,
 > = F['options']['schemas'] extends Array<Schema>
 	? IsArrayNoUnpack<
 			SchemaFieldUnion<F['options']['schemas'], CreateEntityInstances>[number],

@@ -18,7 +18,7 @@ export default function normalizePartialSchemaValues<
 		S,
 		CreateEntityInstances
 	> = SchemaPartialValues<S, CreateEntityInstances>,
-	Fields extends keyof Values = keyof Values
+	Fields extends keyof Values = keyof Values,
 >(
 	schema: S,
 	values: Values,

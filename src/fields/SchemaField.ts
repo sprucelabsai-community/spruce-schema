@@ -28,7 +28,7 @@ import {
 import { SchemaFieldFieldDefinition } from './SchemaField.types'
 
 export default class SchemaField<
-	F extends SchemaFieldFieldDefinition = SchemaFieldFieldDefinition
+	F extends SchemaFieldFieldDefinition = SchemaFieldFieldDefinition,
 > extends AbstractField<F> {
 	public static get description() {
 		return 'A way to map relationships.'

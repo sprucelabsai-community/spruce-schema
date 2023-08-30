@@ -3,7 +3,7 @@ import SpruceError from '../errors/SpruceError'
 
 export default function assertOptions<
 	Options extends Record<string, any>,
-	Path extends Paths<Options> = Paths<Options>
+	Path extends Paths<Options> = Paths<Options>,
 >(
 	options: Options,
 	toCheck: Path[],
@@ -60,7 +60,7 @@ type Prev = [
 	18,
 	19,
 	20,
-	...0[]
+	...0[],
 ]
 
 type Paths<T, D extends number = 3> = [D] extends [never]

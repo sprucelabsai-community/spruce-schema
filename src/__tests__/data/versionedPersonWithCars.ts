@@ -117,7 +117,7 @@ export interface PersonV1Definition extends Schema {
 			options: {
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
-					{ value: 'bar'; label: 'Bar' }
+					{ value: 'bar'; label: 'Bar' },
 				]
 			}
 		}
@@ -127,7 +127,7 @@ export interface PersonV1Definition extends Schema {
 			options: {
 				choices: [
 					{ value: 'hello'; label: 'world' },
-					{ value: 'goodbye'; label: 'darling' }
+					{ value: 'goodbye'; label: 'darling' },
 				]
 			}
 		}
@@ -188,7 +188,7 @@ export interface PersonV2Definition extends Schema {
 				schemasCallback: () => [
 					CarV1Definition,
 					CarV2Definition,
-					TruckV1Definition
+					TruckV1Definition,
 				]
 			}
 		}
@@ -233,7 +233,7 @@ export interface PersonV2Definition extends Schema {
 			options: {
 				choices: [
 					{ value: 'foo'; label: 'Foo' },
-					{ value: 'bar'; label: 'Bar' }
+					{ value: 'bar'; label: 'Bar' },
 				]
 			}
 		}
@@ -243,7 +243,7 @@ export interface PersonV2Definition extends Schema {
 			options: {
 				choices: [
 					{ value: 'hello'; label: 'world' },
-					{ value: 'goodbye'; label: 'darling' }
+					{ value: 'goodbye'; label: 'darling' },
 				]
 			}
 		}

@@ -30,10 +30,10 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static typesResultsAsNonNullable<
-		Context extends Record<string, any> = Record<string, any>
+		Context extends Record<string, any> = Record<string, any>,
 	>() {
 		type TestOptions<
-			Context extends Record<string, any> = Record<string, any>
+			Context extends Record<string, any> = Record<string, any>,
 		> = {
 			passed?: boolean
 			stillOptional?: boolean

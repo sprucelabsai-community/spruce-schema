@@ -18,7 +18,7 @@ interface UserSchema {
 					{
 						value: 'red'
 						label: 'Red'
-					}
+					},
 				]
 			}
 		}
@@ -34,7 +34,7 @@ interface UserSchema {
 					{
 						value: 'red'
 						label: 'Red'
-					}
+					},
 				]
 			}
 		}

@@ -24,9 +24,10 @@ import normalizeFieldValue from './utilities/normalizeFieldValue'
 
 export default class DynamicSchemaEntityImplementation<
 		S extends Schema,
-		OurField extends Field<any> = S['dynamicFieldSignature'] extends FieldDefinition
+		OurField extends
+			Field<any> = S['dynamicFieldSignature'] extends FieldDefinition
 			? FieldMap[S['dynamicFieldSignature']['type']]
-			: any
+			: any,
 	>
 	extends AbstractEntity
 	implements DynamicSchemaEntityByName<S, OurField>
@@ -128,7 +129,7 @@ export default class DynamicSchemaEntityImplementation<
 
 	public getValues<
 		F extends string,
-		CreateEntityInstances extends boolean = true
+		CreateEntityInstances extends boolean = true,
 	>(
 		options?: DynamicSchemaGetValuesOptions<S, F, CreateEntityInstances>
 	): DynamicSchemaAllValues<S, CreateEntityInstances> {

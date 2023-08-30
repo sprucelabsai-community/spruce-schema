@@ -7,7 +7,7 @@ type PrivateFieldNames<F extends SchemaFieldsByName> = {
 
 export default function dropPrivateFields<
 	F extends SchemaFieldsByName,
-	D extends PrivateFieldNames<F>
+	D extends PrivateFieldNames<F>,
 >(fields: F): Omit<F, D> {
 	const optionalFields: Record<string, any> = {}
 
