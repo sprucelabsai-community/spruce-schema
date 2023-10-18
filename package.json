@@ -78,7 +78,7 @@
     "@sprucelabs/jest-sheets-reporter": "^2.0.20",
     "@sprucelabs/resolve-path-aliases": "^1.1.122",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^8.0.18",
+    "@sprucelabs/test": "^8.0.19",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.1",
     "eslint": "^8.51.0",
