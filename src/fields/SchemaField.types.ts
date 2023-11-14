@@ -48,18 +48,18 @@ export type SchemaFieldValueTypeMapper<
 			F['isArray']
 	  >
 	: F['options']['schema'] extends Schema
-	? CreateEntityInstances extends true
-		? IsArray<StaticSchemaEntity<F['options']['schema']>, F['isArray']>
-		: IsArray<
-				SchemaValues<
-					F['options']['schema'],
-					false,
-					true,
-					ShouldIncludeNullAndUndefinedFields
-				>,
-				F['isArray']
-		  >
-	: any
+	  ? CreateEntityInstances extends true
+			? IsArray<StaticSchemaEntity<F['options']['schema']>, F['isArray']>
+			: IsArray<
+					SchemaValues<
+						F['options']['schema'],
+						false,
+						true,
+						ShouldIncludeNullAndUndefinedFields
+					>,
+					F['isArray']
+			  >
+	  : any
 
 export type SchemaFieldFieldDefinition = FieldDefinition<
 	Record<string, any>,

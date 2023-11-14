@@ -85,13 +85,13 @@ export type SchemaValues<
 > = IsDynamicSchema<S> extends true
 	? DynamicSchemaAllValues<S>
 	: IncludePrivateFields extends false
-	? ShouldIncludeNullAndUndefinedFields extends true
-		? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
-		: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
-	: ShouldIncludeNullAndUndefinedFields extends true
-	? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
-	: /** @ts-ignore */
-	  Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+	  ? ShouldIncludeNullAndUndefinedFields extends true
+			? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
+			: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
+	  : ShouldIncludeNullAndUndefinedFields extends true
+	    ? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+	    : /** @ts-ignore */
+	      Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,

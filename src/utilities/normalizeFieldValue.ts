@@ -99,6 +99,6 @@ export function normalizeValueToArray<
 	return value === null || typeof value === 'undefined'
 		? ([] as FieldDefinitionValueType<F, CreateEntityInstances>)
 		: Array.isArray(value)
-		? value
-		: [value]
+		  ? value
+		  : [value]
 }
