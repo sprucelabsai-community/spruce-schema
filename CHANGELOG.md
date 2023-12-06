@@ -1,3 +1,10 @@
+# [29.1.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.0.94...v29.1.0) (2023-12-06)
+
+
+### Features
+
+* KeyMapper for easy mapping of objects from one shape to another ([91efa9b](https://github.com/sprucelabsai-community/spruce-schema/commit/91efa9b))
+
 ## [29.0.94](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.0.93...v29.0.94) (2023-12-06)
 
 ## [29.0.93](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.0.92...v29.0.93) (2023-12-05)
