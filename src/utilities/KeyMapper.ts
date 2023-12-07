@@ -11,6 +11,22 @@ export default class KeyMapper {
 	public mapFrom(values: Record<string, any>) {
 		return keyMapper.mapFrom(values, this.map)
 	}
+
+	public mapFieldNameTo(name: string) {
+		return this.map[name]
+	}
+
+	public mapFieldNameFrom(name: string) {
+		for (const key in this.map) {
+			// eslint-disable-next-line no-prototype-builtins
+			if (this.map.hasOwnProperty(key)) {
+				if (this.map[key] === name) {
+					return key
+				}
+			}
+		}
+		return null
+	}
 }
 
 const keyMapper = {
