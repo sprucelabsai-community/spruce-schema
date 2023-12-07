@@ -79,6 +79,12 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
 				break
 			}
 
+			case 'FIELDS_NOT_MAPPED':
+				message = `The following fields were not mapped because they don't exist in your map: ${options.fields.join(
+					', '
+				)}`
+				break
+
 			default:
 				message = this.message
 		}

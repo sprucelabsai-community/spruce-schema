@@ -16,6 +16,7 @@ export type SchemaErrorOptions =
 	| UnexpectedParametersOptions
 	| ValidationFailedErrorOptions
 	| InvalidSchemaReferenceErrorOptions
+	| FieldsNotMappedErrorOptions
 
 export type FieldErrorCode =
 	| 'MISSING_PARAMETER'
@@ -66,6 +67,11 @@ export interface InvalidSchemaDefinitionErrorOptions
 export interface NotImplementedErrorOptions extends ISpruceErrorOptions {
 	code: 'NOT_IMPLEMENTED'
 	instructions: string
+}
+
+export interface FieldsNotMappedErrorOptions extends ISpruceErrorOptions {
+	code: 'FIELDS_NOT_MAPPED'
+	fields: string[]
 }
 
 export interface InvalidFieldRegistrationErrorOptions

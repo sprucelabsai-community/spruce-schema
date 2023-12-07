@@ -1,3 +1,5 @@
+import SpruceError from '../errors/SpruceError'
+
 export default class KeyMapper {
 	private map: Record<string, any>
 	public constructor(map: Record<string, any>) {
@@ -5,18 +7,28 @@ export default class KeyMapper {
 	}
 
 	public mapTo(values: Record<string, any>) {
-		return keyMapper.mapTo(values, this.map)
+		return this._mapTo(values, this.map)
 	}
 
 	public mapFrom(values: Record<string, any>) {
-		return keyMapper.mapFrom(values, this.map)
+		return this._mapFrom(values, this.map)
 	}
 
 	public mapFieldNameTo(name: string) {
+		if (!this.map[name]) {
+			this.throwFieldsNotMapped([name])
+		}
 		return this.map[name]
 	}
 
-	public mapFieldNameFrom(name: string) {
+	private throwFieldsNotMapped(fields: string[]) {
+		throw new SpruceError({
+			code: 'FIELDS_NOT_MAPPED',
+			fields,
+		})
+	}
+
+	public mapFieldNameFrom(name: string): string {
 		for (const key in this.map) {
 			// eslint-disable-next-line no-prototype-builtins
 			if (this.map.hasOwnProperty(key)) {
@@ -25,31 +37,54 @@ export default class KeyMapper {
 				}
 			}
 		}
-		return null
-	}
-}
 
-const keyMapper = {
-	mapTo(values: Record<string, any>, map: Record<string, any>) {
+		this.throwFieldsNotMapped([name])
+
+		return 'never hit'
+	}
+
+	private _mapTo(values: Record<string, any>, map: Record<string, any>) {
+		const foundFields: string[] = []
 		let target: any = {}
 		for (const key in map) {
 			// eslint-disable-next-line no-prototype-builtins
 			if (values.hasOwnProperty(key)) {
 				target[map[key]] = values[key]
+				foundFields.push(key)
 			}
 		}
-		return target
-	},
 
-	mapFrom(values: Record<string, any>, map: Record<string, any>) {
+		const missingFields = Object.keys(values).filter(
+			(key) => !foundFields.includes(key)
+		)
+
+		if (missingFields.length > 0) {
+			this.throwFieldsNotMapped(missingFields)
+		}
+
+		return target
+	}
+
+	private _mapFrom(values: Record<string, any>, map: Record<string, any>) {
+		const foundFields: string[] = []
 		let target: any = {}
 		for (const targetKey in map) {
 			const sourceKey = map[targetKey]
 			// eslint-disable-next-line no-prototype-builtins
 			if (values.hasOwnProperty(sourceKey)) {
 				target[targetKey] = values[sourceKey]
+				foundFields.push(sourceKey)
 			}
 		}
+
+		const missingFields = Object.keys(values).filter(
+			(key) => !foundFields.includes(key)
+		)
+
+		if (missingFields.length > 0) {
+			this.throwFieldsNotMapped(missingFields)
+		}
+
 		return target
-	},
+	}
 }
