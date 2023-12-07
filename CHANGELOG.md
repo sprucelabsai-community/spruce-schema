@@ -1,3 +1,10 @@
+# [29.2.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.1.2...v29.2.0) (2023-12-07)
+
+
+### Features
+
+* can map single field names ([3a2754a](https://github.com/sprucelabsai-community/spruce-schema/commit/3a2754a))
+
 ## [29.1.2](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.1.1...v29.1.2) (2023-12-07)
 
 ## [29.1.1](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.1.0...v29.1.1) (2023-12-06)
