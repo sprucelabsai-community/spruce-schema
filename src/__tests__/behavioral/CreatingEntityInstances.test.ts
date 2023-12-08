@@ -2,7 +2,7 @@ import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
 import EntityFactory from '../../factories/SchemaEntityFactory'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 
 export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
 	@test()
@@ -17,7 +17,7 @@ export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
 			},
 		})
 
-		assert.isTrue(instance instanceof StaticSchemaEntityImplementation)
+		assert.isTrue(instance instanceof StaticSchemaEntityImpl)
 	}
 
 	@test()

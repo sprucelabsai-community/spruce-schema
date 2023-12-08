@@ -1,4 +1,4 @@
-export * from './StaticSchemaEntityImplementation'
+export * from './StaticSchemaEntityImpl'
 
 import addressRegistration from './addons/addressField.addon'
 import booleanRegistration from './addons/booleanField.addon'
@@ -16,10 +16,10 @@ import rawRegistration from './addons/rawField.addon'
 import schemaRegistration from './addons/schemaField.addon'
 import selectRegistration from './addons/selectField.addon'
 import textRegistration from './addons/textField.addon'
-import StaticSchemaEntityImplementation from './StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from './StaticSchemaEntityImpl'
 import { FieldRegistration } from './utilities/registerFieldType'
 
-export default StaticSchemaEntityImplementation
+export default StaticSchemaEntityImpl
 
 export { default as validationErrorAssert } from './tests/validationErrorAssert.utility'
 export { default as selectAssert } from './tests/selectAssert.utility'

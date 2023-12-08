@@ -2,12 +2,14 @@ import { test, assert } from '@sprucelabs/test-utils'
 import FieldFactory from '../../factories/FieldFactory'
 import DateTimeField from '../../fields/DateTimeField'
 import { DateTimeFieldDefinition } from '../../fields/DateTimeField.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import { SchemaValues } from '../../schemas.static.types'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import AbstractDateFieldTest from '../../tests/AbstractDateFieldTest'
 import buildSchema from '../../utilities/buildSchema'
+import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
-const schema = buildSchema({
-	id: 'dateTest',
+const schemaWithIsoDate = buildSchema({
+	id: 'dateTestIso',
 	fields: {
 		optionalBirthday: {
 			type: 'dateTime',
@@ -28,11 +30,31 @@ const schema = buildSchema({
 	},
 })
 
-type Schema = typeof schema
+type SchemaWithIso = typeof schemaWithIsoDate
+type ValuesWithIso = SchemaValues<SchemaWithIso>
+
+const schemaWithoutIsoDate = buildSchema({
+	id: 'dateTest',
+	fields: {
+		optionalBirthday: {
+			type: 'dateTime',
+		},
+		optionalAnniversary: {
+			type: 'dateTime',
+		},
+		requiredBirthday: {
+			type: 'dateTime',
+			isRequired: true,
+		},
+		isoDate: {
+			type: 'dateTime',
+		},
+	},
+})
 
 export default class DateFieldTest extends AbstractDateFieldTest {
-	protected static schema = schema
-	protected static entity: StaticSchemaEntityImplementation<Schema>
+	protected static schema = schemaWithIsoDate
+	protected static entity: StaticSchemaEntityImpl<SchemaWithIso>
 	private static field: DateTimeField
 
 	protected static async beforeEach() {
@@ -69,12 +91,6 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 	}
 
 	@test()
-	protected static convertsStringsToNumbers() {
-		assert.isEqual(this.field.toValueType('10'), 10)
-		assert.isEqual(this.field.toValueType('20'), 20)
-	}
-
-	@test()
 	protected static async canSetToKeepDatesInIsoFormat() {
 		this.field = this.Field({
 			dateTimeFormat: 'iso_8601',
@@ -84,8 +100,46 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 
 		assert.isEqual(this.field.toValueType(date), date.toISOString())
 		assert.isEqual(this.field.toValueType(date.getTime()), date.toISOString())
+		assert.isEqual(
+			this.field.toValueType(date.toISOString()),
+			date.toISOString()
+		)
 		const errs = this.field.validate(date.toISOString())
 		assert.isLength(errs, 0)
+	}
+
+	@test()
+	protected static async canHandleIosDateUsingEntity() {
+		const date = new Date()
+		const entity = new StaticSchemaEntityImpl(schemaWithIsoDate, {
+			isoDate: date.getTime(),
+		})
+
+		const isoDate = entity.get('isoDate')
+		//@ts-ignore
+		assert.isEqual(isoDate, date.toISOString())
+	}
+
+	@test()
+	protected static async normalizingValuesBasedOnSchemaReturnsConsistentResults() {
+		const values: ValuesWithIso = {
+			isoDate: new Date().getTime(),
+			optionalAnniversary: new Date().getTime(),
+			optionalBirthday: new Date().getTime(),
+			requiredBirthday: new Date().getTime(),
+		}
+
+		const normalized1 = normalizeSchemaValues(schemaWithIsoDate, values)
+		const normalized2 = normalizeSchemaValues(schemaWithIsoDate, normalized1)
+
+		assert.isEqualDeep(normalized1, normalized2)
+
+		const normalizedWithoutIso = normalizeSchemaValues(
+			schemaWithoutIsoDate,
+			normalized1
+		)
+
+		assert.isEqualDeep(values, normalizedWithoutIso)
 	}
 
 	private static Field(

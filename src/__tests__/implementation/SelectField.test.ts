@@ -1,6 +1,6 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
 import { FieldFactory } from '../..'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
 
 interface UserSchema {
@@ -81,7 +81,7 @@ export default class SelectFieldTest extends AbstractSpruceTest {
 	})
 	@test('Makes select options a union (test passes, lint will fail)')
 	protected static async canMakeSelectOptionsUnion() {
-		const user = new StaticSchemaEntityImplementation(this.userSchema, {
+		const user = new StaticSchemaEntityImpl(this.userSchema, {
 			favoriteColor: 'blue',
 			favoriteColorRequired: 'blue',
 		})

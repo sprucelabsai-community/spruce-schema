@@ -26,7 +26,7 @@ import normalizeFieldValue, {
 	normalizeValueToArray,
 } from './utilities/normalizeFieldValue'
 
-export default class StaticSchemaEntityImplementation<S extends Schema>
+export default class StaticSchemaEntityImpl<S extends Schema>
 	extends AbstractEntity
 	implements StaticSchemaEntity<S>
 {

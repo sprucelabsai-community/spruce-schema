@@ -1,11 +1,11 @@
 import { assert } from '@sprucelabs/test-utils'
-import StaticSchemaEntityImplementation, { validationErrorAssert } from '..'
+import StaticSchemaEntityImpl, { validationErrorAssert } from '..'
 import AbstractSchemaTest from '../AbstractSchemaTest'
 import SchemaEntityFactory from '../factories/SchemaEntityFactory'
 
 export default abstract class AbstractDateFieldTest extends AbstractSchemaTest {
 	protected static schema: any
-	protected static entity: StaticSchemaEntityImplementation<any>
+	protected static entity: StaticSchemaEntityImpl<any>
 
 	protected static async beforeEach(): Promise<void> {
 		await super.beforeEach()

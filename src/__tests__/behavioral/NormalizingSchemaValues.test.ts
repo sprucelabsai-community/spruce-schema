@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import { SchemaValues } from '../../schemas.static.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
 import normalizePartialSchemaValues from '../../utilities/normalizePartialSchemaValues'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
@@ -178,7 +178,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 				related: [
 					{
 						textField: 'hello!',
-						nested: new StaticSchemaEntityImplementation(secondLevelSchema, {
+						nested: new StaticSchemaEntityImpl(secondLevelSchema, {
 							boolField: true,
 						}) as any,
 					},
@@ -188,10 +188,10 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 		)
 
 		assert.isFalse(
-			values.related[0] instanceof StaticSchemaEntityImplementation
+			values.related[0] instanceof StaticSchemaEntityImpl
 		)
 		assert.isFalse(
-			values.related[0].nested instanceof StaticSchemaEntityImplementation
+			values.related[0].nested instanceof StaticSchemaEntityImpl
 		)
 
 		assert.isEqualDeep(values, {

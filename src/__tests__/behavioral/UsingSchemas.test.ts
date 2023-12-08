@@ -7,7 +7,7 @@ import {
 	StaticSchemaEntity,
 	Schema,
 } from '../../schemas.static.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
 import isSchemaValid from '../../utilities/isSchemaValid'
 import validateSchema from '../../utilities/validateSchema'
@@ -17,7 +17,7 @@ import buildPersonWithCars, {
 	PersonSchema,
 } from '../data/personWithCars'
 
-StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImpl.enableDuplicateCheckWhenTracking = false
 
 type PersonMappedValues = SchemaValues<PersonSchema, true>
 
@@ -180,7 +180,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static getSetArrays() {
-		const entity = new StaticSchemaEntityImplementation({
+		const entity = new StaticSchemaEntityImpl({
 			id: 'missing-fields',
 			name: 'missing name',
 			fields: {
@@ -240,7 +240,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testTransformingValuesToValueTypes() {
-		const schema = new StaticSchemaEntityImplementation({
+		const schema = new StaticSchemaEntityImpl({
 			id: 'is-array-transform',
 			name: 'transform tests',
 			fields: {
@@ -290,7 +290,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testFullValuesTypes() {
-		const personEntity = new StaticSchemaEntityImplementation(personSchema)
+		const personEntity = new StaticSchemaEntityImpl(personSchema)
 		const values = personEntity.getValues({ shouldValidate: false })
 		const valuesWithoutInstances = personEntity.getValues({
 			shouldValidate: false,
@@ -303,7 +303,7 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGettingOptionsByField() {
-		const entity = new StaticSchemaEntityImplementation(personSchema)
+		const entity = new StaticSchemaEntityImpl(personSchema)
 		entity.set('name', 'a really long name that should get truncated')
 		const name = entity.get('name', { byField: { name: { maxLength: 10 } } })
 		assert.isEqual(name, 'a really l')
@@ -358,10 +358,10 @@ export default class SchemaTest extends AbstractSchemaTest {
 
 		const values: any = {
 			requiredCar: {},
-			optionalCar: new StaticSchemaEntityImplementation(carSchema),
+			optionalCar: new StaticSchemaEntityImpl(carSchema),
 		}
 
-		const s = new StaticSchemaEntityImplementation(personSchema, values)
+		const s = new StaticSchemaEntityImpl(personSchema, values)
 
 		//@ts-ignore
 		assert.isNotEqual(s.values.requiredCar, values.requiredCar)

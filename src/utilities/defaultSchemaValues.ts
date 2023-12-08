@@ -4,7 +4,7 @@ import {
 	SchemaGetDefaultValuesOptions,
 	SchemaFieldNamesWithDefaultValue,
 } from '../schemas.static.types'
-import StaticSchemaEntityImplementation from '../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../StaticSchemaEntityImpl'
 
 export default function defaultSchemaValues<
 	S extends Schema,
@@ -15,7 +15,7 @@ export default function defaultSchemaValues<
 	definition: S,
 	options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
 ): SchemaDefaultValues<S> {
-	const instance = new StaticSchemaEntityImplementation(definition)
+	const instance = new StaticSchemaEntityImpl(definition)
 
 	// @ts-ignore
 	return instance.getDefaultValues({

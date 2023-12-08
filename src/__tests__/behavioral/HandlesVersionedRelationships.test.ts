@@ -1,7 +1,7 @@
 import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import { StaticSchemaEntity } from '../../schemas.static.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildVersionedPersonWithCars, {
 	CarV2Definition,
 } from '../data/versionedPersonWithCars'
@@ -28,10 +28,10 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		const { personV2Schema, carV1Schema, carV2Schema } =
 			buildVersionedPersonWithCars()
 
-		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
+		const carV1 = new StaticSchemaEntityImpl(carV1Schema, {
 			name: 'version 1',
 		})
-		const carV2 = new StaticSchemaEntityImplementation(carV2Schema, {
+		const carV2 = new StaticSchemaEntityImpl(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -39,7 +39,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new StaticSchemaEntityImplementation(personV2Schema, {
+		const person = new StaticSchemaEntityImpl(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: { schemaId: 'car', values: carV1.getValues() },
 			optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() },
@@ -53,10 +53,10 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		const { personV2Schema, carV1Schema, carV2Schema } =
 			buildVersionedPersonWithCars()
 
-		const carV1 = new StaticSchemaEntityImplementation(carV1Schema, {
+		const carV1 = new StaticSchemaEntityImpl(carV1Schema, {
 			name: 'version 1',
 		})
-		const carV2 = new StaticSchemaEntityImplementation(carV2Schema, {
+		const carV2 = new StaticSchemaEntityImpl(carV2Schema, {
 			name: 'version 2',
 			newRequiredOnCar: 'is required',
 		})
@@ -64,7 +64,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
 		assert.isEqual(carV1.version, 'v1')
 		assert.isEqual(carV2.version, 'v2')
 
-		const person = new StaticSchemaEntityImplementation(personV2Schema, {
+		const person = new StaticSchemaEntityImpl(personV2Schema, {
 			requiredCar: carV2.getValues(),
 			optionalCarWithCallback: {
 				schemaId: 'car',

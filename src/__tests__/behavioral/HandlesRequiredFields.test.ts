@@ -1,13 +1,13 @@
 import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildPersonWithCars from '../data/personWithCars'
 
 export default class HandlesRequiredFieldsTest extends AbstractSchemaTest {
 	@test()
 	protected static async getsExpectedTypeBackFromOptionalFields() {
 		const { carSchema } = buildPersonWithCars()
-		const car = new StaticSchemaEntityImplementation(carSchema, {
+		const car = new StaticSchemaEntityImpl(carSchema, {
 			name: 'taco',
 			onlyOnCar: 'bell',
 		})

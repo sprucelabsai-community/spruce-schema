@@ -6,7 +6,7 @@ import {
 	SchemaFieldValueTypeMapper,
 } from '../../fields/SchemaField.types'
 import { SchemaValues } from '../../schemas.static.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildPersonWithCars, {
 	PersonSchema,
 	CarSchema,
@@ -44,7 +44,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testGettingValueReturnsSchema() {
-		const person = new StaticSchemaEntityImplementation(personSchema, {
+		const person = new StaticSchemaEntityImpl(personSchema, {
 			requiredCar: { name: 'car', onlyOnCar: 'only on car!' },
 			requiredIsArrayCars: [],
 			requiredIsArrayCarOrTruck: [],
@@ -57,7 +57,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testIsArray() {
-		const user = new StaticSchemaEntityImplementation(personSchema, {
+		const user = new StaticSchemaEntityImpl(personSchema, {
 			name: 'tay',
 			requiredCar: { name: 'dirty car' },
 			requiredIsArrayCarOrTruck: [],
@@ -144,7 +144,7 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testUnionResolutionCreatingSchemas() {
-		const person = new StaticSchemaEntityImplementation(personSchema, {
+		const person = new StaticSchemaEntityImpl(personSchema, {
 			requiredCar: { name: 'required name' },
 			requiredIsArrayCars: [],
 			requiredIsArrayCarOrTruck: [
@@ -182,8 +182,8 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
 
 	@test()
 	protected static testFieldWithCallback() {
-		const person = new StaticSchemaEntityImplementation(personSchema)
-		const car = new StaticSchemaEntityImplementation(carSchema, {
+		const person = new StaticSchemaEntityImpl(personSchema)
+		const car = new StaticSchemaEntityImpl(carSchema, {
 			name: 'fast',
 		})
 		person.set('optionalCarWithCallback', car.getValues())

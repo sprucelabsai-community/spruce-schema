@@ -41,6 +41,7 @@ export default class DateTimeField extends AbstractField<DateTimeFieldDefinition
 
 	public toValueType(value: any) {
 		let normalized = value
+
 		if (normalized instanceof Date) {
 			normalized = normalized.getTime()
 		}
@@ -49,6 +50,10 @@ export default class DateTimeField extends AbstractField<DateTimeFieldDefinition
 			return new Date(value).toISOString()
 		}
 
-		return value ? +value : value
+		if (typeof normalized === 'string') {
+			normalized = new Date(normalized).getTime()
+		}
+
+		return normalized ? +normalized : normalized
 	}
 }

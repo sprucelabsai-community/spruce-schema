@@ -1,9 +1,9 @@
 import { Schema } from '../../schemas.static.types'
-import StaticSchemaEntityImplementation from '../../StaticSchemaEntityImplementation'
+import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
 
 // turn off duplicate checks because tests all run in the same runtime
-StaticSchemaEntityImplementation.enableDuplicateCheckWhenTracking = false
+StaticSchemaEntityImpl.enableDuplicateCheckWhenTracking = false
 
 export interface CarSchema extends Schema {
 	id: 'car'

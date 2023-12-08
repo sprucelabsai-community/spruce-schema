@@ -5,7 +5,7 @@ import {
 	IsDynamicSchema,
 	SchemaPartialValues,
 } from '../schemas.static.types'
-import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
+import StaticSchemaEntity from '../StaticSchemaEntityImpl'
 
 export default class SchemaEntityFactory {
 	public static Entity<

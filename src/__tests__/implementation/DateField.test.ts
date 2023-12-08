@@ -1,5 +1,5 @@
 import { test, assert } from '@sprucelabs/test-utils'
-import StaticSchemaEntityImplementation, {
+import StaticSchemaEntityImpl, {
 	buildSchema,
 	DateField,
 	FieldFactory,
@@ -26,7 +26,7 @@ const schema = buildSchema({
 type Schema = typeof schema
 
 export default class DateFieldTest extends AbstractDateFieldTest {
-	protected static entity: StaticSchemaEntityImplementation<Schema>
+	protected static entity: StaticSchemaEntityImpl<Schema>
 	protected static schema = schema
 	private static field: DateField
 

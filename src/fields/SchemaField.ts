@@ -8,7 +8,7 @@ import {
 	SchemaEntity,
 } from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
-import StaticSchemaEntity from '../StaticSchemaEntityImplementation'
+import StaticSchemaEntity from '../StaticSchemaEntityImpl'
 import {
 	FieldTemplateDetailOptions,
 	FieldTemplateDetails,
