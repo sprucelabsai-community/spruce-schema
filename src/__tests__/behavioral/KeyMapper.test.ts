@@ -104,6 +104,50 @@ export default class MappingValuesBetweenSchemasTest extends AbstractSchemaTest 
 		this.assertMapsFieldNameTo('what', 'is')
 	}
 
+	@test()
+	protected static canDisableThrowingInUnMapped() {
+		this.mapper = this.Mapper({
+			hey: 'to',
+			what: 'is',
+		})
+
+		const results = this.mapper.mapTo(
+			{
+				hey: 'there',
+				what: 'is',
+				foo: 'bar',
+			},
+			{ shouldThrowOnUnmapped: false }
+		)
+
+		assert.isEqualDeep(results, {
+			to: 'there',
+			is: 'is',
+		})
+	}
+
+	@test()
+	protected static async canDisableThrowinInOtherDirection() {
+		this.mapper = this.Mapper({
+			hey: 'to',
+			what: 'is',
+		})
+
+		const results = this.mapper.mapFrom(
+			{
+				to: 'there',
+				is: 'is',
+				foo: 'bar',
+			},
+			{ shouldThrowOnUnmapped: false }
+		)
+
+		assert.isEqualDeep(results, {
+			hey: 'there',
+			what: 'is',
+		})
+	}
+
 	private static assertMappingNameThrows(name: string) {
 		this.assertMapFieldNameMethodThrows('mapFieldNameTo', name)
 		this.assertMapFieldNameMethodThrows('mapFieldNameFrom', name)

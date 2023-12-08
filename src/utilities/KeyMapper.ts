@@ -6,12 +6,16 @@ export default class KeyMapper {
 		this.map = map
 	}
 
-	public mapTo(values: Record<string, any>) {
-		return this._mapTo(values, this.map)
+	public mapTo(values: Record<string, any>, options?: MapOptions) {
+		return this._mapTo(values, this.map, options?.shouldThrowOnUnmapped ?? true)
 	}
 
-	public mapFrom(values: Record<string, any>) {
-		return this._mapFrom(values, this.map)
+	public mapFrom(values: Record<string, any>, options?: MapOptions) {
+		return this._mapFrom(
+			values,
+			this.map,
+			options?.shouldThrowOnUnmapped ?? true
+		)
 	}
 
 	public mapFieldNameTo(name: string) {
@@ -43,7 +47,11 @@ export default class KeyMapper {
 		return 'never hit'
 	}
 
-	private _mapTo(values: Record<string, any>, map: Record<string, any>) {
+	private _mapTo(
+		values: Record<string, any>,
+		map: Record<string, any>,
+		shouldThrowOnUnmapped = true
+	) {
 		const foundFields: string[] = []
 		let target: any = {}
 		for (const key in map) {
@@ -58,14 +66,18 @@ export default class KeyMapper {
 			(key) => !foundFields.includes(key)
 		)
 
-		if (missingFields.length > 0) {
+		if (shouldThrowOnUnmapped && missingFields.length > 0) {
 			this.throwFieldsNotMapped(missingFields)
 		}
 
 		return target
 	}
 
-	private _mapFrom(values: Record<string, any>, map: Record<string, any>) {
+	private _mapFrom(
+		values: Record<string, any>,
+		map: Record<string, any>,
+		shouldThrowOnUnmapped = true
+	) {
 		const foundFields: string[] = []
 		let target: any = {}
 		for (const targetKey in map) {
@@ -81,10 +93,14 @@ export default class KeyMapper {
 			(key) => !foundFields.includes(key)
 		)
 
-		if (missingFields.length > 0) {
+		if (shouldThrowOnUnmapped && missingFields.length > 0) {
 			this.throwFieldsNotMapped(missingFields)
 		}
 
 		return target
 	}
+}
+
+export interface MapOptions {
+	shouldThrowOnUnmapped: boolean
 }
