@@ -49,6 +49,18 @@ export default class MappingValuesBetweenSchemasTest extends AbstractSchemaTest 
 	}
 
 	@test()
+	protected static doNotHaveToMapAllFields() {
+		this.assertMapsBothWays(
+			{},
+			{
+				hello: 'to',
+				foo: 'bar',
+			},
+			{}
+		)
+	}
+
+	@test()
 	protected static async canMapToMultipleFields() {
 		this.assertMapsBothWays(
 			{

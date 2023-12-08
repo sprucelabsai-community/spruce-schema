@@ -19,6 +19,12 @@ const schema = buildSchema({
 			type: 'dateTime',
 			isRequired: true,
 		},
+		isoDate: {
+			type: 'dateTime',
+			options: {
+				dateTimeFormat: 'iso_8601',
+			},
+		},
 	},
 })
 
@@ -69,7 +75,7 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 	}
 
 	@test()
-	protected static async canSetToKeepDates() {
+	protected static async canSetToKeepDatesInIsoFormat() {
 		this.field = this.Field({
 			dateTimeFormat: 'iso_8601',
 		})
@@ -78,6 +84,8 @@ export default class DateFieldTest extends AbstractDateFieldTest {
 
 		assert.isEqual(this.field.toValueType(date), date.toISOString())
 		assert.isEqual(this.field.toValueType(date.getTime()), date.toISOString())
+		const errs = this.field.validate(date.toISOString())
+		assert.isLength(errs, 0)
 	}
 
 	private static Field(

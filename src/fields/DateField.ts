@@ -57,13 +57,17 @@ export function validateDateValue(options: {
 
 	if (typeof value === 'number' || value instanceof Date) {
 		return []
-	} else {
-		return [
-			{
-				name,
-				code: 'INVALID_PARAMETER',
-				friendlyMessage: `This doesn't look like a date to me!`,
-			},
-		]
+	} else if (typeof value === 'string') {
+		const date = new Date(value)
+		if (date.toString() !== 'Invalid Date') {
+			return []
+		}
 	}
+	return [
+		{
+			name,
+			code: 'INVALID_PARAMETER',
+			friendlyMessage: `This doesn't look like a date to me!`,
+		},
+	]
 }
