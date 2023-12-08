@@ -1,3 +1,10 @@
+# [29.3.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.2.4...v29.3.0) (2023-12-08)
+
+
+### Features
+
+* can disble throwing in key mapping ([d48f89c](https://github.com/sprucelabsai-community/spruce-schema/commit/d48f89c))
+
 ## [29.2.4](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.2.3...v29.2.4) (2023-12-08)
 
 ## [29.2.3](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.2.2...v29.2.3) (2023-12-08)
