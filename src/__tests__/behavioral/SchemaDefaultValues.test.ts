@@ -66,23 +66,17 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
 	}
 
 	@test('Gets default values while creating schema instances', personSchema, {
-		optionalCarWithDefaultValue: new StaticSchemaEntityImpl(
-			carSchema,
-			{
-				name: 'fast car',
-			}
-		),
+		optionalCarWithDefaultValue: new StaticSchemaEntityImpl(carSchema, {
+			name: 'fast car',
+		}),
 		optionalSelectWithDefaultValue: 'hello',
 		optionalTextWithDefaultValue: 'world',
 		optionalIsArrayCarOrTruckWithDefaultValue: [
 			new StaticSchemaEntityImpl(carSchema, { name: 'fast car' }),
 		],
-		optionalCarOrTruckWithDefaultValue: new StaticSchemaEntityImpl(
-			carSchema,
-			{
-				name: 'fast car',
-			}
-		),
+		optionalCarOrTruckWithDefaultValue: new StaticSchemaEntityImpl(carSchema, {
+			name: 'fast car',
+		}),
 	})
 	protected static defaultValueTests(
 		definition: Schema,

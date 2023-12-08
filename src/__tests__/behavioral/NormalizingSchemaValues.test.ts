@@ -187,12 +187,8 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 			{ shouldCreateEntityInstances: false }
 		)
 
-		assert.isFalse(
-			values.related[0] instanceof StaticSchemaEntityImpl
-		)
-		assert.isFalse(
-			values.related[0].nested instanceof StaticSchemaEntityImpl
-		)
+		assert.isFalse(values.related[0] instanceof StaticSchemaEntityImpl)
+		assert.isFalse(values.related[0].nested instanceof StaticSchemaEntityImpl)
 
 		assert.isEqualDeep(values, {
 			related: [
