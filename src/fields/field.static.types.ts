@@ -27,7 +27,7 @@ export type SchemaFieldUnion<
 					schemaId: S[K]['id']
 					version?: S[K]['version']
 					values: SchemaValues<S[K]>
-			  }
+				}
 		: any
 }
 
@@ -99,7 +99,7 @@ export type FieldDefinitionValueType<
 				F['isArray']
 			>,
 			F['isRequired']
-	  >
+		>
 	: any
 
 export interface Field<F extends FieldDefinitions> {

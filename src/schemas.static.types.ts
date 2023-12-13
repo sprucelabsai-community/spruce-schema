@@ -85,13 +85,13 @@ export type SchemaValues<
 > = IsDynamicSchema<S> extends true
 	? DynamicSchemaAllValues<S>
 	: IncludePrivateFields extends false
-	  ? ShouldIncludeNullAndUndefinedFields extends true
+		? ShouldIncludeNullAndUndefinedFields extends true
 			? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
 			: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
-	  : ShouldIncludeNullAndUndefinedFields extends true
-	    ? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
-	    : /** @ts-ignore */
-	      Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+		: ShouldIncludeNullAndUndefinedFields extends true
+			? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+			: /** @ts-ignore */
+				Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
@@ -198,7 +198,7 @@ export type DynamicSchemaAllValues<
 		? FieldDefinitionValueType<
 				S['dynamicFieldSignature'],
 				CreateEntityInstances
-		  >
+			>
 		: never
 }
 
@@ -290,7 +290,7 @@ export type SchemaFieldNamesWithDefaultValue<T extends Schema> = {
 	[K in SchemaFieldNames<T>]: T['fields'][K] extends FieldDefinitions
 		? T['fields'][K]['defaultValue'] extends Required<
 				T['fields'][K]['defaultValue']
-		  >
+			>
 			? K
 			: never
 		: never
@@ -306,7 +306,7 @@ export type SchemaFieldValueType<
 			S['fields'][K],
 			CreateEntityInstances,
 			ShouldIncludeNullAndUndefinedFieldsInSchemas
-	  >
+		>
 	: never
 
 export type SchemaFieldNames<T extends Schema> = Extract<
@@ -399,11 +399,11 @@ export type SchemaGetValuesOptions<
 		? {
 				shouldIncludePrivateFields: IncludePrivateFields
 				fields?: PF[]
-		  }
+			}
 		: {
 				shouldIncludePrivateFields?: IncludePrivateFields
 				fields?: F[]
-		  })
+			})
 
 export type DynamicSchemaGetValuesOptions<
 	T extends Schema,

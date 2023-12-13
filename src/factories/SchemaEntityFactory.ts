@@ -21,7 +21,7 @@ export default class SchemaEntityFactory {
 			? new DynamicSchemaEntityImplementation(
 					schema,
 					values as DynamicSchemaPartialValues<S>
-			  )
+				)
 			: new StaticSchemaEntity(schema, values)
 
 		return instance as IsDynamic extends true

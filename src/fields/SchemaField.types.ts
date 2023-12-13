@@ -34,7 +34,7 @@ export type SchemaFieldUnion<
 					schemaId: S[K]['id']
 					version?: S[K]['version']
 					values: SchemaValues<S[K]>
-			  }
+				}
 		: any
 }
 
@@ -46,9 +46,9 @@ export type SchemaFieldValueTypeMapper<
 	? IsArrayNoUnpack<
 			SchemaFieldUnion<F['options']['schemas'], CreateEntityInstances>[number],
 			F['isArray']
-	  >
+		>
 	: F['options']['schema'] extends Schema
-	  ? CreateEntityInstances extends true
+		? CreateEntityInstances extends true
 			? IsArray<StaticSchemaEntity<F['options']['schema']>, F['isArray']>
 			: IsArray<
 					SchemaValues<
@@ -58,8 +58,8 @@ export type SchemaFieldValueTypeMapper<
 						ShouldIncludeNullAndUndefinedFields
 					>,
 					F['isArray']
-			  >
-	  : any
+				>
+		: any
 
 export type SchemaFieldFieldDefinition = FieldDefinition<
 	Record<string, any>,

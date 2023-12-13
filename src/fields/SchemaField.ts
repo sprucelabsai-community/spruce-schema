@@ -210,7 +210,7 @@ export default class SchemaField<
 			const schema =
 				typeof schemaOrId === 'string'
 					? schemasById[schemaOrId] ||
-					  SchemaRegistry.getInstance().getSchema(schemaOrId)
+						SchemaRegistry.getInstance().getSchema(schemaOrId)
 					: schemaOrId
 
 			validateSchema(schema)

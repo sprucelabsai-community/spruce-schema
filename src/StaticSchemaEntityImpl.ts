@@ -179,9 +179,9 @@ export default class StaticSchemaEntityImpl<S extends Schema>
 						? `'${field.label ?? field.name}' is required!`
 						: `'${field.label ?? field.name}' must have at least ${
 								field.minArrayLength
-						  } value${field.minArrayLength === 1 ? '' : 's'}. I found ${
+							} value${field.minArrayLength === 1 ? '' : 's'}. I found ${
 								valueAsArray.length
-						  }!`,
+							}!`,
 				})
 			} else {
 				if (

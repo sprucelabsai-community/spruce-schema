@@ -55,7 +55,7 @@ export class ValidateErrorMessageFormatter {
 				? `${count}. (${name}) ${fieldError.friendlyMessage}`
 				: `${count}. '${name}' is ${this.fieldErrorCodeToFriendly(
 						fieldError.code
-				  )}.`
+					)}.`
 
 			lines.push(msg)
 		}
@@ -110,7 +110,7 @@ export class ValidateErrorMessageFormatter {
 				? ''
 				: `'${this.renderSchemaName(
 						options?.shouldUseReadableNames
-				  )}' has ${totalErrors} error${totalErrors === 1 ? '' : 's'}!\n\n`
+					)}' has ${totalErrors} error${totalErrors === 1 ? '' : 's'}!\n\n`
 
 		const errors = this.error.options.errors
 		let count = 1

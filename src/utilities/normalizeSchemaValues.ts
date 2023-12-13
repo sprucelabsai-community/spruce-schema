@@ -52,7 +52,7 @@ export default function normalizeSchemaValues<
 	) as IsDynamic extends true
 		? DynamicSchemaAllValues<S, CreateEntityInstances>
 		: IncludePrivateFields extends true
-		  ? Pick<
+			? Pick<
 					SchemaValues<
 						S,
 						CreateEntityInstances,
@@ -60,8 +60,8 @@ export default function normalizeSchemaValues<
 						ShouldIncludeNullAndUndefinedFields
 					>,
 					F
-		    >
-		  : Pick<
+				>
+			: Pick<
 					SchemaValues<
 						S,
 						CreateEntityInstances,
@@ -69,5 +69,5 @@ export default function normalizeSchemaValues<
 						ShouldIncludeNullAndUndefinedFields
 					>,
 					PF
-		    >
+				>
 }
