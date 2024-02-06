@@ -1,33 +1,74 @@
-function formatUsNumber(phoneNumberString: string) {
+function formatNumberWithCode(phoneNumberString: string, code = '1') {
 	if (phoneNumberString.match(/[a-zA-Z]/g)) {
 		return null
 	}
 
-	let cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-	let match = cleaned.match(/^(1|)?(\d{3})(\d{0,3})(\d{0,4})$/)
+	const cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+
+	// Dynamically insert the country code into the regex
+	let regexPattern = new RegExp(`^(${code})?(\\d{3})(\\d{0,3})(\\d{0,4})$`)
+	let match = cleaned.match(regexPattern)
 
 	if (match) {
-		let intlCode = match[1] ? '+1 ' : '+1 '
+		let intlCode = match[1] ? `+${match[1]} ` : `+${code} ` // Use the matched code or the provided code
 
-		const number = [intlCode, '', match[2], '-', match[3], '-', match[4]]
+		const divider = code === '1' ? '-' : ' '
+		const number = [
+			intlCode,
+			'',
+			match[2],
+			divider,
+			match[3],
+			divider,
+			match[4],
+		]
 			.join('')
 			.replace(/-+$/, '')
 
 		return number
 	}
+
 	return null
 }
 
 export function isValidNumber(number: string) {
-	const formatted = formatUsNumber(number)?.replace(/[^0-9]/g, '')
+	const code = getCode(number)
+
+	const formatted = formatNumberWithCode(number, code)?.replace(/[^0-9]/g, '')
 	return formatted?.length === 11 || formatted?.length === 12
+}
+
+function getCode(number: string) {
+	let code = `1` // Default to North American country code
+
+	const cleaned = number.replace(/\D/g, '')
+
+	// Explicitly check for '+' sign to distinguish international codes
+	if (
+		cleaned.startsWith('+90') ||
+		(cleaned.startsWith('90') && cleaned.length > 10)
+	) {
+		code = `90`
+	} else if (
+		cleaned.startsWith('+49') ||
+		(cleaned.startsWith('49') && cleaned.length > 10)
+	) {
+		code = `49`
+	}
+	// Adjust the condition to ensure that '905...' numbers without a '+' are treated as North American
+	else if (cleaned.startsWith('905') && cleaned.length === 10) {
+		code = `1`
+	}
+
+	return code
 }
 
 export default function formatPhoneNumber(
 	val: string,
 	shouldFailSilently = true
 ): string {
-	const formatted = formatUsNumber(val)
+	const code = getCode(val)
+	const formatted = formatNumberWithCode(val, code)
 
 	if (!formatted) {
 		if (!shouldFailSilently) {
@@ -38,46 +79,6 @@ export default function formatPhoneNumber(
 	}
 
 	return formatted
-	// const PNF = libPhoneNumber.PhoneNumberFormat
-	// const phoneUtil = libPhoneNumber.PhoneNumberUtil.getInstance()
-	// let num = val
-	// try {
-	// 	// First try parsing it as an international number
-	// 	// @ts-ignore: Upgrade to google-libphonenumber@^3
-	// 	num = phoneUtil.parse(val)
-	// } catch (e) {
-	// 	// Try parsing it as a US number
-	// 	// log.debug('Unable to parse number as international number')
-	// 	try {
-	// 		// @ts-ignore: Upgrade to google-libphonenumber@^3
-	// 		num = phoneUtil.parse(val, 'US')
-	// 	} catch (err) {
-	// 		// Log.debug('Unable to parse number as international or US number')
-	// 	}
-	// }
-	// let formattedNumber = num
-	// try {
-	// 	// @ts-ignore: Upgrade to google-libphonenumber@^3
-	// 	formattedNumber = phoneUtil.format(num, PNF.INTERNATIONAL)
-	// } catch (e) {
-	// 	// Log.debug('Unable to format phone number')
-	// 	if (!failSilently) {
-	// 		throw new Error('INVALID_PHONE_NUMBER')
-	// 	}
-	// }
-	// if (!failSilently) {
-	// 	let isValid
-	// 	const cleanedValue = val.replace(/\D/g, '')
-	// 	if (isDummyNumber(val)) {
-	// 		isValid = cleanedValue.length === 11 || cleanedValue.length === 10
-	// 	} else {
-	// 		isValid = isValidNumber(formattedNumber)
-	// 	}
-	// 	if (!isValid) {
-	// 		throw new Error('INVALID_PHONE_NUMBER')
-	// 	}
-	// }
-	// return formattedNumber
 }
 
 export function isDummyNumber(phone: string) {
