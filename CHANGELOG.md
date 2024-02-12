@@ -1,3 +1,10 @@
+# [29.4.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.3.11...v29.4.0) (2024-02-12)
+
+
+### Features
+
+* can handle 10 digit numbers in turkey and germany ([54b51df](https://github.com/sprucelabsai-community/spruce-schema/commit/54b51df))
+
 ## [29.3.11](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.3.10...v29.3.11) (2024-01-11)
 
 ## [29.3.10](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.3.9...v29.3.10) (2024-01-09)
