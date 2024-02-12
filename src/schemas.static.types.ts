@@ -82,16 +82,17 @@ export type SchemaValues<
 	ShouldIncludeNullAndUndefinedFields extends boolean = false,
 	F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
 	PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
-> = IsDynamicSchema<S> extends true
-	? DynamicSchemaAllValues<S>
-	: IncludePrivateFields extends false
-		? ShouldIncludeNullAndUndefinedFields extends true
-			? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
-			: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
-		: ShouldIncludeNullAndUndefinedFields extends true
-			? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
-			: /** @ts-ignore */
-				Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
+> =
+	IsDynamicSchema<S> extends true
+		? DynamicSchemaAllValues<S>
+		: IncludePrivateFields extends false
+			? ShouldIncludeNullAndUndefinedFields extends true
+				? Pick<SchemaAllValues<S, CreateEntityInstances>, PF>
+				: Pick<SchemaStaticValues<S, CreateEntityInstances>, PF>
+			: ShouldIncludeNullAndUndefinedFields extends true
+				? Pick<SchemaAllValues<S, CreateEntityInstances>, F>
+				: /** @ts-ignore */
+					Pick<SchemaStaticValues<S, CreateEntityInstances>, F>
 
 export interface DynamicSchemaEntityByName<
 	ISchema extends Schema,
@@ -175,9 +176,10 @@ export type SchemaFields<T extends Schema> = {
 export type SchemaAllValues<
 	S extends Schema,
 	CreateEntityInstances extends boolean = false,
-> = IsDynamicSchema<S> extends true
-	? DynamicSchemaAllValues<S, CreateEntityInstances>
-	: StaticSchemaAllValues<S, CreateEntityInstances>
+> =
+	IsDynamicSchema<S> extends true
+		? DynamicSchemaAllValues<S, CreateEntityInstances>
+		: StaticSchemaAllValues<S, CreateEntityInstances>
 
 export type StaticSchemaAllValues<
 	S extends Schema,
@@ -205,9 +207,10 @@ export type DynamicSchemaAllValues<
 export type SchemaPartialValues<
 	S extends Schema,
 	CreateEntityInstances extends boolean = false,
-> = IsDynamicSchema<S> extends true
-	? DynamicSchemaPartialValues<S, CreateEntityInstances>
-	: StaticSchemaPartialValues<S, CreateEntityInstances>
+> =
+	IsDynamicSchema<S> extends true
+		? DynamicSchemaPartialValues<S, CreateEntityInstances>
+		: StaticSchemaPartialValues<S, CreateEntityInstances>
 
 export type StaticSchemaPartialValues<
 	T extends Schema,
@@ -247,9 +250,10 @@ export type SchemaStaticValues<
 export type SchemaValues_OLD<
 	S extends Schema,
 	CreateEntityInstances extends boolean = false,
-> = IsDynamicSchema<S> extends true
-	? DynamicSchemaAllValues<S>
-	: SchemaStaticValues<S, CreateEntityInstances>
+> =
+	IsDynamicSchema<S> extends true
+		? DynamicSchemaAllValues<S>
+		: SchemaStaticValues<S, CreateEntityInstances>
 
 export type IsDynamicSchema<S extends Schema> =
 	S['dynamicFieldSignature'] extends FieldDefinitions ? true : false
