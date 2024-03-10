@@ -24,11 +24,7 @@
     "namespace": "spruce-schema",
     "upgradeIgnoreList": [
       "@sprucelabs/spruce-test-fixtures",
-      "@types/node",
-      "@sprucelabs/esm-postbuild",
-      "@sprucelabs/jest-json-reporter",
-      "@sprucelabs/jest-sheets-reporter",
-      "@sprucelabs/resolve-path-aliases"
+      "@types/node"
     ]
   },
   "homepage": "https://github.com/sprucelabsai/spruce-schema",
@@ -66,19 +62,19 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.1.66",
+    "@sprucelabs/error": "^5.1.67",
     "@sprucelabs/test-utils": "^4.0.110",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^2.0.22",
-    "@sprucelabs/jest-json-reporter": "^6.0.512",
-    "@sprucelabs/jest-sheets-reporter": "^2.0.20",
-    "@sprucelabs/resolve-path-aliases": "^1.1.122",
+    "@sprucelabs/esm-postbuild": "^5.0.163",
+    "@sprucelabs/jest-json-reporter": "^7.0.175",
+    "@sprucelabs/jest-sheets-reporter": "^3.0.26",
+    "@sprucelabs/resolve-path-aliases": "^1.1.284",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^8.0.42",
+    "@sprucelabs/test": "^8.0.43",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
@@ -103,20 +99,6 @@
     ],
     "moduleNameMapper": {
       "^#spruce/(.*)$": "<rootDir>/build/.spruce/$1"
-    },
-    "reporters": [
-      "default",
-      [
-        "@sprucelabs/jest-sheets-reporter",
-        {
-          "sheetId": "1DoWM7mYgGDa-PJXptLomrZmbIBZiuxS1YiAsRXU2Gm0",
-          "worksheetId": 843037832,
-          "testMap": {
-            "passesWithMoreThanMin": "I80",
-            "invalidFieldsGiveDescriptionsOnWhySomethingIsInvalid": "I275"
-          }
-        }
-      ]
-    ]
+    }
   }
 }
