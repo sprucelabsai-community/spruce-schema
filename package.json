@@ -62,17 +62,17 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.1.85",
+    "@sprucelabs/error": "^5.1.86",
     "@sprucelabs/test-utils": "^4.0.132",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^5.0.179",
-    "@sprucelabs/jest-json-reporter": "^7.0.189",
+    "@sprucelabs/esm-postbuild": "^5.0.180",
+    "@sprucelabs/jest-json-reporter": "^7.0.190",
     "@sprucelabs/jest-sheets-reporter": "^3.0.26",
-    "@sprucelabs/resolve-path-aliases": "^1.1.292",
+    "@sprucelabs/resolve-path-aliases": "^1.1.293",
     "@sprucelabs/semantic-release": "^4.0.8",
     "@sprucelabs/test": "^8.0.46",
     "chokidar-cli": "^3.0.0",
