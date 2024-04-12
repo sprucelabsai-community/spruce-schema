@@ -8,7 +8,7 @@
     "!build/__tests__",
     "esm"
   ],
-  "version": "29.4.38",
+  "version": "29.4.60",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "module": "./build/esm/index.js",
@@ -62,19 +62,19 @@
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^5.1.91",
-    "@sprucelabs/test-utils": "^4.0.136",
+    "@sprucelabs/error": "^5.1.108",
+    "@sprucelabs/test-utils": "^4.0.157",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^5.0.183",
-    "@sprucelabs/jest-json-reporter": "^7.0.193",
+    "@sprucelabs/esm-postbuild": "^5.0.200",
+    "@sprucelabs/jest-json-reporter": "^7.0.207",
     "@sprucelabs/jest-sheets-reporter": "^3.0.26",
-    "@sprucelabs/resolve-path-aliases": "^1.1.294",
+    "@sprucelabs/resolve-path-aliases": "^1.1.304",
     "@sprucelabs/semantic-release": "^4.0.8",
-    "@sprucelabs/test": "^8.0.48",
+    "@sprucelabs/test": "^8.0.51",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
@@ -85,7 +85,7 @@
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.5"
   },
   "jest": {
     "testEnvironment": "node",
