@@ -41,7 +41,7 @@ export function isValidNumber(number: string) {
 function getCode(number: string) {
 	let code = `1` // Default to North American country code
 
-	const cleaned = number.replace(/\D/g, '')
+	const cleaned = number.replace(/(?!^\+)[^\d]/g, '')
 
 	// Explicitly check for '+' sign to distinguish international codes
 	if (
@@ -78,7 +78,10 @@ export default function formatPhoneNumber(
 		}
 	}
 
-	return formatted
+	// remove trailing spaces
+	const cleaned = formatted.replace(/\s+$/, '')
+
+	return cleaned
 }
 
 export function isDummyNumber(phone: string) {
