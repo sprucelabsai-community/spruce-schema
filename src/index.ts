@@ -67,22 +67,22 @@ export * from './types/utilities.types'
 export { default as SchemaRegistry } from './singletons/SchemaRegistry'
 
 export const fieldRegistrations: FieldRegistration[] = [
-	addressRegistration,
-	booleanRegistration,
-	dateRegistration,
-	dateTimeRegistration,
-	directoryRegistration,
-	durationRegistration,
-	fileRegistration,
-	idRegistration,
-	numberRegistration,
-	phoneRegistration,
-	rawRegistration,
-	schemaRegistration,
-	selectRegistration,
-	textRegistration,
-	emailRegistration,
-	imageRegistration,
+    addressRegistration,
+    booleanRegistration,
+    dateRegistration,
+    dateTimeRegistration,
+    directoryRegistration,
+    durationRegistration,
+    fileRegistration,
+    idRegistration,
+    numberRegistration,
+    phoneRegistration,
+    rawRegistration,
+    schemaRegistration,
+    selectRegistration,
+    textRegistration,
+    emailRegistration,
+    imageRegistration,
 ]
 
 export { default as assertOptions } from './utilities/assertOptions'

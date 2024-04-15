@@ -14,19 +14,19 @@ export const requiredImageSizes = ['s', 'm', 'l', 'xl', '*'] as const
 export type RequiredImageSize = (typeof requiredImageSizes)[number]
 
 export interface ImageFieldValue {
-	name: string
-	base64?: string
-	type?: SupportedFileType
-	sUri?: string
-	mUri?: string
-	lUri?: string
-	xlUri?: string
+    name: string
+    base64?: string
+    type?: SupportedFileType
+    sUri?: string
+    mUri?: string
+    lUri?: string
+    xlUri?: string
 }
 
 export type ImageFieldDefinition = FieldDefinition<ImageFieldValue> & {
-	/** * .image - a great way to deal with file management */
-	type: 'image'
-	options?: {
-		requiredSizes: RequiredImageSize[]
-	}
+    /** * .image - a great way to deal with file management */
+    type: 'image'
+    options?: {
+        requiredSizes: RequiredImageSize[]
+    }
 }

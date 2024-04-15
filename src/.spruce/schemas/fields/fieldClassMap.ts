@@ -4,34 +4,34 @@ import DateField from '../../../fields/DateField'
 import DateTimeField from '../../../fields/DateTimeField'
 import DirectoryField from '../../../fields/DirectoryField'
 import DurationField from '../../../fields/DurationField'
+import EmailField from '../../../fields/EmailField'
 import FileField from '../../../fields/FileField'
 import IdField from '../../../fields/IdField'
+import ImageField from '../../../fields/ImageField'
 import NumberField from '../../../fields/NumberField'
 import PhoneField from '../../../fields/PhoneField'
 import RawField from '../../../fields/RawField'
 import SchemaField from '../../../fields/SchemaField'
 import SelectField from '../../../fields/SelectField'
 import TextField from '../../../fields/TextField'
-import EmailField from '../../../fields/EmailField'
-import ImageField from '../../../fields/ImageField'
 
 const fieldClassMap = {
-	boolean: BooleanField,
-	select: SelectField,
-	duration: DurationField,
-	id: IdField,
-	address: AddressField,
-	phone: PhoneField,
-	schema: SchemaField,
-	raw: RawField,
-	number: NumberField,
-	dateTime: DateTimeField,
-	text: TextField,
-	file: FileField,
-	date: DateField,
-	directory: DirectoryField,
-	email: EmailField,
-	image: ImageField
+    boolean: BooleanField,
+    select: SelectField,
+    duration: DurationField,
+    id: IdField,
+    address: AddressField,
+    phone: PhoneField,
+    schema: SchemaField,
+    raw: RawField,
+    number: NumberField,
+    dateTime: DateTimeField,
+    text: TextField,
+    file: FileField,
+    date: DateField,
+    directory: DirectoryField,
+    email: EmailField,
+    image: ImageField,
 } as const
 
 export default fieldClassMap

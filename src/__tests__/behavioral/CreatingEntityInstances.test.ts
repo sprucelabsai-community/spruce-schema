@@ -5,97 +5,97 @@ import EntityFactory from '../../factories/SchemaEntityFactory'
 import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 
 export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
-	@test()
-	protected static async canCreateStaticEntity() {
-		const instance = EntityFactory.Entity({
-			id: 'staticPerson',
-			fields: {
-				firstName: {
-					type: 'text',
-					isRequired: true,
-				},
-			},
-		})
+    @test()
+    protected static async canCreateStaticEntity() {
+        const instance = EntityFactory.Entity({
+            id: 'staticPerson',
+            fields: {
+                firstName: {
+                    type: 'text',
+                    isRequired: true,
+                },
+            },
+        })
 
-		assert.isTrue(instance instanceof StaticSchemaEntityImpl)
-	}
+        assert.isTrue(instance instanceof StaticSchemaEntityImpl)
+    }
 
-	@test()
-	protected static async typesStaticEntity() {
-		const instance = EntityFactory.Entity(
-			{
-				id: 'staticPerson',
-				fields: {
-					firstName: {
-						type: 'text',
-						isRequired: true,
-					},
-				},
-			},
-			{
-				firstName: 'Tay tay',
-			}
-		)
+    @test()
+    protected static async typesStaticEntity() {
+        const instance = EntityFactory.Entity(
+            {
+                id: 'staticPerson',
+                fields: {
+                    firstName: {
+                        type: 'text',
+                        isRequired: true,
+                    },
+                },
+            },
+            {
+                firstName: 'Tay tay',
+            }
+        )
 
-		const values = instance.getValues()
+        const values = instance.getValues()
 
-		assert.isExactType<typeof values, { firstName: string }>(true)
-	}
+        assert.isExactType<typeof values, { firstName: string }>(true)
+    }
 
-	@test()
-	protected static async canCreateDynamicEntity() {
-		const instance = EntityFactory.Entity({
-			id: 'staticPerson',
-			dynamicFieldSignature: {
-				type: 'boolean',
-				keyName: 'key',
-			},
-		})
+    @test()
+    protected static async canCreateDynamicEntity() {
+        const instance = EntityFactory.Entity({
+            id: 'staticPerson',
+            dynamicFieldSignature: {
+                type: 'boolean',
+                keyName: 'key',
+            },
+        })
 
-		assert.isTrue(instance instanceof DynamicSchemaEntityImplementation)
-	}
+        assert.isTrue(instance instanceof DynamicSchemaEntityImplementation)
+    }
 
-	@test()
-	protected static async typesDynamicEntity() {
-		const instance = EntityFactory.Entity(
-			{
-				id: 'staticPerson',
-				dynamicFieldSignature: {
-					type: 'boolean',
-					keyName: 'key',
-				},
-			},
-			{
-				pass: true,
-				youSure: false,
-			}
-		)
+    @test()
+    protected static async typesDynamicEntity() {
+        const instance = EntityFactory.Entity(
+            {
+                id: 'staticPerson',
+                dynamicFieldSignature: {
+                    type: 'boolean',
+                    keyName: 'key',
+                },
+            },
+            {
+                pass: true,
+                youSure: false,
+            }
+        )
 
-		const values = instance.getValues()
+        const values = instance.getValues()
 
-		assert.isExactType<
-			typeof values,
-			{ [key: string]: boolean | undefined | null }
-		>(true)
-	}
+        assert.isExactType<
+            typeof values,
+            Record<string, boolean | undefined | null>
+        >(true)
+    }
 
-	@test()
-	protected static async valuesSetToEntityOverwriteValuesInSchema() {
-		const i = EntityFactory.Entity(
-			{
-				id: 'testPerson',
-				fields: {
-					firstName: {
-						type: 'text',
-						value: 'hey!',
-					},
-				},
-			},
-			{
-				firstName: 'banana',
-			}
-		)
+    @test()
+    protected static async valuesSetToEntityOverwriteValuesInSchema() {
+        const i = EntityFactory.Entity(
+            {
+                id: 'testPerson',
+                fields: {
+                    firstName: {
+                        type: 'text',
+                        value: 'hey!',
+                    },
+                },
+            },
+            {
+                firstName: 'banana',
+            }
+        )
 
-		assert.isEqual(i.get('firstName'), 'banana')
-	}
+        assert.isEqual(i.get('firstName'), 'banana')
+    }
 }

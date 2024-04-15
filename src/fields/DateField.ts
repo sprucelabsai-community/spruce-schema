@@ -1,7 +1,7 @@
 import { FieldError } from '../errors/options.types'
 import {
-	FieldTemplateDetailOptions,
-	FieldTemplateDetails,
+    FieldTemplateDetailOptions,
+    FieldTemplateDetails,
 } from '../types/template.types'
 import getStartOfDay from '../utilities/getStartOfDay'
 import isUndefinedOrNull from '../utilities/isUndefinedOrNull'
@@ -10,64 +10,64 @@ import { DateFieldDefinition } from './DateField.types'
 import { ValidateOptions } from './field.static.types'
 
 export default class DateField extends AbstractField<DateFieldDefinition> {
-	public static get description() {
-		return 'Date and time support.'
-	}
-	public static generateTemplateDetails(
-		options: FieldTemplateDetailOptions<DateFieldDefinition>
-	): FieldTemplateDetails {
-		return {
-			valueType: `${options.importAs}.DateFieldValue${
-				options.definition.isArray ? '[]' : ''
-			}`,
-		}
-	}
+    public static get description() {
+        return 'Date and time support.'
+    }
+    public static generateTemplateDetails(
+        options: FieldTemplateDetailOptions<DateFieldDefinition>
+    ): FieldTemplateDetails {
+        return {
+            valueType: `${options.importAs}.DateFieldValue${
+                options.definition.isArray ? '[]' : ''
+            }`,
+        }
+    }
 
-	public validate(
-		value: any,
-		options?: ValidateOptions<DateFieldDefinition>
-	): FieldError[] {
-		const errors = super.validate(value, options)
-		if (errors.length > 0) {
-			return errors
-		}
+    public validate(
+        value: any,
+        options?: ValidateOptions<DateFieldDefinition>
+    ): FieldError[] {
+        const errors = super.validate(value, options)
+        if (errors.length > 0) {
+            return errors
+        }
 
-		return validateDateValue({
-			value,
-			isRequired: this.isRequired,
-			name: this.name,
-		})
-	}
+        return validateDateValue({
+            value,
+            isRequired: this.isRequired,
+            name: this.name,
+        })
+    }
 
-	public toValueType(value: any) {
-		return value ? getStartOfDay(+value) : value
-	}
+    public toValueType(value: any) {
+        return value ? getStartOfDay(+value) : value
+    }
 }
 
 export function validateDateValue(options: {
-	value: any
-	isRequired: boolean
-	name: string
+    value: any
+    isRequired: boolean
+    name: string
 }): FieldError[] {
-	const { value, isRequired, name } = options
+    const { value, isRequired, name } = options
 
-	if (isUndefinedOrNull(value) && !isRequired) {
-		return []
-	}
+    if (isUndefinedOrNull(value) && !isRequired) {
+        return []
+    }
 
-	if (typeof value === 'number' || value instanceof Date) {
-		return []
-	} else if (typeof value === 'string') {
-		const date = new Date(value)
-		if (date.toString() !== 'Invalid Date') {
-			return []
-		}
-	}
-	return [
-		{
-			name,
-			code: 'INVALID_PARAMETER',
-			friendlyMessage: `This doesn't look like a date to me!`,
-		},
-	]
+    if (typeof value === 'number' || value instanceof Date) {
+        return []
+    } else if (typeof value === 'string') {
+        const date = new Date(value)
+        if (date.toString() !== 'Invalid Date') {
+            return []
+        }
+    }
+    return [
+        {
+            name,
+            code: 'INVALID_PARAMETER',
+            friendlyMessage: `This doesn't look like a date to me!`,
+        },
+    ]
 }

@@ -2,22 +2,22 @@ import { FieldName } from '../fields/field.static.types'
 import { SchemaFieldsByName } from '../schemas.static.types'
 
 type MakeFieldsOptional<F extends SchemaFieldsByName> = {
-	[K in keyof F]: { isRequired: false } & Omit<F[K], 'isRequired'>
+    [K in keyof F]: { isRequired: false } & Omit<F[K], 'isRequired'>
 }
 
 export default function makeFieldsOptional<
-	F extends SchemaFieldsByName,
-	// eslint-disable-next-line
+    F extends SchemaFieldsByName,
+    // eslint-disable-next-line
 	D extends FieldName<F>
 >(fields: F): MakeFieldsOptional<F> {
-	const optionalFields: Record<string, any> = {}
+    const optionalFields: Record<string, any> = {}
 
-	Object.keys(fields).forEach((name) => {
-		optionalFields[name] = {
-			...fields[name],
-			isRequired: false,
-		}
-	})
+    Object.keys(fields).forEach((name) => {
+        optionalFields[name] = {
+            ...fields[name],
+            isRequired: false,
+        }
+    })
 
-	return optionalFields as MakeFieldsOptional<F>
+    return optionalFields as MakeFieldsOptional<F>
 }

@@ -1,3 +1,3 @@
 export type Optional<T> = {
-	[P in keyof T]?: T[P] | null
+    [P in keyof T]?: T[P] | null
 }

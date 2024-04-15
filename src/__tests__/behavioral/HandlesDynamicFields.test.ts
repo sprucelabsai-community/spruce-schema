@@ -2,10 +2,10 @@ import { assert, test } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import DynamicSchemaEntityImplementation from '../../DynamicSchemaEntityImplementation'
 import {
-	DynamicSchemaAllValues,
-	Schema,
-	SchemaAllValues,
-	SchemaValues,
+    DynamicSchemaAllValues,
+    Schema,
+    SchemaAllValues,
+    SchemaValues,
 } from '../../schemas.static.types'
 import areSchemaValuesValid from '../../utilities/areSchemaValuesValid'
 import buildSchema from '../../utilities/buildSchema'
@@ -13,351 +13,366 @@ import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 import validateSchemaValues from '../../utilities/validateSchemaValues'
 
 const textDynamicSchema = buildSchema({
-	id: 'textDynamic',
-	name: 'Dynamic text based schema',
-	dynamicFieldSignature: {
-		type: 'text',
-		keyName: 'key',
-	},
+    id: 'textDynamic',
+    name: 'Dynamic text based schema',
+    dynamicFieldSignature: {
+        type: 'text',
+        keyName: 'key',
+    },
 })
 
 const numberDynamicSchema = buildSchema({
-	id: 'numberDynamic',
-	name: 'Dynamic number based schema',
-	dynamicFieldSignature: {
-		type: 'number',
-		keyName: 'key',
-	},
+    id: 'numberDynamic',
+    name: 'Dynamic number based schema',
+    dynamicFieldSignature: {
+        type: 'number',
+        keyName: 'key',
+    },
 })
 
 const numberRequiredDynamicSchema = buildSchema({
-	id: 'numberRequiredDynamic',
-	name: 'Dynamic number based schema',
-	dynamicFieldSignature: {
-		type: 'number',
-		isRequired: true,
-		keyName: 'key',
-	},
+    id: 'numberRequiredDynamic',
+    name: 'Dynamic number based schema',
+    dynamicFieldSignature: {
+        type: 'number',
+        isRequired: true,
+        keyName: 'key',
+    },
 })
 
 const arrayRequiredDynamicSchema = buildSchema({
-	id: 'arrayRequiredDynamic',
-	name: 'Dynamic number based schema',
-	dynamicFieldSignature: {
-		type: 'number',
-		isRequired: true,
-		isArray: true,
-		keyName: 'key',
-	},
+    id: 'arrayRequiredDynamic',
+    name: 'Dynamic number based schema',
+    dynamicFieldSignature: {
+        type: 'number',
+        isRequired: true,
+        isArray: true,
+        keyName: 'key',
+    },
 })
 
 export default class HandlesDynamicFields extends AbstractSchemaTest {
-	@test()
-	protected static canCreateSchemaEntityWithDynamicFields() {
-		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
-		assert.isTruthy(entity)
-	}
+    @test()
+    protected static canCreateSchemaEntityWithDynamicFields() {
+        const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
+        assert.isTruthy(entity)
+    }
 
-	@test()
-	protected static optionalValuesTypeMapping() {
-		const values: DynamicSchemaAllValues<typeof numberDynamicSchema> = {
-			hey: 5,
-		}
+    @test()
+    protected static optionalValuesTypeMapping() {
+        const values: DynamicSchemaAllValues<typeof numberDynamicSchema> = {
+            hey: 5,
+        }
 
-		assert.isExactType<typeof values, { string?: number }>(true)
-	}
+        assert.isExactType<typeof values, { string?: number }>(true)
+    }
 
-	@test()
-	protected static requiredValuesTypeMapping() {
-		const values: DynamicSchemaAllValues<typeof numberRequiredDynamicSchema> = {
-			hey: 5,
-		}
+    @test()
+    protected static requiredValuesTypeMapping() {
+        const values: DynamicSchemaAllValues<
+            typeof numberRequiredDynamicSchema
+        > = {
+            hey: 5,
+        }
 
-		assert.isExactType<typeof values, Record<string, number>>(true)
-		assert.isExactType<typeof values, Record<string, number | undefined>>(false)
-	}
+        assert.isExactType<typeof values, Record<string, number>>(true)
+        assert.isExactType<typeof values, Record<string, number | undefined>>(
+            false
+        )
+    }
 
-	@test()
-	protected static typesStringValuesProperly() {
-		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema, {
-			anything: 'foo',
-			anythingElse: 'bar',
-		})
+    @test()
+    protected static typesStringValuesProperly() {
+        const entity = new DynamicSchemaEntityImplementation(
+            textDynamicSchema,
+            {
+                anything: 'foo',
+                anythingElse: 'bar',
+            }
+        )
 
-		const values = entity.getValues()
+        const values = entity.getValues()
 
-		assert.isExactType<typeof values, { string?: string }>(true)
-	}
+        assert.isExactType<typeof values, { string?: string }>(true)
+    }
 
-	@test()
-	protected static typesNumbersValuesProperly() {
-		const entity = new DynamicSchemaEntityImplementation(numberDynamicSchema, {
-			anything: 1,
-			anythingElse: 3,
-		})
+    @test()
+    protected static typesNumbersValuesProperly() {
+        const entity = new DynamicSchemaEntityImplementation(
+            numberDynamicSchema,
+            {
+                anything: 1,
+                anythingElse: 3,
+            }
+        )
 
-		const values = entity.getValues()
+        const values = entity.getValues()
 
-		assert.isExactType<typeof values, { string?: number }>(true)
-	}
+        assert.isExactType<typeof values, { string?: number }>(true)
+    }
 
-	@test()
-	protected static typesRequiredNumbersValuesProperly() {
-		const entity = new DynamicSchemaEntityImplementation(
-			numberRequiredDynamicSchema,
-			{
-				anything: 1,
-				anythingElse: 3,
-			}
-		)
+    @test()
+    protected static typesRequiredNumbersValuesProperly() {
+        const entity = new DynamicSchemaEntityImplementation(
+            numberRequiredDynamicSchema,
+            {
+                anything: 1,
+                anythingElse: 3,
+            }
+        )
 
-		const values = entity.getValues()
+        const values = entity.getValues()
 
-		assert.isExactType<typeof values, Record<string, number>>(true)
-		assert.isExactType<typeof values, Record<string, number | undefined>>(false)
-	}
+        assert.isExactType<typeof values, Record<string, number>>(true)
+        assert.isExactType<typeof values, Record<string, number | undefined>>(
+            false
+        )
+    }
 
-	@test(
-		'simple string passthrough',
-		textDynamicSchema,
-		{ foo: 'bar', hello: 'world' },
-		{ foo: 'bar', hello: 'world' }
-	)
-	@test(
-		'simple number passthrough',
-		numberDynamicSchema,
-		{ foo: 1, hello: 2 },
-		{ foo: 1, hello: 2 }
-	)
-	@test(
-		'transforms to strings',
-		textDynamicSchema,
-		{ foo: 1, hello: 2 },
-		{ foo: '1', hello: '2' }
-	)
-	@test(
-		'transforms to numbers+array',
-		arrayRequiredDynamicSchema,
-		{
-			foo: 1,
-			bar: 2,
-		},
-		{
-			foo: [1],
-			bar: [2],
-		}
-	)
-	protected static getValuesTransformation(
-		schema: Schema,
-		values: any,
-		expected: any
-	) {
-		const entity = new DynamicSchemaEntityImplementation(schema, values)
-		const actual = entity.getValues()
+    @test(
+        'simple string passthrough',
+        textDynamicSchema,
+        { foo: 'bar', hello: 'world' },
+        { foo: 'bar', hello: 'world' }
+    )
+    @test(
+        'simple number passthrough',
+        numberDynamicSchema,
+        { foo: 1, hello: 2 },
+        { foo: 1, hello: 2 }
+    )
+    @test(
+        'transforms to strings',
+        textDynamicSchema,
+        { foo: 1, hello: 2 },
+        { foo: '1', hello: '2' }
+    )
+    @test(
+        'transforms to numbers+array',
+        arrayRequiredDynamicSchema,
+        {
+            foo: 1,
+            bar: 2,
+        },
+        {
+            foo: [1],
+            bar: [2],
+        }
+    )
+    protected static getValuesTransformation(
+        schema: Schema,
+        values: any,
+        expected: any
+    ) {
+        const entity = new DynamicSchemaEntityImplementation(schema, values)
+        const actual = entity.getValues()
 
-		assert.isEqualDeep(actual, expected)
+        assert.isEqualDeep(actual, expected)
 
-		const entity2 = new DynamicSchemaEntityImplementation(schema)
-		entity2.setValues(values)
-		const actual2 = entity.getValues()
-		assert.isEqualDeep(actual2, expected)
-	}
+        const entity2 = new DynamicSchemaEntityImplementation(schema)
+        entity2.setValues(values)
+        const actual2 = entity.getValues()
+        assert.isEqualDeep(actual2, expected)
+    }
 
-	@test()
-	protected static canValidate() {
-		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema, {
-			//@ts-ignore
-			foo: { another: 'object' },
-		})
+    @test()
+    protected static canValidate() {
+        const entity = new DynamicSchemaEntityImplementation(
+            textDynamicSchema,
+            {
+                //@ts-ignore
+                foo: { another: 'object' },
+            }
+        )
 
-		assert.doesThrow(() => entity.validate(), /should be a string/)
+        assert.doesThrow(() => entity.validate(), /should be a string/)
 
-		assert.isFalse(entity.isValid())
-	}
+        assert.isFalse(entity.isValid())
+    }
 
-	@test()
-	protected static canValidateUsingUtilityFunction() {
-		const values = {
-			foo: { another: 'object' },
-		}
-		assert.doesThrow(
-			() =>
-				//@ts-ignore
-				validateSchemaValues(textDynamicSchema, values, {
-					shouldMapToParameterErrors: false,
-				}),
-			/should be a string/
-		)
+    @test()
+    protected static canValidateUsingUtilityFunction() {
+        const values = {
+            foo: { another: 'object' },
+        }
+        assert.doesThrow(
+            () =>
+                //@ts-ignore
+                validateSchemaValues(textDynamicSchema, values, {
+                    shouldMapToParameterErrors: false,
+                }),
+            /should be a string/
+        )
 
-		//@ts-ignore
-		assert.isFalse(areSchemaValuesValid(textDynamicSchema, values))
-	}
+        //@ts-ignore
+        assert.isFalse(areSchemaValuesValid(textDynamicSchema, values))
+    }
 
-	@test()
-	protected static getsSets() {
-		const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
-		entity.set('foo', 'bar')
-		assert.isEqual(entity.get('foo'), 'bar')
+    @test()
+    protected static getsSets() {
+        const entity = new DynamicSchemaEntityImplementation(textDynamicSchema)
+        entity.set('foo', 'bar')
+        assert.isEqual(entity.get('foo'), 'bar')
 
-		//@ts-ignore
-		entity.set('bar', 3)
-		assert.isEqual(entity.get('bar'), '3')
-	}
+        //@ts-ignore
+        entity.set('bar', 3)
+        assert.isEqual(entity.get('bar'), '3')
+    }
 
-	@test()
-	protected static throwsOnBadSet() {
-		const entity = new DynamicSchemaEntityImplementation(numberDynamicSchema)
-		assert.doesThrow(
-			//@ts-ignore
-			() => entity.set('foo', { hello: 'world' }),
-			/not a number/
-		)
-	}
+    @test()
+    protected static throwsOnBadSet() {
+        const entity = new DynamicSchemaEntityImplementation(
+            numberDynamicSchema
+        )
+        assert.doesThrow(
+            //@ts-ignore
+            () => entity.set('foo', { hello: 'world' }),
+            /not a number/
+        )
+    }
 
-	@test()
-	protected static typesAndNormalizedRelatedSchemasWithDynamicFields() {
-		const fullSchema = buildSchema({
-			id: 'fullMessageAdapter',
-			fields: {
-				id: {
-					type: 'id',
-					isRequired: true,
-				},
-				dateCreated: {
-					type: 'number',
-					isRequired: true,
-				},
-				adapterName: {
-					type: 'text',
-					isRequired: true,
-				},
-				settings: {
-					type: 'schema',
-					isRequired: true,
-					options: {
-						schema: buildSchema({
-							id: 'messageAdapterSettings',
-							dynamicFieldSignature: {
-								type: 'text',
-								keyName: 'key',
-							},
-						}),
-					},
-				},
-			},
-		})
+    @test()
+    protected static typesAndNormalizedRelatedSchemasWithDynamicFields() {
+        const fullSchema = buildSchema({
+            id: 'fullMessageAdapter',
+            fields: {
+                id: {
+                    type: 'id',
+                    isRequired: true,
+                },
+                dateCreated: {
+                    type: 'number',
+                    isRequired: true,
+                },
+                adapterName: {
+                    type: 'text',
+                    isRequired: true,
+                },
+                settings: {
+                    type: 'schema',
+                    isRequired: true,
+                    options: {
+                        schema: buildSchema({
+                            id: 'messageAdapterSettings',
+                            dynamicFieldSignature: {
+                                type: 'text',
+                                keyName: 'key',
+                            },
+                        }),
+                    },
+                },
+            },
+        })
 
-		type Values = SchemaValues<typeof fullSchema>
-		type AllValues = SchemaAllValues<typeof fullSchema>
+        type Values = SchemaValues<typeof fullSchema>
+        type AllValues = SchemaAllValues<typeof fullSchema>
 
-		const values: Values = {
-			id: '1',
-			dateCreated: 2,
-			adapterName: '3',
-			settings: {},
-		}
+        const values: Values = {
+            id: '1',
+            dateCreated: 2,
+            adapterName: '3',
+            settings: {},
+        }
 
-		values.settings.anything = 'true'
+        values.settings.anything = 'true'
 
-		assert.isExactType<
-			typeof values,
-			{
-				id: string
-				dateCreated: number
-				adapterName: string
-				settings: Record<string, string | null | undefined>
-			}
-		>(true)
+        assert.isExactType<
+            typeof values,
+            {
+                id: string
+                dateCreated: number
+                adapterName: string
+                settings: Record<string, string | null | undefined>
+            }
+        >(true)
 
-		const allValues: AllValues = {
-			id: '1',
-			dateCreated: 2,
-			adapterName: '3',
-			settings: {
-				first: 'first',
-			},
-		}
+        const allValues: AllValues = {
+            id: '1',
+            dateCreated: 2,
+            adapterName: '3',
+            settings: {
+                first: 'first',
+            },
+        }
 
-		assert.isExactType<
-			typeof allValues,
-			{
-				id: string
-				dateCreated: number
-				adapterName: string
-				settings: Record<string, string | null | undefined>
-			}
-		>(true)
+        assert.isExactType<
+            typeof allValues,
+            {
+                id: string
+                dateCreated: number
+                adapterName: string
+                settings: Record<string, string | null | undefined>
+            }
+        >(true)
 
-		const normalized = normalizeSchemaValues(
-			fullSchema,
-			{
-				//@ts-ignore
-				id: 1,
-				//@ts-ignore
-				dateCreated: '2',
-				//@ts-ignore
-				adapterName: 4,
-				settings: {
-					first: 'first',
-					//@ts-ignore
-					second: 2,
-				},
-			},
-			{ shouldIncludePrivateFields: false }
-		)
+        const normalized = normalizeSchemaValues(
+            fullSchema,
+            {
+                //@ts-ignore
+                id: 1,
+                //@ts-ignore
+                dateCreated: '2',
+                //@ts-ignore
+                adapterName: 4,
+                settings: {
+                    first: 'first',
+                    //@ts-ignore
+                    second: 2,
+                },
+            },
+            { shouldIncludePrivateFields: false }
+        )
 
-		assert.isEqualDeep(normalized, {
-			id: '1',
-			dateCreated: 2,
-			adapterName: '4',
-			settings: {
-				first: 'first',
-				second: '2',
-			},
-		})
-	}
+        assert.isEqualDeep(normalized, {
+            id: '1',
+            dateCreated: 2,
+            adapterName: '4',
+            settings: {
+                first: 'first',
+                second: '2',
+            },
+        })
+    }
 
-	@test()
-	protected static typesAndNormalizesDynamicSchemas() {
-		const fullSchema = buildSchema({
-			id: 'aDynamicSchema',
-			dynamicFieldSignature: {
-				type: 'text',
-				keyName: 'key',
-			},
-		})
+    @test()
+    protected static typesAndNormalizesDynamicSchemas() {
+        const fullSchema = buildSchema({
+            id: 'aDynamicSchema',
+            dynamicFieldSignature: {
+                type: 'text',
+                keyName: 'key',
+            },
+        })
 
-		type Values = SchemaValues<typeof fullSchema>
+        type Values = SchemaValues<typeof fullSchema>
 
-		const values: Values = {
-			id: '1',
-			dateCreated: 'hey',
-			adapterName: '3',
-			settings: 'there',
-		}
+        const values: Values = {
+            id: '1',
+            dateCreated: 'hey',
+            adapterName: '3',
+            settings: 'there',
+        }
 
-		values.anything = 'true'
+        values.anything = 'true'
 
-		assert.isExactType<
-			typeof values,
-			{
-				[key: string]: string | undefined | null
-			}
-		>(true)
+        assert.isExactType<
+            typeof values,
+            Record<string, string | undefined | null>
+        >(true)
 
-		const normalized = normalizeSchemaValues(fullSchema, {
-			//@ts-ignore
-			id: 1,
-			//@ts-ignore
-			dateCreated: '2',
-			//@ts-ignore
-			adapterName: 4,
-		})
+        const normalized = normalizeSchemaValues(fullSchema, {
+            //@ts-ignore
+            id: 1,
+            //@ts-ignore
+            dateCreated: '2',
+            //@ts-ignore
+            adapterName: 4,
+        })
 
-		assert.isEqualDeep(normalized, {
-			id: '1',
-			dateCreated: '2',
-			adapterName: '4',
-		})
-	}
+        assert.isEqualDeep(normalized, {
+            id: '1',
+            dateCreated: '2',
+            adapterName: '4',
+        })
+    }
 }

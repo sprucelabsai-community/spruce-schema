@@ -1,21 +1,21 @@
 import { Schema } from '../schemas.static.types'
 
 export default function areSchemasTheSame(
-	left: Schema,
-	right: Schema
+    left: Schema,
+    right: Schema
 ): boolean {
-	if (left.id !== right.id) {
-		return false
-	}
+    if (left.id !== right.id) {
+        return false
+    }
 
-	const fields1 = Object.keys(left.fields ?? {}).sort()
-	const fields2 = Object.keys(right.fields ?? {}).sort()
+    const fields1 = Object.keys(left.fields ?? {}).sort()
+    const fields2 = Object.keys(right.fields ?? {}).sort()
 
-	if (fields1.join('|') !== fields2.join('|')) {
-		return false
-	}
+    if (fields1.join('|') !== fields2.join('|')) {
+        return false
+    }
 
-	// TODO let fields compare their definitions
+    // TODO let fields compare their definitions
 
-	return true
+    return true
 }
