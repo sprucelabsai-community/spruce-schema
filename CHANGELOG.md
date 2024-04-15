@@ -1,3 +1,11 @@
+# [30.0.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.4.60...v30.0.0) (2024-04-15)
+
+
+### Breaking Changes
+
+* upgrade ([ffbb7ea](https://github.com/sprucelabsai-community/spruce-schema/commit/ffbb7ea))
+* upgrade ([59acb9a](https://github.com/sprucelabsai-community/spruce-schema/commit/59acb9a))
+
 ## [29.4.60](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.4.59...v29.4.60) (2024-04-05)
 
 ## [29.4.59](https://github.com/sprucelabsai-community/spruce-schema/compare/v29.4.58...v29.4.59) (2024-04-04)
