@@ -253,14 +253,6 @@ export type SchemaStaticValues<
     >,
 > = Omit<V, K> & Partial<Pick<V, K>>
 
-export type SchemaValues_OLD<
-    S extends Schema,
-    CreateEntityInstances extends boolean = false,
-> =
-    IsDynamicSchema<S> extends true
-        ? DynamicSchemaAllValues<S>
-        : SchemaStaticValues<S, CreateEntityInstances>
-
 export type IsDynamicSchema<S extends Schema> =
     S['dynamicFieldSignature'] extends FieldDefinitions ? true : false
 

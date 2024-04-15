@@ -9,9 +9,7 @@ import { DateTimeFieldDefinition } from './DateTimeField.types'
 import { ValidateOptions } from './field.static.types'
 
 export default class DateTimeField extends AbstractField<DateTimeFieldDefinition> {
-    public static get description() {
-        return 'Date and time support.'
-    }
+    public static readonly description = 'Date and time support.'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<DateTimeFieldDefinition>

@@ -9,9 +9,8 @@ import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<TextFieldDefinition> {
-    public static get description() {
-        return 'A text field. Converts non-strings into strings by calling toString(). Size set by options.'
-    }
+    public static readonly description =
+        'A text field. Converts non-strings into strings by calling toString(). Size set by options.'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<TextFieldDefinition>

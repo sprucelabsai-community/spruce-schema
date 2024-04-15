@@ -8,9 +8,8 @@ import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
 import { FileFieldDefinition, FileFieldValue } from './FileField.types'
 
 export default class FileField extends AbstractField<FileFieldDefinition> {
-    public static get description() {
-        return 'A way to handle files. Supports mime-type lookups.'
-    }
+    public static readonly description =
+        'A way to handle files. Supports mime-type lookups.'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<FileFieldDefinition>

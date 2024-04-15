@@ -10,9 +10,8 @@ import { ValidateOptions } from './field.static.types'
 import { PhoneFieldDefinition } from './PhoneField.types'
 
 export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
-    public static get description() {
-        return 'Takes anything close to a phone number and formats it. Also great at validating numbers.'
-    }
+    public static readonly description =
+        'Takes anything close to a phone number and formats it. Also great at validating numbers.'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<PhoneFieldDefinition>

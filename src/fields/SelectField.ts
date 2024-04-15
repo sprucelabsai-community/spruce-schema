@@ -10,9 +10,8 @@ import { SelectFieldDefinition, SelectChoice } from './SelectField.types'
 export default class SelectField<
     T extends SelectFieldDefinition = SelectFieldDefinition,
 > extends AbstractField<T> {
-    public static get description() {
-        return 'Stored as string, lets user select between available options.'
-    }
+    public static readonly description =
+        'Stored as string, lets user select between available options.'
 
     public constructor(name: string, definition: T) {
         super(name, definition)

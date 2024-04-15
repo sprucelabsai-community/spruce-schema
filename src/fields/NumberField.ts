@@ -8,9 +8,8 @@ import AbstractField from './AbstractField'
 import { NumberFieldDefinition } from './NumberField.types'
 
 export default class NumberField extends AbstractField<NumberFieldDefinition> {
-    public static get description() {
-        return 'Handles all types of numbers with min/max and clamp support'
-    }
+    public static readonly description =
+        'Handles all types of numbers with min/max and clamp support'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<NumberFieldDefinition>

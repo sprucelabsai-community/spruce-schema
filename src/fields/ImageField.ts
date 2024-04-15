@@ -15,9 +15,7 @@ export default class ImageField extends AbstractField<ImageFieldDefinition> {
         }
     }
 
-    public static get description() {
-        return 'Images of various sizes!'
-    }
+    public static readonly description = 'Images of various sizes!'
 
     public validate(value: any) {
         const errors = super.validate(value)

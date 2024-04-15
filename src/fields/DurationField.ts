@@ -62,9 +62,8 @@ export function buildDuration(
 }
 
 export default class DurationField extends AbstractField<DurationFieldDefinition> {
-    public static get description() {
-        return 'A span of time represented in { hours, minutes, seconds, ms }'
-    }
+    public static readonly description =
+        'A span of time represented in { hours, minutes, seconds, ms }'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<DurationFieldDefinition>

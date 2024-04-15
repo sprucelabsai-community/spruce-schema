@@ -6,9 +6,7 @@ import AbstractField from './AbstractField'
 import { RawFieldDefinition } from './RawField.types'
 
 export default class RawField extends AbstractField<RawFieldDefinition> {
-    public static get description() {
-        return 'Set an interface directly.'
-    }
+    public static readonly description = 'Set an interface directly.'
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<RawFieldDefinition>
     ): FieldTemplateDetails {

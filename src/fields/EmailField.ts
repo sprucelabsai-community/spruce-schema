@@ -8,9 +8,7 @@ import { EmailFieldDefinition } from './EmailField.types'
 import { ValidateOptions } from './field.static.types'
 
 export default class EmailField extends AbstractField<EmailFieldDefinition> {
-    public static get description() {
-        return 'Email support.'
-    }
+    public static readonly description = 'Email support.'
 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<EmailFieldDefinition>

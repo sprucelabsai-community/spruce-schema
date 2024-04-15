@@ -6,9 +6,8 @@ import AbstractField from './AbstractField'
 import { AddressFieldDefinition } from './AddressField.types'
 
 export default class AddressField extends AbstractField<AddressFieldDefinition> {
-    public static get description() {
-        return 'An address with geocoding ability *coming soon*'
-    }
+    public static readonly description =
+        'An address with geocoding ability *coming soon*'
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<AddressFieldDefinition>
     ): FieldTemplateDetails {
