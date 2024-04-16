@@ -8,6 +8,6 @@ export type EmailFieldDefinition = FieldDefinition<
 > & {
     /** * .Email an easy way to capture emails */
     type: 'email'
-    // eslint-disable-next-line @typescript-eslint/ban-types
+
     options?: {}
 }

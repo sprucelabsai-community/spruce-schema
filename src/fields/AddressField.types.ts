@@ -12,6 +12,6 @@ export interface AddressFieldValue {
 export type AddressFieldDefinition = FieldDefinition<AddressFieldValue> & {
     /** * An address with street, city, province, country, and zip details */
     type: 'address'
-    // eslint-disable-next-line @typescript-eslint/ban-types
+
     options?: {}
 }

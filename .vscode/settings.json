@@ -56,6 +56,9 @@
 		"typescript",
 		"typescriptreact"
 	],
+	"eslint.workingDirectories": [
+		"./"
+	],
 	"typescript.validate.enable": false,
 	"editor.formatOnSave": false,
 	"editor.codeActionsOnSave": {

@@ -60,7 +60,7 @@ export type FieldDefinition<
 > = {
     type: FieldType
     /** Default options are empty */
-    // eslint-disable-next-line @typescript-eslint/ban-types
+
     options?: {}
     isPrivate?: boolean
     label?: string

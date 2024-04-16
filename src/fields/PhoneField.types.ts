@@ -8,6 +8,6 @@ export type PhoneFieldDefinition = FieldDefinition<
 > & {
     /** * .Phone a great way to validate and format values */
     type: 'phone'
-    // eslint-disable-next-line @typescript-eslint/ban-types
+
     options?: {}
 }
