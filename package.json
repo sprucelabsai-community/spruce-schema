@@ -11,7 +11,7 @@
   "version": "30.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "module": "./build/esm/index.js",
+  "module": "./esm/index.js",
   "sideEffects": false,
   "description": "Static and dynamic binding plus runtime validation and transformation to ensure your app is sound. 🤓",
   "keywords": [
