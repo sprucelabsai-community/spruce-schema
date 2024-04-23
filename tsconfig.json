@@ -3,10 +3,10 @@
 		"skipLibCheck": true,
 		"module": "commonjs",
 		"esModuleInterop": true,
-		"target": "ES2022",
+		"target": "ES2017",
 		"lib": [
 			"DOM",
-			"ES2022"
+			"ES2017"
 		],
 		"declaration": true,
 		"noImplicitAny": true,
