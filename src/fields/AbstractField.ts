@@ -27,18 +27,11 @@ export default abstract class AbstractField<F extends FieldDefinitions>
         return this
     }
 
-    public static get description(): string {
-        throw new SpruceError({
-            code: 'NOT_IMPLEMENTED',
-            instructions: `Copy and paste this into ${this.name}:
+    public static description = `Please set the description for your field ${this.name}:
 
-public static get description() {
-	return '*** describe your field here ***'
-}
-
-`,
-        })
-    }
+	public static description = '*** describe your field here ***'
+	
+	`
 
     /** For mapping schemas to types dynamically in schema values */
     public static generateTypeDetails(): {
