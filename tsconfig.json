@@ -3,7 +3,7 @@
 		"skipLibCheck": true,
 		"module": "commonjs",
 		"esModuleInterop": true,
-		"target": "ES2022",
+		"target": "ES2019",
 		"lib": [
 			"DOM",
 			"ES2022"
