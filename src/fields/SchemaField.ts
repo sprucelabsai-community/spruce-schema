@@ -1,5 +1,4 @@
 import AbstractEntity from '../AbstractEntity'
-import DynamicSchemaEntityImplementation from '../DynamicSchemaEntityImplementation'
 import { FieldError } from '../errors/options.types'
 import SpruceError from '../errors/SpruceError'
 import {
@@ -8,7 +7,6 @@ import {
     SchemaEntity,
 } from '../schemas.static.types'
 import SchemaRegistry from '../singletons/SchemaRegistry'
-import StaticSchemaEntity from '../StaticSchemaEntityImpl'
 import {
     FieldTemplateDetailOptions,
     FieldTemplateDetails,
@@ -347,9 +345,11 @@ export default class SchemaField<
     }
 
     private Schema(schema: Schema, value: any): SchemaEntity {
-        return schema.dynamicFieldSignature
-            ? new DynamicSchemaEntityImplementation(schema, value)
-            : new StaticSchemaEntity(schema, value)
+        const Class = schema.dynamicFieldSignature
+            ? require('../DynamicSchemaEntityImplementation').default
+            : require('../StaticSchemaEntityImpl').default
+
+        return new Class(schema, value)
     }
 
     public toValueType<CreateEntityInstances extends boolean>(
