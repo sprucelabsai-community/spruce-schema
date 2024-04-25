@@ -42,6 +42,7 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
         this.assertFormatsAsExpected('905-555-5555', '+1 905-555-5555')
         this.assertFormatsAsExpected('905123', '+1 905-123')
         this.assertFormatsAsExpected('+1720', '+1 720')
+        this.assertFormatsAsExpected('+1 72', '+1 72')
     }
 
     @test()

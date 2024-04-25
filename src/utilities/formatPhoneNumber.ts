@@ -32,13 +32,13 @@ function formatNumberWithCode(phoneNumberString: string, code = '1') {
 }
 
 export function isValidNumber(number: string) {
-    const code = getCode(number)
+    const { code } = stripCode(number)
 
     const formatted = formatNumberWithCode(number, code)?.replace(/[^0-9]/g, '')
     return formatted?.length === 11 || formatted?.length === 12
 }
 
-function getCode(number: string) {
+function stripCode(number: string) {
     let code = `1` // Default to North American country code
 
     const cleaned = number.replace(/(?!^\+)[^\d]/g, '')
@@ -60,15 +60,15 @@ function getCode(number: string) {
         code = `1`
     }
 
-    return code
+    return { code, phoneWithoutCode: cleaned.replace('+' + code, '') }
 }
 
 export default function formatPhoneNumber(
     val: string,
     shouldFailSilently = true
 ): string {
-    const code = getCode(val)
-    const formatted = formatNumberWithCode(val, code)
+    const { code, phoneWithoutCode } = stripCode(val)
+    const formatted = formatNumberWithCode(phoneWithoutCode, code)
 
     if (!formatted) {
         if (!shouldFailSilently) {
