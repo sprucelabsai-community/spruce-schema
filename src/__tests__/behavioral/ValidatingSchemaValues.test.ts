@@ -665,7 +665,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
             })
         )
 
-        assert.doesInclude(err.message, 'US number')
+        assert.doesInclude(err.message, 'a valid phone number')
     }
 
     @test()

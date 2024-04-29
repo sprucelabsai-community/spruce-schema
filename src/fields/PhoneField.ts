@@ -44,7 +44,7 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
                 code: 'INVALID_PARAMETER',
                 name: this.name,
                 label: this.label,
-                friendlyMessage: `Phone numbers needs to be a valid US numbers.`,
+                friendlyMessage: `Please enter a valid phone number.`,
             })
         }
 
