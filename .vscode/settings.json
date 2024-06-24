@@ -63,5 +63,9 @@
 	"editor.formatOnSave": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"
-	}
+	},
+	"circleci.filters.branchFilter": "allBranches",
+	"circleci.persistedProjectSelection": [
+		"gh/sprucelabsai-community/spruce-schema"
+	]
 }
