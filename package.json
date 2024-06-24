@@ -65,11 +65,11 @@
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^6.0.50",
-    "@sprucelabs/jest-json-reporter": "^8.0.69",
-    "@sprucelabs/resolve-path-aliases": "^2.0.45",
+    "@sprucelabs/esm-postbuild": "^6.0.51",
+    "@sprucelabs/jest-json-reporter": "^8.0.70",
+    "@sprucelabs/resolve-path-aliases": "^2.0.46",
     "@sprucelabs/semantic-release": "^5.0.1",
-    "@sprucelabs/test": "^9.0.32",
+    "@sprucelabs/test": "^9.0.33",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.5.0",
     "eslint-config-spruce": "^11.2.25",
