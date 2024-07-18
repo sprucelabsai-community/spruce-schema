@@ -104,7 +104,7 @@ export class ValidateErrorMessageFormatter {
 
     private renderSchemaName(shouldUseReadableNames = false) {
         return shouldUseReadableNames
-            ? this.error.options.schemaName ?? this.error.options.schemaId
+            ? (this.error.options.schemaName ?? this.error.options.schemaId)
             : this.error.options.schemaId
     }
 
