@@ -387,10 +387,10 @@ export interface DynamicSchemaNormalizeOptions<
 
 export type SchemaGetValuesOptions<
     T extends Schema,
-    F extends SchemaFieldNames<T>,
-    PF extends SchemaPublicFieldNames<T>,
-    CreateEntityInstances extends boolean,
-    IncludePrivateFields extends boolean,
+    F extends SchemaFieldNames<T> = SchemaFieldNames<T>,
+    PF extends SchemaPublicFieldNames<T> = SchemaPublicFieldNames<T>,
+    CreateEntityInstances extends boolean = false,
+    IncludePrivateFields extends boolean = true,
     ShouldIncludeNullAndUndefinedFields extends boolean = true,
 > = SchemaNormalizeOptions<
     T,

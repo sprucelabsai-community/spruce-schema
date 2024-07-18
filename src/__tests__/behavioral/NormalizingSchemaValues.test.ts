@@ -1,16 +1,16 @@
 import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
-import { SchemaValues } from '../../schemas.static.types'
+import {
+    Schema,
+    SchemaGetValuesOptions,
+    SchemaValues,
+} from '../../schemas.static.types'
 import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
 import normalizePartialSchemaValues from '../../utilities/normalizePartialSchemaValues'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 export default class NormalizingSchemaValues extends AbstractSchemaTest {
-    private static get personSchema() {
-        return testPersonSchema
-    }
-
     @test()
     protected static normalizesSimpleAsExpected() {
         const values = normalizeSchemaValues(
@@ -312,22 +312,24 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
     @test()
     protected static async nestedFieldsDontGetSkippedByIncludeFields() {
-        const values = {
-            firstName: 'test',
-            nestedArraySchema: [
-                {
-                    field1: 'first',
-                    field2: null,
-                },
-                {
-                    field1: undefined,
-                    field2: 'second',
-                },
-            ],
-        }
-        const person = normalizeSchemaValues(this.personSchema, values, {
-            fields: ['nestedArraySchema'],
-        })
+        const person = this.normalize(
+            {
+                firstName: 'test',
+                nestedArraySchema: [
+                    {
+                        field1: 'first',
+                        field2: null,
+                    },
+                    {
+                        field1: undefined,
+                        field2: 'second',
+                    },
+                ],
+            },
+            {
+                fields: ['nestedArraySchema'],
+            }
+        )
 
         assert.isEqualDeep(person as any, {
             nestedArraySchema: [
@@ -341,6 +343,31 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
                 },
             ],
         })
+    }
+
+    @test()
+    protected static async normalizingWithoutValidationDoesNotThrowWhenMissingNested() {
+        this.normalize(
+            {
+                nestedArraySchema: [{}],
+            },
+            {
+                shouldValidate: false,
+            },
+            testPerson2Schema
+        )
+    }
+
+    private static normalize(
+        values: Partial<TestPerson>,
+        options?: SchemaGetValuesOptions<TestPersonSchema>,
+        schema?: Schema
+    ) {
+        return normalizeSchemaValues(
+            schema ?? this.personSchema,
+            values,
+            options as any
+        )
     }
 
     private static assertPartialNormalizesTo(
@@ -360,6 +387,10 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
     private static normalizePartial(expected: Partial<TestPerson>) {
         return normalizePartialSchemaValues(this.personSchema, expected)
+    }
+
+    private static get personSchema() {
+        return testPersonSchema
     }
 }
 
@@ -404,3 +435,46 @@ const testPersonSchema = buildSchema({
 
 type TestPersonSchema = typeof testPersonSchema
 type TestPerson = SchemaValues<TestPersonSchema>
+
+const testPerson2Schema = buildSchema({
+    id: 'test2Person',
+    name: 'A test person',
+    fields: {
+        firstName: {
+            type: 'text',
+            isRequired: true,
+        },
+        age: {
+            type: 'number',
+        },
+        boolean: {
+            type: 'boolean',
+        },
+        privateBooleanField: {
+            type: 'boolean',
+            isPrivate: true,
+        },
+        nestedArraySchema: {
+            type: 'schema',
+            isArray: true,
+            options: {
+                schema: {
+                    id: 'nested-schema',
+                    name: 'Nested',
+                    fields: {
+                        field1: {
+                            type: 'text',
+                        },
+                        field2: {
+                            type: 'text',
+                        },
+                        id: {
+                            type: 'id',
+                            isRequired: true,
+                        },
+                    },
+                },
+            },
+        },
+    },
+})

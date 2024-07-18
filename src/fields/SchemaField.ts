@@ -359,19 +359,6 @@ export default class SchemaField<
             CreateEntityInstances
         >
     ): FieldDefinitionValueType<F, CreateEntityInstances> {
-        const errors = this.validate(value, options)
-
-        if (errors.length > 0) {
-            throw new SpruceError({
-                code: 'TRANSFORMATION_ERROR',
-                fieldType: 'schema',
-                incomingTypeof: typeof value,
-                incomingValue: value,
-                errors,
-                name: this.name,
-            })
-        }
-
         const { createEntityInstances, schemasById: schemasById = {} } =
             options || {}
 

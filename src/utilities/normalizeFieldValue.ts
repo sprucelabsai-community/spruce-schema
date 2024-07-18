@@ -32,10 +32,11 @@ export default function normalizeFieldValue<
     }
 
     const {
-        shouldValidate: validate = true,
         shouldCreateEntityInstances: createEntityInstances = true,
         ...extraOptions
     } = options ?? {}
+
+    const validate = extraOptions.shouldValidate ?? true
 
     const baseOptions = {
         schemasById,
