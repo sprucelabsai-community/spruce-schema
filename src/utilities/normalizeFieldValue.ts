@@ -50,7 +50,6 @@ export default function normalizeFieldValue<
         } else {
             throw new SpruceError({
                 code: !field ? 'UNEXPECTED_PARAMETERS' : 'MISSING_PARAMETERS',
-                schemaId,
                 parameters: [field.name],
             })
         }
