@@ -8,7 +8,7 @@
     "!build/__tests__",
     "esm"
   ],
-  "version": "30.0.394",
+  "version": "30.0.395",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "module": "./build/esm/index.js",
