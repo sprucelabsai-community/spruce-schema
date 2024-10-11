@@ -83,7 +83,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
                         missing: ['test'],
                     }
                 ),
-            /missing.*?test/gis
+            /i found.*?test/gis
         )
     }
 
@@ -106,7 +106,7 @@ export default class AssertingValidationErrorsTest extends AbstractSpruceTest {
                         missing: ['test'],
                     }
                 ),
-            /missing.*?test/gis
+            /i found.*?test/gis
         )
     }
 
