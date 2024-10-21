@@ -59,15 +59,15 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^6.0.502",
-    "@sprucelabs/test-utils": "^5.1.456",
+    "@sprucelabs/test-utils": "^5.1.457",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^6.0.484",
-    "@sprucelabs/jest-json-reporter": "^8.0.501",
-    "@sprucelabs/resolve-path-aliases": "^2.0.479",
+    "@sprucelabs/jest-json-reporter": "^8.0.502",
+    "@sprucelabs/resolve-path-aliases": "^2.0.480",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^9.0.54",
     "chokidar-cli": "^3.0.0",
