@@ -6,6 +6,7 @@ import {
     SchemaPublicFieldNames,
     SchemaValues,
 } from '../schemas.static.types'
+import { ValuesWithPaths } from '../types/utilities.types'
 import normalizeSchemaValues from './normalizeSchemaValues'
 
 export default function normalizePartialSchemaValues<
@@ -18,10 +19,11 @@ export default function normalizePartialSchemaValues<
         S,
         CreateEntityInstances
     > = SchemaPartialValues<S, CreateEntityInstances>,
-    Fields extends keyof Values = keyof Values,
+    IValuesWithPaths extends ValuesWithPaths<Values> = ValuesWithPaths<Values>,
+    Fields extends keyof IValuesWithPaths = keyof IValuesWithPaths,
 >(
     schema: S,
-    values: Values,
+    values: IValuesWithPaths,
     options?: SchemaGetValuesOptions<
         S,
         F,

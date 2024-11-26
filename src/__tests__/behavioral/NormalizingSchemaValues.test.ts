@@ -243,6 +243,47 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
     }
 
     @test()
+    protected static async canNormalizeWithdotSyntax() {
+        const schema = buildSchema({
+            id: 'partialValuesDotSyntax',
+            fields: {
+                target: {
+                    type: 'schema',
+                    options: {
+                        schema: buildSchema({
+                            id: 'partialValuesDotSyntaxTarget',
+                            fields: {
+                                one: {
+                                    type: 'text',
+                                },
+                                two: {
+                                    type: 'text',
+                                },
+                            },
+                        }),
+                    },
+                },
+            },
+        })
+
+        const actual = normalizePartialSchemaValues(
+            schema,
+            {
+                'target.one': 'hello',
+            },
+            { shouldRetainDotSyntaxKeys: true }
+        )
+
+        assert.isExactType<
+            typeof actual,
+            {
+                //@TODO - get types in sub schemas working
+                'target.one': unknown
+            }
+        >(true)
+    }
+
+    @test()
     protected static async partialNormalizesNestedSchemaValues() {
         const values: Partial<TestPerson> = {
             nestedArraySchema: [
