@@ -30,6 +30,7 @@ export default function normalizePartialSchemaValues<
         IncludePrivateFields
     >
 ) {
+    //@ts-ignore
     const normalized = normalizeSchemaValues(schema, values, {
         ...options,
         shouldIncludeNullAndUndefinedFields: false,
