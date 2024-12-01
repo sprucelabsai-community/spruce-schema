@@ -33,35 +33,49 @@ export default function normalizeSchemaValues<
         ShouldIncludeNullAndUndefinedFields
     >
 ) {
-    const instance = EntityFactory.Entity<S, IsDynamic>(schema, values)
+    const instance = EntityFactory.Entity<S, IsDynamic>(
+        schema,
+        expandValues(values)
+    )
 
     const {
         shouldCreateEntityInstances = false,
+        fields,
         shouldRetainDotSyntaxKeys,
         ...rest
     } = options || {}
 
+    let areAnyKeysDotted = false
+    let normalizedFields = fields?.map((f) => {
+        const hasDotKey = f.includes('.')
+        areAnyKeysDotted = areAnyKeysDotted || hasDotKey
+        return hasDotKey ? (f.split('.')[0] as F) : f
+    })
+
     const normalizedOptions = {
         shouldCreateEntityInstances,
+        fields: normalizedFields,
         ...rest,
-    } as SchemaGetValuesOptions<
-        S,
-        F,
-        PF,
-        CreateEntityInstances,
-        IncludePrivateFields,
-        ShouldIncludeNullAndUndefinedFields
-    >
+    } as any
 
     let normalized = (instance as SchemaEntity).getValues(normalizedOptions)
 
-    if (shouldRetainDotSyntaxKeys) {
+    const shouldConvertToDotSyntax =
+        areAnyKeysDotted || shouldRetainDotSyntaxKeys
+
+    if (shouldRetainDotSyntaxKeys || shouldConvertToDotSyntax) {
         const normalizedWithKeys: Record<string, any> = {}
-        for (const key of Object.keys(values)) {
+        const keys = fields || Object.keys(values)
+
+        for (const key of keys) {
             normalizedWithKeys[key] = get(normalized, key)
         }
 
         normalized = normalizedWithKeys
+    }
+
+    if (!shouldRetainDotSyntaxKeys && shouldConvertToDotSyntax) {
+        normalized = expandValues(normalized)
     }
 
     return normalized as IsDynamic extends true
@@ -85,4 +99,30 @@ export default function normalizeSchemaValues<
                 >,
                 PF
             >
+}
+
+function expandValues(values: Record<string, any> = {}): Record<string, any> {
+    const result: Record<string, any> = {}
+
+    for (const key in values) {
+        const value = values[key]
+        const keys = key.split('.')
+
+        let current = result
+
+        for (let i = 0; i < keys.length; i++) {
+            const k = keys[i]
+
+            if (i === keys.length - 1) {
+                current[k] = value
+            } else {
+                if (!(k in current) || typeof current[k] !== 'object') {
+                    current[k] = {}
+                }
+                current = current[k]
+            }
+        }
+    }
+
+    return result
 }

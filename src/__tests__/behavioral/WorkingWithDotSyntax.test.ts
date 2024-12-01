@@ -1,5 +1,6 @@
 import { test, assert, generateId } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
+import { SchemaGetValuesOptions } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
@@ -67,15 +68,36 @@ export default class WorkingWithDotSyntaxTest extends AbstractSchemaTest {
         })
     }
 
+    @test()
+    protected static async canFilterFieldsValuesUsingDotSyntax() {
+        const organizationId = generateId()
+
+        this.assertNormalizedValuesEqual(
+            {
+                firstName: generateId(),
+                source: {
+                    organizationId,
+                    locationId: generateId(),
+                },
+            },
+            {
+                source: {
+                    organizationId,
+                },
+            },
+            {
+                fields: ['source.organizationId' as any],
+            }
+        )
+    }
+
     private static assertNormalizedValuesEqual(
         values: Record<string, any>,
         expected: Record<string, any>,
-        options?: {
-            shouldRetainDotSyntaxKeys?: boolean
-        }
+        options?: SchemaGetValuesOptions<PersonSchema>
     ) {
         const normalized = normalizeSchemaValues(personSchema, values, {
-            shouldRetainDotSyntaxKeys: options?.shouldRetainDotSyntaxKeys,
+            ...options,
         })
         assert.isEqualDeep(normalized, expected)
     }
@@ -106,3 +128,5 @@ const personSchema = buildSchema({
         },
     },
 })
+
+type PersonSchema = typeof personSchema
