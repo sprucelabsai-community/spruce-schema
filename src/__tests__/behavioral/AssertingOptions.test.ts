@@ -92,7 +92,7 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static failsWithDotSyntaxedParams() {
+    protected static failsWithDotNotationParams() {
         const err = assert.doesThrow(() =>
             //@ts-ignore
             assertOptions({ nested: { NO_GO: true } }, ['nested.YES_GO'])

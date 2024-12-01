@@ -669,7 +669,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static validateValuesWithDotSyntax() {
+    protected static validateValuesWithDotNotaction() {
         const nestedSchema = buildSchema({
             id: 'nested-tested',
             fields: {

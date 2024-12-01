@@ -41,7 +41,7 @@ export default function normalizeSchemaValues<
     const {
         shouldCreateEntityInstances = false,
         fields,
-        shouldRetainDotSyntaxKeys,
+        shouldRetainDotNotationKeys,
         ...rest
     } = options || {}
 
@@ -60,10 +60,10 @@ export default function normalizeSchemaValues<
 
     let normalized = (instance as SchemaEntity).getValues(normalizedOptions)
 
-    const shouldConvertToDotSyntax =
-        areAnyKeysDotted || shouldRetainDotSyntaxKeys
+    const shouldConvertToDotNotation =
+        areAnyKeysDotted || shouldRetainDotNotationKeys
 
-    if (shouldRetainDotSyntaxKeys || shouldConvertToDotSyntax) {
+    if (shouldRetainDotNotationKeys || shouldConvertToDotNotation) {
         const normalizedWithKeys: Record<string, any> = {}
         const keys = fields || Object.keys(values)
 
@@ -74,7 +74,7 @@ export default function normalizeSchemaValues<
         normalized = normalizedWithKeys
     }
 
-    if (!shouldRetainDotSyntaxKeys && shouldConvertToDotSyntax) {
+    if (!shouldRetainDotNotationKeys && shouldConvertToDotNotation) {
         normalized = expandValues(normalized)
     }
 

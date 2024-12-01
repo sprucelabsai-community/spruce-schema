@@ -379,7 +379,7 @@ export interface SchemaNormalizeOptions<
     }
 
     shouldIncludeNullAndUndefinedFields?: ShouldIncludeNullAndUndefinedFields
-    shouldRetainDotSyntaxKeys?: boolean
+    shouldRetainDotNotationKeys?: boolean
 }
 
 export interface DynamicSchemaNormalizeOptions<

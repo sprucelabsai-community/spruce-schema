@@ -4,7 +4,7 @@ import { SchemaGetValuesOptions } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
-export default class WorkingWithDotSyntaxTest extends AbstractSchemaTest {
+export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
     @test()
     protected static async canExpandSourceOrganizationId() {
         const organizationId = generateId()
@@ -52,7 +52,7 @@ export default class WorkingWithDotSyntaxTest extends AbstractSchemaTest {
         }
 
         this.assertNormalizedValuesEqual(values, values, {
-            shouldRetainDotSyntaxKeys: true,
+            shouldRetainDotNotationKeys: true,
         })
     }
 
@@ -64,7 +64,7 @@ export default class WorkingWithDotSyntaxTest extends AbstractSchemaTest {
         }
 
         this.assertNormalizedValuesEqual(values, values, {
-            shouldRetainDotSyntaxKeys: true,
+            shouldRetainDotNotationKeys: true,
         })
     }
 

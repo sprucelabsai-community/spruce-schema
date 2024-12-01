@@ -243,15 +243,15 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
     }
 
     @test()
-    protected static async canNormalizeWithdotSyntax() {
+    protected static async canNormalizeWithuotDotNotation() {
         const schema = buildSchema({
-            id: 'partialValuesDotSyntax',
+            id: 'partialValuesDotNotation',
             fields: {
                 target: {
                     type: 'schema',
                     options: {
                         schema: buildSchema({
-                            id: 'partialValuesDotSyntaxTarget',
+                            id: 'partialValuesDotNotationTarget',
                             fields: {
                                 one: {
                                     type: 'text',
@@ -271,7 +271,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
             {
                 'target.one': 'hello',
             },
-            { shouldRetainDotSyntaxKeys: true }
+            { shouldRetainDotNotationKeys: true }
         )
 
         assert.isExactType<
