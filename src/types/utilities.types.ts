@@ -19,7 +19,7 @@ export type AreAnyFieldsRequired<S extends Schema | undefined> =
 
 export type ValuesWithPaths<
     Values,
-    Keys extends Paths<Values> = Paths<Values>,
+    Keys extends PathsWithDotNotation<Values> = PathsWithDotNotation<Values>,
 > = {
     [K in RequiredKeys<Values, Keys>]: TypeAtPath<Values, K>
 } & {
@@ -44,26 +44,26 @@ type IsPathOptional<T, P extends string> = T extends any
           : true
     : true
 
-type RequiredKeys<Values, Keys extends Paths<Values>> = {
+type RequiredKeys<Values, Keys extends PathsWithDotNotation<Values>> = {
     [K in Keys]: IsPathOptional<Values, K> extends true ? never : K
 }[Keys]
 
-type OptionalKeys<Values, Keys extends Paths<Values>> = Exclude<
+type OptionalKeys<Values, Keys extends PathsWithDotNotation<Values>> = Exclude<
     Keys,
     RequiredKeys<Values, Keys>
 >
 
-type Paths<T, D extends number = 3> = [D] extends [never]
+export type PathsWithDotNotation<T, D extends number = 3> = [D] extends [never]
     ? never
     : T extends object
       ? {
             [K in keyof T]-?: K extends string | number
-                ? `${K}` | Join<K, Paths<T[K], Prev[D]>>
+                ? `${K}` | Join<K, PathsWithDotNotation<T[K], Prev[D]>>
                 : never
         }[keyof T]
       : ''
 
-type TypeAtPath<T, P extends string> = T extends any
+export type TypeAtPath<T, P extends string> = T extends any
     ? T extends null | undefined
         ? undefined
         : P extends `${infer K}.${infer Rest}`
