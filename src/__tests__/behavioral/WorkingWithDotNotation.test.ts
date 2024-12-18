@@ -161,11 +161,56 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
         )
     }
 
+    @test()
+    protected static async canIgnoreFieldsForFlattening() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                source: {
+                    organizationId: 'org',
+                },
+            },
+            {
+                firstName: 'my name',
+                source: {
+                    organizationId: 'org',
+                },
+            },
+            ['source']
+        )
+    }
+
+    @test()
+    protected static async canIgnoreMultipleFieldsForFlattening() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                payload: {
+                    locationId: 'loc',
+                },
+                target: {
+                    organizationId: 'org',
+                },
+            },
+            {
+                firstName: 'my name',
+                payload: {
+                    locationId: 'loc',
+                },
+                target: {
+                    organizationId: 'org',
+                },
+            },
+            ['payload', 'target']
+        )
+    }
+
     private static assertFlattenedValuesEquals(
         values: Record<string, any>,
-        expected: Record<string, any>
+        expected: Record<string, any>,
+        ignoreKeys?: string[]
     ) {
-        const actual = flattenValues(values)
+        const actual = flattenValues(values, ignoreKeys)
         assert.isEqualDeep(actual, expected)
     }
 
