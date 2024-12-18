@@ -1,3 +1,10 @@
+# [30.2.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.1.3...v30.2.0) (2024-12-18)
+
+
+### Features
+
+* can wildcard ignore fields ([26de050](https://github.com/sprucelabsai-community/spruce-schema/commit/26de050))
+
 ## [30.1.3](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.1.2...v30.1.3) (2024-12-18)
 
 ## [30.1.2](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.1.1...v30.1.2) (2024-12-18)
