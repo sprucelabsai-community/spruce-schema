@@ -1,3 +1,10 @@
+# [30.1.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.0.594...v30.1.0) (2024-12-18)
+
+
+### Features
+
+* flatten and expand values ([c659f17](https://github.com/sprucelabsai-community/spruce-schema/commit/c659f17))
+
 ## [30.0.594](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.0.593...v30.0.594) (2024-12-17)
 
 ## [30.0.593](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.0.592...v30.0.593) (2024-12-17)
