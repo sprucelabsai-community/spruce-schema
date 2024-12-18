@@ -2,6 +2,7 @@ import { test, assert, generateId } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import { SchemaGetValuesOptions } from '../../schemas.static.types'
 import buildSchema from '../../utilities/buildSchema'
+import flattenValues from '../../utilities/flattenValues'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
 export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
@@ -44,7 +45,7 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static async normalizeCanRetainDotSyntaxKeys() {
+    protected static async normalizeCanRetainDotNotationKeys() {
         const values = {
             firstName: generateId(),
             'source.organizationId': generateId(),
@@ -69,7 +70,7 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static async canFilterFieldsValuesUsingDotSyntax() {
+    protected static async canFilterFieldsValuesUsingDotNotation() {
         const organizationId = generateId()
 
         this.assertNormalizedValuesEqual(
@@ -91,6 +92,67 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
         )
     }
 
+    @test()
+    protected static async canFlattenToDotNotation() {
+        this.assertFlattenedValuesEquals(
+            {
+                name: 'first',
+            },
+            {
+                name: 'first',
+            }
+        )
+
+        this.assertFlattenedValuesEquals(
+            {
+                another: 'value',
+            },
+            {
+                another: 'value',
+            }
+        )
+    }
+
+    @test()
+    protected static async canFlattenSingleLevel() {
+        this.assertFlattenedValuesEquals(
+            {
+                source: {
+                    organizationId: 'org',
+                },
+            },
+            {
+                'source.organizationId': 'org',
+            }
+        )
+    }
+
+    @test()
+    protected static async canFlattenMultipleLevels() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                source: {
+                    organization: {
+                        id: 'org',
+                    },
+                },
+            },
+            {
+                firstName: 'my name',
+                'source.organization.id': 'org',
+            }
+        )
+    }
+
+    private static assertFlattenedValuesEquals(
+        values: Record<string, any>,
+        expected: Record<string, any>
+    ) {
+        const actual = flattenValues(values)
+        assert.isEqualDeep(actual, expected)
+    }
+
     private static assertNormalizedValuesEqual(
         values: Record<string, any>,
         expected: Record<string, any>,
@@ -104,7 +166,7 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
 }
 
 const personSchema = buildSchema({
-    id: 'personWithDotSyntax',
+    id: 'personWithDotNotation',
     fields: {
         firstName: {
             type: 'text',
@@ -114,7 +176,7 @@ const personSchema = buildSchema({
             type: 'schema',
             options: {
                 schema: buildSchema({
-                    id: 'personWithDotSyntaxSource',
+                    id: 'personWithDotNotationSource',
                     fields: {
                         organizationId: {
                             type: 'id',

@@ -56,6 +56,9 @@ export { default as getFields } from './utilities/getFields'
 export { default as pickFields } from './utilities/pickFields'
 export { default as isIdWithVersion } from './utilities/isIdWithVersion'
 export { default as normalizeSchemaToIdWithVersion } from './utilities/normalizeSchemaToIdWithVersion'
+export { default as flattenValues } from './utilities/flattenValues'
+export { default as expandValues } from './utilities/expandValues'
+
 export * from './utilities/formatPhoneNumber'
 
 export { default as FieldFactory } from './factories/FieldFactory'
