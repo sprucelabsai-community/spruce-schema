@@ -145,6 +145,22 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
         )
     }
 
+    @test()
+    protected static async canFlattenNullAndUndefinedValues() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                lastName: null,
+                age: undefined,
+            },
+            {
+                firstName: 'my name',
+                lastName: null,
+                age: undefined,
+            }
+        )
+    }
+
     private static assertFlattenedValuesEquals(
         values: Record<string, any>,
         expected: Record<string, any>

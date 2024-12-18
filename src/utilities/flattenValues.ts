@@ -9,7 +9,7 @@ function flattenValue(values: Record<string, any>, prefix = '') {
     for (const key of keys) {
         const value = values[key]
         const dotKey = prefix ? `${prefix}.${key}` : key
-        if (typeof value === 'object') {
+        if (value && typeof value === 'object') {
             flattened = { ...flattened, ...flattenValue(value, dotKey) }
         } else {
             flattened[dotKey] = value
