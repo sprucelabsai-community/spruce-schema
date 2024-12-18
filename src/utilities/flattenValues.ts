@@ -15,12 +15,25 @@ function flattenValue(
     let flattened: Record<string, any> = {}
     for (const key of keys) {
         const value = values[key]
-        const dotKey = prefix ? `${prefix}.${key}` : key
-        if (value && typeof value === 'object' && !ignoreKeys?.includes(key)) {
-            flattened = { ...flattened, ...flattenValue(value, dotKey) }
+        const isWildCardIgnored = ignoreKeys?.includes(`*.${key}`) ?? false
+        const dotKey = prefix && !isWildCardIgnored ? `${prefix}.${key}` : key
+        if (shouldFlatten(value, ignoreKeys, key)) {
+            flattened = {
+                ...flattened,
+                ...flattenValue(value, dotKey, ignoreKeys),
+            }
+        } else if (isWildCardIgnored) {
+            flattened[prefix] = { ...flattened[prefix], [key]: value }
         } else {
             flattened[dotKey] = value
         }
     }
     return flattened
+}
+function shouldFlatten(
+    value: any,
+    ignoreKeys: string[] | undefined,
+    key: string
+) {
+    return value && typeof value === 'object' && !ignoreKeys?.includes(key)
 }

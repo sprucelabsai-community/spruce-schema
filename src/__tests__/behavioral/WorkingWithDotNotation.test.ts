@@ -205,6 +205,67 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
         )
     }
 
+    @test()
+    protected static async canIgnoreBasedOnWildcard() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                target: {
+                    organizationId: 'org',
+                },
+            },
+            {
+                firstName: 'my name',
+                target: {
+                    organizationId: 'org',
+                },
+            },
+            ['*.organizationId']
+        )
+    }
+
+    @test()
+    protected static async wildCardHonorsFieldName() {
+        this.assertFlattenedValuesEquals(
+            {
+                firstName: 'my name',
+                target: {
+                    organizationId: 'org',
+                },
+            },
+            {
+                firstName: 'my name',
+                'target.organizationId': 'org',
+            },
+            ['*.locationId']
+        )
+    }
+
+    @test()
+    protected static async canWildcardIgnoreMultipleFields() {
+        this.assertFlattenedValuesEquals(
+            {
+                lastName: 'my name',
+                target: {
+                    personId: 'person',
+                },
+                source: {
+                    testId: 'test',
+                },
+            },
+            {
+                lastName: 'my name',
+                target: {
+                    personId: 'person',
+                },
+                source: {
+                    testId: 'test',
+                },
+            },
+            ['*.personId', '*.testId']
+        )
+    }
+
     private static assertFlattenedValuesEquals(
         values: Record<string, any>,
         expected: Record<string, any>,
