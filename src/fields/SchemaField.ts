@@ -358,7 +358,7 @@ export default class SchemaField<
     ): FieldDefinitionValueType<F, CreateEntityInstances> {
         const { createEntityInstances, schemasById: schemasById = {} } =
             options || {}
-        debugger
+
         // try and pull the schema definition from the options and by id
         const destinationSchemas: Schema[] =
             SchemaField.mapFieldDefinitionToSchemas(this.definition, {

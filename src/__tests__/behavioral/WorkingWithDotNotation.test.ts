@@ -269,7 +269,8 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
     @test()
     protected static async goodTypingWithDotNotation() {
         normalizeSchemaValues(personSchema, {
-            'source.locationId': '123',
+            'source.locationId': 'aoeu',
+            firstName: generateId(),
         })
     }
 
