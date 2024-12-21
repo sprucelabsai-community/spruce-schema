@@ -1,3 +1,10 @@
+# [31.0.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.2.0...v31.0.0) (2024-12-21)
+
+
+### Breaking Changes
+
+* nunion types on related schemas simplified (removed version and schemaId -> id) ([bb4cf76](https://github.com/sprucelabsai-community/spruce-schema/commit/bb4cf76))
+
 # [30.2.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v30.1.3...v30.2.0) (2024-12-18)
 
 
