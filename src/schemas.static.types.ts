@@ -162,12 +162,12 @@ export interface Schema {
 }
 
 export interface SchemaFieldValueUnion<
-    Id extends string = string,
-    Version extends string = string,
     V extends Record<string, any> = Record<string, any>,
+    Id extends string = string,
+    Version extends string | undefined = undefined,
 > {
-    id: string
-    version?: string
+    id: Id
+    version?: Version
     values: V
 }
 
