@@ -301,11 +301,12 @@ export default class SchemaField<
                                 this.name,
                         })
                     } else {
-                        const matchSchema = schemas.find(
+                        const matches = schemas.filter(
                             (schema) =>
-                                schema.id === id && schema.version === version
+                                schema.id === id &&
+                                (!version || schema.version === version)
                         )
-                        if (!matchSchema) {
+                        if (matches.length !== 1) {
                             errors.push({
                                 name: this.name,
                                 label: this.label,
@@ -313,11 +314,11 @@ export default class SchemaField<
                                 friendlyMessage: `Could not find a schema by id '${id}'${
                                     version
                                         ? ` and version '${version}'`
-                                        : ' with no version'
+                                        : ' with no version. Try adding a version to disambiguate.'
                                 }.`,
                             })
                         } else {
-                            instance = this.Schema(matchSchema, values)
+                            instance = this.Schema(matches[0], values)
                         }
                     }
                 }

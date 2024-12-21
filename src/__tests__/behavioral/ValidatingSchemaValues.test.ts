@@ -1,4 +1,4 @@
-import { test, assert } from '@sprucelabs/test-utils'
+import { test, assert, errorAssert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import SpruceError from '../../errors/SpruceError'
 import { SchemaValues } from '../../schemas.static.types'
@@ -721,6 +721,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                         schemas: [
                             buildSchema({
                                 id: 'union-tested-nested-1',
+                                version: 'V1',
                                 fields: {
                                     field1: {
                                         type: 'text',
@@ -732,6 +733,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                             }),
                             buildSchema({
                                 id: 'union-tested-nested-2',
+                                version: 'V2',
                                 fields: {
                                     test: {
                                         type: 'text',
@@ -754,6 +756,61 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     field1: 'go!',
                 },
             },
+        })
+    }
+
+    @test()
+    protected static async throwsIfHas2VersionsOfSchemaButOnVersionPassed() {
+        const nestedSchema = buildSchema({
+            id: 'union-nested-tested',
+            fields: {
+                nested: {
+                    type: 'schema',
+                    options: {
+                        schemas: [
+                            buildSchema({
+                                id: 'union-tested-nested',
+                                version: 'V1',
+                                fields: {
+                                    field1: {
+                                        type: 'text',
+                                    },
+                                    field2: {
+                                        type: 'text',
+                                    },
+                                },
+                            }),
+                            buildSchema({
+                                id: 'union-tested-nested',
+                                version: 'V2',
+                                fields: {
+                                    test: {
+                                        type: 'text',
+                                    },
+                                    test2: {
+                                        type: 'text',
+                                    },
+                                },
+                            }),
+                        ],
+                    },
+                },
+            },
+        })
+
+        const err = assert.doesThrow(() =>
+            validateSchemaValues(nestedSchema, {
+                nested: {
+                    id: 'union-tested-nested',
+                    values: {
+                        field1: 'go!',
+                    },
+                },
+            })
+        )
+
+        errorAssert.assertError(err, 'VALIDATION_FAILED', {
+            errors: [{ code: 'INVALID_PARAMETER' }],
         })
     }
 }

@@ -190,7 +190,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
         assert.isEqualDeep(defaults, { size: 'medium', stateOfMind: 'chill' })
     }
 
-    @test.only()
+    @test()
     protected static canGetDefaultValuesForUnionFields() {
         const schema = new StaticSchemaEntityImpl(personSchema)
         const {
