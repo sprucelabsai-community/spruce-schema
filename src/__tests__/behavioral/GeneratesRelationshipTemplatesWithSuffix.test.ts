@@ -124,7 +124,7 @@ export default class GeneratesRelationshipTemplatesWithSuffixTest extends Abstra
             },
         },
         '[screwdriverSchema, wrenchSchema]',
-        "{ schemaId: 'screwdriver', values: SpruceSchemas.Core.Screwdriver<T> } | { schemaId: 'wrench', values: SpruceSchemas.Core.Wrench<T> }",
+        "{ id: 'screwdriver', values: SpruceSchemas.Core.Screwdriver<T> } | { id: 'wrench', values: SpruceSchemas.Core.Wrench<T> }",
         '(SpruceSchemas.Core.ScrewdriverSchema | SpruceSchemas.Core.WrenchSchema)[]'
     )
     protected static async testTemplateDetails(

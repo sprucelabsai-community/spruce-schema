@@ -153,9 +153,7 @@ export default class SchemaField<
                         renderAs === TemplateRenderAs.Type &&
                         idsWithVersion.length > 1
                     ) {
-                        valueType = `{ schemaId: '${id}'${
-                            version ? `, version: '${version}'` : ''
-                        }, values: ${valueType} }`
+                        valueType = `{ id: '${id}', values: ${valueType} }`
                     }
                 }
 
