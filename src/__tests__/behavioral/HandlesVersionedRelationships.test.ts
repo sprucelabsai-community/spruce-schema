@@ -24,7 +24,7 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
     }
 
     @test()
-    protected static async throwsWhenMissingVersionInUnionFields() {
+    protected static async throwsWhenMissingVersionInUnionFieldsIfMultipleNamesMatch() {
         const { personV2Schema, carV1Schema, carV2Schema } =
             buildVersionedPersonWithCars()
 
@@ -42,10 +42,10 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
         const person = new StaticSchemaEntityImpl(personV2Schema, {
             requiredCar: carV2.getValues(),
             optionalCarWithCallback: {
-                schemaId: 'car',
+                id: 'car',
                 values: carV1.getValues(),
             },
-            optionalCarOrTruck: { schemaId: 'car', values: carV2.getValues() },
+            optionalCarOrTruck: { id: 'car', values: carV2.getValues() },
         })
 
         assert.doesThrow(() => person.getValues(), /version/gi)
@@ -70,14 +70,14 @@ export default class HandlesVersionedRelationshipsTest extends AbstractSchemaTes
         const person = new StaticSchemaEntityImpl(personV2Schema, {
             requiredCar: carV2.getValues(),
             optionalCarWithCallback: {
-                schemaId: 'car',
-                version: carV1.version,
+                id: 'car',
                 values: carV1.getValues(),
+                version: carV1Schema.version,
             },
             optionalCarOrTruck: {
-                schemaId: 'car',
-                version: carV2.version,
+                id: 'car',
                 values: carV2.getValues(),
+                version: carV2Schema.version,
             },
             requiredIsArrayCars: [],
             requiredIsArrayCarOrTruck: [],

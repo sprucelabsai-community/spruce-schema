@@ -31,7 +31,7 @@ export type SchemaFieldUnion<
         ? CreateEntityInstances extends true
             ? StaticSchemaEntity<S[K]>
             : {
-                  schemaId: S[K]['id']
+                  id: S[K]['id']
                   version?: S[K]['version']
                   values: SchemaValues<S[K]>
               }

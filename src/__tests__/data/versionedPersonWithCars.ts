@@ -145,14 +145,14 @@ export interface PersonV1Definition extends Schema {
         optionalIsArrayCarOrTruckWithDefaultValue: {
             type: 'schema'
             isArray: true
-            defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
+            defaultValue: [{ id: 'car'; values: { name: 'fast car' } }]
             options: {
                 schemas: [CarV1Definition, TruckV1Definition]
             }
         }
         optionalCarOrTruckWithDefaultValue: {
             type: 'schema'
-            defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
+            defaultValue: { id: 'car'; values: { name: 'fast car' } }
             options: {
                 schemas: [CarV1Definition, TruckV1Definition]
             }
@@ -261,14 +261,14 @@ export interface PersonV2Definition extends Schema {
         optionalIsArrayCarOrTruckWithDefaultValue: {
             type: 'schema'
             isArray: true
-            defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
+            defaultValue: [{ id: 'car'; values: { name: 'fast car' } }]
             options: {
                 schemas: [CarV1Definition, TruckV1Definition]
             }
         }
         optionalCarOrTruckWithDefaultValue: {
             type: 'schema'
-            defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
+            defaultValue: { id: 'car'; values: { name: 'fast car' } }
             options: {
                 schemas: [CarV1Definition, TruckV1Definition]
             }
@@ -420,16 +420,14 @@ const buildVersionedPersonWithCars = () => {
             optionalIsArrayCarOrTruckWithDefaultValue: {
                 type: 'schema',
                 isArray: true,
-                defaultValue: [
-                    { schemaId: 'car', values: { name: 'fast car' } },
-                ],
+                defaultValue: [{ id: 'car', values: { name: 'fast car' } }],
                 options: {
                     schemas: [carV1Schema, truckV1Definition],
                 },
             },
             optionalCarOrTruckWithDefaultValue: {
                 type: 'schema',
-                defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
+                defaultValue: { id: 'car', values: { name: 'fast car' } },
                 options: {
                     schemas: [carV1Schema, truckV1Definition],
                 },
@@ -539,16 +537,14 @@ const buildVersionedPersonWithCars = () => {
             optionalIsArrayCarOrTruckWithDefaultValue: {
                 type: 'schema',
                 isArray: true,
-                defaultValue: [
-                    { schemaId: 'car', values: { name: 'fast car' } },
-                ],
+                defaultValue: [{ id: 'car', values: { name: 'fast car' } }],
                 options: {
                     schemas: [carV1Schema, truckV1Definition],
                 },
             },
             optionalCarOrTruckWithDefaultValue: {
                 type: 'schema',
-                defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
+                defaultValue: { id: 'car', values: { name: 'fast car' } },
                 options: {
                     schemas: [carV1Schema, truckV1Definition],
                 },

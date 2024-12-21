@@ -112,11 +112,11 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
                 schemas: [CarSchema, TruckSchema]
             }
         }> = {
-            schemaId: 'car',
+            id: 'car',
             values: { name: 'fast car' },
         }
 
-        if (testSingleSchemaField.schemaId === 'car') {
+        if (testSingleSchemaField.id === 'car') {
             assert.isEqual(testSingleSchemaField.values.name, 'fast car')
         }
 
@@ -129,17 +129,17 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
         }>
         const testArraySchemaField: ManyType = [
             {
-                schemaId: 'car',
+                id: 'car',
                 values: { name: 'the car', onlyOnCar: 'so fast' },
             },
             {
-                schemaId: 'truck',
+                id: 'truck',
                 values: { name: 'the truck', onlyOnTruck: 'cary so much' },
             },
         ]
 
         testArraySchemaField.forEach((tool) => {
-            if (tool.schemaId === 'truck') {
+            if (tool.id === 'truck') {
                 assert.isEqual(tool.values.onlyOnTruck, 'cary so much')
             }
         })
@@ -152,13 +152,13 @@ export default class HandlesRelationshipsTest extends AbstractSchemaTest {
             requiredIsArrayCars: [],
             requiredIsArrayCarOrTruck: [
                 {
-                    schemaId: 'car',
+                    id: 'car',
                     values: { name: 'fast car 1', onlyOnCar: 'so much fast' },
                 },
-                { schemaId: 'truck', values: { name: 'big truck 1' } },
-                { schemaId: 'car', values: { name: 'fast car 2' } },
+                { id: 'truck', values: { name: 'big truck 1' } },
+                { id: 'car', values: { name: 'fast car 2' } },
                 {
-                    schemaId: 'truck',
+                    id: 'truck',
                     values: {
                         name: 'big truck 2',
                         onlyOnTruck: 'so much haul',

@@ -280,7 +280,7 @@ export default class SchemaField<
                     // @ts-ignore warns about infinite recursion, which is true, because relationships between schemas can go forever
                     instance = this.Schema(schemas[0], value)
                 } else if (schemas && schemas.length > 0) {
-                    const { schemaId, version, values } = value || {}
+                    const { id, version, values } = value || {}
 
                     if (!values) {
                         errors.push({
@@ -291,27 +291,26 @@ export default class SchemaField<
                                 'You need to add `values` to the value of ' +
                                 this.name,
                         })
-                    } else if (!schemaId) {
+                    } else if (!id) {
                         errors.push({
                             name: this.name,
                             label: this.label,
                             code: 'INVALID_PARAMETER',
                             friendlyMessage:
-                                'You need to add `schemaId` to the value of ' +
+                                'You need to add `id` to the value of ' +
                                 this.name,
                         })
                     } else {
                         const matchSchema = schemas.find(
                             (schema) =>
-                                schema.id === schemaId &&
-                                schema.version === version
+                                schema.id === id && schema.version === version
                         )
                         if (!matchSchema) {
                             errors.push({
                                 name: this.name,
                                 label: this.label,
                                 code: 'INVALID_PARAMETER',
-                                friendlyMessage: `Could not find a schema by id '${schemaId}'${
+                                friendlyMessage: `Could not find a schema by id '${id}'${
                                     version
                                         ? ` and version '${version}'`
                                         : ' with no version'
@@ -359,7 +358,7 @@ export default class SchemaField<
     ): FieldDefinitionValueType<F, CreateEntityInstances> {
         const { createEntityInstances, schemasById: schemasById = {} } =
             options || {}
-
+        debugger
         // try and pull the schema definition from the options and by id
         const destinationSchemas: Schema[] =
             SchemaField.mapFieldDefinitionToSchemas(this.definition, {
@@ -377,10 +376,8 @@ export default class SchemaField<
             instance = this.Schema(destinationSchemas[0], value)
         } else {
             // this could be one of a few types, lets check the "schemaId" prop
-            const { schemaId, values } = value
-            const allMatches = destinationSchemas.filter(
-                (def) => def.id === schemaId
-            )
+            const { id, values } = value
+            const allMatches = destinationSchemas.filter((def) => def.id === id)
             let matchedSchema: Schema | undefined
 
             if (allMatches.length === 0) {
@@ -403,7 +400,7 @@ export default class SchemaField<
                 if (!matchedSchema) {
                     throw new SpruceError({
                         code: 'VERSION_NOT_FOUND',
-                        schemaId,
+                        schemaId: id,
                     })
                 }
             } else {
@@ -428,7 +425,7 @@ export default class SchemaField<
 
         if (isUnion) {
             return {
-                schemaId: instance.schemaId,
+                id: instance.schemaId,
                 values: instance.getValues(getValueOptions),
             } as FieldDefinitionValueType<F, CreateEntityInstances>
         }

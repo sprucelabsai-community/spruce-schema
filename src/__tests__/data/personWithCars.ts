@@ -144,14 +144,14 @@ export interface PersonSchema extends Schema {
         optionalIsArrayCarOrTruckWithDefaultValue: {
             type: 'schema'
             isArray: true
-            defaultValue: [{ schemaId: 'car'; values: { name: 'fast car' } }]
+            defaultValue: [{ id: 'car'; values: { name: 'fast car' } }]
             options: {
                 schemas: [CarSchema, TruckSchema]
             }
         }
         optionalCarOrTruckWithDefaultValue: {
             type: 'schema'
-            defaultValue: { schemaId: 'car'; values: { name: 'fast car' } }
+            defaultValue: { id: 'car'; values: { name: 'fast car' } }
             options: {
                 schemas: [CarSchema, TruckSchema]
             }
@@ -299,16 +299,14 @@ const buildPersonWithCars = () => {
             optionalIsArrayCarOrTruckWithDefaultValue: {
                 type: 'schema',
                 isArray: true,
-                defaultValue: [
-                    { schemaId: 'car', values: { name: 'fast car' } },
-                ],
+                defaultValue: [{ id: 'car', values: { name: 'fast car' } }],
                 options: {
                     schemas: [carSchema, truckSchema],
                 },
             },
             optionalCarOrTruckWithDefaultValue: {
                 type: 'schema',
-                defaultValue: { schemaId: 'car', values: { name: 'fast car' } },
+                defaultValue: { id: 'car', values: { name: 'fast car' } },
                 options: {
                     schemas: [carSchema, truckSchema],
                 },

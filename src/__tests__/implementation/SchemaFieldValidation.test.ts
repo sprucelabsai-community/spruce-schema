@@ -63,7 +63,7 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
         )
 
         const value = {
-            schemaId: 'car',
+            id: 'car',
             values: {},
         }
 
@@ -82,7 +82,7 @@ export default class SchemaFieldTest extends AbstractSchemaTest {
         )
 
         const value = {
-            schemaId: 'car',
+            id: 'car',
             values: {
                 name: 'great car',
             },

@@ -458,19 +458,19 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
             firstName: 'Ryan',
             favoriteToolsOrFruit: [
                 {
-                    schemaId: 'fruit',
+                    id: 'fruit',
                     values: {
                         color: 'green',
                     },
                 },
                 {
-                    schemaId: 'fruit',
+                    id: 'fruit',
                     values: {
                         color: 'yellow',
                     },
                 },
                 {
-                    schemaId: 'tool',
+                    id: 'tool',
                     values: {
                         name: 'wrench',
                     },
@@ -485,21 +485,21 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
             firstName: 'Ryan',
             favoriteToolsOrFruit: [
                 {
-                    schemaId: 'versionedFruit',
+                    id: 'versionedFruit',
                     version: '1.0',
                     values: {
                         color: 'green',
                     },
                 },
                 {
-                    schemaId: 'versionedFruit',
+                    id: 'versionedFruit',
                     version: '1.0',
                     values: {
                         color: 'yellow',
                     },
                 },
                 {
-                    schemaId: 'versionedTool',
+                    id: 'versionedTool',
                     version: '1.0',
                     values: {
                         name: 'wrench',
@@ -507,7 +507,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     },
                 },
                 {
-                    schemaId: 'versionedTool',
+                    id: 'versionedTool',
                     version: '2.0',
                     values: {
                         size: 'wrench',
@@ -524,28 +524,28 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
             validateSchemaValues(versionedPersonWithFavToolsOrFruitSchema, {
                 favoriteToolsOrFruit: [
                     {
-                        schemaId: 'versionedFruit',
+                        id: 'versionedFruit',
                         version: '1.0',
                         values: {
                             color: 'green',
                         },
                     },
                     {
-                        schemaId: 'versionedFruit',
+                        id: 'versionedFruit',
                         version: '1.0',
                         values: {
                             color: 'yellow',
                         },
                     },
                     {
-                        schemaId: 'versionedTool',
+                        id: 'versionedTool',
                         version: '1.0',
                         values: {
                             size: 'wrench',
                         },
                     },
                     {
-                        schemaId: 'versionedTool',
+                        id: 'versionedTool',
                         version: '2.0',
                         values: {
                             name: 'wrench',
@@ -570,7 +570,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     doesNotExist: true,
                     favoriteToolsOrFruit: [
                         {
-                            schemaId: 'fruit',
+                            id: 'fruit',
                             values: {
                                 color: 'green',
                             },
@@ -589,7 +589,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     firstName: 'Ryan',
                     favoriteToolsOrFruit: [
                         {
-                            schemaId: 'fruit',
+                            id: 'fruit',
                             values: {
                                 doesNotExist: true,
                                 color: 'green',
@@ -633,7 +633,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                 taco: [],
                 phone: 'satnoehusntah',
                 favoriteToolsOrFruit: [
-                    { schemaId: 'tool', values: { cheba: 'hut' } },
+                    { id: 'tool', values: { cheba: 'hut' } },
                 ],
             })
         } catch (err: any) {
@@ -708,5 +708,52 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                 'nested1.field3': 'oh no!',
             })
         )
+    }
+
+    @test()
+    protected static async canValidateRelatedSchemas() {
+        const nestedSchema = buildSchema({
+            id: 'union-nested-tested',
+            fields: {
+                nested: {
+                    type: 'schema',
+                    options: {
+                        schemas: [
+                            buildSchema({
+                                id: 'union-tested-nested-1',
+                                fields: {
+                                    field1: {
+                                        type: 'text',
+                                    },
+                                    field2: {
+                                        type: 'text',
+                                    },
+                                },
+                            }),
+                            buildSchema({
+                                id: 'union-tested-nested-2',
+                                fields: {
+                                    test: {
+                                        type: 'text',
+                                    },
+                                    test2: {
+                                        type: 'text',
+                                    },
+                                },
+                            }),
+                        ],
+                    },
+                },
+            },
+        })
+
+        validateSchemaValues(nestedSchema, {
+            nested: {
+                id: 'union-tested-nested-1',
+                values: {
+                    field1: 'go!',
+                },
+            },
+        })
     }
 }

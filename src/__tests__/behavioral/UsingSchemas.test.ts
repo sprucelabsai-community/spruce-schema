@@ -38,12 +38,12 @@ interface PersonExpectedValuesWithoutSchema {
     optionalTextWithDefaultValue?: string | null
     optionalIsArrayCarOrTruckWithDefaultValue?:
         | {
-              schemaId: 'car' | 'truck'
+              id: 'car' | 'truck'
               values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
           }[]
         | null
     optionalCarOrTruckWithDefaultValue?: {
-        schemaId: 'car' | 'truck'
+        id: 'car' | 'truck'
         values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
     } | null
 }

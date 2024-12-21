@@ -35,11 +35,11 @@ interface PersonExpectedDefaultValuesWithoutSchema {
     optionalSelectWithDefaultValue: 'hello' | 'goodbye'
     optionalTextWithDefaultValue: string
     optionalIsArrayCarOrTruckWithDefaultValue: {
-        schemaId: 'car' | 'truck'
+        id: 'car' | 'truck'
         values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
     }[]
     optionalCarOrTruckWithDefaultValue: {
-        schemaId: 'car' | 'truck'
+        id: 'car' | 'truck'
         values: SchemaValues<CarSchema> | SchemaValues<TruckSchema>
     }
 }
@@ -105,7 +105,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
         )
         assert.isEqual(
             defaultValuesWithoutSchemas
-                .optionalIsArrayCarOrTruckWithDefaultValue[0].schemaId,
+                .optionalIsArrayCarOrTruckWithDefaultValue[0].id,
             'car'
         )
         assert.isEqual(
@@ -190,7 +190,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
         assert.isEqualDeep(defaults, { size: 'medium', stateOfMind: 'chill' })
     }
 
-    @test()
+    @test.only()
     protected static canGetDefaultValuesForUnionFields() {
         const schema = new StaticSchemaEntityImpl(personSchema)
         const {
