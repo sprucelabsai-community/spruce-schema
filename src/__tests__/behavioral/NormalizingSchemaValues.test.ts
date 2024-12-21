@@ -3,10 +3,12 @@ import AbstractSchemaTest from '../../AbstractSchemaTest'
 import {
     Schema,
     SchemaGetValuesOptions,
+    SchemaPartialValues,
     SchemaValues,
 } from '../../schemas.static.types'
 import StaticSchemaEntityImpl from '../../StaticSchemaEntityImpl'
 import buildSchema from '../../utilities/buildSchema'
+import defaultSchemaValues from '../../utilities/defaultSchemaValues'
 import normalizePartialSchemaValues from '../../utilities/normalizePartialSchemaValues'
 import normalizeSchemaValues from '../../utilities/normalizeSchemaValues'
 
@@ -397,6 +399,27 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
             },
             testPerson2Schema
         )
+    }
+
+    @test()
+    protected static async typingTests() {
+        const validateAndNormalizer = {
+            validateAndNormalize<S extends Schema = Schema>(
+                schema: S,
+                options: SchemaPartialValues<S, false>
+            ) {
+                const values = {
+                    ...defaultSchemaValues(schema),
+                    ...options,
+                } as SchemaValues<S>
+
+                normalizeSchemaValues(schema, values)
+            },
+        }
+
+        validateAndNormalizer.validateAndNormalize(testPersonSchema, {
+            firstName: 'tay',
+        })
     }
 
     private static normalize(

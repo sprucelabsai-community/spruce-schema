@@ -24,7 +24,7 @@ export default function normalizeSchemaValues<
     ShouldIncludeNullAndUndefinedFields extends boolean = true,
 >(
     schema: S,
-    values: ValuesWithPaths<SchemaPartialValues<S>>,
+    values: ValuesWithPaths<SchemaPartialValues<S>> | SchemaValues<S>,
     options?: SchemaGetValuesOptions<
         S,
         F,

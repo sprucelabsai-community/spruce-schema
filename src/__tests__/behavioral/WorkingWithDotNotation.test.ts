@@ -266,6 +266,13 @@ export default class WorkingWithDotNotationTest extends AbstractSchemaTest {
         )
     }
 
+    @test()
+    protected static async goodTypingWithDotNotation() {
+        normalizeSchemaValues(personSchema, {
+            'source.locationId': '123',
+        })
+    }
+
     private static assertFlattenedValuesEquals(
         values: Record<string, any>,
         expected: Record<string, any>,
