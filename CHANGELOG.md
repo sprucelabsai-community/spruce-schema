@@ -1,3 +1,5 @@
+## [31.0.16](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.15...v31.0.16) (2025-01-15)
+
 ## [31.0.15](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.14...v31.0.15) (2025-01-12)
 
 ## [31.0.14](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.13...v31.0.14) (2025-01-12)
