@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@sprucelabs/error": "^6.0.596",
-    "@sprucelabs/test-utils": "^5.5.41",
+    "@sprucelabs/test-utils": "^5.5.42",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
