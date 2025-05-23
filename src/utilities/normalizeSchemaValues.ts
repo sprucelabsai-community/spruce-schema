@@ -22,6 +22,10 @@ export default function normalizeSchemaValues<
     IncludePrivateFields extends boolean = true,
     IsDynamic extends boolean = IsDynamicSchema<S>,
     ShouldIncludeNullAndUndefinedFields extends boolean = true,
+    ExcludeFields extends SchemaFieldNames<S> | undefined = undefined,
+    PublicExcludeFields extends
+        | SchemaPublicFieldNames<S>
+        | undefined = undefined,
 >(
     schema: S,
     values: ValuesWithPaths<SchemaPartialValues<S>> | SchemaValues<S>,
@@ -31,7 +35,9 @@ export default function normalizeSchemaValues<
         PF,
         CreateEntityInstances,
         IncludePrivateFields,
-        ShouldIncludeNullAndUndefinedFields
+        ShouldIncludeNullAndUndefinedFields,
+        ExcludeFields,
+        PublicExcludeFields
     >
 ) {
     const instance = EntityFactory.Entity<S, IsDynamic>(
@@ -47,7 +53,7 @@ export default function normalizeSchemaValues<
     } = options || {}
 
     let areAnyKeysDotted = false
-    let normalizedFields = fields?.map((f) => {
+    const normalizedFields = fields?.map((f) => {
         const hasDotKey = f.includes('.')
         areAnyKeysDotted = areAnyKeysDotted || hasDotKey
         return hasDotKey ? (f.split('.')[0] as F) : f
@@ -79,25 +85,33 @@ export default function normalizeSchemaValues<
         normalized = expandValues(normalized)
     }
 
+    type AllValues = Pick<
+        SchemaValues<
+            S,
+            CreateEntityInstances,
+            true,
+            ShouldIncludeNullAndUndefinedFields
+        >,
+        F
+    >
+
+    type PublicValues = Pick<
+        SchemaValues<
+            S,
+            CreateEntityInstances,
+            true,
+            ShouldIncludeNullAndUndefinedFields
+        >,
+        PF
+    >
+
     return normalized as IsDynamic extends true
         ? DynamicSchemaAllValues<S, CreateEntityInstances>
         : IncludePrivateFields extends true
-          ? Pick<
-                SchemaValues<
-                    S,
-                    CreateEntityInstances,
-                    true,
-                    ShouldIncludeNullAndUndefinedFields
-                >,
-                F
-            >
-          : Pick<
-                SchemaValues<
-                    S,
-                    CreateEntityInstances,
-                    true,
-                    ShouldIncludeNullAndUndefinedFields
-                >,
-                PF
-            >
+          ? ExcludeFields extends SchemaFieldNames<S>
+              ? Omit<AllValues, ExcludeFields>
+              : AllValues
+          : PublicExcludeFields extends SchemaFieldNames<S>
+            ? Omit<PublicValues, PublicExcludeFields>
+            : PublicValues
 }

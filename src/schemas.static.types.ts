@@ -389,14 +389,18 @@ export interface DynamicSchemaNormalizeOptions<
 > extends SchemaNormalizeFieldValueOptions<CreateEntityInstances> {}
 
 export type SchemaGetValuesOptions<
-    T extends Schema,
-    F extends SchemaFieldNames<T> = SchemaFieldNames<T>,
-    PF extends SchemaPublicFieldNames<T> = SchemaPublicFieldNames<T>,
+    S extends Schema,
+    F extends SchemaFieldNames<S> = SchemaFieldNames<S>,
+    PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
     CreateEntityInstances extends boolean = false,
     IncludePrivateFields extends boolean = true,
     ShouldIncludeNullAndUndefinedFields extends boolean = true,
+    ExcludeFields extends SchemaFieldNames<S> | undefined = undefined,
+    PublicExcludeFields extends
+        | SchemaPublicFieldNames<S>
+        | undefined = undefined,
 > = SchemaNormalizeOptions<
-    T,
+    S,
     CreateEntityInstances,
     ShouldIncludeNullAndUndefinedFields
 > &
@@ -404,10 +408,12 @@ export type SchemaGetValuesOptions<
         ? {
               shouldIncludePrivateFields: IncludePrivateFields
               fields?: PF[]
+              excludeFields?: PublicExcludeFields[]
           }
         : {
               shouldIncludePrivateFields?: IncludePrivateFields
               fields?: F[]
+              excludeFields?: ExcludeFields[]
           })
 
 export type DynamicSchemaGetValuesOptions<

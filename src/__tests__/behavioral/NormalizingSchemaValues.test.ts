@@ -2,6 +2,7 @@ import { test, assert } from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import {
     Schema,
+    SchemaFieldNames,
     SchemaGetValuesOptions,
     SchemaPartialValues,
     SchemaValues,
@@ -420,6 +421,37 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
         validateAndNormalizer.validateAndNormalize(testPersonSchema, {
             firstName: 'tay',
         })
+    }
+
+    @test('can exclude firstName', ['firstName'], {
+        age: 10,
+        privateBooleanField: true,
+    })
+    @test('can exclude age', ['age'], {
+        privateBooleanField: true,
+        firstName: 'test',
+    })
+    @test('can exclude both firstName and age', ['firstName', 'age'], {
+        privateBooleanField: true,
+    })
+    protected static async canExcludeFieldsWhenNormalizing(
+        excludeFields: SchemaFieldNames<TestPersonSchema>[],
+        expected: Partial<TestPerson>
+    ) {
+        const values = normalizeSchemaValues(
+            this.personSchema,
+            {
+                firstName: 'test',
+                age: 10,
+                privateBooleanField: true,
+            },
+            {
+                excludeFields,
+                shouldIncludeNullAndUndefinedFields: false,
+            }
+        )
+
+        assert.isEqualDeep(values, expected)
     }
 
     private static normalize(

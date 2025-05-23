@@ -245,13 +245,21 @@ export default class StaticSchemaEntityImpl<S extends Schema>
         PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
         CreateEntityInstances extends boolean = true,
         IncludePrivateFields extends boolean = true,
+        ShouldIncludeNullAndUndefinedFields extends boolean = true,
+        ExcludeFields extends SchemaFieldNames<S> | undefined = undefined,
+        PublicExcludeFields extends
+            | SchemaPublicFieldNames<S>
+            | undefined = undefined,
     >(
         options?: SchemaGetValuesOptions<
             S,
             F,
             PF,
             CreateEntityInstances,
-            IncludePrivateFields
+            IncludePrivateFields,
+            ShouldIncludeNullAndUndefinedFields,
+            ExcludeFields,
+            PublicExcludeFields
         >
     ): IncludePrivateFields extends false
         ? Pick<SchemaPublicValues<S, CreateEntityInstances>, PF>
@@ -262,6 +270,7 @@ export default class StaticSchemaEntityImpl<S extends Schema>
             fields = Object.keys(this.fields),
             shouldIncludePrivateFields: includePrivateFields = true,
             shouldIncludeNullAndUndefinedFields = true,
+            excludeFields,
         } = options || {}
 
         this.getNamedFields().forEach((namedField) => {
@@ -274,7 +283,15 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                 !shouldIncludeNullAndUndefinedFields &&
                 (this.values[name] === undefined || this.values[name] === null)
 
-            if (shouldSkipBecauseNotSet || shouldSkipBecauseUndefinedOrNull) {
+            const shouldSkipBecauseExcluded = excludeFields?.includes(
+                name as ExcludeFields & PublicExcludeFields
+            )
+
+            if (
+                shouldSkipBecauseNotSet ||
+                shouldSkipBecauseUndefinedOrNull ||
+                shouldSkipBecauseExcluded
+            ) {
                 return
             }
 
@@ -282,7 +299,10 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                 fields.indexOf(name) > -1 &&
                 (includePrivateFields || !field.isPrivate)
             ) {
-                const value = this.get(name, options)
+                const value = this.get(
+                    name,
+                    options as SchemaNormalizeOptions<S, CreateEntityInstances>
+                )
                 values[name] = value
             }
         })
