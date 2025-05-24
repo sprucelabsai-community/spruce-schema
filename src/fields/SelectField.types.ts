@@ -1,9 +1,10 @@
 import { FieldDefinition } from './field.static.types'
 
+export type SelectValue = string | number
+
 export interface SelectChoice {
     /**  Machine readable way to identify this choice */
-    value: string
-    /** Human readable label for when selecting a choice */
+    value: SelectValue
     label: string
 }
 

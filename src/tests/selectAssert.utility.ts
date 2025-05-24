@@ -4,7 +4,7 @@ import { SelectChoice } from '../fields/SelectField.types'
 const selectAssert = {
     assertSelectChoicesMatch<
         Choice extends SelectChoice,
-        Values extends Choice['value'][number] = Choice['value'][number],
+        Values extends Choice['value'] = Choice['value'],
     >(choices: Choice[], expected: Values[]) {
         assert.isEqual(
             choices.length,
