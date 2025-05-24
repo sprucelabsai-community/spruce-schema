@@ -1,3 +1,10 @@
+# [31.1.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.93...v31.1.0) (2025-05-23)
+
+
+### Features
+
+* can exclude fields ([015402e](https://github.com/sprucelabsai-community/spruce-schema/commit/015402e))
+
 ## [31.0.93](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.92...v31.0.93) (2025-05-22)
 
 ## [31.0.92](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.0.91...v31.0.92) (2025-05-22)
