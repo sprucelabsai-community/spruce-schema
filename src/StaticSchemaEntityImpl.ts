@@ -180,8 +180,8 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                         : 'INVALID_PARAMETER',
                     name,
                     friendlyMessage: !this.values[name]
-                        ? `'${field.label ?? field.name}' is required!`
-                        : `'${field.label ?? field.name}' must have at least ${
+                        ? `${field.label ? `'${field.label}'` : 'This'} is required!`
+                        : `${field.label ? `'${field.label}'` : 'You'} must ${field.label ? 'have' : 'select'} at least ${
                               field.minArrayLength
                           } value${field.minArrayLength === 1 ? '' : 's'}. I found ${
                               valueAsArray.length

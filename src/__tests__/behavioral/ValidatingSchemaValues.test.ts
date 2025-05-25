@@ -281,7 +281,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     firstName: 'tay',
                     lastName: 'ro',
                 }),
-            /'favoriteColors' is required/gi
+            /This is required/gi
         )
     }
 
@@ -402,7 +402,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     lastName: 'last',
                     favoriteTools: [],
                 }),
-            /'favoriteTools' must have at least 1/
+            /You must select at least 1/
         )
 
         validationErrorAssert.assertError(err, {
@@ -448,7 +448,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
                     firstName: 'Ryan',
                     favoriteToolsOrFruit: [],
                 }),
-            /'favoriteToolsOrFruit' must have at least 1/gi
+            /You must select at least 1/gi
         )
     }
 
