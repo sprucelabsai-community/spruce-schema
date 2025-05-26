@@ -38,6 +38,21 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
         '("one" | "two")[]'
     )
     @test(
+        'select isArray with numbers',
+        SelectField,
+        {
+            type: 'select',
+            isArray: true,
+            options: {
+                choices: [
+                    { value: 0, label: 'One' },
+                    { value: 1, label: 'Two' },
+                ],
+            },
+        },
+        '(0 | 1)[]'
+    )
+    @test(
         'image',
         ImageField,
         {

@@ -59,7 +59,10 @@ export default class SelectField<
 
         return {
             valueType: `(${choices
-                .map((choice) => `"${choice.value}"`)
+                .map(
+                    (choice) =>
+                        `${typeof choice.value === 'number' ? choice.value : `"${choice.value}"`}`
+                )
                 .join(' | ')})${isArray ? '[]' : ''}`,
         }
     }
