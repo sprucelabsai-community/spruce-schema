@@ -50,7 +50,6 @@ export default class SelectField<
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<SelectFieldDefinition>
     ): FieldTemplateDetails {
-        // Build union of select options
         const { definition } = options
         const {
             isArray,
