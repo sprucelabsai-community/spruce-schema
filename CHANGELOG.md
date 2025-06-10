@@ -1,3 +1,10 @@
+# [32.0.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.1.13...v32.0.0) (2025-06-10)
+
+
+### Breaking Changes
+
+* jest upgrade ([095cda6](https://github.com/sprucelabsai-community/spruce-schema/commit/095cda6))
+
 ## [31.1.13](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.1.12...v31.1.13) (2025-06-06)
 
 ## [31.1.12](https://github.com/sprucelabsai-community/spruce-schema/compare/v31.1.11...v31.1.12) (2025-06-05)
