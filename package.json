@@ -59,16 +59,16 @@
     "build": "yarn run build.tsc --sourceMap ; yarn run resolve-paths"
   },
   "dependencies": {
-    "@sprucelabs/error": "^7.0.11",
-    "@sprucelabs/resolve-path-aliases": "^3.0.6",
-    "@sprucelabs/test-utils": "^6.0.16",
+    "@sprucelabs/error": "^7.0.12",
+    "@sprucelabs/test-utils": "^6.0.17",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^7.0.6",
-    "@sprucelabs/jest-json-reporter": "^9.0.11",
+    "@sprucelabs/esm-postbuild": "^7.0.7",
+    "@sprucelabs/jest-json-reporter": "^9.0.12",
+    "@sprucelabs/resolve-path-aliases": "^3.0.7",
     "@sprucelabs/semantic-release": "^5.0.2",
     "@sprucelabs/test": "^10.0.5",
     "chokidar-cli": "^3.0.0",
