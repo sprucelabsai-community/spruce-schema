@@ -55,11 +55,13 @@
     "post.watch.build": "yarn build.resolve-paths",
     "resolve-paths.lint": "yarn run build.resolve-paths ; yarn run lint",
     "watch.rebuild": "yarn run clean.all && yarn install && yarn run watch.build.dev",
-    "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
+    "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
+    "build": "yarn run build.tsc --sourceMap ; yarn run resolve-paths"
   },
   "dependencies": {
-    "@sprucelabs/error": "^7.0.10",
-    "@sprucelabs/test-utils": "^6.0.15",
+    "@sprucelabs/error": "^7.0.11",
+    "@sprucelabs/resolve-path-aliases": "^3.0.6",
+    "@sprucelabs/test-utils": "^6.0.16",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
@@ -67,9 +69,8 @@
   "devDependencies": {
     "@sprucelabs/esm-postbuild": "^7.0.6",
     "@sprucelabs/jest-json-reporter": "^9.0.11",
-    "@sprucelabs/resolve-path-aliases": "^3.0.6",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^10.0.4",
+    "@sprucelabs/test": "^10.0.5",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.29.0",
     "eslint-config-spruce": "^11.2.26",
