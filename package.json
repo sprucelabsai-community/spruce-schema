@@ -55,12 +55,11 @@
     "post.watch.build": "yarn build.resolve-paths",
     "resolve-paths.lint": "yarn run build.resolve-paths ; yarn run lint",
     "watch.rebuild": "yarn run clean.all && yarn install && yarn run watch.build.dev",
-    "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/",
-    "build": "yarn run build.tsc --sourceMap ; yarn run resolve-paths"
+    "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
   },
   "dependencies": {
-    "@sprucelabs/error": "^7.0.12",
-    "@sprucelabs/test-utils": "^6.0.18",
+    "@sprucelabs/error": "^7.0.13",
+    "@sprucelabs/test-utils": "^6.0.19",
     "email-validator": "^2.0.4",
     "just-safe-get": "^4.2.0",
     "just-safe-set": "^4.2.1"
@@ -70,13 +69,13 @@
     "@sprucelabs/jest-json-reporter": "^9.0.13",
     "@sprucelabs/resolve-path-aliases": "^3.0.7",
     "@sprucelabs/semantic-release": "^5.0.2",
-    "@sprucelabs/test": "^10.0.5",
+    "@sprucelabs/test": "^10.0.6",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.29.0",
     "eslint-config-spruce": "^11.2.26",
-    "jest": "^30.0.2",
-    "jest-circus": "^30.0.2",
-    "prettier": "^3.5.3",
+    "jest": "^30.0.3",
+    "jest-circus": "^30.0.3",
+    "prettier": "^3.6.1",
     "ts-node": "^10.9.2",
     "tsc-watch": "^7.1.1",
     "tsconfig-paths": "^4.2.0",
