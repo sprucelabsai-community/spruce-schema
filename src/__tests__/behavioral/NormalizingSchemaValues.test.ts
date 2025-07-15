@@ -33,6 +33,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
             age: 10,
             boolean: undefined,
             privateBooleanField: undefined,
+            references: undefined,
             nestedArraySchema: [
                 { field1: 'first', field2: undefined },
                 { field1: 'second', field2: undefined },
@@ -59,6 +60,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
                 age: number | null | undefined
                 boolean: boolean | null | undefined
                 privateBooleanField: boolean | null | undefined
+                references: string[] | null | undefined
                 nestedArraySchema:
                     | { field1?: string | null | undefined }[]
                     | null
@@ -454,6 +456,41 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
         assert.isEqualDeep(values, expected)
     }
 
+    @test()
+    protected static async leavesNullInArrayValuesIfShouldValidateFalse() {
+        const values = this.normalize(
+            {
+                //@ts-ignore
+                references: [null],
+            },
+            {
+                shouldValidate: false,
+            }
+        )
+
+        assert.isEqualDeep(values, {
+            references: [null],
+            age: undefined,
+            boolean: undefined,
+            firstName: undefined,
+            nestedArraySchema: undefined,
+            privateBooleanField: undefined,
+        })
+    }
+
+    @test()
+    protected static async doesNotThrowWhenNullIsSecondValueAndShouldValidateFalse() {
+        this.normalize(
+            {
+                //@ts-ignore
+                references: ['test', null],
+            },
+            {
+                shouldValidate: false,
+            }
+        )
+    }
+
     private static normalize(
         values: Partial<TestPerson>,
         options?: SchemaGetValuesOptions<TestPersonSchema>,
@@ -507,6 +544,13 @@ const testPersonSchema = buildSchema({
         privateBooleanField: {
             type: 'boolean',
             isPrivate: true,
+        },
+        references: {
+            type: 'text',
+            isArray: true,
+            minArrayLength: 0,
+            label: 'References',
+            hint: 'Links or references related to the tip',
         },
         nestedArraySchema: {
             type: 'schema',

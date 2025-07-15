@@ -22,9 +22,11 @@ export default class SpruceError extends AbstractSpruceError<SchemaErrorOptions>
             case 'TRANSFORMATION_ERROR':
                 message = ''
                 options.errors?.forEach((error) => {
-                    message += `Error on ${error.name}:\n`
-                    if (error.originalError) {
-                        message += `  ${error.originalError.message}`
+                    message += `Error transforming '${error.name}':\n`
+                    const m =
+                        error.friendlyMessage || error.originalError?.message
+                    if (m) {
+                        message += ` - ${m}`
                     }
                 })
 

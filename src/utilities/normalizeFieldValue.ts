@@ -78,8 +78,8 @@ export default function normalizeFieldValue<
 
     if (localValue.length > 0) {
         localValue = localValue.map((value) =>
-            typeof value === 'undefined'
-                ? undefined
+            typeof value === 'undefined' || value === null
+                ? value
                 : (field as IField<FieldDefinitions>).toValueType(value, {
                       createEntityInstances,
                       ...baseOptions,
