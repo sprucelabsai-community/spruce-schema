@@ -6,6 +6,8 @@ export const supportedFileTypes = [
     'image/jpeg',
     'application/pdf',
     'text/csv',
+    'image/*',
+    'video/*',
     '*',
 ] as const
 
