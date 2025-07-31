@@ -59,6 +59,25 @@ export default class FileFieldTest extends AbstractSpruceTest {
         })
     }
 
+    @test()
+    protected static async canUseStarredImages() {
+        this.setTypes(['image/*'])
+        this.assertNoError({
+            name: 'yes',
+            type: 'image/jpeg',
+            uri: 'uoaue',
+        })
+
+        this.assertValueProducesError(
+            {
+                name: 'no',
+                type: 'application/pdf',
+                uri: 'uoaue',
+            },
+            'INVALID_PARAMETER'
+        )
+    }
+
     private static setTypes(types: SupportedFileType[]) {
         this.field = this.Field({
             options: {
@@ -76,7 +95,12 @@ export default class FileFieldTest extends AbstractSpruceTest {
     }
 
     private static assertNoError(value: Partial<FileFieldValue>) {
-        assert.isLength(this.validate({ name: 'test', ...value }), 0)
+        const errors = this.validate({ name: 'test', ...value })
+        assert.isLength(
+            errors,
+            0,
+            `Got back errors when I expected none:\n\n${JSON.stringify(errors, null, 2)}`
+        )
     }
 
     private static validate(

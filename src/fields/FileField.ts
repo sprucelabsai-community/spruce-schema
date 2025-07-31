@@ -5,7 +5,11 @@ import {
 } from '../types/template.types'
 import AbstractField from './AbstractField'
 import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
-import { FileFieldDefinition, FileFieldValue } from './FileField.types'
+import {
+    FileFieldDefinition,
+    FileFieldValue,
+    SupportedFileType,
+} from './FileField.types'
 
 export default class FileField extends AbstractField<FileFieldDefinition> {
     public static readonly description =
@@ -31,8 +35,8 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
         if (
             value &&
             !value.base64 &&
-            acceptableTypes[0] !== '*' &&
-            acceptableTypes.indexOf(value.type!) === -1
+            value.type &&
+            !this.isValidType(value.type)
         ) {
             errors.push({
                 code: 'INVALID_PARAMETER',
@@ -44,6 +48,17 @@ export default class FileField extends AbstractField<FileFieldDefinition> {
         }
 
         return errors
+    }
+
+    private isValidType(type: SupportedFileType): boolean {
+        const types = this.definition.options?.acceptableTypes ?? []
+        const typeParts = type.split('/')
+        const typeStarred = `${typeParts[0]}/*` as SupportedFileType
+        return (
+            types[0] === '*' ||
+            types.indexOf(type) !== -1 ||
+            types.indexOf(typeStarred) !== -1
+        )
     }
 
     public toValueType<C extends boolean>(
