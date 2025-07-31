@@ -1,3 +1,10 @@
+# [32.1.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.0.48...v32.1.0) (2025-07-31)
+
+
+### Features
+
+* schema validator can be disabled ([ae14016](https://github.com/sprucelabsai-community/spruce-schema/commit/ae14016))
+
 ## [32.0.48](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.0.47...v32.0.48) (2025-07-31)
 
 ## [32.0.47](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.0.46...v32.0.47) (2025-07-31)
