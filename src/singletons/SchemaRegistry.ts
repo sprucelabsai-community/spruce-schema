@@ -15,7 +15,8 @@ export default class SchemaRegistry {
     public static getInstance() {
         if (!this.instance) {
             this.instance = new SchemaRegistry(
-                process.env.SHOULD_USE_SCHEMA_REGISTRY !== 'false'
+                typeof process !== 'undefined' &&
+                    process.env.SHOULD_USE_SCHEMA_REGISTRY !== 'false'
             )
         }
         return this.instance
