@@ -5,16 +5,26 @@ import validateSchema from '../utilities/validateSchema'
 
 export default class SchemaRegistry {
     private schemasById: SchemasById = {}
-    private static instance: SchemaRegistry
+    private static instance?: SchemaRegistry
+    private shouldTrack: boolean
+
+    public constructor(shouldTrack = true) {
+        this.shouldTrack = shouldTrack
+    }
 
     public static getInstance() {
         if (!this.instance) {
-            this.instance = new SchemaRegistry()
+            this.instance = new SchemaRegistry(
+                process.env.SHOULD_USE_SCHEMA_REGISTRY !== 'false'
+            )
         }
         return this.instance
     }
 
     public trackSchema(schema: Schema) {
+        if (!this.shouldTrack) {
+            return
+        }
         validateSchema(schema)
 
         const id = schema.id
@@ -117,5 +127,9 @@ export default class SchemaRegistry {
         if (this.schemasById[id]?.length === 0) {
             delete this.schemasById[id]
         }
+    }
+
+    public static reset() {
+        delete this.instance
     }
 }

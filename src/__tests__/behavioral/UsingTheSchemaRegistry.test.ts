@@ -10,6 +10,7 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
         await super.beforeEach()
         SchemaRegistry.getInstance().forgetAllSchemas()
         this.registry = new SchemaRegistry()
+        delete process.env.SHOULD_USE_SCHEMA_REGISTRY
     }
 
     @test()
@@ -149,5 +150,17 @@ export default class UsingTheSchemaRegistryTest extends AbstractSpruceTest {
             personV1Schema,
             personV2Schema,
         ])
+    }
+
+    @test()
+    protected static shouldNotTrackedBasedOnEnv() {
+        SchemaRegistry.reset()
+        process.env.SHOULD_USE_SCHEMA_REGISTRY = 'false'
+        buildPersonWithCars()
+        buildPersonWithCars()
+        SchemaRegistry.reset()
+        process.env.SHOULD_USE_SCHEMA_REGISTRY = 'true'
+        buildPersonWithCars()
+        assert.doesThrow(() => buildPersonWithCars())
     }
 }
