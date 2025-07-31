@@ -15,6 +15,7 @@ export type RequiredImageSize = (typeof requiredImageSizes)[number]
 
 export interface ImageFieldValue {
     name: string
+    id?: string
     base64?: string
     type?: SupportedFileType
     sUri?: string

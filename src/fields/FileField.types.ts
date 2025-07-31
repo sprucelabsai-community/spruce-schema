@@ -15,6 +15,7 @@ export type SupportedFileType = (typeof supportedFileTypes)[number]
 
 export interface FileFieldValue {
     name: string
+    id?: string
     type?: SupportedFileType
     uri?: string
     base64?: string
