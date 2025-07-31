@@ -1,3 +1,5 @@
+## [32.1.1](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.1.0...v32.1.1) (2025-07-31)
+
 # [32.1.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.0.48...v32.1.0) (2025-07-31)
 
 
