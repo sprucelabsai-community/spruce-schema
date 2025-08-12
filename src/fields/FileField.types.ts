@@ -57,6 +57,7 @@ export interface FileFieldValue {
     type?: SupportedFileType
     uri?: string
     base64?: string
+    previewUrl?: string
 }
 
 export type FileFieldDefinition = FieldDefinition<FileFieldValue> & {
