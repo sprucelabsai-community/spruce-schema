@@ -204,6 +204,9 @@ const personWithFavToolsOrFruitSchema = buildSchema({
         phone: {
             type: 'phone',
         },
+        email: {
+            type: 'email',
+        },
         lastName: {
             type: 'text',
         },

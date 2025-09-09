@@ -24,7 +24,7 @@ export default class EmailField extends AbstractField<EmailFieldDefinition> {
     ) {
         const errors = super.validate(value, options)
 
-        if (!EmailValidator.validate(value)) {
+        if (value && !EmailValidator.validate(value)) {
             errors.push({ code: 'INVALID_PARAMETER', name: this.name })
         }
 
