@@ -52,6 +52,12 @@ const COUNTRY_FORMATS: CountryFormat[] = [
 const DEFAULT_COUNTRY =
     COUNTRY_FORMATS.find((format) => format.code === '1') ?? COUNTRY_FORMATS[0]
 
+const createAdHocFormat = (code: string): CountryFormat => ({
+    code,
+    groupSizes: [],
+    groupSeparator: DEFAULT_CODE_SEPARATOR,
+})
+
 export function isValidNumber(number: string) {
     if (LETTER_PATTERN.test(number)) {
         return false
@@ -140,6 +146,8 @@ function detectCountryFormat(input: DetectionInput): CountryFormat {
         if (explicitMatch) {
             return explicitMatch
         }
+
+        return createAdHocFormat(input.digits)
     }
 
     const detected = COUNTRY_FORMATS.find((format) =>
