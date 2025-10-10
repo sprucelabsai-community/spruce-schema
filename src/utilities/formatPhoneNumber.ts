@@ -2,6 +2,7 @@ interface DetectionInput {
     original: string
     digits: string
     hasExplicitPlus: boolean
+    hasTrailingSpace: boolean
 }
 
 interface CountryFormat {
@@ -100,7 +101,10 @@ export default function formatPhoneNumber(
         countryFormat.code
     )
 
-    if (!localDigits.length) {
+    const isCodeOnly =
+        parsed.digits.length > 0 && parsed.digits === countryFormat.code
+
+    if (!localDigits.length && !isCodeOnly) {
         if (!shouldFailSilently) {
             throw new Error('INVALID_PHONE_NUMBER')
         }
@@ -110,11 +114,15 @@ export default function formatPhoneNumber(
 
     const formattedLocal = formatLocalDigits(localDigits, countryFormat)
     const codeSeparator = countryFormat.codeSeparator ?? DEFAULT_CODE_SEPARATOR
-    const formatted = formattedLocal
-        ? `+${countryFormat.code}${codeSeparator}${formattedLocal}`
-        : `+${countryFormat.code}`
+    let formatted = `+${countryFormat.code}`
 
-    return formatted.trim()
+    if (formattedLocal) {
+        formatted += `${codeSeparator}${formattedLocal}`
+    } else if (parsed.hasTrailingSpace && isCodeOnly) {
+        formatted += codeSeparator
+    }
+
+    return formatted
 }
 
 export function isDummyNumber(phone: string) {
@@ -125,11 +133,13 @@ export function isDummyNumber(phone: string) {
 function parseInput(original: string): DetectionInput {
     const digits = original.replace(/\D/g, '')
     const hasExplicitPlus = original.trim().startsWith('+')
+    const hasTrailingSpace = /\s$/.test(original)
 
     return {
         original,
         digits,
         hasExplicitPlus,
+        hasTrailingSpace,
     }
 }
 
@@ -145,6 +155,22 @@ function detectCountryFormat(input: DetectionInput): CountryFormat {
 
         if (explicitMatch) {
             return explicitMatch
+        }
+
+        return createAdHocFormat(input.digits)
+    }
+
+    if (
+        input.hasTrailingSpace &&
+        input.digits.length > 0 &&
+        input.digits.length <= 2
+    ) {
+        const exactMatch = COUNTRY_FORMATS.find(
+            (format) => format.code === input.digits
+        )
+
+        if (exactMatch) {
+            return exactMatch
         }
 
         return createAdHocFormat(input.digits)

@@ -42,6 +42,7 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
         this.assertFormatsAsExpected('905-555-5555', '+1 905-555-5555')
         this.assertFormatsAsExpected('905123', '+1 905-123')
         this.assertFormatsAsExpected('+1720', '+1 720')
+        this.assertFormatsAsExpected('1 ', '+1 ')
         this.assertFormatsAsExpected('+1 72', '+1 72')
     }
 
@@ -55,6 +56,7 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
         this.assertFormatsAsExpected('+90 (555)-555-5555', '+90 555 555 5555')
         this.assertFormatsAsExpected('+905555555555', '+90 555 555 5555')
         this.assertFormatsAsExpected('+90505', '+90 505')
+        this.assertFormatsAsExpected('90 ', '+90 ')
         this.assertFormatsAsExpected('+90505 12', '+90 505 12')
     }
 
@@ -65,6 +67,7 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
         this.assertFormatsAsExpected('+92 (2345) 7654321', '+92 2345 7654321')
         this.assertFormatsAsExpected('+9', '+9')
         this.assertFormatsAsExpected('+92', '+92')
+        this.assertFormatsAsExpected('92 ', '+92 ')
         this.assertFormatsAsExpected('92234554321', '+92 2345 54321')
     }
 
@@ -77,6 +80,7 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
         this.assertFormatsAsExpected('+49 555 555-5555', '+49 555 555 5555')
         this.assertFormatsAsExpected('+4', '+4')
         this.assertFormatsAsExpected('+49', '+49')
+        this.assertFormatsAsExpected('49 ', '+49 ')
         //this.assertFormatsAsExpected('+495555555555', '+49 5555 555555')
     }
 
