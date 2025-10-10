@@ -1,3 +1,10 @@
+# [32.2.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.1.64...v32.2.0) (2025-10-10)
+
+
+### Features
+
+* pakistan format ([4f9d5bc](https://github.com/sprucelabsai-community/spruce-schema/commit/4f9d5bc))
+
 ## [32.1.64](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.1.63...v32.1.64) (2025-10-10)
 
 ## [32.1.63](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.1.62...v32.1.63) (2025-10-09)
