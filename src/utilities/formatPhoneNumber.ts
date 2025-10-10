@@ -1,90 +1,183 @@
-function formatNumberWithCode(phoneNumberString: string, code = '1') {
-    if (phoneNumberString.match(/[a-zA-Z]/g)) {
-        return null
-    }
-
-    const cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-
-    // Dynamically insert the country code into the regex
-    let regexPattern = new RegExp(`^(${code})?(\\d{3})(\\d{0,3})(\\d{0,4})$`)
-    let match = cleaned.match(regexPattern)
-
-    if (match) {
-        let intlCode = match[1] ? `+${match[1]} ` : `+${code} ` // Use the matched code or the provided code
-
-        const divider = code === '1' ? '-' : ' '
-        const number = [
-            intlCode,
-            '',
-            match[2],
-            divider,
-            match[3],
-            divider,
-            match[4],
-        ]
-            .join('')
-            .replace(/-+$/, '')
-
-        return number
-    }
-
-    return null
+interface DetectionInput {
+    original: string
+    digits: string
+    hasExplicitPlus: boolean
 }
+
+interface CountryFormat {
+    code: string
+    groupSizes: number[]
+    groupSeparator: string
+    codeSeparator?: string
+    validDigits?: number[]
+    detect?: (input: DetectionInput) => boolean
+}
+
+const LETTER_PATTERN = /[a-zA-Z]/
+const DEFAULT_CODE_SEPARATOR = ' '
+
+const COUNTRY_FORMATS: CountryFormat[] = [
+    {
+        code: '92',
+        groupSizes: [4, 7],
+        groupSeparator: ' ',
+        validDigits: [9, 10, 11],
+        detect: ({ digits, hasExplicitPlus }) =>
+            digits.startsWith('92') && (hasExplicitPlus || digits.length > 10),
+    },
+    {
+        code: '90',
+        groupSizes: [3, 3, 4],
+        groupSeparator: ' ',
+        validDigits: [10],
+        detect: ({ digits, hasExplicitPlus }) =>
+            digits.startsWith('90') && (hasExplicitPlus || digits.length > 10),
+    },
+    {
+        code: '49',
+        groupSizes: [3, 3, 4],
+        groupSeparator: ' ',
+        validDigits: [10],
+        detect: ({ digits, hasExplicitPlus }) =>
+            digits.startsWith('49') && (hasExplicitPlus || digits.length > 10),
+    },
+    {
+        code: '1',
+        groupSizes: [3, 3, 4],
+        groupSeparator: '-',
+        validDigits: [10],
+    },
+]
+
+const DEFAULT_COUNTRY =
+    COUNTRY_FORMATS.find((format) => format.code === '1') ?? COUNTRY_FORMATS[0]
 
 export function isValidNumber(number: string) {
-    const { code } = stripCode(number)
-
-    const formatted = formatNumberWithCode(number, code)?.replace(/[^0-9]/g, '')
-    return formatted?.length === 11 || formatted?.length === 12
-}
-
-function stripCode(number: string) {
-    let code = `1` // Default to North American country code
-
-    const cleaned = number.replace(/(?!^\+)[^\d]/g, '')
-
-    // Explicitly check for '+' sign to distinguish international codes
-    if (
-        cleaned.startsWith('+90') ||
-        (cleaned.startsWith('90') && cleaned.length > 10)
-    ) {
-        code = `90`
-    } else if (
-        cleaned.startsWith('+49') ||
-        (cleaned.startsWith('49') && cleaned.length > 10)
-    ) {
-        code = `49`
-    }
-    // Adjust the condition to ensure that '905...' numbers without a '+' are treated as North American
-    else if (cleaned.startsWith('905') && cleaned.length === 10) {
-        code = `1`
+    if (LETTER_PATTERN.test(number)) {
+        return false
     }
 
-    return { code, phoneWithoutCode: cleaned.replace('+' + code, '') }
+    const parsed = parseInput(number)
+    const countryFormat = detectCountryFormat(parsed)
+    const localDigits = stripCountryCodeFromDigits(
+        parsed.digits,
+        countryFormat.code
+    )
+
+    if (!localDigits.length) {
+        return false
+    }
+
+    if (countryFormat.validDigits?.length) {
+        return countryFormat.validDigits.includes(localDigits.length)
+    }
+
+    return true
 }
 
 export default function formatPhoneNumber(
-    val: string,
+    value: string,
     shouldFailSilently = true
 ): string {
-    const { code, phoneWithoutCode } = stripCode(val)
-    const formatted = formatNumberWithCode(phoneWithoutCode, code)
-
-    if (!formatted) {
+    if (LETTER_PATTERN.test(value)) {
         if (!shouldFailSilently) {
             throw new Error('INVALID_PHONE_NUMBER')
-        } else {
-            return val
         }
+
+        return value
     }
 
-    // remove trailing spaces
-    const cleaned = formatted.replace(/\s+$/, '')
+    const parsed = parseInput(value)
+    const countryFormat = detectCountryFormat(parsed)
+    const localDigits = stripCountryCodeFromDigits(
+        parsed.digits,
+        countryFormat.code
+    )
 
-    return cleaned
+    if (!localDigits.length) {
+        if (!shouldFailSilently) {
+            throw new Error('INVALID_PHONE_NUMBER')
+        }
+
+        return value
+    }
+
+    const formattedLocal = formatLocalDigits(localDigits, countryFormat)
+    const codeSeparator = countryFormat.codeSeparator ?? DEFAULT_CODE_SEPARATOR
+    const formatted = formattedLocal
+        ? `+${countryFormat.code}${codeSeparator}${formattedLocal}`
+        : `+${countryFormat.code}`
+
+    return formatted.trim()
 }
 
 export function isDummyNumber(phone: string) {
     const cleanedValue = phone.replace(/\D/g, '')
     return cleanedValue.startsWith('1555') || cleanedValue.startsWith('555')
+}
+
+function parseInput(original: string): DetectionInput {
+    const digits = original.replace(/\D/g, '')
+    const hasExplicitPlus = original.trim().startsWith('+')
+
+    return {
+        original,
+        digits,
+        hasExplicitPlus,
+    }
+}
+
+function detectCountryFormat(input: DetectionInput): CountryFormat {
+    if (!input.digits.length) {
+        return DEFAULT_COUNTRY
+    }
+
+    if (input.hasExplicitPlus) {
+        const explicitMatch = COUNTRY_FORMATS.find((format) =>
+            input.digits.startsWith(format.code)
+        )
+
+        if (explicitMatch) {
+            return explicitMatch
+        }
+    }
+
+    const detected = COUNTRY_FORMATS.find((format) =>
+        format.detect ? format.detect(input) : false
+    )
+
+    return detected ?? DEFAULT_COUNTRY
+}
+
+function stripCountryCodeFromDigits(digits: string, code: string) {
+    if (digits.startsWith(code)) {
+        return digits.slice(code.length)
+    }
+
+    return digits
+}
+
+function formatLocalDigits(digits: string, format: CountryFormat) {
+    if (!digits.length) {
+        return ''
+    }
+
+    const parts: string[] = []
+    let index = 0
+
+    for (const size of format.groupSizes) {
+        if (index >= digits.length) {
+            break
+        }
+
+        const nextIndex = Math.min(index + size, digits.length)
+        parts.push(digits.slice(index, nextIndex))
+        index = nextIndex
+    }
+
+    if (index < digits.length) {
+        parts.push(digits.slice(index))
+    }
+
+    return parts.join(format.groupSeparator)
 }

@@ -58,6 +58,14 @@ export default class PhoneNumberFormatterTest extends AbstractSchemaTest {
     }
 
     @test()
+    protected static async formasNumbersInDifferentFormatsPakistan() {
+        this.assertFormatsAsExpected('9212341234567', '+92 1234 1234567')
+        this.assertFormatsAsExpected('+92 1234 1234567', '+92 1234 1234567')
+        this.assertFormatsAsExpected('+92 (2345) 7654321', '+92 2345 7654321')
+        this.assertFormatsAsExpected('92234554321', '+92 2345 54321')
+    }
+
+    @test()
     protected static async formatsNumberInDifferentFormatsGermanyWith10DigitNumber() {
         this.assertFormatsAsExpected('49 555 555 5555', '+49 555 555 5555')
         // this.assertFormatsAsExpected('495555555555', '+49 5555 555555')
