@@ -13,6 +13,7 @@ jobs:
       - checkout
       - spruce/check_and_skip_if_npm_publish
       - spruce/create_env_from_base64_env
+      - spruce/install_rsync
       - spruce/install_deps_build_ci_test
       - spruce/exit_if_not_auto_upgrade
       - spruce/merge_auto_upgrade
