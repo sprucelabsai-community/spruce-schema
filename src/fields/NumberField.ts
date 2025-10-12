@@ -14,8 +14,25 @@ export default class NumberField extends AbstractField<NumberFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<NumberFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, language } = options
+        const { isArray, options: fieldOptions } = definition
+        const go = `${isArray ? '[]' : ''}float64`
+
+        let validation: undefined | string[] = undefined
+
+        if (language === 'go') {
+            validation = []
+            if (fieldOptions?.min) {
+                validation.push(`gte=${fieldOptions.min}`)
+            }
+            if (fieldOptions?.max) {
+                validation.push(`lte=${fieldOptions.max}`)
+            }
+        }
+
         return {
-            valueType: `number${options.definition.isArray ? '[]' : ''}`,
+            valueType: language === 'go' ? go : `number${isArray ? '[]' : ''}`,
+            validation,
         }
     }
 

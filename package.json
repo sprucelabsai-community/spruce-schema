@@ -52,7 +52,7 @@
     "update.dependencies": "yarn run clean.dependencies && yarn",
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn run post.watch.build'",
     "watch.tsc": "tsc -w",
-    "post.watch.build": "yarn build.resolve-paths",
+    "post.watch.build": "yarn build.resolve-paths && rsync -avzq --exclude='*.ts' ./src/ ./build/",
     "resolve-paths.lint": "yarn run build.resolve-paths ; yarn run lint",
     "watch.rebuild": "yarn run clean.all && yarn install && yarn run watch.build.dev",
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"

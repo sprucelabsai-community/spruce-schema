@@ -2,25 +2,28 @@ import { FieldDefinitions } from '../fields'
 import { Schema } from '../schemas.static.types'
 
 export interface FieldTemplateDetails {
-    /** The type of value (string, number) */
+    /** The type literal of value (string, number) */
     valueType: string
+    /** The unique validation tags for the field (currently go only) */
+    validation?: string[]
 }
 
 /** How are we being rendered in the template */
 export enum TemplateRenderAs {
-    /** We are rendering type information (the value interface) */
+    /** We are rendering type literal */
     Type = 'type',
-    /** We are rendering as a value (only called if a value is set in the schema definition) */
+    /** We are rendering as a value (only called if a value is set in the schema definition, like defaultValue) */
     Value = 'value',
-    /** We are rendering as the definition's type (ISchema) */
+    /** We are rendering as the schema's field type (Schema) */
     SchemaType = 'schemaType',
 }
+
+export type TemplateLanguage = 'ts' | 'go'
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */
 export interface FieldTemplateDetailOptions<T extends FieldDefinitions> {
     /** The language we're generating to, only TS for now */
-    language: 'ts'
-    /** All other schemas schemas being rendered */
+    language: TemplateLanguage
     templateItems: SchemaTemplateItem[]
     /** The global namespace to access items */
     globalNamespace: string

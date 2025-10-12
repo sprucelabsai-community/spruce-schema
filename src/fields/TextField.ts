@@ -15,9 +15,14 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<TextFieldDefinition>
     ): FieldTemplateDetails {
-        const { definition } = options
+        const { definition, language } = options
+
+        const valueType =
+            language === 'go'
+                ? `${definition.isArray ? '[]' : ''}string`
+                : `string${definition.isArray ? '[]' : ''}`
         return {
-            valueType: `string${definition.isArray ? '[]' : ''}`,
+            valueType,
         }
     }
 
