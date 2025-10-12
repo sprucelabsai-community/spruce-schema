@@ -89,7 +89,32 @@ export default class GoStructsTest extends AbstractSchemaTest {
         )
 
         const source = fs.readFileSync(expectedFile).toString()
-        const expected = source.replace('package cases\n\n', '').trim()
+        const withoutPackage = source.replace(/^package cases\s*\n/, '')
+        const lines = withoutPackage.split('\n')
+        const filtered: string[] = []
+        let skippingImportBlock = false
+
+        for (const line of lines) {
+            const trimmed = line.trim()
+
+            if (!skippingImportBlock && trimmed.startsWith('import')) {
+                if (trimmed === 'import(' || trimmed === 'import (') {
+                    skippingImportBlock = true
+                }
+                continue
+            }
+
+            if (skippingImportBlock) {
+                if (trimmed === ')') {
+                    skippingImportBlock = false
+                }
+                continue
+            }
+
+            filtered.push(line)
+        }
+
+        const expected = filtered.join('\n').trim()
         return expected
     }
 

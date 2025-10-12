@@ -14,10 +14,14 @@ export default class DateField extends AbstractField<DateFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<DateFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, importAs, language } = options
+        const { isArray } = definition
+        const arrayNotation = isArray ? '[]' : ''
         return {
-            valueType: `${options.importAs}.DateFieldValue${
-                options.definition.isArray ? '[]' : ''
-            }`,
+            valueType:
+                language === 'go'
+                    ? `${arrayNotation}${importAs}.DateFieldValue`
+                    : `${importAs}.DateFieldValue${arrayNotation}`,
         }
     }
 

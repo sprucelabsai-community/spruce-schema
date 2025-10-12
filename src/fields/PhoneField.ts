@@ -16,8 +16,16 @@ export default class PhoneField extends AbstractField<PhoneFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<PhoneFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, language } = options
+        const { isArray } = definition
+
+        const arrayNotation = isArray ? '[]' : ''
+
         return {
-            valueType: `string${options.definition.isArray ? '[]' : ''}`,
+            valueType:
+                language === 'go'
+                    ? `${arrayNotation}string`
+                    : `string${arrayNotation}`,
         }
     }
 

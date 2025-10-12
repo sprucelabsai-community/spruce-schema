@@ -11,8 +11,16 @@ export default class IdField extends AbstractField<IdFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<IdFieldDefinition>
     ): FieldTemplateDetails {
+        const { language, definition } = options
+        const { isArray } = definition
+
+        const arrayNotation = isArray ? '[]' : ''
+
         return {
-            valueType: `string${options.definition.isArray ? '[]' : ''}`,
+            valueType:
+                language === 'go'
+                    ? `${arrayNotation}string`
+                    : `string${arrayNotation}`,
         }
     }
 

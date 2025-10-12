@@ -13,8 +13,16 @@ export default class EmailField extends AbstractField<EmailFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<EmailFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, language } = options
+        const { isArray } = definition
+
+        const arrayNotation = isArray ? '[]' : ''
+
         return {
-            valueType: `string${options.definition.isArray ? '[]' : ''}`,
+            valueType:
+                language === 'go'
+                    ? `${arrayNotation}string`
+                    : `string${arrayNotation}`,
         }
     }
 

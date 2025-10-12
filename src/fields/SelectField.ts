@@ -50,11 +50,19 @@ export default class SelectField<
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<SelectFieldDefinition>
     ): FieldTemplateDetails {
-        const { definition } = options
+        const { definition, language } = options
         const {
             isArray,
             options: { choices },
         } = definition
+
+        const arrayNotation = isArray ? '[]' : ''
+
+        if (language === 'go') {
+            return {
+                valueType: `${arrayNotation}string`,
+            }
+        }
 
         return {
             valueType: `(${choices
@@ -62,7 +70,7 @@ export default class SelectField<
                     (choice) =>
                         `${typeof choice.value === 'number' ? choice.value : `"${choice.value}"`}`
                 )
-                .join(' | ')})${isArray ? '[]' : ''}`,
+                .join(' | ')})${arrayNotation}`,
         }
     }
 

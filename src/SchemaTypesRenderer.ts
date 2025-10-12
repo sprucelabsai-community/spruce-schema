@@ -37,6 +37,7 @@ ${body}}`
             //@ts-ignore
             definition: field,
             language: 'go',
+            importAs: 'SpruceSchema',
         })
 
         const { hint, isRequired, minArrayLength, isArray } = field

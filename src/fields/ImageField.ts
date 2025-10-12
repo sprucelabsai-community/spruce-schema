@@ -9,9 +9,14 @@ export default class ImageField extends AbstractField<ImageFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<ImageFieldDefinition>
     ): FieldTemplateDetails {
-        const { definition, importAs } = options
+        const { definition, importAs, language } = options
+        const { isArray } = definition
+        const arrayNotation = isArray ? '[]' : ''
         return {
-            valueType: `${importAs}.ImageFieldValue${definition.isArray ? '[]' : ''}`,
+            valueType:
+                language === 'go'
+                    ? `${arrayNotation}${importAs}.ImageFieldValue`
+                    : `${importAs}.ImageFieldValue${arrayNotation}`,
         }
     }
 
