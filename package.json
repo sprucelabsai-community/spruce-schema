@@ -32,8 +32,8 @@
     "url": "https://github.com/sprucelabsai/spruce-schema/issues"
   },
   "scripts": {
-    "build.ci": "yarn run build.tsc && yarn run build.resolve-paths && yarn run lint",
-    "build.dev": "yarn run build.tsc --sourceMap ; yarn run resolve-paths.lint",
+    "build.ci": "yarn run build.tsc && yarn run build.resolve-paths && yarn build.copy-files && yarn run lint",
+    "build.dev": "yarn run build.tsc --sourceMap ; yarn run resolve-paths.lint ; yarn run build.copy-files",
     "build.dist": "tsc --project tsconfig.dist.json && yarn build.resolve-paths && mv build esm && yarn build.esm-postbuild && yarn build.tsc && yarn build.resolve-paths && mv esm build/ && yarn clean.dist",
     "build.esm-postbuild": "esm-postbuild --target esm --patterns '**/*.js'",
     "build.resolve-paths": "resolve-path-aliases --target build --patterns '**/*.js,**/*.d.ts'",
@@ -52,7 +52,7 @@
     "update.dependencies": "yarn run clean.dependencies && yarn",
     "watch.build.dev": "tsc-watch --sourceMap --onCompilationComplete 'yarn run post.watch.build'",
     "watch.tsc": "tsc -w",
-    "post.watch.build": "yarn build.resolve-paths && rsync -avzq --exclude='*.ts' ./src/ ./build/",
+    "post.watch.build": "yarn build.resolve-paths && yarn build.copy-files",
     "resolve-paths.lint": "yarn run build.resolve-paths ; yarn run lint",
     "watch.rebuild": "yarn run clean.all && yarn install && yarn run watch.build.dev",
     "build.copy-files": "mkdir -p build && rsync -avzq --exclude='*.ts' ./src/ ./build/"
