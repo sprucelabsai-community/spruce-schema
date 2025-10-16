@@ -8,7 +8,9 @@
   "scriptUpdater": {
     "skipped": [
       "build.tsc",
-      "post.watch.build"
+      "post.watch.build",
+      "build.ci",
+      "build.dev"
     ]
   },
   "writer": {
