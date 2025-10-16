@@ -1,3 +1,11 @@
+# [32.3.0](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.2.5...v32.3.0) (2025-10-16)
+
+
+### Features
+
+* go language generation ([3d388c8](https://github.com/sprucelabsai-community/spruce-schema/commit/3d388c8))
+* go struct generation ([4cb265d](https://github.com/sprucelabsai-community/spruce-schema/commit/4cb265d))
+
 ## [32.2.5](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.2.4...v32.2.5) (2025-10-11)
 
 ## [32.2.4](https://github.com/sprucelabsai-community/spruce-schema/compare/v32.2.3...v32.2.4) (2025-10-11)
