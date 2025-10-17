@@ -1,15 +1,32 @@
 import fs from 'fs'
 import path from 'path'
-import { test, suite, assert, errorAssert } from '@sprucelabs/test-utils'
+import {
+    test,
+    suite,
+    assert,
+    errorAssert,
+    generateId,
+} from '@sprucelabs/test-utils'
 import AbstractSchemaTest from '../../../AbstractSchemaTest'
 import { Schema } from '../../../schemas.static.types'
 import SchemaTypesRenderer from '../../../SchemaTypesRenderer'
+import { SchemaTemplateItem } from '../../../types/template.types'
+import buildSchema from '../../../utilities/buildSchema'
 
 @suite()
 export default class GoStructsTest extends AbstractSchemaTest {
     private renderer: SchemaTypesRenderer = SchemaTypesRenderer.Renderer()
+    private casesDir!: string
+    private schemaTemplateItems: SchemaTemplateItem[] = []
+
     protected async beforeEach(): Promise<void> {
         await super.beforeEach()
+        this.casesDir = this.resolvePath(
+            'build/__tests__/behavioral/renderingTypes/cases'
+        )
+
+        this.pushTemplateItem(friendSchema)
+        this.pushTemplateItem(personWithFriendSchema)
     }
 
     @test()
@@ -23,12 +40,45 @@ export default class GoStructsTest extends AbstractSchemaTest {
 
     @test()
     protected async rendersAllCasesFromFixtures() {
-        const casesDir = this.resolvePath(
-            'build/__tests__/behavioral/renderingTypes/cases'
+        const schemaFiles = this.loadSchemaFiles()
+
+        for (const schemaFile of schemaFiles) {
+            const schema = await this.importSchema(schemaFile)
+            this.assertRendersStructForSchema(schema)
+        }
+    }
+
+    @test()
+    protected async canRenderNestedSchemas() {
+        this.assertRendersStructForSchema(personWithFriendSchema)
+    }
+
+    private assertRendersStructForSchema(schema: Schema) {
+        const expectedFile = `${this.pascalCase(schema.id)}.go`
+        const expectedPath = path.join(this.casesDir, expectedFile)
+
+        assert.isTrue(
+            fs.existsSync(expectedPath),
+            `Missing rendered Go file for fixture ${schema.id}.schema.js (expected ${expectedFile}).`
         )
 
+        this.assertRenderMatchesSource(schema, expectedFile, schema.id)
+    }
+
+    private async importSchema(schemaFile: string) {
+        const schemaModule = await import(`./cases/${schemaFile}`)
+        const schema: Schema | undefined = schemaModule?.default
+
+        assert.isTruthy(
+            schema,
+            `Fixture ${schemaFile} did not default export a schema.`
+        )
+        return schema
+    }
+
+    private loadSchemaFiles() {
         const schemaFiles = fs
-            .readdirSync(casesDir)
+            .readdirSync(this.casesDir)
             .filter((file) => file.endsWith('.schema.js'))
             .sort()
 
@@ -37,26 +87,7 @@ export default class GoStructsTest extends AbstractSchemaTest {
             0,
             'Expected at least one schema fixture.'
         )
-
-        for (const schemaFile of schemaFiles) {
-            const schemaModule = await import(`./cases/${schemaFile}`)
-            const schema: Schema | undefined = schemaModule?.default
-
-            assert.isTruthy(
-                schema,
-                `Fixture ${schemaFile} did not default export a schema.`
-            )
-
-            const expectedFile = `${this.pascalCase(schema.id)}.go`
-            const expectedPath = path.join(casesDir, expectedFile)
-
-            assert.isTrue(
-                fs.existsSync(expectedPath),
-                `Missing rendered Go file for fixture ${schemaFile} (expected ${expectedFile}).`
-            )
-
-            this.assertRenderMatchesSource(schema, expectedFile, schema.id)
-        }
+        return schemaFiles
     }
 
     private assertSchemaRendersAs(
@@ -70,7 +101,7 @@ export default class GoStructsTest extends AbstractSchemaTest {
         assert.isEqual(
             normalizedResults,
             normalizedExpected,
-            `Case ${caseId} did not render expected go.`
+            `${toPascalCase(caseId)}.go did not render expected go.`
         )
     }
 
@@ -121,17 +152,63 @@ export default class GoStructsTest extends AbstractSchemaTest {
     private render(schema: Schema) {
         return this.renderer.render(schema, {
             language: 'go',
+            schemaTemplateItems: this.schemaTemplateItems,
         })
     }
 
     private normalizeGo(source: string) {
-        return source
+        const parts = source.split(`// split here`)
+        const cleaned = parts[0]
             .replace(/[ \t]+/g, ' ')
             .replace(/ ?\n/g, '\n')
             .trim()
+
+        return cleaned
     }
 
     private pascalCase(str: string) {
         return str.charAt(0).toUpperCase() + str.slice(1)
     }
+
+    private pushTemplateItem(schema: Schema) {
+        this.schemaTemplateItems.push({
+            id: schema.id,
+            nameCamel: schema.id,
+            namePascal: toPascalCase(schema.id),
+            nameReadable: schema.id,
+            namespace: 'Spruce',
+            schema,
+            destinationDir: this.resolvePath(generateId()),
+        })
+    }
 }
+
+function toPascalCase(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+const friendSchema = buildSchema({
+    id: 'friend',
+    namespace: 'Spruce',
+    fields: {
+        name: {
+            type: 'text',
+        },
+    },
+})
+
+const personWithFriendSchema = buildSchema({
+    id: 'personWithFriend',
+    namespace: 'Spruce',
+    fields: {
+        name: {
+            type: 'text',
+        },
+        friend: {
+            type: 'schema',
+            options: {
+                schema: friendSchema,
+            },
+        },
+    },
+})

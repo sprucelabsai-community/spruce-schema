@@ -1,6 +1,10 @@
 import { fieldClassMap, FieldDefinitions } from './fields'
 import { Schema } from './schemas.static.types'
-import { TemplateLanguage } from './types/template.types'
+import {
+    SchemaTemplateItem,
+    TemplateLanguage,
+    TemplateRenderAs,
+} from './types/template.types'
 import assertOptions from './utilities/assertOptions'
 
 export default class SchemaTypesRenderer {
@@ -12,18 +16,20 @@ export default class SchemaTypesRenderer {
         schema: Schema,
         options: {
             language: TemplateLanguage
+            schemaTemplateItems: SchemaTemplateItem[]
         }
     ) {
         assertOptions({ schema, options }, ['schema', 'options'])
 
-        const { id, fields } = schema
+        const { id, fields, namespace } = schema
+        const { schemaTemplateItems } = options
 
-        const name = this.ucFirst(id)
+        const name = this.renderName(id, namespace)
         const comment = this.renderComment(schema)
         let body = ''
 
         for (const [key, field] of Object.entries(fields ?? {})) {
-            let fieldLine = this.renderField(field, key)
+            let fieldLine = this.renderField(field, key, schemaTemplateItems)
             body += fieldLine
         }
 
@@ -31,13 +37,23 @@ export default class SchemaTypesRenderer {
 ${body}}`
     }
 
-    private renderField(field: FieldDefinitions, key: string) {
+    private renderName(id: string, namespace?: string) {
+        return `${namespace ? `${namespace}.` : ''}${this.ucFirst(id)}`
+    }
+
+    private renderField(
+        field: FieldDefinitions,
+        key: string,
+        schemaTemplateItems: SchemaTemplateItem[] = []
+    ) {
         const FieldClass = fieldClassMap[field.type]
         const { valueType, validation } = FieldClass.generateTemplateDetails({
             //@ts-ignore
             definition: field,
             language: 'go',
             importAs: 'SpruceSchema',
+            templateItems: schemaTemplateItems,
+            renderAs: TemplateRenderAs.Type,
         })
 
         const { hint, isRequired, minArrayLength, isArray } = field

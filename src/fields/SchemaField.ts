@@ -88,7 +88,14 @@ export default class SchemaField<
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<SchemaFieldFieldDefinition>
     ): FieldTemplateDetails {
-        const { templateItems, renderAs, definition, globalNamespace } = options
+        const {
+            templateItems,
+            renderAs,
+            definition,
+            globalNamespace,
+            language,
+        } = options
+
         const { typeSuffix = '' } = definition.options
 
         const idsWithVersion =
@@ -134,19 +141,22 @@ export default class SchemaField<
 
             if (matchedTemplateItem) {
                 let valueType: string | undefined
-                if (renderAs === TemplateRenderAs.Value) {
-                    valueType = `${matchedTemplateItem.nameCamel}Schema${
-                        matchedTemplateItem.schema.version
-                            ? `_${matchedTemplateItem.schema.version}`
-                            : ''
+                const { namePascal, namespace, id, nameCamel, schema } =
+                    matchedTemplateItem
+
+                if (language === 'go') {
+                    valueType = `*${namespace}${namePascal}`
+                } else if (renderAs === TemplateRenderAs.Value) {
+                    valueType = `${nameCamel}Schema${
+                        schema.version ? `_${schema.version}` : ''
                     }`
                 } else {
-                    valueType = `${globalNamespace}.${matchedTemplateItem.namespace}${
+                    valueType = `${globalNamespace}.${namespace}${
                         version ? `.${version}` : ''
                     }${
                         renderAs === TemplateRenderAs.Type
-                            ? `.${matchedTemplateItem.namePascal + typeSuffix}`
-                            : `.${matchedTemplateItem.namePascal}Schema`
+                            ? `.${namePascal + typeSuffix}`
+                            : `.${namePascal}Schema`
                     }`
 
                     if (
@@ -158,7 +168,7 @@ export default class SchemaField<
                 }
 
                 unions.push({
-                    schemaId: matchedTemplateItem.id,
+                    schemaId: id,
                     valueType,
                 })
             } else {
