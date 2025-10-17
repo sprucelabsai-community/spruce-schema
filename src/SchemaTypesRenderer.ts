@@ -38,7 +38,7 @@ ${body}}`
     }
 
     private renderName(id: string, namespace?: string) {
-        return `${namespace ? `${namespace}.` : ''}${this.ucFirst(id)}`
+        return `${namespace ? `${namespace}` : ''}${this.ucFirst(id)}`
     }
 
     private renderField(
