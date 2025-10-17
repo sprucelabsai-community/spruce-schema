@@ -27,6 +27,7 @@ export { default as cloneDeep } from './utilities/cloneDeep'
 export { default as cloneDeepPreservingInstances } from './utilities/cloneDeepPreservingInstances'
 export { default as selectAssertUtil } from './tests/selectAssert.deprecated'
 export { default as KeyMapper } from './utilities/KeyMapper'
+export { default as SchemaTypesRenderer } from './SchemaTypesRenderer'
 
 export * from './schemas.static.types'
 export * from './fields'
