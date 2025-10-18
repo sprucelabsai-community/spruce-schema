@@ -1,13 +1,13 @@
 package cases
 
-type SprucePersonWithFriend struct {
-	Name    string          `json:"name,omitempty"`
-	Friend  *SpruceFriend   `json:"friend,omitempty"`
-	Friends *[]SpruceFriend `json:"friends,omitempty"`
+type PersonWithFriend struct {
+	Name    string    `json:"name,omitempty"`
+	Friend  *Friend   `json:"friend,omitempty"`
+	Friends *[]Friend `json:"friends,omitempty"`
 }
 
 // split here
 
-type SpruceFriend struct {
+type Friend struct {
 	Name string `json:"name,omitempty"`
 }

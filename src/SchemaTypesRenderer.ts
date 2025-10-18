@@ -12,19 +12,13 @@ export default class SchemaTypesRenderer {
         return new this()
     }
 
-    public render(
-        schema: Schema,
-        options: {
-            language: TemplateLanguage
-            schemaTemplateItems: SchemaTemplateItem[]
-        }
-    ) {
+    public render(schema: Schema, options: RenderOptions) {
         assertOptions({ schema, options }, ['schema', 'options'])
 
-        const { id, fields, namespace } = schema
+        const { id, fields } = schema
         const { schemaTemplateItems } = options
 
-        const name = this.renderName(id, namespace)
+        const name = this.renderName(id)
         const comment = this.renderComment(schema)
         let body = ''
 
@@ -37,8 +31,8 @@ export default class SchemaTypesRenderer {
 ${body}}`
     }
 
-    private renderName(id: string, namespace?: string) {
-        return `${namespace ? `${namespace}` : ''}${this.ucFirst(id)}`
+    private renderName(id: string) {
+        return this.ucFirst(id)
     }
 
     private renderField(
@@ -114,4 +108,10 @@ ${body}}`
     private ucFirst(str: string) {
         return str.charAt(0).toUpperCase() + str.slice(1)
     }
+}
+
+export interface RenderOptions {
+    language: TemplateLanguage
+    schemaTemplateItems: SchemaTemplateItem[]
+    shouldPrefixNameWithNamespace?: boolean
 }

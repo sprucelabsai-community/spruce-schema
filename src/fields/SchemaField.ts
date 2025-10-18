@@ -110,7 +110,7 @@ export default class SchemaField<
 
             let valueType: string | undefined
             if (language === 'go') {
-                valueType = `${namespace}${namePascal}`
+                valueType = `${namePascal}`
             } else if (renderAs === TemplateRenderAs.Value) {
                 valueType = `${nameCamel}Schema${
                     schema.version ? `_${schema.version}` : ''
