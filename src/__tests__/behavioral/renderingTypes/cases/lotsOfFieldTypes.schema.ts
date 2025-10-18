@@ -26,6 +26,10 @@ export default buildSchema({
             hint: 'The name you can use when talking to this person.',
             isRequired: true,
         },
+        isBoolean: {
+            label: 'Is Boolean',
+            type: 'boolean',
+        },
         timezone: {
             label: 'Timezone',
             type: 'select',

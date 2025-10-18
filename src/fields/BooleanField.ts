@@ -12,8 +12,20 @@ export default class BooleanField extends AbstractField<BooleanFieldDefinition> 
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<BooleanFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, language } = options
+        const { isArray } = definition
+        const arrayNotation = isArray ? '[]' : ''
+
+        let valueType = ''
+
+        if (language === 'go') {
+            valueType = `${arrayNotation}bool`
+        } else {
+            valueType = `boolean${arrayNotation}`
+        }
+
         return {
-            valueType: `boolean${options.definition.isArray ? '[]' : ''}`,
+            valueType,
         }
     }
     /** * Turn everything into a string */

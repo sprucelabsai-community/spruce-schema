@@ -89,5 +89,9 @@ export default buildSchema({
             type: 'dateTime',
             isArray: true,
         },
+        arrayOfBooleans: {
+            type: 'boolean',
+            isArray: true,
+        },
     },
 })

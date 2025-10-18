@@ -9,6 +9,7 @@ type LotsOfFieldTypes struct {
 	LastName  string `json:"lastName,omitempty"`
 	// The name you can use when talking to this person.
 	CasualName string `json:"casualName" validate:"required"`
+	IsBoolean  bool   `json:"isBoolean,omitempty"`
 	Timezone   string `json:"timezone,omitempty"`
 	// A number that can be texted
 	Phone string `json:"phone,omitempty"`
