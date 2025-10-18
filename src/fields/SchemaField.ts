@@ -96,90 +96,46 @@ export default class SchemaField<
             language,
         } = options
 
+        const { isArray } = definition
         const { typeSuffix = '' } = definition.options
 
         const idsWithVersion =
-            SchemaField.mapFieldDefinitionToSchemaIdsWithVersion(definition)
+            this.mapFieldDefinitionToSchemaIdsWithVersion(definition)
         const unions: { schemaId: string; valueType: string }[] = []
 
         idsWithVersion.forEach((idWithVersion) => {
-            const { id, version, namespace } = idWithVersion
-            let allMatches = templateItems.filter((item) => {
-                if (!item.id) {
-                    throwInvalidReferenceError(item)
+            const { version } = idWithVersion
+            const { namePascal, namespace, id, nameCamel, schema } =
+                this.findSchemaInTemplateItems(idWithVersion, templateItems)
+
+            let valueType: string | undefined
+            if (language === 'go') {
+                valueType = `${namespace}${namePascal}`
+            } else if (renderAs === TemplateRenderAs.Value) {
+                valueType = `${nameCamel}Schema${
+                    schema.version ? `_${schema.version}` : ''
+                }`
+            } else {
+                valueType = `${globalNamespace}.${namespace}${
+                    version ? `.${version}` : ''
+                }${
+                    renderAs === TemplateRenderAs.Type
+                        ? `.${namePascal + typeSuffix}`
+                        : `.${namePascal}Schema`
+                }`
+
+                if (
+                    renderAs === TemplateRenderAs.Type &&
+                    idsWithVersion.length > 1
+                ) {
+                    valueType = `{ id: '${id}', values: ${valueType} }`
                 }
-                return item.id.toLowerCase() === id.toLowerCase()
+            }
+
+            unions.push({
+                schemaId: id,
+                valueType,
             })
-
-            if (namespace) {
-                allMatches = allMatches.filter((item) => {
-                    if (!item.namespace) {
-                        throwInvalidReferenceError(item)
-                    }
-                    return (
-                        item.namespace.toLowerCase() === namespace.toLowerCase()
-                    )
-                })
-            }
-
-            let matchedTemplateItem
-
-            if (allMatches.length === 0) {
-                matchedTemplateItem = allMatches[0]
-            } else {
-                matchedTemplateItem = allMatches.find(
-                    (d) => d.schema.version === version
-                )
-
-                if (!matchedTemplateItem) {
-                    throw new SpruceError({
-                        code: 'VERSION_NOT_FOUND',
-                        schemaId: id,
-                    })
-                }
-            }
-
-            if (matchedTemplateItem) {
-                let valueType: string | undefined
-                const { namePascal, namespace, id, nameCamel, schema } =
-                    matchedTemplateItem
-
-                if (language === 'go') {
-                    valueType = `*${namespace}${namePascal}`
-                } else if (renderAs === TemplateRenderAs.Value) {
-                    valueType = `${nameCamel}Schema${
-                        schema.version ? `_${schema.version}` : ''
-                    }`
-                } else {
-                    valueType = `${globalNamespace}.${namespace}${
-                        version ? `.${version}` : ''
-                    }${
-                        renderAs === TemplateRenderAs.Type
-                            ? `.${namePascal + typeSuffix}`
-                            : `.${namePascal}Schema`
-                    }`
-
-                    if (
-                        renderAs === TemplateRenderAs.Type &&
-                        idsWithVersion.length > 1
-                    ) {
-                        valueType = `{ id: '${id}', values: ${valueType} }`
-                    }
-                }
-
-                unions.push({
-                    schemaId: id,
-                    valueType,
-                })
-            } else {
-                throw new SpruceError({
-                    code: 'SCHEMA_NOT_FOUND',
-                    schemaId: id,
-                    friendlyMessage: `Template generation failed. I could not find a schema that was being referenced. I was looking for a schema with the id of '${id}' and namespace '${
-                        namespace ?? '**missing**'
-                    }'.`,
-                })
-            }
         })
 
         let valueType
@@ -192,23 +148,74 @@ export default class SchemaField<
                       ']'
         } else {
             valueType = unions.map((item) => item.valueType).join(' | ')
-            valueType = `${
-                (definition.isArray ||
-                    renderAs === TemplateRenderAs.SchemaType) &&
-                unions.length > 1
-                    ? `(${valueType})`
-                    : `${valueType}`
-            }${
-                (definition.isArray && renderAs === TemplateRenderAs.Type) ||
+
+            const shouldRenderAsArray =
+                (isArray && renderAs === TemplateRenderAs.Type) ||
                 (unions.length > 1 && renderAs === TemplateRenderAs.SchemaType)
-                    ? '[]'
-                    : ''
-            }`
+
+            const arrayNotation = shouldRenderAsArray ? '[]' : ''
+
+            if (language === 'go') {
+                valueType = `*${arrayNotation}${valueType}`
+            } else {
+                valueType = `${
+                    shouldRenderAsArray && unions.length > 1
+                        ? `(${valueType})`
+                        : `${valueType}`
+                }${arrayNotation}`
+            }
         }
 
         return {
             valueType,
         }
+    }
+
+    private static findSchemaInTemplateItems(
+        idWithVersion: SchemaIdWithVersion,
+        templateItems: SchemaTemplateItem[]
+    ) {
+        const { id, namespace, version } = idWithVersion
+
+        let allMatches = templateItems.filter((item) => {
+            if (!item.id) {
+                throwInvalidReferenceError(item)
+            }
+            return item.id.toLowerCase() === id.toLowerCase()
+        })
+
+        if (namespace) {
+            allMatches = allMatches.filter((item) => {
+                if (!item.namespace) {
+                    throwInvalidReferenceError(item)
+                }
+                return item.namespace.toLowerCase() === namespace.toLowerCase()
+            })
+        }
+
+        if (allMatches.length === 0) {
+            throw new SpruceError({
+                code: 'SCHEMA_NOT_FOUND',
+                schemaId: id,
+                friendlyMessage: `Template generation failed. I could not find a schema that was being referenced. I was looking for a schema with the id of '${id}' and namespace '${
+                    namespace ?? '**missing**'
+                }'.`,
+            })
+        }
+
+        let matchedTemplateItem
+
+        matchedTemplateItem = allMatches.find(
+            (d) => d.schema.version === version
+        )
+
+        if (!matchedTemplateItem) {
+            throw new SpruceError({
+                code: 'VERSION_NOT_FOUND',
+                schemaId: id,
+            })
+        }
+        return matchedTemplateItem
     }
 
     private static mapFieldDefinitionToSchemas(

@@ -10,10 +10,27 @@ export default class RawField extends AbstractField<RawFieldDefinition> {
     public static generateTemplateDetails(
         options: FieldTemplateDetailOptions<RawFieldDefinition>
     ): FieldTemplateDetails {
+        const { definition, language } = options
+        const { isArray } = definition
+        const { options: fieldOptions } = definition
+        const { valueType } = fieldOptions
+        const arrayNotation = isArray ? '[]' : ''
+
+        let resolvedType = valueType
+
+        if (language === 'go') {
+            const goType =
+                valueType === 'Record<string, any>'
+                    ? 'map[string]interface{}'
+                    : 'interface{}'
+
+            resolvedType = `${arrayNotation}${goType}`
+        } else {
+            resolvedType = `${arrayNotation}${valueType}`
+        }
+
         return {
-            valueType: `(${options.definition.options.valueType})${
-                options.definition.isArray ? '[]' : ''
-            }`,
+            valueType: resolvedType,
         }
     }
 }

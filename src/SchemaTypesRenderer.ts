@@ -73,8 +73,8 @@ ${body}}`
             validateTags.push('required')
         }
 
-        if (minArrayLength !== undefined) {
-            validateTags.push(`min=${minArrayLength}`)
+        if ((isArray && isRequired) || minArrayLength !== undefined) {
+            validateTags.push(`min=${minArrayLength ?? 1}`)
         }
 
         if (!isRequired) {
@@ -106,7 +106,7 @@ ${body}}`
         }
 
         if (schema.description) {
-            comment += `: ${schema.description}`
+            comment += `${schema.name ? ': ' : '// '}${schema.description}`
         }
         return comment
     }

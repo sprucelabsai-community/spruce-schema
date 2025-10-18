@@ -210,5 +210,12 @@ const personWithFriendSchema = buildSchema({
                 schema: friendSchema,
             },
         },
+        friends: {
+            type: 'schema',
+            isArray: true,
+            options: {
+                schema: friendSchema,
+            },
+        },
     },
 })
