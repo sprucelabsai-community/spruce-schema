@@ -1,6 +1,6 @@
 package cases
 
-import SpruceSchema "github.com/sprucelabsai-community/spruce-schema/pkg/fields"
+import SpruceSchema "github.com/sprucelabsai-community/spruce-schema/v32/pkg/fields"
 
 // Person: A human being.
 type LotsOfFieldTypes struct {
