@@ -74,7 +74,6 @@ export interface StaticSchemaEntity<S extends Schema> extends SchemaEntity {
     isValid(options?: SchemaValidateOptions<S>): boolean
 }
 
-/** @ts-ignore */
 export type SchemaValues<
     S extends Schema,
     CreateEntityInstances extends boolean = false,
@@ -152,13 +151,21 @@ export interface Schema {
     description?: string
     importsWhenLocal?: string[]
     importsWhenRemote?: string[]
-    moduleToImportFromWhenRemote?: string
+    moduleToImportFromWhenRemote?: string | SchemaImport
     typeSuffix?: string
     dynamicFieldSignature?: FieldDefinitions & {
         keyName: string
         keyTypeLiteral?: string
     }
     fields?: SchemaFieldsByName
+}
+
+export type SchemaSupportedLanguages = 'ts' | 'go'
+
+export interface SchemaImport {
+    language: SchemaSupportedLanguages
+    // the actual package name, like @sprucelabs/spruce-schema or github.com/sprucelabs/spruce-schema
+    module: string
 }
 
 export interface SchemaFieldValueUnion<

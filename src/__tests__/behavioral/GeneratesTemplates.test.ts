@@ -1,5 +1,5 @@
 import AbstractSpruceTest, { test, assert } from '@sprucelabs/test-utils'
-import { SelectField } from '../../fields'
+import { RawField, SelectField } from '../../fields'
 import { FieldDefinition } from '../../fields/field.static.types'
 import ImageField from '../../fields/ImageField'
 import {
@@ -74,6 +74,18 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
         },
         'taco.ImageFieldValue',
         'taco'
+    )
+    @test(
+        'raw array',
+        RawField,
+        {
+            type: 'raw',
+            isArray: true,
+            options: {
+                valueType: 'Record<string, any>',
+            },
+        },
+        'Record<string, any>[]'
     )
     protected static async testTemplateDetails(
         Field: any,

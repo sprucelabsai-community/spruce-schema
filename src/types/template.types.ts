@@ -1,5 +1,5 @@
 import { FieldDefinitions } from '../fields'
-import { Schema } from '../schemas.static.types'
+import { Schema, SchemaSupportedLanguages } from '../schemas.static.types'
 
 export interface FieldTemplateDetails {
     /** The type literal of value (string, number) */
@@ -18,7 +18,7 @@ export enum TemplateRenderAs {
     SchemaType = 'schemaType',
 }
 
-export type TemplateLanguage = 'ts' | 'go'
+export type TemplateLanguage = SchemaSupportedLanguages
 
 /** The shape of options passed to AbstractField.generateTemplateDetails(options) */
 export interface FieldTemplateDetailOptions<T extends FieldDefinitions> {
