@@ -26,7 +26,7 @@ export default class RawField extends AbstractField<RawFieldDefinition> {
 
             resolvedType = `${arrayNotation}${goType}`
         } else {
-            resolvedType = `${valueType}${arrayNotation}`
+            resolvedType = `(${valueType})${arrayNotation}`
         }
 
         return {

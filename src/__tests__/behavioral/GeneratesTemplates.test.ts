@@ -85,7 +85,7 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
                 valueType: 'Record<string, any>',
             },
         },
-        'Record<string, any>[]'
+        '(Record<string, any>)[]'
     )
     protected static async testTemplateDetails(
         Field: any,
