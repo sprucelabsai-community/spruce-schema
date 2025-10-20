@@ -87,6 +87,18 @@ export default class GeneratesTemplatesTest extends AbstractSpruceTest {
         },
         '(Record<string, any>)[]'
     )
+    @test(
+        'raw not array',
+        RawField,
+        {
+            type: 'raw',
+            isArray: false,
+            options: {
+                valueType: 'Record<string, any>',
+            },
+        },
+        'Record<string, any>'
+    )
     protected static async testTemplateDetails(
         Field: any,
         definition: FieldDefinition,
