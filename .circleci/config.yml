@@ -27,6 +27,7 @@ jobs:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
       - checkout
       - spruce/check_and_skip_if_npm_publish
+      - spruce/install_rsync
       - spruce/install_deps_build_dist_release
   upgrade:
     docker:
@@ -41,6 +42,7 @@ jobs:
       - spruce/setup_ct_npm_cache
       - checkout
       - spruce/set_target_branch_env
+      - spruce/install_rsync
       - spruce/install_cli
       - spruce/upgrade_check_for_major
       - spruce/check_for_newline_only_diff
