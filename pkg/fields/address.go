@@ -6,5 +6,5 @@ type AddressFieldValue struct {
 	City     string `json:"city"`
 	Province string `json:"province"`
 	Country  string `json:"country"`
-	ZIP      string `json:"zip"`
+	Zip      string `json:"zip"`
 }
