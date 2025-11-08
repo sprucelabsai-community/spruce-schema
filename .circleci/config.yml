@@ -7,6 +7,8 @@ jobs:
       - image: cimg/node:lts
     working_directory: /mnt/ramdisk/myfolder
     steps:
+      - name: "Yolo perms"
+        run: sudo chmod -R 777 /mnt/ramdisk
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
@@ -22,6 +24,8 @@ jobs:
       - image: cimg/node:lts
     working_directory: /mnt/ramdisk/myfolder
     steps:
+      - name: "Yolo perms"
+        run: sudo chmod -R 777 /mnt/ramdisk
       - add_ssh_keys:
           fingerprints:
             - "ec:9f:2e:aa:1f:c9:ab:49:57:8f:c0:cd:2e:5b:f3:b0"
@@ -34,6 +38,8 @@ jobs:
       - image: cimg/node:lts
     working_directory: /mnt/ramdisk/myfolder
     steps:
+      - name: "Yolo perms"
+        run: sudo chmod -R 777 /mnt/ramdisk
       - spruce/check_for_autoupgrade_dns
       - add_ssh_keys:
           fingerprints:
