@@ -5,7 +5,7 @@ jobs:
   test:
     docker:
       - image: cimg/node:lts
-    working_directory: /mnt/ramdisk/myfolder
+    working_directory: /mnt/ramdisk
     steps:
       - run:
           name: Yolo perms
@@ -23,7 +23,7 @@ jobs:
   npm_publish:
     docker:
       - image: cimg/node:lts
-    working_directory: /mnt/ramdisk/myfolder
+    working_directory: /mnt/ramdisk
     steps:
       - run:
           name: Yolo perms
@@ -38,7 +38,7 @@ jobs:
   upgrade:
     docker:
       - image: cimg/node:lts
-    working_directory: /mnt/ramdisk/myfolder
+    working_directory: /mnt/ramdisk
     steps:
       - run:
           name: Yolo perms
