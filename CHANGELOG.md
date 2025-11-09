@@ -1,3 +1,7 @@
+## 33.0.0 (2025-11-09)
+
+* major: upgrade ([bb09af4](https://github.com/sprucelabsai-community/spruce-schema/commit/bb09af4))
+
 ## <small>32.3.21 (2025-11-09)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([0b47db0](https://github.com/sprucelabsai-community/spruce-schema/commit/0b47db0))
