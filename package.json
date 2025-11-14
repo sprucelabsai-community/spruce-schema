@@ -65,9 +65,9 @@
     "just-safe-set": "^4.2.1"
   },
   "devDependencies": {
-    "@sprucelabs/esm-postbuild": "^9.0.2",
+    "@sprucelabs/esm-postbuild": "^9.0.3",
     "@sprucelabs/jest-json-reporter": "^10.0.4",
-    "@sprucelabs/resolve-path-aliases": "^4.0.2",
+    "@sprucelabs/resolve-path-aliases": "^4.0.3",
     "@sprucelabs/semantic-release": "^6.0.0",
     "@sprucelabs/test": "^11.0.0",
     "chokidar-cli": "^3.0.0",
