@@ -8,9 +8,9 @@ import {
 import isUndefinedOrNull from '../utilities/isUndefinedOrNull'
 import { ValidateOptions, Field } from './field.static.types'
 
-export default abstract class AbstractField<F extends FieldDefinitions>
-    implements Field<F>
-{
+export default abstract class AbstractField<
+    F extends FieldDefinitions,
+> implements Field<F> {
     /** The definition for this field */
     public definition: F
 

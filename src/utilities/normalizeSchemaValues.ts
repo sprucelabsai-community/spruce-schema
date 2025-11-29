@@ -23,9 +23,8 @@ export default function normalizeSchemaValues<
     IsDynamic extends boolean = IsDynamicSchema<S>,
     ShouldIncludeNullAndUndefinedFields extends boolean = true,
     ExcludeFields extends SchemaFieldNames<S> | undefined = undefined,
-    PublicExcludeFields extends
-        | SchemaPublicFieldNames<S>
-        | undefined = undefined,
+    PublicExcludeFields extends SchemaPublicFieldNames<S> | undefined =
+        undefined,
 >(
     schema: S,
     values: ValuesWithPaths<SchemaPartialValues<S>> | SchemaValues<S>,
