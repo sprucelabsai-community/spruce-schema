@@ -15,10 +15,8 @@ export default function normalizePartialSchemaValues<
     PF extends SchemaPublicFieldNames<S> = SchemaPublicFieldNames<S>,
     CreateEntityInstances extends boolean = false,
     IncludePrivateFields extends boolean = true,
-    Values extends SchemaPartialValues<
-        S,
-        CreateEntityInstances
-    > = SchemaPartialValues<S, CreateEntityInstances>,
+    Values extends SchemaPartialValues<S, CreateEntityInstances> =
+        SchemaPartialValues<S, CreateEntityInstances>,
     IValuesWithPaths extends ValuesWithPaths<Values> = ValuesWithPaths<Values>,
     Fields extends keyof IValuesWithPaths = keyof IValuesWithPaths,
 >(

@@ -57,8 +57,7 @@ export interface TransformationFailedErrorOptions extends ISpruceErrorOptions {
     name: string
 }
 
-export interface InvalidSchemaDefinitionErrorOptions
-    extends ISpruceErrorOptions {
+export interface InvalidSchemaDefinitionErrorOptions extends ISpruceErrorOptions {
     code: 'INVALID_SCHEMA'
     schemaId: string
     errors: string[]
@@ -74,8 +73,7 @@ export interface FieldsNotMappedErrorOptions extends ISpruceErrorOptions {
     fields: string[]
 }
 
-export interface InvalidFieldRegistrationErrorOptions
-    extends ISpruceErrorOptions {
+export interface InvalidFieldRegistrationErrorOptions extends ISpruceErrorOptions {
     code: 'INVALID_FIELD_REGISTRATION'
     package: string
     className: string
@@ -115,8 +113,7 @@ export interface ValidationFailedErrorOptions extends ISpruceErrorOptions {
     errors: FieldError[]
 }
 
-export interface InvalidSchemaReferenceErrorOptions
-    extends ISpruceErrorOptions {
+export interface InvalidSchemaReferenceErrorOptions extends ISpruceErrorOptions {
     code: 'INVALID_SCHEMA_REFERENCE'
 }
 

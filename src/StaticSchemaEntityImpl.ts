@@ -218,8 +218,8 @@ export default class StaticSchemaEntityImpl<S extends Schema>
     }
 
     public getDefaultValues<
-        F extends
-            SchemaFieldNamesWithDefaultValue<S> = SchemaFieldNamesWithDefaultValue<S>,
+        F extends SchemaFieldNamesWithDefaultValue<S> =
+            SchemaFieldNamesWithDefaultValue<S>,
         CreateEntityInstances extends boolean = true,
     >(
         options: SchemaGetDefaultValuesOptions<S, F, CreateEntityInstances> = {}
@@ -247,9 +247,8 @@ export default class StaticSchemaEntityImpl<S extends Schema>
         IncludePrivateFields extends boolean = true,
         ShouldIncludeNullAndUndefinedFields extends boolean = true,
         ExcludeFields extends SchemaFieldNames<S> | undefined = undefined,
-        PublicExcludeFields extends
-            | SchemaPublicFieldNames<S>
-            | undefined = undefined,
+        PublicExcludeFields extends SchemaPublicFieldNames<S> | undefined =
+            undefined,
     >(
         options?: SchemaGetValuesOptions<
             S,
