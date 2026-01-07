@@ -1,3 +1,7 @@
+## <small>33.1.2 (2026-01-07)</small>
+
+* patch: upgrade dependencies ([9198658](https://github.com/sprucelabsai-community/spruce-schema/commit/9198658))
+
 ## <small>33.1.1 (2026-01-07)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([4bb41e6](https://github.com/sprucelabsai-community/spruce-schema/commit/4bb41e6))
