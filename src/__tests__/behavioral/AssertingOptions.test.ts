@@ -55,6 +55,7 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
             },
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { passed, stillOptional } = assertOptions(options, [
             'passed',
             'nested.hey',
@@ -105,6 +106,7 @@ export default class AssertingOptionsTest extends AbstractSchemaTest {
 
     @test()
     protected static typesOnObjectLiteralReferencingOptional() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { organizationId } = assertOptions(
             { organizationId: this.optionalField },
             ['organizationId']

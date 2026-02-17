@@ -43,6 +43,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
     @test()
     protected static normalizeTypesAsExpected() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = normalizeSchemaValues(
             this.personSchema,
             {
@@ -71,6 +72,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
     @test()
     protected static normalizeTypesAsExpectedNotIncludingNullAndUndefined() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = normalizeSchemaValues(
             this.personSchema,
             {
@@ -235,6 +237,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
 
     @test()
     protected static async betterNormalizePartialTyping() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const actual = normalizePartialSchemaValues(this.personSchema, {
             age: 10,
         })
@@ -271,6 +274,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
             },
         })
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const actual = normalizePartialSchemaValues(
             schema,
             {

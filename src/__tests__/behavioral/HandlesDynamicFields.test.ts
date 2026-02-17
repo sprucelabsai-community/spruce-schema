@@ -60,6 +60,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
     @test()
     protected static optionalValuesTypeMapping() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values: DynamicSchemaAllValues<typeof numberDynamicSchema> = {
             hey: 5,
         }
@@ -69,6 +70,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
 
     @test()
     protected static requiredValuesTypeMapping() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values: DynamicSchemaAllValues<
             typeof numberRequiredDynamicSchema
         > = {
@@ -91,6 +93,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
             }
         )
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = entity.getValues()
 
         assert.isExactType<typeof values, { string?: string }>(true)
@@ -106,6 +109,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
             }
         )
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = entity.getValues()
 
         assert.isExactType<typeof values, { string?: number }>(true)
@@ -121,6 +125,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
             }
         )
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = entity.getValues()
 
         assert.isExactType<typeof values, Record<string, number>>(true)
@@ -286,6 +291,7 @@ export default class HandlesDynamicFields extends AbstractSchemaTest {
             }
         >(true)
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const allValues: AllValues = {
             id: '1',
             dateCreated: 2,

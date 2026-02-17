@@ -13,6 +13,7 @@ const { carSchema } = buildPersonWithCars()
 export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
     @test()
     protected static typeMappingFieldNamesWorks() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         let fieldName: SchemaPublicFieldNames<CarSchema> | undefined
 
         assert.isExactType<typeof fieldName, 'name' | 'onlyOnCar' | undefined>(
@@ -52,6 +53,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
             privateField: 'Go away!',
         })
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = entity.getValues({ shouldIncludePrivateFields: true })
 
         assert.isExactType<
@@ -124,6 +126,7 @@ export default class HandlesHidingPrivateFieldsTest extends AbstractSchemaTest {
 
     @test()
     protected static dropsPrivateFieldsWhileSelectingFields() {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = normalizeSchemaValues(
             carSchema,
             { name: 'sweet!', privateField: 'go away', onlyOnCar: 'vroom' },

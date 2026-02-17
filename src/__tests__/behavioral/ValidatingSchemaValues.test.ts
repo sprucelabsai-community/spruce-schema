@@ -614,6 +614,7 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
         } catch (err) {
             if (err instanceof SpruceError) {
                 if (err.options.code === 'VALIDATION_FAILED') {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const first = err.options.errors[0].code
                     assert.isExactType<
                         typeof first,

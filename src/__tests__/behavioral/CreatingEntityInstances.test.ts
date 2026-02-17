@@ -37,6 +37,7 @@ export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
             }
         )
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = instance.getValues()
 
         assert.isExactType<typeof values, { firstName: string }>(true)
@@ -71,6 +72,7 @@ export default class CreatingEntityInstancesTest extends AbstractSchemaTest {
             }
         )
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const values = instance.getValues()
 
         assert.isExactType<

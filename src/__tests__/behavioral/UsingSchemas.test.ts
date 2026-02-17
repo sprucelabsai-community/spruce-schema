@@ -48,6 +48,7 @@ interface PersonExpectedValuesWithoutSchema {
     } | null
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { personSchema, truckSchema } = buildPersonWithCars()
 
 const nestedSchemas = buildSchema({
@@ -346,6 +347,7 @@ export default class SchemaTest extends AbstractSchemaTest {
             payloadSchema: nestedSingleRequiredFieldSchemas,
             callback: (payload) => {
                 const { requiredArrayField } = payload.contract
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const mappedArray = requiredArrayField.map(
                     (item) => item.fieldOnNested
                 )
