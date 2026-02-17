@@ -1,3 +1,8 @@
+## 33.2.0 (2026-02-17)
+
+* fix: resolve lint errors from eslint-config-spruce upgrade ([2b4d277](https://github.com/sprucelabsai-community/spruce-schema/commit/2b4d277))
+* minor: upgrade ([0141c19](https://github.com/sprucelabsai-community/spruce-schema/commit/0141c19))
+
 ## <small>33.1.5 (2026-01-27)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([6477b44](https://github.com/sprucelabsai-community/spruce-schema/commit/6477b44))
