@@ -1,3 +1,8 @@
+## 34.0.0 (2026-03-07)
+
+* patch: lint fixes ([3449a31](https://github.com/sprucelabsai-community/spruce-schema/commit/3449a31))
+* major: must be an array error ([60bee60](https://github.com/sprucelabsai-community/spruce-schema/commit/60bee60))
+
 ## <small>33.2.9 (2026-02-23)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([ba6681a](https://github.com/sprucelabsai-community/spruce-schema/commit/ba6681a))
