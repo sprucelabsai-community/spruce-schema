@@ -166,26 +166,32 @@ export default class StaticSchemaEntityImpl<S extends Schema>
 
         this.getNamedFields(options).forEach((namedField) => {
             const { name, field } = namedField
-            let valueAsArray = normalizeValueToArray(this.values[name])
+            const value = this.values[name]
+            const wasArray = Array.isArray(value)
+            let valueAsArray = normalizeValueToArray(value)
 
-            if (
+            const isMissingRequiredOrMinValues =
                 field.isRequired &&
                 field.isArray &&
-                (!this.values[name] ||
-                    valueAsArray.length < (field.minArrayLength ?? 1))
-            ) {
+                (!value || valueAsArray.length < (field.minArrayLength ?? 1))
+
+            const isMissing = !value
+	            const shouldBeArrayButIsnt =
+                !wasArray && !isMissing && field.isArray
+
+            if (isMissingRequiredOrMinValues || shouldBeArrayButIsnt) {
+                const missingRequiredError = `${field.label ? `'${field.label}'` : 'This'} is required!`
+                const missingMinValuesError = `${field.label ? `'${field.label}'` : 'You'} must ${field.label ? 'have' : 'select'} at least ${field.minArrayLength} value${field.minArrayLength === 1 ? '' : 's'}. I found ${valueAsArray.length}!`
+                const mustBeArrayError = `${field.label ? `'${field.label}'` : 'This'} must be an array!`
+
                 errors.push({
-                    code: !this.values[name]
-                        ? 'MISSING_PARAMETER'
-                        : 'INVALID_PARAMETER',
+                    code: isMissing ? 'MISSING_PARAMETER' : 'INVALID_PARAMETER',
                     name,
-                    friendlyMessage: !this.values[name]
-                        ? `${field.label ? `'${field.label}'` : 'This'} is required!`
-                        : `${field.label ? `'${field.label}'` : 'You'} must ${field.label ? 'have' : 'select'} at least ${
-                              field.minArrayLength
-                          } value${field.minArrayLength === 1 ? '' : 's'}. I found ${
-                              valueAsArray.length
-                          }!`,
+                    friendlyMessage: isMissing
+                        ? missingRequiredError
+                        : shouldBeArrayButIsnt
+                        ? mustBeArrayError
+                        : missingMinValuesError,
                 })
             } else {
                 if (

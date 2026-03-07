@@ -456,6 +456,19 @@ export default class CanValidateSchemasTest extends AbstractSchemaTest {
     }
 
     @test()
+    protected static async shouldThrowIfArrayValuePassedAsNonArray() {
+        assert.doesThrow(
+            () =>
+                validateSchemaValues(personWithFavToolsSchema, {
+                    firstName: 'Ryan',
+                    //@ts-ignore
+                    favoriteTools: { name: 'test' },
+                }),
+            /must be an array/gi
+        )
+    }
+
+    @test()
     protected static async canValidateArrayOfUnionValues() {
         validateSchemaValues(personWithFavToolsOrFruitSchema, {
             firstName: 'Ryan',
