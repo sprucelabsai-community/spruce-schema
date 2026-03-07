@@ -176,7 +176,7 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                 (!value || valueAsArray.length < (field.minArrayLength ?? 1))
 
             const isMissing = !value
-	            const shouldBeArrayButIsnt =
+            const shouldBeArrayButIsnt =
                 !wasArray && !isMissing && field.isArray
 
             if (isMissingRequiredOrMinValues || shouldBeArrayButIsnt) {
@@ -190,8 +190,8 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                     friendlyMessage: isMissing
                         ? missingRequiredError
                         : shouldBeArrayButIsnt
-                        ? mustBeArrayError
-                        : missingMinValuesError,
+                          ? mustBeArrayError
+                          : missingMinValuesError,
                 })
             } else {
                 if (
