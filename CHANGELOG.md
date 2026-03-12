@@ -1,3 +1,10 @@
+## <small>34.0.1 (2026-03-12)</small>
+
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([8a752bc](https://github.com/sprucelabsai-community/spruce-schema/commit/8a752bc))
+* chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([95556aa](https://github.com/sprucelabsai-community/spruce-schema/commit/95556aa))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([a700db4](https://github.com/sprucelabsai-community/spruce-schema/commit/a700db4))
+* chore(auto-upgrade): upgraded packages [upgrade-all] ([3f95fca](https://github.com/sprucelabsai-community/spruce-schema/commit/3f95fca))
+
 ## 34.0.0 (2026-03-07)
 
 * patch: lint fixes ([3449a31](https://github.com/sprucelabsai-community/spruce-schema/commit/3449a31))
