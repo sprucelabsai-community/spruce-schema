@@ -14,7 +14,6 @@ interface CountryFormat {
     detect?: (input: DetectionInput) => boolean
 }
 
-const LETTER_PATTERN = /[a-zA-Z]/
 const DEFAULT_CODE_SEPARATOR = ' '
 
 const COUNTRY_FORMATS: CountryFormat[] = [
@@ -60,7 +59,7 @@ const createAdHocFormat = (code: string): CountryFormat => ({
 })
 
 export function isValidNumber(number: string) {
-    if (LETTER_PATTERN.test(number)) {
+    if (/[a-zA-Z]/.test(number)) {
         return false
     }
 
@@ -86,7 +85,7 @@ export default function formatPhoneNumber(
     value: string,
     shouldFailSilently = true
 ): string {
-    if (LETTER_PATTERN.test(value)) {
+    if (/[a-zA-Z]/.test(value)) {
         if (!shouldFailSilently) {
             throw new Error('INVALID_PHONE_NUMBER')
         }
