@@ -1,3 +1,7 @@
+## <small>34.0.6 (2026-04-04)</small>
+
+* fix: inline LETTER_PATTERN regex to prevent Rolldown tree-shaking ([c0fba85](https://github.com/sprucelabsai-community/spruce-schema/commit/c0fba85))
+
 ## <small>34.0.5 (2026-03-13)</small>
 
 * chore(auto-upgrade): Upgrade Tests Passed [auto-merge] ([b02d791](https://github.com/sprucelabsai-community/spruce-schema/commit/b02d791))
