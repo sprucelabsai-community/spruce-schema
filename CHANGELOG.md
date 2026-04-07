@@ -1,3 +1,8 @@
+## <small>34.0.7 (2026-04-07)</small>
+
+* Fix TypeScript 6.0 tsconfig deprecations ([11ceef7](https://github.com/sprucelabsai-community/spruce-schema/commit/11ceef7))
+* Upgrade dependencies ([fb8b95a](https://github.com/sprucelabsai-community/spruce-schema/commit/fb8b95a))
+
 ## <small>34.0.6 (2026-04-04)</small>
 
 * fix: inline LETTER_PATTERN regex to prevent Rolldown tree-shaking ([c0fba85](https://github.com/sprucelabsai-community/spruce-schema/commit/c0fba85))
