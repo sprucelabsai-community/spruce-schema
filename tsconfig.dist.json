@@ -8,6 +8,7 @@
 		],
 		"esModuleInterop": true,
 		"moduleResolution": "node",
+		"ignoreDeprecations": "6.0",
 		"declaration": true,
 		"noImplicitAny": true,
 		"forceConsistentCasingInFileNames": true,
@@ -17,7 +18,9 @@
 		"resolveJsonModule": true,
 		"sourceMap": false,
 		"outDir": "./build",
+		"rootDir": "./src",
 		"baseUrl": "src",
+		"types": ["node"],
 		"experimentalDecorators": true,
 		"paths": {
 			"#spruce/*": [
