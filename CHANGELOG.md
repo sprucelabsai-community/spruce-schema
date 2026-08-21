@@ -1,3 +1,9 @@
+## <small>34.1.1 (2026-08-21)</small>
+
+* Merge branch 'master' of github.com:[secure]ai/spruce-schema ([3a8ebf2](https://github.com/[secure]ai-community/spruce-schema/commit/3a8ebf2))
+* patch: doc updates ([a4b8a7a](https://github.com/[secure]ai-community/spruce-schema/commit/a4b8a7a))
+* patch: doc updates ([f87f4d7](https://github.com/[secure]ai-community/spruce-schema/commit/f87f4d7))
+
 ## 34.1.0 (2026-08-21)
 
 * minor: max array values ([f93ae6e](https://github.com/[secure]ai-community/spruce-schema/commit/f93ae6e))
