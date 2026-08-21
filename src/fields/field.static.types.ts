@@ -67,6 +67,7 @@ export type FieldDefinition<
     hint?: string
     isRequired?: boolean
     minArrayLength?: number
+    maxArrayLength?: number
 } & (
     | {
           isArray: true
@@ -108,6 +109,7 @@ export interface Field<F extends FieldDefinitions> {
     readonly isPrivate: F['isPrivate']
     readonly isArray: F['isArray']
     readonly minArrayLength: F['minArrayLength']
+    readonly maxArrayLength: F['maxArrayLength']
     readonly label: F['label']
     readonly hint: F['hint']
     name: string

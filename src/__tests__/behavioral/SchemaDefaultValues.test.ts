@@ -23,12 +23,10 @@ interface PersonExpectedDefaultValues {
     optionalSelectWithDefaultValue: 'hello' | 'goodbye'
     optionalTextWithDefaultValue: string
     optionalIsArrayCarOrTruckWithDefaultValue: (
-        | StaticSchemaEntity<CarSchema>
-        | StaticSchemaEntity<TruckSchema>
+        StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema>
     )[]
     optionalCarOrTruckWithDefaultValue:
-        | StaticSchemaEntity<CarSchema>
-        | StaticSchemaEntity<TruckSchema>
+        StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema>
 }
 
 interface PersonExpectedDefaultValuesWithoutSchema {
@@ -53,8 +51,7 @@ export default class SchemaDefaultValuesTest extends AbstractSpruceTest {
     )
     protected static textAndSelectDefaultValues() {
         let fieldName:
-            | SchemaFieldNamesWithDefaultValue<typeof personSchema>
-            | undefined
+            SchemaFieldNamesWithDefaultValue<typeof personSchema> | undefined
 
         // make sure types are 100% (only works if they are currently undefined)
         assert.isType<

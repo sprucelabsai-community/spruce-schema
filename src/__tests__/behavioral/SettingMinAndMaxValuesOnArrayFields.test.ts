@@ -1,5 +1,6 @@
-import { test, assert } from '@sprucelabs/test-utils'
+import { test, assert, suite } from '@sprucelabs/test-utils'
 import { errorAssert } from '@sprucelabs/test-utils'
+import { Schema, SchemaValues } from 'schemas.static.types'
 import AbstractSchemaTest from '../../AbstractSchemaTest'
 import validationErrorAssert from '../../tests/validationErrorAssert.utility'
 import buildSchema from '../../utilities/buildSchema'
@@ -40,6 +41,30 @@ const twoMinValuesSchema = buildSchema({
     },
 })
 
+const oneMaxValueSchema = buildSchema({
+    id: 'oneMaxValue',
+    fields: {
+        favoriteCars: {
+            type: 'text',
+            isArray: true,
+            isRequired: true,
+            maxArrayLength: 1,
+        },
+    },
+})
+
+const twoMaxValueSchema = buildSchema({
+    id: 'twoMaxValue',
+    fields: {
+        favoriteColors: {
+            type: 'text',
+            isArray: true,
+            isRequired: true,
+            maxArrayLength: 2,
+        },
+    },
+})
+
 const zeroMinTwoRequiredFields = buildSchema({
     id: 'zeroMinTwoRequiredFields',
     fields: {
@@ -56,18 +81,17 @@ const zeroMinTwoRequiredFields = buildSchema({
     },
 })
 
+@suite()
 export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSchemaTest {
     @test()
-    protected static defaultsToOneValueRequired() {
-        const err = assert.doesThrow(() =>
-            validateSchemaValues(noMinOrMaxSchema, { favoriteColors: [] })
-        )
-
-        errorAssert.assertError(err, 'VALIDATION_FAILED')
+    protected defaultsToOneValueRequired() {
+        this.assertThrowsValidationFailed(noMinOrMaxSchema, {
+            favoriteColors: [],
+        })
     }
 
     @test()
-    protected static failsWhenMissing() {
+    protected failsWhenMissing() {
         const err = assert.doesThrow(() =>
             validateSchemaValues(zeroMinTwoRequiredFields, {})
         )
@@ -78,30 +102,62 @@ export default class SettingMinAndMaxValuesOnArrayFieldsTest extends AbstractSch
     }
 
     @test()
-    protected static defaultOneValueRequiredPassesWithOneValue() {
+    protected defaultOneValueRequiredPassesWithOneValue() {
         validateSchemaValues(noMinOrMaxSchema, { favoriteColors: ['pink'] })
     }
 
     @test()
-    protected static minArrayLengthZero() {
+    protected minArrayLengthZero() {
         validateSchemaValues(zeroMinValuesSchema, { favoriteColors: [] })
     }
 
     @test()
-    protected static minArrayLength2ThrowsWithLessThan() {
-        const err = assert.doesThrow(() =>
-            validateSchemaValues(twoMinValuesSchema, {
-                favoriteColors: ['purple'],
-            })
-        )
-
-        errorAssert.assertError(err, 'VALIDATION_FAILED')
+    protected minArrayLength2ThrowsWithLessThan() {
+        this.assertThrowsValidationFailed(twoMinValuesSchema, {
+            favoriteColors: ['purple'],
+        })
     }
 
     @test()
-    protected static passesWithMoreThanMin() {
+    protected passesWithMoreThanMin() {
         validateSchemaValues(twoMinValuesSchema, {
             favoriteColors: ['pink', 'purple'],
         })
+    }
+
+    @test()
+    protected async maxArrayLengthOf1ThrowsWithTwo() {
+        this.assertThrowsValidationFailed(oneMaxValueSchema, {
+            favoriteCars: ['honda', 'toyota'],
+        })
+    }
+
+    @test()
+    protected async doesNotThrowWithMaxArrayLengthOf1() {
+        validateSchemaValues(oneMaxValueSchema, {
+            favoriteCars: ['honda'],
+        })
+    }
+
+    @test()
+    protected async maxArrayLengthOf1ThrowsWith3Values() {
+        this.assertThrowsValidationFailed(oneMaxValueSchema, {
+            favoriteCars: ['honda', 'toyota', 'ford'],
+        })
+    }
+
+    @test()
+    protected async maxArrayLengthOf2DoesNotThrowWith2Values() {
+        validateSchemaValues(twoMaxValueSchema, {
+            favoriteColors: ['pink', 'purple'],
+        })
+    }
+
+    private assertThrowsValidationFailed<S extends Schema>(
+        schema: S,
+        values: SchemaValues<S>
+    ) {
+        const err = assert.doesThrow(() => validateSchemaValues(schema, values))
+        errorAssert.assertError(err, 'VALIDATION_FAILED')
     }
 }

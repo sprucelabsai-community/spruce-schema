@@ -19,9 +19,7 @@ export type SchemaErrorOptions =
     | FieldsNotMappedErrorOptions
 
 export type FieldErrorCode =
-    | 'MISSING_PARAMETER'
-    | 'INVALID_PARAMETER'
-    | 'UNEXPECTED_PARAMETER'
+    'MISSING_PARAMETER' | 'INVALID_PARAMETER' | 'UNEXPECTED_PARAMETER'
 
 export interface FieldError {
     code: FieldErrorCode

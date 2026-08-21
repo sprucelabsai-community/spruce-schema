@@ -63,9 +63,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
                 privateBooleanField: boolean | null | undefined
                 references: string[] | null | undefined
                 nestedArraySchema:
-                    | { field1?: string | null | undefined }[]
-                    | null
-                    | undefined
+                    { field1?: string | null | undefined }[] | null | undefined
             }
         >(true)
     }
@@ -94,9 +92,7 @@ export default class NormalizingSchemaValues extends AbstractSchemaTest {
                 boolean?: boolean | null | undefined
                 privateBooleanField?: boolean | null | undefined
                 nestedArraySchema?:
-                    | { field1?: string | null | undefined }[]
-                    | null
-                    | undefined
+                    { field1?: string | null | undefined }[] | null | undefined
             }
         >(true)
     }

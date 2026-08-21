@@ -28,9 +28,7 @@ interface PersonExpectedValues {
         | (StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema>)[]
         | null
     optionalCarOrTruckWithDefaultValue?:
-        | StaticSchemaEntity<CarSchema>
-        | StaticSchemaEntity<TruckSchema>
-        | null
+        StaticSchemaEntity<CarSchema> | StaticSchemaEntity<TruckSchema> | null
 }
 
 interface PersonExpectedValuesWithoutSchema {

@@ -89,6 +89,10 @@ public static generateTemplateDetails(
         return this.definition.minArrayLength ?? 1
     }
 
+    public get maxArrayLength() {
+        return this.definition.maxArrayLength
+    }
+
     public validate(value: any, _?: ValidateOptions<F>): FieldError[] {
         const errors: FieldError[] = []
         if (isUndefinedOrNull(value) && this.isRequired) {

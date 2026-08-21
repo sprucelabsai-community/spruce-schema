@@ -226,9 +226,7 @@ export type StaticSchemaPartialValues<
     CreateEntityInstances extends boolean = false,
 > = {
     [K in SchemaFieldNames<T>]?:
-        | SchemaFieldValueType<T, K, CreateEntityInstances>
-        | undefined
-        | null
+        SchemaFieldValueType<T, K, CreateEntityInstances> | undefined | null
 }
 
 export type DynamicSchemaPartialValues<
@@ -238,13 +236,12 @@ export type DynamicSchemaPartialValues<
     Record<
         string,
         S['dynamicFieldSignature'] extends FieldDefinitions
-            ?
-                  | FieldDefinitionValueType<
-                        S['dynamicFieldSignature'],
-                        CreateEntityInstances
-                    >
-                  | undefined
-                  | null
+            ? | FieldDefinitionValueType<
+                    S['dynamicFieldSignature'],
+                    CreateEntityInstances
+                >
+              | undefined
+              | null
             : never
     >
 >
