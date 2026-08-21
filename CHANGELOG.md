@@ -1,3 +1,7 @@
+## 34.1.0 (2026-08-21)
+
+* minor: max array values ([f93ae6e](https://github.com/[secure]ai-community/spruce-schema/commit/f93ae6e))
+
 ## <small>34.0.7 (2026-04-07)</small>
 
 * Fix TypeScript 6.0 tsconfig deprecations ([11ceef7](https://github.com/sprucelabsai-community/spruce-schema/commit/11ceef7))
