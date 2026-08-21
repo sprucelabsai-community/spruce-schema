@@ -175,7 +175,7 @@ export default class StaticSchemaEntityImpl<S extends Schema>
                 field.isArray &&
                 (!value || valueAsArray.length < (field.minArrayLength ?? 1))
 
-            const hasMaxArrayLength =
+            const hasTooManyValues =
                 !!field.maxArrayLength &&
                 valueAsArray.length > field.maxArrayLength
             const isMissing = !value
@@ -185,7 +185,7 @@ export default class StaticSchemaEntityImpl<S extends Schema>
             if (
                 isMissingRequiredOrMinValues ||
                 shouldBeArrayButIsnt ||
-                hasMaxArrayLength
+                hasTooManyValues
             ) {
                 const missingRequiredError = `${field.label ? `'${field.label}'` : 'This'} is required!`
                 const missingMinValuesError = `${field.label ? `'${field.label}'` : 'You'} must ${field.label ? 'have' : 'select'} at least ${field.minArrayLength} value${field.minArrayLength === 1 ? '' : 's'}. I found ${valueAsArray.length}!`
