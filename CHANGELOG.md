@@ -1,3 +1,8 @@
+## <small>35.0.2 (2026-10-16)</small>
+
+* Merge branch 'master' of github.com:[secure]ai/spruce-schema ([6da90a6](https://github.com/[secure]ai-community/spruce-schema/commit/6da90a6))
+* patch: name label fix ([a199bc2](https://github.com/[secure]ai-community/spruce-schema/commit/a199bc2))
+
 ## <small>35.0.1 (2026-10-16)</small>
 
 * patch: emoji support for min length ([35135d8](https://github.com/[secure]ai-community/spruce-schema/commit/35135d8))
