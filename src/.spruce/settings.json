@@ -18,5 +18,9 @@
       ".nvmrc",
       ".gitignore"
     ]
+  },
+  "regressionproof": {
+    "enabled": false,
+    "projectName": "spruce-schema"
   }
 }

@@ -1,7 +1,7 @@
 {
 	"debug.node.autoAttach": "on",
 	"git.ignoreLimitWarning": true,
-	"js.validate.enable": false,
+	"javascript.validate.enable": false,
 	"files.watcherExclude": {
 		"**/.git/objects/**": true,
 		"**/.git/subtree-cache/**": true,
@@ -29,7 +29,7 @@
 	"[handlebars]": {
 		"editor.formatOnSave": false
 	},
-	"ts.tsdk": "node_modules/typescript/lib",
+	"typescript.tsdk": "node_modules/typescript/lib",
 	"cSpell.ignorePaths": [
 		"**/package-lock.json",
 		"**/node_modules/**",
@@ -46,8 +46,8 @@
 		"serializable"
 	],
 	"debug.javascript.unmapMissingSources": true,
-	"js.preferences.importModuleSpecifier": "relative",
-	"ts.preferences.importModuleSpecifier": "relative",
+	"javascript.preferences.importModuleSpecifier": "relative",
+	"typescript.preferences.importModuleSpecifier": "relative",
 	"eslint.useFlatConfig": true,
 	"eslint.enable": true,
 	"eslint.validate": [
@@ -59,7 +59,7 @@
 	"eslint.workingDirectories": [
 		"./"
 	],
-	"ts.validate.enable": true,
+	"typescript.validate.enable": true,
 	"editor.formatOnSave": false,
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "always"

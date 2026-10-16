@@ -301,16 +301,6 @@ export default class SchemaTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static testGettingOptionsByField() {
-        const entity = new StaticSchemaEntityImpl(personSchema)
-        entity.set('name', 'a really long name that should get truncated')
-        const name = entity.get('name', {
-            byField: { name: { maxLength: 10 } },
-        })
-        assert.isEqual(name, 'a really l')
-    }
-
-    @test()
     protected static canCorrectlyTypeSchemaWithOneRequiredField() {
         const values: SchemaValues<typeof nestedSingleRequiredFieldSchemas> = {
             contract: {

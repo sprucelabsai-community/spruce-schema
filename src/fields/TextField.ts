@@ -5,7 +5,7 @@ import {
     FieldTemplateDetailOptions,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { ToValueTypeOptions, ValidateOptions } from './field.static.types'
+import { ToValueTypeOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<TextFieldDefinition> {
@@ -26,14 +26,35 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
         }
     }
 
-    public validate(
-        value: any,
-        options: ValidateOptions<TextFieldDefinition>
-    ): FieldError[] {
-        const errors = super.validate(value, options)
+    public validate(value: any): FieldError[] {
+        const errors = super.validate(value, this.options)
+        const { maxLength, minLength } = this.options ?? {}
+        const isString = typeof this.convertToString(value) === 'string'
+
+        if (isString) {
+            const length = [...value.toString()].length
+
+            if (maxLength && length > maxLength) {
+                errors.push({
+                    code: 'INVALID_PARAMETER',
+                    name: this.name,
+                    label: this.label,
+                    friendlyMessage: `${this.name} should not exceed ${maxLength} characters!`,
+                })
+            }
+
+            if (minLength && value.length < minLength) {
+                errors.push({
+                    code: 'INVALID_PARAMETER',
+                    name: this.name,
+                    label: this.label,
+                    friendlyMessage: `${this.name} should be at least ${minLength} characters!`,
+                })
+            }
+        }
 
         if (errors.length === 0) {
-            if (value && typeof this.convertToString(value) !== 'string') {
+            if (value && !isString) {
                 errors.push({
                     code: 'INVALID_PARAMETER',
                     name: this.name,
@@ -41,7 +62,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
                     friendlyMessage: `${this.name} should be a string!`,
                 })
             }
-            if (this.isRequired && `${value}`.length === 0) {
+            if (this.isRequired && `${value}`.trim().length === 0) {
                 errors.push({
                     code: 'MISSING_PARAMETER',
                     label: this.label,
@@ -53,18 +74,10 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
         return errors
     }
 
-    public toValueType<C extends boolean>(
-        value: any,
-        options?: ToValueTypeOptions<TextFieldDefinition, C>
-    ): string {
+    public toValueType(value: any): string {
         let transformed = this.convertToString(value)
 
         if (typeof transformed === 'string') {
-            const maxLength = options?.maxLength ?? 0
-
-            if (maxLength > 0 && transformed.length > maxLength) {
-                transformed = transformed.substr(0, maxLength)
-            }
             return transformed
         }
 
