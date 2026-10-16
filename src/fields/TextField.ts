@@ -29,6 +29,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
         const errors = super.validate(value, this.options)
         const { maxLength, minLength } = this.options ?? {}
         const isString = typeof this.convertToString(value) === 'string'
+        const nameLabel = this.label ?? this.name
 
         if (isString) {
             const length = [...value.toString()].length
@@ -38,7 +39,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
                     code: 'INVALID_PARAMETER',
                     name: this.name,
                     label: this.label,
-                    friendlyMessage: `${this.name} should not exceed ${maxLength} characters!`,
+                    friendlyMessage: `${nameLabel} should not exceed ${maxLength} characters!`,
                 })
             }
 
@@ -47,7 +48,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
                     code: 'INVALID_PARAMETER',
                     name: this.name,
                     label: this.label,
-                    friendlyMessage: `${this.name} should be at least ${minLength} characters!`,
+                    friendlyMessage: `${nameLabel} should be at least ${minLength} characters!`,
                 })
             }
         }
@@ -58,7 +59,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
                     code: 'INVALID_PARAMETER',
                     name: this.name,
                     label: this.label,
-                    friendlyMessage: `${this.name} should be a string!`,
+                    friendlyMessage: `${nameLabel} should be a string!`,
                 })
             }
             if (this.isRequired && `${value}`.trim().length === 0) {
