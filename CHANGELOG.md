@@ -1,3 +1,7 @@
+## <small>35.0.1 (2026-10-16)</small>
+
+* patch: emoji support for min length ([35135d8](https://github.com/[secure]ai-community/spruce-schema/commit/35135d8))
+
 ## 35.0.0 (2026-10-16)
 
 * patch: lint fix ([57b192d](https://github.com/[secure]ai-community/spruce-schema/commit/57b192d))
