@@ -75,11 +75,18 @@ export default class TextFieldTest extends AbstractSchemaTest {
     }
 
     @test()
-    protected static async minLengthHonorsEmojis() {
+    protected static async minLengthDoseNotThrowAndHonorsEmojis() {
         const errors = this.validate('👍', {
             minLength: 1,
         })
         assert.isLength(errors, 0, 'Expected no validation errors')
+    }
+
+    @test()
+    protected static async minLengthHonorsEmojis() {
+        this.validateAndAssertError('👍', {
+            minLength: 2,
+        })
     }
 
     @test()

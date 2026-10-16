@@ -42,7 +42,7 @@ export default class TextField extends AbstractField<TextFieldDefinition> {
                 })
             }
 
-            if (minLength && value.length < minLength) {
+            if (minLength && length < minLength) {
                 errors.push({
                     code: 'INVALID_PARAMETER',
                     name: this.name,
