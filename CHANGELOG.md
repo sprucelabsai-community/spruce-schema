@@ -1,3 +1,9 @@
+## 35.0.0 (2026-10-16)
+
+* patch: lint fix ([57b192d](https://github.com/[secure]ai-community/spruce-schema/commit/57b192d))
+* Merge branch 'master' of github.com:[secure]ai/spruce-schema ([64960aa](https://github.com/[secure]ai-community/spruce-schema/commit/64960aa))
+* major: min max and validation updates in TextField ([0283302](https://github.com/[secure]ai-community/spruce-schema/commit/0283302))
+
 ## <small>34.1.1 (2026-08-21)</small>
 
 * Merge branch 'master' of github.com:[secure]ai/spruce-schema ([3a8ebf2](https://github.com/[secure]ai-community/spruce-schema/commit/3a8ebf2))
