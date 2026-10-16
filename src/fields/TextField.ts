@@ -5,7 +5,6 @@ import {
     FieldTemplateDetailOptions,
 } from '../types/template.types'
 import AbstractField from './AbstractField'
-import { ToValueTypeOptions } from './field.static.types'
 import { TextFieldDefinition } from './TextField.types'
 
 export default class TextField extends AbstractField<TextFieldDefinition> {
